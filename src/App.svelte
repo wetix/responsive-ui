@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { message } from "./message";
+  message.open();
   export let name: string;
 </script>
 

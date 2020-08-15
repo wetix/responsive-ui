@@ -1,6 +1,7 @@
 import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import alias from "@rollup/plugin-alias";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
@@ -51,6 +52,9 @@ export default {
         css.write("public/build/bundle.css");
       },
       preprocess: sveltePreprocess(),
+    }),
+    alias({
+      entries: [{ find: "~/", replacement: "./src/" }],
     }),
 
     // If you have external dependencies installed from
