@@ -1,10 +1,9 @@
-<script>
+<script lang="ts">
   // your script goes here
 </script>
 
-<style lang="scss">
+<style>
   /* your styles go here */
 </style>
 
-<i />
 <!-- markup (zero or more items) goes here -->

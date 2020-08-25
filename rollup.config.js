@@ -54,7 +54,13 @@ export default {
       preprocess: sveltePreprocess(),
     }),
     alias({
-      entries: [{ find: "~/", replacement: "./src/" }],
+      entries: [
+        { find: "~/", replacement: "./src/" },
+        {
+          find: "~/components/notification",
+          replacement: "./src/components/notification/index.ts",
+        },
+      ],
     }),
 
     // If you have external dependencies installed from
