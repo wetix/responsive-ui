@@ -1,11 +1,76 @@
 <script lang="ts">
+  import Header from "./components/header/Header.svelte";
+  import Button from "./components/button/Button.svelte";
+  import Switch from "./components/switch/Switch.svelte";
+  import Tag from "./components/tag/Tag.svelte";
+  import Menu from "./components/menu/Nav.svelte";
+  import Table from "./components/table/Table.svelte";
+  import { success } from "./components/notification/index.ts";
 
+  const showNotification = () => {
+    success({
+      title: "Apple can get away with this because they’re well, Apple.",
+      message:
+        "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      duration: 0,
+      placement: "top-right",
+    });
+  };
+
+  const items = [
+    { title: "Dashboard", icon: "stat" },
+    { title: "Reporting", icon: "receipt" },
+    {
+      title: "Long title here, lorem ipsum etc....",
+      href: "https://www.google.com",
+      align: "center",
+    },
+    {
+      title: "Long title here, lorem ipsum etc....",
+      submenus: [{ title: "C.B" }],
+    },
+  ];
+
+  const columns = [
+    { key: "name", title: "A" },
+    { key: "status", title: "B" },
+    { key: "status", title: "C" },
+    { key: "status", title: "D" },
+    { key: "status", title: "E" },
+    { key: "name", title: "AA" },
+    { key: "status", title: "F" },
+    { key: "name", title: "Z" },
+  ];
+  const records = [
+    { name: "sianloong", status: "success" },
+    { name: "kk", status: "success" },
+  ];
 </script>
 
 <style>
+  @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+  :global(body) {
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  :global(*) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   main {
     text-align: center;
     padding: 1em;
+    flex-grow: 1;
     max-width: 240px;
     margin: 0 auto;
   }
@@ -22,13 +87,28 @@
       max-width: none;
     }
   }
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
-<main>
-  <h1>Hello!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
-</main>
+<Header title="testing" />
+
+<div class="container">
+  <Menu {items} />
+  <main>
+    <h1>Hello!</h1>
+    <p>
+      Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+      how to build Svelte apps.
+      <Tag>success</Tag>
+      <Tag>failed</Tag>
+    </p>
+    <Switch />
+    <Button on:click={showNotification}>click me</Button>
+    <Table loading={true} bordered={true} {columns} items={records} />
+  </main>
+</div>
