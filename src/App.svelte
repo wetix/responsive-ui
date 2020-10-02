@@ -5,6 +5,7 @@
   import Tag from "./components/tag/Tag.svelte";
   import Menu from "./components/menu/Nav.svelte";
   import Table from "./components/table/Table.svelte";
+  import Dock from "./components/dock/Dock.svelte";
   import { success } from "./components/notification/index.ts";
 
   const showNotification = () => {
@@ -102,8 +103,9 @@
   <main>
     <h1>Hello!</h1>
     <p>
-      Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-      how to build Svelte apps.
+      Visit the
+      <a href="https://svelte.dev/tutorial">Svelte tutorial (Testing)</a>
+      to learn how to build Svelte apps.
       <Tag>success</Tag>
       <Tag>failed</Tag>
     </p>
@@ -112,3 +114,4 @@
     <Table loading={true} bordered={true} {columns} items={records} />
   </main>
 </div>
+<Dock open={true}>Testing</Dock>
