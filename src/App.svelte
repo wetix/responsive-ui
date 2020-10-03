@@ -1,12 +1,16 @@
 <script lang="ts">
   import Header from "./components/header/Header.svelte";
-  import Button from "./components/button/Button.svelte";
+  import Button from "./components/button/index.svelte";
   import Switch from "./components/switch/Switch.svelte";
   import Tag from "./components/tag/Tag.svelte";
+  import Upload from "./components/upload/index.svelte";
   import Menu from "./components/menu/Nav.svelte";
   import Table from "./components/table/Table.svelte";
   import Dock from "./components/dock/Dock.svelte";
+  // import Notification from "./components/notification/Notification.svelte";
   import { success } from "./components/notification/index.ts";
+  import Icon from "./components/icon/Icon.svelte";
+  import Index from "./components/button/index.svelte";
 
   const showNotification = () => {
     success({
@@ -46,6 +50,14 @@
     { name: "sianloong", status: "success" },
     { name: "kk", status: "success" },
   ];
+
+  const uploadProps = {
+    url: "https://api.imgur.com/3/upload",
+    method: "post",
+    headers: {
+      Authorization: "Client-ID a70383e65634c6d",
+    },
+  };
 </script>
 
 <style>
@@ -102,6 +114,7 @@
   <Menu {items} />
   <main>
     <h1>Hello!</h1>
+    <Upload {...uploadProps} />
     <p>
       Visit the
       <a href="https://svelte.dev/tutorial">Svelte tutorial (Testing)</a>
@@ -114,4 +127,4 @@
     <Table loading={true} bordered={true} {columns} items={records} />
   </main>
 </div>
-<Dock open={true}>Testing</Dock>
+<!-- <Dock open={true}>Testing</Dock> -->

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let title = "",
     name = "",
     type = "button",
@@ -8,7 +8,7 @@
 </script>
 
 <style lang="scss">
-  .button {
+  .ditto-button {
     cursor: pointer;
     display: block;
     color: #fff;
@@ -18,12 +18,13 @@
     background: var(--primary-color, #fc4451);
     width: 100%;
     padding: 0 10px;
-    opacity: 1;
-    height: 42px;
+    margin: 0;
+    height: 38px;
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
     border-radius: 5px;
+    // opacity: 1;
 
     &.secondary {
       border: 1px solid var(--secondary-color, #505050);
@@ -48,7 +49,7 @@
 </style>
 
 <button
-  class="button"
+  class="ditto-button"
   class:disabled
   class:secondary
   {name}

@@ -1,6 +1,9 @@
 {
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/**/__tests__/*.ts"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*", "dist"],
   "rootDir": "./src",
   "paths": {
