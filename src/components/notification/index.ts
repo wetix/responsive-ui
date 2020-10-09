@@ -3,12 +3,13 @@ import type { SvelteComponent } from "svelte";
 import Notification from "./Notification.svelte";
 
 interface Props {
-  target: HTMLElement;
-  duration: number;
+  target?: HTMLElement;
+  placement: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  duration?: number;
   title: string | SvelteComponent;
   description: string | SvelteComponent;
-  onClose: () => {};
-  onClick: () => {};
+  onClose?: () => {};
+  onClick?: () => {};
 }
 
 export const success = (props: Props) => {

@@ -1,21 +1,23 @@
 <script lang="ts">
-  import Header from "./components/header/Header.svelte";
+  import Accordion from "./components/accordion/index.svelte";
+  import Header from "./components/header/index.svelte";
   import Button from "./components/button/index.svelte";
   import Switch from "./components/switch/Switch.svelte";
   import Tag from "./components/tag/Tag.svelte";
   import Upload from "./components/upload/index.svelte";
   import Menu from "./components/menu/Nav.svelte";
   import Table from "./components/table/Table.svelte";
-  import Dock from "./components/dock/Dock.svelte";
+  // import Dock from "./components/dock/Dock.svelte";
   // import Notification from "./components/notification/Notification.svelte";
-  import { success } from "./components/notification/index.ts";
-  import Icon from "./components/icon/Icon.svelte";
+  import { success } from "./components/notification/index";
+  // import Icon from "./components/icon/Icon.svelte";
   import Index from "./components/button/index.svelte";
+  import Checkbox from "./components/checkbox/index.svelte";
 
   const showNotification = () => {
     success({
       title: "Apple can get away with this because they’re well, Apple.",
-      message:
+      description:
         "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       duration: 0,
       placement: "top-right",
@@ -32,7 +34,7 @@
     },
     {
       title: "Long title here, lorem ipsum etc....",
-      submenus: [{ title: "C.B" }],
+      submenus: [{ title: "C.B" }, { title: "C.C" }],
     },
   ];
 
@@ -52,12 +54,22 @@
   ];
 
   const uploadProps = {
+    name: "image",
     url: "https://api.imgur.com/3/upload",
     method: "post",
     headers: {
       Authorization: "Client-ID a70383e65634c6d",
     },
   };
+
+  const accordionItems = [
+    {
+      title: "Title 1",
+    },
+    {
+      title: "Title 2",
+    },
+  ];
 </script>
 
 <style>
@@ -113,6 +125,7 @@
 <div class="container">
   <Menu {items} />
   <main>
+    <Accordion items={accordionItems} />
     <h1>Hello!</h1>
     <Upload {...uploadProps} />
     <p>
@@ -122,6 +135,7 @@
       <Tag>success</Tag>
       <Tag>failed</Tag>
     </p>
+    <Checkbox />
     <Switch />
     <Button on:click={showNotification}>click me</Button>
     <Table loading={true} bordered={true} {columns} items={records} />

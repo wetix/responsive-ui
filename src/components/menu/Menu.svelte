@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
 
-  import Icon from "../icon/Icon.svelte";
+  import Icon from "../icon/index.svelte";
 
   let className = "";
   export { className as class };

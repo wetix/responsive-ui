@@ -6,32 +6,38 @@
 
   const dispatch = createEventDispatcher();
 
+  type IMenu = {
+    title: string;
+    selected: boolean;
+    submenus: any[];
+  };
+
   export let theme = "dark",
-    items: { title: string; selected: boolean; submenus: any[] }[] = [],
+    items: IMenu[] = [],
     collapsed = false,
     selectedIds = [];
 
   const onSelect = (e) => {
     const item = getAttrFromEvent(e, "data-item");
     if (item) {
-      const index = JSON.parse(item) as number[];
-      const clone = items.slice();
-      let temp = clone;
-      for (let i = 0; i < index.length; i++) {
-        if (i > 0) {
-          temp = temp.submenus;
-        }
-        temp = temp[index[i]];
-      }
-      if (temp.selected) {
-        temp.selected = false;
-      } else {
-        temp.selected = true;
-      }
-      items = clone;
-      dispatch("select", {
-        index,
-      });
+      // const index = JSON.parse(item) as number[];
+      // const clone = items.slice();
+      // let temp = clone;
+      // for (let i = 0; i < index.length; i++) {
+      //   if (i > 0) {
+      //     temp = temp.submenus;
+      //   }
+      //   temp = temp[index[i]];
+      // }
+      // if (temp.selected) {
+      //   temp.selected = false;
+      // } else {
+      //   temp.selected = true;
+      // }
+      // items = clone;
+      // dispatch("select", {
+      //   index,
+      // });
     }
   };
 </script>

@@ -24,7 +24,6 @@
     text-transform: capitalize;
     transition: opacity 0.3s;
     border-radius: 5px;
-    // opacity: 1;
 
     &.secondary {
       border: 1px solid var(--secondary-color, #505050);
@@ -57,5 +56,5 @@
   {disabled}
   on:click
   {style}>
-  <slot>{(title || '').toUpperCase()}</slot>
+  <slot>{title || ''}</slot>
 </button>

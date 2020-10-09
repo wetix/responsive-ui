@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "index.css",
+  "sources": [
+    "../index.svelte",
+    "../index.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">export let items = [], multiple = false, selected = [];\nlet indexs = {};\nconst onClick = (i) => {\n    let temp = Object.assign({}, indexs);\n    if (i in temp)\n        delete temp[i];\n    else\n        temp[i] = true;\n    indexs = temp;\n};\n</script>\n\n<style lang=\"scss\">.ditto-accordion {\n  display: block;\n  text-align: left;\n  overflow: hidden;\n  border-radius: 3px;\n  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); }\n  .ditto-accordion .tab {\n    width: 100%;\n    overflow: hidden; }\n    .ditto-accordion .tab header {\n      padding: 10px;\n      cursor: pointer;\n      border-bottom: 1px solid #dcdcdc; }\n  .ditto-accordion .content {\n    background: #f5f5f5;\n    max-height: 0;\n    box-sizing: border-box;\n    transition: all 0.35s; }\n    .ditto-accordion .content.open {\n      max-height: 100vh; }\n</style>\n\n<div class=\"ditto-accordion\">\n  {#each items as item, i}\n    <div class=\"tab\">\n      <div>\n        <header on:click={() => onClick(i)}>{item.title}</header>\n        <div class=\"content\" class:open={i in indexs}>\n          <div style=\"padding: 10px\">asdkjaskljdk</div>\n        </div>\n      </div>\n    </div>\n  {/each}\n</div>\n",
+    "<script lang=\"ts\">export let title = \"\", href = \"\", color = \"\", style = \"\";\n</script>\n\n<style lang=\"scss\">.header {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline;\n  padding: 15px; }\n  .header .title {\n    text-transform: capitalize;\n    font-size: 20px;\n    font-weight: 600;\n    color: #3b3b3b; }\n</style>\n\n<header class=\"header\" {style}>\n  <span class=\"title\" style={`color:${color}`}>{title}</span>\n</header>\n"
+  ],
+  "names": [],
+  "mappings": "AAYmB,gBAAgB,8BAAC,CAAC,AACnC,OAAO,CAAE,KAAK,CACd,UAAU,CAAE,IAAI,CAChB,QAAQ,CAAE,MAAM,CAChB,aAAa,CAAE,GAAG,CAClB,UAAU,CAAE,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,AAAE,CAAC,AAC3C,+BAAgB,CAAC,IAAI,eAAC,CAAC,AACrB,KAAK,CAAE,IAAI,CACX,QAAQ,CAAE,MAAM,AAAE,CAAC,AACnB,+BAAgB,CAAC,IAAI,CAAC,MAAM,eAAC,CAAC,AAC5B,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,OAAO,CACf,aAAa,CAAE,GAAG,CAAC,KAAK,CAAC,OAAO,AAAE,CAAC,AACvC,+BAAgB,CAAC,QAAQ,eAAC,CAAC,AACzB,UAAU,CAAE,OAAO,CACnB,UAAU,CAAE,CAAC,CACb,UAAU,CAAE,UAAU,CACtB,UAAU,CAAE,GAAG,CAAC,KAAK,AAAE,CAAC,AACxB,+BAAgB,CAAC,QAAQ,KAAK,eAAC,CAAC,AAC9B,UAAU,CAAE,KAAK,AAAE,CAAC;AC5BP,OAAO,4BAAC,CAAC,AAC1B,OAAO,CAAE,IAAI,CACb,eAAe,CAAE,aAAa,CAC9B,WAAW,CAAE,QAAQ,CACrB,OAAO,CAAE,IAAI,AAAE,CAAC,AAChB,qBAAO,CAAC,MAAM,cAAC,CAAC,AACd,cAAc,CAAE,UAAU,CAC1B,SAAS,CAAE,IAAI,CACf,WAAW,CAAE,GAAG,CAChB,KAAK,CAAE,OAAO,AAAE,CAAC"
+}

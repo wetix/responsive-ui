@@ -1105,7 +1105,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.16"
 
-"@babel/runtime-corejs3@^7.10.2":
+"@babel/runtime-corejs3@^7.10.2", "@babel/runtime-corejs3@^7.10.3":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.11.2.tgz#02c3029743150188edeb66541195f54600278419"
   integrity sha512-qh5IR+8VgFz83VBa6OkaET6uN/mJOhHONuy3m1sgF0CV6mXdPSEBdA7e1eUbVvyNtANjMbg22JUv71BaDXLY6A==
@@ -6491,6 +6491,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
 
+htm@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-3.0.4.tgz#c90c891645d2d792bdb9f8c867964b18e3503718"
+  integrity sha512-VRdvxX3tmrXuT/Ovt59NMp/ORMFi4bceFMDjos1PV4E0mV+5votuID8R60egR9A4U8nLt238R/snlJGz3UYiTQ==
+
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-2.0.1.tgz#42a6dc4fd33f00281176e8b23759ca4e4fa185f3"
@@ -11382,10 +11387,34 @@ svelte-dev-helper@^1.1.9:
   resolved "https://registry.yarnpkg.com/svelte-dev-helper/-/svelte-dev-helper-1.1.9.tgz#7d187db5c6cdbbd64d75a32f91b8998bde3273c3"
   integrity sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=
 
+svelte-fragment-component@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/svelte-fragment-component/-/svelte-fragment-component-1.2.0.tgz#36842c609a15c934b9d32a8bc99c460b0374d796"
+  integrity sha512-rRstmz2oAy2Y/7X57tRaIAJdMYsa2K/MOx/YJN/ETb7Bj9U3vjgioz27dMG1hl2vAKFTtQpxDhC31ur7ECwpog==
+
 svelte-hmr@^0.10.3:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.10.3.tgz#6939a6ae483bb0180e0f3f120554d947e00d2223"
   integrity sha512-s90yAPnfGE6rTbq9Vvq73z1XqLJ2qGw0VjorpwKfDZRIsB0/Ozu+uF5cyC1fS3dCyQcS2sZDMt4zQ/qDjDwa/Q==
+
+svelte-htm@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/svelte-htm/-/svelte-htm-1.1.1.tgz#d3b6bd5ea1cbee97d184e2ef6a531ac8c9293c3a"
+  integrity sha512-fd0LaeDvJJgZFZQJA1Q5PQk+/wKTbxYQLIMv+115enofYmpZgXPD8C7YnRChSpcaxCbqHvZNA10zk4BBaPz4xw==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.10.3"
+    core-js "^3.6.5"
+    htm "^3.0.4"
+    svelte-fragment-component "^1.1.0"
+    svelte-hyperscript "^1.1.1"
+
+svelte-hyperscript@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/svelte-hyperscript/-/svelte-hyperscript-1.2.1.tgz#e8fd4194994eeb22dcb82a69caff98ab5b6fb40b"
+  integrity sha512-IVk91VDSOrhOUe0KI+Jfu7yCruUTOXgr4WysrK7hBNbFMDjeBOcPhk+LMYjUjdWxJx3+QSt3bUXj09YrUfRkjg==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.10.3"
+    core-js "^3.6.5"
 
 svelte-jester@^1.1.5:
   version "1.1.5"
@@ -11393,6 +11422,16 @@ svelte-jester@^1.1.5:
   integrity sha512-evidPi5i8u9+rBavsvuU7OrMwsXHQd0sCpdF8XlGW6bPuijBW2A5q+bXkiEYh1xaQlDXGuikkopOLrVJYS4pug==
   dependencies:
     cosmiconfig "^6.0.0"
+
+svelte-jsx@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/svelte-jsx/-/svelte-jsx-1.0.3.tgz#24c505f49887a5b407b08636be66b7c1494a9bf3"
+  integrity sha512-xOvIeUX6FkJj2LIdzAoojvF8zbzTexHHo//m41tQcrn6eUQqP2o9yfQANyLRfA5LYutTccdfBp3HXUURWUlEdQ==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.10.3"
+    core-js "^3.6.5"
+    svelte-fragment-component "^1.1.0"
+    svelte-hyperscript "^1.1.1"
 
 svelte-language-server@*:
   version "0.10.93"
