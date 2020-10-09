@@ -1,7 +1,7 @@
 import Component from "~/components/checkbox/Checkbox.svelte";
 
 export default {
-  title: "Example/General",
+  title: "Example/Data Input",
   component: Component,
   argTypes: {
     checked: { control: "boolean" },

@@ -1,6 +1,6 @@
 import faker from "faker";
 
-import Component from "~/components/select/Select.svelte";
+import Component from "~/components/input/Select.svelte";
 
 export default {
   title: "Example/Data Input",
@@ -29,4 +29,5 @@ export const Select = ({ onClick, ...args }) => ({
 });
 Select.args = {
   options,
+  label: "Selection"
 };
