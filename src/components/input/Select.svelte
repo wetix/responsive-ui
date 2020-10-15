@@ -84,7 +84,7 @@
       display: block;
       color: #06002b;
       font-size: 16px;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
     }
 
     &-wrapper {
