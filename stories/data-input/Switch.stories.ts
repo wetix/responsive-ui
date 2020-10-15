@@ -1,7 +1,7 @@
 import Component from "~/components/switch/Switch.svelte";
 
 export default {
-  title: "Example/General",
+  title: "Example/Data Input",
   component: Component,
   argTypes: {
     checked: { control: "boolean" },
