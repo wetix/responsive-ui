@@ -1,24 +1,21 @@
 <script lang="ts">
-  import { onMount, createEventDispatcher } from "svelte";
+  import {createEventDispatcher} from "svelte";
   import { fade } from "svelte/transition";
-
   //   import Icon from "../../../media/Icon.svelte";
-  import { getAttrFromEvent, execIfContains } from "~/utils/dom.ts";
+  import {getAttrFromEvent, execIfContains} from "~/utils/dom.ts";
 
   const dispatch = createEventDispatcher();
 
   export let options = [],
     name = "",
-    value = "",
     placeholder = "Select",
     readonly = false,
     disabled = false,
     filter = (v) => true,
     style = "",
-    itemText = "title",
-    itemValue = "value",
-    returnObject = false,
-    label = "";
+    label = "",
+    multiple = false,
+    value = multiple ? [] : "";
 
   const items = options.reduce((acc, { title, value }) => {
     acc[value] = title;
@@ -26,44 +23,56 @@
   }, {});
 
   let focus = false,
-          container,
-          select,
-          clientHeight,
-          results = options.slice();
+    container,
+    select,
+    clientHeight,
+    results = options.slice(),
+    clonedValue = value;
 
-  $: checkSelected = (v) => v === value;
+  $: checkSelected = (v) => {
+    if (!multiple) {
+      return v === value
+    }
+    return value.some(el => el === v)
+  };
+
+  $: getSelectedValue = () => {
+    if (!multiple) {
+      return items[value] || ""
+    }
+    if (value.length === 1) {
+      return items[value[0]]
+    }
+    if (value.length > 1) {
+      return `${value.length} items selected`
+    }
+    return ""
+  }
 
   let isOpen = false;
 
-  const onSelect = (item) => {
-    // const item = getAttrFromEvent(e, "data-item");
-    // if (item) {
-    //   const data = JSON.parse(item);
-    //   const v = data.value || "";
-    //   value = select.value = v;
-    //   dispatch("change", data);
-    //   setTimeout(() => {
-    //     focus = false;
-    //   }, 200);
-    // }
-    if (returnObject) {
-      value = item
-    } else {
-      value = item[itemValue]
+  const onSelect = (e) => {
+    const item = getAttrFromEvent(e, "data-item");
+    const data = JSON.parse(item);
+    if (item && !multiple) {
+      value = data.value || "";
+      isOpen = false
+    } else if (item && multiple) {
+      const idx = value.findIndex(el => el === data.value);
+      if (idx === -1) {
+        value.push(data.value);
+      } else {
+        value.splice(idx, 1);
+      }
+      value = value;
     }
+    dispatch("change", data);
   };
 
   const onInput = (e) => {
     const { value } = e.target;
-    results = options.filter((f) => filter(value, f));
+    results = options.filter((f) => f.title.toUpperCase().includes(value.toUpperCase()));
   };
-
-  const getSelectedValue = () => {
-    if (!returnObject) {
-      return items[itemValue] || placeholder
-    }
-    return items[itemText] || placeholder
-  }
 </script>
 
 <style lang="scss">
@@ -173,7 +182,7 @@
   }
 </style>
 <!--class="cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"-->
-<svelte:body on:click={execIfContains(container, () => (focus = false))} />
+<!--<svelte:body on:click={execIfContains(container, () => (focus = false))} />-->
 
 <div class="selection">
   <label for="selection">
@@ -189,7 +198,7 @@
         {readonly}
         {placeholder}
         {disabled}
-        value={items[value] || ''}
+        value={getSelectedValue()}
       />
       <div class="selection-options--icon" style="color:#000;">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -203,23 +212,30 @@
         {#if results.length < 1}
           <div>No data</div>
         {:else}
-          <ul tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3">
+          <ul
+            tabindex="-1"
+            on:click={onSelect}
+            role="listbox"
+            aria-labelledby="listbox-label"
+          >
             {#each results as item}
               <li
                 id="listbox-option-0"
                 role="option"
-                on:click={onSelect(item)}
+                data-item={!item.disabled ? JSON.stringify(item) : null}
               >
                 <span
                   class="selection-options--text"
                 >
                   {item.title}
                 </span>
+                {#if checkSelected(item.value)}
                   <span class="selection-options--icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                {/if}
               </li>
             {/each}
           </ul>
@@ -228,194 +244,3 @@
     {/if}
   </div>
 </div>
-
-<!--<script>-->
-<!--  import { onMount, createEventDispatcher } from "svelte";-->
-
-<!--  //   import Icon from "../../../media/Icon.svelte";-->
-<!--  import { getAttrFromEvent, execIfContains } from "~/utils/dom.ts";-->
-
-<!--  const dispatch = createEventDispatcher();-->
-
-<!--  export let options = [],-->
-<!--    name = "",-->
-<!--    value = "",-->
-<!--    placeholder = "",-->
-<!--    readonly = false,-->
-<!--    disabled = false,-->
-<!--    filter = (v) => true,-->
-<!--    style = "";-->
-
-<!--  const items = options.reduce((acc, { title, value }) => {-->
-<!--    acc[value] = title;-->
-<!--    return acc;-->
-<!--  }, {});-->
-
-<!--  let focus = false,-->
-<!--    container,-->
-<!--    select,-->
-<!--    clientHeight,-->
-<!--    results = options.slice();-->
-
-<!--  $: checkSelected = (v) => v === value;-->
-
-<!--  const onSelect = (e) => {-->
-<!--    const item = getAttrFromEvent(e, "data-item");-->
-<!--    if (item) {-->
-<!--      const data = JSON.parse(item);-->
-<!--      const v = data.value || "";-->
-<!--      value = select.value = v;-->
-<!--      dispatch("change", data);-->
-<!--      setTimeout(() => {-->
-<!--        focus = false;-->
-<!--      }, 200);-->
-<!--    }-->
-<!--  };-->
-
-<!--  const onInput = (e) => {-->
-<!--    const { value } = e.target;-->
-<!--    results = options.filter((f) => filter(value, f));-->
-<!--  };-->
-<!--</script>-->
-
-<!--<style lang="scss">-->
-<!--  .select {-->
-<!--    position: relative;-->
-<!--    width: 100%;-->
-<!--    border-radius: var(&#45;&#45;small-border-radius, 3px);-->
-
-<!--    &.disabled {-->
-<!--      cursor: not-allowed !important;-->
-<!--      opacity: 0.5;-->
-<!--    }-->
-
-<!--    select {-->
-<!--      position: fixed;-->
-<!--      height: 0;-->
-<!--      width: 0;-->
-<!--      top: -99999px;-->
-<!--      left: -99999px;-->
-<!--    }-->
-
-<!--    //   .arrow {-->
-<!--    //     stroke: #bebebe;-->
-<!--    //     text-align: center;-->
-<!--    //     // flex: 0 0 26px;-->
-<!--    //     line-height: 0;-->
-<!--    //     transition: transform 0.3s;-->
-
-<!--    //     &.focus {-->
-<!--    //       transform: rotate(180deg);-->
-<!--    //     }-->
-<!--    //   }-->
-<!--    // }-->
-
-<!--    .select-options {-->
-<!--      position: absolute;-->
-<!--      top: 30px;-->
-<!--      left: 0;-->
-<!--      min-width: 100%;-->
-<!--      margin: 0;-->
-<!--      padding: 0;-->
-<!--      user-select: none;-->
-<!--      overflow-x: hidden;-->
-<!--      overflow-y: auto;-->
-<!--      border: 0.5px solid #fc4451;-->
-<!--      border-radius: var(&#45;&#45;small-border-radius, 3px);-->
-<!--      box-shadow: 0 0 26px rgba(0, 0, 0, 0.15);-->
-<!--      background: #fff;-->
-<!--      transition: all 0.5s;-->
-<!--      max-height: 152px;-->
-<!--      z-index: 20;-->
-
-<!--      .option {-->
-<!--        cursor: pointer;-->
-<!--        white-space: nowrap;-->
-<!--        height: 32px;-->
-<!--        line-height: 32px;-->
-<!--        transition: all 0.3s;-->
-<!--        transition-property: background, color;-->
-<!--        padding: 0 10px;-->
-
-<!--        &:hover:not(.disabled) {-->
-<!--          color: var(&#45;&#45;primary-color, #fc4451);-->
-<!--          background: #f5f5f5;-->
-<!--        }-->
-
-<!--        &.selected {-->
-<!--          color: var(&#45;&#45;primary-color, #fc4451);-->
-<!--          //   background: $light-theme-color !important;-->
-<!--        }-->
-
-<!--        &.disabled {-->
-<!--          cursor: not-allowed !important;-->
-<!--          color: rgba(0, 0, 0, 0.25);-->
-<!--          background: #f5f5f5;-->
-<!--        }-->
-<!--      }-->
-
-<!--      .empty {-->
-<!--        text-align: center;-->
-<!--        padding: 5px;-->
-<!--      }-->
-<!--    }-->
-<!--  }-->
-
-<!--  /* mobile view */-->
-<!--  @media only screen and (max-width: 768px) {-->
-<!--    .select-options {-->
-<!--      position: fixed;-->
-<!--      top: auto;-->
-<!--      left: 0;-->
-<!--      bottom: 0;-->
-<!--    }-->
-<!--  }-->
-<!--</style>-->
-
-<!--<svelte:body on:click={execIfContains(container, () => (focus = false))} />-->
-
-<!--<div-->
-<!--  bind:this={container}-->
-<!--  class="select"-->
-<!--  class:focus-->
-<!--  class:disabled-->
-<!--  on:click={!disabled ? () => (focus = !focus) : null}-->
-<!--  {style}>-->
-<!--  <div>-->
-<!--    <select {name} bind:this={select}>-->
-<!--      {#each options as item}-->
-<!--        <option value={item.value || ''}>{item.title || ''}</option>-->
-<!--      {/each}-->
-<!--    </select>-->
-<!--    <input-->
-<!--      autocomplete="off"-->
-<!--      {readonly}-->
-<!--      on:input={onInput}-->
-<!--      {placeholder}-->
-<!--      {disabled}-->
-<!--      value={items[value] || ''} />-->
-<!--    <span class="arrow" class:focus>-->
-<!--      &lt;!&ndash; <Icon type="arrow-down" /> &ndash;&gt;-->
-<!--    </span>-->
-<!--  </div>-->
-<!--  <div-->
-<!--    class="select-options"-->
-<!--    on:click={onSelect}-->
-<!--    style={`height:${focus ? clientHeight : 0}px`}>-->
-<!--    <div bind:clientHeight style="padding:6px 0">-->
-<!--      {#if results.length === 0}-->
-<!--        <div class="empty">No data</div>-->
-<!--      {:else}-->
-<!--        {#each results as item}-->
-<!--          <div-->
-<!--            class={`option ${item.class || ''}`}-->
-<!--            class:disabled={item.disabled || false}-->
-<!--            class:selected={checkSelected(item.value)}-->
-<!--            data-item={!item.disabled ? JSON.stringify(item) : null}>-->
-<!--            {item.title || item.value || ''}-->
-<!--          </div>-->
-<!--        {/each}-->
-<!--      {/if}-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

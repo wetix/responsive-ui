@@ -12,6 +12,8 @@ export default {
     readonly: { control: "boolean" },
     backgroundColor: { control: "color" },
     onClick: { action: "onClick" },
+    multiple: { control: "boolean" },
+    returnObject: { control: "boolean" },
   },
 };
 
@@ -29,5 +31,5 @@ export const Select = ({ onClick, ...args }) => ({
 });
 Select.args = {
   options,
-  label: "Selection"
+  label: "Selection",
 };
