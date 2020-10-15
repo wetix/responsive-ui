@@ -77,7 +77,8 @@
 
 <style lang="scss">
   .selection {
-    width: 480px;
+    max-width: 480px;
+    width: 100%;
 
     label {
       display: block;
