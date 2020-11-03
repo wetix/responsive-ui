@@ -5,7 +5,7 @@ export const getAttrFromEvent = (e: Event, attr: string): string | null => {
     if (target && target.hasAttribute(attr)) return target.getAttribute(attr);
     target = target.parentNode;
   }
-  return null;
+  return target.getAttribute(attr);
 };
 
 export const execIfContains = (node: HTMLElement | null, cb: () => {}) => (

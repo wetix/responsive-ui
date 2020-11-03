@@ -57,7 +57,7 @@
     if (item && !multiple) {
       value = data.value || "";
       isOpen = false
-    } else if (item && multiple) {
+    } else if (item && multiple && typeof value !== "string") {
       const idx = value.findIndex(el => el === data.value);
       if (idx === -1) {
         value.push(data.value);
