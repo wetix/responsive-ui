@@ -13,7 +13,7 @@ import Upload from "../index.svelte";
 
 describe("index component", () => {
   test("should render component correctly", () => {
-    const { container } = render(Upload);
+    // const { container } = render(Upload);
     // console.log(container);
     // expect(container).toContainHTML("<div></div>");
   });

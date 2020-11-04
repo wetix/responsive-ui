@@ -35,12 +35,12 @@ function serve() {
 }
 
 export default {
-  input: "src/main.ts",
+  input: "src/index.ts",
   output: {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js",
+    file: "lib/index.js",
   },
   plugins: [
     svelte({
@@ -49,19 +49,20 @@ export default {
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: (css) => {
-        css.write("public/build/bundle.css");
+        css.write("lib/index.css");
       },
       preprocess: sveltePreprocess(),
     }),
-    alias({
-      entries: [
-        { find: "~/", replacement: "./src/" },
-        {
-          find: "~/components/notification",
-          replacement: "./src/components/notification/index.ts",
-        },
-      ],
-    }),
+
+    // alias({
+    //   entries: [
+    //     { find: "~/", replacement: "./src/" },
+    //     {
+    //       find: "~/components/notification",
+    //       replacement: "./src/components/notification/index.ts",
+    //     },
+    //   ],
+    // }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In

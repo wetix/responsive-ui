@@ -6,7 +6,7 @@
   export let // top-left | top-right | bottom-left | bottom-right
     placement = "top-left",
     title = "",
-    message = "",
+    description = "",
     style = "";
 
   let visible = true;
@@ -92,6 +92,6 @@
             style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" /></svg>
       </div>
     </header>
-    <div>{message}</div>
+    <div>{description}</div>
   </div>
 {/if}
