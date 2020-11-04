@@ -253,7 +253,7 @@
 
     &--container {
       position: absolute;
-      max-height: 320px;
+      max-height: 360px;
       border-radius: 10px;
       box-shadow: 0 0 13px -4px rgba(0, 0, 0, 0.2);
 
