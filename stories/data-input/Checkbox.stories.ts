@@ -1,4 +1,4 @@
-import Component from "~/components/checkbox/Checkbox.svelte";
+import Component from "~/components/checkbox/index.svelte";
 
 export default {
   title: "Example/Data Input",
