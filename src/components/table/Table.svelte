@@ -3,7 +3,7 @@
 
   export let columns = [],
     items = [],
-    loading = false,
+    // loading = false,
     striped = false,
     bordered = true,
     style = "";
@@ -23,9 +23,12 @@
     // box-shadow: 0 7px 11px -7px #00000033;
     // box-shadow: 0 0 11px #00000033;
     box-shadow: 0 7px 11px -7px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 11.3px;
     border: 1px solid transparent;
     overflow-y: auto;
+    font-size: 16px;
+    font-family: Poppins,serif;
+    font-weight: normal;
 
     table {
       min-width: 100%;
@@ -33,28 +36,36 @@
       table-layout: auto;
       overflow: visible;
 
-      thead tr {
-        display: block;
-        background: #f5f5f5;
-        font-weight: normal;
-        color: #9e9e9e;
-        // border-bottom: 1px solid #dcdcdc;
-      }
 
-      tr {
-        border-bottom: 1px solid #dcdcdc;
+      thead {
+        text-align: left;
+
+        tr {
+          color: #9e9e9e;
+          border-bottom: 1px solid #e1e1e1;
+        }
+
+        td {
+          &.center {
+            text-align: center;
+          }
+
+          &.right {
+            text-align: right;
+          }
+        }
       }
 
       tbody {
-        display: block;
         overflow: auto;
         height: 200px;
         width: 100%;
+        color: #000;
       }
 
       th,
       td {
-        padding: 8px 10px;
+        padding: 16px 30px;
       }
     }
 
@@ -79,6 +90,12 @@
       }
     }
 
+    table.striped {
+        tbody tr {
+          border-bottom: 1px solid #e1e1e1;
+        }
+    }
+
     .loading {
       position: absolute;
       top: 0;
@@ -91,11 +108,12 @@
 </style>
 
 <div class="table" class:bordered>
-  <table class:striped cellspacing="0" width="100%" {style}>
+  <table class:striped {style}>
     <thead>
       <tr>
         {#each columns as column}
           <th
+            class:align={column.align || ''}
             class={column.class || ''}
             style="width:{column.width ? column.width : 'none'}">
             {column.title || ''}

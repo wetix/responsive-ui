@@ -5,12 +5,6 @@ export default {
   title: "Example/Data Display",
   component: Component,
   argTypes: {
-    label: { control: "text" },
-    primary: { control: "boolean" },
-    backgroundColor: { control: "color" },
-    size: {
-      control: { type: "select", options: ["small", "medium", "large"] },
-    },
     onClick: { action: "onClick" },
   },
 };
@@ -37,5 +31,6 @@ Table.args = {
     { title: "Column C", key: "c" },
   ],
   bordered: true,
+  striped: true,
   items,
 };

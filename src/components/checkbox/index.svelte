@@ -1,4 +1,6 @@
 <script lang="ts">
+  let id = 0;
+
   export let value = "",
     name = "",
     disabled = false,
@@ -61,18 +63,18 @@
       stroke: #fff;
       transform: scale(1) translateZ(0);
     }
-    &.path {
-      input {
-        &:checked {
-          transition-delay: 0.4s;
-        }
-      }
-      svg {
-        stroke-dasharray: 86.12;
-        stroke-dashoffset: 86.12;
-        transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
-      }
-    }
+    //&.path {
+    //  input {
+    //    &:checked {
+    //      transition-delay: 0.4s;
+    //    }
+    //  }
+    //  svg {
+    //    stroke-dasharray: 86.12;
+    //    stroke-dashoffset: 86.12;
+    //    transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+    //  }
+    //}
 
     &.bounce {
       input {

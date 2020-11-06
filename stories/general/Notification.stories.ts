@@ -1,4 +1,4 @@
-import Component from "~/components/button/Button.svelte";
+import Component from "~/components/button/index.svelte";
 import { success } from "~/components/notification/index.ts";
 
 export default {

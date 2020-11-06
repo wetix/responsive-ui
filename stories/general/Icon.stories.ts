@@ -1,4 +1,4 @@
-import Component from "~/components/icon/Icon.svelte";
+import Component from "~/components/icon/index.svelte";
 
 export default {
   title: "Example/General",
