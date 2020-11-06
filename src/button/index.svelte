@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let title = "",
-    name = "",
-    type = "button",
-    disabled = false,
-    secondary = false,
-    style = "";
+  export let title = "";
+  export let name = "";
+  export let type = "button";
+  export let disabled = false;
+  export let secondary = false;
+  export let style = "";
 </script>
 
 <style lang="scss">
@@ -19,7 +19,7 @@
     width: 100%;
     padding: 0 10px;
     margin: 0;
-    height: 38px;
+    height: 45px;
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;

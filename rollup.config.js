@@ -48,10 +48,10 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
+      preprocess: sveltePreprocess(),
       css: (css) => {
         css.write("lib/index.css");
       },
-      preprocess: sveltePreprocess(),
     }),
 
     // alias({
