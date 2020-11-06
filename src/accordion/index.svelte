@@ -1,11 +1,10 @@
 <script lang="ts">
-  export let items = [],
-    multiple = false,
-    selected = [];
+  export let items = [];
+  export let selected = [];
 
   let indexs = {};
 
-  const onClick = i => {
+  const handleClick = (i: number) => {
     let temp = Object.assign({}, indexs);
     if (i in temp) delete temp[i];
     else temp[i] = true;
@@ -18,7 +17,6 @@
     display: block;
     text-align: left;
     overflow: hidden;
-    // font-size: 12px;
     border-radius: 3px;
     // box-shadow: 0 7px 11px -7px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
@@ -52,9 +50,9 @@
   {#each items as item, i}
     <div class="tab">
       <div>
-        <header on:click={() => onClick(i)}>{item.title}</header>
+        <header on:click={() => handleClick(i)}>{item.title}</header>
         <div class="content" class:open={i in indexs}>
-          <div style="padding: 10px">asdkjaskljdk</div>
+          <div style="padding: 10px" />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/svelte";
 import html from "svelte-htm";
 
-import Button from "../index.svelte";
+import Button from "../../components/button/index.svelte";
 
 describe("index component", () => {
   test("should render component correctly", async () => {

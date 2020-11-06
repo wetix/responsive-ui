@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Accordion from "./components/accordion/index.svelte";
+  import Accordion from "./accordion/index.svelte";
   import Header from "./components/header/index.svelte";
   import Button from "./components/button/index.svelte";
   import Switch from "./components/switch/Switch.svelte";
