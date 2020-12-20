@@ -1,3 +1,15 @@
+# `button`
+
+> TODO: description
+
+## Usage
+
+```
+const button = require('button');
+
+// TODO: DEMONSTRATE API
+```
+
 | Property  | Description            | Type   | Default  |
 | --------- | ---------------------- | ------ | -------- |
 | title     | The button title       | string | -        |

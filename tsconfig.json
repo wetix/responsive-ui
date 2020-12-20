@@ -3,12 +3,7 @@
     "types": ["jest", "node", "svelte"]
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src/**/*", "src/**/__tests__/*.ts"],
+  "include": ["src/**/*", "src/**/__tests__/*.ts", "public/main.ts"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*", "dist"],
-  "rootDir": "./src",
-  "paths": {
-    "~/*": ["*"],
-    "~/components/*": ["components/*"],
-    "~/utils/*": ["utils/*"]
-  }
+  "rootDir": "./src"
 }
