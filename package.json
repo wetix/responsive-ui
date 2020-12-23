@@ -1,9 +1,5 @@
 {
-  "name": "cherry-ui",
-  "main": "lib/index.js",
-  "type": "module",
-  "module": "src/index.ts",
-  "svelte": "src/index.ts",
+  "name": "cherry-ui-monorepo",
   "private": true,
   "workspaces": [
     "packages/*"

@@ -8,3 +8,5 @@ yarn.lock
 bundle.js
 bundle.css
 *.map
+*.log
+*.lock
