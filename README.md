@@ -1,34 +1,34 @@
-# Ditto
+# Cherry UI
 
-> WeTix Svelte UI Components
+> A better version of Svelte UI Components
 
 <p>
 
-[![Build Status](https://github.com/wetix/svelte-reactive-form/workflows/ci/badge.svg?branch=master)](https://github.com/wetix/svelte-reactive-form)
-[![npm](https://img.shields.io/npm/v/svelte-reactive-form.svg)](https://www.npmjs.com/package/svelte-reactive-form)
-[![download](https://img.shields.io/npm/dw/svelte-reactive-form.svg)](https://www.npmjs.com/package/svelte-reactive-form)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/svelte-reactive-form)](https://bundlephobia.com/result?p=svelte-reactive-form@0.4.4-beta)
-[![LICENCE](https://img.shields.io/github/license/wetix/svelte-reactive-form)](https://github.com/wetix/svelte-reactive-form/blob/master/LICENSE)
+[![Build Status](https://github.com/wetix/cherry-ui/workflows/ci/badge.svg?branch=master)](https://github.com/wetix/cherry-ui)
+[![npm](https://img.shields.io/npm/v/cherry-ui.svg)](https://www.npmjs.com/package/cherry-ui)
+[![download](https://img.shields.io/npm/dw/cherry-ui.svg)](https://www.npmjs.com/package/cherry-ui)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/cherry-ui)](https://bundlephobia.com/result?p=cherry-ui@0.4.4-beta)
+[![LICENCE](https://img.shields.io/github/license/wetix/cherry-ui)](https://github.com/wetix/cherry-ui/blob/master/LICENSE)
 
 </p>
 
 ## Installation and Usage
 
 ```bash
-npm install ditto
+npm install cherry-ui
 ```
 
 or
 
 ```bash
-yarn add ditto
+yarn add cherry-ui
 ```
 
 ## API
 
-Check out the [API](https://github.com/wetix/svelte-reactive-form/blob/master/docs/API.md) documentation.
+Check out the [API](https://github.com/wetix/cherry-ui/blob/master/docs/API.md) documentation.
 
-For advanced usage, you may refer to [Advanced API](https://github.com/wetix/svelte-reactive-form/blob/master/docs/ADVANCED_USAGE.md).
+For advanced usage, you may refer to [Advanced API](https://github.com/wetix/cherry-ui/blob/master/docs/ADVANCED_USAGE.md).
 
 ## Sponsors
 
@@ -36,7 +36,7 @@ For advanced usage, you may refer to [Advanced API](https://github.com/wetix/sve
 
 ## License
 
-[ditto](https://github.com/wetix/ditto) is 100% free and open-source, under the [MIT license](https://github.com/wetix/ditto/blob/master/LICENSE).
+[cherry-ui](https://github.com/wetix/cherry-ui) is 100% free and open-source, under the [MIT license](https://github.com/wetix/cherry-ui/blob/master/LICENSE).
 
 ## Big Thanks To
 

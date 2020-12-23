@@ -19,7 +19,7 @@ export {};
 
 //     expect(button.getAttribute("type")).toEqual("button");
 //     expect(button.getAttribute("name")).toEqual(props.name);
-//     expect(button.getAttribute("class")).toEqual("ditto-button");
+//     expect(button.getAttribute("class")).toEqual("cherry-ui-button");
 //     expect(button.textContent).toEqual(props.title);
 
 //     await component.$set({ disabled: true, type: "reset" });

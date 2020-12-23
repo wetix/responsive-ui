@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss">
-  .ditto-button {
+  .cherry-ui-button {
     cursor: pointer;
     display: block;
     color: #fff;
@@ -47,8 +47,8 @@
 </style>
 
 <button
-  class="ditto-button {className}"
-  class:ditto-button__disabled={disabled}
+  class="cherry-ui-button {className}"
+  class:cherry-ui-button__disabled={disabled}
   {name}
   {type}
   {disabled}
