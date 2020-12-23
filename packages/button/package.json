@@ -1,6 +1,6 @@
 {
   "name": "@cherry-ui/button",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Button component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/cherry-ui#readme",
@@ -26,5 +26,5 @@
   "bugs": {
     "url": "https://github.com/wetix/cherry-ui/issues"
   },
-  "gitHead": "c6bc8e0da0701628c3dad51e264cdc80a5571da1"
+  "gitHead": "a6e640a1dc45100081b759ffdf63ff1bb17afbc3"
 }
