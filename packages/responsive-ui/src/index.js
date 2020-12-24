@@ -5,7 +5,7 @@ import Column from "../../column/src/Column.svelte";
 import FloatingActionButton from "../../fab/src/FloatingActionButton.svelte";
 import Input from "../../input/src/Input.svelte";
 import Row from "../../row/src/Row.svelte";
-import Snackbar from "../../snackbar/src/Snackbar.svelte";
+import Snackbar from "../../snackbar/src/index.js";
 import Switch from "../../switch/src/Switch.svelte";
 import Textarea from "../../textarea/src/Textarea.svelte";
 

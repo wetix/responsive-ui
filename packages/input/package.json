@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/Button.svelte",
+  "svelte": "src/Input.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"

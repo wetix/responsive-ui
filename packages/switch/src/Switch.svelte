@@ -16,6 +16,32 @@
     overflow: hidden;
     box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.05);
 
+    &__switch {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      bottom: 2px;
+      right: 22px;
+      background-color: #fff;
+      border-radius: 50%;
+      z-index: 1;
+      transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      transition-property: left, right;
+      transition-delay: 0s, 0.05s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &__track {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.05);
+      border-radius: 40px;
+    }
+
     .check {
       cursor: pointer;
       position: absolute;
@@ -42,42 +68,16 @@
     }
   }
 
-  .check:checked ~ .track {
+  .check:checked ~ .responsive-ui-switch__track {
     box-shadow: inset 0 0 0 20px var(--primary-color, #fc4451);
   }
 
-  .check:checked ~ .switch {
+  .check:checked ~ .responsive-ui-switch__switch {
     right: 2px;
     left: 22px;
     transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition-property: left, right;
     transition-delay: 0.05s, 0s;
-  }
-
-  &__switch {
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    bottom: 2px;
-    right: 22px;
-    background-color: #fff;
-    border-radius: 50%;
-    z-index: 1;
-    transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    transition-property: left, right;
-    transition-delay: 0s, 0.05s;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  &__track {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.05);
-    border-radius: 40px;
   }
 </style>
 
