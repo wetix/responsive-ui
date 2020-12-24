@@ -12,6 +12,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "svelte": "^3.29.0"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"

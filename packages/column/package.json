@@ -1,13 +1,13 @@
 {
-  "name": "responsive-ui",
+  "name": "@responsive-ui/column",
   "version": "0.1.1",
-  "description": "WeTix UI Framework",
+  "description": "> TODO: description",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.js",
+  "svelte": "src/Column.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
@@ -31,6 +31,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "4f4fc30109a61e772ba698a634070a153e64a1e5"
+  }
 }

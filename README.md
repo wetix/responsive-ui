@@ -1,6 +1,6 @@
-# Cherry UI
+# Responsive UI
 
-> A better version of Svelte UI Components
+> WeTix Responsive UI framework.
 
 <p>
 

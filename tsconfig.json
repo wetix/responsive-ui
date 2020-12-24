@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node", "svelte"]
+    "types": ["svelte"]
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
   "include": [

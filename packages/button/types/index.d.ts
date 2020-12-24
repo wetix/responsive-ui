@@ -11,7 +11,6 @@ export interface ButtonProps {
 
 export interface ButtonEvents {}
 
-export declare class Button extends SvelteComponentTyped<
-  ButtonProps,
-  ButtonEvents
-> {}
+declare class Button extends SvelteComponentTyped<ButtonProps, ButtonEvents> {}
+
+export default Button;
