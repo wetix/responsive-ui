@@ -20,7 +20,9 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types",
+    "src"
   ],
   "repository": {
     "type": "git",
