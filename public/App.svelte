@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Button from "../packages/button/src/index.svelte";
-  // import Switch from "../src/components/switch/Switch.svelte";
+  import Button from "../packages/button/src/Button.svelte";
+  import Snackbar, { success } from "../packages/snackbar/src/index.js";
   // import Tag from "../src/components/tag/Tag.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
@@ -13,6 +13,9 @@
   // import Checkbox from "../src/components/checkbox/index.svelte";
 
   const showNotification = () => {
+    success({
+      title: "testing",
+    });
     // success({
     //   title: "Apple can get away with this because they’re well, Apple.",
     //   description:

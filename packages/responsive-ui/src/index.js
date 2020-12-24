@@ -5,9 +5,10 @@ import Column from "../../column/src/Column.svelte";
 import FloatingActionButton from "../../fab/src/FloatingActionButton.svelte";
 import Input from "../../input/src/Input.svelte";
 import Row from "../../row/src/Row.svelte";
-import Snackbar from "../../snackbar/src/index.js";
+import Snackbar from "../../snackbar/src/index.ts";
 import Switch from "../../switch/src/Switch.svelte";
 import Textarea from "../../textarea/src/Textarea.svelte";
+import Upload from "../../upload/src/Upload.svelte";
 
 export {
   BottomBar,
@@ -20,4 +21,5 @@ export {
   Snackbar,
   Switch,
   Textarea,
+  Upload,
 };

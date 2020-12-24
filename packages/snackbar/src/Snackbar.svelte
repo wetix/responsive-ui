@@ -1,7 +1,6 @@
 <script lang="ts">
-  // import { slideY } from "@wetix/animation";
+  import { slideY } from "@wetix/animation";
 
-  export let hide = false;
   export let message = "";
   export let padding = 0;
   export let success = false;
@@ -37,10 +36,10 @@
   }
 </style>
 
-{#if !hide}
-  <div class="container" style={`padding:${padding}`}>
-    <div class="responsive-ui-snackbar">
-      <slot>{message}</slot>
-    </div>
+<!-- {#if !hide} -->
+<div class="container" in:slideY out:slideY style={`padding:${padding}`}>
+  <div class="responsive-ui-snackbar">
+    <slot>{message}</slot>
   </div>
-{/if}
+</div>
+<!-- {/if} -->

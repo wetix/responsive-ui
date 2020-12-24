@@ -7,8 +7,10 @@
     "src/**/*",
     "src/**/__tests__/*.ts",
     "public/main.ts",
-    "packages/**/__test__"
+    "packages/**/*",
+    "packages/**/__test__",
+    "node_modules/@wetix/**/*"
   ],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*", "dist"],
+  "exclude": ["__sapper__/*", "public/*", "dist"],
   "rootDir": "./src"
 }

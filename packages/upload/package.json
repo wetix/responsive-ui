@@ -1,13 +1,13 @@
 {
-  "name": "@responsive-ui/snackbar",
+  "name": "@responsive-ui/upload",
   "version": "0.2.2",
-  "description": "Snackbar component",
+  "description": "Upload component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.ts",
+  "svelte": "src/Upload.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
@@ -20,9 +20,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "types",
-    "src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -33,9 +31,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "2affd722199480a8db618df8fdaadc0b7565c383",
-  "dependencies": {
-    "@wetix/animation": "^0.1.1-alpha"
   }
 }

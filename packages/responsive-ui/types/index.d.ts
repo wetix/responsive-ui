@@ -8,6 +8,7 @@ import type Label from "../../label/types";
 import type Row from "../../row/types";
 import type Switch from "../../switch/types";
 import type Textarea from "../../textarea/types";
+import type Upload from "../../upload/types";
 
 export {
   BottomBar,
@@ -20,4 +21,5 @@ export {
   Row,
   Switch,
   Textarea,
+  Upload,
 };
