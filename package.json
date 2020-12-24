@@ -1,5 +1,5 @@
 {
-  "name": "cherry-ui-monorepo",
+  "name": "responsive-ui-monorepo",
   "private": true,
   "workspaces": [
     "packages/*"

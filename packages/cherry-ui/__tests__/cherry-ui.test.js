@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const cherryUi = require('..');
+const cherryUi = require("..");
 
-describe('cherry-ui', () => {
-    it('needs tests');
+describe("responsive-ui", () => {
+  it("needs tests");
 });

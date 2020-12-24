@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss">
-  .cherry-ui-button {
+  .responsive-ui-button {
     cursor: pointer;
     display: block;
     color: #fff;
@@ -47,8 +47,8 @@
 </style>
 
 <button
-  class="cherry-ui-button {className}"
-  class:cherry-ui-button__disabled={disabled}
+  class="responsive-ui-button {className}"
+  class:responsive-ui-button__disabled={disabled}
   {name}
   {type}
   {disabled}

@@ -4,31 +4,31 @@
 
 <p>
 
-[![Build Status](https://github.com/wetix/cherry-ui/workflows/ci/badge.svg?branch=master)](https://github.com/wetix/cherry-ui)
-[![npm](https://img.shields.io/npm/v/cherry-ui.svg)](https://www.npmjs.com/package/cherry-ui)
-[![download](https://img.shields.io/npm/dw/cherry-ui.svg)](https://www.npmjs.com/package/cherry-ui)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/cherry-ui)](https://bundlephobia.com/result?p=cherry-ui@0.4.4-beta)
-[![LICENCE](https://img.shields.io/github/license/wetix/cherry-ui)](https://github.com/wetix/cherry-ui/blob/master/LICENSE)
+[![Build Status](https://github.com/wetix/responsive-ui/workflows/ci/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![npm](https://img.shields.io/npm/v/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
+[![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/responsive-ui)](https://bundlephobia.com/result?p=responsive-ui@0.4.4-beta)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
 
 ## Installation and Usage
 
 ```bash
-npm install cherry-ui
+npm install responsive-ui
 ```
 
 or
 
 ```bash
-yarn add cherry-ui
+yarn add responsive-ui
 ```
 
 ## API
 
-Check out the [API](https://github.com/wetix/cherry-ui/blob/master/docs/API.md) documentation.
+Check out the [API](https://github.com/wetix/responsive-ui/blob/master/docs/API.md) documentation.
 
-For advanced usage, you may refer to [Advanced API](https://github.com/wetix/cherry-ui/blob/master/docs/ADVANCED_USAGE.md).
+For advanced usage, you may refer to [Advanced API](https://github.com/wetix/responsive-ui/blob/master/docs/ADVANCED_USAGE.md).
 
 ## Sponsors
 
@@ -36,7 +36,7 @@ For advanced usage, you may refer to [Advanced API](https://github.com/wetix/che
 
 ## License
 
-[cherry-ui](https://github.com/wetix/cherry-ui) is 100% free and open-source, under the [MIT license](https://github.com/wetix/cherry-ui/blob/master/LICENSE).
+[responsive-ui](https://github.com/wetix/responsive-ui) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
 
 ## Big Thanks To
 
