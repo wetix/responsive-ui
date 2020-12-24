@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Button component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -29,5 +29,5 @@
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
   },
-  "gitHead": "fb7d0ba118ddd6f8fb4fb92a4cf93d2edf366907"
+  "gitHead": "4f4fc30109a61e772ba698a634070a153e64a1e5"
 }
