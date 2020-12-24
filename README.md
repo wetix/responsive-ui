@@ -4,7 +4,7 @@
 
 <p>
 
-[![Build Status](https://github.com/wetix/responsive-ui/workflows/ci/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
 [![npm](https://img.shields.io/npm/v/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
 [![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/responsive-ui)](https://bundlephobia.com/result?p=responsive-ui)
@@ -23,12 +23,6 @@ or
 ```bash
 yarn add responsive-ui
 ```
-
-## API
-
-Check out the [API](https://github.com/wetix/responsive-ui/blob/master/docs/API.md) documentation.
-
-For advanced usage, you may refer to [Advanced API](https://github.com/wetix/responsive-ui/blob/master/docs/ADVANCED_USAGE.md).
 
 ## Sponsors
 

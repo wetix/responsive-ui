@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-// import chalk from "chalk";
+import chalk from "chalk";
 import { rollup } from "rollup";
 import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
@@ -10,8 +10,6 @@ import css from "rollup-plugin-css-only";
 import sveltePreprocess from "svelte-preprocess";
 
 const production = !process.env.ROLLUP_WATCH;
-
-// console.log(chalk.blue("Hello") + " World" + chalk.red("!"));
 
 const analyzePackageJson = async (bundle, filepath, pkg) => {
   const files = [pkg.main, pkg.module, pkg.browser];
@@ -44,7 +42,7 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     for (const chunk of output) {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
-      console.log(chunk.fileName);
+
       if (chunk.type === "asset") {
         fs.outputFileSync(outputPath, chunk.source);
       } else {
@@ -60,11 +58,11 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
+    console.log(chalk.green(file));
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`./packages/${file}/package.json`), "utf8")
     );
 
-    console.log("Output =>", path.resolve(`./packages/${file}/${pkg.main}`));
     const bundle = await rollup({
       input: path.resolve(`./packages/${file}/${pkg.svelte}`),
       plugins: [

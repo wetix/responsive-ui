@@ -5,7 +5,8 @@
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
   "module": "lib/index.mjs",
   "svelte": "src/index.js",
   "types": "types/index.d.ts",
@@ -20,7 +21,9 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "src",
+    "types"
   ],
   "repository": {
     "type": "git",
