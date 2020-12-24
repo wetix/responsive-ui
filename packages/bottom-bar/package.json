@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/bottom-bar",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "BottomBar component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -17,7 +17,9 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types",
+    "src"
   ],
   "repository": {
     "type": "git",
