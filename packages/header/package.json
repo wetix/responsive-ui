@@ -1,7 +1,7 @@
 {
   "name": "@responsive-ui/header",
   "version": "0.2.2",
-  "description": "> TODO: description",
+  "description": "Header component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
