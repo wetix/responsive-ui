@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/card",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Card component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -31,5 +31,6 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  }
+  },
+  "gitHead": "2affd722199480a8db618df8fdaadc0b7565c383"
 }
