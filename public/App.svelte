@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from "../packages/button/src/Button.svelte";
   import Snackbar, { success } from "../packages/snackbar/src/index.js";
-  // import Tag from "../src/components/tag/Tag.svelte";
+  import DatePicker from "../packages/date/src";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -124,6 +124,6 @@
 <div class="container">
   <main>
     <Button on:click={showNotification}>click me</Button>
+    <DatePicker />
   </main>
 </div>
-<!-- <Dock open={true}>Testing</Dock> -->

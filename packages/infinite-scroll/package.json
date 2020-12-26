@@ -1,14 +1,14 @@
 {
-  "name": "responsive-ui",
+  "name": "@responsive-ui/infinite-scroll",
   "version": "0.2.2",
-  "description": "WeTix UI Framework",
+  "description": "Infinite Scroll component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.js",
+  "svelte": "src/InfiniteScroll.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
@@ -21,9 +21,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "src/*",
-    "types"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -34,6 +32,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "2affd722199480a8db618df8fdaadc0b7565c383"
+  }
 }

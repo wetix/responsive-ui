@@ -1,14 +1,13 @@
 {
-  "name": "responsive-ui",
+  "name": "@responsive-ui/icon",
   "version": "0.2.2",
-  "description": "WeTix UI Framework",
+  "description": "> TODO: description",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
-  "main": "lib/index.cjs",
-  "browser": "lib/index.js",
+  "main": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.js",
+  "svelte": "src/Icon.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
@@ -22,7 +21,7 @@
   },
   "files": [
     "lib",
-    "src/*",
+    "src",
     "types"
   ],
   "repository": {
@@ -34,6 +33,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "2affd722199480a8db618df8fdaadc0b7565c383"
+  }
 }
