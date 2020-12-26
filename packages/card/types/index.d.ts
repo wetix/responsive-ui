@@ -9,7 +9,9 @@ export interface CardProps {
   style?: string;
 }
 
-export interface CardEvents {}
+export interface CardEvents {
+  click?: void;
+}
 
 export interface CardSlots {
   default: {};

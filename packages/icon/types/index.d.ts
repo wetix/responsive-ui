@@ -5,7 +5,9 @@ export interface IconProps {
   style?: string;
 }
 
-export interface IconEvents {}
+export interface IconEvents {
+  click?: void;
+}
 
 export interface IconSlots {
   default: {};

@@ -1,7 +1,9 @@
 <script lang="ts">
   import Button from "../packages/button/src/Button.svelte";
   import Snackbar, { success } from "../packages/snackbar/src/index.js";
-  import DatePicker from "../packages/date/src";
+  import Date from "../packages/date/src/Date.svelte";
+
+  console.log(Snackbar);
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -101,13 +103,6 @@
     margin: 0 auto;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
   @media (min-width: 640px) {
     main {
       max-width: none;
@@ -123,7 +118,7 @@
 
 <div class="container">
   <main>
-    <Button on:click={showNotification}>click me</Button>
-    <DatePicker />
+    <Button title="click me" on:click={showNotification} />
+    <Date />
   </main>
 </div>

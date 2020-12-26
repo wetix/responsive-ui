@@ -1,4 +1,6 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
 </script>
 
 <style lang="scss">
@@ -20,7 +22,7 @@
   }
 </style>
 
-<span class="responsive-ui-fab" on:click>
+<span class="responsive-ui-fab {className}" on:click>
   <svg
     height="18px"
     viewBox="0 0 426.66667 426.66667"

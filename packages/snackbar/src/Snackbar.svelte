@@ -2,20 +2,9 @@
   import { slideY } from "@wetix/animation";
 
   export let message = "";
-  export let padding = 0;
-  export let success = false;
 </script>
 
 <style lang="scss">
-  .container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    z-index: 150;
-  }
-
   .responsive-ui-snackbar {
     background: #3b3b3b;
     color: #fff;
@@ -26,20 +15,19 @@
     font-family: inherit;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 
-    &.error {
-      background: #ff0033;
-    }
+    // &.error {
+    //   background: #ff0033;
+    // }
 
-    &.success {
-      background: rgb(55, 179, 55);
-    }
+    // &.success {
+    //   background: rgb(55, 179, 55);
+    // }
   }
 </style>
 
 <!-- {#if !hide} -->
-<div class="container" in:slideY out:slideY style={`padding:${padding}`}>
-  <div class="responsive-ui-snackbar">
-    <slot>{message}</slot>
-  </div>
+<!-- <div class="container" in:slideY out:slideY></div> -->
+<div class="responsive-ui-snackbar">
+  <slot>{message}</slot>
 </div>
 <!-- {/if} -->
