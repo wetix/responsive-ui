@@ -1,6 +1,6 @@
 {
   "name": "responsive-ui",
-  "version": "0.2.4",
+  "version": "0.2.9",
   "description": "WeTix UI Framework",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -8,8 +8,8 @@
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.js",
-  "types": "types/index.d.ts",
+  "svelte": "index.js",
+  "types": "index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -21,9 +21,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "src/*",
-    "types"
+    "*"
   ],
   "repository": {
     "type": "git",

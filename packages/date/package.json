@@ -1,14 +1,14 @@
 {
   "name": "@responsive-ui/date",
   "version": "0.2.4",
-  "description": "> TODO: description",
+  "description": "Date component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/FloatingActionButton.svelte",
+  "svelte": "src/Date.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
