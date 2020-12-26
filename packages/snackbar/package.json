@@ -5,7 +5,8 @@
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
   "module": "lib/index.mjs",
   "svelte": "src/index.ts",
   "types": "types/index.d.ts",
@@ -34,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
   },
-  "gitHead": "2affd722199480a8db618df8fdaadc0b7565c383",
+  "gitHead": "f0a8e6c25fb93db8380d5aff1a13f518b7e74091",
   "dependencies": {
     "@wetix/animation": "^0.1.1-alpha"
   }
