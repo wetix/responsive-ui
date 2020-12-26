@@ -15,88 +15,129 @@
     box-sizing: border-box;
     word-break: break-word;
 
-    &--col-24 {
+    &--24 {
       $width: 100;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-23 {
+    &--23 {
       $width: 95.83333333%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-15 {
+    &--22 {
+      $width: 91.66666667%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--21 {
+      $width: 87.5%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--20 {
+      $width: 83.33333333%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--19 {
+      $width: 79.16666667%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--18 {
+      $width: 75%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--17 {
+      $width: 70.83333333%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--16 {
+      $width: 66.66666667%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--15 {
       $width: 62.49999999%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-12 {
+    &--12 {
       $width: 50%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-11 {
+    &--11 {
       $width: 45.83333333%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-10 {
+    &--10 {
       $width: 41.66666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-9 {
+    &--9 {
       $width: 37.5%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-8 {
+    &--8 {
       $width: 33.33333333%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-7 {
+    &--7 {
       $width: 29.16666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-6 {
+    &--6 {
       $width: 25%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-5 {
+    &--5 {
       $width: 20.83333333%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-4 {
+    &--4 {
       $width: 16.66666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-3 {
+    &--3 {
       $width: 12.5%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-2 {
+    &--2 {
       $width: 8.33333333%;
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--col-1 {
+    &--1 {
       $width: 4.16666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
 
-    &.right {
-      text-align: right;
+    &--center {
+      justify-content: center;
+    }
+
+    &--right {
+      justify-content: right;
     }
   }
 </style>
 
-<div class={`responsive-ui-column--${span} ${justify} ${className}`} {style}>
+<div
+  class={`responsive-ui-column--${span} responsive-ui-column--${justify} ${className}`}
+  {style}>
   <slot />
 </div>

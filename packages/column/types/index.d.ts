@@ -1,6 +1,11 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface ColumnProps {}
+export interface ColumnProps {
+  span?: number;
+  justify?: string;
+  class?: string;
+  style?: string;
+}
 
 export interface ColumnEvents {}
 

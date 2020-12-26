@@ -1,17 +1,17 @@
-import type BottomBar from "./bottom-bar/types";
-import type BottomModal from "./bottom-modal/types";
-import type Button from "./button/types";
-import type Card from "./card/types";
-import type Column from "./column/types";
-import type FloatingActionButton from "./fab/types";
-import type Header from "./header/types";
-import type Icon from "./icon/types";
-import type Input from "./input/types";
-import type Label from "./label/types";
-import type Row from "./row/types";
-import type Switch from "./switch/types";
-import type Textarea from "./textarea/types";
-import type Upload from "./upload/types";
+import BottomBar from "./bottom-bar/types";
+import BottomModal from "./bottom-modal/types";
+import Button from "./button/types";
+import Card from "./card/types";
+import Column from "./column/types";
+import FloatingActionButton from "./fab/types";
+import Header from "./header/types";
+import Icon from "./icon/types";
+import Input from "./input/types";
+import Label from "./label/types";
+import Row from "./row/types";
+import Switch from "./switch/types";
+import Textarea from "./textarea/types";
+import Upload from "./upload/types";
 
 export {
   BottomBar,
