@@ -4,7 +4,7 @@ import chalk from "chalk";
 import { rollup } from "rollup";
 import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
-// import typescript from "@rollup/plugin-typescript";
+import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import css from "rollup-plugin-css-only";
 import sveltePreprocess from "svelte-preprocess";
@@ -16,6 +16,7 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
   const map = new Map();
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
+    console.log(file);
     if (!file) continue;
 
     const filename = path.basename(file);
@@ -58,6 +59,9 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
+    // skip .DS_STORE file in mac
+    if (/^.ds_store$/i.test(file)) continue;
+
     console.log(chalk.green(file));
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`./packages/${file}/package.json`), "utf8")
@@ -77,11 +81,14 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
         }),
         css({ output: "index.css" }),
         resolve({
+          preferBuiltins: true,
           browser: true,
           dedupe: ["svelte"],
         }),
         commonjs(),
-        // typescript({ sourceMap: !production }),
+        typescript({
+          sourceMap: false,
+        }),
       ],
     });
 

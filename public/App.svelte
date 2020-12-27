@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from "../packages/button/src/Button.svelte";
-  import Snackbar, { success } from "../packages/snackbar/src/index.js";
+  import Tab from "../packages/tab/src/Tab.svelte";
+  import Snackbar, { success } from "../packages/snackbar/src/index.ts";
   import Date from "../packages/date/src/Date.svelte";
 
   console.log(Snackbar);
@@ -14,9 +15,11 @@
   // import Index from "./components/button/index.svelte";
   // import Checkbox from "../src/components/checkbox/index.svelte";
 
-  const showNotification = () => {
+  const showNotification = (variant: string) => () => {
     success({
-      title: "testing",
+      variant,
+      message: "testing",
+      timeout: 0,
     });
     // success({
     //   title: "Apple can get away with this because they’re well, Apple.",
@@ -73,6 +76,18 @@
       title: "Title 2",
     },
   ];
+
+  const tabItems = [
+    {
+      title: "Item A",
+    },
+    {
+      title: "Item B",
+    },
+    {
+      title: "Item C",
+    },
+  ];
 </script>
 
 <style>
@@ -118,7 +133,16 @@
 
 <div class="container">
   <main>
-    <Button title="click me" on:click={showNotification} />
+    <Button on:click={showNotification('default')}>Show Default</Button>
+    <Button on:click={showNotification('success')}>Show Success</Button>
+    <Button on:click={showNotification('error')}>Show Error</Button>
     <Date />
+    <Tab items={tabItems} selected={0} let:selected={index}>
+      {#if index === 0}
+        <div>Testing</div>
+      {:else}
+        <div>Others</div>
+      {/if}
+    </Tab>
   </main>
 </div>

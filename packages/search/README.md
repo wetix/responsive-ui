@@ -1,11 +1,11 @@
-# `responsive-ui`
+# `search`
 
 > TODO: description
 
 ## Usage
 
 ```
-const cherryUi = require('responsive-ui');
+const search = require('search');
 
 // TODO: DEMONSTRATE API
 ```

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
-  import { getNodeAttribute } from "@wetix/utils";
+  // import { getNodeAttribute } from "@wetix/utils";
 
   const dispatch = createEventDispatcher();
 
@@ -89,12 +89,12 @@
   };
 
   const onSelectDate = (e: Event) => {
-    const date = getNodeAttribute(e, "data-date");
-    console.log(date);
-    if (date) {
-      value = date;
-      dispatch("change", value);
-    }
+    // const date = getNodeAttribute(e, "data-date");
+    // console.log(date);
+    // if (date) {
+    //   value = date;
+    //   dispatch("change", value);
+    // }
   };
 
   getNoOfDays();

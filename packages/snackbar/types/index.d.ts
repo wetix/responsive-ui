@@ -1,6 +1,11 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface SnackbarProps {}
+export interface SnackbarProps {
+  variant: string;
+  message: string;
+  timeout?: number;
+  rounded?: boolean;
+}
 
 export interface SnackbarEvents {}
 

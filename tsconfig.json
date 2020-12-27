@@ -9,8 +9,8 @@
     "public/main.ts",
     "packages/**/*",
     "packages/**/__test__",
+    "node_modules/@responsive-ui/**/*",
     "node_modules/@wetix/**/*"
   ],
-  "exclude": ["__sapper__/*", "public/*", "dist"],
-  "rootDir": "./src"
+  "exclude": ["__sapper__/*", "public/*", "dist"]
 }

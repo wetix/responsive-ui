@@ -37,6 +37,7 @@
   },
   "gitHead": "f0a8e6c25fb93db8380d5aff1a13f518b7e74091",
   "dependencies": {
+    "@responsive-ui/icon": "^0.2.4",
     "@wetix/animation": "^0.1.1-alpha"
   }
 }

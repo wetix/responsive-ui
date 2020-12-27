@@ -55,5 +55,5 @@
   {form}
   {style}
   on:click>
-  {title || ''}
+  <slot>{title}</slot>
 </button>

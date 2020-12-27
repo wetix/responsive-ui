@@ -4,8 +4,7 @@
 
 <script lang="ts">
   import { tweened } from "svelte/motion";
-
-  import Icon from "../icon/index.svelte";
+  import Icon from "@responsive-ui/icon";
 
   export let open = false;
   export let closable = true;
