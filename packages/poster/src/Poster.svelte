@@ -32,7 +32,7 @@
     background-color: #f5f5f5;
     overflow: hidden;
 
-    &--border-radius {
+    &--rounded {
       border-radius: 3px;
     }
 
@@ -58,7 +58,7 @@
 <div
   class="responsive-ui-poster"
   class:responsive-ui-poster--shadow={hasShadow}
-  class:responsive-ui-poster--border-radius={hasBorderRadius}
+  class:responsive-ui-poster--rounded={hasBorderRadius}
   style={`background-image:url(${src});width:${width};height:${height};${style}`}
   on:click>
   <div class="responsive-ui-poster__overlay" style={`opacity:${opacity};`} />

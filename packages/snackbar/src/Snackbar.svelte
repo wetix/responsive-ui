@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { slideY } from "@wetix/animation";
+  // import { slideY } from "@wetix/animation";
   import Icon from "@responsive-ui/icon";
 
   export let message = "";
@@ -46,9 +46,7 @@
 {#if !close}
   <div
     class="responsive-ui-snackbar responsive-ui-snackbar--{variant}"
-    class:responsive-ui-snackbar--rounded={rounded}
-    in:slideY
-    out:slideY>
+    class:responsive-ui-snackbar--rounded={rounded}>
     <slot>{message}</slot>
     <Icon type="x" on:click={onClose} />
   </div>

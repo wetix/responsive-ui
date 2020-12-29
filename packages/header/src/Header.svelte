@@ -19,7 +19,7 @@
   }
 </style>
 
-<responsive-ui-header class="responsive-ui-header" {style}>
+<header class="responsive-ui-header" {style}>
   <span class="responsive-ui-header__title">{title}</span>
   <slot />
-</responsive-ui-header>
+</header>

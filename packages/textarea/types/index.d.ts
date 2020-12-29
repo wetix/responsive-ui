@@ -8,7 +8,9 @@ export interface TextareaProps {
   autofocus: boolean;
 }
 
-export interface TextareaEvents {}
+export interface TextareaEvents {
+  input?: void;
+}
 
 declare class Textarea extends SvelteComponentTyped<
   TextareaProps,

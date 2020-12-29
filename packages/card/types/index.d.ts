@@ -1,13 +1,6 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface CardProps {
-  title?: string;
-  name?: string;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-  form?: string;
-  style?: string;
-}
+export interface CardProps {}
 
 export interface CardEvents {
   click?: void;

@@ -1,6 +1,4 @@
 <script lang="ts">
-  // import { current_component } from "svelte/internal";
-
   let className = "";
   export { className as class };
   export let title = "";
@@ -9,7 +7,6 @@
   export let disabled = false;
   export let form = "";
   export let style = "";
-  // export let secondary = false;
 </script>
 
 <style lang="scss">
@@ -19,6 +16,7 @@
     color: #fff;
     border: none;
     outline: none;
+    font-size: var(--font-size, 14px);
     border: 1px solid var(--primary-color, #fc4451);
     background: var(--primary-color, #fc4451);
     width: 100%;

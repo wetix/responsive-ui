@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <style lang="scss">
   .responsive-ui-row {
     display: flex;

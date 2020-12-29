@@ -1,5 +1,4 @@
 <script lang="ts">
-  export let type = "text";
   export let value = "";
   export let size = 100;
   export let spellcheck = false;
@@ -28,10 +27,11 @@
     box-sizing: border-box;
 
     input {
+      margin: 0;
       border: none;
       font-family: inherit;
       font-size: inherit;
-      height: var(--height, 36px);
+      height: var(--height, 34px);
       padding: 0 10px;
       width: 100%;
       outline: none;
@@ -41,7 +41,7 @@
 
 <div class="responsive-ui-search">
   <input
-    {type}
+    type="search"
     {placeholder}
     {size}
     {value}

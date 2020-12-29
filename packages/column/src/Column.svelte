@@ -2,8 +2,8 @@
   let className = "";
   export { className as class };
   export let span = 24;
-  export let style = "";
   export let justify = "center";
+  export let style = "";
 </script>
 
 <style lang="scss">

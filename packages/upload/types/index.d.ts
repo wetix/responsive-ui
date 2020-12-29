@@ -1,9 +1,9 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface UploadProps {
+  name: string;
+  url: string;
   class?: string;
-  name?: string;
-  url?: string;
   headers?: Record<string, string>;
   accept?: string;
   withCredentials?: boolean;

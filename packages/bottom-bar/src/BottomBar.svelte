@@ -1,4 +1,6 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
   export let style = "";
 </script>
 
@@ -20,7 +22,7 @@
   }
 </style>
 
-<div class="responsive-ui-bottom-bar" {style}>
+<div class="responsive-ui-bottom-bar {className}" {style}>
   <div class="responsive-ui-bottom-bar__wrapper">
     <slot />
   </div>

@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface BottomBarProps {
+  class?: string;
   style?: string;
 }
 

@@ -7,6 +7,8 @@
   export let selected = 0;
   export let style = "";
 
+  const hasSlots = !!$$slots.default;
+
   let tab: null | HTMLDivElement;
   let childNodes: HTMLCollectionOf<Element>;
   onMount(() => {
@@ -86,8 +88,13 @@
   </nav>
   <div class="responsive-ui-tab__ink-bar" />
 </div>
-{#if items[selected] && items[selected].component}
-  <svelte:component this={items[selected].component} />
-{:else}
+
+{#if hasSlots}
   <slot {selected} />
+{:else}
+  {#each items as item}
+    {#if item && item.component}
+      <svelte:component this={item.component} />
+    {/if}
+  {/each}
 {/if}

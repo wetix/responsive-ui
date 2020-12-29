@@ -1,7 +1,7 @@
 {
-  "name": "@responsive-ui/snackbar",
+  "name": "@responsive-ui/alert",
   "version": "0.2.5",
-  "description": "Snackbar component",
+  "description": "Alert component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
@@ -13,9 +13,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@responsive-ui/icon": "^0.2.5"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "svelte": "^3.29.0"
   },
@@ -24,9 +22,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "types",
-    "src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -37,6 +33,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "f0a8e6c25fb93db8380d5aff1a13f518b7e74091"
+  }
 }
