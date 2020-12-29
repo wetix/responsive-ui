@@ -1,9 +1,20 @@
 <script lang="ts">
+  import { keyword } from "chalk";
+
+  import type { Device } from "../types";
+
   let className = "";
   export { className as class };
-  export let span = 24;
+  export let span: number | Device = 24;
   export let justify = "center";
   export let style = "";
+
+  let classes = `responsive-ui-column--${span}`;
+  if (isNaN(Number(span))) {
+    classes = Object.entries(<Device>span)
+      .map(([k, v]) => `responsive-ui-column--${k}-${v}`)
+      .join(" ");
+  }
 </script>
 
 <style lang="scss">
@@ -134,10 +145,38 @@
       justify-content: right;
     }
   }
+
+  @media (max-width: 480px) {
+    .responsive-ui-column {
+      &--sm-4 {
+        $width: 16.66666667%;
+        flex: 0 0 $width !important;
+        max-width: $width;
+      }
+      &--sm-5 {
+        $width: 20.83333333%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      &--sm-6 {
+        $width: 25%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      &--sm-20 {
+        $width: 83.33333333%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+    }
+  }
+
+  @media (min-width: 700px) {
+  }
+  @media (min-width: 1200px) {
+  }
 </style>
 
-<div
-  class={`responsive-ui-column--${span} responsive-ui-column--${justify} ${className}`}
-  {style}>
+<div class={`responsive-ui-column--${justify} ${classes} ${className}`} {style}>
   <slot />
 </div>

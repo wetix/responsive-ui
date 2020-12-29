@@ -24,7 +24,7 @@
 <style lang="scss">
   .responsive-ui-textarea {
     width: 100%;
-    font-size: var(--font-size, 1rem);
+    font-size: var(--font-size, 14px);
     font-family: inherit;
     color: #1a1b1c;
     background: #f1f1f1;

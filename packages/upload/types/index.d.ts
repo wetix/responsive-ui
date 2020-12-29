@@ -1,8 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface UploadProps {
-  name: string;
   url: string;
+  name?: string;
   class?: string;
   headers?: Record<string, string>;
   accept?: string;
@@ -20,7 +20,9 @@ export interface UploadEvents {
 }
 
 export interface UploadSlots {
-  default: {};
+  default: {
+    loading: boolean;
+  };
 }
 
 declare class Upload extends SvelteComponentTyped<

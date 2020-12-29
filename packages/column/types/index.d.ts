@@ -1,7 +1,14 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
+export type Device = {
+  sm?: number;
+  md?: number;
+  xs?: number;
+  lg?: number;
+};
+
 export interface ColumnProps {
-  span?: number;
+  span?: number | Device;
   justify?: string;
   class?: string;
   style?: string;

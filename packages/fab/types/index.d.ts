@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface FloatingActionButtonProps {
   class?: string;
+  style?: string;
 }
 
 export interface FloatingActionButtonEvents {

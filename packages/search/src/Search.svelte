@@ -1,18 +1,40 @@
 <script lang="ts">
   export let value = "";
   export let size = 100;
+  export let loading = false;
+  export let debounceTimer = 1000;
   export let spellcheck = false;
   export let placeholder = "";
-  export let onChange = (_: string) => {};
-  export let onSearch = (_: string) => {};
+  export let search = (_: string) => {};
+
+  const debounce = (func: Function, timeout?: number) => {
+    let timer: NodeJS.Timeout | undefined;
+    return (...args: any[]) => {
+      const next = () => func(...args);
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(next, timeout > 0 ? timeout : 300);
+    };
+  };
+
+  const cb = debounce((v: string) => {
+    search && search(v);
+    loading = false;
+  }, debounceTimer);
 
   const handleKeyPress = (e: KeyboardEvent) => {
-    const v = (e.target as HTMLInputElement).value;
+    const v = (<HTMLInputElement>e.target).value;
+    const key = e.key || e.keyCode;
     value = v;
-    onChange(v);
+    loading = true;
     // when user click enter
-    if (e.key === "Enter") {
-      onSearch(v);
+    // let timeout = debounceTimer;
+    if (key === "Enter" || key === 13) {
+      // timeout = 0;
+      search && search(v);
+    } else {
+      cb(v);
     }
   };
 </script>
@@ -46,5 +68,5 @@
     {size}
     {value}
     {spellcheck}
-    on:keypress={handleKeyPress} />
+    on:keyup={handleKeyPress} />
 </div>
