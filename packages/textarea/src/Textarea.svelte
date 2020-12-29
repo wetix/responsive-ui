@@ -6,6 +6,7 @@
   export let rows = 4;
   export let value = "";
   export let autofocus = false;
+  export let autoresize = true;
   // export let resize = "none";
 
   let input: null | HTMLTextAreaElement;
@@ -18,6 +19,10 @@
 
   const onInput = (e: Event) => {
     value = (e.target as HTMLTextAreaElement).value;
+    if (autoresize) {
+      input.style.height = "auto";
+      input.style.height = input.scrollHeight + "px";
+    }
   };
 </script>
 
@@ -34,6 +39,7 @@
     border-radius: 5px;
     padding: 10px;
     margin: 0;
+    transition: all 0.5s;
 
     &:hover {
       border: none;

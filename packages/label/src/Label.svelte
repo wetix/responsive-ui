@@ -11,6 +11,7 @@
     &__title {
       // color: #b9b9b9;
       color: #3b3b3b;
+      margin-bottom: 8px;
     }
   }
 </style>

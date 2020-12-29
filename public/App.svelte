@@ -16,6 +16,9 @@
   import Row from "../packages/row/src/Row.svelte";
   import Column from "../packages/column/src/Column.svelte";
   import BottomModal from "../packages/bottom-modal/src/BottomModal.svelte";
+  import Switch from "../packages/switch/src/Switch.svelte";
+  import Card from "../packages/card/src/Card.svelte";
+  import BottomSheet from "../packages/bottom-sheet/src/BottomSheet.svelte";
 
   console.log(Snackbar);
   // import Upload from "../src/components/upload/index.svelte";
@@ -38,6 +41,7 @@
     console.log(detail);
   };
 
+  let disabledButton = false;
   let showModal = false;
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
@@ -180,16 +184,24 @@
         {/each}
       </InfiniteScroll>
     </div>
-    <Row>
-      <Column span={{ sm: 6, xs: 10 }}>Upload</Column>
-      <Column span={{ sm: 18 }}>
-        <Upload
-          name="image"
-          url={uploadUrl}
-          withCredentials={false}
-          on:success={uploadSuccessful} />
-      </Column>
-    </Row>
+    <Card>
+      <Row>
+        <Column span={{ sm: 6, xs: 10 }}>Upload</Column>
+        <Column span={{ sm: 18 }}>
+          <Upload
+            name="image"
+            url={uploadUrl}
+            withCredentials={false}
+            on:success={uploadSuccessful} />
+        </Column>
+      </Row>
+      <Row>
+        <Column span={{ sm: 6, xs: 10 }}>Disabled Button</Column>
+        <Column span={{ sm: 18 }}>
+          <Switch bind:checked={disabledButton} />
+        </Column>
+      </Row>
+    </Card>
     <Label title="Description">
       <Textarea placeholder="Enter your text here..." />
     </Label>
@@ -204,12 +216,12 @@
       {/if}
     </Tab>
   </main>
-  <ComponentDetail>
-    <BottomBar>
-      <ComponentDetail name="@responsive-ui/button">
-        <Button on:click={showNotification('default')}>CONFIRM</Button>
-      </ComponentDetail>
-    </BottomBar>
-  </ComponentDetail>
-  <BottomModal bind:open={showModal} />
+  <BottomBar>
+    <Button disabled={disabledButton} on:click={showNotification('default')}>
+      CONFIRM
+    </Button>
+  </BottomBar>
 </div>
+
+<!-- <BottomModal  /> -->
+<BottomSheet title="Testing" bind:open={showModal}>asdlkasjkdljasl</BottomSheet>

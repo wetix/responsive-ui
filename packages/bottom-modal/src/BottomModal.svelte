@@ -71,7 +71,7 @@
     on:click|stopPropagation
     style={`transform:translateY(${$tween * 100}%);${style}`}>
     {#if closable}
-      <i class="close" on:click={() => (open = false)}><Icon type="x" /></i>
+      <i class="close"><Icon type="x" on:click={() => (open = false)} /></i>
     {/if}
     <slot />
   </div>

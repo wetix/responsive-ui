@@ -1,31 +1,30 @@
-# WeTix Responsive UI Components
-
-1. Compile each svelte components to separate js, css file
-
-from :
-/components/accordion/index.svelte
-
-to:
-/components/accordion/index.js
-/components/accordion/index.css
-
-1. CircleCI
-
-MIT LICENSE
+# TODO List
 
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
+- ❌ Bottom Sheet (@responsive-ui/bottom-sheet)
 - ✅ Button (@responsive-ui/button)
 - ✅ Card (@responsive-ui/card)
+- ❌ Checkbox (@responsive-ui/checkbox)
 - ✅ Column (@responsive-ui/column)
 - ❌ Date (@responsive-ui/date)
 - ✅ Floating Action Button (@responsive-ui/fab)
 - ✅ Header (@responsive-ui/header)
 - ❌ Icon (@responsive-ui/icon)
-- ❌ Input (@responsive-ui/input)
 - ❌ Infinite Scroll (@responsive-ui/infinite-scroll)
+- ❌ Input (@responsive-ui/input)
 - ✅ Label (@responsive-ui/label)
+- ❌ Loader (@responsive-ui/loader)
+- ❌ Menu (@responsive-ui/menu)
+- ✅ Poster (@responsive-ui/poster)
+- ❌ Responsive (@responsive-ui/responsive)
 - ✅ Row (@responsive-ui/row)
 - ✅ Search (@responsive-ui/search)
+- ❌ Select (@responsive-ui/select)
+- ❌ Snackbar (@responsive-ui/snackbar)
 - ✅ Switch (@responsive-ui/switch)
+- ❌ Tab (@responsive-ui/tab)
+- ❌ Table (@responsive-ui/table)
+- ❌ Tag (@responsive-ui/tag)
 - ✅ Textarea (@responsive-ui/textarea)
+- ❌ Tooltip (@responsive-ui/tooltip)
 - ✅ Upload (@responsive-ui/upload)

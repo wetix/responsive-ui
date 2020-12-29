@@ -12,7 +12,7 @@ import Label from "./label/src/Label.svelte";
 import Poster from "./poster/src/Poster.svelte";
 import Row from "./row/src/Row.svelte";
 import Search from "./search/src/Search.svelte";
-import Snackbar from "./snackbar/src/index.ts";
+// import Snackbar from "./snackbar/src/index.ts";
 import Switch from "./switch/src/Switch.svelte";
 import Tab from "./tab/src/Tab.svelte";
 import Table from "./table/src/Table.svelte";
@@ -34,7 +34,7 @@ export {
   Poster,
   Row,
   Search,
-  Snackbar,
+  // Snackbar,
   Switch,
   Tab,
   Table,

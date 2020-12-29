@@ -1,18 +1,11 @@
 {
-  "name": "@responsive-ui/bottom-sheet",
+  "name": "@responsive-ui/select",
   "version": "0.2.6",
-  "description": "Bottom Sheet component",
+  "description": "> TODO: description",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
-  "main": "lib/index.cjs",
-  "browser": "lib/index.js",
-  "module": "lib/index.mjs",
-  "svelte": "src/BottomSheet.svelte",
-  "types": "types/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -29,9 +22,5 @@
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "dependencies": {
-    "@responsive-ui/bottom-modal": "^0.2.6",
-    "@responsive-ui/button": "^0.2.6"
   }
 }

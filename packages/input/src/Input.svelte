@@ -45,7 +45,7 @@
 </script>
 
 <style lang="scss">
-  .ditto-input {
+  .responsive-ui-input {
     display: block;
     margin: 0;
 
@@ -87,7 +87,7 @@
   }
 </style>
 
-<div class="ditto-input">
+<div class="responsive-ui-input">
   {#if label}
     <div class="label" class:active>{label}</div>
   {/if}
