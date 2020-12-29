@@ -25,8 +25,7 @@ MIT LICENSE
 - ❌ Infinite Scroll (@responsive-ui/infinite-scroll)
 - ✅ Label (@responsive-ui/label)
 - ✅ Row (@responsive-ui/row)
-<!-- - ✅ Button (@responsive-ui/button)
-- ✅ Button (@responsive-ui/button)
-- ✅ Button (@responsive-ui/button)
-- ✅ Button (@responsive-ui/button)
-- ✅ Button (@responsive-ui/button) -->
+- ✅ Search (@responsive-ui/search)
+- ✅ Switch (@responsive-ui/switch)
+- ✅ Textarea (@responsive-ui/textarea)
+- ✅ Upload (@responsive-ui/upload)
