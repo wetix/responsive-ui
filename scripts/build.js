@@ -61,7 +61,8 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     const file = files[i];
     // skip .DS_STORE file in mac
     if (/^.ds_store$/i.test(file)) continue;
-
+    const ext = path.extname(file).toLowerCase();
+    if (ext) continue;
     console.log(chalk.green(file));
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`./packages/${file}/package.json`), "utf8")

@@ -1,11 +1,18 @@
 {
   "name": "@responsive-ui/bottom-sheet",
   "version": "0.2.5",
-  "description": "> TODO: description",
+  "description": "Bottom Sheet component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "svelte": "src/BottomSheet.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
