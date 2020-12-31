@@ -6,11 +6,11 @@
 
 <style lang="scss">
   .responsive-ui-fab {
+    cursor: pointer;
     position: fixed;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     bottom: 15px;
     right: 15px;
     width: 50px;
@@ -18,7 +18,6 @@
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
     z-index: 100;
   }
 </style>

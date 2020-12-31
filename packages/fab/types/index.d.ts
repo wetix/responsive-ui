@@ -9,9 +9,7 @@ export interface FloatingActionButtonEvents {
   click?: void;
 }
 
-export interface FloatingActionButtonSlots {
-  default: {};
-}
+export interface FloatingActionButtonSlots {}
 
 declare class FloatingActionButton extends SvelteComponentTyped<
   FloatingActionButtonProps,
