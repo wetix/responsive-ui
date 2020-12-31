@@ -9,9 +9,9 @@
   export let justify = "center";
   export let style = "";
 
-  let classes = `responsive-ui-column--${span}`;
+  let cls = `responsive-ui-column--${span}`;
   if (isNaN(Number(span))) {
-    classes = Object.entries(<Device>span)
+    cls = Object.entries(<Device>span)
       .map(([k, v]) => `responsive-ui-column--${k}-${v}`)
       .join(" ");
   }
@@ -116,13 +116,9 @@
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--4 {
-      $width: 16.66666667%;
-      flex: 0 0 $width;
-      max-width: $width;
-    }
-    &--3 {
-      $width: 12.5%;
+
+    &--1 {
+      $width: 4.16666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
@@ -131,8 +127,13 @@
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--1 {
-      $width: 4.16666667%;
+    &--3 {
+      $width: 12.5%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--4 {
+      $width: 16.66666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
@@ -148,6 +149,21 @@
 
   @media (max-width: 480px) {
     .responsive-ui-column {
+      &--sm-1 {
+        $width: 4.16666667%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      &--sm-2 {
+        $width: 8.33333333%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+      &--sm-3 {
+        $width: 12.5%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
       &--sm-4 {
         $width: 16.66666667%;
         flex: 0 0 $width !important;
@@ -177,6 +193,6 @@
   }
 </style>
 
-<div class={`responsive-ui-column--${justify} ${classes} ${className}`} {style}>
+<div class={`responsive-ui-column--${justify} ${cls} ${className}`} {style}>
   <slot />
 </div>
