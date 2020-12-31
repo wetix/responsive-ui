@@ -1,11 +1,15 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import Button from "@responsive-ui/button";
   import BottomModal from "@responsive-ui/bottom-modal";
+  import Tab from "@responsive-ui/tab";
+  import type { TabItem } from "@responsive-ui/tab";
 
+  const dispatch = createEventDispatcher();
+
+  export let items: TabItem[] = [];
   export let open = false;
   export let title = "";
-
-  const onReset = () => {};
 
   const onFilter = () => {};
 </script>
@@ -41,9 +45,11 @@
     <header class="responsive-ui-bottom-sheet__header">
       <span
         class="responsive-ui-bottom-sheet__reset"
-        on:click={onReset}>Reset</span>
+        on:click={() => dispatch('reset')}>Reset</span>
     </header>
-    <!-- <Tab {items} hasShadow={true} let:selected={i} /> -->
+    <Tab {items}>
+      <div>testing</div>
+    </Tab>
   </div>
   <footer class="responsive-ui-bottom-sheet__footer">
     <Button on:click={onFilter}>FILTER</Button>

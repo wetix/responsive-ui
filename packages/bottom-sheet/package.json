@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@responsive-ui/bottom-modal": "^0.2.6",
-    "@responsive-ui/button": "^0.2.6"
+    "@responsive-ui/button": "^0.2.6",
+    "@responsive-ui/tab": "^0.2.6"
   }
 }
