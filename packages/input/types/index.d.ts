@@ -2,8 +2,14 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputProps {
   name?: string;
-  type?: "text" | "number" | "reset";
+  label?: string;
+  type?: "text" | "password" | "email" | "number" | "reset";
+  placeholder?: string;
   disabled?: boolean;
+  size?: number;
+  maxlength?: number;
+  autofocus?: boolean;
+  value?: any;
   style?: string;
 }
 
