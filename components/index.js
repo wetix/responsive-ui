@@ -4,7 +4,7 @@ import BottomSheet from "./bottom-sheet/src/BottomSheet.svelte";
 import Button from "./button/src/Button.svelte";
 import Card from "./card/src/Card.svelte";
 import Column from "./column/src/Column.svelte";
-import Date from "./date/src/Date.svelte";
+import DatePicker from "./date-picker/src/DatePicker.svelte";
 import Ellipsis from "./ellipsis/src/Ellipsis.svelte";
 import FloatingActionButton from "./fab/src/FloatingActionButton.svelte";
 import Header from "./header/src/Header.svelte";
@@ -13,7 +13,9 @@ import InfiniteScroll from "./infinite-scroll/src/InfiniteScroll.svelte";
 import Input from "./input/src/Input.svelte";
 import Label from "./label/src/Label.svelte";
 import Poster from "./poster/src/Poster.svelte";
+// import Quantity from "./quantity/src/Quantity.svelte";
 import Row from "./row/src/Row.svelte";
+// import Responsive from "./row/src/Row.svelte";
 import Search from "./search/src/Search.svelte";
 // import Snackbar from "./snackbar/src/index.ts";
 import Switch from "./switch/src/Switch.svelte";
@@ -29,7 +31,7 @@ export {
   Button,
   Card,
   Column,
-  Date,
+  DatePicker,
   Ellipsis,
   FloatingActionButton,
   Header,

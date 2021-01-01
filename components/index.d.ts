@@ -1,8 +1,12 @@
 import BottomBar from "./bottom-bar/types";
 import BottomModal from "./bottom-modal/types";
+import BottomSheet from "./bottom-sheet/types";
 import Button from "./button/types";
 import Card from "./card/types";
+import Checkbox from "./checkbox/types";
 import Column from "./column/types";
+import DatePicker from "./date-picker/types";
+import Ellipsis from "./ellipsis/types";
 import FloatingActionButton from "./fab/types";
 import Header from "./header/types";
 import Icon from "./icon/types";
@@ -22,9 +26,13 @@ import Upload from "./upload/types";
 export {
   BottomBar,
   BottomModal,
+  BottomSheet,
   Button,
   Card,
+  Checkbox,
   Column,
+  DatePicker,
+  Ellipsis,
   FloatingActionButton,
   Header,
   Icon,
