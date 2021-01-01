@@ -21,9 +21,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "types",
-    "src"
+    "*"
   ],
   "repository": {
     "type": "git",
