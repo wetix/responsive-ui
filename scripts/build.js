@@ -2,11 +2,12 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import { rollup } from "rollup";
+import camelCase from "camelcase";
 import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
-import css from "rollup-plugin-css-only";
+// import css from "rollup-plugin-css-only";
 import sveltePreprocess from "svelte-preprocess";
 
 const extractCss = () => {
@@ -97,18 +98,21 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
   const map = new Map();
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-    console.log(file);
+
     if (!file) continue;
 
     const filename = path.basename(file);
     map.set(filename, true);
     if (map.has(file)) continue;
 
+    const name = camelCase(pkg.name.replace("@responsive-ui/", ""), {
+      pascalCase: true,
+    });
     const ext = path.extname(file).toLowerCase();
     let result = {
       file: filename,
       format: "iife",
-      name: "app",
+      name,
     };
 
     switch (ext) {
