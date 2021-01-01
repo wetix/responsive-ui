@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/bottom-sheet",
-  "version": "0.2.6",
+  "version": "0.3.2",
   "description": "Bottom Sheet component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -31,8 +31,8 @@
     "url": "https://github.com/wetix/responsive-ui/issues"
   },
   "dependencies": {
-    "@responsive-ui/bottom-modal": "^0.2.6",
-    "@responsive-ui/button": "^0.2.6",
-    "@responsive-ui/tab": "^0.2.6"
+    "@responsive-ui/bottom-modal": "^0.3.2",
+    "@responsive-ui/button": "^0.3.2",
+    "@responsive-ui/tab": "^0.3.2"
   }
 }
