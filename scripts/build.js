@@ -135,47 +135,63 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
 };
 
 (async function Bundle() {
-  const pkgsPath = path.resolve("./packages");
-  const files = fs.readdirSync(pkgsPath);
+  const lernaPath = path.resolve("./lerna.json");
+  const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
+  console.log(lerna);
 
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    // skip .DS_STORE file in mac
-    if (/^.ds_store$/i.test(file)) continue;
-    const ext = path.extname(file).toLowerCase();
-    if (ext) continue;
-    console.log(chalk.green(file));
-    const pkg = JSON.parse(
-      fs.readFileSync(path.resolve(`./packages/${file}/package.json`), "utf8")
-    );
+  const pkgs = lerna.packages || [];
+  for (let i = 0; i < pkgs.length; i++) {
+    const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
+    console.log(pkgPath);
+    const folders = fs.readdirSync(pkgPath);
 
-    const bundle = await rollup({
-      input: path.resolve(`./packages/${file}/${pkg.svelte}`),
-      plugins: [
-        svelte({
-          compilerOptions: {
-            // enable run-time checks when not in production
-            dev: !production,
-          },
-          emitCss: true,
-          // we'll extract any component CSS out into
-          // a separate file - better for performance
-          preprocess: sveltePreprocess(),
-        }),
-        extractCss(),
-        // css({ output: "index.css" }),
-        resolve({
-          preferBuiltins: true,
-          browser: true,
-          dedupe: ["svelte"],
-        }),
-        commonjs(),
-        typescript({
-          sourceMap: false,
-        }),
-      ],
-    });
+    for (let j = 0; j < folders.length; j++) {
+      const file = folders[j];
 
-    await analyzePackageJson(bundle, `./packages/${file}`, pkg);
+      // skip .DS_STORE file in mac
+      if (/^.ds_store$/i.test(file)) continue;
+      // skip file with extension
+      const ext = path.extname(file).toLowerCase();
+      if (ext) continue;
+      if (file === "responsive-ui") {
+        // push to end
+        continue;
+      }
+
+      console.log(chalk.green(file));
+      const basePath = `${pkgPath}/${file}`;
+      const pkg = JSON.parse(
+        fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
+      );
+
+      const bundle = await rollup({
+        input: path.resolve(`${basePath}/${pkg.svelte}`),
+        plugins: [
+          svelte({
+            compilerOptions: {
+              // enable run-time checks when not in production
+              dev: !production,
+            },
+            emitCss: true,
+            // we'll extract any component CSS out into
+            // a separate file - better for performance
+            preprocess: sveltePreprocess(),
+          }),
+          extractCss(),
+          // css({ output: "index.css" }),
+          resolve({
+            preferBuiltins: true,
+            browser: true,
+            dedupe: ["svelte"],
+          }),
+          commonjs(),
+          typescript({
+            sourceMap: false,
+          }),
+        ],
+      });
+
+      await analyzePackageJson(bundle, basePath, pkg);
+    }
   }
 })();

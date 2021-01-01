@@ -1,0 +1,38 @@
+{
+  "name": "@responsive-ui/tooltip",
+  "version": "0.2.6",
+  "description": "> TODO: description",
+  "author": "Si3nLoong <sianloong90@gmail.com>",
+  "homepage": "https://github.com/wetix/responsive-ui#readme",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "svelte": "src/Tooltip.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": "^3.29.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "src",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  }
+}
