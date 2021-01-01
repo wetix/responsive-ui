@@ -22,8 +22,8 @@
   },
   "files": [
     "lib",
-    "src",
-    "types"
+    "types",
+    "src"
   ],
   "repository": {
     "type": "git",
