@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build:ui": "rollup -c ./responsive.config.js",
     "build": "node ./scripts/build.js",
     "dev": "rollup -c -w",
     "start": "sirv public --port 3600",

@@ -1,7 +1,8 @@
 <script lang="ts">
+  import * as ResponsiveUI from "../components/index.js";
   import Button from "../components/button/src/Button.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
-  import Date from "../components/date/src/Date.svelte";
+  import DatePicker from "../components/date-picker/src/DatePicker.svelte";
   import Header from "../components/header/src/Header.svelte";
   // import * as message from "../components/alert/src";
   import Icon from "../components/icon/src/Icon.svelte";
@@ -25,7 +26,7 @@
   import Responsive from "../components/responsive/src";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
 
-  console.log(Snackbar);
+  console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -269,7 +270,7 @@
     </div>
     <Button on:click={showNotification('success')}>Show Success</Button>
     <Button on:click={showNotification('error')}>Show Error</Button>
-    <Date />
+    <DatePicker />
   </main>
   <BottomBar>
     <Button disabled={disabledButton} on:click={showNotification('default')}>
