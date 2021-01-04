@@ -5,7 +5,9 @@ export interface SwitchProps {
   disabled?: boolean;
 }
 
-export interface SwitchEvents {}
+export interface SwitchEvents {
+  change?: () => {} | void;
+}
 
 declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 

@@ -16,7 +16,6 @@
   import Label from "../components/label/src/Label.svelte";
   import Row from "../components/row/src/Row.svelte";
   import Column from "../components/column/src/Column.svelte";
-  import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
   import Switch from "../components/switch/src/Switch.svelte";
   import Card from "../components/card/src/Card.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
@@ -48,7 +47,7 @@
   };
 
   let disabledButton = false;
-  let showModal = false;
+  let showModal = true;
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
@@ -141,9 +140,29 @@
   const tabItems = [
     {
       title: "Item A",
+      options: [
+        {
+          title: "Item A - First Option",
+          value: "a1",
+        },
+        {
+          title: "Item A - Second Option",
+          value: "a2",
+        },
+      ],
     },
     {
       title: "Item B",
+      options: [
+        {
+          title: "Item B - First Option",
+          value: "b1",
+        },
+        {
+          title: "Item B - Second Option",
+          value: "b2",
+        },
+      ],
     },
     {
       title: "Item C",
@@ -282,6 +301,4 @@
 <FloatingActionButton on:click={console.log} />
 
 <!-- <BottomModal  /> -->
-<BottomSheet title="Testing" bind:open={showModal} items={[]}>
-  asdlkasjkdljasl
-</BottomSheet>
+<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />
