@@ -4,24 +4,34 @@
 
   const queue: Writable<any>[] = [];
 
+  if (window.screen.orientation) {
+    window.screen.orientation.addEventListener("change", () => {
+      queue.forEach((store) => {
+        store.update((v) =>
+          Object.assign(v, { orientation: screen.orientation.type })
+        );
+      });
+    });
+  }
+
   // landscape and portrait
   window.addEventListener("resize", (e) => {
     // console.log(window.navigator.userAgent);
     const { width, height } = screen;
     queue.forEach((store) => {
-      // console.log();
-      store.set({ aspectRatio: width / height, width, height });
+      store.update((v) =>
+        Object.assign(v, { aspectRatio: width / height, width, height })
+      );
     });
-    // console.log("width =>", screen.width, ", height =>", screen.height);
-    // console.log(e);
   });
 
   const createStore = () => {
-    const { width } = screen;
+    const { width, height } = screen;
     const store$ = writable({
+      orientation: screen.orientation.type,
       aspectRatio: width / screen.height,
       width,
-      height: 0,
+      height,
     });
     queue.push(store$);
     return store$;
@@ -39,4 +49,4 @@
 <style lang="scss">
 </style>
 
-<slot aspectRatio={$store$.aspectRatio} />
+<slot aspectRatio={$store$.aspectRatio} orientation={$store$.orientation} />
