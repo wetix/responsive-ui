@@ -3,11 +3,14 @@
   import Button from "@responsive-ui/button";
   import BottomModal from "@responsive-ui/bottom-modal";
   import Tab from "@responsive-ui/tab";
-  import type { TabItem } from "@responsive-ui/tab";
+
+  import type { Item } from "../types";
+  import Option from "./Option.svelte";
 
   const dispatch = createEventDispatcher();
 
-  export let items: TabItem[] = [];
+  export let items: Item[] = [];
+  export let selected = 0;
   export let open = false;
   export let title = "";
 
@@ -20,7 +23,11 @@
     position: relative;
 
     &__header {
-      padding: 0 15px;
+      padding: 0 15px 5px;
+    }
+
+    &__body {
+      padding: 12px 15px;
     }
 
     &__reset {
@@ -47,8 +54,12 @@
         class="responsive-ui-bottom-sheet__reset"
         on:click={() => dispatch('reset')}>Reset</span>
     </header>
-    <Tab {items}>
-      <div>testing</div>
+    <Tab {items} bind:selected>
+      <div class="responsive-ui-bottom-sheet__body">
+        {#each items[selected].options || [] as opt (opt.value)}
+          <Option title={opt.title} value={opt.value} />
+        {/each}
+      </div>
     </Tab>
   </div>
   <footer class="responsive-ui-bottom-sheet__footer">
