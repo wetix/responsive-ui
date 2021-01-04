@@ -11,16 +11,25 @@
 
   let tab: null | HTMLDivElement;
   let childNodes: HTMLCollectionOf<Element>;
+  let left = 0;
+  let width = 0;
+
+  const setWidth = () => {
+    if (childNodes[selected]) {
+      const rect = childNodes[selected].getBoundingClientRect();
+      left = rect.x;
+      width = rect.width;
+    }
+  };
+
   onMount(() => {
     childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
-    if (childNodes[selected]) {
-      console.log(childNodes[selected]);
-    }
+    setWidth();
   });
 
   const onChange = (_: Event, i: number) => {
-    // coordinate = (target as HTMLElement).getBoundingClientRect();
     selected = i;
+    setWidth();
   };
 </script>
 
@@ -28,9 +37,11 @@
   .responsive-ui-tab {
     position: relative;
     color: #505050;
+    font-size: 14px;
     border-top: 2px solid transparent;
-    display: inline-flex;
-    box-shadow: 0 5px 6px -4px rgba(0, 0, 0, 0.15);
+    display: flex;
+    // border: 1px solid red;
+    box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.15);
 
     &__ink-bar {
       position: absolute;
@@ -38,22 +49,24 @@
       margin-top: -2px;
       display: block;
       height: 2px;
-      width: 100%;
+      width: 100px;
       background: #fc4451;
       transition: all 0.5s;
     }
 
     nav {
+      padding: 0 15px;
       white-space: nowrap;
       overflow-x: scroll;
     }
 
     &__item {
-      display: inline-block;
       cursor: pointer;
+      display: inline-block;
       position: relative;
       text-align: center;
-      padding: 8px 15px;
+      padding: 8px 0;
+      margin-right: 15px;
       transition: color 0.5s;
     }
 
@@ -86,7 +99,9 @@
       </span>
     {/each}
   </nav>
-  <div class="responsive-ui-tab__ink-bar" />
+  <div
+    class="responsive-ui-tab__ink-bar"
+    style={`left:${left}px;width:${width}px`} />
 </div>
 
 {#if hasSlots}
