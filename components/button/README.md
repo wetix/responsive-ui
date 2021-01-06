@@ -1,29 +1,62 @@
 # @responsive-ui/button
 
-> TODO: description
+> A button component of responsive-ui.
 
-## Installation
+## Install
 
-```bash
-yarn install @responsive-ui/button
+```console
+npm install @responsive-ui/button
 ```
+
+or
+
+```console
+yarn add @responsive-ui/button
+```
+
+<br/>
+
+## Properties
+
+```ts
+type ButtonProps = {
+  title?: string; // button title
+  name?: string; // button name
+  type: "button" | "submit" | "reset" = "button"; // button type
+  class? string; // custom class for button
+  disabled?: boolean; // disabled the button
+  form?: string;
+  style?: string;
+};
+```
+
+<br/>
 
 ## Usage
 
-```
+```svelte
 <script>
   import Button from '@responsive-ui/button';
+
+  const onClick = () => {
+    console.log("clicked!");
+  }
 </script>
 
-<Button title="Click me"></Button>
+<Button title="Click me" on:click={onClick}></Button>
 ```
 
-| Property  | Description                              | Type   | Default  |
-| --------- | ---------------------------------------- | ------ | -------- |
-| title     | The button title                         | string | -        |
-| name      | The name of button                       | string | -        |
-| type      | The type of button                       | string | `button` |
-| disabled  | Disable button                           | bool   | false    |
-| form      | Specifies the form the button belongs to | string | -        |
-| secondary | Secondary button                         | bool   | false    |
-| style     | CSS styling for button                   | string | -        |
+## Sponsors
+
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
+
+## License
+
+[@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+
+## Big Thanks To
+
+Thanks to these awesome companies for their support of Open Source developers ❤
+
+[![GitHub](https://jstools.dev/img/badges/github.svg)](https://github.com/open-source)
+[![NPM](https://jstools.dev/img/badges/npm.svg)](https://www.npmjs.com/)
