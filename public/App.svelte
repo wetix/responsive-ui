@@ -37,11 +37,18 @@
   // import Index from "./components/button/index.svelte";
   // import Checkbox from "../src/components/checkbox/index.svelte";
 
-  const wrapComponent = (Component, data: Record<string, any> = {}) => {
+  const wrapComponent = (
+    Component,
+    props: Record<string, any> = {},
+    events: Record<string, Function> = {}
+  ) => {
     return function (opts) {
       opts.props || (opts.props = {});
-      Object.assign(opts.props, data);
+      Object.assign(opts.props, props);
       const comp = new Component(opts);
+      Object.entries(events).every(([event, cb]) => {
+        comp.$on(event, cb);
+      });
       return comp;
     };
   };
@@ -51,18 +58,40 @@
     // message.open();
   };
 
-  console.log();
   const uploadUrl = `https://api.imgbb.com/1/upload??expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
   const columns = [
     { title: "Name", key: "name" },
-    { title: "Email", key: "email" },
+    {
+      title: "Email",
+      key: "email",
+      value: (v) => (v ? v : "-"),
+    },
+    {
+      title: "Amount",
+      align: "right",
+      value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
+    },
     {
       title: "Offline",
+      align: "center",
       component: ({ online }) => wrapComponent(Online, { online }),
       // key: "",
     },
     { title: "Age", align: "center", key: "age" },
     { title: "Created", key: "created" },
+    {
+      align: "center",
+      component: (v) =>
+        wrapComponent(
+          Icon,
+          { type: "more" },
+          {
+            click() {
+              console.log("click data =>", v);
+            },
+          }
+        ),
+    },
   ];
 
   const datas = [
@@ -71,13 +100,16 @@
       name: "John Doe",
       age: 19,
       online: false,
+      amount: 10.5,
       created: "2020 Jan 01",
     },
     {
       key: "2",
       name: "Willie",
+      email: "willie@hotmail.com",
       age: 24,
       online: false,
+      amount: 3.38,
       created: "2020 Feb 27",
     },
     {
@@ -85,6 +117,7 @@
       name: "The Joker",
       age: 16,
       online: true,
+      amount: 1020.6,
       created: "2006 Oct 1",
     },
     {
@@ -92,6 +125,7 @@
       name: "Batman",
       age: 30,
       online: false,
+      amount: 1.445,
       created: "2006 Oct 1",
     },
     {
@@ -99,6 +133,7 @@
       name: "The Joker",
       age: 16,
       online: true,
+      amount: 45.78,
       created: "2006 Oct 1",
     },
   ];
@@ -109,7 +144,7 @@
   };
 
   let disabledButton = false;
-  let showModal = true;
+  let showModal = false;
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
