@@ -48,7 +48,16 @@ type TableItem = Record<string, any>;
 
    const columns = [
     { title: "Name", key: "name" },
-    { title: "Email", key: "email" },
+    {
+      title: "Email",
+      key: "email",
+      value: (v) => (v ? v : "-"),
+    },
+    {
+      title: "Amount",
+      align: "right",
+      value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
+    },
     { title: "Offline" },
     { title: "Age", align: "center", key: "age" },
     { title: "Created", key: "created" },
@@ -60,13 +69,16 @@ type TableItem = Record<string, any>;
       name: "John Doe",
       age: 19,
       online: false,
+      amount: 10.5,
       created: "2020 Jan 01",
     },
     {
       key: "2",
       name: "Willie",
+      email: "willie@hotmail.com",
       age: 24,
       online: false,
+      amount: 3.38,
       created: "2020 Feb 27",
     },
     {
@@ -74,6 +86,7 @@ type TableItem = Record<string, any>;
       name: "The Joker",
       age: 16,
       online: true,
+      amount: 1020.6,
       created: "2006 Oct 1",
     },
     {
@@ -81,6 +94,7 @@ type TableItem = Record<string, any>;
       name: "Batman",
       age: 30,
       online: false,
+      amount: 1.445,
       created: "2006 Oct 1",
     },
     {
@@ -88,6 +102,7 @@ type TableItem = Record<string, any>;
       name: "The Joker",
       age: 16,
       online: true,
+      amount: 45.78,
       created: "2006 Oct 1",
     },
   ];
