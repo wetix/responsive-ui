@@ -14,6 +14,7 @@ import InfiniteScroll from "./infinite-scroll/types";
 import Input from "./input/types";
 import Label from "./label/types";
 import Poster from "./poster/types";
+import Responsive from "./responsive/types";
 import Row from "./row/types";
 import Search from "./search/types";
 // import Snackbar from "./snackbar/src/index.ts";
@@ -40,6 +41,7 @@ export {
   Input,
   Label,
   Poster,
+  Responsive,
   Row,
   Search,
   // Snackbar,
