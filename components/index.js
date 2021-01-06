@@ -14,6 +14,7 @@ import Input from "./input/src/Input.svelte";
 import Label from "./label/src/Label.svelte";
 import Poster from "./poster/src/Poster.svelte";
 // import Quantity from "./quantity/src/Quantity.svelte";
+import Responsive from "./responsive/src/Responsive.svelte";
 import Row from "./row/src/Row.svelte";
 // import Responsive from "./row/src/Row.svelte";
 import Search from "./search/src/Search.svelte";
@@ -40,6 +41,7 @@ export {
   Input,
   Label,
   Poster,
+  Responsive,
   Row,
   Search,
   // Snackbar,
