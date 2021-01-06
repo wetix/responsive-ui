@@ -1,7 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface EllipsisProps {
-  // width?: number | string;
+  class?: string;
+  style?: string;
 }
 
 export interface EllipsisEvents {
