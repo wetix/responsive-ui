@@ -9,6 +9,7 @@ const success = (props: SnackbarProps) => {
   const component = new Snackbar({
     target: document.body,
     props,
+    intro: true,
   });
   const pos = queue.length;
   // component.$$.on_destroy.push(() => {

@@ -25,6 +25,7 @@
   import Responsive from "../components/responsive/src";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
   import Online from "./components/Online.svelte";
+  import Link from "../components/link/src/Link.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -306,9 +307,11 @@
     <div style="width: 100%; white-space: nowrap">
       <Ellipsis>
         Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        industry.
+        <Link>Lorem Ipsum</Link>
+        has been the industry's standard dummy text ever since the 1500s, when
+        an unknown printer took a galley of type and scrambled it to make a type
+        specimen book.
       </Ellipsis>
     </div>
     <div class="padding">
