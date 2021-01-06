@@ -138,12 +138,15 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
   }
 };
 
+// const excludedFolders = [".ds_store", "lib"];
+
 (async function Bundle() {
   const lernaPath = path.resolve("./lerna.json");
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
   console.log(lerna);
 
   const pkgs = lerna.packages || [];
+  // const excFolders = `/^(${excludedFolders.join("|")})$/`
   for (let i = 0; i < pkgs.length; i++) {
     const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
     console.log(pkgPath);
@@ -153,7 +156,7 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
       const file = folders[j];
 
       // skip .DS_STORE file in mac
-      if (/^.ds_store$/i.test(file)) continue;
+      if (/^(.ds_store|lib)$/i.test(file)) continue;
       // skip file with extension
       const ext = path.extname(file).toLowerCase();
       if (ext) continue;
