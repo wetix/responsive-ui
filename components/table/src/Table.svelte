@@ -13,18 +13,22 @@
   export let style = "";
 
   const getValue = (column: TableColumn, item: TableItem) => {
-    const { key = "", value = (v: any) => v } = column;
+    const { key, value = (v: any) => v } = column;
 
-    return value(
-      key
-        .split(".")
-        .reduce(
-          (acc: Record<string, any>, cur: string) =>
-            cur in acc ? acc[cur] : "",
-          item
-        ),
-      item
-    );
+    if (key) {
+      return value(
+        key
+          .split(".")
+          .reduce(
+            (acc: Record<string, any>, cur: string) =>
+              cur in acc ? acc[cur] : "",
+            item
+          ),
+        item
+      );
+    }
+
+    return value(item);
   };
 
   const getComponent = (
@@ -91,8 +95,8 @@
 
       th,
       td {
-        font-weight: normal;
         padding: 10px;
+        font-weight: normal;
         white-space: nowrap;
         vertical-align: middle;
       }
@@ -101,8 +105,16 @@
         padding: 6px 10px;
       }
 
+      .responsive-ui-table__column--align-left {
+        text-align: left;
+      }
+
       .responsive-ui-table__column--align-center {
         text-align: center;
+      }
+
+      .responsive-ui-table__column--align-right {
+        text-align: right;
       }
     }
 
@@ -137,7 +149,7 @@
           <th
             class="responsive-ui-table__column--align-{column.align || 'left'}"
             style="width:{column.width ? column.width : 'none'}">
-            {column.title}
+            {column.title || ''}
           </th>
         {/each}
       </tr>
