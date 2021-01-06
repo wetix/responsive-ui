@@ -24,6 +24,7 @@
   import Poster from "../components/poster/src/Poster.svelte";
   import Responsive from "../components/responsive/src";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
+  import Online from "./components/Online.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -36,11 +37,72 @@
   // import Index from "./components/button/index.svelte";
   // import Checkbox from "../src/components/checkbox/index.svelte";
 
+  const wrapComponent = (Component, data: Record<string, any> = {}) => {
+    return function (opts) {
+      opts.props || (opts.props = {});
+      Object.assign(opts.props, data);
+      const comp = new Component(opts);
+      return comp;
+    };
+  };
+
+  console.log(wrapComponent(Online, {})({ target: document.body }));
   const displayMessage = () => {
     // message.open();
   };
 
+  console.log();
   const uploadUrl = `https://api.imgbb.com/1/upload??expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
+  const columns = [
+    { title: "Name", key: "name" },
+    { title: "Email", key: "email" },
+    {
+      title: "Offline",
+      component: ({ online }) => wrapComponent(Online, { online }),
+      // key: "",
+    },
+    { title: "Age", align: "center", key: "age" },
+    { title: "Created", key: "created" },
+  ];
+
+  const datas = [
+    {
+      key: "1",
+      name: "John Doe",
+      age: 19,
+      online: false,
+      created: "2020 Jan 01",
+    },
+    {
+      key: "2",
+      name: "Willie",
+      age: 24,
+      online: false,
+      created: "2020 Feb 27",
+    },
+    {
+      key: "3",
+      name: "The Joker",
+      age: 16,
+      online: true,
+      created: "2006 Oct 1",
+    },
+    {
+      key: "4",
+      name: "Batman",
+      age: 30,
+      online: false,
+      created: "2006 Oct 1",
+    },
+    {
+      key: "5",
+      name: "The Joker",
+      age: 16,
+      online: true,
+      created: "2006 Oct 1",
+    },
+  ];
+
   const uploadSuccessful = ({ detail }) => {
     console.log(detail.response);
     console.log(detail);
@@ -85,39 +147,6 @@
   //     submenus: [{ title: "C.B" }, { title: "C.C" }],
   //   },
   // ];
-
-  const datas = [
-    {
-      name: "John Doe",
-      age: 19,
-      created: "2020 Jan 01",
-    },
-    {
-      name: "Willie",
-      age: 24,
-      created: "2020 Feb 27",
-    },
-    {
-      name: "The Joker",
-      age: 16,
-      created: "2006 Oct 1",
-    },
-  ];
-
-  const columns = [
-    { key: "name", title: "A" },
-    { key: "status", title: "B" },
-    { key: "status", title: "C" },
-    { key: "status", title: "D" },
-    { key: "status", title: "E" },
-    { key: "name", title: "AA" },
-    { key: "status", title: "F" },
-    { key: "name", title: "Z" },
-  ];
-  const records = [
-    { name: "sianloong", status: "success" },
-    { name: "kk", status: "success" },
-  ];
 
   const uploadProps = {
     name: "image",
@@ -247,9 +276,7 @@
     <div class="padding">
       <Responsive let:aspectRatio>
         {#if aspectRatio > 1}
-          <Table
-            columns={[{ title: 'Name', key: 'name' }, { title: 'Email' }, { title: 'Age', align: 'center', key: 'age' }, { title: 'Created', key: 'created' }]}
-            items={datas} />
+          <Table key="key" {columns} items={datas} />
         {:else}
           {#each datas as data}
             <Card>

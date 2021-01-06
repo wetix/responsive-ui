@@ -14,8 +14,8 @@ export type TableItem = Record<string, any>;
 
 export interface TableProps {
   key: string;
-  items: TableItem[];
   columns: TableColumn[];
+  items: TableItem[];
 }
 
 export interface TableEvents {}

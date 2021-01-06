@@ -26,7 +26,8 @@ yarn add responsive-ui
 
 ## Component List
 
-- [@responsive-ui/bottom-bar](https://www.npmjs.com/package/@responsive-ui/bottom-bar)
+- [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
+- [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
 - [@responsive-ui/bottom-modal](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
 - [@responsive-ui/bottom-sheet](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
 - [@responsive-ui/card](https://www.npmjs.com/package/@responsive-ui/card)
@@ -47,7 +48,7 @@ yarn add responsive-ui
 - [@responsive-ui/search](https://www.npmjs.com/package/@responsive-ui/search)
 - [@responsive-ui/select](https://www.npmjs.com/package/@responsive-ui/select)
 - [@responsive-ui/tab](https://www.npmjs.com/package/@responsive-ui/tab)
-- [@responsive-ui/table](https://www.npmjs.com/package/@responsive-ui/table)
+- [@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/master/components/table)
 - [@responsive-ui/tag](https://www.npmjs.com/package/@responsive-ui/tag)
 - [@responsive-ui/textarea](https://www.npmjs.com/package/@responsive-ui/textarea)
 - [@responsive-ui/upload](https://www.npmjs.com/package/@responsive-ui/upload)
