@@ -51,7 +51,7 @@ yarn add responsive-ui
 - [@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/master/components/table)
 - [@responsive-ui/tag](https://www.npmjs.com/package/@responsive-ui/tag)
 - [@responsive-ui/textarea](https://www.npmjs.com/package/@responsive-ui/textarea)
-- [@responsive-ui/upload](https://www.npmjs.com/package/@responsive-ui/upload)
+- [@responsive-ui/upload](https://github.com/wetix/responsive-ui/tree/master/components/upload)
 
 ## Sponsors
 

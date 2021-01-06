@@ -1,17 +1,17 @@
-# @responsive-ui/ellipsis
+# @responsive-ui/fab
 
 > A floating action button component of responsive-ui.
 
 ## Install
 
 ```console
-npm install @responsive-ui/ellipsis
+npm install @responsive-ui/fab
 ```
 
 or
 
 ```console
-yarn add @responsive-ui/ellipsis
+yarn add @responsive-ui/fab
 ```
 
 <br/>
@@ -19,7 +19,7 @@ yarn add @responsive-ui/ellipsis
 ## Properties
 
 ```ts
-type EllipsisProps = {
+type FloatingActionButtonProps = {
   class?: string;
   style?: string;
 };
@@ -31,12 +31,10 @@ type EllipsisProps = {
 
 ```svelte
 <script>
-  import Ellipsis from '@responsive-ui/ellipsis';
+  import FloatingActionButton from '@responsive-ui/fab';
 </script>
 
-<Ellipsis>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-</Ellipsis>
+<FloatingActionButton on:click={console.log} />
 ```
 
 ## Sponsors
@@ -45,7 +43,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## License
 
-[@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/master/components/ellipsis) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/master/components/fab) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
 
 ## Big Thanks To
 
