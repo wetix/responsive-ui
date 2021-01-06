@@ -6,12 +6,12 @@
 <style lang="scss">
   .responsive-ui-icon {
     display: inline-block;
-    width: 26px;
-    height: 26px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
 
     svg {
       display: block;
-      margin: 2px;
     }
   }
 </style>
@@ -21,6 +21,8 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
+      width="100%"
+      height="100%"
       stroke="#000"
       stroke-width="1.5"
       stroke-linecap="square"
@@ -31,8 +33,8 @@
   {:else if type === 'filter'}
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width="100%"
+      height="100%"
       viewBox="0 0 24 24"
       fill="none"
       stroke="#000"
@@ -47,5 +49,31 @@
       <line x1="1" y1="14" x2="7" y2="14" />
       <line x1="9" y1="8" x2="15" y2="8" />
       <line x1="17" y1="16" x2="23" y2="16" /></svg>
+  {:else if type === 'more'}
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      width="100%"
+      height="100%"
+      viewBox="0 0 426.667 426.667"
+      style="enable-background:new 0 0 426.667 426.667;"
+      xml:space="preserve">
+      <g>
+        <g>
+          <circle cx="42.667" cy="213.333" r="42.667" />
+        </g>
+      </g>
+      <g>
+        <g>
+          <circle cx="213.333" cy="213.333" r="42.667" />
+        </g>
+      </g>
+      <g>
+        <g>
+          <circle cx="384" cy="213.333" r="42.667" />
+        </g>
+      </g>
+    </svg>
   {/if}
 </span>
