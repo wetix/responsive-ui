@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let name = "";
   export let value = "";
   export let size = 100;
   export let loading = false;
@@ -52,7 +53,7 @@
       margin: 0;
       border: none;
       font-family: inherit;
-      font-size: inherit;
+      font-size: var(--font-size, 14px);
       height: var(--height, 34px);
       padding: 0 10px;
       width: 100%;
