@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/snackbar",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Snackbar component",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@responsive-ui/icon": "^0.3.3"
+    "@responsive-ui/icon": "^0.3.4"
   },
   "peerDependencies": {
     "svelte": "^3.29.0"
