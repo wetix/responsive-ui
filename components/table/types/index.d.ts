@@ -6,12 +6,14 @@ export type TableColumn = {
   class?: string;
   align?: "left" | "center" | "right";
   width?: number | string;
-  component?: SvelteComponent;
+  value?: (...args: any[]) => any;
+  component?: ((...args: any[]) => SvelteComponentDev) | SvelteComponentDev;
 };
 
 export type TableItem = Record<string, any>;
 
 export interface TableProps {
+  key: string;
   items: TableItem[];
   columns: TableColumn[];
 }

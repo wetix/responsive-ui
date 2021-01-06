@@ -1,26 +1,39 @@
 <script lang="ts">
+  import type { SvelteComponentDev } from "svelte/internal";
+
   import type { TableColumn, TableItem } from "../types";
 
   let className = "";
   export { className as class };
+  export let key = "id";
   export let columns: TableColumn[] = [];
   export let items: Array<TableItem> = [];
   export let striped = false;
   export let bordered = true;
   export let style = "";
 
-  const getValue = (i: number, data = {}, path = "") => {
-    const { value = (v: any) => v } = columns[i];
+  const getValue = (column: TableColumn, item: TableItem) => {
+    const { key = "", value = (v: any) => v } = column;
+
     return value(
-      path
+      key
         .split(".")
         .reduce(
           (acc: Record<string, any>, cur: string) =>
             cur in acc ? acc[cur] : "",
-          data
+          item
         ),
-      data
+      item
     );
+  };
+
+  const getComponent = (
+    column: TableColumn,
+    item: TableItem
+  ): SvelteComponentDev => {
+    const { component } = column;
+    if (typeof component === "function") return component(item);
+    return component;
   };
 </script>
 
@@ -130,16 +143,18 @@
       </tr>
     </thead>
     <tbody>
-      {#each items as item, i}
+      {#each items as item, i (item[key] || i)}
         <slot name="row" index={i} {item}>
           <tr>
-            {#each columns as column, j}
+            {#each columns as column}
               <td
                 class="responsive-ui-table__column--align-{column.align || 'left'}">
                 {#if column.component}
-                  <svelte:component this={column.component} {...item} />
+                  <svelte:component
+                    this={getComponent(column, item)}
+                    {...item} />
                 {:else}
-                  <div>{getValue(j, item, column.key)}</div>
+                  <div>{getValue(column, item)}</div>
                 {/if}
               </td>
             {/each}
