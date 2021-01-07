@@ -1,25 +1,32 @@
-import type { SvelteComponentTyped } from "svelte/internal";
+import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 
-type Option = {
+type BottomSheetOption = {
   title: string;
   value: string;
+  icon?: string | SvelteComponentDev;
+  disabled?: boolean;
   selected?: boolean;
 };
 
-export interface Item {
+export interface BottomSheetItem {
   title: string;
-  options: Option[];
+  options: BottomSheetOption[];
+  selected?: Map<string, boolean>;
   style?: string;
 }
 
 export interface BottomSheetProps {
-  title?: string;
+  items: BottomSheetItem[];
   open?: boolean;
-  items: Item[];
+  selected?: number;
+  disabled?: boolean;
+  closable?: boolean;
 }
 
 export interface BottomSheetEvents {
-  click?: void;
+  change?: void;
+  reset?: void;
+  filter?: void;
 }
 
 declare class BottomSheet extends SvelteComponentTyped<

@@ -1,22 +1,32 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import Icon from "@responsive-ui/icon";
+  import type { SvelteComponentDev } from "svelte/internal";
+
+  const dispatch = createEventDispatcher();
+
   export let title = "";
+  export let icon: null | Function | string | SvelteComponentDev;
   export let value = "";
   export let checked = false;
 
   const onClick = () => {
     checked = !checked;
+    dispatch("change", { checked, value });
   };
 </script>
 
 <style lang="scss">
   .responsive-ui-option {
+    cursor: pointer;
     border-bottom: 1px solid #f1f1f1;
     display: flex;
     position: relative;
     align-items: center;
-    padding: 6px 0 7px;
+    padding: 6px 0;
     text-transform: capitalize;
-    color: #505050;
+    color: var(--text-color-black, #505050);
+
     &:last-child {
       border: 0;
     }
@@ -29,6 +39,15 @@
       content: "\02143";
       transform: rotate(40deg);
     }
+
+    &__icon {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    &__title {
+      font-size: var(--font-size, 14px);
+    }
   }
 </style>
 
@@ -36,5 +55,14 @@
   class="responsive-ui-option"
   class:responsive-ui-option--checked={checked}
   on:click={onClick}>
-  {title}
+  {#if icon}
+    <span class="responsive-ui-option__icon">
+      {#if typeof icon === 'string'}
+        <Icon type={icon} />
+      {:else}
+        <svelte:component this={icon} />
+      {/if}
+    </span>
+  {/if}
+  <span class="responsive-ui-option__title">{title}</span>
 </div>

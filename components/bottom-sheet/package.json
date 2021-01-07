@@ -35,6 +35,7 @@
   "dependencies": {
     "@responsive-ui/bottom-modal": "^0.3.5",
     "@responsive-ui/button": "^0.3.5",
+    "@responsive-ui/icon": "^0.3.5",
     "@responsive-ui/tab": "^0.3.5"
   }
 }

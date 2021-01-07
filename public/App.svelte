@@ -1,31 +1,32 @@
 <script lang="ts">
-  import * as ResponsiveUI from "../components/index.js";
-  import Button from "../components/button/src/Button.svelte";
+  import * as ResponsiveUI from "../components/responsive-ui/index.js";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
+  import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
+  import Button from "../components/button/src/Button.svelte";
   import DatePicker from "../components/date-picker/src/DatePicker.svelte";
   import Header from "../components/header/src/Header.svelte";
-  // import * as message from "../components/alert/src";
   import Icon from "../components/icon/src/Icon.svelte";
-  import Snackbar, { success } from "../components/snackbar/src";
-  import Search from "../components/search/src/Search.svelte";
-  import Textarea from "../components/textarea/src/Textarea.svelte";
-  import Upload from "../components/upload/src/Upload.svelte";
-  import Table from "../components/table/src/Table.svelte";
-  import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
-  // import ComponentDetail from "./components/ComponentDetail.svelte";
   import Label from "../components/label/src/Label.svelte";
+  // import * as message from "../components/alert/src";
+  import Snackbar, { success } from "../components/snackbar/src";
   import Row from "../components/row/src/Row.svelte";
   import Column from "../components/column/src/Column.svelte";
+  import Search from "../components/search/src/Search.svelte";
+  import Table from "../components/table/src/Table.svelte";
+  import Textarea from "../components/textarea/src/Textarea.svelte";
+  import Upload from "../components/upload/src/Upload.svelte";
+  import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
+  // import ComponentDetail from "./components/ComponentDetail.svelte";
   import Switch from "../components/switch/src/Switch.svelte";
   import Card from "../components/card/src/Card.svelte";
-  import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
   import FloatingActionButton from "../components/fab/src/FloatingActionButton.svelte";
   import Input from "../components/input/src/Input.svelte";
   import Poster from "../components/poster/src/Poster.svelte";
   import Responsive from "../components/responsive/src";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
-  import Online from "./components/Online.svelte";
   import Link from "../components/link/src/Link.svelte";
+  import Online from "./components/Online.svelte";
+  import Logo from "./components/Logo.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -211,11 +212,25 @@
       options: [
         {
           title: "Item A - First Option",
+          icon: wrapComponent(Logo, {}),
           value: "a1",
         },
         {
           title: "Item A - Second Option",
           value: "a2",
+        },
+        {
+          title: "Item A - Third Option",
+          icon: wrapComponent(Logo, {}),
+          value: "a3",
+        },
+        {
+          title: "Item A - Fourth Option",
+          value: "a4",
+        },
+        {
+          title: "Item A - Fifth Option",
+          value: "a5",
         },
       ],
     },
@@ -224,18 +239,37 @@
       options: [
         {
           title: "Item B - First Option",
+          icon: wrapComponent(Logo, {}),
           value: "b1",
         },
         {
           title: "Item B - Second Option",
           value: "b2",
         },
+        {
+          title: "Item B - Third Option",
+          value: "b3",
+        },
       ],
     },
     {
       title: "Item C",
+      options: [
+        {
+          title: "Item C - First Option",
+          value: "c1",
+        },
+        {
+          title: "Item C - Ten Option",
+          value: "c10",
+        },
+      ],
     },
   ];
+
+  const onConfirm = ({ detail }) => {
+    console.log(detail);
+  };
 </script>
 
 <style>
@@ -369,4 +403,8 @@
 <FloatingActionButton on:click={console.log} />
 
 <!-- <BottomModal  /> -->
-<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />
+<BottomSheet
+  title="Testing"
+  bind:open={showModal}
+  items={tabItems}
+  on:filter={onConfirm} />

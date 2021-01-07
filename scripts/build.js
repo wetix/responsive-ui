@@ -160,10 +160,10 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
       // skip file with extension
       const ext = path.extname(file).toLowerCase();
       if (ext) continue;
-      if (file === "responsive-ui") {
-        // push to end
-        continue;
-      }
+      // if (file === "responsive-ui") {
+      //   // push to end
+      //   continue;
+      // }
 
       console.log(chalk.green(file));
       const basePath = `${pkgPath}/${file}`;

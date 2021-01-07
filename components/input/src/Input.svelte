@@ -9,11 +9,6 @@
   export let size = 100;
   export let value = "";
   export let autofocus = false;
-  // export let secondary = false;
-  // export let onChange = (_: Event) => {};
-  // export let onBlur = (_: Event) => {};
-  // export let onEnterDown = (_: string) => {};
-  // export let clearOnEnter = false;
 
   let active = false;
   let input: null | HTMLInputElement;
@@ -22,17 +17,6 @@
     if (input && autofocus) {
       input.focus();
     }
-    // if (input) {
-    //   input.addEventListener("keydown", (e: KeyboardEvent) => {
-    //     if (e.code === "Enter") {
-    //       onEnterDown(input.value);
-    //       if (clearOnEnter) {
-    //         value = "";
-    //         input.value = "";
-    //       }
-    //     }
-    //   });
-    // }
   });
 
   const onInput = (e: Event) => {
