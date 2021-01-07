@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface EllipsisProps {
   class?: string;
+  text?: string;
   style?: string;
 }
 

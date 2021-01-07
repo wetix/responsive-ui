@@ -1,6 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let text = "";
   export let style = "";
 </script>
 
@@ -13,5 +14,5 @@
 </style>
 
 <p class="responsive-ui-ellipsis {className}" {style} on:click>
-  <slot />
+  <slot>{text}</slot>
 </p>
