@@ -6,7 +6,7 @@
   import Header from "../components/header/src/Header.svelte";
   // import * as message from "../components/alert/src";
   import Icon from "../components/icon/src/Icon.svelte";
-  import Snackbar, { success } from "../components/snackbar/src";
+  import Snackbar, {success} from "../components/snackbar/src";
   import Search from "../components/search/src/Search.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
@@ -26,6 +26,7 @@
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
   import Online from "./components/Online.svelte";
   import Link from "../components/link/src/Link.svelte";
+  import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -54,7 +55,7 @@
     };
   };
 
-  console.log(wrapComponent(Online, {})({ target: document.body }));
+  console.log(wrapComponent(Online, {})({target: document.body}));
   const displayMessage = () => {
     // message.open();
   };
@@ -73,22 +74,22 @@
     {
       title: "Amount",
       align: "right",
-      value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
+      value: ({amount}) => `RM ${(amount || 0).toFixed(2)}`,
     },
     {
       title: "Offline",
       align: "center",
-      component: ({ online }) => wrapComponent(Online, { online }),
+      component: ({online}) => wrapComponent(Online, {online}),
       // key: "",
     },
-    { title: "Age", align: "center", key: "age" },
-    { title: "Created", key: "created" },
+    {title: "Age", align: "center", key: "age"},
+    {title: "Created", key: "created"},
     {
       align: "center",
       component: (v) =>
         wrapComponent(
           Icon,
-          { type: "more" },
+          {type: "more"},
           {
             click() {
               console.log("click data =>", v);
@@ -142,7 +143,7 @@
     },
   ];
 
-  const uploadSuccessful = ({ detail }) => {
+  const uploadSuccessful = ({detail}) => {
     console.log(detail.response);
     console.log(detail);
   };
@@ -368,5 +369,5 @@
 
 <FloatingActionButton on:click={console.log} />
 
-<!-- <BottomModal  /> -->
-<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />
+<BottomModal bind:open={showModal} />
+<!--<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />-->
