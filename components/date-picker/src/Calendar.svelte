@@ -105,7 +105,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 50;
     background: #fff;
     max-height: 360px;
     border-radius: 10px;

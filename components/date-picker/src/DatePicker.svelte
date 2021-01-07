@@ -9,12 +9,15 @@
   export let name = "";
   export let readonly = false;
   export let disabled = false;
-  export let value = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+  export let value = `${today.getFullYear()}-${String(
+    today.getMonth() + 1
+  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   export let placeholder = "";
 
   let calendar: null | SvelteComponent;
   const handleToggle = (e: Event) => {
     const rect = (e.target as HTMLInputElement).getBoundingClientRect();
+    console.log(rect);
     if (!calendar) {
       calendar = new Calendar({
         target: document.body,

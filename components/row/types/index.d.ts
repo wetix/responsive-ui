@@ -1,6 +1,15 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface RowProps {}
+export interface RowProps {
+  align?:
+    | "stretch"
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "baseline"
+    | "initial"
+    | "inherit";
+}
 
 export interface RowEvents {}
 

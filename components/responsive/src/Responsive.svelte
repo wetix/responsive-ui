@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
   import { writable } from "svelte/store";
   import type { Writable } from "svelte/store";
+  import type { ResponsiveState } from "../types";
 
-  const queue: Writable<any>[] = [];
+  const queue: Writable<ResponsiveState>[] = [];
 
   if (window.screen.orientation) {
     window.screen.orientation.addEventListener("change", () => {
@@ -15,8 +16,7 @@
   }
 
   // landscape and portrait
-  window.addEventListener("resize", (e) => {
-    // console.log(window.navigator.userAgent);
+  window.addEventListener("resize", () => {
     const { width, height } = screen;
     queue.forEach((store) => {
       store.update((v) =>
@@ -27,11 +27,9 @@
 
   const createStore = () => {
     const { width, height } = screen;
-    const store$ = writable({
+    const store$ = writable<ResponsiveState>({
       orientation: screen.orientation.type,
-      aspectRatio: width / screen.height,
-      width,
-      height,
+      aspectRatio: width / height,
     });
     queue.push(store$);
     return store$;
@@ -40,13 +38,6 @@
 
 <script lang="ts">
   const store$ = createStore();
-
-  store$.subscribe((v) => {
-    console.log("Result =>", v);
-  });
 </script>
-
-<style lang="scss">
-</style>
 
 <slot aspectRatio={$store$.aspectRatio} orientation={$store$.orientation} />

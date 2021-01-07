@@ -1,4 +1,8 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let name = "";
   export let value = "";
   export let size = 100;
@@ -6,7 +10,6 @@
   export let debounceTimer = 1000;
   export let spellcheck = false;
   export let placeholder = "";
-  export let search = (_: string) => {};
 
   const debounce = (func: Function, timeout?: number) => {
     let timer: NodeJS.Timeout | undefined;
@@ -20,7 +23,7 @@
   };
 
   const cb = debounce((v: string) => {
-    search && search(v);
+    dispatch("search", v);
     loading = false;
   }, debounceTimer);
 
@@ -33,7 +36,7 @@
     // let timeout = debounceTimer;
     if (key === "Enter" || key === 13) {
       // timeout = 0;
-      search && search(v);
+      dispatch("search", v);
     } else {
       cb(v);
     }

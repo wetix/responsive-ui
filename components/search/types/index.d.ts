@@ -10,7 +10,9 @@ export interface SearchProps {
   debounceTimer?: number;
 }
 
-export interface SearchEvents {}
+export interface SearchEvents {
+  search?: (v: string) => void;
+}
 
 export interface SearchSlots {}
 

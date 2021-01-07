@@ -4,19 +4,21 @@ declare module "*.svelte" {
   export { SvelteComponentDev as default } from "svelte/internal";
 }
 
+export type ResponsiveState = {
+  aspectRatio: number;
+  orientation:
+    | "landscape-primary"
+    | "landscape-secondary"
+    | "portrait-primary"
+    | "portrait-secondary";
+};
+
 export interface ResponsiveProps {}
 
 export interface ResponsiveEvents {}
 
 export interface ResponsiveSlots {
-  default: {
-    aspectRatio: number;
-    orientation:
-      | "landscape-primary"
-      | "landscape-secondary"
-      | "portrait-primary"
-      | "portrait-secondary";
-  };
+  default: ResponsiveState;
 }
 
 declare class Responsive extends SvelteComponentTyped<

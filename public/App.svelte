@@ -22,7 +22,7 @@
   import FloatingActionButton from "../components/fab/src/FloatingActionButton.svelte";
   import Input from "../components/input/src/Input.svelte";
   import Poster from "../components/poster/src/Poster.svelte";
-  import Responsive from "../components/responsive/src";
+  import Responsive from "../components/responsive/src/Responsive.svelte";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
   import Link from "../components/link/src/Link.svelte";
   import Online from "./components/Online.svelte";
@@ -156,10 +156,10 @@
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
-  const search = (value: string) => {
-    const regexp = new RegExp(value, "i");
+  const onSearch = ({ detail }) => {
+    const regexp = new RegExp(detail, "i");
     items = defaultItems.filter((v) => regexp.test(v));
-    console.log(value);
+    console.log(detail);
   };
 
   const showNotification = (variant: string) => () => {
@@ -334,7 +334,9 @@
     </Tab>
 
     <div class="padding">
-      <Search {search} placeholder="Enter your keyword here to search..." />
+      <Search
+        on:search={onSearch}
+        placeholder="Enter your keyword here to search..." />
     </div>
     <div style="padding: 10px 5px; border: 1px solid red;">
       <InfiniteScroll>
@@ -380,6 +382,12 @@
             url={uploadUrl}
             withCredentials={false}
             on:success={uploadSuccessful} />
+        </Column>
+      </Row>
+      <Row align="center">
+        <Column span={{ sm: 6, xs: 10 }}>Date Picker</Column>
+        <Column span={{ sm: 18 }}>
+          <DatePicker />
         </Column>
       </Row>
       <Row>
