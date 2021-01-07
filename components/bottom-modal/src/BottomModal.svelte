@@ -4,7 +4,6 @@
 
 <script lang="ts">
   import { tweened } from "svelte/motion";
-  import Icon from "@responsive-ui/icon";
 
   export let open = false;
   export let closable = true;
@@ -58,6 +57,10 @@
       position: absolute;
       top: 15px;
       right: 10px;
+
+      svg {
+        display: block;
+      }
     }
   }
 </style>
@@ -71,7 +74,20 @@
     on:click|stopPropagation
     style={`transform:translateY(${$tween * 100}%);${style}`}>
     {#if closable}
-      <i class="close"><Icon type="x" on:click={() => (open = false)} /></i>
+      <i class="close" on:click={() => {open = false}}>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="16px"
+            height="16px"
+            stroke="#000"
+            stroke-width="1.5"
+            stroke-linecap="square"
+            stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </i>
     {/if}
     <slot />
   </div>
