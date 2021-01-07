@@ -29,6 +29,7 @@
   import Logo from "./components/Logo.svelte";
   import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
   import Tab from "../components/tab/src/Tab.svelte";
+  import Checkbox from "../components/checkbox/src/Checkbox.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -385,6 +386,12 @@
         <Column span={{ sm: 6, xs: 10 }}>Disabled Button</Column>
         <Column span={{ sm: 18 }}>
           <Switch bind:checked={disabledButton} />
+        </Column>
+      </Row>
+      <Row>
+        <Column span={{ sm: 6, xs: 10 }} />
+        <Column span={12}>
+          <Checkbox />
         </Column>
       </Row>
     </Card>

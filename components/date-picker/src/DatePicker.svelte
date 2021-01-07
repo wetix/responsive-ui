@@ -11,7 +11,6 @@
   export let disabled = false;
   export let value = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
   export let placeholder = "";
-  // export let format = (v: string) => "";
 
   let calendar: null | SvelteComponent;
   const handleToggle = (e: Event) => {

@@ -162,9 +162,7 @@
               <td
                 class="responsive-ui-table__column--align-{column.align || 'left'}">
                 {#if column.component}
-                  <svelte:component
-                    this={getComponent(column, item)}
-                    {...item} />
+                  <svelte:component this={getComponent(column, item)} />
                 {:else}
                   <div>{getValue(column, item)}</div>
                 {/if}
