@@ -27,6 +27,7 @@
   import Link from "../components/link/src/Link.svelte";
   import Online from "./components/Online.svelte";
   import Logo from "./components/Logo.svelte";
+  import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -408,3 +409,5 @@
   bind:open={showModal}
   items={tabItems}
   on:filter={onConfirm} />
+<BottomModal bind:open={showModal} />
+<!--<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />-->
