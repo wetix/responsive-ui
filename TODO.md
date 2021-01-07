@@ -2,7 +2,7 @@
 
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
 - ✅ Bottom Modal (@responsive-ui/bottom-modal)
-- ❌ Bottom Sheet (@responsive-ui/bottom-sheet)
+- ✅ Bottom Sheet (@responsive-ui/bottom-sheet)
 - ✅ Button (@responsive-ui/button)
 - ✅ Card (@responsive-ui/card)
 - ❌ Checkbox (@responsive-ui/checkbox)

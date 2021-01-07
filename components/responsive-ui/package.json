@@ -40,6 +40,7 @@
     "@responsive-ui/bottom-sheet": "^0.4.2",
     "@responsive-ui/button": "^0.4.2",
     "@responsive-ui/card": "^0.4.2",
+    "@responsive-ui/checkbox": "^0.4.2",
     "@responsive-ui/column": "^0.4.2",
     "@responsive-ui/date-picker": "^0.4.2",
     "@responsive-ui/ellipsis": "^0.4.2",

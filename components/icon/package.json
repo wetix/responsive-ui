@@ -1,7 +1,7 @@
 {
   "name": "@responsive-ui/icon",
   "version": "0.4.2",
-  "description": "Icon component",
+  "description": "A icon component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
