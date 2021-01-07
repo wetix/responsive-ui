@@ -1,6 +1,11 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface CheckboxProps {}
+export interface CheckboxProps {
+  name: string;
+  value?: any;
+  disabled?: boolean;
+  checked?: boolean;
+}
 
 export interface CheckboxEvents {}
 
