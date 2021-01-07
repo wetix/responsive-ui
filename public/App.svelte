@@ -326,9 +326,10 @@
       <Icon type="filter" on:click={() => (showModal = true)} />
     </Header>
 
-
+    <Icon type="more" />
+    <Icon type="right-arrow" />
     <Tab items={tabItems}>
-      <div></div>
+      <div />
     </Tab>
 
     <div class="padding">
@@ -412,8 +413,8 @@
 <!-- <BottomModal  /> -->
 <BottomSheet
   title="Testing"
-  bind:open={showModal}
   items={tabItems}
+  bind:open={showModal}
   on:filter={onConfirm} />
 <BottomModal bind:open={showModal} />
 <!--<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />-->
