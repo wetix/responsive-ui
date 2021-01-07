@@ -7,7 +7,6 @@
   export let value = "";
   export let autofocus = false;
   export let autoresize = true;
-  // export let resize = "none";
 
   let input: null | HTMLTextAreaElement;
 

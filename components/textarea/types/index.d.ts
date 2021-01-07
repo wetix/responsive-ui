@@ -2,10 +2,10 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface TextareaProps {
   name: string;
-  placeholder: string;
-  rows: number;
   value: any;
-  autofocus: boolean;
+  rows?: number;
+  placeholder?: string;
+  autofocus?: boolean;
 }
 
 export interface TextareaEvents {
