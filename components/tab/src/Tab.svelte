@@ -17,7 +17,7 @@
   const setWidth = () => {
     if (childNodes[selected]) {
       const rect = childNodes[selected].getBoundingClientRect();
-      left = rect.x;
+      left = rect.x - 15;
       width = rect.width;
     }
   };

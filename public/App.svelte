@@ -27,6 +27,7 @@
   import Online from "./components/Online.svelte";
   import Link from "../components/link/src/Link.svelte";
   import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
+  import Tab from "../components/tab/src/Tab.svelte";
 
   console.log(ResponsiveUI);
   // import Upload from "../src/components/upload/index.svelte";
@@ -290,6 +291,11 @@
     <Header title="Responsive UI">
       <Icon type="filter" on:click={() => (showModal = true)} />
     </Header>
+
+
+    <Tab items={tabItems}>
+      <div></div>
+    </Tab>
 
     <div class="padding">
       <Search {search} placeholder="Enter your keyword here to search..." />
