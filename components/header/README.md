@@ -18,7 +18,7 @@ yarn add @responsive-ui/header
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104027619-99e0f080-5202-11eb-941a-5df881f2938d.png"
+<img src="https://user-images.githubusercontent.com/28108597/104027903-052ac280-5203-11eb-9326-2ee47aa1901b.png"
 alt="@responsive-ui/header" />
 
 <br/>
