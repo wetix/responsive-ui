@@ -1,11 +1,85 @@
-# `column`
+# @responsive-ui/column
 
-> TODO: description
+> A column component of responsive-ui.
 
-## Usage
+## Install
 
+```console
+npm install @responsive-ui/column
 ```
-const column = require('column');
 
-// TODO: DEMONSTRATE API
+or
+
+```console
+yarn add @responsive-ui/column
 ```
+
+<br/>
+
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104026779-618ce280-5201-11eb-97ae-ca4af129b4c0.png"
+alt="@responsive-ui/column" />
+
+<br/>
+
+## Properties, Events & Slots
+
+```ts
+type Device = {
+  sm?: number;
+  md?: number;
+  xs?: number;
+  lg?: number;
+};
+
+interface ColumnProps {
+  span?: number | Device;
+  justify?: string;
+  class?: string;
+  style?: string;
+}
+
+interface ColumnEvents {}
+
+interface ColumnSlots {
+  default: {};
+}
+
+declare class Column extends SvelteComponentTyped<
+  ColumnProps,
+  ColumnEvents,
+  ColumnSlots
+> {}
+```
+
+<br/>
+
+## Example
+
+```svelte
+<script>
+  import Row from '@responsive-ui/row';
+  import Column from '@responsive-ui/column';
+</script>
+
+<Row>
+  <Column span={12}>Left</Column>
+  <Column span={12}>Right</Column>
+</Row>
+```
+
+## Sponsors
+
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
+
+## License
+
+[@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/master/components/column) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+
+## Big Thanks To
+
+Thanks to these awesome companies for their support of Open Source developers ❤
+
+[![GitHub](https://jstools.dev/img/badges/github.svg)](https://github.com/open-source)
+[![NPM](https://jstools.dev/img/badges/npm.svg)](https://www.npmjs.com/)

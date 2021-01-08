@@ -321,6 +321,10 @@
 
 <div class="container">
   <main>
+    <Row>
+      <Column span={12} style="background: #dcdcdc">Left</Column>
+      <Column span={12} style="background: #f5f5f5">Right</Column>
+    </Row>
     <Header title="Responsive UI">
       <Icon type="filter" on:click={() => (showModal = true)} />
     </Header>
@@ -422,7 +426,7 @@
   </BottomBar>
 </div>
 
-<FloatingActionButton on:click={console.log} />
+<!-- <FloatingActionButton on:click={console.log} /> -->
 
 <!-- <BottomModal  /> -->
 <BottomSheet
