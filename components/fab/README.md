@@ -16,7 +16,14 @@ yarn add @responsive-ui/fab
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104025541-c34c4d00-51ff-11eb-9778-dfc60497c47b.png"
+alt="@responsive-ui/fab" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
 type FloatingActionButtonProps = {
@@ -27,7 +34,7 @@ type FloatingActionButtonProps = {
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>

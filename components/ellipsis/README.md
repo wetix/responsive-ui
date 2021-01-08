@@ -16,7 +16,14 @@ yarn add @responsive-ui/ellipsis
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104025625-e1b24880-51ff-11eb-98eb-a54eaa43f92b.png"
+alt="@responsive-ui/ellipsis" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
 type EllipsisProps = {
@@ -27,7 +34,7 @@ type EllipsisProps = {
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
