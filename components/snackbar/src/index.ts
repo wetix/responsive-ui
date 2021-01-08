@@ -1,30 +1,43 @@
-import type { SvelteComponent } from "svelte/internal";
+import { SvelteComponent, tick } from "svelte/internal";
 
 import Snackbar from "./Snackbar.svelte";
 import type { SnackbarProps } from "../types";
 
 const queue: Array<SvelteComponent> = [];
-const success = (props: SnackbarProps) => {
-  props = Object.assign({ rounded: true, timeout: 3000 }, props);
+
+const show = (props: SnackbarProps) => {
+  const { timeout = 3000 } = props;
+  props = Object.assign({ rounded: true }, props);
   const component = new Snackbar({
     target: document.body,
     props,
     intro: true,
   });
+
   const pos = queue.length;
-  // component.$$.on_destroy.push(() => {
-  // });
-  if (props.timeout > 0) {
-    setTimeout(() => {
-      const first = queue.splice(pos, 1);
-      // @ts-ignore
-      first.$destroy();
-    }, props.timeout);
+  const onClose = () => {
+    setTimeout(async () => {
+      const arr = queue.splice(pos, 1);
+      if (arr.length > 0) {
+        arr[0].$set({ show: false });
+        await tick();
+        setTimeout(() => {
+          arr[0].$destroy();
+        }, 50);
+      }
+    }, timeout);
+  };
+
+  if (timeout > 0) {
+    onClose();
   }
   queue.push(component);
-  // FIXME : should return close and open
-  return component;
+  return {
+    close() {
+      onClose();
+    },
+  };
 };
 
 export default Snackbar;
-export { success };
+export { show };

@@ -8,7 +8,7 @@
   import Icon from "../components/icon/src/Icon.svelte";
   import Label from "../components/label/src/Label.svelte";
   // import * as message from "../components/alert/src";
-  import Snackbar, { success } from "../components/snackbar/src";
+  import * as Snackbar from "../components/snackbar/src";
   import Row from "../components/row/src/Row.svelte";
   import Column from "../components/column/src/Column.svelte";
   import Search from "../components/search/src/Search.svelte";
@@ -31,7 +31,7 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
 
-  console.log(ResponsiveUI);
+  console.log(Snackbar);
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -163,10 +163,8 @@
   };
 
   const showNotification = (variant: string) => () => {
-    success({
-      variant,
-      message: "testing",
-      timeout: 0,
+    Snackbar.show({
+      text: "testing",
     });
     // success({
     //   title: "Apple can get away with this because they’re well, Apple.",
@@ -374,7 +372,8 @@
       </Responsive>
     </div>
     <Card>
-      <Row>
+      Content here
+      <!-- <Row>
         <Column span={{ sm: 6, xs: 10 }}>Upload</Column>
         <Column span={{ sm: 18 }}>
           <Upload
@@ -401,7 +400,7 @@
         <Column span={12}>
           <Checkbox />
         </Column>
-      </Row>
+      </Row> -->
     </Card>
     <Label title="Text">
       <Input />
@@ -432,4 +431,5 @@
   bind:open={showModal}
   on:filter={onConfirm} />
 <BottomModal bind:open={showModal} />
-<!--<BottomSheet title="Testing" bind:open={showModal} items={tabItems} />-->
+<!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
+<!-- <Snackbar.default text={`testing\nJello wordl`} /> -->

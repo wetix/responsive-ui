@@ -16,7 +16,14 @@ yarn add @responsive-ui/card
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
+alt="@responsive-ui/card" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
 type CardProps = {
@@ -27,7 +34,7 @@ type CardProps = {
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>

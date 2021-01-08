@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface IconProps {
   type: string;
+  stroke?: string;
   style?: string;
 }
 

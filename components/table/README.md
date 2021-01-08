@@ -16,7 +16,14 @@ yarn add @responsive-ui/table
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104023615-e1647e00-51fc-11eb-8600-989bf7245263.png"
+alt="@responsive-ui/table" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
 type TableProps = {
@@ -40,7 +47,7 @@ type TableItem = Record<string, any>;
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
@@ -110,6 +117,8 @@ type TableItem = Record<string, any>;
 
 <Table key="key" columns={columns} items={datas} />
 ```
+
+<br/>
 
 ## Sponsors
 
