@@ -18,15 +18,35 @@ yarn add @responsive-ui/snackbar
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104023615-e1647e00-51fc-11eb-8600-989bf7245263.png"
-alt="Markdown Monster icon"
-style="margin-right: 10px;" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/104030411-4ec8dc80-5206-11eb-98b1-b8fe246b38b0.png"
+alt="@responsive-ui/snackbar" />
 
 <br/>
 
 ## Properties, Events & Slots
 
 ```ts
+interface SnackbarProps {
+  text: string;
+  variant?: string;
+  class?: string;
+  timeout?: number;
+  rounded?: boolean;
+}
+
+interface SnackbarEvents {
+  close?: void;
+}
+
+interface SnackbarSlots {
+  default: {};
+}
+
+declare class Snackbar extends SvelteComponentTyped<
+  SnackbarProps,
+  SnackbarEvents,
+  SnackbarSlots
+> {}
 ```
 
 <br/>
@@ -36,7 +56,16 @@ style="margin-right: 10px;" /> -->
 ```svelte
 <script>
   import Snackbar from "@responsive-ui/snackbar";
+
+  Snackbar.show({
+    timeout: 10000,
+    text: "Snackbar message",
+  });
 </script>
+
+<Snackbar.default>
+  Default Message
+</Snackbar.default>
 ```
 
 <br/>
