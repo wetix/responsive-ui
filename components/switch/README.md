@@ -44,14 +44,10 @@ declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 
 ```svelte
 <script>
-  import Row from '@responsive-ui/switch';
-  import Column from '@responsive-ui/switch';
+  import Switch from '@responsive-ui/switch';
 </script>
 
-<Row>
-  <Column span={12}>Left</Column>
-  <Column span={12}>Right</Column>
-</Row>
+<Switch checked={false} />
 ```
 
 ## Sponsors
