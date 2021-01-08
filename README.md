@@ -26,10 +26,10 @@ yarn add responsive-ui
 
 ## Component List
 
-- [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
 - [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/master/components/bottom-modal)
 - [@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/master/components/bottom-sheet)
+- [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/master/components/card)
 - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/master/components/checkbox)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/master/components/column)

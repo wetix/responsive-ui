@@ -16,18 +16,39 @@ yarn add @responsive-ui/button
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
+alt="@responsive-ui/button" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
-type ButtonProps = {
-  title?: string; // button title
-  name?: string; // button name
-  type: "button" | "submit" | "reset" = "button"; // button type
-  class? string; // custom class for button
-  disabled?: boolean; // disabled the button
+interface ButtonProps {
+  title?: string;
+  name?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+  disabled?: boolean;
   form?: string;
   style?: string;
-};
+}
+
+interface ButtonEvents {
+  click?: void;
+}
+
+interface ButtonSlots {
+  default: {};
+}
+
+declare class Button extends SvelteComponentTyped<
+  ButtonProps,
+  ButtonEvents,
+  ButtonSlots
+> {}
 ```
 
 <br/>
