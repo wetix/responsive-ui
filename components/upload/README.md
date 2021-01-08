@@ -16,10 +16,17 @@ yarn add @responsive-ui/upload
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104028650-f2fd5400-5203-11eb-9e0d-168e502afcbc.png"
+alt="@responsive-ui/upload" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
-type UploadProps = {
+interface UploadProps {
   url: string;
   name?: string;
   class?: string;
@@ -30,19 +37,47 @@ type UploadProps = {
   multiple?: boolean;
   value?: string;
   style?: string;
-};
+}
+
+interface UploadEvents {
+  success?: (xml: XMLHttpRequest) => void;
+  error?: (xml: XMLHttpRequest) => void;
+  progress?: (xml: XMLHttpRequest) => void;
+}
+
+interface UploadSlots {
+  default: {
+    loading: boolean;
+  };
+}
+
+declare class Upload extends SvelteComponentTyped<
+  UploadProps,
+  UploadEvents,
+  UploadSlots
+> {}
 ```
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
   import Upload from '@responsive-ui/upload';
+
+  const uploadUrl = `https://api.imgbb.com/1/upload??expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
+  const uploadSuccessful = ({ detail }) => {
+    console.log(detail.response);
+    console.log(detail);
+  };
 </script>
 
-<Upload on:click={console.log} />
+<Upload
+  name="image"
+  url={uploadUrl}
+  withCredentials={false}
+  on:success={uploadSuccessful} />
 ```
 
 ## Sponsors
