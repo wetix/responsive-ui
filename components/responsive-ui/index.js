@@ -3,6 +3,7 @@ import BottomModal from "@responsive-ui/bottom-modal/src/BottomModal.svelte";
 import BottomSheet from "@responsive-ui/bottom-sheet/src/BottomSheet.svelte";
 import Button from "@responsive-ui/button/src/Button.svelte";
 import Card from "@responsive-ui/card/src/Card.svelte";
+import Checkbox from "@responsive-ui/checkbox/src/Checkbox.svelte";
 import Column from "@responsive-ui/column/src/Column.svelte";
 import DatePicker from "@responsive-ui/date-picker/src/DatePicker.svelte";
 import Ellipsis from "@responsive-ui/ellipsis/src/Ellipsis.svelte";
@@ -26,6 +27,7 @@ export {
   BottomSheet,
   Button,
   Card,
+  Checkbox,
   Column,
   DatePicker,
   Ellipsis,

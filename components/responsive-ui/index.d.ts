@@ -4,7 +4,7 @@ import BottomSheet from "@responsive-ui/bottom-sheet/types";
 import Button from "@responsive-ui/button/types";
 import Card from "@responsive-ui/card/types";
 import Column from "@responsive-ui/column/types";
-// import Checkbox from "../checkbox/typess";
+import Checkbox from "@responsive-ui/checkbox/types";
 import DatePicker from "@responsive-ui/date-picker/types";
 import Ellipsis from "@responsive-ui/ellipsis/types";
 import FloatingActionButton from "@responsive-ui/fab/types";
@@ -26,10 +26,11 @@ import Upload from "@responsive-ui/upload/types";
 
 export {
   BottomBar,
+  BottomModal,
   BottomSheet,
   Button,
   Card,
-  // Checkbox,
+  Checkbox,
   Column,
   // DatePicker,
   Ellipsis,
