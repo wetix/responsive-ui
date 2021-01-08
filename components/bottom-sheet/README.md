@@ -18,18 +18,47 @@ yarn add @responsive-ui/bottom-sheet
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
-alt="@responsive-ui/bottom-sheet" />
+<!-- <img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
+alt="@responsive-ui/bottom-sheet" /> -->
 
 <br/>
 
 ## Properties, Events & Slots
 
 ```ts
-type CardProps = {
-  compact?: boolean;
-  class?: string;
+type BottomSheetOption = {
+  title: string;
+  value: string;
+  icon?: string | SvelteComponentDev;
+  disabled?: boolean;
+  selected?: boolean;
 };
+
+interface BottomSheetItem {
+  title: string;
+  options: BottomSheetOption[];
+  selected?: Map<string, boolean>;
+  style?: string;
+}
+
+interface BottomSheetProps {
+  items: BottomSheetItem[];
+  open?: boolean;
+  selected?: number;
+  disabled?: boolean;
+  closable?: boolean;
+}
+
+interface BottomSheetEvents {
+  change?: void;
+  reset?: void;
+  filter?: void;
+}
+
+declare class BottomSheet extends SvelteComponentTyped<
+  BottomSheetProps,
+  BottomSheetEvents
+> {}
 ```
 
 <br/>
@@ -38,12 +67,79 @@ type CardProps = {
 
 ```svelte
 <script>
-  import Card from '@responsive-ui/bottom-sheet';
+  import BottomSheet from '@responsive-ui/bottom-sheet';
+
+  const tabItems = [
+    {
+      title: "Item A",
+      options: [
+        {
+          title: "Item A - First Option",
+          icon: wrapComponent(Logo, {}),
+          value: "a1",
+        },
+        {
+          title: "Item A - Second Option",
+          value: "a2",
+        },
+        {
+          title: "Item A - Third Option",
+          icon: wrapComponent(Logo, {}),
+          value: "a3",
+        },
+        {
+          title: "Item A - Fourth Option",
+          value: "a4",
+        },
+        {
+          title: "Item A - Fifth Option",
+          value: "a5",
+        },
+      ],
+    },
+    {
+      title: "Item B",
+      options: [
+        {
+          title: "Item B - First Option",
+          icon: wrapComponent(Logo, {}),
+          value: "b1",
+        },
+        {
+          title: "Item B - Second Option",
+          value: "b2",
+        },
+        {
+          title: "Item B - Third Option",
+          value: "b3",
+        },
+      ],
+    },
+    {
+      title: "Item C",
+      options: [
+        {
+          title: "Item C - First Option",
+          value: "c1",
+        },
+        {
+          title: "Item C - Ten Option",
+          value: "c10",
+        },
+      ],
+    },
+  ];
+
+  const onConfirm = ({ detail }) => {
+    console.log(detail);
+  };
 </script>
 
-<Card>
-  Card content here...
-</Card>
+<BottomSheet
+  title="Testing"
+  items={tabItems}
+  open={true}
+  on:filter={onConfirm} />
 ```
 
 ## Sponsors
