@@ -16,25 +16,44 @@ yarn add @responsive-ui/header
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104027619-99e0f080-5202-11eb-941a-5df881f2938d.png"
+alt="@responsive-ui/header" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
-type HeaderProps = {
+interface HeaderProps {
   title: string;
   style?: string;
-};
+}
+
+interface HeaderEvents {}
+
+interface HeaderSlots {
+  default: {};
+}
+
+declare class Header extends SvelteComponentTyped<
+  HeaderProps,
+  HeaderEvents,
+  HeaderSlots
+> {}
 ```
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
   import Header from '@responsive-ui/header';
 </script>
 
-<Header title="Component Title" />
+<Header title="Responsive UI" />
 ```
 
 ## Sponsors
