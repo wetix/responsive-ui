@@ -1,6 +1,6 @@
 # @responsive-ui/bottom-sheet
 
-> A action sheet component of responsive-ui.
+> A bottom action sheet component of responsive-ui.
 
 ## Install
 
