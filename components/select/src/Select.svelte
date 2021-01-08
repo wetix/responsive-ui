@@ -1,7 +1,13 @@
 <script lang="ts">
-  // your script goes here
+  export let name = "";
+  export let options = [];
 </script>
 
-<style>
-  /* your styles go here */
+<style lang="scss">
 </style>
+
+<select {name}>
+  {#each options as option}
+    <option>test</option>
+  {/each}
+</select>
