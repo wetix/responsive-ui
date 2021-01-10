@@ -75,7 +75,6 @@ declare class BottomSheet extends SvelteComponentTyped<
       options: [
         {
           title: "Item A - First Option",
-          icon: wrapComponent(Logo, {}),
           value: "a1",
         },
         {
@@ -84,7 +83,6 @@ declare class BottomSheet extends SvelteComponentTyped<
         },
         {
           title: "Item A - Third Option",
-          icon: wrapComponent(Logo, {}),
           value: "a3",
         },
         {
@@ -102,7 +100,6 @@ declare class BottomSheet extends SvelteComponentTyped<
       options: [
         {
           title: "Item B - First Option",
-          icon: wrapComponent(Logo, {}),
           value: "b1",
         },
         {
@@ -141,6 +138,10 @@ declare class BottomSheet extends SvelteComponentTyped<
   open={true}
   on:filter={onConfirm} />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/33e75aaad3dc4ca29194c90acc0dfbed?version=3.31.2)
+
+<br/>
 
 ## Sponsors
 

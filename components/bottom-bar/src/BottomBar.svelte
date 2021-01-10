@@ -14,7 +14,7 @@
     left: 0;
     background: white;
     padding-bottom: env(safe-area-inset-bottom, 10px);
-    z-index: 100;
+    z-index: 50;
 
     &__wrapper {
       padding: 12px 15px;

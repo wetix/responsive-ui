@@ -46,6 +46,10 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 <BottomBar>Bottom Bar</BottomBar>
 ```
 
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=3.31.2)
+
+<br/>
+
 ## Sponsors
 
 <img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">

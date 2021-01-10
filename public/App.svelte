@@ -371,9 +371,9 @@
         {/if}
       </Responsive>
     </div>
+    <Card>Content here</Card>
     <Card>
-      Content here
-      <!-- <Row>
+      <Row>
         <Column span={{ sm: 6, xs: 10 }}>Upload</Column>
         <Column span={{ sm: 18 }}>
           <Upload
@@ -400,7 +400,7 @@
         <Column span={12}>
           <Checkbox />
         </Column>
-      </Row> -->
+      </Row>
     </Card>
     <Label title="Text">
       <Input />
@@ -424,12 +424,14 @@
 
 <!-- <FloatingActionButton on:click={console.log} /> -->
 
-<!-- <BottomModal  /> -->
-<BottomSheet
+<BottomModal bind:open={showModal}>
+  <DatePicker />
+</BottomModal>
+<!-- <BottomSheet
   title="Testing"
   items={tabItems}
   bind:open={showModal}
   on:filter={onConfirm} />
-<BottomModal bind:open={showModal} />
+<BottomModal bind:open={showModal} /> -->
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
 <!-- <Snackbar.default text={`testing\nJello wordl`} /> -->

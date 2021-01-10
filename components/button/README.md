@@ -53,7 +53,7 @@ declare class Button extends SvelteComponentTyped<
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
@@ -66,6 +66,10 @@ declare class Button extends SvelteComponentTyped<
 
 <Button title="Click me" on:click={onClick}></Button>
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/b95c9457a368429583c5c5eb40f666eb?version=3.31.2)
+
+<br/>
 
 ## Sponsors
 
