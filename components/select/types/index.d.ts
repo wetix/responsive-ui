@@ -1,6 +1,16 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface SelectProps {}
+export type SelectOption = {
+  title: string;
+  value: any;
+};
+
+export interface SelectProps {
+  name?: string;
+  readonly?: boolean;
+  value?: string;
+  options: SelectOption[];
+}
 
 export interface SelectEvents {}
 
