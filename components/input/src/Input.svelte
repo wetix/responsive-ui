@@ -51,9 +51,12 @@
       -khtml-user-select: text;
       -moz-user-select: text;
       -ms-user-select: text;
-      padding: 10px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      height: 40px;
+      line-height: 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: var(--border-radius, 5px);
     }
   }
 

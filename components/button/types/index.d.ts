@@ -6,6 +6,7 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   class?: string;
   disabled?: boolean;
+  outline?: boolean;
   form?: string;
   style?: string;
 }
