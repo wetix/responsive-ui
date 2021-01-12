@@ -4,6 +4,7 @@
   export let title = "";
   export let name = "";
   export let type = "button";
+  export let outline = false;
   export let disabled = false;
   export let form = "";
   export let style = "";
@@ -33,20 +34,17 @@
       opacity: 0.5;
     }
 
-    // /* dark mode */
-    // @media (prefers-color-scheme: dark) {
-    //   &.secondary {
-    //     border: 1px solid var(--primary-color, #fc4451);
-    //     background: #fff;
-    //     color: var(--primary-color, #fc4451);
-    //   }
-    // }
+    &__outline {
+      background: none;
+      color: var(--primary-text-color, #fc4451);
+    }
   }
 </style>
 
 <button
   class="responsive-ui-button {className}"
   class:responsive-ui-button__disabled={disabled}
+  class:responsive-ui-button__outline={outline}
   {name}
   {type}
   {disabled}
