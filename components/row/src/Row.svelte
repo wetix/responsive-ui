@@ -1,5 +1,15 @@
 <script lang="ts">
-  export let align = "";
+  let className = "";
+  export { className as class };
+  export let direction = "";
+  export let alignItems = "";
+  export let justifyContent = "";
+  export let style = "";
+
+  let cssStyle = "";
+  if (direction) cssStyle += `flex-direction:${direction}`;
+  if (alignItems) cssStyle += `align-items:${alignItems}`;
+  if (justifyContent) cssStyle += `justify-content:${justifyContent}`;
 </script>
 
 <style lang="scss">
@@ -10,6 +20,6 @@
   }
 </style>
 
-<div class="responsive-ui-row" style={`align-items:${align}`}>
+<div class="responsive-ui-row {className}" style={cssStyle}>
   <slot />
 </div>

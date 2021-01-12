@@ -1,7 +1,22 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface RowProps {
-  align?:
+  class?: string;
+  direction?:
+    | "row"
+    | "row-reverse"
+    | "column"
+    | "column-reverse"
+    | "initial"
+    | "inherit";
+  justifyContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+  alignItems?:
     | "stretch"
     | "center"
     | "flex-start"
@@ -9,6 +24,7 @@ export interface RowProps {
     | "baseline"
     | "initial"
     | "inherit";
+  style?: string;
 }
 
 export interface RowEvents {}
