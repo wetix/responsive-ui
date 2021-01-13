@@ -21,10 +21,12 @@
   import Card from "../components/card/src/Card.svelte";
   import FloatingActionButton from "../components/fab/src/FloatingActionButton.svelte";
   import Input from "../components/input/src/Input.svelte";
+  import InputNumber from "../components/input-number/src/InputNumber.svelte";
   import Poster from "../components/poster/src/Poster.svelte";
   import Responsive from "../components/responsive/src/Responsive.svelte";
   import Ellipsis from "../components/ellipsis/src/Ellipsis.svelte";
   import Link from "../components/link/src/Link.svelte";
+  import Select from "../components/select/src/Select.svelte";
   import Online from "./components/Online.svelte";
   import Logo from "./components/Logo.svelte";
   import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
@@ -383,7 +385,7 @@
             on:success={uploadSuccessful} />
         </Column>
       </Row>
-      <Row align="center">
+      <Row alignItems="center">
         <Column span={{ sm: 6, xs: 10 }}>Date Picker</Column>
         <Column span={{ sm: 18 }}>
           <DatePicker />
@@ -405,8 +407,15 @@
     <Label title="Text">
       <Input />
     </Label>
+    <Label title="Number">
+      <InputNumber formatter={(v) => `${v}%`} />
+    </Label>
     <Label title="Description">
       <Textarea placeholder="Enter your text here..." />
+    </Label>
+    <Label>
+      <Select
+        options={[{ title: 'Option A', value: 'a' }, { title: 'Option B', value: 'b' }, { title: 'Option C', value: 'c' }, { title: 'Option D', value: 'd' }]} />
     </Label>
     <div>
       <Button on:click={displayMessage}>Display message</Button>
@@ -422,16 +431,26 @@
   </BottomBar>
 </div>
 
-<!-- <FloatingActionButton on:click={console.log} /> -->
+<FloatingActionButton on:click={console.log} />
 
-<BottomModal bind:open={showModal}>
+<!-- <BottomModal bind:open={showModal}>
   <DatePicker />
+</BottomModal> -->
+<BottomModal bind:open={showModal}>
+  <Row style="padding:10px;" justifyContent="space-between">
+    <Column span={11}>
+      <Button outline={true}>CANCEL</Button>
+    </Column>
+    <Column span={11}>
+      <Button>OK</Button>
+    </Column>
+  </Row>
 </BottomModal>
 <!-- <BottomSheet
   title="Testing"
   items={tabItems}
   bind:open={showModal}
   on:filter={onConfirm} />
-<BottomModal bind:open={showModal} /> -->
+ -->
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
 <!-- <Snackbar.default text={`testing\nJello wordl`} /> -->

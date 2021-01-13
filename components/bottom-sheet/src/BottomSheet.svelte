@@ -39,6 +39,9 @@
 
   const onReset = () => {
     dispatch("reset");
+    for (let i = 0; i < items.length; i++) {
+      items[i].selected = new Map();
+    }
     closeModal();
   };
 

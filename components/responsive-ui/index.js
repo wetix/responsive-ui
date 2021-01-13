@@ -10,10 +10,13 @@ import Ellipsis from "@responsive-ui/ellipsis/src/Ellipsis.svelte";
 import FloatingActionButton from "@responsive-ui/fab/src/FloatingActionButton.svelte";
 import Header from "@responsive-ui/header/src/Header.svelte";
 import Icon from "@responsive-ui/icon/src/Icon.svelte";
+import Input from "@responsive-ui/input/src/Input.svelte";
+// import InputNumber from "@responsive-ui/input-number/src/InputNumber.svelte";
 import Label from "@responsive-ui/label/src/Label.svelte";
 import Poster from "@responsive-ui/poster/src/Poster.svelte";
 import Responsive from "@responsive-ui/responsive/src/Responsive.svelte";
 import Row from "@responsive-ui/row/src/Row.svelte";
+import Select from "@responsive-ui/select/src/Select.svelte";
 import Search from "@responsive-ui/search/src/Search.svelte";
 import Switch from "@responsive-ui/switch/src/Switch.svelte";
 import Tab from "@responsive-ui/tab/src/Tab.svelte";
@@ -35,13 +38,14 @@ export {
   Header,
   Icon,
   // InfiniteScroll,
-  // Input,
+  Input,
+  // InputNumber,
   Label,
   Poster,
   Responsive,
   Row,
+  Select,
   Search,
-  // // Snackbar,
   Switch,
   Tab,
   Table,
