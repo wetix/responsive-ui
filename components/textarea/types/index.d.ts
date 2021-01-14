@@ -6,6 +6,7 @@ export interface TextareaProps {
   rows?: number;
   placeholder?: string;
   autofocus?: boolean;
+  autoresize?: boolean;
 }
 
 export interface TextareaEvents {

@@ -16,21 +16,38 @@ yarn add @responsive-ui/textarea
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<!-- <img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
+alt="@responsive-ui/button" /> -->
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
-type TextareaProps = {
+interface TextareaProps {
   name: string;
-  placeholder: string;
-  rows: number;
   value: any;
-  autofocus: boolean;
-};
+  rows?: number;
+  placeholder?: string;
+  autofocus?: boolean;
+  autoresize?: boolean;
+}
+
+interface TextareaEvents {
+  input?: void;
+}
+
+declare class Textarea extends SvelteComponentTyped<
+  TextareaProps,
+  TextareaEvents
+> {}
 ```
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
