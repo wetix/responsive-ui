@@ -1,10 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  let className = "";
+  export { className as class };
   export let name = "";
+  export let min = 0;
+  export let max = 100000;
   export let label: null | string;
-  export let type = "text";
   export let placeholder = "";
+  export let parser = (v: string) => v;
+  export let formatter = (v: string) => v;
   export let maxlength = "";
   export let size = 100;
   export let value = "";
@@ -20,7 +25,9 @@
   });
 
   const onInput = (e: Event) => {
-    value = (e.target as HTMLInputElement).value;
+    const val = (e.target as HTMLInputElement).value;
+    value = val;
+    console.log(value);
     // onChange(e);
     // if (value.trim() != "") {
     //   active = true;
@@ -30,23 +37,8 @@
   };
 </script>
 
-<div class="responsive-ui-input">
-  {#if label}
-    <div class="label" class:active>{label}</div>
-  {/if}
-  <input
-    {name}
-    {type}
-    {placeholder}
-    {value}
-    bind:this={input}
-    {...$$restProps}
-    on:input={onInput}
-  />
-</div>
-
 <style lang="scss">
-  .responsive-ui-input {
+  .responsive-ui-input-number {
     display: block;
     margin: 0;
 
@@ -86,3 +78,18 @@
     }
   }
 </style>
+
+<div class="responsive-ui-input-number {className}">
+  {#if label}
+    <div class="label" class:active>{label}</div>
+  {/if}
+  <input
+    {name}
+    type="text"
+    pattern="\d*"
+    {placeholder}
+    {value}
+    bind:this={input}
+    {...$$restProps}
+    on:input={onInput} />
+</div>

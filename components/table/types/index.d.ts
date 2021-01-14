@@ -1,25 +1,40 @@
-import type { SvelteComponent, SvelteComponentTyped } from "svelte/internal";
+import type { SvelteComponentDev } from "svelte/internal";
 
 export type TableColumn = {
-  title?: string;
-  key?: string;
-  class?: string;
-  align?: "left" | "center" | "right";
-  width?: number | string;
-  value?: (...args: any[]) => any;
-  component?: ((...args: any[]) => SvelteComponentDev) | SvelteComponentDev;
+  key: string;
+  title: string;
+  class: string;
+  align: "left" | "center" | "right";
+  width: number | string;
+  value: ReturnType<any>;
+  component: any;
 };
 
 export type TableItem = Record<string, any>;
 
 export interface TableProps {
   key: string;
-  columns: TableColumn[];
+  columns: Partial<TableColumn>[];
   items: TableItem[];
+  striped?: boolean;
+  bordered?: boolean;
+  class?: string;
+  style?: string;
 }
 
 export interface TableEvents {}
 
-declare class Table extends SvelteComponentTyped<TableProps, TableEvents> {}
+export interface TableSlots {
+  row: {
+    index: number;
+    item: TableItem;
+  };
+}
+
+declare class Table extends SvelteComponentTyped<
+  TableProps,
+  TableEvents,
+  TableSlots
+> {}
 
 export default Table;

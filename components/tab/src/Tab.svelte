@@ -16,8 +16,9 @@
 
   const setWidth = () => {
     if (childNodes[selected]) {
-      const rect = childNodes[selected].getBoundingClientRect();
-      left = rect.x - 15;
+      const el = childNodes[selected] as HTMLDivElement;
+      const rect = el.getBoundingClientRect();
+      left = el.offsetLeft;
       width = rect.width;
     }
   };
@@ -32,6 +33,33 @@
     setWidth();
   };
 </script>
+
+<div class="responsive-ui-tab" {style}>
+  <nav bind:this={tab}>
+    {#each items as item, i}
+      <span
+        class="responsive-ui-tab__item"
+        class:responsive-ui-tab__item--selected={selected == i}
+        on:click={(e) => onChange(e, i)}>
+        {item.title}
+      </span>
+    {/each}
+  </nav>
+  <div
+    class="responsive-ui-tab__ink-bar"
+    style={`left:${left}px;width:${width}px`}
+  />
+</div>
+
+{#if hasSlots}
+  <slot {selected} />
+{:else}
+  {#each items as item}
+    {#if item && item.component}
+      <svelte:component this={item.component} />
+    {/if}
+  {/each}
+{/if}
 
 <style lang="scss">
   .responsive-ui-tab {
@@ -87,29 +115,3 @@
   //   }
   // }
 </style>
-
-<div class="responsive-ui-tab" {style}>
-  <nav bind:this={tab}>
-    {#each items as item, i}
-      <span
-        class="responsive-ui-tab__item"
-        class:responsive-ui-tab__item--selected={selected == i}
-        on:click={(e) => onChange(e, i)}>
-        {item.title}
-      </span>
-    {/each}
-  </nav>
-  <div
-    class="responsive-ui-tab__ink-bar"
-    style={`left:${left}px;width:${width}px`} />
-</div>
-
-{#if hasSlots}
-  <slot {selected} />
-{:else}
-  {#each items as item}
-    {#if item && item.component}
-      <svelte:component this={item.component} />
-    {/if}
-  {/each}
-{/if}

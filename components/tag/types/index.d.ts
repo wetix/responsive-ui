@@ -2,6 +2,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface TagProps {
   class?: string;
+  color?: string;
+  value: string;
 }
 
 export interface TagEvents {}

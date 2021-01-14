@@ -16,18 +16,32 @@ yarn add @responsive-ui/icon
 
 <br/>
 
-## Properties
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/104583469-20cb1880-569c-11eb-9dc6-956efc1ea542.png"
+alt="@responsive-ui/button" />
+
+<br/>
+
+## Properties, Events & Slots
 
 ```ts
-type IconProps = {
+interface IconProps {
   type: string;
+  stroke?: string;
   style?: string;
-};
+}
+
+interface IconEvents {
+  click?: void;
+}
+
+declare class Icon extends SvelteComponentTyped<IconProps, IconEvents> {}
 ```
 
 <br/>
 
-## Usage
+## Example
 
 ```svelte
 <script>
@@ -36,6 +50,8 @@ type IconProps = {
 
 <Icon type="filter" />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/4c61a7751527430181dbfd478a54a263?version=3.31.2)
 
 ## Sponsors
 

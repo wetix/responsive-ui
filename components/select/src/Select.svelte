@@ -7,6 +7,16 @@
   export let options: SelectOption[] = [];
 </script>
 
+<select class="responsive-ui-select" {name} {readonly}>
+  {#each options as option}
+    <option
+      value={option.value}
+      selected={option.selected ? option.selected : option.value === value}
+      >{option.title}</option
+    >
+  {/each}
+</select>
+
 <style lang="scss">
   .responsive-ui-select {
     display: block;
@@ -16,16 +26,18 @@
     font-size: var(--font-size, 14px);
     font-family: inherit;
     color: #1a1b1c;
+    padding: 0 10px;
     background: #f1f1f1;
     outline: none;
     height: 40px;
     box-sizing: border-box;
-    line-height: 40px;
+    /* hide arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none;
+    }
   }
 </style>
-
-<select class="responsive-ui-select" {name} {readonly}>
-  {#each options as option}
-    <option value={option.value}>{option.title}</option>
-  {/each}
-</select>

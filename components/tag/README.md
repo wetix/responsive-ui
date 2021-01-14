@@ -18,8 +18,8 @@ yarn add @responsive-ui/tag
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104026779-618ce280-5201-11eb-97ae-ca4af129b4c0.png"
-alt="@responsive-ui/tag" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/104610006-9d6eee80-56be-11eb-891d-8bbb9218b6ff.png"
+alt="@responsive-ui/tag" />
 
 <br/>
 
@@ -28,6 +28,8 @@ alt="@responsive-ui/tag" /> -->
 ```ts
 interface TagProps {
   class?: string;
+  color?: string;
+  value: string;
 }
 
 interface TagEvents {}
@@ -50,6 +52,10 @@ declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
 
 <Tag>tag text</Tag>
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=3.31.2)
+
+<br/>
 
 ## Sponsors
 

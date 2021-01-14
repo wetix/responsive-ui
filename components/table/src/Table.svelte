@@ -6,13 +6,13 @@
   let className = "";
   export { className as class };
   export let key = "id";
-  export let columns: TableColumn[] = [];
+  export let columns: Array<Partial<TableColumn>> = [];
   export let items: Array<TableItem> = [];
   export let striped = false;
   export let bordered = true;
   export let style = "";
 
-  const getValue = (column: TableColumn, item: TableItem) => {
+  const getValue = (column: Partial<TableColumn>, item: TableItem) => {
     const { key, value = (v: any) => v } = column;
 
     if (key) {
@@ -32,7 +32,7 @@
   };
 
   const getComponent = (
-    column: TableColumn,
+    column: Partial<TableColumn>,
     item: TableItem
   ): SvelteComponentDev => {
     const { component } = column;
@@ -40,6 +40,47 @@
     return component;
   };
 </script>
+
+<div
+  class="responsive-ui-table {className}"
+  class:responsive-ui-table__bordered={bordered}
+>
+  <table class:responsive-ui-table__striped={striped} {style}>
+    <thead>
+      <tr>
+        {#each columns as column}
+          <th
+            class="responsive-ui-table__column--align-{column.align || 'left'}"
+            style={column.width && `width:${column.width}`}>
+            {column.title || ""}
+          </th>
+        {/each}
+      </tr>
+    </thead>
+    <tbody>
+      {#each items as item, i (item[key] || i)}
+        <slot name="row" index={i} {item}>
+          <tr>
+            {#each columns as column}
+              <td
+                class="responsive-ui-table__column--align-{column.align ||
+                  'left'}">
+                {#if column.component}
+                  <svelte:component this={getComponent(column, item)} />
+                {:else}
+                  <div>{getValue(column, item)}</div>
+                {/if}
+              </td>
+            {/each}
+          </tr>
+        </slot>
+      {/each}
+    </tbody>
+  </table>
+  <!-- {#if loading}
+    <div class="loading" />
+  {/if} -->
+</div>
 
 <style lang="scss">
   .responsive-ui-table {
@@ -127,53 +168,5 @@
         background: #f5f5f5;
       }
     }
-
-    // .loading {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    //   background: rgba(255, 255, 255, 0.8);
-    //   left: 0;
-    //   bottom: 0;
-    // }
   }
 </style>
-
-<div
-  class="responsive-ui-table {className}"
-  class:responsive-ui-table__bordered={bordered}>
-  <table class:responsive-ui-table__striped={striped} {style}>
-    <thead>
-      <tr>
-        {#each columns as column}
-          <th
-            class="responsive-ui-table__column--align-{column.align || 'left'}"
-            style="width:{column.width ? column.width : 'none'}">
-            {column.title || ''}
-          </th>
-        {/each}
-      </tr>
-    </thead>
-    <tbody>
-      {#each items as item, i (item[key] || i)}
-        <slot name="row" index={i} {item}>
-          <tr>
-            {#each columns as column}
-              <td
-                class="responsive-ui-table__column--align-{column.align || 'left'}">
-                {#if column.component}
-                  <svelte:component this={getComponent(column, item)} />
-                {:else}
-                  <div>{getValue(column, item)}</div>
-                {/if}
-              </td>
-            {/each}
-          </tr>
-        </slot>
-      {/each}
-    </tbody>
-  </table>
-  <!-- {#if loading}
-    <div class="loading" />
-  {/if} -->
-</div>
