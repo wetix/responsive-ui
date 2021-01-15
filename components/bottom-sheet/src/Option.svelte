@@ -8,6 +8,7 @@
   export let title = "";
   export let icon: null | Function | string | SvelteComponentDev;
   export let value = "";
+  export let disabled = false;
   export let checked = false;
 
   const onClick = () => {
@@ -15,6 +16,24 @@
     dispatch("change", { checked, value });
   };
 </script>
+
+<div
+  class="responsive-ui-option"
+  class:responsive-ui-option--checked={checked}
+  class:responsive-ui-option--disabled={disabled}
+  on:click={disabled ? null : onClick}
+>
+  {#if icon}
+    <span class="responsive-ui-option__icon">
+      {#if typeof icon === "string"}
+        <Icon type={icon} />
+      {:else}
+        <svelte:component this={icon} />
+      {/if}
+    </span>
+  {/if}
+  <span class="responsive-ui-option__title">{title}</span>
+</div>
 
 <style lang="scss">
   .responsive-ui-option {
@@ -40,6 +59,21 @@
       transform: rotate(40deg);
     }
 
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.65;
+
+      &:after {
+        position: absolute;
+        content: "";
+        top: calc(50% - 1px);
+        right: 0;
+        left: 0;
+        height: 1px;
+        background: #3b3b3b;
+      }
+    }
+
     &__icon {
       vertical-align: middle;
       margin-right: 8px;
@@ -50,19 +84,3 @@
     }
   }
 </style>
-
-<div
-  class="responsive-ui-option"
-  class:responsive-ui-option--checked={checked}
-  on:click={onClick}>
-  {#if icon}
-    <span class="responsive-ui-option__icon">
-      {#if typeof icon === 'string'}
-        <Icon type={icon} />
-      {:else}
-        <svelte:component this={icon} />
-      {/if}
-    </span>
-  {/if}
-  <span class="responsive-ui-option__title">{title}</span>
-</div>

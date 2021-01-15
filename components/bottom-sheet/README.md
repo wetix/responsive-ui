@@ -2,6 +2,15 @@
 
 > A bottom action sheet component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fbottom-sheet)](https://bundlephobia.com/result?p=@responsive-ui/bottom-sheet)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/bottom-sheet
 ```
 
-<br/>
-
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
-alt="@responsive-ui/bottom-sheet" /> -->
-
-<br/>
+<img src="https://user-images.githubusercontent.com/28108597/104710050-9695b980-575a-11eb-8be1-00e358236f1a.png"
+alt="@responsive-ui/bottom-sheet" />
 
 ## Properties, Events & Slots
 
@@ -133,7 +138,6 @@ declare class BottomSheet extends SvelteComponentTyped<
 </script>
 
 <BottomSheet
-  title="Testing"
   items={tabItems}
   open={true}
   on:filter={onConfirm} />

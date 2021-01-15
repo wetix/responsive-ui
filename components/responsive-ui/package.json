@@ -53,6 +53,7 @@
     "@responsive-ui/row": "^0.5.0",
     "@responsive-ui/search": "^0.5.0",
     "@responsive-ui/select": "^0.5.0",
+    "@responsive-ui/snackbar": "^0.5.0",
     "@responsive-ui/switch": "^0.5.0",
     "@responsive-ui/tab": "^0.5.0",
     "@responsive-ui/table": "^0.5.0",

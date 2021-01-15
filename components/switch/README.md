@@ -2,6 +2,15 @@
 
 > A switch component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fswitch)](https://bundlephobia.com/result?p=@responsive-ui/switch)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/switch
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104030012-b03c7b80-5205-11eb-81d0-b5e5a04af252.png"
 alt="@responsive-ui/switch" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -38,8 +43,6 @@ interface SwitchEvents {
 declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -49,6 +52,8 @@ declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 
 <Switch checked={false} />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/69f8b2f7d5944e25949a87c30b009256?version=3.31.2)
 
 ## Sponsors
 

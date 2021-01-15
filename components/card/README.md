@@ -2,6 +2,15 @@
 
 > A card component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fcard)](https://bundlephobia.com/result?p=@responsive-ui/card)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/card
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
 alt="@responsive-ui/card" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -31,8 +36,6 @@ type CardProps = {
   class?: string;
 };
 ```
-
-<br/>
 
 ## Example
 
@@ -47,8 +50,6 @@ type CardProps = {
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/32edf1b8b1a64be789c567980d5a5240?version=3.31.2)
-
-<br/>
 
 ## Sponsors
 

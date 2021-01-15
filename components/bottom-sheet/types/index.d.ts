@@ -24,15 +24,11 @@ export interface BottomSheetProps {
 }
 
 export interface BottomSheetEvents {
-  change?:
-    | (() => {} | void)
-    | ((
-        e: CustomEvent<{ selected: number; value: Map<string, boolean> }>
-      ) => void);
+  change?: (
+    e?: CustomEvent<{ selected: number; value: Map<string, boolean> }>
+  ) => void;
+  filter?: (e?: CustomEvent<{ value: Map<string, boolean> }>) => void;
   reset?: void;
-  filter?:
-    | (() => void)
-    | ((e: CustomEvent<{ value: Map<string, boolean> }>) => void);
 }
 
 declare class BottomSheet extends SvelteComponentTyped<

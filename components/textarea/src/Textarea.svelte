@@ -2,8 +2,13 @@
   import { onMount } from "svelte";
 
   export let name = "";
+  export let form = "";
+  export let readonly = false;
+  export let disabled = false;
   export let placeholder = "";
+  export let cols = 80;
   export let rows = 4;
+  export let maxlength = 100;
   export let value = "";
   export let autofocus = false;
   export let autoresize = true;
@@ -25,6 +30,24 @@
   };
 </script>
 
+<textarea
+  class="responsive-ui-textarea"
+  bind:this={input}
+  {name}
+  {form}
+  {rows}
+  {cols}
+  {disabled}
+  {placeholder}
+  {value}
+  {readonly}
+  {maxlength}
+  on:blur
+  on:change
+  on:input={onInput}
+  on:input
+/>
+
 <style lang="scss">
   .responsive-ui-textarea {
     width: 100%;
@@ -45,14 +68,3 @@
     }
   }
 </style>
-
-<textarea
-  class="responsive-ui-textarea"
-  bind:this={input}
-  {name}
-  {rows}
-  {placeholder}
-  {value}
-  on:blur
-  on:input={onInput}
-  on:input />

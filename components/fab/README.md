@@ -2,6 +2,15 @@
 
 > A floating action button component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ffab)](https://bundlephobia.com/result?p=@responsive-ui/fab)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/fab
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104025541-c34c4d00-51ff-11eb-9778-dfc60497c47b.png"
 alt="@responsive-ui/fab" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -32,8 +37,6 @@ type FloatingActionButtonProps = {
 };
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -43,6 +46,8 @@ type FloatingActionButtonProps = {
 
 <FloatingActionButton on:click={console.log} />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/c4b79c26ad2149d6a1359d5ce5e68186?version=3.31.2)
 
 ## Sponsors
 

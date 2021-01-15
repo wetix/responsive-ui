@@ -12,7 +12,7 @@ export interface ButtonProps {
 }
 
 export interface ButtonEvents {
-  click?: void;
+  click?: any;
 }
 
 export interface ButtonSlots {

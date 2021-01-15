@@ -2,6 +2,15 @@
 
 > A table component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftable)](https://bundlephobia.com/result?p=@responsive-ui/table)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/table
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104023615-e1647e00-51fc-11eb-8600-989bf7245263.png"
 alt="@responsive-ui/table" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -44,8 +49,6 @@ type TableColumn = {
 
 type TableItem = Record<string, any>;
 ```
-
-<br/>
 
 ## Example
 
@@ -118,7 +121,7 @@ type TableItem = Record<string, any>;
 <Table key="key" columns={columns} items={datas} />
 ```
 
-<br/>
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=3.31.2)
 
 ## Sponsors
 

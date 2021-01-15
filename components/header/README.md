@@ -2,6 +2,15 @@
 
 > A header component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/header.svg)](https://www.npmjs.com/package/@responsive-ui/header)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/header.svg)](https://www.npmjs.com/package/@responsive-ui/header)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fheader)](https://bundlephobia.com/result?p=@responsive-ui/header)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/header
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104027903-052ac280-5203-11eb-9326-2ee47aa1901b.png"
 alt="@responsive-ui/header" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -44,8 +49,6 @@ declare class Header extends SvelteComponentTyped<
 > {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -55,6 +58,8 @@ declare class Header extends SvelteComponentTyped<
 
 <Header title="Responsive UI" />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=3.31.2)
 
 ## Sponsors
 

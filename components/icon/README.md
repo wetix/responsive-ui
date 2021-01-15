@@ -2,6 +2,15 @@
 
 > A icon component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/icon.svg)](https://www.npmjs.com/package/@responsive-ui/icon)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/icon.svg)](https://www.npmjs.com/package/@responsive-ui/icon)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ficon)](https://bundlephobia.com/result?p=@responsive-ui/icon)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/icon
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104583469-20cb1880-569c-11eb-9dc6-956efc1ea542.png"
 alt="@responsive-ui/button" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -38,8 +43,6 @@ interface IconEvents {
 
 declare class Icon extends SvelteComponentTyped<IconProps, IconEvents> {}
 ```
-
-<br/>
 
 ## Example
 

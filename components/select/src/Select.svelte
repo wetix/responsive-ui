@@ -3,11 +3,12 @@
 
   export let name = "";
   export let value = "";
+  export let disabled = false;
   export let readonly = false;
   export let options: SelectOption[] = [];
 </script>
 
-<select class="responsive-ui-select" {name} {readonly}>
+<select class="responsive-ui-select" {name} {readonly} {disabled} on:change>
   {#each options as option}
     <option
       value={option.value}

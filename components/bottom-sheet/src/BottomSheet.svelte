@@ -38,10 +38,10 @@
   };
 
   const onReset = () => {
-    dispatch("reset");
     for (let i = 0; i < items.length; i++) {
       items[i].selected = new Map();
     }
+    dispatch("reset");
     closeModal();
   };
 
@@ -52,6 +52,36 @@
     closeModal();
   };
 </script>
+
+<BottomModal bind:open {closable}>
+  <div
+    class="responsive-ui-bottom-sheet"
+    style={`height:${window.innerHeight * 0.8}px;`}
+  >
+    <header class="responsive-ui-bottom-sheet__header">
+      <span class="responsive-ui-bottom-sheet__reset" on:click={onReset}
+        >Reset</span
+      >
+    </header>
+    <Tab {items} bind:selected>
+      <div class="responsive-ui-bottom-sheet__body">
+        {#each items[selected].options || [] as opt (opt.value)}
+          <Option
+            title={opt.title}
+            value={opt.value}
+            icon={opt.icon}
+            disabled={opt.disabled}
+            checked={items[selected].selected.has(opt.value)}
+            on:change={onOptionChange}
+          />
+        {/each}
+      </div>
+    </Tab>
+  </div>
+  <footer class="responsive-ui-bottom-sheet__footer">
+    <Button {disabled} on:click={onFilter}>FILTER</Button>
+  </footer>
+</BottomModal>
 
 <style lang="scss">
   .responsive-ui-bottom-sheet {
@@ -67,6 +97,7 @@
     }
 
     &__reset {
+      cursor: pointer;
       color: var(--primary-color, #fc4451);
     }
 
@@ -80,30 +111,3 @@
     }
   }
 </style>
-
-<BottomModal bind:open {closable}>
-  <div
-    class="responsive-ui-bottom-sheet"
-    style={`height:${window.innerHeight * 0.8}px;`}>
-    <header class="responsive-ui-bottom-sheet__header">
-      <span
-        class="responsive-ui-bottom-sheet__reset"
-        on:click={onReset}>Reset</span>
-    </header>
-    <Tab {items} bind:selected>
-      <div class="responsive-ui-bottom-sheet__body">
-        {#each items[selected].options || [] as opt (opt.value)}
-          <Option
-            title={opt.title}
-            value={opt.value}
-            icon={opt.icon}
-            checked={items[selected].selected.has(opt.value)}
-            on:change={onOptionChange} />
-        {/each}
-      </div>
-    </Tab>
-  </div>
-  <footer class="responsive-ui-bottom-sheet__footer">
-    <Button {disabled} on:click={onFilter}>FILTER</Button>
-  </footer>
-</BottomModal>

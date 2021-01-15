@@ -2,6 +2,15 @@
 
 > An textarea component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/textarea.svg)](https://www.npmjs.com/package/@responsive-ui/textarea)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/textarea.svg)](https://www.npmjs.com/package/@responsive-ui/textarea)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftextarea)](https://bundlephobia.com/result?p=@responsive-ui/textarea)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/textarea
 ```
 
-<br/>
-
 ## Look and Feel
 
 <!-- <img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
 alt="@responsive-ui/button" /> -->
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -45,8 +50,6 @@ declare class Textarea extends SvelteComponentTyped<
 > {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -56,6 +59,8 @@ declare class Textarea extends SvelteComponentTyped<
 
 <Textarea />
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/5d4146f8408a49b18558d60cb1619aea?version=3.31.2)
 
 ## Sponsors
 

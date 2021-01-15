@@ -17,7 +17,8 @@ import Poster from "@responsive-ui/poster/types";
 import Responsive from "@responsive-ui/responsive/types";
 import Row from "@responsive-ui/row/types";
 import Search from "@responsive-ui/search/types";
-// // import Snackbar from "./snackbar/src/index.ts";
+import Select from "@responsive-ui/select/types";
+import Snackbar from "@responsive-ui/snackbar/types";
 import Switch from "@responsive-ui/switch/types";
 import Tab from "@responsive-ui/tab/types";
 import Table from "@responsive-ui/table/types";
@@ -44,7 +45,8 @@ export {
   Responsive,
   Row,
   Search,
-  // // Snackbar,
+  Select,
+  Snackbar,
   Switch,
   Tab,
   Table,

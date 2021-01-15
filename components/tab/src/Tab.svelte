@@ -24,8 +24,10 @@
   };
 
   onMount(() => {
-    childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
-    setWidth();
+    setTimeout(() => {
+      childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
+      setWidth();
+    }, 0);
   });
 
   const onChange = (_: Event, i: number) => {
@@ -64,18 +66,17 @@
 <style lang="scss">
   .responsive-ui-tab {
     position: relative;
-    color: #505050;
-    font-size: 14px;
-    border-top: 2px solid transparent;
     display: flex;
-    // border: 1px solid red;
+    color: var(--text-color, #505050);
+    font-size: var(--font-size, 14px);
+    border-top: 2px solid transparent;
     box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.15);
 
     &__ink-bar {
       position: absolute;
+      display: block;
       bottom: 0;
       margin-top: -2px;
-      display: block;
       height: 2px;
       width: 100px;
       background: #fc4451;
@@ -101,17 +102,5 @@
     &__item--selected {
       color: #fc4451;
     }
-
-    // &.secondary .selected {
-    //   color: #fc4451;
-    //   opacity: 1;
-    // }
   }
-
-  // .ink-bar {
-
-  //   &.secondary {
-  //     background: #fc4451;
-  //   }
-  // }
 </style>

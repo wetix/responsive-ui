@@ -2,6 +2,15 @@
 
 > A column component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/column.svg)](https://www.npmjs.com/package/@responsive-ui/column)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/column.svg)](https://www.npmjs.com/package/@responsive-ui/column)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fcolumn)](https://bundlephobia.com/result?p=@responsive-ui/column)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/column
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104026779-618ce280-5201-11eb-97ae-ca4af129b4c0.png"
 alt="@responsive-ui/column" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -52,8 +57,6 @@ declare class Column extends SvelteComponentTyped<
   ColumnSlots
 > {}
 ```
-
-<br/>
 
 ## Example
 

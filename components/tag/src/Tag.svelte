@@ -12,6 +12,7 @@
 <style lang="scss">
   .responsive-ui-tag {
     display: inline-block;
+    vertical-align: middle;
     font-size: 10px;
     border-radius: 5px;
     height: 20px;

@@ -2,6 +2,15 @@
 
 > A bottom bar component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-bar.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-bar)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-bar.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-bar)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fbottom-bar)](https://bundlephobia.com/result?p=@responsive-ui/bottom-bar)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/bottom-bar
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104027204-01e30700-5202-11eb-81ec-5573fd844af3.png"
 alt="@responsive-ui/bottom-bar" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -34,8 +39,6 @@ interface BottomBarProps {
 declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -47,8 +50,6 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=3.31.2)
-
-<br/>
 
 ## Sponsors
 

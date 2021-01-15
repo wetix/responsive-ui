@@ -2,6 +2,15 @@
 
 > A tag component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/tag.svg)](https://www.npmjs.com/package/@responsive-ui/tag)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/tag.svg)](https://www.npmjs.com/package/@responsive-ui/tag)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftag)](https://bundlephobia.com/result?p=@responsive-ui/tag)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/tag
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104610006-9d6eee80-56be-11eb-891d-8bbb9218b6ff.png"
 alt="@responsive-ui/tag" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -41,8 +46,6 @@ interface TagSlots {
 declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -54,8 +57,6 @@ declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=3.31.2)
-
-<br/>
 
 ## Sponsors
 

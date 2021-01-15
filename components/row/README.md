@@ -2,6 +2,15 @@
 
 > A row component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/row.svg)](https://www.npmjs.com/package/@responsive-ui/row)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/row.svg)](https://www.npmjs.com/package/@responsive-ui/row)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Frow)](https://bundlephobia.com/result?p=@responsive-ui/row)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/row
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104026779-618ce280-5201-11eb-97ae-ca4af129b4c0.png"
 alt="@responsive-ui/row" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -45,8 +50,6 @@ interface RowSlots {
 
 declare class Row extends SvelteComponentTyped<RowProps, RowEvents, RowSlots> {}
 ```
-
-<br/>
 
 ## Example
 
