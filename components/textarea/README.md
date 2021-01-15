@@ -25,8 +25,8 @@ yarn add @responsive-ui/textarea
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
-alt="@responsive-ui/button" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/104733584-de780900-5779-11eb-8a5b-c54019866418.png"
+alt="@responsive-ui/button" />
 
 ## Properties, Events & Slots
 

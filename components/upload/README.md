@@ -2,6 +2,15 @@
 
 > An upload component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/upload.svg)](https://www.npmjs.com/package/@responsive-ui/upload)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/upload.svg)](https://www.npmjs.com/package/@responsive-ui/upload)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fupload)](https://bundlephobia.com/result?p=@responsive-ui/upload)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/upload
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104028650-f2fd5400-5203-11eb-9e0d-168e502afcbc.png"
 alt="@responsive-ui/upload" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -57,8 +62,6 @@ declare class Upload extends SvelteComponentTyped<
   UploadSlots
 > {}
 ```
-
-<br/>
 
 ## Example
 

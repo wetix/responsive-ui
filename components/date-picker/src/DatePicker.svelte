@@ -1,5 +1,12 @@
+<script context="module" lang="ts">
+  const queue = [];
+  window.addEventListener("click", (e) => {
+    console.log(queue);
+  });
+</script>
+
 <script lang="ts">
-  import { onDestroy } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import type { SvelteComponent } from "svelte";
 
   import Calendar from "./Calendar.svelte";
@@ -14,10 +21,71 @@
   ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   export let placeholder = "";
 
+  let datepicker: null | HTMLDivElement;
   let calendar: null | SvelteComponent;
-  const handleToggle = (e: Event) => {
-    const rect = (e.target as HTMLInputElement).getBoundingClientRect();
+  onMount(() => {
+    queue.push([datepicker]);
+  });
+
+  function getAbsoluteBoundingRect(el) {
+    var doc = document,
+      win = window,
+      body = doc.body,
+      // pageXOffset and pageYOffset work everywhere except IE <9.
+      offsetX =
+        win.pageXOffset !== undefined
+          ? win.pageXOffset
+          : (doc.documentElement || body.parentNode || body).scrollLeft,
+      offsetY =
+        win.pageYOffset !== undefined
+          ? win.pageYOffset
+          : (doc.documentElement || body.parentNode || body).scrollTop,
+      rect = el.getBoundingClientRect();
+
+    let target;
     console.log(rect);
+    if (el !== body) {
+      var parent = el.parentNode;
+
+      // The element's rect will be affected by the scroll positions of
+      // *all* of its scrollable parents, not just the window, so we have
+      // to walk up the tree and collect every scroll offset. Good times.
+      while (parent !== body) {
+        console.log(
+          parent,
+          parent.scrollTop,
+          window.getComputedStyle(parent).getPropertyValue("position")
+        );
+
+        const position = window
+          .getComputedStyle(parent)
+          .getPropertyValue("position");
+
+        offsetX += parent.scrollLeft;
+        offsetY += parent.scrollTop;
+        if (!target && position !== "relative") {
+          console.log("parent rect =>", parent.getBoundingClientRect());
+          target = parent;
+          // break;
+        }
+        parent = parent.parentNode;
+      }
+    }
+
+    return {
+      target,
+      bottom: rect.bottom + offsetY,
+      height: rect.height,
+      left: rect.left + offsetX,
+      right: rect.right + offsetX,
+      top: rect.top + offsetY,
+      width: rect.width,
+    };
+  }
+
+  const handleToggle = (e: Event) => {
+    const rect = (e.currentTarget as HTMLInputElement).getBoundingClientRect();
+    const { top, bottom } = getAbsoluteBoundingRect(e.currentTarget);
     if (!calendar) {
       calendar = new Calendar({
         target: document.body,
@@ -31,14 +99,13 @@
           calendar.$set({ visible: false });
         }, 200);
       });
-      calendar.$set({
-        style: `top:${rect.top + rect.height + 10}px;left:${rect.left}px;`,
-        visible: true,
-        value,
-      });
-    } else {
-      calendar.$set({ visible: !calendar.visible });
     }
+
+    calendar.$set({
+      style: `top:${bottom + 10}px;left:${rect.left}px;`,
+      visible: !calendar.visible,
+      value,
+    });
   };
 
   onDestroy(() => {
@@ -79,7 +146,7 @@
   }
 </style>
 
-<div class="responsive-ui-date" on:click={handleToggle}>
+<div bind:this={datepicker} class="responsive-ui-date" on:click={handleToggle}>
   <div class="responsive-ui-date__wrapper">
     <div class="responsive-ui-date__input">
       <!-- <div style="position:absolute;top:0;bottom:0;left:0;padding:7px 10px;">

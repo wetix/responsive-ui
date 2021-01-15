@@ -25,7 +25,7 @@ yarn add @responsive-ui/label
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
+<img src="https://user-images.githubusercontent.com/28108597/104732431-331a8480-5778-11eb-8831-e9848977863d.png"
 alt="@responsive-ui/label" />
 
 ## Properties, Events & Slots

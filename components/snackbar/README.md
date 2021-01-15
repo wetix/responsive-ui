@@ -2,6 +2,15 @@
 
 > A snackbar component of responsive-ui.
 
+<p>
+
+[![npm](https://img.shields.io/npm/v/@responsive-ui/snackbar.svg)](https://www.npmjs.com/package/@responsive-ui/snackbar)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/snackbar.svg)](https://www.npmjs.com/package/@responsive-ui/snackbar)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsnackbar)](https://bundlephobia.com/result?p=@responsive-ui/snackbar)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -14,14 +23,10 @@ or
 yarn add @responsive-ui/snackbar
 ```
 
-<br/>
-
 ## Look and Feel
 
 <img src="https://user-images.githubusercontent.com/28108597/104030411-4ec8dc80-5206-11eb-98b1-b8fe246b38b0.png"
 alt="@responsive-ui/snackbar" />
-
-<br/>
 
 ## Properties, Events & Slots
 
@@ -49,8 +54,6 @@ declare class Snackbar extends SvelteComponentTyped<
 > {}
 ```
 
-<br/>
-
 ## Example
 
 ```svelte
@@ -67,8 +70,6 @@ declare class Snackbar extends SvelteComponentTyped<
   Default Message
 </Snackbar.default>
 ```
-
-<br/>
 
 ## Sponsors
 

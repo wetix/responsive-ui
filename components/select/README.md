@@ -25,7 +25,7 @@ yarn add @responsive-ui/select
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104026779-618ce280-5201-11eb-97ae-ca4af129b4c0.png"
+<img src="https://user-images.githubusercontent.com/28108597/104732706-94425800-5778-11eb-96fd-3220b84ea33b.png"
 alt="@responsive-ui/select" />
 
 ## Properties, Events & Slots

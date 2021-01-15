@@ -25,8 +25,8 @@ yarn add @responsive-ui/tab
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104610006-9d6eee80-56be-11eb-891d-8bbb9218b6ff.png"
-alt="@responsive-ui/tab" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/104733087-28142400-5779-11eb-9f5a-9957edcaa495.png"
+alt="@responsive-ui/tab" />
 
 ## Properties, Events & Slots
 
@@ -61,16 +61,14 @@ declare class Tab extends SvelteComponentTyped<TabProps, TabEvents, TabSlots> {}
   import Tab from '@responsive-ui/tab';
 
   const tabItems = [
-		{ title: "Option A", value: "a" },
-		{ title: "Option B", value: "b" },
-		{ title: "Option C", value: "c" },
-		{ title: "Option D", value: "d" },
-	];
+    { title: "Option A", value: "a" },
+    { title: "Option B", value: "b" },
+    { title: "Option C", value: "c" },
+    { title: "Option D", value: "d" },
+  ];
 </script>
 
-<Tab items={tabItems}>
-  <div />
-</Tab>
+<Tab items={tabItems} />
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/95ab0950fa2740bea8b2338a497c46cf?version=3.31.2)
