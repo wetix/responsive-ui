@@ -14,13 +14,13 @@
 
 ## Installation and Usage
 
-```bash
+```console
 npm install responsive-ui
 ```
 
 or
 
-```bash
+```console
 yarn add responsive-ui
 ```
 
@@ -28,10 +28,9 @@ yarn add responsive-ui
 
 <!-- - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/master/components/checkbox) -->
 <!-- - [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/master/components/date-picker) -->
-<!-- - [@responsive-ui/input](https://github.com/wetix/responsive-ui/tree/master/components/input) -->
+
 <!-- - [@responsive-ui/loader](https://github.com/wetix/responsive-ui/tree/master/components/loader) -->
 <!-- - [@responsive-ui/quantity](https://github.com/wetix/responsive-ui/tree/master/components/quantity) -->
-<!-- - [@responsive-ui/select](https://github.com/wetix/responsive-ui/tree/master/components/select) -->
 
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
 - [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/master/components/bottom-modal)
@@ -43,11 +42,13 @@ yarn add responsive-ui
 - [@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/master/components/fab)
 - [@responsive-ui/header](https://github.com/wetix/responsive-ui/tree/master/components/header)
 - [@responsive-ui/icon](https://github.com/wetix/responsive-ui/tree/master/components/icon)
+- [@responsive-ui/input](https://github.com/wetix/responsive-ui/tree/master/components/input)
 - [@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/master/components/label)
 - [@responsive-ui/poster](https://github.com/wetix/responsive-ui/tree/master/components/poster)
 - [@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/master/components/responsive)
 - [@responsive-ui/row](https://github.com/wetix/responsive-ui/tree/master/components/row)
 - [@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/master/components/search)
+- [@responsive-ui/select](https://github.com/wetix/responsive-ui/tree/master/components/select)
 - [@responsive-ui/snackbar](https://github.com/wetix/responsive-ui/tree/master/components/snackbar)
 - [@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/master/components/switch)
 - [@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/master/components/tab)
