@@ -71,11 +71,11 @@ declare class Select extends SvelteComponentTyped<
     { title: "Option B", value: "b" },
     { title: "Option C", value: "c" },
     { title: "Option D", value: "d" },
-	];
+  ];
 
-	const onChange = (e) => {
-		console.log(e)
-	}
+  const onChange = (e) => {
+    console.log(e)
+  }
 </script>
 
 <Select
