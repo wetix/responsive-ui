@@ -4,24 +4,25 @@
   export let compact = false;
 </script>
 
+<div
+  class="responsive-ui-card {className}"
+  class:responsive-ui-card--compact={compact}
+  on:click
+>
+  <slot />
+</div>
+
 <style lang="scss">
   .responsive-ui-card {
-    word-break: break-word;
     padding: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+    word-break: break-word;
     overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius, 5px);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 
     &--compact {
       padding: 0;
     }
   }
 </style>
-
-<div
-  class="responsive-ui-card {className}"
-  class:responsive-ui-card--compact={compact}
-  on:click>
-  <slot />
-</div>

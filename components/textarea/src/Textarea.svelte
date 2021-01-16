@@ -52,13 +52,13 @@
   .responsive-ui-textarea {
     width: 100%;
     font-size: var(--font-size, 14px);
-    font-family: inherit;
+    font-family: var(--font-family, inherit);
     color: #1a1b1c;
     background: #f1f1f1;
     border: none;
     outline: 0;
     resize: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius, 5px);
     padding: 10px;
     margin: 0;
     transition: all 0.5s;

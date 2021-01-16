@@ -35,11 +35,11 @@
     <div class="label" class:active>{label}</div>
   {/if}
   <input
+    bind:this={input}
     {name}
     {type}
     {placeholder}
     {value}
-    bind:this={input}
     {...$$restProps}
     on:input={onInput}
   />
@@ -48,18 +48,16 @@
 <style lang="scss">
   .responsive-ui-input {
     display: block;
-    margin: 0;
 
     input {
+      margin: 0;
       display: block;
-      border: none;
-      color: #1a1b1c;
+      color: var(--text-color, #1a1b1c);
       background: #f1f1f1;
       font-size: var(--font-size, 14px);
-      font-family: inherit;
-      border-radius: 0;
+      font-family: var(--font-family, inherit);
       outline: none;
-      border-bottom: 1px solid #e1e1e1;
+      appearance: none;
       width: 100%;
       user-select: text;
       -webkit-user-select: text;
@@ -68,21 +66,21 @@
       -ms-user-select: text;
       padding: 0 10px;
       box-sizing: border-box;
-      height: 40px;
-      line-height: 40px;
-      border: none;
+      height: var(--height, 34px);
+      line-height: var(--height, 34px);
+      border: 1px solid #f1f1f1;
       border-radius: var(--border-radius, 5px);
     }
   }
 
-  .label {
-    font-size: 1rem;
-    margin-bottom: 6px;
-    transition: all 0.3s;
+  // .label {
+  //   font-size: 1rem;
+  //   margin-bottom: 6px;
+  //   transition: all 0.3s;
 
-    &.active {
-      font-size: 0.8rem;
-      color: #505050;
-    }
-  }
+  //   &.active {
+  //     font-size: 0.8rem;
+  //     color: #505050;
+  //   }
+  // }
 </style>

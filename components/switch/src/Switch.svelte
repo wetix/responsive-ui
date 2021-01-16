@@ -7,7 +7,7 @@
 
 <span class="responsive-ui-switch {className}" class:disabled>
   <input type="checkbox" bind:checked on:change {disabled} />
-  <b class="responsive-ui-switch__switch" />
+  <b class="responsive-ui-switch__toggle" />
   <b class="responsive-ui-switch__track" />
 </span>
 
@@ -22,7 +22,7 @@
     overflow: hidden;
     box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.05);
 
-    &__switch {
+    &__toggle {
       position: absolute;
       left: 2px;
       top: 2px;
@@ -30,11 +30,11 @@
       right: 22px;
       background-color: #fff;
       border-radius: 50%;
-      z-index: 1;
       transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
       transition-property: left, right;
       transition-delay: 0s, 0.05s;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      z-index: 1;
     }
 
     &__track {

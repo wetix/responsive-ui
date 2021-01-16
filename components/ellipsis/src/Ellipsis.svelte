@@ -5,6 +5,10 @@
   export let style = "";
 </script>
 
+<p class="responsive-ui-ellipsis {className}" {style} on:click>
+  <slot>{text}</slot>
+</p>
+
 <style lang="scss">
   .responsive-ui-ellipsis {
     overflow: hidden;
@@ -12,7 +16,3 @@
     white-space: nowrap;
   }
 </style>
-
-<p class="responsive-ui-ellipsis {className}" {style} on:click>
-  <slot>{text}</slot>
-</p>

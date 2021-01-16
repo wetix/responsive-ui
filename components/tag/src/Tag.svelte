@@ -13,11 +13,9 @@
   .responsive-ui-tag {
     display: inline-block;
     vertical-align: middle;
-    font-size: 10px;
-    border-radius: 5px;
-    height: 20px;
-    line-height: 20px;
-    padding: 0 8px;
+    font-size: var(--font-size-sm, 10px);
+    border-radius: var(--border-radius, 5px);
+    padding: 3px 8px;
     overflow: hidden;
 
     &--blue {

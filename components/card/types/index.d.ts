@@ -1,8 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface CardProps {
-  compact?: boolean;
   class?: string;
+  compact?: boolean;
 }
 
 export interface CardEvents {

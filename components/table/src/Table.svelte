@@ -87,9 +87,9 @@
     position: relative;
     border: 1px solid transparent;
     overflow-y: auto;
-    font-size: 14px;
-    font-weight: normal;
-    border-radius: 5px;
+    font-size: var(--font-size, 14px);
+    font-family: var(--font-family, inherit);
+    border-radius: var(--border-radius, 5px);
 
     table {
       min-width: 100%;

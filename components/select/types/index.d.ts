@@ -9,9 +9,10 @@ export type SelectOption = {
 
 export interface SelectProps {
   name?: string;
+  value?: string;
   disabled?: boolean;
   readonly?: boolean;
-  value?: string;
+  multiple?: boolean;
   options: SelectOption[];
 }
 

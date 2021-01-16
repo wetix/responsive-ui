@@ -17,6 +17,10 @@
   }
 </script>
 
+<div class={`responsive-ui-column--${justify} ${cls} ${className}`} {style}>
+  <slot />
+</div>
+
 <style lang="scss">
   .responsive-ui-column {
     position: relative;
@@ -192,7 +196,3 @@
   @media (min-width: 1200px) {
   }
 </style>
-
-<div class={`responsive-ui-column--${justify} ${cls} ${className}`} {style}>
-  <slot />
-</div>

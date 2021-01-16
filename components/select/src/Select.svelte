@@ -3,12 +3,19 @@
 
   export let name = "";
   export let value = "";
+  export let multiple = false;
   export let disabled = false;
   export let readonly = false;
   export let options: SelectOption[] = [];
 </script>
 
-<select class="responsive-ui-select" {name} {readonly} {disabled} on:change>
+<select
+  class="responsive-ui-select"
+  {multiple}
+  {name}
+  {readonly}
+  {disabled}
+  on:change>
   {#each options as option}
     <option
       value={option.value}
@@ -22,15 +29,15 @@
   .responsive-ui-select {
     display: block;
     width: 100%;
-    border: none;
+    border: 1px solid #f1f1f1;
     border-radius: var(--border-radius, 5px);
     font-size: var(--font-size, 14px);
-    font-family: inherit;
+    font-family: var(--font-family, inherit);
+    height: var(--height, 34px);
     color: #1a1b1c;
     padding: 0 10px;
     background: #f1f1f1;
     outline: none;
-    height: 40px;
     box-sizing: border-box;
     /* hide arrow */
     -webkit-appearance: none;

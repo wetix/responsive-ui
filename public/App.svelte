@@ -7,7 +7,7 @@
   import Header from "../components/header/src/Header.svelte";
   import Icon from "../components/icon/src/Icon.svelte";
   import Label from "../components/label/src/Label.svelte";
-  // import * as message from "../components/alert/src";
+  import Loader from "../components/loader/src/Loader.svelte";
   import * as Snackbar from "../components/snackbar/src";
   import Row from "../components/row/src/Row.svelte";
   import Column from "../components/column/src/Column.svelte";
@@ -34,8 +34,6 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
-
-  console.log(Snackbar);
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -45,6 +43,13 @@
   // import Icon from "./components/icon/Icon.svelte";
   // import Index from "./components/button/index.svelte";
   // import Checkbox from "../src/components/checkbox/index.svelte";
+
+  console.log(Snackbar);
+
+  let loading = true;
+  setTimeout(() => {
+    loading = false;
+  }, 1500);
 
   const wrapComponent = (
     Component,
@@ -289,6 +294,10 @@
     <Icon type="filter" on:click={() => (showModal = true)} />
   </Header>
 
+  {#if loading}
+    <Loader />
+  {/if}
+
   <Icon type="more" />
   <Icon type="right-arrow" />
   <Icon type="x" />
@@ -309,12 +318,19 @@
       placeholder="Enter your keyword here to search..."
     />
   </div>
+
   <div style="padding: 10px 5px; border: 1px solid red;">
     <InfiniteScroll>
       {#each items as item, i}
         <div>{i + 1}. {item}</div>
       {/each}
     </InfiniteScroll>
+  </div>
+  <div style="padding: 50px 0">
+    <Textarea placeholder="Key in your input here..." />
+  </div>
+  <div style="padding: 50px 0;">
+    <Tab items={tabItems} selected={1} />
   </div>
   <div class="padding">
     <Poster
@@ -382,21 +398,22 @@
     <InputNumber formatter={(v) => `${v}%`} />
   </Label>
 
-  <Tab items={tabItems} selected={1} />
-  <Label title="Description">
+  <!-- <Label title="Description">
     <Textarea placeholder="Enter your text here..." />
-  </Label>
+  </Label> -->
   <Label>
-    <Select
-      value="c"
-      options={[
-        { title: "Option A", value: "a" },
-        { title: "Option B", value: "b" },
-        { title: "Option C", value: "c" },
-        { title: "Option D", value: "d" },
-      ]}
-      on:change={onChange}
-    />
+    <div style="padding: 20px 0;">
+      <Select
+        value="c"
+        options={[
+          { title: "Option A", value: "a" },
+          { title: "Option B", value: "b" },
+          { title: "Option C", value: "c" },
+          { title: "Option D", value: "d" },
+        ]}
+        on:change={onChange}
+      />
+    </div>
   </Label>
   <div>
     <Button on:click={displayMessage}>Display message</Button>
@@ -470,12 +487,6 @@
       max-width: none;
     }
   } */
-
-  .container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
 
   .padding {
     padding: 15px 0;

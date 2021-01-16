@@ -10,6 +10,19 @@
   export let style = "";
 </script>
 
+<button
+  class="responsive-ui-button {className}"
+  class:responsive-ui-button__disabled={disabled}
+  class:responsive-ui-button__outline={outline}
+  {name}
+  {type}
+  {disabled}
+  {form}
+  {style}
+  on:click>
+  <slot>{title}</slot>
+</button>
+
 <style lang="scss">
   .responsive-ui-button {
     cursor: pointer;
@@ -23,11 +36,11 @@
     width: 100%;
     padding: 0 10px;
     margin: 0;
-    height: 45px;
+    height: var(--height-lg, 45px);
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
-    border-radius: 5px;
+    border-radius: var(--border-radius, 5px);
 
     &__disabled {
       cursor: not-allowed !important;
@@ -40,16 +53,3 @@
     }
   }
 </style>
-
-<button
-  class="responsive-ui-button {className}"
-  class:responsive-ui-button__disabled={disabled}
-  class:responsive-ui-button__outline={outline}
-  {name}
-  {type}
-  {disabled}
-  {form}
-  {style}
-  on:click>
-  <slot>{title}</slot>
-</button>
