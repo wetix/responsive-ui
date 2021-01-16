@@ -443,12 +443,8 @@
     </span>
   </Row>
 </BottomModal>
-<BottomSheet
-  title="Testing"
-  items={tabItems}
-  bind:open={showModal}
-  on:filter={onConfirm}
 /> -->
+<BottomSheet items={tabItems} bind:open={showModal} on:filter={onConfirm} />
 
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
 

@@ -3,7 +3,7 @@ import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 type BottomSheetOption = {
   title: string;
   value: string;
-  icon?: string | SvelteComponentDev;
+  icon?: string | SvelteComponentDev | ReturnType<SvelteComponentDev>;
   disabled?: boolean;
   selected?: boolean;
 };
