@@ -2,8 +2,8 @@
   export let src = "";
   export let width = "110px";
   export let height = "150px";
-  export let hasShadow = true;
-  export let hasBorderRadius = true;
+  export let shadow = true;
+  export let rounded = true;
   export let size = "middle";
   export let style = "";
 
@@ -22,6 +22,16 @@
     height = "100px";
   }
 </script>
+
+<div
+  class="responsive-ui-poster"
+  class:responsive-ui-poster--shadow={shadow}
+  class:responsive-ui-poster--rounded={rounded}
+  style={`background-image:url(${src});width:${width};height:${height};${style}`}
+  on:click
+>
+  <div class="responsive-ui-poster__overlay" style={`opacity:${opacity};`} />
+</div>
 
 <style lang="scss">
   .responsive-ui-poster {
@@ -54,12 +64,3 @@
     }
   }
 </style>
-
-<div
-  class="responsive-ui-poster"
-  class:responsive-ui-poster--shadow={hasShadow}
-  class:responsive-ui-poster--rounded={hasBorderRadius}
-  style={`background-image:url(${src});width:${width};height:${height};${style}`}
-  on:click>
-  <div class="responsive-ui-poster__overlay" style={`opacity:${opacity};`} />
-</div>
