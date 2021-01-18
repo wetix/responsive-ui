@@ -5,7 +5,9 @@
   export let disabled = false;
 </script>
 
-<span class="responsive-ui-switch {className}" class:disabled>
+<span
+  class="responsive-ui-switch {className}"
+  class:responsive-ui-switch--disabled={disabled}>
   <input type="checkbox" bind:checked on:change {disabled} />
   <b class="responsive-ui-switch__toggle" />
   <b class="responsive-ui-switch__track" />
@@ -65,20 +67,20 @@
     b {
       display: block;
     }
-  }
 
-  .disabled {
-    opacity: 0.65;
-    .check {
-      cursor: not-allowed;
+    &--disabled {
+      opacity: 0.65;
+      input[type="checkbox"] {
+        cursor: not-allowed;
+      }
     }
   }
 
-  input:checked ~ .responsive-ui-switch__track {
+  input[type="checkbox"]:checked ~ .responsive-ui-switch__track {
     box-shadow: inset 0 0 0 20px var(--primary-color, #fc4451);
   }
 
-  input:checked ~ .responsive-ui-switch__switch {
+  input[type="checkbox"]:checked ~ .responsive-ui-switch__toggle {
     right: 2px;
     left: 22px;
     transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
