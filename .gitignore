@@ -10,3 +10,4 @@ bundle.css
 *.map
 *.log
 *.lock
+.bin

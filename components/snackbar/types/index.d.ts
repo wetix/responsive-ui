@@ -1,25 +1,8 @@
-import type { SvelteComponentTyped } from "svelte/internal";
-
-export interface SnackbarProps {
-  text: string;
-  variant?: string;
-  class?: string;
-  timeout?: number;
-  rounded?: boolean;
+import Snackbar from "./Snackbar.svelte";
+import type { SnackbarProps } from "../types/Snack";
+interface SnackbarComponent {
+    close(): void;
 }
-
-export interface SnackbarEvents {
-  close?: void;
-}
-
-export interface SnackbarSlots {
-  default: {};
-}
-
-declare class Snackbar extends SvelteComponentTyped<
-  SnackbarProps,
-  SnackbarEvents,
-  SnackbarSlots
-> {}
-
+declare const show: (props: SnackbarProps) => SnackbarComponent;
 export default Snackbar;
+export { show };

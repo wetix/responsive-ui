@@ -13,6 +13,7 @@
   import Column from "../components/column/src/Column.svelte";
   import Search from "../components/search/src/Search.svelte";
   import Table from "../components/table/src/Table.svelte";
+  import Tooltip from "../components/tooltip/src/Tooltip.svelte";
   import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
@@ -294,6 +295,9 @@
     <Icon type="filter" on:click={() => (showModal = true)} />
   </Header>
 
+  <Tooltip text="Testing here">
+    <p>testing here</p>
+  </Tooltip>
   {#if loading}
     <Loader />
   {/if}
@@ -397,6 +401,25 @@
   <Label title="Number">
     <InputNumber formatter={(v) => `${v}%`} />
   </Label>
+
+  <Tooltip
+    placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  Lorem Ipsum has been the industry's standard dummy text ever since the
+  1500s, when an unknown printer took a galley of type and scrambled it to
+  make a type specimen book."
+  >
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.
+    </p>
+  </Tooltip>
 
   <!-- <Label title="Description">
     <Textarea placeholder="Enter your text here..." />

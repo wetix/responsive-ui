@@ -1,11 +1,15 @@
 import { SvelteComponent, tick } from "svelte/internal";
 
 import Snackbar from "./Snackbar.svelte";
-import type { SnackbarProps } from "../types";
+import type { SnackbarProps } from "../types/Snack";
 
 const queue: Array<SvelteComponent> = [];
 
-const show = (props: SnackbarProps) => {
+interface SnackbarComponent {
+  close(): void;
+}
+
+const show = (props: SnackbarProps): SnackbarComponent => {
   const { timeout = 3000 } = props;
   props = Object.assign({ rounded: true }, props);
   const component = new Snackbar({
