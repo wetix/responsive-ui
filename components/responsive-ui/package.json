@@ -47,7 +47,9 @@
     "@responsive-ui/fab": "^0.5.1",
     "@responsive-ui/header": "^0.5.1",
     "@responsive-ui/icon": "^0.5.1",
+    "@responsive-ui/input": "^0.5.1",
     "@responsive-ui/label": "^0.5.1",
+    "@responsive-ui/loader": "^0.5.1",
     "@responsive-ui/poster": "^0.5.1",
     "@responsive-ui/responsive": "^0.5.1",
     "@responsive-ui/row": "^0.5.1",
@@ -57,7 +59,9 @@
     "@responsive-ui/switch": "^0.5.1",
     "@responsive-ui/tab": "^0.5.1",
     "@responsive-ui/table": "^0.5.1",
+    "@responsive-ui/tag": "^0.5.1",
     "@responsive-ui/textarea": "^0.5.1",
+    "@responsive-ui/tooltip": "^0.5.1",
     "@responsive-ui/upload": "^0.5.1"
   }
 }

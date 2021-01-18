@@ -10,18 +10,19 @@ import Ellipsis from "@responsive-ui/ellipsis/types";
 import FloatingActionButton from "@responsive-ui/fab/types";
 import Header from "@responsive-ui/header/types";
 import Icon from "@responsive-ui/icon/types";
-// import InfiniteScroll from "../infinite-scroll/typess";
-// import Input from "../input/typess";
+import Input from "@responsive-ui/input/types";
 import Label from "@responsive-ui/label/types";
+import Loader from "@responsive-ui/loader/types";
 import Poster from "@responsive-ui/poster/types";
 import Responsive from "@responsive-ui/responsive/types";
 import Row from "@responsive-ui/row/types";
 import Search from "@responsive-ui/search/types";
 import Select from "@responsive-ui/select/types";
-import Snackbar from "@responsive-ui/snackbar/types";
+import Snackbar from "@responsive-ui/snackbar/types/Snack";
 import Switch from "@responsive-ui/switch/types";
 import Tab from "@responsive-ui/tab/types";
 import Table from "@responsive-ui/table/types";
+import Tag from "@responsive-ui/tag/types";
 import Textarea from "@responsive-ui/textarea/types";
 import Upload from "@responsive-ui/upload/types";
 
@@ -33,14 +34,13 @@ export {
   Card,
   Checkbox,
   Column,
-  // DatePicker,
   Ellipsis,
   FloatingActionButton,
   Header,
   Icon,
-  // InfiniteScroll,
-  // Input,
+  Input,
   Label,
+  Loader,
   Poster,
   Responsive,
   Row,
@@ -50,6 +50,7 @@ export {
   Switch,
   Tab,
   Table,
+  Tag,
   Textarea,
   Upload,
 };

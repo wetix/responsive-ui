@@ -11,8 +11,8 @@ import FloatingActionButton from "@responsive-ui/fab/src/FloatingActionButton.sv
 import Header from "@responsive-ui/header/src/Header.svelte";
 import Icon from "@responsive-ui/icon/src/Icon.svelte";
 import Input from "@responsive-ui/input/src/Input.svelte";
-// import InputNumber from "@responsive-ui/input-number/src/InputNumber.svelte";
 import Label from "@responsive-ui/label/src/Label.svelte";
+import Loader from "@responsive-ui/loader/src/Loader.svelte";
 import Poster from "@responsive-ui/poster/src/Poster.svelte";
 import Responsive from "@responsive-ui/responsive/src/Responsive.svelte";
 import Row from "@responsive-ui/row/src/Row.svelte";
@@ -21,7 +21,9 @@ import Search from "@responsive-ui/search/src/Search.svelte";
 import Switch from "@responsive-ui/switch/src/Switch.svelte";
 import Tab from "@responsive-ui/tab/src/Tab.svelte";
 import Table from "@responsive-ui/table/src/Table.svelte";
+import Tag from "@responsive-ui/tag/src/Tag.svelte";
 import Textarea from "@responsive-ui/textarea/src/Textarea.svelte";
+import Tooltip from "@responsive-ui/tooltip/src/Tooltip.svelte";
 import Upload from "@responsive-ui/upload/src/Upload.svelte";
 
 export {
@@ -37,10 +39,9 @@ export {
   FloatingActionButton,
   Header,
   Icon,
-  // InfiniteScroll,
   Input,
-  // InputNumber,
   Label,
+  Loader,
   Poster,
   Responsive,
   Row,
@@ -49,6 +50,8 @@ export {
   Switch,
   Tab,
   Table,
+  Tag,
   Textarea,
+  Tooltip,
   Upload,
 };
