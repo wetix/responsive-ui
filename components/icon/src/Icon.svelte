@@ -85,6 +85,7 @@
 
 <style lang="scss">
   .responsive-ui-icon {
+    cursor: pointer;
     display: inline-block;
     width: 16px;
     height: 16px;

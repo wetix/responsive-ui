@@ -295,9 +295,16 @@
     <Icon type="filter" on:click={() => (showModal = true)} />
   </Header>
 
-  <Tooltip text="Testing here">
-    <p>testing here</p>
-  </Tooltip>
+  <Select
+    multiple={true}
+    options={[
+      { title: "Option A", value: "a" },
+      { title: "Option B", value: "b" },
+      { title: "Option C", value: "c" },
+      { title: "Option D", value: "d" },
+    ]}
+  />
+
   {#if loading}
     <Loader />
   {/if}
@@ -306,6 +313,9 @@
   <Icon type="right-arrow" />
   <Icon type="x" />
   <Icon type="filter" />
+  <Tooltip placeholder="Testing here">
+    <p>testing here</p>
+  </Tooltip>
 
   <div style="padding-top: 10px;">
     <Tag value="Blue" />

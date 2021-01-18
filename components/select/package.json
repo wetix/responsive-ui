@@ -13,6 +13,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@wetix/animation": "^0.1.4",
+    "@wetix/utils": "^0.1.8"
+  },
   "peerDependencies": {
     "svelte": "^3.29.0"
   },
