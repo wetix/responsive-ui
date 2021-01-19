@@ -10,12 +10,11 @@
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
-  export let value = "";
+  export let value = [];
   export let disabled = false;
   export let readonly = false;
 
   const maxHeight = 25 + size * 20;
-  const hashMap = new Map();
 
   type Item = { title: string; value: string };
 

@@ -1,8 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputProps {
+  class?: string;
   name?: string;
-  label?: string;
   type?: "text" | "password" | "email" | "number" | "reset";
   placeholder?: string;
   disabled?: boolean;
@@ -13,7 +13,10 @@ export interface InputProps {
   style?: string;
 }
 
-export interface InputEvents {}
+export interface InputEvents {
+  change?: void;
+  input?: void;
+}
 
 declare class Input extends SvelteComponentTyped<InputProps, InputEvents> {}
 

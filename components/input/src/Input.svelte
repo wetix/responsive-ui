@@ -1,16 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  let className = "";
+  export { className as class };
   export let name = "";
-  export let label: null | string;
   export let type = "text";
   export let placeholder = "";
+  export let disabled = false;
   export let maxlength = 100;
   export let size = 100;
   export let value = "";
   export let autofocus = false;
+  export let style = "";
 
-  let active = false;
   let input: null | HTMLInputElement;
 
   onMount(() => {
@@ -21,19 +23,10 @@
 
   const onInput = (e: Event) => {
     value = (e.target as HTMLInputElement).value;
-    // onChange(e);
-    // if (value.trim() != "") {
-    //   active = true;
-    // } else {
-    //   active = false;
-    // }
   };
 </script>
 
-<div class="responsive-ui-input">
-  {#if label}
-    <div class="label" class:active>{label}</div>
-  {/if}
+<div class="responsive-ui-input {className}" {style}>
   <input
     bind:this={input}
     {name}
@@ -41,9 +34,12 @@
     {placeholder}
     {maxlength}
     {size}
+    {disabled}
     {value}
     {...$$restProps}
     on:input={onInput}
+    on:input
+    on:change
   />
 </div>
 
@@ -74,15 +70,4 @@
       border-radius: var(--border-radius, 5px);
     }
   }
-
-  // .label {
-  //   font-size: 1rem;
-  //   margin-bottom: 6px;
-  //   transition: all 0.3s;
-
-  //   &.active {
-  //     font-size: 0.8rem;
-  //     color: #505050;
-  //   }
-  // }
 </style>

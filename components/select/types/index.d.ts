@@ -7,15 +7,26 @@ export type SelectOption = {
   value: any;
 };
 
-export interface SelectProps {
+interface SelectProp {
   name?: string;
-  value?: string;
   size?: number;
   disabled?: boolean;
   readonly?: boolean;
   multiple?: boolean;
   options: SelectOption[];
 }
+
+interface SingleSelectProps extends SelectProp {
+  value?: string;
+  multiple: false;
+}
+
+interface MultipleSelectProps extends SelectProp {
+  value?: string[];
+  multiple: true;
+}
+
+export type SelectProps = SingleSelectProps | MultipleSelectProps;
 
 export interface SelectEvents {
   blur?: any;

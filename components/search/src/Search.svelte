@@ -14,35 +14,26 @@
   export let placeholder = "";
 
   let state: null | SearchState;
-  const debounce = (func: Function, timeout: number) => {
-    let timer: NodeJS.Timeout | undefined;
-    return (...args: any[]) => {
-      const next = () => func(...args);
-      if (timer) {
-        clearTimeout(timer);
-      }
-      timer = setTimeout(next, timeout);
-    };
-  };
-
-  const cb = debounce((v: string) => {
-    dispatch("search", v);
-    state = null;
-  }, debounceTimer);
+  let timer: NodeJS.Timeout | undefined;
 
   const handleKeyPress = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
     state = "loading";
+
+    let timeout = debounceTimer;
     // when user click enter
-    // let timeout = debounceTimer;
     if (key === "Enter" || key === 13) {
-      // timeout = 0;
-      dispatch("search", v);
-    } else {
-      cb(v);
+      timeout = 0;
     }
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      dispatch("search", v);
+      state = null;
+    }, timeout);
   };
 </script>
 
