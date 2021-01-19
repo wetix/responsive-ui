@@ -6,6 +6,9 @@
     "components/*",
     "packages/*"
   ],
+  "resolutions": {
+    "npm-packlist": "1.1.12"
+  },
   "scripts": {
     "build:ui": "rollup -c ./responsive.config.js",
     "build": "node ./scripts/build.js",
