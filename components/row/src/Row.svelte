@@ -10,7 +10,12 @@
   if (direction) cssStyle += `flex-direction:${direction}`;
   if (alignItems) cssStyle += `align-items:${alignItems}`;
   if (justifyContent) cssStyle += `justify-content:${justifyContent}`;
+  cssStyle += `;${style}`;
 </script>
+
+<div class="responsive-ui-row {className}" style={cssStyle}>
+  <slot />
+</div>
 
 <style lang="scss">
   .responsive-ui-row {
@@ -19,7 +24,3 @@
     margin: 6px 0;
   }
 </style>
-
-<div class="responsive-ui-row {className}" style={cssStyle}>
-  <slot />
-</div>

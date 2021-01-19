@@ -49,6 +49,7 @@
 <div class="responsive-ui-search">
   <input
     type="search"
+    {name}
     {placeholder}
     {size}
     {value}
@@ -59,7 +60,7 @@
 
 {#if state}
   <div class="responsive-ui-search__state">
-    <Loader />
+    <Loader size="small" />
     <div class="responsive-ui-search__state-text">Searching...</div>
   </div>
 {/if}

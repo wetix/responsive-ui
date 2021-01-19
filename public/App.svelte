@@ -299,18 +299,23 @@
     </div>
   </Header>
 
-  <!-- <Select
+  <Select
     multiple={true}
     options={[
+      { title: "CC", value: "cc" },
       { title: "Option A", value: "a", disabled: true },
+      { title: "Z", value: "z" },
       { title: "Option B", value: "b" },
       { title: "Option C", value: "c" },
       { title: "Option D", value: "d" },
+      { title: "Option E", value: "e" },
+      { title: "Option F", value: "f" },
+      { title: "Option G", value: "g" },
     ]}
-  /> -->
+  />
 
   {#if loading}
-    <Loader />
+    <Loader size="small" />
   {/if}
 
   <Icon type="more" />
@@ -347,7 +352,7 @@
   <div style="padding: 50px 0">
     <Textarea placeholder="Key in your input here..." />
   </div>
-  <!-- <div style="padding: 50px 0;">
+  <div style="padding: 50px 0;">
     <Tab items={tabItems} selected={1} />
   </div>
   <div class="padding">
@@ -458,7 +463,7 @@
     <Button disabled={disabledButton} on:click={showNotification("default")}>
       CONFIRM
     </Button>
-  </BottomBar> -->
+  </BottomBar>
 </main>
 
 <!-- <FloatingActionButton on:click={console.log} /> -->

@@ -5,7 +5,7 @@
   export let label: null | string;
   export let type = "text";
   export let placeholder = "";
-  export let maxlength = "";
+  export let maxlength = 100;
   export let size = 100;
   export let value = "";
   export let autofocus = false;
@@ -39,6 +39,8 @@
     {name}
     {type}
     {placeholder}
+    {maxlength}
+    {size}
     {value}
     {...$$restProps}
     on:input={onInput}

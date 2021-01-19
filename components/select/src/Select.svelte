@@ -2,6 +2,8 @@
   import Select from "./MultipleSelect.svelte";
   import type { SelectOption } from "../types";
 
+  let className = "";
+  export { className as class };
   export let name = "";
   export let value = "";
   export let size = 1;
@@ -12,16 +14,16 @@
 </script>
 
 {#if multiple}
-  <Select {...$$props} />
+  <Select {...$$props} class={className} />
 {:else}
   <select
-    class="responsive-ui-select"
+    class="responsive-ui-select {className}"
     {multiple}
     {name}
     size={1}
     {readonly}
     {disabled}
-    on:change>
+    on:blur>
     {#each options as option}
       <option
         value={option.value}

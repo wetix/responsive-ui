@@ -7,11 +7,13 @@
 
 {#if fit === "viewport"}
   <div class="responsive-ui-loader" in:fade out:fade>
-    <div class="responsive-ui-loader__spinner" />
+    <div
+      class="responsive-ui-loader__spinner responsive-ui-loader__spinner--{size}"
+    />
   </div>
 {:else}
   <div
-    class="responsive-ui-loader__spinner responsive-ui-loader__spinner--small"
+    class="responsive-ui-loader__spinner responsive-ui-loader__spinner--{size}"
   />
 {/if}
 

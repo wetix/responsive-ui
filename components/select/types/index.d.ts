@@ -18,7 +18,7 @@ export interface SelectProps {
 }
 
 export interface SelectEvents {
-  change?: any;
+  blur?: any;
 }
 
 export interface SelectSlots {
