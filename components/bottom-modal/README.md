@@ -25,7 +25,7 @@ yarn add @responsive-ui/bottom-modal
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104027204-01e30700-5202-11eb-81ec-5573fd844af3.png"
+<img src="https://user-images.githubusercontent.com/28108597/104998043-8a18a600-5a65-11eb-9fe8-381e3934476b.png"
 alt="@responsive-ui/bottom-modal" />
 
 ## Properties, Events & Slots
