@@ -1,5 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
+export type SearchState = "loading";
+
 export interface SearchProps {
   name: string;
   value: any;
@@ -14,7 +16,11 @@ export interface SearchEvents {
   search?: (v: string) => void;
 }
 
-export interface SearchSlots {}
+export interface SearchSlots {
+  default: {
+    state: SearchState;
+  };
+}
 
 declare class Search extends SvelteComponentTyped<
   SearchProps,
