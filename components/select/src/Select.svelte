@@ -4,6 +4,7 @@
 
   export let name = "";
   export let value = "";
+  export let size = 10;
   export let multiple = false;
   export let disabled = false;
   export let readonly = false;
@@ -11,12 +12,13 @@
 </script>
 
 {#if multiple}
-  <Select {options} />
+  <Select {...$$props} />
 {:else}
   <select
     class="responsive-ui-select"
     {multiple}
     {name}
+    {size}
     {readonly}
     {disabled}
     on:change>

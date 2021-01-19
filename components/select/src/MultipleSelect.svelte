@@ -4,25 +4,17 @@
 
   import type { SelectOption } from "../types";
 
-  // import { onMount } from "svelte";
-
-  // import Icon from "../../../media/Icon.svelte";
-  // import { getAttrByEvent, execIfContains } from "../../../../util";
-
+  export let name = "";
   export let options: SelectOption[] = [];
+  export let size = 2;
+  export let value = "";
   export let disabled = false;
   export let readonly = false;
 
+  const maxHeight = 25 + size * 20;
   const hashMap = new Map();
 
   let items = ["a", "b", "test", "testing"];
-  // export let options = [],
-  //   name = "",
-  //   value = [],
-  //   disabled = false,
-  //   error = false,
-  //   onChange = () => {},
-  //   style = "";
 
   let input;
   let show = true;
@@ -30,10 +22,6 @@
   let results = [];
 
   results = options.slice(); // filtered value
-
-  // $: checkSelected = (v) => {
-  //   return value.includes(v);
-  // };
 
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
@@ -48,7 +36,6 @@
         items = [...items, item.value];
       }
       results = [...results];
-      console.log(results);
       input.focus();
     }
   };
@@ -62,22 +49,13 @@
     if (index) {
       items.splice(parseInt(index, 10), 1);
       items = [...items];
-      //     onChange(e, value);
     }
   };
-
-  // const onFocus = () => {
-  //   focus = !focus;
-  //   if (focus) {
-  //     input.focus();
-  //   }
-  // };
 </script>
-
-<!-- <svelte:body on:click={execIfContains(select, () => (focus = false))} /> -->
 
 <div class="responsive-ui-select">
   <span class="responsive-ui-select__tags" on:click={onRemove}>
+    <input {name} type="hidden" value={items.join(", ")} />
     {#each items as item, i}
       <span class="responsive-ui-select__tag" in:zoom out:zoom>
         <span>{item}</span>
@@ -115,7 +93,7 @@
   <div
     class="responsive-ui-select__dropdown"
     on:click={onSelect}
-    style={`height:${show ? clientHeight : 0}px`}
+    style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each results as item, i}
@@ -132,41 +110,6 @@
   </div>
 </div>
 
-<!-- <span
-  bind:this={select}
-  class="multi-select"
-  class:focus
-  class:disabled
-  bind:clientHeight={height}
-  on:click={!disabled ? onFocus : null}
-  {style}>
-  <div class="selector">
-    
-    
-  </div>
-  <div
-    class="options"
-    on:click={onSelect}
-    style={`top:${height + 10}px;height:${focus ? clientHeight : 0}px`}
-  >
-    <div bind:clientHeight style="padding:6px 0">
-      {#if results.length === 0}
-        <div class="empty">No data</div>
-      {:else}
-        {#each results as item}
-          <div
-            class={`option ${item.class || ""}`}
-            class:disabled={item.disabled || false}
-            class:selected={checkSelected(item.value)}
-            data-item={!item.disabled ? JSON.stringify(item) : null}
-          >
-            {item.title || item.value || ""}
-          </div>
-        {/each}
-      {/if}
-    </div>
-  </div>
-</span> -->
 <style lang="scss">
   .responsive-ui-select {
     position: relative;
@@ -249,19 +192,18 @@
       position: relative;
       white-space: nowrap;
       font-size: var(--font-size-sm, 12px);
-      // height: var(--height, 34px);
-      // line-height: var(--height, 34px);
       transition: all 0.3s;
       transition-property: background, color;
       padding: 3px 10px;
       margin-bottom: 1px;
-      // padding-right:  + 8px;
 
       &:hover {
         background: #f5f5f5;
       }
 
       &--disabled {
+        pointer-events: none;
+        cursor: not-allowed;
         opacity: 0.5;
       }
 
@@ -270,96 +212,4 @@
       }
     }
   }
-  // .multi-select {
-  //   @include input-wrapper;
-  //   min-width: 160px;
-
-  //   .selector {
-  //     @include flex;
-  //     display: inline-flex;
-  //     flex-direction: row;
-  //     justify-content: flex-start;
-  //     flex-wrap: wrap;
-  //     min-height: var(--height, $height);
-  //     padding: 0 var(--padding-sm, $padding-sm);
-
-  //     .tag {
-  //       display: inline-flex;
-  //       align-items: center;
-  //       border: 1px solid #dcdcdc;
-  //       background: #f5f5f5;
-  //       white-space: nowrap;
-  //       line-height: calc(var(--height) - 6px);
-  //       height: calc(var(--height) - 6px);
-  //       border-radius: 2px;
-  //       margin: 2px 4px;
-  //       margin-left: 0;
-
-  //       label {
-  //         display: block;
-  //         padding-left: 5px;
-  //       }
-
-  //       .icon {
-  //         cursor: pointer;
-  //         width: 14px;
-  //         height: 14px;
-  //         padding: 0 var(--padding-xs, $padding-xs);
-  //         stroke: #000;
-  //       }
-  //     }
-
-  //     .input {
-  //       width: 3px;
-
-  //       input {
-  //         padding: 0;
-  //         margin: 0;
-  //         width: 100%;
-  //       }
-  //     }
-  //   }
-
-  //   .options {
-
-  //     .option {
-
-  //       &:hover:not(.disabled) {
-  //         // color: $theme-color;
-
-  //       }
-
-  //       &.selected {
-  //         color: $theme-color;
-  //         background: $light-theme-color !important;
-  //       }
-
-  //       &.selected:after {
-  //         position: absolute;
-  //         right: 10px;
-  //         top: -2px;
-  //         content: "\02143";
-  //         transform: rotate(40deg);
-  //       }
-
-  //       &.disabled {
-  //         cursor: not-allowed !important;
-  //         color: rgba(0, 0, 0, 0.25);
-  //         background: #f5f5f5;
-  //       }
-  //     }
-
-  //     .empty {
-  //       display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-  //       min-height: $height;
-  //     }
-  //   }
-
-  //   &.focus {
-  //     border: 1px solid $theme-color;
-  //     // box-shadow: 0 0 3px 0 rgba(252, 68, 80, 1);
-  //   }
-  // }
 </style>
