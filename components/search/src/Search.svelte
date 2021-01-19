@@ -9,20 +9,19 @@
   export let name = "";
   export let value = "";
   export let size = 100;
-  export let loading = false;
   export let debounceTimer = 1000;
   export let spellcheck = false;
   export let placeholder = "";
 
   let state: null | SearchState;
-  const debounce = (func: Function, timeout?: number) => {
+  const debounce = (func: Function, timeout: number) => {
     let timer: NodeJS.Timeout | undefined;
     return (...args: any[]) => {
       const next = () => func(...args);
       if (timer) {
         clearTimeout(timer);
       }
-      timer = setTimeout(next, timeout > 0 ? timeout : 300);
+      timer = setTimeout(next, timeout);
     };
   };
 

@@ -7,13 +7,12 @@ export interface SearchProps {
   value: any;
   placeholder?: string;
   size?: number;
-  loading?: boolean;
   spellcheck?: boolean;
   debounceTimer?: number;
 }
 
 export interface SearchEvents {
-  search?: (v: string) => void;
+  search?: (e: CustomEvent<string>) => void;
 }
 
 export interface SearchSlots {
