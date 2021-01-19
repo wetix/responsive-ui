@@ -79,6 +79,7 @@
       display: block;
       top: 10px;
       right: 15px;
+      z-index: 50;
     }
   }
 </style>

@@ -15,17 +15,14 @@
   let width = 0;
 
   const setWidth = () => {
-    if (childNodes[selected]) {
-      const el = childNodes[selected] as HTMLDivElement;
-      const rect = el.getBoundingClientRect();
-      left = el.offsetLeft;
-      width = rect.width;
-    }
+    childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
+    const el = childNodes[selected] as HTMLDivElement;
+    left = el.offsetLeft;
+    width = el.offsetWidth;
   };
 
   onMount(() => {
     setTimeout(() => {
-      childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
       setWidth();
     }, 0);
   });
