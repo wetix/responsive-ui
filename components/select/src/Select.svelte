@@ -4,7 +4,7 @@
 
   export let name = "";
   export let value = "";
-  export let size = 10;
+  export let size = 1;
   export let multiple = false;
   export let disabled = false;
   export let readonly = false;
@@ -18,7 +18,7 @@
     class="responsive-ui-select"
     {multiple}
     {name}
-    {size}
+    size={1}
     {readonly}
     {disabled}
     on:change>
