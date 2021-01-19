@@ -5,6 +5,7 @@ export type TooltipTrigger = "mouseenter" | "focus" | "click";
 export interface TooltipProps {
   placeholder: string;
   trigger?: TooltipTrigger[];
+  class?: string;
 }
 
 interface TooltipEvents {}
