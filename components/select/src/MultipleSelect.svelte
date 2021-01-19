@@ -11,6 +11,7 @@
 
   export let options: SelectOption[] = [];
   export let disabled = false;
+  export let readonly = false;
 
   const hashMap = new Map();
 
@@ -23,19 +24,11 @@
   //   onChange = () => {},
   //   style = "";
 
+  let input;
   let show = true;
   let clientHeight;
   let results = [];
-  // const items = options.reduce((acc, { title, value }) => {
-  //   acc[value] = title;
-  //   return acc;
-  // }, {});
 
-  // let focus = false,
-  //   height,
-  //   input,
-  //   select,
-  //   clientHeight,
   results = options.slice(); // filtered value
 
   // $: checkSelected = (v) => {
@@ -44,19 +37,19 @@
 
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
-    // console.log(item);
     if (data) {
       const [index, item] = <[number, { value: string }]>JSON.parse(data);
-      options[index].selected = true;
       const pos = items.findIndex((v) => v === item.value);
       if (pos > -1) {
+        results[index].selected = false;
         items = items.filter((v) => v !== item.value);
       } else {
+        results[index].selected = true;
         items = [...items, item.value];
       }
-      options = [...options];
-      // console.log(index);
-      //     onChange(e, value);
+      results = [...results];
+      console.log(results);
+      input.focus();
     }
   };
 
@@ -112,7 +105,13 @@
       </span>
     {/each}
   </span>
-  <input type="text" autocomplete="off" {disabled} on:click={onClick} />
+  <input
+    bind:this={input}
+    type="text"
+    autocomplete="off"
+    {disabled}
+    on:click={onClick}
+  />
   <div
     class="responsive-ui-select__dropdown"
     on:click={onSelect}
@@ -122,8 +121,8 @@
       {#each results as item, i}
         <div
           class="responsive-ui-select__option"
-          class:responsive-ui-select__option--selected={item.selected || false}
-          class:responsive-ui-select__option--disabled={item.disabled || false}
+          class:responsive-ui-select__option--selected={item.selected}
+          class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
           {item.title || ""}
@@ -185,7 +184,7 @@
     &__tags {
       // border: 1px solid red;
       // display: inline-flex;
-      padding: 4px 10px;
+      padding: 4px 0 4px 10px;
       flex-direction: row;
       justify-content: flex-start;
       flex-wrap: wrap;
@@ -210,7 +209,7 @@
       font-size: var(--font-size, 14px);
       font-family: var(--font-family, inherit);
       outline: none;
-      // border: none;
+      border: none;
       background: inherit;
     }
 
@@ -249,12 +248,13 @@
       cursor: pointer;
       position: relative;
       white-space: nowrap;
-      font-size: var(--font-size, 14px);
+      font-size: var(--font-size-sm, 12px);
       // height: var(--height, 34px);
       // line-height: var(--height, 34px);
       transition: all 0.3s;
       transition-property: background, color;
-      padding: 4px 10px;
+      padding: 3px 10px;
+      margin-bottom: 1px;
       // padding-right:  + 8px;
 
       &:hover {
@@ -263,6 +263,10 @@
 
       &--disabled {
         opacity: 0.5;
+      }
+
+      &--selected {
+        background: rgba(252, 68, 81, 0.3) !important;
       }
     }
   }
