@@ -33,19 +33,17 @@
   style={`opacity:${1 - $tween}; visibility:${
     1 - $tween <= 0 ? "hidden" : "visible"
   }`}
+/>
+<div
+  class="responsive-ui-modal"
+  style={`transform:translateY(${$tween * 100}%);${style}`}
 >
-  <div
-    class="responsive-ui-modal"
-    on:click|stopPropagation
-    style={`transform:translateY(${$tween * 100}%);${style}`}
-  >
-    {#if closable}
-      <span class="responsive-ui-modal__close">
-        <Icon type="x" />
-      </span>
-    {/if}
-    <slot />
-  </div>
+  {#if closable}
+    <span class="responsive-ui-modal__close" on:click={() => (open = false)}>
+      <Icon type="x" />
+    </span>
+  {/if}
+  <slot />
 </div>
 
 <style lang="scss">
@@ -76,6 +74,7 @@
     z-index: 50;
 
     &__close {
+      cursor: pointer;
       position: absolute;
       display: block;
       top: 10px;
