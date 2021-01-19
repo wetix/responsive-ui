@@ -10,6 +10,7 @@ export type SelectOption = {
 export interface SelectProps {
   name?: string;
   value?: string;
+  size?: number;
   disabled?: boolean;
   readonly?: boolean;
   multiple?: boolean;

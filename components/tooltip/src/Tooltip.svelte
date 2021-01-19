@@ -14,13 +14,13 @@
   const callbacks: [Node, string, EventListener][] = [];
   const mounted = (node: HTMLSpanElement) => {
     const children = node.children;
-    console.log(children);
+
     let child;
     let len = children.length;
     for (let i = 0; i < len; i++) {
       child = children[i];
-      trigger.forEach((evt) => {
-        const cb = (e) => {
+      trigger.forEach((evt: TooltipTrigger) => {
+        const cb = (e: Event) => {
           if (evt === "click" && show) {
             show = false;
             style = "";
@@ -31,7 +31,6 @@
           const rect1 = document.body.getBoundingClientRect();
           const x = rect.x - rect1.x;
           const y = rect.y - rect1.y - clientHeight - 15;
-          console.log(x, y);
           show = true;
           style = `top:${y}px;left:${x}px;visibility:visible;`;
         };
@@ -40,16 +39,12 @@
       });
     }
     node.replaceWith(...children);
-
-    console.log(node, children);
-    console.log(callbacks);
   };
 
   onDestroy(() => {
     callbacks.forEach(([child, evt, cb]: [Node, string, EventListener]) => {
       child.removeEventListener(evt, cb);
     });
-    console.log(callbacks);
   });
 </script>
 

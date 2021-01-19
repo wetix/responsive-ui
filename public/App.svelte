@@ -49,7 +49,7 @@
 
   let loading = true;
   setTimeout(() => {
-    loading = false;
+    // loading = false;
   }, 1500);
 
   const wrapComponent = (
@@ -161,6 +161,7 @@
 
   let disabledButton = false;
   let showModal = false;
+  let showBottomSheet = false;
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
@@ -292,12 +293,22 @@
 
 <main>
   <Header title="Responsive UI">
-    <Icon type="filter" on:click={() => (showModal = true)} />
+    <div>
+      <Icon type="filter" on:click={() => (showBottomSheet = true)} />
+      <Icon type="right-arrow" on:click={() => (showModal = true)} />
+    </div>
   </Header>
 
-  <Tooltip text="Testing here">
-    <p>testing here</p>
-  </Tooltip>
+  <!-- <Select
+    multiple={true}
+    options={[
+      { title: "Option A", value: "a", disabled: true },
+      { title: "Option B", value: "b" },
+      { title: "Option C", value: "c" },
+      { title: "Option D", value: "d" },
+    ]}
+  /> -->
+
   {#if loading}
     <Loader />
   {/if}
@@ -306,6 +317,9 @@
   <Icon type="right-arrow" />
   <Icon type="x" />
   <Icon type="filter" />
+  <Tooltip placeholder="Testing here">
+    <p>testing here</p>
+  </Tooltip>
 
   <div style="padding-top: 10px;">
     <Tag value="Blue" />
@@ -333,7 +347,7 @@
   <div style="padding: 50px 0">
     <Textarea placeholder="Key in your input here..." />
   </div>
-  <div style="padding: 50px 0;">
+  <!-- <div style="padding: 50px 0;">
     <Tab items={tabItems} selected={1} />
   </div>
   <div class="padding">
@@ -420,10 +434,6 @@
       Ipsum.
     </p>
   </Tooltip>
-
-  <!-- <Label title="Description">
-    <Textarea placeholder="Enter your text here..." />
-  </Label> -->
   <Label>
     <div style="padding: 20px 0;">
       <Select
@@ -444,18 +454,20 @@
   <Button on:click={showNotification("success")}>Show Success</Button>
   <Button on:click={showNotification("error")}>Show Error</Button>
   <DatePicker />
+  <BottomBar>
+    <Button disabled={disabledButton} on:click={showNotification("default")}>
+      CONFIRM
+    </Button>
+  </BottomBar> -->
 </main>
-<BottomBar>
-  <Button disabled={disabledButton} on:click={showNotification("default")}>
-    CONFIRM
-  </Button>
-</BottomBar>
 
 <!-- <FloatingActionButton on:click={console.log} /> -->
 
-<!-- <BottomModal bind:open={showModal}>
-  <DatePicker />
-</BottomModal> -->
+<BottomModal bind:open={showModal} closable={true}>
+  <div style="padding: 30px 15px;">
+    <!-- <DatePicker /> -->
+  </div>
+</BottomModal>
 <!-- <BottomModal bind:open={showModal}>
   <Row style="padding:10px;" justifyContent="space-between">
     <span style="width: 48%">
@@ -467,7 +479,11 @@
   </Row>
 </BottomModal>
 /> -->
-<BottomSheet items={tabItems} bind:open={showModal} on:filter={onConfirm} />
+<BottomSheet
+  items={tabItems}
+  bind:open={showBottomSheet}
+  on:filter={onConfirm}
+/>
 
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
 

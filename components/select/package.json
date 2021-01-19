@@ -2,8 +2,8 @@
   "name": "@responsive-ui/select",
   "version": "0.5.2",
   "description": "A select component of responsive-ui.",
-  "author": "Si3nLoong <sianloong90@gmail.com>",
-  "homepage": "https://github.com/wetix/responsive-ui#readme",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/select#README.md",
   "license": "MIT",
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
@@ -13,8 +13,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@wetix/animation": "^0.1.4",
+    "@wetix/utils": "^0.1.8"
+  },
   "peerDependencies": {
-    "svelte": "^3.29.0"
+    "svelte": "^3.29.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
   },
   "directories": {
     "lib": "lib",

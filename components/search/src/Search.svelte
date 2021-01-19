@@ -1,5 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import Loader from "@responsive-ui/loader";
+
+  import type { SearchState } from "../types";
 
   const dispatch = createEventDispatcher();
 
@@ -11,6 +14,7 @@
   export let spellcheck = false;
   export let placeholder = "";
 
+  let state: null | SearchState;
   const debounce = (func: Function, timeout?: number) => {
     let timer: NodeJS.Timeout | undefined;
     return (...args: any[]) => {
@@ -24,14 +28,14 @@
 
   const cb = debounce((v: string) => {
     dispatch("search", v);
-    loading = false;
+    state = null;
   }, debounceTimer);
 
   const handleKeyPress = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
-    loading = true;
+    state = "loading";
     // when user click enter
     // let timeout = debounceTimer;
     if (key === "Enter" || key === 13) {
@@ -43,6 +47,26 @@
   };
 </script>
 
+<div class="responsive-ui-search">
+  <input
+    type="search"
+    {placeholder}
+    {size}
+    {value}
+    {spellcheck}
+    on:keyup={handleKeyPress}
+  />
+</div>
+
+{#if state}
+  <div class="responsive-ui-search__state">
+    <Loader />
+    <div class="responsive-ui-search__state-text">Searching...</div>
+  </div>
+{/if}
+
+<slot {state} />
+
 <style lang="scss">
   .responsive-ui-search {
     display: block;
@@ -52,25 +76,25 @@
     border-radius: 5px;
     box-sizing: border-box;
 
-    input {
+    input[type="search"] {
       margin: 0;
+      padding: 0 10px;
       border: none;
       font-family: inherit;
       font-size: var(--font-size, 14px);
       height: var(--height, 34px);
-      padding: 0 10px;
       width: 100%;
       outline: none;
     }
+
+    &__state {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+
+      &-text {
+        margin-left: 8px;
+      }
+    }
   }
 </style>
-
-<div class="responsive-ui-search">
-  <input
-    type="search"
-    {placeholder}
-    {size}
-    {value}
-    {spellcheck}
-    on:keyup={handleKeyPress} />
-</div>

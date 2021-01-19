@@ -1,29 +1,36 @@
 <script lang="ts">
+  import Select from "./MultipleSelect.svelte";
   import type { SelectOption } from "../types";
 
   export let name = "";
   export let value = "";
+  export let size = 10;
   export let multiple = false;
   export let disabled = false;
   export let readonly = false;
   export let options: SelectOption[] = [];
 </script>
 
-<select
-  class="responsive-ui-select"
-  {multiple}
-  {name}
-  {readonly}
-  {disabled}
-  on:change>
-  {#each options as option}
-    <option
-      value={option.value}
-      selected={option.selected ? option.selected : option.value === value}
-      >{option.title}</option
-    >
-  {/each}
-</select>
+{#if multiple}
+  <Select {...$$props} />
+{:else}
+  <select
+    class="responsive-ui-select"
+    {multiple}
+    {name}
+    {size}
+    {readonly}
+    {disabled}
+    on:change>
+    {#each options as option}
+      <option
+        value={option.value}
+        selected={option.selected ? option.selected : option.value === value}
+        >{option.title}</option
+      >
+    {/each}
+  </select>
+{/if}
 
 <style lang="scss">
   .responsive-ui-select {
