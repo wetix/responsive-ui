@@ -1,6 +1,6 @@
 # @responsive-ui/bottom-modal
 
-> A bottom bar component of responsive-ui.
+> A bottom modal component of responsive-ui.
 
 <p>
 
