@@ -87,6 +87,16 @@
       padding: 0 15px;
       white-space: nowrap;
       overflow-x: scroll;
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+      scrollbar-width: none; /* Firefox */
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      /* Optional: show position indicator in red */
+      ::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
     }
 
     &__item {
