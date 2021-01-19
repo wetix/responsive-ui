@@ -30,13 +30,15 @@
 <div
   class="responsive-ui-modal__overlay"
   on:click={closable ? () => (open = false) : null}
-  style={`opacity:${1 - $tween}; visibility:${
+  style={`opacity:${1 - $tween};visibility:${
     1 - $tween <= 0 ? "hidden" : "visible"
   }`}
 />
 <div
   class="responsive-ui-modal"
-  style={`transform:translateY(${$tween * 100}%);${style}`}
+  style={`transform:translateY(${$tween * 100}%);visibility:${
+    1 - $tween <= 0 ? "hidden" : "visible"
+  };${style}`}
 >
   {#if closable}
     <span class="responsive-ui-modal__close" on:click={() => (open = false)}>
