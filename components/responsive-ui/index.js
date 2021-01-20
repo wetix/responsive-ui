@@ -17,6 +17,7 @@ import Poster from "@responsive-ui/poster/src/Poster.svelte";
 import Responsive from "@responsive-ui/responsive/src/Responsive.svelte";
 import Row from "@responsive-ui/row/src/Row.svelte";
 import Select from "@responsive-ui/select/src/Select.svelte";
+import ShowMore from "@responsive-ui/show-more/src/ShowMore.svelte";
 import Search from "@responsive-ui/search/src/Search.svelte";
 import Switch from "@responsive-ui/switch/src/Switch.svelte";
 import Tab from "@responsive-ui/tab/src/Tab.svelte";
@@ -46,6 +47,7 @@ export {
   Responsive,
   Row,
   Select,
+  ShowMore,
   Search,
   Switch,
   Tab,

@@ -1,0 +1,47 @@
+{
+  "name": "@responsive-ui/show-more",
+  "version": "0.5.10",
+  "description": "A show more component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/show-more#README.md",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "svelte": "src/ShowMore.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "show-more",
+    "svelte-show-more"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.29.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  }
+}

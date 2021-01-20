@@ -18,6 +18,7 @@ import Responsive from "@responsive-ui/responsive/types";
 import Row from "@responsive-ui/row/types";
 import Search from "@responsive-ui/search/types";
 import Select from "@responsive-ui/select/types";
+import ShowMore from "@responsive-ui/show-more/types";
 import Snackbar from "@responsive-ui/snackbar/types/Snack";
 import Switch from "@responsive-ui/switch/types";
 import Tab from "@responsive-ui/tab/types";
@@ -46,6 +47,7 @@ export {
   Row,
   Search,
   Select,
+  ShowMore,
   Snackbar,
   Switch,
   Tab,

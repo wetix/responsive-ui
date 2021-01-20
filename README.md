@@ -49,6 +49,7 @@ yarn add responsive-ui
 - [@responsive-ui/row](https://github.com/wetix/responsive-ui/tree/master/components/row)
 - [@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/master/components/search)
 - [@responsive-ui/select](https://github.com/wetix/responsive-ui/tree/master/components/select)
+- [@responsive-ui/show-more](https://github.com/wetix/responsive-ui/tree/master/components/show-more)
 - [@responsive-ui/snackbar](https://github.com/wetix/responsive-ui/tree/master/components/snackbar)
 - [@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/master/components/switch)
 - [@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/master/components/tab)
