@@ -14,7 +14,7 @@
 </script>
 
 {#if multiple}
-  <Select {...$$props} class={className} />
+  <Select {...$$props} class={className} on:change on:blur />
 {:else}
   <select
     class="responsive-ui-select {className}"
@@ -23,6 +23,7 @@
     size={1}
     {readonly}
     {disabled}
+    on:change
     on:blur>
     {#each options as option}
       <option

@@ -100,6 +100,7 @@
         bind:this={input}
         type="text"
         autocomplete="off"
+        on:blur
         {disabled}
         {readonly}
       />

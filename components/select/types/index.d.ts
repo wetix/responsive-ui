@@ -29,6 +29,7 @@ interface MultipleSelectProps extends SelectProp {
 export type SelectProps = SingleSelectProps | MultipleSelectProps;
 
 export interface SelectEvents {
+  change?: any;
   blur?: any;
 }
 

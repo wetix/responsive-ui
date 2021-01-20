@@ -19,6 +19,20 @@
   };
 </script>
 
+{#if show}
+  <div
+    class="responsive-ui-snackbar responsive-ui-snackbar--{variant} {className}"
+    class:responsive-ui-snackbar--rounded={rounded}
+    in:slideY
+    out:fade
+  >
+    <slot>{text}</slot>
+    <span class="responsive-ui-snackbar__close">
+      <Icon type="x" stroke="#fff" on:click={onClose} />
+    </span>
+  </div>
+{/if}
+
 <style lang="scss">
   .responsive-ui-snackbar {
     position: fixed;
@@ -55,16 +69,3 @@
     }
   }
 </style>
-
-{#if show}
-  <div
-    class="responsive-ui-snackbar responsive-ui-snackbar--{variant} {className}"
-    class:responsive-ui-snackbar--rounded={rounded}
-    in:slideY={{ duration: 100, direction: 'up' }}
-    out:fade>
-    <slot>{text}</slot>
-    <span class="responsive-ui-snackbar__close">
-      <Icon type="x" stroke="#fff" on:click={onClose} />
-    </span>
-  </div>
-{/if}
