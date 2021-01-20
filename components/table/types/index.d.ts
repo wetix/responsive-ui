@@ -1,20 +1,20 @@
 import type { SvelteComponentDev } from "svelte/internal";
 
 export type TableColumn = {
-  key: string;
+  key?: string;
   title: string;
-  class: string;
-  align: "left" | "center" | "right";
-  width: number | string;
-  value: ReturnType<any>;
-  component: any;
+  class?: string;
+  align?: "left" | "center" | "right";
+  width?: number | string;
+  value?: ReturnType<any>;
+  component?: any;
 };
 
-export type TableItem = Record<string, any>;
+export type TableItem = Record<string, any> | object;
 
 export interface TableProps {
   key: string;
-  columns: Partial<TableColumn>[];
+  columns: TableColumn[];
   items: TableItem[];
   striped?: boolean;
   bordered?: boolean;
