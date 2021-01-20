@@ -12,7 +12,6 @@ interface SelectProp {
   size?: number;
   disabled?: boolean;
   readonly?: boolean;
-  multiple?: boolean;
   options: SelectOption[];
 }
 
@@ -26,21 +25,21 @@ interface MultipleSelectProps extends SelectProp {
   multiple: true;
 }
 
-export type SelectProps = SingleSelectProps | MultipleSelectProps;
+interface UndefinedSelectProps extends SelectProp {
+  value?: string;
+  multiple: undefined;
+}
+
+export type SelectProps =
+  | SingleSelectProps
+  | MultipleSelectProps
+  | UndefinedSelectProps;
 
 export interface SelectEvents {
   change?: any;
   blur?: any;
 }
 
-export interface SelectSlots {
-  default: {};
-}
-
-declare class Select extends SvelteComponentTyped<
-  SelectProps,
-  SelectEvents,
-  SelectSlots
-> {}
+declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}
 
 export default Select;
