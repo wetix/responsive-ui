@@ -12,7 +12,7 @@ export interface SearchProps {
 }
 
 export interface SearchEvents {
-  search?: (e: CustomEvent<string>) => void;
+  search?: any;
 }
 
 export interface SearchSlots {

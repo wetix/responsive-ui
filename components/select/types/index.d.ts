@@ -25,15 +25,7 @@ interface MultipleSelectProps extends SelectProp {
   multiple: true;
 }
 
-interface UndefinedSelectProps extends SelectProp {
-  value?: string;
-  multiple: undefined;
-}
-
-export type SelectProps =
-  | SingleSelectProps
-  | MultipleSelectProps
-  | UndefinedSelectProps;
+export type SelectProps = SingleSelectProps | MultipleSelectProps;
 
 export interface SelectEvents {
   change?: any;
