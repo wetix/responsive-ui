@@ -42,7 +42,7 @@ interface ButtonProps {
 }
 
 interface ButtonEvents {
-  click?: void;
+  click?: any;
 }
 
 interface ButtonSlots {

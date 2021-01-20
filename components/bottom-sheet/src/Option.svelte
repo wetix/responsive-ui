@@ -6,8 +6,9 @@
   const dispatch = createEventDispatcher();
 
   export let title = "";
-  export let icon: null | Function | string | SvelteComponentDev;
+  export let icon: null | string | SvelteComponentDev;
   export let value = "";
+  export let nowrap = false;
   export let disabled = false;
   export let checked = false;
 
@@ -32,7 +33,10 @@
       {/if}
     </span>
   {/if}
-  <span class="responsive-ui-option__title">{title}</span>
+  <span
+    class="responsive-ui-option__title"
+    class:responsive-ui-option__title--nowrap={nowrap}>{title}</span
+  >
 </div>
 
 <style lang="scss">
@@ -52,7 +56,7 @@
 
     &--checked:after {
       position: absolute;
-      right: 9px;
+      right: 6px;
       top: -2px;
       font-size: 20px;
       content: "\02143";
@@ -80,7 +84,16 @@
     }
 
     &__title {
+      box-sizing: border-box;
       font-size: var(--font-size, 14px);
+      padding-right: 24px;
+
+      &--nowrap {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 </style>

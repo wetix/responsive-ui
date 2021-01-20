@@ -7,7 +7,7 @@ export interface EllipsisProps {
 }
 
 export interface EllipsisEvents {
-  click?: void;
+  click?: any;
 }
 
 export interface EllipsisSlots {

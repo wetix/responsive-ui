@@ -42,7 +42,7 @@ interface PosterProps {
 }
 
 interface PosterEvents {
-  click?: void;
+  click?: any;
 }
 
 declare class Poster extends SvelteComponentTyped<PosterProps, PosterEvents> {}

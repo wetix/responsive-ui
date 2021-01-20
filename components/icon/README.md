@@ -38,7 +38,7 @@ interface IconProps {
 }
 
 interface IconEvents {
-  click?: void;
+  click?: any;
 }
 
 declare class Icon extends SvelteComponentTyped<IconProps, IconEvents> {}

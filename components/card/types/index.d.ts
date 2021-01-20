@@ -6,7 +6,7 @@ export interface CardProps {
 }
 
 export interface CardEvents {
-  click?: void;
+  click?: any;
 }
 
 export interface CardSlots {

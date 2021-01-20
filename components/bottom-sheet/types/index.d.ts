@@ -5,6 +5,7 @@ type BottomSheetOption = {
   value: string;
   icon?: string | SvelteComponentDev | ReturnType<SvelteComponentDev>;
   disabled?: boolean;
+  nowrap?: boolean;
   selected?: boolean;
 };
 

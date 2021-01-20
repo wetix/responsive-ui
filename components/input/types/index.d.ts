@@ -14,8 +14,8 @@ export interface InputProps {
 }
 
 export interface InputEvents {
-  change?: void;
-  input?: void;
+  change?: any;
+  input?: any;
 }
 
 declare class Input extends SvelteComponentTyped<InputProps, InputEvents> {}

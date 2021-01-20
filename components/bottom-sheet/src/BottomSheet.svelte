@@ -15,6 +15,7 @@
   export let disabled = false;
   export let closable = true;
 
+  $: height = window.innerHeight * 0.8;
   items = items.map((v) => {
     if (v.selected) return v;
     v.selected = new Map();
@@ -54,23 +55,20 @@
 </script>
 
 <BottomModal bind:open {closable}>
-  <div
-    class="responsive-ui-bottom-sheet"
-    style={`height:${window.innerHeight * 0.8}px;`}
-  >
+  <div class="responsive-ui-bottom-sheet" style={`height:${height}px;`}>
     <header class="responsive-ui-bottom-sheet__header">
       <span class="responsive-ui-bottom-sheet__reset" on:click={onReset}
         >Reset</span
       >
     </header>
     <Tab {items} bind:selected>
-      <div class="responsive-ui-bottom-sheet__body">
+      <div
+        class="responsive-ui-bottom-sheet__body"
+        style={`height:${height - 150}px`}
+      >
         {#each items[selected].options || [] as opt (opt.value)}
           <Option
-            title={opt.title}
-            value={opt.value}
-            icon={opt.icon}
-            disabled={opt.disabled}
+            {...opt}
             checked={items[selected].selected.has(opt.value)}
             on:change={onOptionChange}
           />
@@ -93,6 +91,7 @@
     }
 
     &__body {
+      overflow-y: auto;
       padding: 12px 15px;
     }
 
@@ -103,6 +102,7 @@
 
     &__footer {
       box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1);
+      background: var(--background-color, #fff);
       padding: 12px 15px;
       position: absolute;
       bottom: 0;

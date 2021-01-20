@@ -14,9 +14,9 @@ export interface UploadProps {
 }
 
 export interface UploadEvents {
-  success?: (xml: XMLHttpRequest) => void;
-  error?: (xml: XMLHttpRequest) => void;
-  progress?: (xml: XMLHttpRequest) => void;
+  success?: any;
+  error?: any;
+  progress?: any;
 }
 
 export interface UploadSlots {
