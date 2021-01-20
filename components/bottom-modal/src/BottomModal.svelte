@@ -1,8 +1,32 @@
-<script context="module">
+<script context="module" lang="ts">
+  const queue: boolean[] = [];
   // remove window scroll when all gone
+
+  let scrollY = 0;
+  const toggleOpen = (i: number, open: boolean) => {
+    queue[i] = open;
+    if (queue.some((v) => v === true)) {
+      scrollY = window.scrollY;
+      document.body.setAttribute("style", `position:fixed;top:-${scrollY}px`);
+    } else {
+      document.body.setAttribute("style", "");
+      window.scrollTo(0, scrollY);
+    }
+  };
+
+  const pushQueue = (open: boolean): number => {
+    queue.push(open);
+    return queue.length - 1;
+  };
+
+  const popQueue = (i: number) => {
+    if (i >= queue.length) return;
+    queue.splice(i, 1);
+  };
 </script>
 
 <script lang="ts">
+  import { onMount } from "svelte";
   import { tweened } from "svelte/motion";
   import Icon from "@responsive-ui/icon";
 
@@ -14,17 +38,22 @@
     duration: 200,
   });
 
-  let scrollY = 0;
+  let index = 0;
 
   $: if (open) {
-    scrollY = window.scrollY;
-    // document.body.setAttribute("style", `position:fixed;top:-${scrollY}px`);
+    toggleOpen(index, open);
     tween.set(0);
   } else {
-    document.body.setAttribute("style", "");
-    window.scrollTo(0, scrollY);
+    toggleOpen(index, open);
     tween.set(1);
   }
+
+  onMount(() => {
+    index = pushQueue(open);
+    return () => {
+      popQueue(index);
+    };
+  });
 </script>
 
 <div
@@ -64,7 +93,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: 0 -4px 26px rgba(0, 0, 0, 0.4);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
