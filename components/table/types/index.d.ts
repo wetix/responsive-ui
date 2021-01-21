@@ -15,7 +15,7 @@ export type TableItem = Record<string, any> | object;
 export interface TableProps {
   key: string;
   columns: TableColumn[];
-  items: TableItem[];
+  items: null | TableItem[];
   striped?: boolean;
   bordered?: boolean;
   class?: string;
@@ -29,6 +29,7 @@ export interface TableSlots {
     index: number;
     item: TableItem;
   };
+  empty: {};
 }
 
 declare class Table extends SvelteComponentTyped<

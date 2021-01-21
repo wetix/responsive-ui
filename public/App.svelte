@@ -339,6 +339,8 @@
     </div>
   </Header>
 
+  <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
+
   <Select
     multiple={true}
     options={[
