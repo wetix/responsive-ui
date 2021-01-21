@@ -17,6 +17,7 @@
   import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
+  import Stepper from "../components/stepper/src/Stepper.svelte";
   import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
   // import ComponentDetail from "./components/ComponentDetail.svelte";
   import Switch from "../components/switch/src/Switch.svelte";
@@ -199,6 +200,7 @@
   //   },
   // ];
 
+  let step = 0;
   const uploadProps = {
     name: "image",
     url: "https://api.imgur.com/3/upload",
@@ -339,6 +341,18 @@
     </div>
   </Header>
 
+  <div class="padding">
+    <Stepper
+      current={step}
+      on:change={(e) => console.log(e.detail)}
+      items={[
+        { title: "Step 1", description: "testing .asdasd" },
+        { title: "Step 2" },
+      ]}
+    />
+  </div>
+  <button disabled={step <= 0} on:click={() => (step -= 1)}>previous</button>
+  <button disabled={step > 1} on:click={() => (step += 1)}>next</button>
   <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
 
   <Select
