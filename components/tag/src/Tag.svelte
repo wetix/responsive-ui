@@ -33,6 +33,11 @@
       background: rgba(167, 243, 208, 1);
     }
 
+    &--teal {
+      color: rgba(49, 151, 149, 1);
+      background: rgba(178, 245, 234, 1);
+    }
+
     &--orange {
       color: rgba(221, 107, 32, 1);
       background: rgba(254, 235, 200, 1);
@@ -43,9 +48,19 @@
       background: rgba(253, 230, 138, 1);
     }
 
+    &--purple {
+      color: rgba(128, 90, 213, 1);
+      background: rgba(233, 216, 253, 1);
+    }
+
+    &--pink {
+      color: rgba(213, 63, 140, 1);
+      background: rgba(254, 215, 226, 1);
+    }
+
     &--grey {
-      background: rgba(237, 242, 247, 1);
       color: rgba(113, 128, 150, 1);
+      background: rgba(237, 242, 247, 1);
     }
   }
 </style>
