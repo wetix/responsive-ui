@@ -73,7 +73,7 @@
     // message.open();
   };
 
-  const uploadUrl = `https://api.imgbb.com/1/upload??expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
+  const uploadUrl = `https://api.imgbb.com/1/upload?expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
   const columns = [
     {
       title: "Name",
