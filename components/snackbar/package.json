@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/snackbar",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "A snackbar component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/sbackbar#README.md",
@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@responsive-ui/icon": "^0.6.1",
+    "@responsive-ui/icon": "^0.7.0",
     "@wetix/animation": "^0.2.1"
   },
   "peerDependencies": {
