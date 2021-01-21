@@ -6,7 +6,7 @@
   let className = "";
   export { className as class };
   export let key = "id";
-  export let columns: TableColumn[] = [];
+  export let columns: Partial<TableColumn>[] = [];
   export let items: null | TableItem[] = null;
   export let striped = false;
   export let bordered = true;

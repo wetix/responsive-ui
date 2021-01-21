@@ -31,23 +31,43 @@ alt="@responsive-ui/table" />
 ## Properties, Events & Slots
 
 ```ts
-type TableProps = {
-  key: string; // table row key
-  columns: TableColumn[]; // table columns
-  items: TableItem[]; // table records
-};
-
 type TableColumn = {
-  key?: string; // column value using key path, eg. key=name in object { "name": "John" }
-  title?: string; // column name
-  class?: string; // custom class name for column
-  align?: "left" | "center" | "right"; // column alignment
-  width?: number | string; // column width
-  value?: (...args: any[]) => any;
-  component?: ((...args: any[]) => SvelteComponentDev) | SvelteComponentDev;
+  key: string;
+  title: string;
+  class: string;
+  align: string | "left" | "center" | "right";
+  width: number | string;
+  value: ReturnType<any>;
+  component: any;
 };
 
-type TableItem = Record<string, any>;
+type TableItem = Record<string, any> | object;
+
+type TableProps = {
+  key: string;
+  columns: Partial<TableColumn>[];
+  items: null | TableItem[];
+  striped?: boolean;
+  bordered?: boolean;
+  class?: string;
+  style?: string;
+};
+
+interface TableEvents {}
+
+interface TableSlots {
+  row: {
+    index: number;
+    item: TableItem;
+  };
+  empty: {};
+}
+
+declare class Table extends SvelteComponentTyped<
+  TableProps,
+  TableEvents,
+  TableSlots
+> {}
 ```
 
 ## Example
