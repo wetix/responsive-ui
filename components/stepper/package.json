@@ -1,21 +1,17 @@
 {
-  "name": "@responsive-ui/snackbar",
+  "name": "@responsive-ui/stepper",
   "version": "0.6.1",
-  "description": "A snackbar component of responsive-ui.",
+  "description": "A stepper component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
-  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/sbackbar#README.md",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/stepper#README.md",
   "license": "MIT",
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/index.ts",
+  "svelte": "src/Stepper.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@responsive-ui/icon": "^0.6.1",
-    "@wetix/animation": "^0.2.1"
   },
   "peerDependencies": {
     "svelte": "^3.29.0",
@@ -36,11 +32,9 @@
     "url": "git+https://github.com/wetix/responsive-ui.git"
   },
   "scripts": {
-    "tsd": "tsc ./src/*.ts --declaration --emitDeclarationOnly --outDir types",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
-  },
-  "gitHead": "b0e17338f862e29a90c3371001ee1a4b57e9e984"
+  }
 }
