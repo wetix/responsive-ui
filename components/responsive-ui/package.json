@@ -14,6 +14,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@responsive-ui/accordion": "^0.7.0",
     "@responsive-ui/bottom-bar": "^0.7.0",
     "@responsive-ui/bottom-modal": "^0.7.0",
     "@responsive-ui/bottom-sheet": "^0.7.0",
@@ -36,6 +37,7 @@
     "@responsive-ui/select": "^0.7.0",
     "@responsive-ui/show-more": "^0.7.0",
     "@responsive-ui/snackbar": "^0.7.0",
+    "@responsive-ui/stepper": "^0.7.0",
     "@responsive-ui/switch": "^0.7.0",
     "@responsive-ui/tab": "^0.7.0",
     "@responsive-ui/table": "^0.7.0",
