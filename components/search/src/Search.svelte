@@ -8,6 +8,7 @@
 
   export let name = "";
   export let value = "";
+  export let disabled = false;
   export let size = 100;
   export let debounceTimer = 1000;
   export let spellcheck = false;
@@ -41,6 +42,7 @@
   <input
     type="search"
     {name}
+    {disabled}
     {placeholder}
     {size}
     {value}
@@ -71,11 +73,17 @@
       margin: 0;
       padding: 0 10px;
       border: none;
+      appearance: none;
       font-family: inherit;
       font-size: var(--font-size, 14px);
       height: var(--height, 34px);
       width: 100%;
       outline: none;
+
+      &:disabled {
+        cursor: not-allowed !important;
+        opacity: 0.5;
+      }
     }
 
     &__state {

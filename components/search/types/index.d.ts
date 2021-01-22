@@ -5,6 +5,7 @@ export type SearchState = "loading";
 export interface SearchProps {
   name: string;
   value: any;
+  disabled?: boolean;
   placeholder?: string;
   size?: number;
   spellcheck?: boolean;
