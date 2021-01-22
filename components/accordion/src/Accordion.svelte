@@ -35,7 +35,7 @@
   .responsive-ui-accordion {
     position: relative;
     overflow: hidden;
-    border-radius: var(--border-radius, 5px);
+    // border-radius: var(--border-radius, 5px);
     // box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
 
     input {
