@@ -2,7 +2,7 @@ import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 
 export interface AccordionItem {
   title: string;
-  content: string | SvelteComponentDev;
+  content: any;
 }
 
 export interface AccordionProps {
