@@ -38,6 +38,7 @@
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
+  import Badge from "../components/badge/src/Badge.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -345,6 +346,7 @@
 </script>
 
 <main>
+  <Badge count={1} /><Badge count={100} /><Badge count={98} />
   <Dock bind:open={openDock} />
   <Header title="Responsive UI">
     <div>

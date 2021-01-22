@@ -1,0 +1,47 @@
+{
+  "name": "@responsive-ui/badge",
+  "version": "0.8.0",
+  "description": "A notification bell component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/badge#README.md",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "svelte": "src/Badge.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "badge",
+    "svelte-badge"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.29.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  }
+}
