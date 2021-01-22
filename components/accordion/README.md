@@ -25,7 +25,7 @@ yarn add @responsive-ui/accordion
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104029132-92224b80-5204-11eb-9bc0-032449eb8053.png"
+<img src="https://user-images.githubusercontent.com/28108597/105443082-e79b3580-5ca5-11eb-864d-d3b2c7b5d1a2.png"
 alt="@responsive-ui/accordion" />
 
 ## Properties, Events & Slots
