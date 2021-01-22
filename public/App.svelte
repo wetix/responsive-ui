@@ -37,6 +37,7 @@
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
+  import Dock from "../components/dock/src/Dock.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -339,9 +340,12 @@
   const onChange = () => {
     // console.log((<HTMLSelectElement>e.currentTarget).value);
   };
+
+  let openDock = false;
 </script>
 
 <main>
+  <Dock bind:open={openDock} />
   <Header title="Responsive UI">
     <div>
       <Icon type="filter" on:click={() => (showBottomSheet = true)} />
@@ -364,6 +368,7 @@
   </div>
   <button disabled={step <= 0} on:click={() => (step -= 1)}>previous</button>
   <button disabled={step > 1} on:click={() => (step += 1)}>next</button>
+  <button on:click={() => (openDock = true)}>open dock</button>
   <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
 
   <Select
