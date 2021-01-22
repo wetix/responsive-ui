@@ -12,7 +12,6 @@
 
 <button
   class="responsive-ui-button {className}"
-  class:responsive-ui-button--disabled={disabled}
   class:responsive-ui-button--outline={outline}
   {name}
   {type}
@@ -42,7 +41,8 @@
     transition: opacity 0.3s;
     border-radius: var(--border-radius, 5px);
 
-    &--disabled {
+    &[disabled="disabled"],
+    &:disabled {
       cursor: not-allowed !important;
       opacity: 0.5;
     }
