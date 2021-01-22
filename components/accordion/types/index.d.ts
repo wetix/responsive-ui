@@ -1,4 +1,4 @@
-import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
+import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface AccordionItem {
   title: string;

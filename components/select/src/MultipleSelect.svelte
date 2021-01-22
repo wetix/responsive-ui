@@ -10,7 +10,7 @@
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
-  export let value = [];
+  export let value: string[] = [];
   export let disabled = false;
   export let readonly = false;
 
