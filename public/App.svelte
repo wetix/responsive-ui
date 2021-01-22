@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as ResponsiveUI from "../components/responsive-ui/index.js";
+  import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
   import Button from "../components/button/src/Button.svelte";
@@ -213,9 +213,17 @@
   const accordionItems = [
     {
       title: "Title 1",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
       title: "Title 2",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
+    },
+    {
+      title: "Component",
+      content: wrapComponent(Online, { online: false }),
     },
   ];
 
@@ -340,6 +348,9 @@
       <Icon type="right-arrow" on:click={() => (showModal = true)} />
     </div>
   </Header>
+
+  <Accordion items={accordionItems} multiple={true} />
+  <Accordion items={accordionItems} />
 
   <div class="padding">
     <Stepper

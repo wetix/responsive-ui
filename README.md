@@ -29,9 +29,7 @@ yarn add responsive-ui
 <!-- - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/master/components/checkbox) -->
 <!-- - [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/master/components/date-picker) -->
 
-<!-- - [@responsive-ui/loader](https://github.com/wetix/responsive-ui/tree/master/components/loader) -->
-<!-- - [@responsive-ui/quantity](https://github.com/wetix/responsive-ui/tree/master/components/quantity) -->
-
+- [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/master/components/accordion)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
 - [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/master/components/bottom-modal)
 - [@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/master/components/bottom-sheet)
@@ -51,6 +49,7 @@ yarn add responsive-ui
 - [@responsive-ui/select](https://github.com/wetix/responsive-ui/tree/master/components/select)
 - [@responsive-ui/show-more](https://github.com/wetix/responsive-ui/tree/master/components/show-more)
 - [@responsive-ui/snackbar](https://github.com/wetix/responsive-ui/tree/master/components/snackbar)
+- [@responsive-ui/stepper](https://github.com/wetix/responsive-ui/tree/master/components/stepper)
 - [@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/master/components/switch)
 - [@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/master/components/tab)
 - [@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/master/components/table)
