@@ -1,3 +1,4 @@
+import Accordion from "@responsive-ui/accordion/src/Accordion.svelte";
 import BottomBar from "@responsive-ui/bottom-bar/src/BottomBar.svelte";
 import BottomModal from "@responsive-ui/bottom-modal/src/BottomModal.svelte";
 import BottomSheet from "@responsive-ui/bottom-sheet/src/BottomSheet.svelte";
@@ -19,6 +20,7 @@ import Row from "@responsive-ui/row/src/Row.svelte";
 import Select from "@responsive-ui/select/src/Select.svelte";
 import ShowMore from "@responsive-ui/show-more/src/ShowMore.svelte";
 import Search from "@responsive-ui/search/src/Search.svelte";
+import Stepper from "@responsive-ui/stepper/src/Stepper.svelte";
 import Switch from "@responsive-ui/switch/src/Switch.svelte";
 import Tab from "@responsive-ui/tab/src/Tab.svelte";
 import Table from "@responsive-ui/table/src/Table.svelte";
@@ -28,6 +30,7 @@ import Tooltip from "@responsive-ui/tooltip/src/Tooltip.svelte";
 import Upload from "@responsive-ui/upload/src/Upload.svelte";
 
 export {
+  Accordion,
   BottomBar,
   BottomModal,
   BottomSheet,
@@ -49,6 +52,7 @@ export {
   Select,
   ShowMore,
   Search,
+  Stepper,
   Switch,
   Tab,
   Table,

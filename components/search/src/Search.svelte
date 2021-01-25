@@ -8,6 +8,7 @@
 
   export let name = "";
   export let value = "";
+  export let disabled = false;
   export let size = 100;
   export let debounceTimer = 1000;
   export let spellcheck = false;
@@ -15,6 +16,11 @@
 
   let state: null | SearchState;
   let timer: NodeJS.Timeout | undefined;
+
+  const handleClear = (e: Event) => {
+    const v = (<HTMLInputElement>e.currentTarget).value;
+    if (v === "") dispatch("clear");
+  };
 
   const handleKeyPress = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
@@ -41,10 +47,13 @@
   <input
     type="search"
     {name}
+    {disabled}
     {placeholder}
     {size}
     {value}
     {spellcheck}
+    on:input
+    on:input={handleClear}
     on:keyup={handleKeyPress}
   />
 </div>
@@ -71,11 +80,17 @@
       margin: 0;
       padding: 0 10px;
       border: none;
+      appearance: none;
       font-family: inherit;
       font-size: var(--font-size, 14px);
       height: var(--height, 34px);
       width: 100%;
       outline: none;
+
+      &:disabled {
+        cursor: not-allowed !important;
+        opacity: 0.5;
+      }
     }
 
     &__state {

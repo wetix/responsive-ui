@@ -1,3 +1,4 @@
+import Accordion from "@responsive-ui/accordion/types";
 import BottomBar from "@responsive-ui/bottom-bar/types";
 import BottomModal from "@responsive-ui/bottom-modal/types";
 import BottomSheet from "@responsive-ui/bottom-sheet/types";
@@ -20,6 +21,7 @@ import Search from "@responsive-ui/search/types";
 import Select from "@responsive-ui/select/types";
 import ShowMore from "@responsive-ui/show-more/types";
 import Snackbar from "@responsive-ui/snackbar/types/Snack";
+import Stepper from "@responsive-ui/stepper/types";
 import Switch from "@responsive-ui/switch/types";
 import Tab from "@responsive-ui/tab/types";
 import Table from "@responsive-ui/table/types";
@@ -28,6 +30,7 @@ import Textarea from "@responsive-ui/textarea/types";
 import Upload from "@responsive-ui/upload/types";
 
 export {
+  Accordion,
   BottomBar,
   BottomModal,
   BottomSheet,
@@ -49,6 +52,7 @@ export {
   Select,
   ShowMore,
   Snackbar,
+  Stepper,
   Switch,
   Tab,
   Table,

@@ -98,7 +98,6 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
   const map = new Map();
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-
     if (!file) continue;
 
     const filename = path.basename(file);
@@ -111,16 +110,19 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     const ext = path.extname(file).toLowerCase();
     let result = {
       file: filename,
-      format: "iife",
-      name,
     };
 
     switch (ext) {
       case ".mjs":
         result = Object.assign(result, { format: "es" });
         break;
+
       case ".cjs":
-        result = Object.assign(result, { format: "cjs" });
+        result = Object.assign(result, { format: "cjs", exports: "auto" });
+        break;
+
+      default:
+        result = Object.assign(result, { format: "iife", name });
         break;
     }
 

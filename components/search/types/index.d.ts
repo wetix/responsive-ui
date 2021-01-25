@@ -5,6 +5,7 @@ export type SearchState = "loading";
 export interface SearchProps {
   name: string;
   value: any;
+  disabled?: boolean;
   placeholder?: string;
   size?: number;
   spellcheck?: boolean;
@@ -13,6 +14,8 @@ export interface SearchProps {
 
 export interface SearchEvents {
   search?: any;
+  clear?: any;
+  input?: any;
 }
 
 export interface SearchSlots {

@@ -14,9 +14,12 @@ or
 yarn add @responsive-ui/search
 ```
 
-<br/>
+## Look and Feel
 
-## Properties
+<img src="https://user-images.githubusercontent.com/28108597/105341711-63e83700-5c1a-11eb-9c29-1f743e03bb4d.png"
+alt="@responsive-ui/search" />
+
+## Properties, Events & Slots
 
 ```ts
 type SearchProps = {
@@ -30,9 +33,7 @@ type SearchProps = {
 };
 ```
 
-<br/>
-
-## Usage
+## Example
 
 ```svelte
 <script>
@@ -41,6 +42,8 @@ type SearchProps = {
 
 <Search placeholder="Searching..."></Search>
 ```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/098739b0d1ac44f2a994c9a615c213fd?version=3.31.2)
 
 ## Sponsors
 

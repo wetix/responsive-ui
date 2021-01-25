@@ -14,7 +14,6 @@
   export let multiple = false;
   export let value = "";
   export let style = "";
-  //   export let files = [];
 
   let loading = false;
   let file: null | HTMLInputElement;
@@ -46,15 +45,21 @@
       if (xhr.readyState === 4) {
         let response = xhr.responseXML;
         const contentType = xhr.getResponseHeader("Content-Type");
-        if (/json/i.test(contentType)) response = JSON.parse(xhr.responseText);
-        loading = false;
-        if (xhr.status >= 200 && xhr.status <= 299) {
-          dispatch("success", {
-            response,
-            xhr,
-          });
-        } else if (xhr.status >= 400) {
+        try {
+          if (xhr.status != 204 && /json/i.test(contentType))
+            response = JSON.parse(xhr.responseText);
+          if (xhr.status >= 200 && xhr.status <= 299) {
+            dispatch("success", {
+              response,
+              xhr,
+            });
+          } else if (xhr.status >= 400) {
+            dispatch("error", xhr);
+          }
+        } catch (e) {
           dispatch("error", xhr);
+        } finally {
+          loading = false;
         }
       }
     });
@@ -70,13 +75,6 @@
     xhr.send(formData);
   };
 </script>
-
-<style lang="scss">
-  .responsive-ui-upload {
-    cursor: pointer;
-    display: inline-flex;
-  }
-</style>
 
 <span
   class="responsive-ui-upload {className}"
@@ -104,10 +102,12 @@
 				c0-35.346,28.654-64,64-64c8.837,0,16-7.163,16-16c-0.08-79.529,64.327-144.065,143.856-144.144
 				c68.844-0.069,128.107,48.601,141.424,116.144c1.315,6.744,6.788,11.896,13.6,12.8c43.742,6.229,74.151,46.738,67.923,90.479
 				c-5.593,39.278-39.129,68.523-78.803,68.721h-64v32h64c61.856-0.187,111.848-50.483,111.66-112.339
-				C511.899,245.194,476.655,200.443,426.635,188.224z" />
+				C511.899,245.194,476.655,200.443,426.635,188.224z"
+            />
             <path
               d="M245.035,253.664l-64,64l22.56,22.56l36.8-36.64v153.44h32v-153.44l36.64,36.64l22.56-22.56l-64-64
-				C261.354,247.46,251.276,247.46,245.035,253.664z" />
+				C261.354,247.46,251.276,247.46,245.035,253.664z"
+            />
           </g>
         </g>
       </g>
@@ -122,5 +122,13 @@
     {accept}
     on:change={onChange}
     style="display:none;"
-    tabindex="-1" />
+    tabindex="-1"
+  />
 </span>
+
+<style lang="scss">
+  .responsive-ui-upload {
+    cursor: pointer;
+    display: inline-flex;
+  }
+</style>

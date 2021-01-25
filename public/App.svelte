@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as ResponsiveUI from "../components/responsive-ui/index.js";
+  import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
   import Button from "../components/button/src/Button.svelte";
@@ -17,6 +17,7 @@
   import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
+  import Stepper from "../components/stepper/src/Stepper.svelte";
   import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
   // import ComponentDetail from "./components/ComponentDetail.svelte";
   import Switch from "../components/switch/src/Switch.svelte";
@@ -37,6 +38,7 @@
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import Quantity from "../components/quantity/src/Quantity.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
+  import Dock from "../components/dock/src/Dock.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -74,7 +76,7 @@
     // message.open();
   };
 
-  const uploadUrl = `https://api.imgbb.com/1/upload??expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
+  const uploadUrl = `https://api.imgbb.com/1/upload?expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
   const columns = [
     {
       title: "Name",
@@ -200,6 +202,7 @@
   //   },
   // ];
 
+  let step = 0;
   const uploadProps = {
     name: "image",
     url: "https://api.imgur.com/3/upload",
@@ -212,9 +215,17 @@
   const accordionItems = [
     {
       title: "Title 1",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
       title: "Title 2",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
+    },
+    {
+      title: "Component",
+      content: wrapComponent(Online, { online: false }),
     },
   ];
 
@@ -330,9 +341,12 @@
   const onChange = () => {
     // console.log((<HTMLSelectElement>e.currentTarget).value);
   };
+
+  let openDock = false;
 </script>
 
 <main>
+  <Dock bind:open={openDock} />
   <Header title="Responsive UI">
     <div>
       <Icon type="filter" on:click={() => (showBottomSheet = true)} />
@@ -341,6 +355,23 @@
   </Header>
 
   <Quantity />
+  <Accordion items={accordionItems} multiple={true} />
+  <Accordion items={accordionItems} />
+
+  <div class="padding">
+    <Stepper
+      current={step}
+      on:change={(e) => console.log(e.detail)}
+      items={[
+        { title: "Step 1", description: "testing .asdasd" },
+        { title: "Step 2" },
+      ]}
+    />
+  </div>
+  <button disabled={step <= 0} on:click={() => (step -= 1)}>previous</button>
+  <button disabled={step > 1} on:click={() => (step += 1)}>next</button>
+  <button on:click={() => (openDock = true)}>open dock</button>
+  <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
 
   <Select
     multiple={true}
