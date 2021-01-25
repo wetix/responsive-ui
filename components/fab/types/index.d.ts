@@ -6,7 +6,7 @@ export interface FloatingActionButtonProps {
 }
 
 export interface FloatingActionButtonEvents {
-  click?(e?: Event): void;
+  click?: any;
 }
 
 export interface FloatingActionButtonSlots {}

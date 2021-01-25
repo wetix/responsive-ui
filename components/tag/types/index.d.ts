@@ -7,7 +7,9 @@ export interface TagProps {
   value: string;
 }
 
-export interface TagEvents {}
+export interface TagEvents {
+  close: any;
+}
 
 export interface TagSlots {
   default: {};

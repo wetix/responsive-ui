@@ -1,23 +1,18 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-interface TwoOrMoreArray<T> extends Array<T> {
-  0: T;
-  1: T;
-}
-
 export type StepperItem = {
   title: string;
   description?: string;
 };
 
 export interface StepperProps {
-  items: TwoOrMoreArray<StepperItem>;
+  items: StepperItem[];
   class?: string;
   style?: string;
 }
 
 export interface StepperEvents {
-  change?(e: CustomEvent<number>): void;
+  change?: any;
 }
 
 export interface StepperSlots {

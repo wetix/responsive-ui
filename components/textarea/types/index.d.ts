@@ -16,9 +16,9 @@ export interface TextareaProps {
 }
 
 export interface TextareaEvents {
-  input?(e?: Event): void;
-  change?(e?: Event): void;
-  blur?(e?: Event): void;
+  input?: any;
+  change?: any;
+  blur?: any;
 }
 
 declare class Textarea extends SvelteComponentTyped<

@@ -14,7 +14,7 @@
   import Search from "../components/search/src/Search.svelte";
   import Table from "../components/table/src/Table.svelte";
   import Tooltip from "../components/tooltip/src/Tooltip.svelte";
-  import Tag from "../components/tag/src";
+  import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
   import Stepper from "../components/stepper/src/Stepper.svelte";

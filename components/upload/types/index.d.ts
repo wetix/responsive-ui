@@ -14,11 +14,9 @@ export interface UploadProps {
 }
 
 export interface UploadEvents {
-  success?(
-    e: CustomEvent<{ response: Record<string, any>; xhr: XMLHttpRequest }>
-  ): void;
-  error?(e: any): void;
-  progress?(e: ProgressEvent<XMLHttpRequestEventTarget>): void;
+  success?: any;
+  error?: any;
+  progress?: any;
 }
 
 export interface UploadSlots {
