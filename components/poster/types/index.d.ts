@@ -11,7 +11,7 @@ export interface PosterProps {
 }
 
 export interface PosterEvents {
-  click?: any;
+  click?(e?: Event): void;
 }
 
 declare class Poster extends SvelteComponentTyped<PosterProps, PosterEvents> {}

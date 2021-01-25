@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ButtonProps {
+  ref?: null | HTMLButtonElement;
   title?: string;
   name?: string;
   type?: "button" | "submit" | "reset";
@@ -12,7 +13,7 @@ export interface ButtonProps {
 }
 
 export interface ButtonEvents {
-  click?: any;
+  click?(e?: Event): void;
 }
 
 export interface ButtonSlots {

@@ -1,9 +1,11 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
   export let title = "";
   export let style = "";
 </script>
 
-<header class="responsive-ui-header" {style}>
+<header class="responsive-ui-header {className}" {style}>
   <span class="responsive-ui-header__title">{title}</span>
   <slot />
 </header>

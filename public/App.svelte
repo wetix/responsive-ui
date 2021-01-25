@@ -14,7 +14,7 @@
   import Search from "../components/search/src/Search.svelte";
   import Table from "../components/table/src/Table.svelte";
   import Tooltip from "../components/tooltip/src/Tooltip.svelte";
-  import Tag from "../components/tag/src/Tag.svelte";
+  import Tag from "../components/tag/src";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
   import Stepper from "../components/stepper/src/Stepper.svelte";
@@ -345,6 +345,7 @@
 </script>
 
 <main>
+  <Input />
   <Dock bind:open={openDock} />
   <Header title="Responsive UI">
     <div>
@@ -399,7 +400,7 @@
   </Tooltip>
 
   <div style="padding-top: 10px;">
-    <Tag value="Blue" />
+    <Tag value="Blue" closable={true} />
     <Tag color="red" value="Red" />
     <Tag color="yellow" value="Yellow" />
     <Tag color="orange" value="Orange" />

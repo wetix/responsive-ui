@@ -7,7 +7,7 @@ export interface SwitchProps {
 }
 
 export interface SwitchEvents {
-  change?: any;
+  change?(e?: Event): void;
 }
 
 declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}

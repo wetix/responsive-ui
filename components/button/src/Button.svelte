@@ -1,6 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let ref: null | HTMLButtonElement = null;
   export let title = "";
   export let name = "";
   export let type = "button";
@@ -18,6 +19,7 @@
   {disabled}
   {form}
   {style}
+  bind:this={ref}
   on:click>
   <slot>{title}</slot>
 </button>

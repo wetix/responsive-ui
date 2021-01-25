@@ -15,7 +15,7 @@
   {htmlFor}
   {form}
   {style}>
-  {title}
+  <slot>{title}</slot>
 </label>
 <slot />
 

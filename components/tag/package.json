@@ -8,7 +8,7 @@
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
-  "svelte": "src/Tag.svelte",
+  "svelte": "src/index.ts",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"

@@ -17,7 +17,7 @@ export interface StepperProps {
 }
 
 export interface StepperEvents {
-  click?: any;
+  change?(e: CustomEvent<number>): void;
 }
 
 export interface StepperSlots {

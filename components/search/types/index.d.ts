@@ -3,8 +3,10 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export type SearchState = "loading";
 
 export interface SearchProps {
-  name: string;
-  value: any;
+  class?: string;
+  ref?: null | HTMLInputElement;
+  name?: string;
+  value?: any;
   disabled?: boolean;
   placeholder?: string;
   size?: number;
@@ -13,9 +15,9 @@ export interface SearchProps {
 }
 
 export interface SearchEvents {
-  search?: any;
-  clear?: any;
-  input?: any;
+  search?(e: CustomEvent<string>): void;
+  clear?(e?: CustomEvent<unknown>): void;
+  input?(e?: Event): void;
 }
 
 export interface SearchSlots {

@@ -28,8 +28,8 @@ interface MultipleSelectProps extends SelectProp {
 export type SelectProps = SingleSelectProps | MultipleSelectProps;
 
 export interface SelectEvents {
-  change?: any;
-  blur?: any;
+  change?(e?: Event): void;
+  blur?(e?: Event): void;
 }
 
 declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}
