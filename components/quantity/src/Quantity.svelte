@@ -4,11 +4,11 @@
 
   const dispatch = createEventDispatcher();
 
-  export let min = 0,
-    max = 10,
-    value = 0,
-    step = 1,
-    disabled = false;
+  export let min = 0;
+  export let max = 10;
+  export let value = 0;
+  export let step = 1;
+  export let disabled = false;
 
   const onDecrement = () => {
     if (value > min) {
@@ -71,7 +71,7 @@
     }
 
     &--disabled {
-      .count {
+      &__count {
         color: #bebebe;
       }
 

@@ -83,7 +83,6 @@
   {:else if type == "minus"}
     <svg
       version="1.1"
-      id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"
@@ -101,7 +100,6 @@
   {:else if type == "plus"}
     <svg
       version="1.1"
-      id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"

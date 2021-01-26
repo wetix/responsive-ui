@@ -8,5 +8,5 @@ export interface QuantityProps {
 }
 
 export interface QuantityEvents {
-  change?: any;
+  change?(e: CustomEvent<{ value: number; step: number }>): void;
 }

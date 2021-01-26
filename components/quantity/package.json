@@ -1,0 +1,19 @@
+{
+  "name": "@responsive-ui/quantity",
+  "version": "0.8.0",
+  "description": "A quantity component of responsive-ui.",
+  "main": "lib/index.cjs",
+  "scripts": {
+    "test": "echo \\\"Error: run tests from root\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  },
+  "homepage": "https://github.com/wetix/responsive-ui#readme"
+}
