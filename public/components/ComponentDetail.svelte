@@ -1,34 +1,48 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { get_current_component } from "svelte/internal";
+  export let block = false;
+  export let hint = "unknown";
 
-  export let name = "unknown";
+  let cssStyle = `position:relative;display:${
+    block ? "block" : "inline-block"
+  }`;
+  let hide = true;
+  const mounted = (node: HTMLDivElement) => {
+    const style = window.getComputedStyle(node.firstElementChild);
+    console.log();
+    // cssStyle = `position:${style.getPropertyValue("position")}`;
 
-  let clientHeight;
-  const component = get_current_component();
-  let hide = false;
-  let slot;
-  let rect;
-
-  onMount(() => {
-    console.log(component.$$);
-    console.log(component.$$.fragment.c());
-    // rect = slot.getBoundingClientRect();
-    // console.log(rect);
-  });
+    node.addEventListener("mouseenter", (e) => {
+      hide = false;
+    });
+    node.addEventListener("mouseleave", (e) => {
+      hide = true;
+    });
+  };
 </script>
+
+<div class="slot" use:mounted style={cssStyle}>
+  <slot />
+  {#if !hide}
+    <div class="bounding-box">
+      <div class="component-name">{hint}</div>
+    </div>
+  {/if}
+</div>
 
 <style lang="scss">
   .slot {
+    cursor: default;
+    padding: 5px;
     position: relative;
-    display: inline-flex;
+    display: inline-block;
 
     .bounding-box {
+      pointer-events: none;
       position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
       border-radius: 5px;
       border-color: #fc4451;
       border-style: solid;
@@ -39,25 +53,16 @@
         transform: translateX(-50%);
         display: inline-flex;
         white-space: nowrap;
-        padding: 4px 6px;
-        border-radius: 5px;
+        padding: 2px 6px;
+        border-radius: 6px;
         font-size: 10px;
-        line-height: 11px;
         position: relative;
         bottom: 28px;
         background: #fc4451;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         color: #fff;
+        z-index: 5px;
       }
     }
   }
 </style>
-
-<!-- <div class="slot" bind:this={slot} on:mouseover={() => (hide = false)}> -->
-<slot />
-{#if rect && !hide}
-  <div class="bounding-box">
-    <div class="component-name">{name}</div>
-  </div>
-{/if}
-<!-- </div> -->

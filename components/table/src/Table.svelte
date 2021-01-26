@@ -197,6 +197,7 @@
 <style lang="scss">
   .responsive-ui-table {
     position: relative;
+    min-width: 100%;
     border: 1px solid transparent;
     overflow-y: auto;
     font-size: var(--font-size, 14px);

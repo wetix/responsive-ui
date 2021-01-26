@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["jest", "node", "svelte"]
   },
+  "include": ["public/**/*", "components/**/*"],
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
+  "exclude": ["node_modules/*", "__sapper__/*"]
 }
