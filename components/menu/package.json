@@ -2,7 +2,7 @@
   "name": "@responsive-ui/menu",
   "version": "0.9.1",
   "description": "A menu component for responsive-ui",
-  "author": "Oyster Lee <oysterd3@gmail.com>",
+  "author": "Oyster Lee <oysterd3@gmail.com> (https://github.com/OysterD3)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/menu#README.md",
   "license": "MIT",
   "main": "lib/index.cjs",
