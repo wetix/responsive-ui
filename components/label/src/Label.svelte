@@ -9,7 +9,7 @@
 </script>
 
 <label class="responsive-ui-label {className}" for={forName} {form} {style}>
-  <slot>{title}</slot>
+  {title}
 </label>
 <slot />
 

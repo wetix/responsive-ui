@@ -228,11 +228,13 @@
   const accordionItems = [
     {
       title: "Title 1",
+      collapsed: false,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
       title: "Title 2",
+      disabled: true,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },
@@ -382,6 +384,9 @@
       Context Trigger Dropdown
     </div>
   </Dropdown>
+  <Accordion items={accordionItems}>
+    <div slot="tab" let:index>{index}</div>
+  </Accordion>
 
   <div class="padding">
     <Stepper
