@@ -38,6 +38,7 @@
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
+  import Menu from "../components/menu/src/Menu.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -329,6 +330,34 @@
     },
   ];
 
+  const menus = [
+    { title: "Item 1", href: "#item1" },
+    { title: "Item 2", href: "#item2" },
+    {
+      title: "Item Submenu",
+      submenus: [
+        {
+          title: "Submenu 1",
+          href: "#submenu1"
+        },
+        {
+          title: "Submenu disabled",
+          href: "#submenu-disabled",
+          disabled: true
+        }
+      ],
+      collapsed: false,
+    },
+  ]
+
+  const handleSelectMenu = (data): void => {
+    if (data && data.length > 0) {
+      console.log(data)
+      menus[data[data.length - 1]].collapsed =
+        !menus[data[data.length - 1]]?.collapsed || false;
+    }
+  };
+
   const onConfirm = ({ detail }) => {
     console.log(detail);
   };
@@ -357,6 +386,8 @@
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
 
+
+  <Menu items={menus} onSelectMenu={handleSelectMenu} />
   <div class="padding">
     <Stepper
       current={step}
