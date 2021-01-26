@@ -36,6 +36,7 @@ yarn add responsive-ui
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/master/components/card)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/master/components/column)
+- [@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/master/components/dock)
 - [@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/master/components/ellipsis)
 - [@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/master/components/fab)
 - [@responsive-ui/header](https://github.com/wetix/responsive-ui/tree/master/components/header)

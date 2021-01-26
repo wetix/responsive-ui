@@ -17,7 +17,7 @@ interface SelectProp {
 
 interface SingleSelectProps extends SelectProp {
   value?: string;
-  multiple: false;
+  multiple: false | undefined;
 }
 
 interface MultipleSelectProps extends SelectProp {

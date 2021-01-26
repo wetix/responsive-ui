@@ -11,6 +11,9 @@
   export let disabled = false;
   export let readonly = false;
   export let options: SelectOption[] = [];
+
+  // if not multiple, enforce it to size 1
+  if (!multiple) size = 1;
 </script>
 
 {#if multiple}
@@ -20,7 +23,7 @@
     class="responsive-ui-select {className}"
     {multiple}
     {name}
-    size={1}
+    {size}
     {readonly}
     {disabled}
     on:change
