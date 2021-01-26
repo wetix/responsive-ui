@@ -2,7 +2,7 @@
   "name": "@responsive-ui/quantity",
   "version": "0.10.1",
   "description": "A quantity component of responsive-ui.",
-  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "author": "Mohamad Harith <mohamadharith.my@gmail.com> (https://github.com/mohamadHarith)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/quantity#README.md",
   "license": "MIT",
   "main": "lib/index.cjs",

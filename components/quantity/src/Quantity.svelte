@@ -71,13 +71,13 @@
     }
 
     &--disabled {
-      &__count {
+      .responsive-ui-quantity__count {
         color: #bebebe;
       }
 
-      :global(svg) {
-        stroke: #f5f5f5 !important;
-      }
+      // svg {
+      //   stroke: #f5f5f5 !important;
+      // }
     }
   }
 </style>
