@@ -47,7 +47,7 @@
         margin-left: auto;
       }
 
-      &:not(.&--collapsed) {
+      &:not(&--collapsed) {
         .responsive-ui-menu__control {
           transform: rotate(90deg);
         }
@@ -60,6 +60,10 @@
 
       &--active {
         background-color: #e5e7eb;
+      }
+
+      &:hover:not(&--disabled) > .responsive-ui-menu__title {
+        color: var(--primary-color, #fc4451);
       }
     }
 
@@ -92,10 +96,6 @@
       //     fill: #000;
       //   }
       // }
-
-      &:hover {
-        color: var(--primary-color, #fc4451);
-      }
     }
 
     &.responsive-ui-menu__submenu {
