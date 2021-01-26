@@ -50,18 +50,18 @@
         margin-left: auto;
       }
 
-      &:not(.collapsed) {
+      &:not(.&--collapsed) {
         .responsive-ui-menu__control {
           transform: rotate(90deg);
         }
       }
 
-      &.disabled {
+      &--disabled {
         cursor: not-allowed !important;
         opacity: 0.8;
       }
 
-      &.active {
+      &--active {
         background-color: #e5e7eb;
       }
     }
@@ -118,9 +118,9 @@
   {#each items as item, i}
     <li
         class="responsive-ui-menu__item"
-        class:disabled={item.disabled}
-        class:collapsed={!item.collapsed}
-        class:active={isActive(item.href)}
+        class:responsive-ui-menu__item--disabled={item.disabled}
+        class:responsive-ui-menu__item--collapsed={!item.collapsed}
+        class:responsive-ui-menu__item--active={isActive(item.href)}
         data-item={JSON.stringify([...level, i])}>
       {#if item.disabled}
         <div class="responsive-ui-menu__title">
