@@ -39,6 +39,7 @@
   import Quantity from "../components/quantity/src/Quantity.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
+  import Menu from "../components/menu/src/Menu.svelte";
   import Dropdown from "../components/dropdown/src/Dropdown.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
@@ -346,6 +347,33 @@
     },
   ];
 
+  const menus = [
+    { title: "Item 1", href: "#item1" },
+    { title: "Item 2", href: "#item2" },
+    {
+      title: "Item Submenu",
+      submenus: [
+        {
+          title: "Submenu 1",
+          href: "#submenu1"
+        },
+        {
+          title: "Submenu disabled",
+          href: "#submenu-disabled",
+          disabled: true
+        }
+      ],
+      collapsed: false,
+    },
+  ]
+
+  const handleSelectMenu = ({ detail }: CustomEvent): void => {
+    if (detail && detail.length > 0) {
+      menus[detail[detail.length - 1]].collapsed =
+        !menus[detail[detail.length - 1]]?.collapsed || false;
+    }
+  };
+
   const onConfirm = ({ detail }) => {
     console.log(detail);
   };
@@ -373,10 +401,10 @@
     </div>
   </Header>
 
-  <Quantity />
-  <Accordion items={accordionItems} multiple={true} />
-  <Accordion items={accordionItems} />
 
+
+  <Menu items={menus} on:change={handleSelectMenu} />
+  <Quantity />
   <Dropdown trigger="click" items={options}>
     <Button>Click Trigger Dropdown</Button>
   </Dropdown>
@@ -388,10 +416,11 @@
       Context Trigger Dropdown
     </div>
   </Dropdown>
+  <Accordion items={accordionItems} multiple={true} />
+  <Accordion items={accordionItems} />
   <Accordion items={accordionItems}>
     <div slot="tab" let:index>{index}</div>
   </Accordion>
-
   <div class="padding">
     <Stepper
       current={step}
@@ -616,6 +645,7 @@
   items={tabItems}
   bind:open={showBottomSheet}
   on:filter={onConfirm}
+  on:change={console.log}
 />
 
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
