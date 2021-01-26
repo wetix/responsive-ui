@@ -206,6 +206,7 @@
     { title: "CC", value: "cc", onClick: () => {console.log("clicked!!!!")} },
     { title: "Option A", value: "a", disabled: true },
     { title: "Z", value: "z" },
+    { divider: true },
     { title: "Option B", value: "b", href: "#B" },
     { title: "Option C", value: "c" },
     { title: "Option D", value: "d" },

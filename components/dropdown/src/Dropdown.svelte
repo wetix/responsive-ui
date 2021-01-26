@@ -67,7 +67,9 @@
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each items as item, i}
-        {#if item.href}
+        {#if item.divider}
+          <hr class="responsive-ui-dropdown__divider" />
+        {:else if item.href}
           <a
             class="responsive-ui-dropdown__item"
             class:responsive-ui-dropdown__item--disabled={item.disabled}
@@ -138,6 +140,12 @@
         cursor: not-allowed;
         opacity: 0.5;
       }
+    }
+
+    &__divider {
+      border-top: 1px solid #0003;
+      width: 100%;
+      margin: 2px 0;
     }
   }
 </style>

@@ -5,6 +5,7 @@ export type DropdownItem = {
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
+  divider?: boolean;
 };
 
 export type DropdownTriggerMode = "click" | "hover" | "context";
