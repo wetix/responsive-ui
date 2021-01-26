@@ -1,8 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface MenuItems {
+export type MenuItems = {
   title: string;
-  value: any;
   disabled?: boolean;
   href?: string;
   collapsed?: boolean;
@@ -12,9 +11,12 @@ export interface MenuItems {
 
 export interface MenuProps {
   items: MenuItems[];
-  onSelectMenu: (data: number[]) => void
 }
 
-declare class Menu extends SvelteComponentTyped<MenuProps> {}
+export interface MenuEvents {
+  change?: any
+}
+
+declare class Menu extends SvelteComponentTyped<MenuProps, MenuEvents> {}
 
 export default Menu;

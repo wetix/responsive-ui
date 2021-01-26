@@ -1,18 +1,19 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
   import { getNodeAttribute } from "@wetix/utils";
   import type { MenuItems } from "../types";
 
   let className = "";
+  const dispatch = createEventDispatcher()
   export { className as class };
 
   export let items: MenuItems[] = [];
   export let level = [];
-  export let onSelectMenu = (_) => {};
 
   const handleSelectMenu = (e: Event) => {
     const data = JSON.parse(getNodeAttribute(e, "data-item"));
-    onSelectMenu(data);
+    dispatch("change", data)
   };
 </script>
 

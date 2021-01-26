@@ -350,11 +350,10 @@
     },
   ]
 
-  const handleSelectMenu = (data): void => {
-    if (data && data.length > 0) {
-      console.log(data)
-      menus[data[data.length - 1]].collapsed =
-        !menus[data[data.length - 1]]?.collapsed || false;
+  const handleSelectMenu = ({ detail }: CustomEvent): void => {
+    if (detail && detail.length > 0) {
+      menus[detail[detail.length - 1]].collapsed =
+        !menus[detail[detail.length - 1]]?.collapsed || false;
     }
   };
 
@@ -387,7 +386,7 @@
   <Accordion items={accordionItems} />
 
 
-  <Menu items={menus} onSelectMenu={handleSelectMenu} />
+  <Menu items={menus} on:change={handleSelectMenu} />
   <div class="padding">
     <Stepper
       current={step}
@@ -611,6 +610,7 @@
   items={tabItems}
   bind:open={showBottomSheet}
   on:filter={onConfirm}
+  on:change={console.log}
 />
 
 <!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
