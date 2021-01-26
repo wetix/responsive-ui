@@ -1,35 +1,23 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type DropdownOption = {
+export type DropdownItem = {
   title: string;
-  value: any;
+  onClick?: () => void;
+  href?: string;
+  disabled?: boolean;
 };
 
-interface SelectProp {
-  name?: string;
-  size?: number;
+interface DropdownProps {
+  title: string;
   disabled?: boolean;
-  readonly?: boolean;
-  options: SelectOption[];
+  items: DropdownItem[];
+  size: number;
 }
 
-interface SingleSelectProps extends SelectProp {
-  value?: string;
-  multiple: false;
+interface DropdownSlot {
+  default: {};
 }
 
-interface MultipleSelectProps extends SelectProp {
-  value?: string[];
-  multiple: true;
-}
-
-export type SelectProps = SingleSelectProps | MultipleSelectProps;
-
-export interface SelectEvents {
-  change?: any;
-  blur?: any;
-}
-
-declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}
+declare class Select extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
 
 export default Select;

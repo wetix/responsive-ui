@@ -203,10 +203,10 @@
   // ];
 
   const options = [
-    { title: "CC", value: "cc" },
+    { title: "CC", value: "cc", onClick: () => {console.log("clicked!!!!")} },
     { title: "Option A", value: "a", disabled: true },
     { title: "Z", value: "z" },
-    { title: "Option B", value: "b" },
+    { title: "Option B", value: "b", href: "#B" },
     { title: "Option C", value: "c" },
     { title: "Option D", value: "d" },
     { title: "Option E", value: "e" },
@@ -370,7 +370,9 @@
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
 
-  <Dropdown items={options} />
+  <Dropdown items={options}>
+    <Button>Dropdown</Button>
+  </Dropdown>
 
   <div class="padding">
     <Stepper
