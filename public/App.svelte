@@ -344,12 +344,14 @@
     // console.log((<HTMLSelectElement>e.currentTarget).value);
   };
 
-  let openDock = false;
+  let openLeftDock = false;
+  let openRightDock = false;
 </script>
 
 <main>
   <Input />
-  <Dock bind:open={openDock} />
+  <Dock bind:open={openLeftDock} />
+  <Dock bind:open={openRightDock} placement="right" />
   <Header title="Responsive UI">
     <div>
       <Icon type="filter" on:click={() => (showBottomSheet = true)} />
@@ -377,7 +379,8 @@
   </div>
   <button disabled={step <= 0} on:click={() => (step -= 1)}>previous</button>
   <button disabled={step > 1} on:click={() => (step += 1)}>next</button>
-  <button on:click={() => (openDock = true)}>open dock</button>
+  <button on:click={() => (openLeftDock = true)}>open left dock</button>
+  <button on:click={() => (openRightDock = true)}>open right dock</button>
   <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
 
   <Select

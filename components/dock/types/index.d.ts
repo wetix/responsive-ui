@@ -2,7 +2,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface DockProps {
   open?: boolean;
-  placement?: string;
+  placement?: "left" | "right";
+  closable?: boolean;
   width?: string;
   class?: string;
   style?: string;
