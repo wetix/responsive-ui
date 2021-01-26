@@ -7,11 +7,14 @@ export type DropdownItem = {
   disabled?: boolean;
 };
 
+export type DropdownTriggerMode = "click" | "hover" | "context";
+
 interface DropdownProps {
   title: string;
   disabled?: boolean;
   items: DropdownItem[];
   size: number;
+  trigger: DropdownTriggerMode;
 }
 
 interface DropdownSlot {

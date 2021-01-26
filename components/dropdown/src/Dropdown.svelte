@@ -1,36 +1,36 @@
 <script lang="ts">
-  import { zoom } from "@wetix/animation";
-  import { getNodeAttribute } from "@wetix/utils";
-  import { onMount } from "svelte";
-
-  import type { DropdownItem } from "../types";
+  import type { DropdownItem, DropdownTriggerMode } from "../types";
 
   let className = "";
   export { className as class };
-  export let title = "";
   export let items: DropdownItem[] = [];
   export let size = 10;
   export let value: string[] = [];
   export let disabled = false;
-  export let readonly = false;
+  export let trigger: DropdownTriggerMode = "click";
 
   const maxHeight = 25 + size * 20;
   let input: null | HTMLInputElement;
   let show = false;
   let clientHeight;
 
-  const onClick = () => {
+  const eventHandler = () => {
     show = !show;
   };
 </script>
 
 <div class="responsive-ui-dropdown {className}">
-  <div class="responsive-ui-dropdown__activator" on:click={onClick}>
+  <div
+    class="responsive-ui-dropdown__activator"
+    on:click={trigger === "click" ? eventHandler : undefined}
+    on:contextmenu|preventDefault={trigger === "context" ? eventHandler : undefined}
+    on:hover={trigger === "hover" ? eventHandler : undefined}
+  >
     <slot />
   </div>
   <div
     class="responsive-ui-dropdown__list"
-    on:click={onClick}
+    on:click={() => {show = !show}}
     style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
