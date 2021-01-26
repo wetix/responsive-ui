@@ -25,32 +25,36 @@ yarn add @responsive-ui/dropdown
 
 ## Look and Feel
 
-<img src="https://user-images.githubusercontent.com/28108597/104732706-94425800-5778-11eb-96fd-3220b84ea33b.png"
+<img src="https://user-images.githubusercontent.com/7383278/105826555-d92d8080-5ffb-11eb-99f7-39599a581ca4.png"
 alt="@responsive-ui/dropdown" />
 
 ## Properties, Events & Slots
 
 ```ts
-type DropdownItem = {
+export type DropdownItem = {
   title: string;
-  value: any;
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
+  divider?: boolean;
 };
+
+export type DropdownTriggerMode = "click" | "hover" | "context";
 
 interface DropdownProps {
   title: string;
   disabled?: boolean;
   items: DropdownItem[];
   size: number;
+  trigger: DropdownTriggerMode;
+  maxDisplayItem: number;
 }
 
 interface DropdownSlot {
   default: {};
 }
 
-declare class Select extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
+declare class Dropdown extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
 ```
 
 ## Example
@@ -62,6 +66,7 @@ declare class Select extends SvelteComponentTyped<DropdownProps, _, DropdownSlot
   const items = [
     { title: "CC", onClick: () => {console.log("clicked!!!!")} },
     { title: "Option A", disabled: true },
+    { divider: true },
     { title: "Option B", value: "b", href: "#B" },
   ]
 </script>
@@ -69,7 +74,7 @@ declare class Select extends SvelteComponentTyped<DropdownProps, _, DropdownSlot
 <Dropdown {items} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=3.31.2)
+[comment]: <> ([Try it yourself in Svelte Repl]&#40;https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=3.31.2&#41;)
 
 ## Sponsors
 

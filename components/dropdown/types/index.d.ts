@@ -23,6 +23,6 @@ interface DropdownSlot {
   default: {};
 }
 
-declare class Select extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
+declare class Dropdown extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
 
-export default Select;
+export default Dropdown;
