@@ -6,6 +6,7 @@ export interface MenuItems {
   disabled?: boolean;
   href?: string;
   collapsed?: boolean;
+  isActive?: boolean;
   submenus?: MenuItems[];
 }
 

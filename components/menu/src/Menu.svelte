@@ -14,9 +14,6 @@
     const data = JSON.parse(getNodeAttribute(e, "data-item"));
     onSelectMenu(data);
   };
-
-  const isActive = (href: string): boolean =>
-    `${window.location.pathname}${window.location.hash}${window.location.search}` === href;
 </script>
 
 <style lang="scss">
@@ -120,7 +117,7 @@
         class="responsive-ui-menu__item"
         class:responsive-ui-menu__item--disabled={item.disabled}
         class:responsive-ui-menu__item--collapsed={!item.collapsed}
-        class:responsive-ui-menu__item--active={isActive(item.href)}
+        class:responsive-ui-menu__item--active={item.isActive}
         data-item={JSON.stringify([...level, i])}>
       {#if item.disabled}
         <div class="responsive-ui-menu__title">
