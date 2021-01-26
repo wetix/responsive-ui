@@ -38,6 +38,7 @@
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
+  import Dropdown from "../components/dropdown/src/Dropdown.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -201,6 +202,18 @@
   //   },
   // ];
 
+  const options = [
+    { title: "CC", value: "cc" },
+    { title: "Option A", value: "a", disabled: true },
+    { title: "Z", value: "z" },
+    { title: "Option B", value: "b" },
+    { title: "Option C", value: "c" },
+    { title: "Option D", value: "d" },
+    { title: "Option E", value: "e" },
+    { title: "Option F", value: "f" },
+    { title: "Option G", value: "g" },
+  ]
+
   let step = 0;
   const uploadProps = {
     name: "image",
@@ -356,6 +369,8 @@
 
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
+
+  <Dropdown items={options} />
 
   <div class="padding">
     <Stepper
