@@ -1,22 +1,41 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   let className = "";
   export { className as class };
+  export let closable = false;
   export let color = "blue";
   export let value = "";
+
+  const handleClick = () => {
+    dispatch("close");
+  };
 </script>
 
 <span class="responsive-ui-tag responsive-ui-tag--{color} {className}">
   <slot>{value}</slot>
+  {#if closable}
+    <span class="responsive-ui-tag__close" on:click={handleClick}>&#10005;</span
+    >
+  {/if}
 </span>
 
 <style lang="scss">
   .responsive-ui-tag {
-    display: inline-block;
-    vertical-align: middle;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
     font-size: var(--font-size-sm, 10px);
     border-radius: var(--border-radius, 5px);
     padding: 3px 8px;
     overflow: hidden;
+
+    &__close {
+      cursor: pointer;
+      margin-left: 5px;
+    }
 
     &--blue {
       color: rgba(49, 130, 206, 1);

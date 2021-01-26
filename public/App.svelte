@@ -215,11 +215,13 @@
   const accordionItems = [
     {
       title: "Title 1",
+      collapsed: false,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
       title: "Title 2",
+      disabled: true,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },
@@ -346,6 +348,7 @@
 </script>
 
 <main>
+  <Input />
   <Dock bind:open={openDock} />
   <Header title="Responsive UI">
     <div>
@@ -357,6 +360,10 @@
   <Quantity />
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
+
+  <Accordion items={accordionItems}>
+    <div slot="tab" let:index>{index}</div>
+  </Accordion>
 
   <div class="padding">
     <Stepper
@@ -401,7 +408,7 @@
   </Tooltip>
 
   <div style="padding-top: 10px;">
-    <Tag value="Blue" />
+    <Tag value="Blue" closable={true} />
     <Tag color="red" value="Red" />
     <Tag color="yellow" value="Yellow" />
     <Tag color="orange" value="Orange" />

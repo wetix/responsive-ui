@@ -50,12 +50,13 @@
     }
 
     &__trigger {
+      cursor: pointer;
       box-sizing: border-box;
       font-size: var(--font-size-lg, 14px);
       font-weight: 600;
       text-align: right;
       width: 100%;
-      padding: 4px 15px 4px 0;
+      padding: 5px 15px 5px 0;
     }
   }
 </style>

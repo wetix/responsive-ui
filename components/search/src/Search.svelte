@@ -6,6 +6,9 @@
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
+  export let ref: null | HTMLInputElement = null;
   export let name = "";
   export let value = "";
   export let disabled = false;
@@ -22,7 +25,7 @@
     if (v === "") dispatch("clear");
   };
 
-  const handleKeyPress = (e: KeyboardEvent) => {
+  const handleKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
@@ -43,20 +46,20 @@
   };
 </script>
 
-<div class="responsive-ui-search">
-  <input
-    type="search"
-    {name}
-    {disabled}
-    {placeholder}
-    {size}
-    {value}
-    {spellcheck}
-    on:input
-    on:input={handleClear}
-    on:keyup={handleKeyPress}
-  />
-</div>
+<input
+  class="responsive-ui-search {className}"
+  bind:this={ref}
+  type="search"
+  {name}
+  {disabled}
+  {placeholder}
+  {size}
+  {value}
+  {spellcheck}
+  on:input
+  on:input={handleClear}
+  on:keyup={handleKeyup}
+/>
 
 {#if state}
   <div class="responsive-ui-search__state">
@@ -71,26 +74,21 @@
   .responsive-ui-search {
     display: block;
     border: 1px solid #dcdcdc;
-
     overflow: hidden;
-    border-radius: 5px;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0 10px;
+    appearance: none;
+    font-family: var(--font-family, inherit);
+    font-size: var(--font-size, 14px);
+    height: var(--height, 34px);
+    border-radius: var(--border-radius, 5px);
+    width: 100%;
+    outline: none;
 
-    input[type="search"] {
-      margin: 0;
-      padding: 0 10px;
-      border: none;
-      appearance: none;
-      font-family: inherit;
-      font-size: var(--font-size, 14px);
-      height: var(--height, 34px);
-      width: 100%;
-      outline: none;
-
-      &:disabled {
-        cursor: not-allowed !important;
-        opacity: 0.5;
-      }
+    &:disabled {
+      cursor: not-allowed !important;
+      opacity: 0.5;
     }
 
     &__state {
