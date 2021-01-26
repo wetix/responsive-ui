@@ -36,6 +36,7 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
+  import Quantity from "../components/quantity/src/Quantity.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
   // import Upload from "../src/components/upload/index.svelte";
@@ -356,6 +357,7 @@
     </div>
   </Header>
 
+  <Quantity />
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
 
