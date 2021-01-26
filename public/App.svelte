@@ -370,8 +370,16 @@
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
 
-  <Dropdown items={options}>
-    <Button>Dropdown</Button>
+  <Dropdown trigger="click" items={options}>
+    <Button>Click Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="hover" items={options}>
+    <Button>Hover Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="context" items={options}>
+    <div style="width: 300px; height: 200px; background: #e5e7eb">
+      Context Trigger Dropdown
+    </div>
   </Dropdown>
 
   <div class="padding">

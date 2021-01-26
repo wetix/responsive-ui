@@ -15,6 +15,7 @@ interface DropdownProps {
   items: DropdownItem[];
   size: number;
   trigger: DropdownTriggerMode;
+  maxDisplayItem: number;
 }
 
 interface DropdownSlot {
