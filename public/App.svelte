@@ -215,11 +215,13 @@
   const accordionItems = [
     {
       title: "Title 1",
+      collapsed: false,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
       title: "Title 2",
+      disabled: true,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },
@@ -382,11 +384,14 @@
     </div>
   </Header>
 
-  <Accordion items={accordionItems} multiple={true} />
-  <Accordion items={accordionItems} />
 
 
   <Menu items={menus} on:change={handleSelectMenu} />
+  <Accordion items={accordionItems} multiple={true} />
+  <Accordion items={accordionItems} />
+  <Accordion items={accordionItems}>
+    <div slot="tab" let:index>{index}</div>
+  </Accordion>
   <div class="padding">
     <Stepper
       current={step}
