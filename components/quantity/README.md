@@ -47,7 +47,7 @@ export interface QuantityEvents {
 
 ```svelte
 <script>
-  import Loader from '@responsive-ui/quantity';
+  import Quantity from '@responsive-ui/quantity';
 </script>
 
 <Quantity min=5 max=15 />
