@@ -1,11 +1,85 @@
-# `dock`
+# @responsive-ui/dock
 
-> TODO: description
+> A dock component of responsive-ui.
 
-## Usage
+<p>
 
+[![npm](https://img.shields.io/npm/v/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Faccordion)](https://bundlephobia.com/result?p=@responsive-ui/dock)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
+## Install
+
+```console
+npm install @responsive-ui/dock
 ```
-const dock = require('dock');
 
-// TODO: DEMONSTRATE API
+or
+
+```console
+yarn add @responsive-ui/dock
 ```
+
+## Look and Feel
+
+<img src="https://user-images.githubusercontent.com/28108597/105842391-0f292f80-6011-11eb-94c6-47728f2eb9f3.png"
+alt="@responsive-ui/dock" />
+
+## Properties, Events & Slots
+
+```ts
+interface DockProps {
+  open?: boolean;
+  placement?: "left" | "right";
+  closable?: boolean;
+  width?: string;
+  class?: string;
+  style?: string;
+}
+
+interface DockEvents {}
+
+interface DockSlots {
+  default: {};
+}
+
+declare class Dock extends SvelteComponentTyped<
+  DockProps,
+  DockEvents,
+  DockSlots
+> {}
+```
+
+## Example
+
+```svelte
+<script>
+  import Dock from '@responsive-ui/dock';
+
+  let open = false;
+</script>
+
+<Dock bind:open />
+
+<button on:click={() => open = true}>open dock</button>
+```
+
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/91c1018434d44dc081229b45e18653a7?version=3.32.0)
+
+## Sponsors
+
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
+
+## License
+
+[@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/master/components/dock) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+
+## Big Thanks To
+
+Thanks to these awesome companies for their support of Open Source developers ❤
+
+[![GitHub](https://jstools.dev/img/badges/github.svg)](https://github.com/open-source)
+[![NPM](https://jstools.dev/img/badges/npm.svg)](https://www.npmjs.com/)

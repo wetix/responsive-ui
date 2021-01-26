@@ -36,9 +36,11 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
+  import Quantity from "../components/quantity/src/Quantity.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
   import Menu from "../components/menu/src/Menu.svelte";
+  import Dropdown from "../components/dropdown/src/Dropdown.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -201,6 +203,19 @@
   //     submenus: [{ title: "C.B" }, { title: "C.C" }],
   //   },
   // ];
+
+  const options = [
+    { title: "CC", value: "cc", onClick: () => {console.log("clicked!!!!")} },
+    { title: "Option A", value: "a", disabled: true },
+    { title: "Z", value: "z" },
+    { divider: true },
+    { title: "Option B", value: "b", href: "#B" },
+    { title: "Option C", value: "c" },
+    { title: "Option D", value: "d" },
+    { title: "Option E", value: "e" },
+    { title: "Option F", value: "f" },
+    { title: "Option G", value: "g" },
+  ]
 
   let step = 0;
   const uploadProps = {
@@ -371,12 +386,14 @@
     // console.log((<HTMLSelectElement>e.currentTarget).value);
   };
 
-  let openDock = false;
+  let openLeftDock = false;
+  let openRightDock = false;
 </script>
 
 <main>
   <Input />
-  <Dock bind:open={openDock} />
+  <Dock bind:open={openLeftDock} />
+  <Dock bind:open={openRightDock} placement="right" />
   <Header title="Responsive UI">
     <div>
       <Icon type="filter" on:click={() => (showBottomSheet = true)} />
@@ -387,6 +404,18 @@
 
 
   <Menu items={menus} on:change={handleSelectMenu} />
+  <Quantity />
+  <Dropdown trigger="click" items={options}>
+    <Button>Click Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="hover" items={options}>
+    <Button>Hover Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="context" items={options}>
+    <div style="width: 300px; height: 200px; background: #e5e7eb">
+      Context Trigger Dropdown
+    </div>
+  </Dropdown>
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
   <Accordion items={accordionItems}>
@@ -404,7 +433,8 @@
   </div>
   <button disabled={step <= 0} on:click={() => (step -= 1)}>previous</button>
   <button disabled={step > 1} on:click={() => (step += 1)}>next</button>
-  <button on:click={() => (openDock = true)}>open dock</button>
+  <button on:click={() => (openLeftDock = true)}>open left dock</button>
+  <button on:click={() => (openRightDock = true)}>open right dock</button>
   <Table columns={[{ title: "Column" }, { title: "Column 2" }]} items={[]} />
 
   <Select

@@ -10,7 +10,7 @@
   const id = `accordion-${Math.floor(Math.random() * Date.now())}`;
 
   let props = { type: "checkbox" };
-  if (multiple) props = Object.assign(props, { type: "radio", name: id });
+  if (!multiple) props = Object.assign(props, { type: "radio", name: id });
 </script>
 
 <div class="responsive-ui-accordion {className}" {style}>
@@ -19,7 +19,7 @@
       <input
         id="{id}-{i}"
         {...props}
-        checked={item.collapsed ? false : true}
+        checked={item.collapsed === false ? true : false}
         disabled={item.disabled}
       />
       <label class="responsive-ui-accordion__tab-label" for="{id}-{i}"
