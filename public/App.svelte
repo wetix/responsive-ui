@@ -39,6 +39,7 @@
   import Quantity from "../components/quantity/src/Quantity.svelte";
   import type { SvelteComponentDev } from "svelte/internal";
   import Dock from "../components/dock/src/Dock.svelte";
+  import Dropdown from "../components/dropdown/src/Dropdown.svelte";
   // import Upload from "../src/components/upload/index.svelte";
   // import Menu from "../src/components/menu/Nav.svelte";
   // import Table from "../src/components/table/Table.svelte";
@@ -202,6 +203,19 @@
   //   },
   // ];
 
+  const options = [
+    { title: "CC", value: "cc", onClick: () => {console.log("clicked!!!!")} },
+    { title: "Option A", value: "a", disabled: true },
+    { title: "Z", value: "z" },
+    { divider: true },
+    { title: "Option B", value: "b", href: "#B" },
+    { title: "Option C", value: "c" },
+    { title: "Option D", value: "d" },
+    { title: "Option E", value: "e" },
+    { title: "Option F", value: "f" },
+    { title: "Option G", value: "g" },
+  ]
+
   let step = 0;
   const uploadProps = {
     name: "image",
@@ -363,6 +377,17 @@
   <Accordion items={accordionItems} multiple={true} />
   <Accordion items={accordionItems} />
 
+  <Dropdown trigger="click" items={options}>
+    <Button>Click Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="hover" items={options}>
+    <Button>Hover Trigger Dropdown</Button>
+  </Dropdown>
+  <Dropdown trigger="context" items={options}>
+    <div style="width: 300px; height: 200px; background: #e5e7eb">
+      Context Trigger Dropdown
+    </div>
+  </Dropdown>
   <Accordion items={accordionItems}>
     <div slot="tab" let:index>{index}</div>
   </Accordion>
