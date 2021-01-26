@@ -85,9 +85,6 @@ declare class Menu extends SvelteComponentTyped<MenuProps> {}
 
 <Menu items={menus} onSelectMenu={handleSelectMenu} />
 ```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/2ad7ede9845b4b449e4b453951a4f7ad?version=3.31.2)
-
 ## Sponsors
 
 <img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
