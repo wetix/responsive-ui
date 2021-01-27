@@ -21,7 +21,6 @@
 {:else}
   <select
     class="responsive-ui-select {className}"
-    {multiple}
     {name}
     {size}
     {readonly}
@@ -31,7 +30,8 @@
     {#each options as option}
       <option
         value={option.value}
-        selected={option.selected ? option.selected : option.value === value}
+        selected={option.value === value}
+        disabled={option.disabled}
         >{option.title}</option
       >
     {/each}
