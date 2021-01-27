@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/accordion",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "A accordion component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/accordion#README.md",
@@ -21,7 +21,7 @@
     "svelte-accordion"
   ],
   "dependencies": {
-    "@responsive-ui/icon": "^0.10.1"
+    "@responsive-ui/icon": "^0.10.2"
   },
   "peerDependencies": {
     "svelte": "^3.29.0",
