@@ -29,7 +29,7 @@
     {disabled}
     on:change
     on:blur>
-    <option value="" selected={options.every((v) => !v.selected) && value === ""}>{placeholder || ""}</option>
+    <option value="" disabled selected={options.every((v) => !v.selected) && value === ""}>{placeholder || ""}</option>
     {#each options as option}
       <option
         value={option.value}
