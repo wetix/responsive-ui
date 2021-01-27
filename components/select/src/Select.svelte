@@ -21,16 +21,18 @@
 {:else}
   <select
     class="responsive-ui-select {className}"
-    {multiple}
     {name}
     {size}
     {readonly}
     {disabled}
     on:change
-    on:blur>
+    on:blur
+  >
     {#each options as option}
-      <option value={option.value} selected={option.value === value}
-        >{option.title}</option
+      <option
+        value={option.value}
+        selected={option.value === value}
+        disabled={option.disabled}>{option.title}</option
       >
     {/each}
   </select>
