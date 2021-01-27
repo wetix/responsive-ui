@@ -10,6 +10,7 @@
   export let multiple = false;
   export let disabled = false;
   export let readonly = false;
+  export let placeholder = "";
   export let options: SelectOption[] = [];
 
   // if not multiple, enforce it to size 1
@@ -28,6 +29,7 @@
     {disabled}
     on:change
     on:blur>
+    <option value="" selected={options.every((v) => !v.selected) && value === ""}>{placeholder || ""}</option>
     {#each options as option}
       <option
         value={option.value}

@@ -13,6 +13,7 @@ interface SelectProp {
   disabled?: boolean;
   readonly?: boolean;
   options: SelectOption[];
+  placeholder: string;
 }
 
 interface SingleSelectProps extends SelectProp {
