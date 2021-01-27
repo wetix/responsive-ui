@@ -10,7 +10,6 @@
   export let multiple = false;
   export let disabled = false;
   export let readonly = false;
-  export let placeholder = "";
   export let options: SelectOption[] = [];
 
   // if not multiple, enforce it to size 1
@@ -22,18 +21,17 @@
 {:else}
   <select
     class="responsive-ui-select {className}"
-    {multiple}
     {name}
     {size}
     {readonly}
     {disabled}
     on:change
     on:blur>
-    <option value="" disabled selected={options.every((v) => !v.selected) && value === ""}>{placeholder || ""}</option>
     {#each options as option}
       <option
         value={option.value}
-        selected={option.selected ? option.selected : option.value === value}
+        selected={option.value === value}
+        disabled={option.disabled}
         >{option.title}</option
       >
     {/each}
