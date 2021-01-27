@@ -406,6 +406,9 @@
   <ComponentDetail hint="@responsive-ui/input">
     <Input />
   </ComponentDetail>
+  <ComponentDetail hint="@responsive-ui/input-number">
+    <InputNumber />
+  </ComponentDetail>
   <Dock bind:open={openRightDock} placement="right" />
 
   <Dock bind:open={openLeftDock} />
@@ -708,7 +711,7 @@
     }
   } */
 
-  .padding {
+  /* .padding {
     padding: 15px 0;
-  }
+  } */
 </style>

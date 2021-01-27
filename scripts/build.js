@@ -107,17 +107,17 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     const name = camelCase(pkg.name.replace("@responsive-ui/", ""), {
       pascalCase: true,
     });
-    const ext = path.extname(file).toLowerCase();
+
     let result = {
       file: filename,
     };
 
-    switch (ext) {
-      case ".mjs":
+    switch (true) {
+      case /(mjs|esm)/i.test(file):
         result = Object.assign(result, { format: "es" });
         break;
 
-      case ".cjs":
+      case /(cjs)/i.test(file):
         result = Object.assign(result, { format: "cjs", exports: "auto" });
         break;
 
@@ -130,7 +130,6 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     for (const chunk of output) {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
-
       if (chunk.type === "asset") {
         fs.outputFileSync(outputPath, chunk.source);
       } else {
