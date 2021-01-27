@@ -5,9 +5,9 @@
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/table#README.md",
   "license": "MIT",
-  "main": "lib/index.cjs",
+  "main": "lib/cjs/index.js",
   "browser": "lib/index.js",
-  "module": "lib/index.mjs",
+  "module": "lib/esm/index.js",
   "svelte": "src/Table.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {

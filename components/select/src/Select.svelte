@@ -29,9 +29,7 @@
     on:change
     on:blur>
     {#each options as option}
-      <option
-        value={option.value}
-        selected={option.selected ? option.selected : option.value === value}
+      <option value={option.value} selected={option.value === value}
         >{option.title}</option
       >
     {/each}

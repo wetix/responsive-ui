@@ -2,12 +2,12 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export type SelectOption = {
   title: string;
-  selected?: boolean;
   disabled?: boolean;
   value: any;
 };
 
 interface SelectProp {
+  ref?: null | HTMLSelectElement;
   name?: string;
   size?: number;
   disabled?: boolean;

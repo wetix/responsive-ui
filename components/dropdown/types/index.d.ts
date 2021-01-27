@@ -8,7 +8,7 @@ export type DropdownItem = {
   divider?: boolean;
 };
 
-export type DropdownTriggerMode = "click" | "hover" | "context";
+export type DropdownTriggerMode = "click" | "hover" | "contextmenu";
 
 interface DropdownProps {
   title: string;
@@ -23,6 +23,10 @@ interface DropdownSlot {
   default: {};
 }
 
-declare class Dropdown extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
+declare class Dropdown extends SvelteComponentTyped<
+  DropdownProps,
+  _,
+  DropdownSlot
+> {}
 
 export default Dropdown;

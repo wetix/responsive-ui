@@ -1,7 +1,6 @@
 <script lang="ts">
   import { zoom } from "@wetix/animation";
   import { getNodeAttribute } from "@wetix/utils";
-  import { onMount } from "svelte";
 
   import type { SelectOption } from "../types";
 
@@ -23,20 +22,16 @@
   let show = false;
   let clientHeight;
 
-  onMount(() => {
-    input.focus();
-  });
-
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
     if (data) {
       const [index, item] = <[number, Item]>JSON.parse(data);
       const pos = items.findIndex((v) => v.value === item.value);
       if (pos > -1) {
-        options[index].selected = false;
+        // options[index].selected = false;
         items = items.filter((v) => v.value !== item.value);
       } else {
-        options[index].selected = true;
+        // options[index].selected = true;
         items = [...items, item];
       }
       options = [...options];
@@ -115,7 +110,6 @@
       {#each options as item, i}
         <div
           class="responsive-ui-select__option"
-          class:responsive-ui-select__option--selected={item.selected}
           class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
