@@ -54,7 +54,11 @@ interface DropdownSlot {
   default: {};
 }
 
-declare class Dropdown extends SvelteComponentTyped<DropdownProps, _, DropdownSlot> {}
+declare class Dropdown extends SvelteComponentTyped<
+  DropdownProps,
+  _,
+  DropdownSlot
+> {}
 ```
 
 ## Example
@@ -74,7 +78,7 @@ declare class Dropdown extends SvelteComponentTyped<DropdownProps, _, DropdownSl
 <Dropdown {items} />
 ```
 
-[comment]: <> ([Try it yourself in Svelte Repl]&#40;https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=3.31.2&#41;)
+[comment]: <> ([Try it yourself in Svelte Repl]&#40;https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=latest&#41;)
 
 ## Sponsors
 

@@ -49,7 +49,7 @@ type CardProps = {
 </Card>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/32edf1b8b1a64be789c567980d5a5240?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/32edf1b8b1a64be789c567980d5a5240?version=latest)
 
 ## Sponsors
 

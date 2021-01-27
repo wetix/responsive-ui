@@ -67,7 +67,7 @@ declare class Dock extends SvelteComponentTyped<
 <button on:click={() => open = true}>open dock</button>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/91c1018434d44dc081229b45e18653a7?version=3.32.0)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/91c1018434d44dc081229b45e18653a7?version=latest)
 
 ## Sponsors
 

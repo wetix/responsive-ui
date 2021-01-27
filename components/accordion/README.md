@@ -77,7 +77,7 @@ declare class Accordion extends SvelteComponentTyped<
 <Accordion items={accordionItems} multiple={true} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/647efdb8779c4b7ebe14b01f5bd32b5f?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/647efdb8779c4b7ebe14b01f5bd32b5f?version=latest)
 
 ## Sponsors
 

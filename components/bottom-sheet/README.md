@@ -143,7 +143,7 @@ declare class BottomSheet extends SvelteComponentTyped<
   on:filter={onConfirm} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/33e75aaad3dc4ca29194c90acc0dfbed?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/33e75aaad3dc4ca29194c90acc0dfbed?version=latest)
 
 <br/>
 

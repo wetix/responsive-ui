@@ -43,7 +43,7 @@ type SearchProps = {
 <Search placeholder="Searching..."></Search>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/098739b0d1ac44f2a994c9a615c213fd?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/098739b0d1ac44f2a994c9a615c213fd?version=latest)
 
 ## Sponsors
 

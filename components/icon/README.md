@@ -54,7 +54,7 @@ declare class Icon extends SvelteComponentTyped<IconProps, IconEvents> {}
 <Icon type="filter" />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/4c61a7751527430181dbfd478a54a263?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/4c61a7751527430181dbfd478a54a263?version=latest)
 
 ## Sponsors
 

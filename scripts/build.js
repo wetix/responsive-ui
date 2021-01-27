@@ -51,7 +51,11 @@ const extractCss = () => {
       return "";
     },
     generateBundle(opts, bundle) {
-      // // No stylesheet needed
+      // No stylesheet needed, only emit single css file
+      if (opts.format !== "iife") {
+        return;
+      }
+
       // if (!changes || options.output === false) {
       //   return
       // }
@@ -61,6 +65,11 @@ const extractCss = () => {
       for (let x = 0; x < order.length; x++) {
         const id = order[x];
         css += styles[id] || "";
+      }
+
+      // Don't create unwanted empty stylesheets
+      if (css.length == 0) {
+        return;
       }
       // // Emit styles through callback
       // if (typeof options.output === 'function') {
@@ -85,7 +94,8 @@ const extractCss = () => {
       //   }
       //   dest = dest + '.css'
       // }
-      // // Emit styles to file
+
+      // Emit styles to file
       this.emitFile({ type: "asset", fileName: "index.css", source: css });
     },
   };
@@ -144,13 +154,11 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
 (async function Bundle() {
   const lernaPath = path.resolve("./lerna.json");
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
-  console.log(lerna);
 
   const pkgs = lerna.packages || [];
   // const excFolders = `/^(${excludedFolders.join("|")})$/`
   for (let i = 0; i < pkgs.length; i++) {
     const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
-    console.log(pkgPath);
     const folders = fs.readdirSync(pkgPath);
 
     for (let j = 0; j < folders.length; j++) {
@@ -171,6 +179,10 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
       const pkg = JSON.parse(
         fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
       );
+
+      if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
+        fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+      }
 
       const bundle = await rollup({
         input: path.resolve(`${basePath}/${pkg.svelte}`),

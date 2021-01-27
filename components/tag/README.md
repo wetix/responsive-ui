@@ -56,7 +56,7 @@ declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
 <Tag>tag text</Tag>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=latest)
 
 ## Sponsors
 

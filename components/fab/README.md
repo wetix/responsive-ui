@@ -47,7 +47,7 @@ type FloatingActionButtonProps = {
 <FloatingActionButton on:click={console.log} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/c4b79c26ad2149d6a1359d5ce5e68186?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/c4b79c26ad2149d6a1359d5ce5e68186?version=latest)
 
 ## Sponsors
 

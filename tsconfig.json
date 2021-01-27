@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "skipLibCheck": false,
+    // "skipLibCheck": false,
     "types": ["jest", "node", "svelte"]
   },
   "include": ["public/**/*", "components/**/*"],

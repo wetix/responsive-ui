@@ -141,7 +141,7 @@ declare class Table extends SvelteComponentTyped<
 <Table key="key" columns={columns} items={datas} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=latest)
 
 ## Sponsors
 

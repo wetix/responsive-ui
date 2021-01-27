@@ -49,7 +49,7 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 <BottomBar>Bottom Bar</BottomBar>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=latest)
 
 ## Sponsors
 

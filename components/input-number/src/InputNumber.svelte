@@ -3,47 +3,46 @@
   export { className as class };
   export let ref: null | HTMLInputElement = null;
   export let name = "";
+  export let precision = 2;
   export let min = 0;
   export let max = 100;
   export let readonly = false;
   export let disabled = false;
   export let placeholder = "";
   export let parser = (v: string): number => parseFloat(v);
-  export let format = (v: number): string => v.toString();
+  export let format = (v: number): string => v.toPrecision(precision);
   export let value = 0;
 
-  const handleInput = (e: Event) => {
-    const v = (e.target as HTMLInputElement).value.trim();
-    if (v) {
-      let num = parser(v);
-      if (num < min) {
-        e.preventDefault();
-        num = min;
-      }
-      if (num > max) {
-        e.preventDefault();
-        num = max;
-      }
-      value = num;
-      console.log(num);
+  const onBlur = (e: Event) => {
+    const v = (e.currentTarget as HTMLInputElement).value.trim();
+    if (v === "") {
+      (<HTMLInputElement>ref).value = "";
+      return;
     }
-  };
 
-  $: strValue = format(value);
+    let num = parser(v);
+    if (num < min) num = min;
+    else if (num > max) num = max;
+    value = num;
+    (<HTMLInputElement>ref).value = format(num);
+  };
 </script>
 
 <input
   class="responsive-ui-input-number {className}"
+  bind:this={ref}
+  value={format(value)}
   {name}
   type="text"
   pattern="\d*"
   {placeholder}
   {disabled}
   {readonly}
-  value={strValue}
-  bind:this={ref}
   {...$$restProps}
-  on:input={handleInput}
+  on:blur={onBlur}
+  on:blur
+  on:change
+  on:input
 />
 
 <style lang="scss">

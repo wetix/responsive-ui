@@ -85,7 +85,7 @@ declare class Select extends SvelteComponentTyped<
 />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=latest)
 
 ## Sponsors
 

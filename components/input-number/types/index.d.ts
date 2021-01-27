@@ -10,11 +10,14 @@ export interface InputNumberProps {
   min?: number;
   max?: number;
   readonly?: boolean;
+  precision?: number;
   parser?: (v: string) => number;
   format?: (v: number) => string;
 }
 
 export interface InputNumberEvents {
+  input?: any;
+  blur?: any;
   change?: any;
 }
 

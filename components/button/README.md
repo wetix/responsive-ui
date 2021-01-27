@@ -70,7 +70,7 @@ declare class Button extends SvelteComponentTyped<
 <Button title="Click me" on:click={onClick}></Button>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/d21567c5cfb24e7ea136ebfc0a269bfe?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/d21567c5cfb24e7ea136ebfc0a269bfe?version=latest)
 
 ## Sponsors
 

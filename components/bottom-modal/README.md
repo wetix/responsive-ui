@@ -43,13 +43,13 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 
 ```svelte
 <script>
-  import BottomBar from '@responsive-ui/bottom-modal';
+  import BottomModal from '@responsive-ui/bottom-modal';
 </script>
 
-<BottomBar>Bottom Bar</BottomBar>
+<BottomModal closable={true}>Bottom Modal</BottomModal>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=latest)
 
 ## Sponsors
 

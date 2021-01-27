@@ -49,7 +49,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 </Ellipsis>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e5de5e7eb4af4446a590207ab6a70942?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/e5de5e7eb4af4446a590207ab6a70942?version=latest)
 
 ## Sponsors
 

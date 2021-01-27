@@ -71,7 +71,7 @@ declare class Tab extends SvelteComponentTyped<TabProps, TabEvents, TabSlots> {}
 <Tab items={tabItems} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/95ab0950fa2740bea8b2338a497c46cf?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/95ab0950fa2740bea8b2338a497c46cf?version=latest)
 
 ## Sponsors
 

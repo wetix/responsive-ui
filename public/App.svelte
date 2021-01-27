@@ -59,7 +59,7 @@
   }, 1500);
 
   const wrapComponent = (
-    Component,
+    Component: any,
     props: Record<string, any> = {},
     events: Record<string, Function> = {}
   ): ((_: Record<string, any>) => SvelteComponentDev) => {
@@ -87,17 +87,19 @@
     {
       title: "Email",
       key: "email",
-      value: (v) => (v ? v : "-"),
+      value: (v: Record<string, any>) => (v ? v : "-"),
     },
     {
       title: "Amount",
       align: "right",
-      value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
+      value: ({ amount }: Record<string, any>) =>
+        `RM ${(amount || 0).toFixed(2)}`,
     },
     {
       title: "Offline",
       align: "center",
-      component: ({ online }) => wrapComponent(Online, { online }),
+      component: ({ online }: Record<string, any>) =>
+        wrapComponent(Online, { online }),
     },
     { title: "Age", align: "center", key: "age" },
     { title: "Created", key: "created" },
@@ -404,10 +406,10 @@
     <Label title="Text" />
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/input">
-    <Input />
+    <Input style="width: 240px;" placeholder="Enter your text..." />
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/input-number">
-    <InputNumber />
+    <InputNumber min={0} format={(v) => `${v}%`} />
   </ComponentDetail>
   <Dock bind:open={openRightDock} placement="right" />
 
@@ -604,7 +606,7 @@
   </Card>
 
   <Label title="Number">
-    <InputNumber formatter={(v) => `${v}%`} />
+    <InputNumber format={(v) => `${v}%`} />
   </Label>
 
   <Icon type="more" />

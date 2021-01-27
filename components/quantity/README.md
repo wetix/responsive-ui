@@ -53,7 +53,7 @@ export interface QuantityEvents {
 <Quantity min=5 max=15 />
 ```
 
-<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=3.31.2) -->
+<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=latest) -->
 
 ## Sponsors
 

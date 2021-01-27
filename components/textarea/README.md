@@ -60,7 +60,7 @@ declare class Textarea extends SvelteComponentTyped<
 <Textarea />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/5d4146f8408a49b18558d60cb1619aea?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/5d4146f8408a49b18558d60cb1619aea?version=latest)
 
 ## Sponsors
 

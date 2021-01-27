@@ -53,7 +53,7 @@ declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 <Switch checked={false} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/69f8b2f7d5944e25949a87c30b009256?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/69f8b2f7d5944e25949a87c30b009256?version=latest)
 
 ## Sponsors
 

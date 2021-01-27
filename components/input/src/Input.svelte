@@ -33,8 +33,8 @@
 <input
   class="responsive-ui-input {className}"
   class:responsive-ui-input--bordered={bordered}
-  {style}
   bind:this={ref}
+  {style}
   {name}
   {type}
   {placeholder}

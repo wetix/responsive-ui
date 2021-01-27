@@ -71,7 +71,7 @@ declare class ShowMore extends SvelteComponentTyped<
 </ShowMore>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e70235a5b5d041cb84e52e3b5998c45c?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/e70235a5b5d041cb84e52e3b5998c45c?version=latest)
 
 ## Sponsors
 
