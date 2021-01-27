@@ -9,13 +9,13 @@
 
   const hasSlots = !!$$slots.default;
 
-  let tab: null | HTMLDivElement;
-  let childNodes: HTMLCollectionOf<Element>;
+  let tab: HTMLDivElement;
+  let childNodes: NodeListOf<ChildNode>;
   let left = 0;
   let width = 0;
 
   const setWidth = () => {
-    childNodes = tab.getElementsByClassName("responsive-ui-tab__item");
+    childNodes = tab.childNodes;
     const el = childNodes[selected] as HTMLDivElement;
     left = el.offsetLeft;
     width = el.offsetWidth;
@@ -39,7 +39,8 @@
       <span
         class="responsive-ui-tab__item"
         class:responsive-ui-tab__item--selected={selected == i}
-        on:click={(e) => onChange(e, i)}>
+        on:click={(e) => onChange(e, i)}
+      >
         {item.title}
       </span>
     {/each}

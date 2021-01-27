@@ -9,11 +9,11 @@
   export let rows = 4;
   export let maxlength = 100;
   export let value = "";
-  export let autosize = true;
+  export let autoResize = true;
 
   const onChange = (e: Event) => {
     value = (e.target as HTMLTextAreaElement).value;
-    if (autosize) {
+    if (autoResize && ref) {
       ref.style.height = "auto";
       ref.style.height = ref.scrollHeight + "px";
     }

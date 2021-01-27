@@ -4,12 +4,14 @@ export interface InputProps {
   ref?: null | HTMLInputElement;
   class?: string;
   name?: string;
-  type?: "text" | "password" | "email" | "number" | "reset";
+  type?: string;
   placeholder?: string;
   disabled?: boolean;
+  readonly?: boolean;
   size?: number;
   maxlength?: number;
   value?: any;
+  required?: boolean;
   style?: string;
 }
 

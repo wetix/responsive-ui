@@ -9,7 +9,7 @@
   export let color = "blue";
   export let value = "";
 
-  const handleClick = () => {
+  const onClick = () => {
     dispatch("close");
   };
 </script>
@@ -17,8 +17,7 @@
 <span class="responsive-ui-tag responsive-ui-tag--{color} {className}">
   <slot>{value}</slot>
   {#if closable}
-    <span class="responsive-ui-tag__close" on:click={handleClick}>&#10005;</span
-    >
+    <span class="responsive-ui-tag__close" on:click={onClick}>&#10005;</span>
   {/if}
 </span>
 

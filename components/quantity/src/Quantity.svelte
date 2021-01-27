@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Icon from "@responsive-ui/icon";
   import { createEventDispatcher } from "svelte";
 
@@ -37,22 +37,12 @@
   class="responsive-ui-quantity"
   class:responsive-ui-quantity--disabled={disabled}
 >
-  <span on:click={!disabled ? onDecrement : null}>
-    <Icon
-      type="minus"
-      stroke={value > min ? "#505050" : "#ababab"}
-      width="12"
-      height="12"
-    />
+  <span on:click={!disabled ? onDecrement : undefined}>
+    <Icon type="minus" stroke={value > min ? "#505050" : "#ababab"} />
   </span>
   <span class="responsive-ui-quantity__count">{value}</span>
-  <span on:click={!disabled ? onIncrement : null}>
-    <Icon
-      type="plus"
-      stroke={value < max ? "#505050" : "#ababab"}
-      width="12"
-      height="12"
-    />
+  <span on:click={!disabled ? onIncrement : undefined}>
+    <Icon type="plus" stroke={value < max ? "#505050" : "#ababab"} />
   </span>
 </div>
 

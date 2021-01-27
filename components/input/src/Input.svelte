@@ -11,8 +11,10 @@
   export let bordered = true;
   export let placeholder = "";
   export let disabled = false;
+  export let readonly = false;
   export let maxlength = 100;
   export let size = 100;
+  export let required = false;
   export let value = "";
   export let style = "";
 
@@ -36,10 +38,12 @@
   {name}
   {type}
   {placeholder}
+  {readonly}
   {maxlength}
   {size}
   {disabled}
   {value}
+  {required}
   on:keyup={handleKeyup}
   on:input
   on:change

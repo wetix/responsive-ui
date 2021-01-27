@@ -43,7 +43,7 @@
     overflow: hidden;
 
     &--rounded {
-      border-radius: 3px;
+      border-radius: var(--border-radius-sm, 3px);
     }
 
     &--shadow {
@@ -59,7 +59,7 @@
       background: #f5f5f5;
       zoom: 1;
       transition: opacity 0.5s ease;
-      border-radius: 3px;
+      border-radius: var(--border-radius-sm, 3px);
       z-index: 1;
     }
   }

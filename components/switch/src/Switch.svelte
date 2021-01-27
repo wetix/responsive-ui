@@ -7,7 +7,8 @@
 
 <span
   class="responsive-ui-switch {className}"
-  class:responsive-ui-switch--disabled={disabled}>
+  class:responsive-ui-switch--disabled={disabled}
+>
   <input type="checkbox" bind:checked on:change {disabled} />
   <b class="responsive-ui-switch__toggle" />
   <b class="responsive-ui-switch__track" />

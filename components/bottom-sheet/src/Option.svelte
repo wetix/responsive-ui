@@ -22,7 +22,7 @@
   class="responsive-ui-option"
   class:responsive-ui-option--checked={checked}
   class:responsive-ui-option--disabled={disabled}
-  on:click={disabled ? null : onClick}
+  on:click={disabled ? undefined : onClick}
 >
   {#if icon}
     <span class="responsive-ui-option__icon">

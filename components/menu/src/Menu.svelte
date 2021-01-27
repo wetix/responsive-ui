@@ -5,17 +5,56 @@
   import type { MenuItems } from "../types";
 
   let className = "";
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
   export { className as class };
 
   export let items: MenuItems[] = [];
-  export let level = [];
+  export let level: number[] = [];
 
   const handleSelectMenu = (e: Event) => {
     const data = JSON.parse(getNodeAttribute(e, "data-item"));
-    dispatch("change", data)
+    dispatch("change", data);
   };
 </script>
+
+<ul
+  class={`responsive-ui-menu ${className}`}
+  on:click={handleSelectMenu}
+  transition:slide
+>
+  {#each items as item, i}
+    <li
+      class="responsive-ui-menu__item"
+      class:responsive-ui-menu__item--disabled={item.disabled}
+      class:responsive-ui-menu__item--collapsed={!item.collapsed}
+      class:responsive-ui-menu__item--active={item.isActive}
+      data-item={JSON.stringify([...level, item])}
+    >
+      {#if item.disabled}
+        <div class="responsive-ui-menu__title">
+          <div class="responsive-ui-menu__label">{item.title}</div>
+        </div>
+      {:else}
+        <a href={item.href} class="responsive-ui-menu__title">
+          <div class="responsive-ui-menu__label">{item.title}</div>
+          {#if level.length === 0 && item.submenus}
+            <!-- <span class="menu-control"> &#8595; </span> -->
+            <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
+              <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
+            </svg>
+          {/if}
+        </a>
+      {/if}
+      {#if item.submenus && item.collapsed}
+        <svelte:self
+          class="responsive-ui-menu__submenu"
+          level={[...level, i]}
+          items={item.submenus}
+        />
+      {/if}
+    </li>
+  {/each}
+</ul>
 
 <style lang="scss">
   .responsive-ui-menu {
@@ -108,39 +147,3 @@
     }
   }
 </style>
-
-<ul
-    class={`responsive-ui-menu ${className}`}
-    on:click={handleSelectMenu}
-    transition:slide>
-  {#each items as item, i}
-    <li
-        class="responsive-ui-menu__item"
-        class:responsive-ui-menu__item--disabled={item.disabled}
-        class:responsive-ui-menu__item--collapsed={!item.collapsed}
-        class:responsive-ui-menu__item--active={item.isActive}
-        data-item={JSON.stringify([...level, i])}>
-      {#if item.disabled}
-        <div class="responsive-ui-menu__title">
-          <div class="responsive-ui-menu__label">{item.title}</div>
-        </div>
-      {:else}
-        <a href={item.href} class="responsive-ui-menu__title">
-          <div class="responsive-ui-menu__label">{item.title}</div>
-          {#if level.length === 0 && item.submenus}
-            <!-- <span class="menu-control"> &#8595; </span> -->
-            <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
-              <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-            </svg>
-          {/if}
-        </a>
-      {/if}
-      {#if item.submenus && item.collapsed}
-        <svelte:self
-            class="responsive-ui-menu__submenu"
-            level={[...level, i]}
-            items={item.submenus} />
-      {/if}
-    </li>
-  {/each}
-</ul>

@@ -3,13 +3,13 @@
 
   let className = "";
   export { className as class };
-  export let text;
+  export let text = "";
   export let threshold = 100;
   export let style = "";
 
-  let updatedHeight = "auto";
-  let height;
-  let clientHeight;
+  let updatedHeight: number | string = "auto";
+  let height = 0;
+  let clientHeight = 0;
 
   $: isExpanded = updatedHeight === height;
   $: isExtensible = threshold < height;

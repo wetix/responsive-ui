@@ -13,7 +13,7 @@
 {#if open}
   <div
     class="responsive-ui-dock__overlay"
-    on:click={closable ? () => (open = !open) : null}
+    on:click={closable ? () => (open = !open) : undefined}
     in:fade
     out:fade
   />

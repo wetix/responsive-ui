@@ -51,7 +51,8 @@
         {#each columns as column}
           <th
             class="responsive-ui-table__column--align-{column.align || 'left'}"
-            style={column.width && `width:${column.width}`}>
+            width={column.width}
+          >
             {column.title || ""}
           </th>
         {/each}
@@ -66,7 +67,8 @@
                 {#each columns as column}
                   <td
                     class="responsive-ui-table__column--align-{column.align ||
-                      'left'}">
+                      'left'}"
+                  >
                     {#if column.component}
                       <svelte:component this={getComponent(column, item)} />
                     {:else}
@@ -82,20 +84,23 @@
             <tr>
               <td
                 colspan={columns.length}
-                class="responsive-ui-table__column--empty responsive-ui-table__column--align-center">
+                class="responsive-ui-table__column--empty responsive-ui-table__column--align-center"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                   width="65px"
                   height="85px"
-                  viewBox="0 0 168 182">
+                  viewBox="0 0 168 182"
+                >
                   <defs>
                     <linearGradient
                       id="a"
                       x1="50%"
                       x2="40.143%"
                       y1="13.071%"
-                      y2="67.741%">
+                      y2="67.741%"
+                    >
                       <stop offset="0%" stop-color="#95ABC2" />
                       <stop offset="100%" stop-color="#FFF" />
                     </linearGradient>

@@ -11,8 +11,7 @@ export interface TextareaProps {
   disabled?: boolean;
   readonly?: boolean;
   placeholder?: string;
-  autosize?: boolean;
-  wrap?: "hard" | "soft";
+  autoResize?: boolean;
 }
 
 export interface TextareaEvents {

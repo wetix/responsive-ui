@@ -58,7 +58,7 @@
 
 <div
   class="responsive-ui-modal__overlay"
-  on:click={closable ? () => (open = false) : null}
+  on:click={closable ? () => (open = false) : undefined}
   style={`opacity:${1 - $tween};visibility:${
     1 - $tween <= 0 ? "hidden" : "visible"
   }`}

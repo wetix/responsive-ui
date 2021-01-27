@@ -20,7 +20,7 @@
   let items: Item[] = [];
   let input: null | HTMLInputElement;
   let show = false;
-  let clientHeight;
+  let clientHeight = 0;
 
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
@@ -35,7 +35,7 @@
         items = [...items, item];
       }
       options = [...options];
-      input.focus();
+      input && input.focus();
     }
   };
 
@@ -68,7 +68,8 @@
           <span>{item.title}</span>
           <span
             class="responsive-ui-select__close-icon"
-            data-value={item.value}>
+            data-value={item.value}
+          >
             <svg
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +78,8 @@
               y="0px"
               viewBox="0 0 512.001 512.001"
               style="enable-background:new 0 0 512.001 512.001;"
-              xml:space="preserve">
+              xml:space="preserve"
+            >
               <g>
                 <path
                   d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
