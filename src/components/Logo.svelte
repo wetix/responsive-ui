@@ -1,7 +1,7 @@
 <span class="logo"
   ><img
     src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg"
-    alt="no image."
+    alt=""
   /></span
 >
 
