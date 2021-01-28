@@ -7,7 +7,7 @@
   }`;
   let hide = true;
   const mounted = (node: HTMLDivElement) => {
-    const style = window.getComputedStyle(node.firstElementChild);
+    const style = window.getComputedStyle(<Element>node.firstElementChild);
     console.log();
     // cssStyle = `position:${style.getPropertyValue("position")}`;
 

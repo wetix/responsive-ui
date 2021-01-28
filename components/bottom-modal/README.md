@@ -49,7 +49,7 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 <BottomModal closable={true}>Bottom Modal</BottomModal>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=latest)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/77cd21e263a14e2e9e6feed4a23c1631?version=latest)
 
 ## Sponsors
 

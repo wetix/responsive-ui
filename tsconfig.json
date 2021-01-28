@@ -3,10 +3,11 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "noEmit": true,
     // "skipLibCheck": false,
-    "types": ["jest", "node", "svelte"]
+    "types": ["svelte"]
   },
-  "include": ["public/**/*", "components/**/*"],
+  "include": ["src", "components/**/*"],
   "extends": "@tsconfig/svelte/tsconfig.json",
   "exclude": ["node_modules/*", "__sapper__/*"]
 }

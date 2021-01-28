@@ -25,12 +25,18 @@ yarn add @responsive-ui/loader
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104027903-052ac280-5203-11eb-9326-2ee47aa1901b.png"
-alt="@responsive-ui/loader" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/106019879-17ab6400-60fe-11eb-9456-d24fc8fd5ed9.png"
+alt="@responsive-ui/loader" />
 
 ## Properties, Events & Slots
 
 ```ts
+interface LoaderProps {
+  fit?: "viewport" | "none";
+  size?: "default" | "small";
+}
+
+declare class Loader extends SvelteComponentTyped<LoaderProps> {}
 ```
 
 ## Example
@@ -43,7 +49,7 @@ alt="@responsive-ui/loader" /> -->
 <Loader />
 ```
 
-<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=latest) -->
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/f38d0c0bf6754647bbc78cfe74cc356c?version=latest)
 
 ## Sponsors
 
