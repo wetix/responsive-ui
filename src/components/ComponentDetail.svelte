@@ -47,6 +47,7 @@
       border-color: #fc4451;
       border-style: solid;
       border-width: 2px;
+      z-index: 20;
 
       .component-name {
         left: 50%;
@@ -61,7 +62,6 @@
         background: #fc4451;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         color: #fff;
-        z-index: 5px;
       }
     }
   }

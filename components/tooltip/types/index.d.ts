@@ -3,16 +3,26 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export type TooltipTrigger = "mouseenter" | "focus" | "click";
 
 export interface TooltipProps {
-  placeholder: string;
-  trigger?: TooltipTrigger[];
   class?: string;
+  offset?: number;
+  placement?:
+    | string
+    | "auto"
+    | "top"
+    | "left"
+    | "right"
+    | "bottom"
+    | "top-left"
+    | "top-right"
+    | "bottom-left";
+  text: string;
+  html?: boolean;
+  trigger?: TooltipTrigger[];
 }
 
 interface TooltipEvents {}
 
-interface TooltipSlots {
-  default: {};
-}
+interface TooltipSlots {}
 
 declare class Tooltip extends SvelteComponentTyped<
   TooltipProps,

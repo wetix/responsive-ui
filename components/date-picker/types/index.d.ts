@@ -1,6 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface DatePickerProps {
+  class?: string;
+  ref?: null | HTMLInputElement;
   name?: string;
   disabled?: boolean;
   readonly?: boolean;
@@ -8,11 +10,11 @@ export interface DatePickerProps {
   placeholder?: string;
 }
 
-export interface DatePickerEvents {}
-
-export interface DatePickerSlots {
-  default: {};
+export interface DatePickerEvents {
+  change?: void;
 }
+
+export interface DatePickerSlots {}
 
 declare class DatePicker extends SvelteComponentTyped<
   DatePickerProps,

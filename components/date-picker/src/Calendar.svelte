@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
@@ -100,6 +102,91 @@
   getNoOfDays();
 </script>
 
+{#if visible}
+  <div
+    class="responsive-ui-date__container"
+    transition:fade={{ duration: 150 }}
+    {style}
+  >
+    <div class="responsive-ui-date__panels">
+      <div class="responsive-ui-date__panel">
+        <div class="responsive-ui-date__header">
+          <div
+            class="responsive-ui-date__buttons responsive-ui-date__buttons-prev"
+          >
+            <button type="button" on:click|stopPropagation={prevMonth}>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="responsive-ui-date__month-year">
+            {MONTH_NAMES[month]}
+            {year}
+          </div>
+          <div
+            class="responsive-ui-date__buttons responsive-ui-date__buttons-next"
+          >
+            <button type="button" on:click|stopPropagation={nextMonth}>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="responsive-ui-date__body">
+          <table>
+            <thead>
+              <tr>
+                {#each DAYS as day}
+                  <th class="responsive-ui-date__day">{day}</th>
+                {/each}
+              </tr>
+            </thead>
+            <tbody on:click|stopPropagation={onSelectDate}>
+              {#each availableDays as dateRow}
+                <tr style="margin-bottom: 6px">
+                  {#each dateRow as date}
+                    <td
+                      class="responsive-ui-date__date"
+                      class:responsive-ui-date__date-selected={isSelectedDay(
+                        `${year}-${month + 1}-${date}`
+                      )}
+                      on:mouseenter={() => {
+                        hoveredDate = `${year}-${month + 1}-${date}`;
+                      }}
+                      on:mouseleave={() => {
+                        hoveredDate = "";
+                      }}
+                      data-date={`${year}-${String(month + 1).padStart(
+                        2,
+                        "0"
+                      )}-${String(date).padStart(2, "0")}`}
+                    >
+                      <span>{date}</span>
+                    </td>
+                  {/each}
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{/if}
+
 <style lang="scss">
   .responsive-ui-date__container {
     position: absolute;
@@ -193,79 +280,3 @@
     }
   }
 </style>
-
-<svelte:options accessors />
-
-{#if visible}
-  <div
-    class="responsive-ui-date__container"
-    transition:fade={{ duration: 150 }}
-    {style}>
-    <div class="responsive-ui-date__panels">
-      <div class="responsive-ui-date__panel">
-        <div class="responsive-ui-date__header">
-          <div
-            class="responsive-ui-date__buttons responsive-ui-date__buttons-prev">
-            <button type="button" on:click|stopPropagation={prevMonth}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          </div>
-          <div class="responsive-ui-date__month-year">
-            {MONTH_NAMES[month]}
-            {year}
-          </div>
-          <div
-            class="responsive-ui-date__buttons responsive-ui-date__buttons-next">
-            <button type="button" on:click|stopPropagation={nextMonth}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="responsive-ui-date__body">
-          <table>
-            <thead>
-              <tr>
-                {#each DAYS as day}
-                  <th class="responsive-ui-date__day">{day}</th>
-                {/each}
-              </tr>
-            </thead>
-            <tbody on:click|stopPropagation={onSelectDate}>
-              {#each availableDays as dateRow}
-                <tr style="margin-bottom: 6px">
-                  {#each dateRow as date}
-                    <td
-                      class="responsive-ui-date__date"
-                      class:responsive-ui-date__date-selected={isSelectedDay(`${year}-${month + 1}-${date}`)}
-                      on:mouseenter={() => {
-                        hoveredDate = `${year}-${month + 1}-${date}`;
-                      }}
-                      on:mouseleave={() => {
-                        hoveredDate = '';
-                      }}
-                      data-date={`${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`}>
-                      <span>{date}</span>
-                    </td>
-                  {/each}
-                </tr>
-              {/each}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-{/if}

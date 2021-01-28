@@ -74,7 +74,7 @@ export default {
 
     serve(),
 
-    livereload("src"),
+    livereload("public"),
   ],
   watch: {
     clearScreen: false,
