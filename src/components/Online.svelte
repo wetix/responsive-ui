@@ -1,7 +1,10 @@
 <script>
+  import { fade } from "svelte/transition";
   export let online = false;
   console.log("Props =>", $$props);
 </script>
+
+<span class="circle" class:online />
 
 <style lang="scss">
   .circle {
@@ -17,5 +20,3 @@
     }
   }
 </style>
-
-<span class="circle" class:online />

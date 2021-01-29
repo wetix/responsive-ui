@@ -4,10 +4,13 @@
 
 <p>
 
-[![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
-[![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/responsive-ui)](https://bundlephobia.com/result?p=responsive-ui)
+[![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
+[![Known Vulnerabilities](https://snyk.io/test/github/wetix/responsive-ui/badge.svg)](https://snyk.io/test/github/wetix/responsive-ui)
+[![Styled](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -25,9 +28,6 @@ yarn add responsive-ui
 ```
 
 ## Component List
-
-<!-- - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/master/components/checkbox) -->
-<!-- - [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/master/components/date-picker) -->
 
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/master/components/accordion)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
