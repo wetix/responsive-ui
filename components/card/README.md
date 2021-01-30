@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fcard)](https://bundlephobia.com/result?p=@responsive-ui/card)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>

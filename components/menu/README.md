@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/menu.svg)](https://www.npmjs.com/package/@responsive-ui/menu)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/menu.svg)](https://www.npmjs.com/package/@responsive-ui/menu)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fposter)](https://bundlephobia.com/result?p=@responsive-ui/menu)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/menu.svg)](https://www.npmjs.com/package/@responsive-ui/menu)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -42,7 +43,7 @@ interface MenuItems {
 
 interface MenuProps {
   items: MenuItems[];
-  onSelectMenu: (data: number[]) => void
+  onSelectMenu: (data: number[]) => void;
 }
 
 declare class Menu extends SvelteComponentTyped<MenuProps> {}
@@ -53,7 +54,7 @@ declare class Menu extends SvelteComponentTyped<MenuProps> {}
 ```svelte
 <script>
   import Menu from '@responsive-ui/menu';
-  
+
   const menus = [
     { title: "Item 1", href: "#item1" },
     { title: "Item 2", href: "#item2" },
@@ -85,6 +86,7 @@ declare class Menu extends SvelteComponentTyped<MenuProps> {}
 
 <Menu items={menus} onSelectMenu={handleSelectMenu} />
 ```
+
 ## Sponsors
 
 <img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">

@@ -566,7 +566,7 @@
   <ComponentDetail hint="@responsive-ui/ellipsis" block={true}>
     <Ellipsis>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      <Link>Lorem Ipsum</Link>
+      <Link href="https://google.com">Lorem Ipsum</Link>
       has been the industry's standard dummy text ever since the 1500s, when an unknown
       printer took a galley of type and scrambled it to make a type specimen book.
     </Ellipsis>

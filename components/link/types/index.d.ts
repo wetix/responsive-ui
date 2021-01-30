@@ -1,11 +1,13 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface LinkProps {
-  title: string;
-  href: string;
+  title?: string;
+  href?: string;
 }
 
-export interface LinkEvents {}
+export interface LinkEvents {
+  click?: void;
+}
 
 export interface LinkSlots {
   default: {};
