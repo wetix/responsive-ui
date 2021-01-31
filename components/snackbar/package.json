@@ -36,7 +36,6 @@
     "url": "git+https://github.com/wetix/responsive-ui.git"
   },
   "scripts": {
-    "tsd": "tsc ./src/*.ts --declaration --emitDeclarationOnly --outDir types",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

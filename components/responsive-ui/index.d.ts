@@ -27,6 +27,7 @@ import Tab from "@responsive-ui/tab/types";
 import Table from "@responsive-ui/table/types";
 import Tag from "@responsive-ui/tag/types";
 import Textarea from "@responsive-ui/textarea/types";
+import { tooltip } from "@responsive-ui/tooltip/types";
 import Upload from "@responsive-ui/upload/types";
 
 export {
@@ -58,5 +59,6 @@ export {
   Table,
   Tag,
   Textarea,
+  tooltip,
   Upload,
 };

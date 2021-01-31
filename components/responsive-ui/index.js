@@ -26,7 +26,7 @@ import Tab from "@responsive-ui/tab/src/Tab.svelte";
 import Table from "@responsive-ui/table/src/Table.svelte";
 import Tag from "@responsive-ui/tag/src/Tag.svelte";
 import Textarea from "@responsive-ui/textarea/src/Textarea.svelte";
-import Tooltip from "@responsive-ui/tooltip/src/Tooltip.svelte";
+import { tooltip } from "@responsive-ui/tooltip/src/index.ts";
 import Upload from "@responsive-ui/upload/src/Upload.svelte";
 
 export {
@@ -58,6 +58,6 @@ export {
   Table,
   Tag,
   Textarea,
-  Tooltip,
+  tooltip,
   Upload,
 };

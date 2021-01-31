@@ -1,45 +1,44 @@
 import Tooltip from "./Tooltip.svelte";
 
-import type { TooltipProps } from "../types";
+import type { TooltipProps } from "../types/tooltip";
 
-const useTooltip = (node: Node, params: Partial<TooltipProps> = {}) => {
+const attrName = "data-tooltip";
+
+const tooltip = (node: Node, params: Partial<TooltipProps> = {}) => {
+  // const { trigger = ["mouseenter"] } = params;
+
+  let comp: null | Tooltip = null;
+
+  const target = <HTMLElement>node;
+  const title = (target.title || target.getAttribute(attrName) || "").trim();
+
+  target.setAttribute(attrName, title);
+  target.removeAttribute("title");
+
+  const onDestroy = () => {
+    comp && comp.$destroy();
+    comp = null;
+  };
+
   node.addEventListener("mouseenter", (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    if (target && target.title) {
-      const title = target.title.trim();
-      if (!title) return;
-
-      target.setAttribute("data-tooltip", title);
-      target.removeAttribute("title");
-
-      const comp = new Tooltip({
+    if (!comp) {
+      comp = new Tooltip({
         target: document.body,
         intro: true,
         props: {
           ...params,
-          target,
-          text: title,
+          target: node,
+          text: <string>target.getAttribute(attrName),
         },
       });
-
-      // const mouseLeave = (e: MouseEvent) => {
-      //   const target = <HTMLElement>e.currentTarget;
-      //   target.removeEventListener("mouseleave", () => {});
-      //   // restore title
-      //   target.setAttribute("title", target.getAttribute("data-tooltip") || "");
-      //   setTimeout(() => {
-      //     comp.$destroy();
-      //   }, 150);
-      // };
-
-      // target.addEventListener("mouseleave", mouseLeave);
     }
+    node.addEventListener("mouseleave", onDestroy);
   });
 
   return {
-    update() {},
-    destroy() {},
+    destroy: onDestroy,
   };
 };
 
-export { useTooltip as tooltip };
+// export default Tooltip;
+export { tooltip };

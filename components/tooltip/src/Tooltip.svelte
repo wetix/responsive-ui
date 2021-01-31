@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import type { TooltipTrigger } from "../types";
+  import type { TooltipTrigger } from "../types/tooltip";
 
   let className = "";
   export { className as class };
@@ -22,7 +22,7 @@
       width = el.offsetWidth;
 
     while (el.offsetParent) {
-      el = el.offsetParent as HTMLElement;
+      el = <HTMLElement>el.offsetParent;
       top += el.offsetTop;
       left += el.offsetLeft;
     }
@@ -107,14 +107,15 @@
     border-radius: var(--border-radius, 5px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     color: #fff;
-    transition: opacity 0.3s;
+    transition: opacity 0.35s;
     opacity: 1;
     z-index: 50;
 
     $width: 6px;
+
     &:after {
-      position: absolute;
       content: "";
+      position: absolute;
       width: 0;
       height: 0;
     }
