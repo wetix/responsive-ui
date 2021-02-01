@@ -9,9 +9,11 @@
   export let text = "";
   export let html = false;
   export let placement = "auto";
-  export let target: HTMLElement;
+  export let target: null | HTMLElement = null;
   export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
 
+  const hasSlot = Object.keys($$slots).length > 0;
+  console.log(hasSlot);
   let clientWidth = 0;
   let clientHeight = 0;
 
@@ -42,47 +44,66 @@
   let left = 0;
 
   onMount(() => {
-    const rect = getAbsolutePosition(target);
+    if (!hasSlot) {
+      const rect = getAbsolutePosition(target);
 
-    top = rect.top - clientHeight - offset;
-    left = rect.left + (rect.width - clientWidth) / 2;
-    if (placement === "auto") {
-      if (top <= 0) top = offset;
-      if (left <= 0) left = offset;
-    }
-    switch (placement) {
-      case "top-left":
-        left = rect.left;
-        break;
-      case "top-right":
-        left = rect.right - clientWidth;
-        break;
-      case "left":
-        top = rect.top + (rect.height - clientHeight) / 2;
-        left = rect.left - clientWidth - offset;
-        break;
-      case "right":
-        top = rect.top + (rect.height - clientHeight) / 2;
-        left = rect.right + offset;
-        break;
-      case "bottom":
-        top = rect.bottom + offset;
-        break;
-      case "bottom-left":
-        top = rect.bottom + offset;
-        left = rect.left;
-        break;
-      case "bottom-right":
-        top = rect.bottom + offset;
-        left = rect.right - clientWidth;
-        break;
-      default:
-    }
+      top = rect.top - clientHeight - offset;
+      left = rect.left + (rect.width - clientWidth) / 2;
+      if (placement === "auto") {
+        if (top <= 0) top = offset;
+        if (left <= 0) left = offset;
+      }
+      switch (placement) {
+        case "top-left":
+          left = rect.left;
+          break;
+        case "top-right":
+          left = rect.right - clientWidth;
+          break;
+        case "left":
+          top = rect.top + (rect.height - clientHeight) / 2;
+          left = rect.left - clientWidth - offset;
+          break;
+        case "right":
+          top = rect.top + (rect.height - clientHeight) / 2;
+          left = rect.right + offset;
+          break;
+        case "bottom":
+          top = rect.bottom + offset;
+          break;
+        case "bottom-left":
+          top = rect.bottom + offset;
+          left = rect.left;
+          break;
+        case "bottom-right":
+          top = rect.bottom + offset;
+          left = rect.right - clientWidth;
+          break;
+        default:
+      }
 
-    hide = false;
+      hide = false;
+    }
   });
+
+  const mounted = (node: Node) => {
+    const parent = <HTMLDivElement>node.parentNode;
+    const firstChild = <ChildNode>node.firstChild;
+    if (firstChild.nodeType === Node.ELEMENT_NODE) {
+      console.log("not node type", firstChild);
+      console.log("remove container here");
+      parent.replaceWith(firstChild);
+
+      firstChild.addEventListener("click", () => {
+        console.log("click");
+      });
+    }
+  };
 </script>
 
+{#if hasSlot}
+  <span use:mounted><slot /></span>
+{/if}
 <span
   class="responsive-ui-tooltip responsive-ui-tooltip--align-{placement} {className}"
   class:responsive-ui-tooltip--hide={hide}

@@ -13,6 +13,7 @@ import Header from "@responsive-ui/header/types";
 import Icon from "@responsive-ui/icon/types";
 import Input from "@responsive-ui/input/types";
 import Label from "@responsive-ui/label/types";
+import Link from "@responsive-ui/link/types";
 import Loader from "@responsive-ui/loader/types";
 import Poster from "@responsive-ui/poster/types";
 import Responsive from "@responsive-ui/responsive/types";
@@ -45,6 +46,7 @@ export {
   Icon,
   Input,
   Label,
+  Link,
   Loader,
   Poster,
   Responsive,

@@ -1,6 +1,6 @@
 <script lang="ts">
   export let title = "";
-  export let href = "";
+  export let href = "#";
 </script>
 
 <a class="responsive-ui-link" {title} {href} on:click><slot /></a>

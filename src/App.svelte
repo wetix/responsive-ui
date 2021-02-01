@@ -18,7 +18,7 @@
   import Column from "../components/column/src/Column.svelte";
   import Search from "../components/search/src/Search.svelte";
   import Table from "../components/table/src/Table.svelte";
-  import { tooltip } from "../components/tooltip/src";
+  import Tooltip, { tooltip } from "../components/tooltip/src";
   import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
@@ -393,8 +393,11 @@
 </script>
 
 <main>
+  <Tooltip text="Responsive UI">Testing with text node</Tooltip>
   <ComponentDetail hint="@responsive-ui/header" block={true}>
-    <Header title="Responsive UI" />
+    <Tooltip text="Responsive UI">
+      <Header title="Responsive UI" />
+    </Tooltip>
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/label">
     <Label title="Text" />
