@@ -1,9 +1,14 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
   export let title = "";
   export let href = "#";
+  export let style = "";
 </script>
 
-<a class="responsive-ui-link" {title} {href} on:click><slot /></a>
+<a class="responsive-ui-link {className}" {title} {href} on:click {style}
+  ><slot /></a
+>
 
 <style lang="scss">
   .responsive-ui-link {

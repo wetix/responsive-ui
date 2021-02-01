@@ -1,8 +1,10 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface LinkProps {
+  class?: string;
   title?: string;
   href?: string;
+  style?: string;
 }
 
 export interface LinkEvents {
