@@ -12,6 +12,8 @@
 
 <style lang="scss">
   .responsive-ui-link {
+    display: inline-block;
+    vertical-align: middle;
     // color: var(--color-text-primary, #3b3b3b);
     color: var(--color-text-link, #0366d6);
 
