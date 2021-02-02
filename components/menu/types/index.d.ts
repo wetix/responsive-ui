@@ -2,10 +2,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export type MenuItems = {
   title: string;
+  value: string | number;
   disabled?: boolean;
-  href?: string;
-  collapsed?: boolean;
-  isActive?: boolean;
   submenus?: MenuItems[];
 }
 
@@ -14,7 +12,10 @@ export interface MenuProps {
 }
 
 export interface MenuEvents {
-  change?: any
+  click?: (v: {
+    value: any
+    event: MouseEvent
+  }) => void
 }
 
 declare class Menu extends SvelteComponentTyped<MenuProps, MenuEvents> {}

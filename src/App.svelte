@@ -348,30 +348,34 @@
   ];
 
   const menus = [
-    { title: "Item 1", href: "#item1" },
-    { title: "Item 2", href: "#item2" },
+    { title: "Item 1", value: "item1" },
+    { title: "Item 2", value: "item2" },
     {
       title: "Item Submenu",
+      value: "submenu",
       submenus: [
         {
           title: "Submenu 1",
-          href: "#submenu1",
+          value: "submenu1",
         },
         {
           title: "Submenu disabled",
-          href: "#submenu-disabled",
+          value: "submenu-disabled",
           disabled: true,
         },
+        {
+          title: "Nested Submenu disabled",
+          value: "nested-submenu",
+          submenus: [
+            { title: "Nested submenu 1", value: "nested-submenu-1" },
+          ]
+        },
       ],
-      collapsed: false,
     },
   ];
 
   const handleSelectMenu = ({ detail }: CustomEvent): void => {
-    if (detail && detail.length > 0) {
-      menus[detail[detail.length - 1]].collapsed =
-        !menus[detail[detail.length - 1]]?.collapsed || false;
-    }
+    console.log(detail)
   };
 
   const onConfirm = ({ detail }) => {
@@ -632,7 +636,7 @@
       <div>{i + 1}. {item}</div>
     {/each}
   </ComponentDetail>
-  <Menu items={menus} on:change={handleSelectMenu} />
+  <Menu items={menus} on:click={handleSelectMenu} />
   <Quantity />
   <Dropdown trigger="click" items={options}>
     <Button>Click Trigger Dropdown</Button>
