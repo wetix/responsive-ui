@@ -14,7 +14,7 @@
   $: isExpanded = updatedHeight === height;
   $: isExtensible = threshold < height;
 
-  const handleClick = () => {
+  const onClick = () => {
     updatedHeight = updatedHeight !== height ? height : threshold;
   };
 
@@ -34,7 +34,7 @@
   </slot>
 </div>
 {#if isExtensible}
-  <div class="responsive-ui-show-more__trigger" on:click={handleClick}>
+  <div class="responsive-ui-show-more__trigger" on:click={onClick}>
     <slot name="trigger">{isExpanded ? "- Less" : "+ More"}</slot>
   </div>
 {/if}

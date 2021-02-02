@@ -1,4 +1,6 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
   export let src = "";
   export let width = "110px";
   export let height = "150px";
@@ -24,7 +26,7 @@
 </script>
 
 <div
-  class="responsive-ui-poster"
+  class="responsive-ui-poster {className}"
   class:responsive-ui-poster--shadow={shadow}
   class:responsive-ui-poster--rounded={rounded}
   style={`background-image:url(${src});width:${width};height:${height};${style}`}

@@ -8,6 +8,7 @@
   export let ref: null | HTMLInputElement = null;
   export let name = "";
   export let type = "text";
+  export let title = "";
   export let bordered = true;
   export let placeholder = "";
   export let disabled = false;
@@ -18,7 +19,7 @@
   export let value = "";
   export let style = "";
 
-  const handleKeyup = (e: KeyboardEvent) => {
+  const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
@@ -37,6 +38,7 @@
   {style}
   {name}
   {type}
+  {title}
   {placeholder}
   {readonly}
   {maxlength}
@@ -44,7 +46,7 @@
   {disabled}
   {value}
   {required}
-  on:keyup={handleKeyup}
+  on:keyup={onKeyup}
   on:input
   on:change
 />

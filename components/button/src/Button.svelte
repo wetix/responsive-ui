@@ -16,11 +16,13 @@
   class:responsive-ui-button--outline={outline}
   {name}
   {type}
+  {title}
   {disabled}
   {form}
   {style}
   bind:this={ref}
-  on:click>
+  on:click
+>
   <slot>{title}</slot>
 </button>
 

@@ -40,7 +40,6 @@
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import Quantity from "../components/quantity/src/Quantity.svelte";
-  import Provider from "@responsive-ui/tooltip/src/Provider.svelte";
   // import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
   // import FloatingActionButton from "../components/fab/src/FloatingActionButton.svelte";
 
