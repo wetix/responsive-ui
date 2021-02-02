@@ -11,12 +11,22 @@
   export let items: MenuItems[] = [];
   export let level: number[] = [];
 
-  let _items: (MenuItems & {
-    isActive: boolean; collapsed: boolean
-  })[] = items.map((v) => Object.assign(v, {
-    isActive: false,
-    collapsed: true,
-  }))
+  const deepMap = (obj: MenuItems[]): (MenuItems & {
+    isActive: boolean; collapsed?: boolean
+  })[] => obj.map((v) => {
+    if (v.submenus) {
+      return Object.assign(v, {
+        isActive: false,
+        collapsed: false,
+        submenus: deepMap(v.submenus)
+      })
+    }
+    return Object.assign(v, {
+      isActive: false,
+    })
+  })
+
+  let _items = deepMap(items)
 
   const mutateMenu = (obj: Record<any, any>, lvl: number[]) => {
     const currentLevel = lvl.shift()
@@ -102,6 +112,7 @@
       white-space: nowrap;
       overflow: hidden;
       margin-top: 4px;
+      line-height: 2;
 
       .responsive-ui-menu__control {
         transition: all 0.5s;
@@ -164,9 +175,10 @@
 
     &.responsive-ui-menu__submenu {
       display: block;
+      background-color: #f3f3f3;
 
       .responsive-ui-menu__item {
-        padding-left: 36px;
+        padding-left: 15px;
       }
     }
   }

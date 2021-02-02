@@ -364,7 +364,7 @@
           disabled: true,
         },
         {
-          title: "Nested Submenu disabled",
+          title: "Nested Submenu",
           value: "nested-submenu",
           submenus: [
             { title: "Nested submenu 1", value: "nested-submenu-1" },
