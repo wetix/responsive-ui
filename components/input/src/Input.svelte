@@ -71,7 +71,7 @@
     box-sizing: border-box;
     height: var(--height, 34px);
     line-height: var(--height, 34px);
-    border: 1px solid transparent;
+    border: none;
     border-radius: var(--border-radius, 5px);
 
     &--bordered {
