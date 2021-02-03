@@ -61,6 +61,7 @@
     font-family: var(--font-family, inherit);
     outline: none;
     appearance: none;
+    -webkit-appearance: none;
     width: 100%;
     user-select: text;
     -webkit-user-select: text;
