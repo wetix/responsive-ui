@@ -20,12 +20,12 @@
   let state: null | SearchState;
   let timer: NodeJS.Timeout | undefined;
 
-  const handleClear = (e: Event) => {
+  const onClear = (e: Event) => {
     const v = (<HTMLInputElement>e.currentTarget).value;
     if (v === "") dispatch("clear");
   };
 
-  const handleKeyup = (e: KeyboardEvent) => {
+  const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
@@ -57,8 +57,8 @@
   {value}
   {spellcheck}
   on:input
-  on:input={handleClear}
-  on:keyup={handleKeyup}
+  on:input={onClear}
+  on:keyup={onKeyup}
 />
 
 {#if state}

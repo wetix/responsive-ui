@@ -10,8 +10,8 @@ const tooltip = (node: Node, params: Partial<TooltipProps> = {}) => {
   let comp: null | Tooltip = null;
 
   const target = <HTMLElement>node;
-  const title = (target.title || target.getAttribute(attrName) || "").trim();
 
+  const title = (target.title || target.getAttribute(attrName) || "").trim();
   target.setAttribute(attrName, title);
   target.removeAttribute("title");
 
@@ -40,5 +40,5 @@ const tooltip = (node: Node, params: Partial<TooltipProps> = {}) => {
   };
 };
 
-// export default Tooltip;
+export default Tooltip;
 export { tooltip };

@@ -13,6 +13,7 @@ import Header from "@responsive-ui/header/src/Header.svelte";
 import Icon from "@responsive-ui/icon/src/Icon.svelte";
 import Input from "@responsive-ui/input/src/Input.svelte";
 import Label from "@responsive-ui/label/src/Label.svelte";
+import Link from "@responsive-ui/link/src/Link.svelte";
 import Loader from "@responsive-ui/loader/src/Loader.svelte";
 import Poster from "@responsive-ui/poster/src/Poster.svelte";
 import Responsive from "@responsive-ui/responsive/src/Responsive.svelte";
@@ -45,6 +46,7 @@ export {
   Icon,
   Input,
   Label,
+  Link,
   Loader,
   Poster,
   Responsive,

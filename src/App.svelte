@@ -18,7 +18,7 @@
   import Column from "../components/column/src/Column.svelte";
   import Search from "../components/search/src/Search.svelte";
   import Table from "../components/table/src/Table.svelte";
-  import { tooltip } from "../components/tooltip/src";
+  import Tooltip, { tooltip } from "../components/tooltip/src";
   import Tag from "../components/tag/src/Tag.svelte";
   import Textarea from "../components/textarea/src/Textarea.svelte";
   import Upload from "../components/upload/src/Upload.svelte";
@@ -398,7 +398,9 @@
 
 <main>
   <ComponentDetail hint="@responsive-ui/header" block={true}>
-    <Header title="Responsive UI" />
+    <Tooltip text="Responsive UI">
+      <Header title="Responsive UI" />
+    </Tooltip>
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/label">
     <Label title="Text" />
@@ -569,7 +571,9 @@
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/ellipsis" block={true}>
     <Ellipsis>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum is simply <Tooltip text="hello world"
+        ><Link on:click={console.log}>dummy text</Link></Tooltip
+      > of the printing and typesetting industry.
       <Link href="https://google.com">Lorem Ipsum</Link>
       has been the industry's standard dummy text ever since the 1500s, when an unknown
       printer took a galley of type and scrambled it to make a type specimen book.

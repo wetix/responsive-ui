@@ -7,8 +7,8 @@ export type StepperItem = {
 
 export interface StepperProps {
   items: StepperItem[];
+  current?: number;
   class?: string;
-  style?: string;
 }
 
 export interface StepperEvents {

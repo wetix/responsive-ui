@@ -5,6 +5,7 @@ export interface InputProps {
   class?: string;
   name?: string;
   type?: string;
+  title?: string;
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;

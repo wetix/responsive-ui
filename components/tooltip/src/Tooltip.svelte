@@ -8,10 +8,11 @@
   export let offset = 10;
   export let text = "";
   export let html = false;
-  export let placement = "auto";
-  export let target: HTMLElement;
-  export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
+  export let placement = "top";
+  export let target: null | HTMLElement = null;
+  // export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
 
+  const hasSlot = Object.keys($$slots).length > 0;
   let clientWidth = 0;
   let clientHeight = 0;
 
@@ -23,6 +24,13 @@
 
     while (el.offsetParent) {
       el = <HTMLElement>el.offsetParent;
+      const style = window.getComputedStyle(el);
+      if (
+        ["absolute", "fixed", "relative"].includes(
+          style.getPropertyValue("position")
+        )
+      )
+        break;
       top += el.offsetTop;
       left += el.offsetLeft;
     }
@@ -41,9 +49,8 @@
   let top = 0;
   let left = 0;
 
-  onMount(() => {
+  const setPos = (target: HTMLElement) => {
     const rect = getAbsolutePosition(target);
-
     top = rect.top - clientHeight - offset;
     left = rect.left + (rect.width - clientWidth) / 2;
     if (placement === "auto") {
@@ -78,11 +85,50 @@
         break;
       default:
     }
+  };
 
-    hide = false;
+  let firstChild: null | ChildNode;
+  const queue: [string, EventListener][] = [];
+  onMount(() => {
+    if (!hasSlot && target) {
+      setPos(target);
+      hide = false;
+    }
+
+    return () => {
+      if (firstChild) {
+        queue.forEach(([evt, cb]) => {
+          (<ChildNode>firstChild).removeEventListener(evt, cb);
+        });
+      }
+    };
   });
+
+  const mounted = (node: Node) => {
+    const parent = <HTMLDivElement>node.parentNode;
+    firstChild = <ChildNode>node.firstChild;
+    if (firstChild.nodeType === Node.ELEMENT_NODE) {
+      parent.insertBefore(firstChild, node);
+      parent.removeChild(node);
+
+      firstChild.addEventListener("click", (e: Event) => {
+        setPos(<HTMLElement>e.currentTarget);
+        hide = !hide;
+      });
+      firstChild.addEventListener("mouseenter", (e: Event) => {
+        setPos(<HTMLElement>e.currentTarget);
+        hide = false;
+      });
+      firstChild.addEventListener("mouseleave", () => {
+        hide = true;
+      });
+    }
+  };
 </script>
 
+{#if hasSlot}
+  <span use:mounted><slot /></span>
+{/if}
 <span
   class="responsive-ui-tooltip responsive-ui-tooltip--align-{placement} {className}"
   class:responsive-ui-tooltip--hide={hide}
