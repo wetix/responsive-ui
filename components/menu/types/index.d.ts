@@ -1,20 +1,18 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type MenuItems = {
+export type MenuItem = {
   title: string;
+  value: string | number;
   disabled?: boolean;
-  href?: string;
-  collapsed?: boolean;
-  isActive?: boolean;
-  submenus?: MenuItems[];
-}
+  submenus?: MenuItem[];
+};
 
 export interface MenuProps {
-  items: MenuItems[];
+  items: MenuItem[];
 }
 
 export interface MenuEvents {
-  change?: any
+  click?: (v: { value: any; event: MouseEvent }) => void;
 }
 
 declare class Menu extends SvelteComponentTyped<MenuProps, MenuEvents> {}

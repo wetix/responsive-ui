@@ -2,49 +2,93 @@
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
   import { getNodeAttribute } from "@wetix/utils";
-  import type { MenuItems } from "../types";
+
+  import type { MenuItem } from "../types";
+
+  const dispatch = createEventDispatcher();
 
   let className = "";
-  const dispatch = createEventDispatcher();
   export { className as class };
-
-  export let items: MenuItems[] = [];
+  export let items: MenuItem[] = [];
   export let level: number[] = [];
 
-  const handleSelectMenu = (e: Event) => {
-    const data = JSON.parse(getNodeAttribute(e, "data-item"));
-    dispatch("change", data);
+  const deepMap = (
+    obj: MenuItem[]
+  ): (MenuItem & {
+    isActive: boolean;
+    collapsed?: boolean;
+  })[] =>
+    obj.map((v) => {
+      if (v.submenus) {
+        return Object.assign(v, {
+          isActive: false,
+          collapsed: false,
+          submenus: deepMap(v.submenus),
+        });
+      }
+      return Object.assign(v, {
+        isActive: false,
+      });
+    });
+
+  let _items = deepMap(items);
+
+  const mutateMenu = (obj: Record<any, any>, lvl: number[]) => {
+    const currentLevel = <number>lvl.shift();
+    if (lvl.length < 1 && obj[currentLevel]) {
+      obj[currentLevel].collapsed = !obj[currentLevel].collapsed;
+      _items = _items;
+      return;
+    }
+    _items.forEach((v, idx) => {
+      if (idx === currentLevel) {
+        mutateMenu(<MenuItem[]>v.submenus, lvl);
+      }
+    });
+  };
+
+  const onSelect = (e: Event) => {
+    const value = getNodeAttribute(e, "data-value");
+    if (value) {
+      const js = JSON.parse(value);
+      console.log(js);
+      console.log(value);
+      // mutateMenu(_items, item);
+    }
+    // const collapsable = JSON.parse(getNodeAttribute(e, "data-collapsable"));
+    // const item = <null | number[]>JSON.parse(getNodeAttribute(e, "data-item"));
+    // if (collapsable) {
+    // }
+    // if (value) {
+    //   dispatch("click", { value, event: e });
+    // }
   };
 </script>
 
 <ul
   class={`responsive-ui-menu ${className}`}
-  on:click={handleSelectMenu}
+  on:click={onSelect}
   transition:slide
 >
-  {#each items as item, i}
+  {#each _items as item, i (item.value)}
     <li
       class="responsive-ui-menu__item"
       class:responsive-ui-menu__item--disabled={item.disabled}
       class:responsive-ui-menu__item--collapsed={!item.collapsed}
       class:responsive-ui-menu__item--active={item.isActive}
-      data-item={JSON.stringify([...level, item])}
+      data-value={JSON.stringify(item.value)}
+      data-item={JSON.stringify([i, ...level])}
+      data-collapsable={JSON.stringify(!!item.submenus)}
     >
-      {#if item.disabled}
-        <div class="responsive-ui-menu__title">
-          <div class="responsive-ui-menu__label">{item.title}</div>
-        </div>
-      {:else}
-        <a href={item.href} class="responsive-ui-menu__title">
-          <div class="responsive-ui-menu__label">{item.title}</div>
-          {#if level.length === 0 && item.submenus}
-            <!-- <span class="menu-control"> &#8595; </span> -->
-            <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
-              <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-            </svg>
-          {/if}
-        </a>
-      {/if}
+      <div class="responsive-ui-menu__title">
+        <div class="responsive-ui-menu__label">{item.title}</div>
+        {#if item.submenus}
+          <!-- <span class="menu-control"> &#8595; </span> -->
+          <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
+            <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
+          </svg>
+        {/if}
+      </div>
       {#if item.submenus && item.collapsed}
         <svelte:self
           class="responsive-ui-menu__submenu"
@@ -78,6 +122,7 @@
       white-space: nowrap;
       overflow: hidden;
       margin-top: 4px;
+      line-height: 2;
 
       .responsive-ui-menu__control {
         transition: all 0.5s;
@@ -140,9 +185,10 @@
 
     &.responsive-ui-menu__submenu {
       display: block;
+      background-color: #f3f3f3;
 
       .responsive-ui-menu__item {
-        padding-left: 36px;
+        padding-left: 15px;
       }
     }
   }

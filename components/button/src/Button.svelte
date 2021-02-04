@@ -3,23 +3,17 @@
   export { className as class };
   export let ref: null | HTMLButtonElement = null;
   export let title = "";
-  export let name = "";
   export let type = "button";
   export let outline = false;
   export let disabled = false;
-  export let form = "";
-  export let style = "";
 </script>
 
 <button
+  {...$$restProps}
   class="responsive-ui-button {className}"
   class:responsive-ui-button--outline={outline}
-  {name}
   {type}
-  {title}
   {disabled}
-  {form}
-  {style}
   bind:this={ref}
   on:click
 >

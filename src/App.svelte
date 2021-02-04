@@ -348,30 +348,41 @@
   ];
 
   const menus = [
-    { title: "Item 1", href: "#item1" },
-    { title: "Item 2", href: "#item2" },
+    { title: "Item 1", value: "item1" },
+    { title: "Item 2", value: "item2" },
     {
       title: "Item Submenu",
+      value: "submenu",
       submenus: [
         {
           title: "Submenu 1",
-          href: "#submenu1",
+          value: "submenu1",
         },
         {
           title: "Submenu disabled",
-          href: "#submenu-disabled",
+          value: "submenu-disabled",
           disabled: true,
         },
+        {
+          title: "Nested Submenu",
+          value: "nested-submenu",
+          submenus: [
+            {
+              title: "Nested submenu 1",
+              value: "nested-submenu-1",
+            },
+            {
+              title:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
+            },
+          ],
+        },
       ],
-      collapsed: false,
     },
   ];
 
   const handleSelectMenu = ({ detail }: CustomEvent): void => {
-    if (detail && detail.length > 0) {
-      menus[detail[detail.length - 1]].collapsed =
-        !menus[detail[detail.length - 1]]?.collapsed || false;
-    }
+    console.log(detail);
   };
 
   const onConfirm = ({ detail }) => {
@@ -636,7 +647,9 @@
       <div>{i + 1}. {item}</div>
     {/each}
   </ComponentDetail>
-  <Menu items={menus} on:change={handleSelectMenu} />
+  <div style="width: 240px; border: 2px solid red;">
+    <Menu items={menus} on:click={handleSelectMenu} />
+  </div>
   <Quantity />
   <Dropdown trigger="click" items={options}>
     <Button>Click Trigger Dropdown</Button>

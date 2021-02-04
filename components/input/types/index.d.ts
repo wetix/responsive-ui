@@ -3,6 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface InputProps {
   ref?: null | HTMLInputElement;
   class?: string;
+  id?: string;
   name?: string;
   type?: string;
   title?: string;
