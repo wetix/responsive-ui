@@ -2,12 +2,19 @@
   let className = "";
   export { className as class };
   export let title = "";
+  export let target = "";
   export let href = "javascript:void(0)";
   export let style = "";
 </script>
 
-<a class="responsive-ui-link {className}" {title} {href} on:click {style}
-  ><slot /></a
+<a
+  {...$$props}
+  class="responsive-ui-link {className}"
+  aria-label={title}
+  {href}
+  {target}
+  on:click
+  {style}><slot /></a
 >
 
 <style lang="scss">

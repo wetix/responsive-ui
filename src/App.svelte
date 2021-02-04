@@ -367,15 +367,22 @@
           title: "Nested Submenu",
           value: "nested-submenu",
           submenus: [
-            { title: "Nested submenu 1", value: "nested-submenu-1" },
-          ]
+            {
+              title: "Nested submenu 1",
+              value: "nested-submenu-1",
+            },
+            {
+              title:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
+            },
+          ],
         },
       ],
     },
   ];
 
   const handleSelectMenu = ({ detail }: CustomEvent): void => {
-    console.log(detail)
+    console.log(detail);
   };
 
   const onConfirm = ({ detail }) => {
@@ -640,7 +647,9 @@
       <div>{i + 1}. {item}</div>
     {/each}
   </ComponentDetail>
-  <Menu items={menus} on:click={handleSelectMenu} />
+  <div style="width: 240px; border: 2px solid red;">
+    <Menu items={menus} on:click={handleSelectMenu} />
+  </div>
   <Quantity />
   <Dropdown trigger="click" items={options}>
     <Button>Click Trigger Dropdown</Button>

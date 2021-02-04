@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputNumberProps {
+  id?: string;
   ref?: null | HTMLInputElement;
   class?: string;
   name?: string;

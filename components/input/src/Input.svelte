@@ -6,18 +6,9 @@
   let className = "";
   export { className as class };
   export let ref: null | HTMLInputElement = null;
-  export let name = "";
   export let type = "text";
-  export let title = "";
   export let bordered = true;
-  export let placeholder = "";
-  export let disabled = false;
-  export let readonly = false;
-  export let maxlength = 100;
-  export let size = 100;
-  export let required = false;
   export let value = "";
-  export let style = "";
 
   const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
@@ -32,20 +23,12 @@
 </script>
 
 <input
+  {...$$restProps}
   class="responsive-ui-input {className}"
   class:responsive-ui-input--bordered={bordered}
   bind:this={ref}
-  {style}
-  {name}
-  {type}
-  {title}
-  {placeholder}
-  {readonly}
-  {maxlength}
-  {size}
-  {disabled}
   {value}
-  {required}
+  {type}
   on:keyup={onKeyup}
   on:input
   on:change
