@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { getNodeAttribute } from "@wetix/utils";
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { getNodeAttribute } from "@wetix/utils";
-
   import type { MenuItem } from "../types";
 
   const dispatch = createEventDispatcher();
@@ -48,20 +47,14 @@
   };
 
   const onSelect = (e: Event) => {
-    const value = getNodeAttribute(e, "data-value");
-    if (value) {
-      const js = JSON.parse(value);
-      console.log(js);
-      console.log(value);
-      // mutateMenu(_items, item);
+    const val = getNodeAttribute(e, "data-item");
+    if (val) {
+      const data = JSON.parse(val);
+      if (!!data.submenus) {
+        mutateMenu(_items, data.level);
+      }
+      dispatch("click", { value: data.value, event: e });
     }
-    // const collapsable = JSON.parse(getNodeAttribute(e, "data-collapsable"));
-    // const item = <null | number[]>JSON.parse(getNodeAttribute(e, "data-item"));
-    // if (collapsable) {
-    // }
-    // if (value) {
-    //   dispatch("click", { value, event: e });
-    // }
   };
 </script>
 
@@ -76,9 +69,7 @@
       class:responsive-ui-menu__item--disabled={item.disabled}
       class:responsive-ui-menu__item--collapsed={!item.collapsed}
       class:responsive-ui-menu__item--active={item.isActive}
-      data-value={JSON.stringify(item.value)}
-      data-item={JSON.stringify([i, ...level])}
-      data-collapsable={JSON.stringify(!!item.submenus)}
+      data-item={JSON.stringify({ ...item, level: [i, ...level] })}
     >
       <div class="responsive-ui-menu__title">
         <div class="responsive-ui-menu__label">{item.title}</div>
