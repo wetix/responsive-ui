@@ -67,12 +67,18 @@
     <li
       class="responsive-ui-menu__item"
       class:responsive-ui-menu__item--disabled={item.disabled}
-      class:responsive-ui-menu__item--collapsed={!item.collapsed}
       class:responsive-ui-menu__item--active={item.isActive}
       data-item={JSON.stringify({ ...item, level: [i, ...level] })}
     >
-      <div class="responsive-ui-menu__title">
-        <div class="responsive-ui-menu__label">{item.title}</div>
+      <div
+        class="responsive-ui-menu__title"
+        class:responsive-ui-menu__title--collapsed={!JSON.parse(
+          JSON.stringify({ ...item, level: [i, ...level] })
+        ).collapsed}
+      >
+        <div class="responsive-ui-menu__label">
+          {item.title}
+        </div>
         {#if item.submenus}
           <!-- <span class="menu-control"> &#8595; </span> -->
           <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
@@ -115,20 +121,6 @@
       margin-top: 4px;
       line-height: 2;
 
-      .responsive-ui-menu__control {
-        transition: all 0.5s;
-        width: 20px;
-        height: 20px;
-        color: #999999;
-        margin-left: auto;
-      }
-
-      &:not(&--collapsed) {
-        .responsive-ui-menu__control {
-          transform: rotate(90deg);
-        }
-      }
-
       &--disabled {
         cursor: not-allowed !important;
         opacity: 0.8;
@@ -153,7 +145,16 @@
       border-left: 3px solid transparent;
       border-right: 3px solid transparent;
       transition: all 0.65s;
-
+      .responsive-ui-menu__control {
+        transition: all 0.5s;
+        width: 20px;
+        height: 20px;
+        color: #999999;
+        margin-left: auto;
+      }
+      &:not(&--collapsed) .responsive-ui-menu__control {
+        transform: rotate(90deg);
+      }
       // .menu-label {
       //   flex-grow: 1;
       //   text-align: left;
