@@ -19,12 +19,12 @@
   let clientHeight: number;
   let menuList: HTMLDivElement;
 
-  $: ((x, y) => {
+  $: (() => {
     if (!menuList) return;
     const rect = menuList.getBoundingClientRect();
     x = Math.min(window.innerWidth - rect.width, x);
     if (y > window.innerHeight - rect.height) y -= clientHeight;
-  })(x, y);
+  })();
 
   const eventHandler = () => {
     show = !show;
@@ -79,6 +79,7 @@
     style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight};${
       trigger === "contextmenu" ? `top:${y}px;left:${x}px;` : ""
     }`}
+    bind:this={menuList}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each items as item, i}
