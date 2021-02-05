@@ -16,10 +16,10 @@
     maxDisplayItem <= 0 ? "100%" : `${(10 + 14 * 1.5) * maxDisplayItem + 20}px`;
   let input: null | HTMLInputElement;
   let show = false;
-  let clientHeight;
-  let menuList;
+  let clientHeight: number;
+  let menuList: HTMLDivElement;
 
-  $: (() => {
+  $: ((x, y) => {
     if (!menuList) return;
     const rect = menuList.getBoundingClientRect();
     x = Math.min(window.innerWidth - rect.width, x);
@@ -41,7 +41,7 @@
   };
 
   const onClickOutside = () => {
-    if (trigger === "context") {
+    if (trigger === "contextmenu") {
       show = false;
     }
   };
@@ -64,7 +64,7 @@
   <div
     class="responsive-ui-dropdown__activator"
     on:click={trigger === "click" ? eventHandler : undefined}
-    on:contextmenu|preventDefault={trigger === "context"
+    on:contextmenu|preventDefault={trigger === "contextmenu"
       ? onContextMenu
       : undefined}
   >
@@ -77,7 +77,7 @@
       show = !show;
     }}
     style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight};${
-      trigger === "context" ? `top:${y}px;left:${x}px;` : ""
+      trigger === "contextmenu" ? `top:${y}px;left:${x}px;` : ""
     }`}
   >
     <div bind:clientHeight style="padding:10px 0">
