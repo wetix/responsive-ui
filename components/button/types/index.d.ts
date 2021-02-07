@@ -4,7 +4,7 @@ export interface ButtonProps {
   id?: string;
   ref?: null | HTMLButtonElement;
   label?: string;
-  label?: string;
+  title?: string;
   name?: string;
   type?: "button" | "submit" | "reset";
   class?: string;

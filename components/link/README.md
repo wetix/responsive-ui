@@ -32,24 +32,26 @@ alt="@responsive-ui/link" />
 ## Properties, Events & Slots
 
 ```ts
-interface linkProps {
-  label: string;
-  for?: string;
-  form?: string;
+interface LinkProps {
+  id?: string;
   class?: string;
+  label?: string;
+  href?: string;
   style?: string;
 }
 
-interface linkEvents {}
+interface LinkEvents {
+  click?: void;
+}
 
-interface linkSlots {
+interface LinkSlots {
   default: {};
 }
 
-declare class link extends SvelteComponentTyped<
-  linkProps,
-  linkEvents,
-  linkSlots
+declare class Link extends SvelteComponentTyped<
+  LinkProps,
+  LinkEvents,
+  LinkSlots
 > {}
 ```
 
