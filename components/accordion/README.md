@@ -33,7 +33,7 @@ alt="@responsive-ui/accordion" />
 
 ```ts
 interface AccordionItem {
-  title: string;
+  label: string;
   content: string | SvelteComponentDev;
 }
 
@@ -63,12 +63,12 @@ declare class Accordion extends SvelteComponentTyped<
 
   const accordionItems = [
     {
-      title: "Title 1",
+      label: "label 1",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
-      title: "Title 2",
+      label: "label 2",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },

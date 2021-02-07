@@ -33,7 +33,7 @@ alt="@responsive-ui/menu" />
 
 ```ts
 interface MenuItems {
-  title: string;
+  label: string;
   value: any;
   disabled?: boolean;
   href?: string;
@@ -56,17 +56,17 @@ declare class Menu extends SvelteComponentTyped<MenuProps> {}
   import Menu from '@responsive-ui/menu';
 
   const menus = [
-    { title: "Item 1", href: "#item1" },
-    { title: "Item 2", href: "#item2" },
+    { label: "Item 1", href: "#item1" },
+    { label: "Item 2", href: "#item2" },
     {
-      title: "Item Submenu",
+      label: "Item Submenu",
       submenus: [
         {
-          title: "Submenu 1",
+          label: "Submenu 1",
           href: "#submenu1"
         },
         {
-          title: "Submenu disabled",
+          label: "Submenu disabled",
           href: "#submenu-disabled",
           disabled: true
         }

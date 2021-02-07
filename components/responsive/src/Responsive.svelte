@@ -3,11 +3,11 @@
   import type { Writable } from "svelte/store";
   import type { ResponsiveState } from "../types";
 
-  const queue: Writable<ResponsiveState>[] = [];
+  const queue: { id: string; store: Writable<ResponsiveState> }[] = [];
 
   if (window.screen.orientation) {
     window.screen.orientation.addEventListener("change", () => {
-      queue.forEach((store) => {
+      queue.forEach(({ store }) => {
         store.update((v) =>
           Object.assign(v, { orientation: screen.orientation.type })
         );
@@ -18,26 +18,43 @@
   // landscape and portrait
   window.addEventListener("resize", () => {
     const { width, height } = screen;
-    queue.forEach((store) => {
+    queue.forEach(({ store }) => {
       store.update((v) =>
         Object.assign(v, { aspectRatio: width / height, width, height })
       );
     });
   });
 
-  const createStore = () => {
+  const createStore = (): [string, Writable<ResponsiveState>] => {
     const { width, height } = screen;
     const store$ = writable<ResponsiveState>({
       orientation: screen.orientation.type,
       aspectRatio: width / height,
     });
-    queue.push(store$);
-    return store$;
+    const id = `responsive-${Math.floor(Math.random() * Date.now())}`;
+    queue.push({
+      id,
+      store: store$,
+    });
+    return [id, store$];
+  };
+
+  const removeStore = (needle: string) => {
+    const index = queue.findIndex(({ id }) => id === needle);
+    if (index > -1) {
+      queue.splice(index, 1);
+    }
   };
 </script>
 
 <script lang="ts">
-  const store$ = createStore();
+  import { onDestroy } from "svelte";
+
+  const [id, store$] = createStore();
+
+  onDestroy(() => {
+    removeStore(id);
+  });
 </script>
 
 <slot aspectRatio={$store$.aspectRatio} orientation={$store$.orientation} />

@@ -41,7 +41,7 @@
         class:responsive-ui-tab__item--selected={selected == i}
         on:click={(e) => onChange(e, i)}
       >
-        {item.title}
+        {item.label}
       </span>
     {/each}
   </nav>

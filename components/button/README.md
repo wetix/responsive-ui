@@ -33,7 +33,7 @@ alt="@responsive-ui/button" />
 
 ```ts
 interface ButtonProps {
-  title?: string;
+  label?: string;
   name?: string;
   type?: "button" | "submit" | "reset";
   class?: string;
@@ -68,7 +68,7 @@ declare class Button extends SvelteComponentTyped<
   }
 </script>
 
-<Button title="Click me" on:click={onClick}></Button>
+<Button label="Click me" on:click={onClick}></Button>
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/d21567c5cfb24e7ea136ebfc0a269bfe?version=latest)

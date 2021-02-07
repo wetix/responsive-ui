@@ -1,12 +1,12 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let title = "";
+  export let label = "";
   export let style = "";
 </script>
 
 <header class="responsive-ui-header {className}" {style}>
-  <span class="responsive-ui-header__title">{title}</span>
+  <span class="responsive-ui-header__label">{label}</span>
   <slot />
 </header>
 
@@ -17,7 +17,7 @@
     align-items: center;
     margin: 5px 0 10px;
 
-    &__title {
+    &__label {
       text-transform: capitalize;
       font-size: var(--font-size-lg, 20px);
       font-weight: 600;

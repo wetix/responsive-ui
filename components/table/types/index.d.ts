@@ -2,7 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export type TableColumn = {
   key: string;
-  title: string;
+  label: string;
   class: string;
   align: string | "left" | "center" | "right";
   width: number | string;

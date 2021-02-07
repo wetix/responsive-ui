@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type StepperItem = {
-  title: string;
+  label: string;
   description?: string;
 };
 

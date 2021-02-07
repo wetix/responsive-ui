@@ -32,7 +32,7 @@
       <option
         value={option.value}
         selected={option.value === value}
-        disabled={option.disabled}>{option.title}</option
+        disabled={option.disabled}>{option.label}</option
       >
     {/each}
   </select>

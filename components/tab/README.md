@@ -33,7 +33,7 @@ alt="@responsive-ui/tab" />
 
 ```ts
 interface TabItem {
-  title: string;
+  label: string;
   component?: SvelteComponent;
   style?: string;
 }
@@ -62,10 +62,10 @@ declare class Tab extends SvelteComponentTyped<TabProps, TabEvents, TabSlots> {}
   import Tab from '@responsive-ui/tab';
 
   const tabItems = [
-    { title: "Option A", value: "a" },
-    { title: "Option B", value: "b" },
-    { title: "Option C", value: "c" },
-    { title: "Option D", value: "d" },
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+    { label: "Option C", value: "c" },
+    { label: "Option D", value: "d" },
   ];
 </script>
 

@@ -5,8 +5,8 @@
 
   const dispatch = createEventDispatcher();
 
-  export let title = "";
-  export let icon: null | string | SvelteComponentDev;
+  export let label = "";
+  export let icon: null | string | SvelteComponentDev = null;
   export let value = "";
   export let nowrap = false;
   export let disabled = false;
@@ -34,8 +34,8 @@
     </span>
   {/if}
   <span
-    class="responsive-ui-option__title"
-    class:responsive-ui-option__title--nowrap={nowrap}>{title}</span
+    class="responsive-ui-option__label"
+    class:responsive-ui-option__label--nowrap={nowrap}>{label}</span
   >
 </div>
 
@@ -83,7 +83,7 @@
       margin-right: 8px;
     }
 
-    &__title {
+    &__label {
       box-sizing: border-box;
       font-size: var(--font-size, 14px);
       padding-right: 24px;

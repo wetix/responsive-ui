@@ -23,7 +23,7 @@
         disabled={item.disabled}
       />
       <label class="responsive-ui-accordion__tab-label" for="{id}-{i}"
-        >{item.title}</label
+        >{item.label}</label
       >
       <div class="responsive-ui-accordion__tab-content">
         <slot name="tab" index={i}>
