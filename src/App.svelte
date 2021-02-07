@@ -348,31 +348,41 @@
   ];
 
   const menus = [
-    { title: "Item 1", value: "item1" },
-    { title: "Item 2", value: "item2" },
+    { key: "item0", label: "Item 0 (Disabled)", disabled: true },
+    { key: "item1", label: "Item 1" },
+    { key: "item2", label: "Item 2" },
     {
-      title: "Item Submenu",
-      value: "submenu",
+      key: "item99",
+      label:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    },
+    {
+      key: "item3",
+      label: "Item 3 (Submenu)",
       submenus: [
         {
-          title: "Submenu 1",
-          value: "submenu1",
+          key: "item4",
+          label: "Item 4",
         },
+      ],
+    },
+    {
+      key: "item5",
+      label: "Item 4 Long text here (Submenu)",
+      submenus: [
         {
-          title: "Submenu disabled",
-          value: "submenu-disabled",
-          disabled: true,
-        },
-        {
-          title: "Nested Submenu",
+          key: "item6",
+          label: "Nested Submenu",
           value: "nested-submenu",
           submenus: [
             {
-              title: "Nested submenu 1",
+              key: "item7",
+              label: "Nested submenu 1",
               value: "nested-submenu-1",
             },
             {
-              title:
+              key: "item8",
+              label:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
             },
           ],
@@ -409,15 +419,22 @@
       <Header title="Responsive UI" />
     </Tooltip>
   </ComponentDetail>
-  <ComponentDetail hint="@responsive-ui/label">
-    <Label title="Text" />
+  <ComponentDetail hint="@responsive-ui/menu">
+    <div style="width: 240px;">
+      <Menu items={menus} on:change={handleSelectMenu} />
+    </div>
   </ComponentDetail>
-  <ComponentDetail hint="@responsive-ui/input">
-    <Input style="width: 240px;" placeholder="Enter your text..." />
-  </ComponentDetail>
-  <ComponentDetail hint="@responsive-ui/input-number">
-    <InputNumber min={0} format={(v) => `${v}%`} />
-  </ComponentDetail>
+  <div>
+    <ComponentDetail hint="@responsive-ui/label">
+      <Label title="Text" />
+    </ComponentDetail>
+    <ComponentDetail hint="@responsive-ui/input">
+      <Input style="width: 240px;" placeholder="Enter your text..." />
+    </ComponentDetail>
+    <ComponentDetail hint="@responsive-ui/input-number">
+      <InputNumber min={0} format={(v) => `${v}%`} />
+    </ComponentDetail>
+  </div>
   <Dock bind:open={openRightDock} placement="right" />
   <div class="padding" style="width: 60%; margin: 0 auto; text-align: center">
     <Row>
@@ -657,7 +674,7 @@
   <Dropdown trigger="hover" items={options}>
     <Button>Hover Trigger Dropdown</Button>
   </Dropdown>
-  <Dropdown trigger="context" items={options}>
+  <Dropdown trigger="contextmenu" items={options}>
     <div style="width: 300px; height: 200px; background: #e5e7eb">
       Context Trigger Dropdown
     </div>

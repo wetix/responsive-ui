@@ -1,95 +1,103 @@
 <script lang="ts">
-  import { getNodeAttribute } from "@wetix/utils";
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
+  import { getNodeAttribute } from "@wetix/utils";
   import type { MenuItem } from "../types";
+
+  type MenuItemProp = {
+    item: {
+      key: string;
+      label: string;
+    };
+    path: number[];
+    hasSubmenu: boolean;
+  };
 
   const dispatch = createEventDispatcher();
 
   let className = "";
   export { className as class };
+  export let ref: HTMLUListElement | null = null;
   export let items: MenuItem[] = [];
-  export let level: number[] = [];
+  export let path: number[] = [];
 
-  const deepMap = (
-    obj: MenuItem[]
-  ): (MenuItem & {
-    isActive: boolean;
-    collapsed?: boolean;
-  })[] =>
-    obj.map((v) => {
-      if (v.submenus) {
-        return Object.assign(v, {
-          isActive: false,
-          collapsed: false,
-          submenus: deepMap(v.submenus),
-        });
-      }
-      return Object.assign(v, {
-        isActive: false,
-      });
-    });
-
-  let _items = deepMap(items);
-
-  const mutateMenu = (obj: Record<any, any>, lvl: number[]) => {
-    const currentLevel = <number>lvl.shift();
-    if (lvl.length < 1 && obj[currentLevel]) {
-      obj[currentLevel].collapsed = !obj[currentLevel].collapsed;
-      _items = _items;
+  const mutateMenu = (obj: MenuItem[], lvl: number[]) => {
+    const currentpath = <number>lvl.shift();
+    if (lvl.length < 1 && obj[currentpath]) {
+      obj[currentpath].collapsed =
+        obj[currentpath].collapsed === undefined
+          ? false
+          : !obj[currentpath].collapsed;
       return;
     }
-    _items.forEach((v, idx) => {
-      if (idx === currentLevel) {
+
+    items.forEach((v, idx) => {
+      if (idx === currentpath) {
         mutateMenu(<MenuItem[]>v.submenus, lvl);
       }
+    });
+  };
+
+  const stringify = (item: MenuItem, index: number) => {
+    const { submenus = [] } = item;
+    return JSON.stringify({
+      item: {
+        ...item,
+        submenus: undefined,
+      },
+      path: [...path, index],
+      hasSubmenu: submenus.length > 0,
     });
   };
 
   const onSelect = (e: Event) => {
     const val = getNodeAttribute(e, "data-item");
     if (val) {
-      const data = JSON.parse(val);
-      if (!!data.submenus) {
-        mutateMenu(_items, data.level);
+      const { path, hasSubmenu, item } = <MenuItemProp>JSON.parse(val);
+      if (hasSubmenu) {
+        mutateMenu(items, path.slice());
       }
-      dispatch("click", { value: data.value, event: e });
+      items = [...items];
+      dispatch("change", { path, item });
     }
   };
 </script>
 
 <ul
+  {...$$restProps}
+  bind:this={ref}
   class={`responsive-ui-menu ${className}`}
   on:click={onSelect}
   transition:slide
 >
-  {#each _items as item, i (item.value)}
+  {#each items as item, i (item.key)}
     <li
       class="responsive-ui-menu__item"
       class:responsive-ui-menu__item--disabled={item.disabled}
-      class:responsive-ui-menu__item--active={item.isActive}
-      data-item={JSON.stringify({ ...item, level: [i, ...level] })}
+      data-item={stringify(item, i)}
     >
       <div
         class="responsive-ui-menu__title"
-        class:responsive-ui-menu__title--collapsed={!JSON.parse(
-          JSON.stringify({ ...item, level: [i, ...level] })
-        ).collapsed}
+        class:responsive-ui-menu--submenu={item.submenus}
+        class:responsive-ui-menu--open={item.collapsed === false}
       >
+        <!--  -->
+        {#if item.icon}
+          <svelte:component this={item.icon} />
+        {/if}
         <div class="responsive-ui-menu__label">
-          {item.title}
+          {item.label}
         </div>
-        {#if item.submenus}
-          <!-- <span class="menu-control"> &#8595; </span> -->
+        <!-- {#if item.submenus}
           <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
             <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
           </svg>
-        {/if}
+        {/if} -->
       </div>
-      {#if item.submenus && item.collapsed}
+      {#if item.submenus && item.collapsed === false}
         <svelte:self
           class="responsive-ui-menu__submenu"
-          level={[...level, i]}
+          path={[...path, i]}
           items={item.submenus}
         />
       {/if}
@@ -103,35 +111,30 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    transition: all 0.5s;
     list-style-type: none;
     list-style-position: inside;
+    transition: all 0.5s;
 
     &__item {
       position: relative;
-      border-radius: 6px;
       cursor: pointer;
       display: block;
-      padding: 4px;
-      transition: all 0.5s;
-      /* Required for text-overflow to do anything */
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      margin-top: 4px;
-      line-height: 2;
+      margin: 2px 0;
+      font-family: var(--font-family, inherit);
+      font-size: var(--font-size, 14px);
 
       &--disabled {
         cursor: not-allowed !important;
-        opacity: 0.8;
+        opacity: 0.65;
       }
 
-      &--active {
-        background-color: #e5e7eb;
-      }
+      // &--selected {
+      //   background-color: #e5e7eb;
+      // }
 
       &:hover:not(&--disabled) > .responsive-ui-menu__title {
-        color: var(--primary-color, #fc4451);
+        // color: var(--primary-color, #fc4451);
+        background: #f5f5f5;
       }
     }
 
@@ -139,12 +142,12 @@
       position: relative;
       display: flex;
       color: #3b3b3b;
+      padding: 8px 10px;
       flex-direction: row;
       align-items: center;
       text-decoration: none;
-      border-left: 3px solid transparent;
-      border-right: 3px solid transparent;
       transition: all 0.65s;
+
       .responsive-ui-menu__control {
         transition: all 0.5s;
         width: 20px;
@@ -152,35 +155,46 @@
         color: #999999;
         margin-left: auto;
       }
+
       &:not(&--collapsed) .responsive-ui-menu__control {
         transform: rotate(90deg);
       }
-      // .menu-label {
-      //   flex-grow: 1;
-      //   text-align: left;
-      //   white-space: nowrap;
-      //   text-overflow: ellipsis;
-      //   padding: 0 10px;
-      // }
+    }
 
-      // .icon {
-      //   position: absolute;
-      //   right: 10px;
-      //   display: inline-block;
-      //   transition: all 0.3s;
+    &--submenu {
+      padding-right: 25px;
+    }
 
-      //   svg {
-      //     fill: #000;
-      //   }
-      // }
+    &--submenu:after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 5px);
+      right: 10px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 10px solid #3b3b3b;
+      transition: all 0.5s;
+      // transform: rotate(90deg);
+    }
+
+    &--submenu.responsive-ui-menu--open:after {
+      transform: rotate(90deg);
+    }
+
+    &__label {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &.responsive-ui-menu__submenu {
       display: block;
-      background-color: #f3f3f3;
 
       .responsive-ui-menu__item {
-        padding-left: 15px;
+        padding-left: 10px;
       }
     }
   }

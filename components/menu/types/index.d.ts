@@ -1,20 +1,35 @@
-import type { SvelteComponentTyped } from "svelte/internal";
+import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 
 export type MenuItem = {
-  title: string;
-  value: string | number;
+  key: string;
+  label: string;
+  icon?: SvelteComponentDev;
   disabled?: boolean;
+  collapsed?: boolean;
   submenus?: MenuItem[];
 };
 
 export interface MenuProps {
+  ref?: HTMLUListElement | null;
+  id?: string;
+  class?: string;
+  multiple?: boolean;
   items: MenuItem[];
+  style?: string;
 }
 
 export interface MenuEvents {
   click?: (v: { value: any; event: MouseEvent }) => void;
 }
 
-declare class Menu extends SvelteComponentTyped<MenuProps, MenuEvents> {}
+export interface MenuSlots {
+  item: {};
+}
+
+declare class Menu extends SvelteComponentTyped<
+  MenuProps,
+  MenuEvents,
+  MenuSlots
+> {}
 
 export default Menu;
