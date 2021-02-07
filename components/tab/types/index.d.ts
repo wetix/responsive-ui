@@ -1,7 +1,7 @@
 import type { SvelteComponent, SvelteComponentTyped } from "svelte/internal";
 
 export interface TabItem {
-  title: string;
+  label: string;
   component?: SvelteComponent;
   style?: string;
 }

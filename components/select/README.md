@@ -33,7 +33,7 @@ alt="@responsive-ui/select" />
 
 ```ts
 type SelectOption = {
-  title: string;
+  label: string;
   selected?: boolean;
   disabled?: boolean;
   value: any;
@@ -68,10 +68,10 @@ declare class Select extends SvelteComponentTyped<
   import Select from '@responsive-ui/select';
 
   const options = [
-    { title: "Option A", value: "a" },
-    { title: "Option B", value: "b" },
-    { title: "Option C", value: "c" },
-    { title: "Option D", value: "d" },
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+    { label: "Option C", value: "c" },
+    { label: "Option D", value: "d" },
   ];
 
   const onChange = (e) => {

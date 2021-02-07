@@ -3,7 +3,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface ButtonProps {
   id?: string;
   ref?: null | HTMLButtonElement;
-  title?: string;
+  label?: string;
+  label?: string;
   name?: string;
   type?: "button" | "submit" | "reset";
   class?: string;

@@ -15,7 +15,7 @@
 
   const maxHeight = 25 + size * 20;
 
-  type Item = { title: string; value: string };
+  type Item = { label: string; value: string };
 
   let items: Item[] = [];
   let input: null | HTMLInputElement;
@@ -65,7 +65,7 @@
     <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each items as item}
         <span class="responsive-ui-select__tag" in:zoom out:zoom>
-          <span>{item.title}</span>
+          <span>{item.label}</span>
           <span
             class="responsive-ui-select__close-icon"
             data-value={item.value}
@@ -115,7 +115,7 @@
           class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
-          {item.title || ""}
+          {item.label || ""}
         </div>
       {/each}
     </div>

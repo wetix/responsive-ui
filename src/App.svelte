@@ -73,28 +73,28 @@
   const uploadUrl = `https://api.imgbb.com/1/upload?expiration=600&key=1ee88e36c9774d863a1d133669f3f4d6`;
   const columns = [
     {
-      title: "Name",
+      label: "Name",
       key: "name",
     },
     {
-      title: "Email",
+      label: "Email",
       key: "email",
       value: (v: Record<string, any>) => (v ? v : "-"),
     },
     {
-      title: "Amount",
+      label: "Amount",
       align: "right",
       value: ({ amount }: Record<string, any>) =>
         `RM ${(amount || 0).toFixed(2)}`,
     },
     {
-      title: "Offline",
+      label: "Offline",
       align: "center",
       component: ({ online }: Record<string, any>) =>
         wrapComponent(Online, { online }),
     },
-    { title: "Age", align: "center", key: "age" },
-    { title: "Created", key: "created" },
+    { label: "Age", align: "center", key: "age" },
+    { label: "Created", key: "created" },
     // {
     //   align: "center",
     //   component: (v) =>
@@ -176,7 +176,7 @@
       text: "testing",
     });
     // success({
-    //   title: "Apple can get away with this because they’re well, Apple.",
+    //   label: "Apple can get away with this because they’re well, Apple.",
     //   description:
     //     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     //   duration: 0,
@@ -185,36 +185,36 @@
   };
 
   // const items = [
-  //   { title: "Dashboard", icon: "stat" },
-  //   { title: "Reporting", icon: "receipt" },
+  //   { label: "Dashboard", icon: "stat" },
+  //   { label: "Reporting", icon: "receipt" },
   //   {
-  //     title: "Long title here, lorem ipsum etc....",
+  //     label: "Long label here, lorem ipsum etc....",
   //     href: "https://www.google.com",
   //     align: "center",
   //   },
   //   {
-  //     title: "Long title here, lorem ipsum etc....",
-  //     submenus: [{ title: "C.B" }, { title: "C.C" }],
+  //     label: "Long label here, lorem ipsum etc....",
+  //     submenus: [{ label: "C.B" }, { label: "C.C" }],
   //   },
   // ];
 
   const options = [
     {
-      title: "CC",
+      label: "CC",
       value: "cc",
       onClick: () => {
         console.log("clicked!!!!");
       },
     },
-    { title: "Option A", value: "a", disabled: true },
-    { title: "Z", value: "z" },
+    { label: "Option A", value: "a", disabled: true },
+    { label: "Z", value: "z" },
     { divider: true },
-    { title: "Option B", value: "b", href: "#B" },
-    { title: "Option C", value: "c" },
-    { title: "Option D", value: "d" },
-    { title: "Option E", value: "e" },
-    { title: "Option F", value: "f" },
-    { title: "Option G", value: "g" },
+    { label: "Option B", value: "b", href: "#B" },
+    { label: "Option C", value: "c" },
+    { label: "Option D", value: "d" },
+    { label: "Option E", value: "e" },
+    { label: "Option F", value: "f" },
+    { label: "Option G", value: "g" },
   ];
 
   let step = 0;
@@ -229,118 +229,118 @@
 
   const accordionItems = [
     {
-      title: "Title 1",
+      label: "label 1",
       collapsed: false,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
-      title: "Title 2",
+      label: "label 2",
       disabled: true,
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },
     {
-      title: "Component",
+      label: "Component",
       content: wrapComponent(Online, { online: false }),
     },
   ];
 
   const tabItems = [
     {
-      title: "Item A",
+      label: "Item A",
       options: [
         {
-          title: "Item A - First Option",
+          label: "Item A - First Option",
           icon: wrapComponent(Logo, {}),
           value: "a1",
         },
         {
-          title: "Item A - Second Option",
+          label: "Item A - Second Option",
           value: "a2",
           disabled: true,
         },
         {
-          title: "Item A - Third Option",
+          label: "Item A - Third Option",
           icon: wrapComponent(Logo, {}),
           value: "a3",
         },
         {
-          title:
+          label:
             "Item A - Fi  asjdosad;laksd;kas; sadasdfthaaaaaaà230129839218hsajkhdkasjd Option",
           value: "a13",
           nowrap: true,
         },
         {
-          title: "Item A - Fourth Option",
+          label: "Item A - Fourth Option",
           value: "a4",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a5",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a6",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a7",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a8",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a9",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a10",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a11",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a12",
         },
 
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a14",
         },
       ],
     },
     {
-      title: "Item B",
+      label: "Item B",
       options: [
         {
-          title: "Item B - First Option",
+          label: "Item B - First Option",
           icon: wrapComponent(Logo, {}),
           value: "b1",
         },
         {
-          title: "Item B - Second Option",
+          label: "Item B - Second Option",
           value: "b2",
         },
         {
-          title: "Item B - Third Option",
+          label: "Item B - Third Option",
           value: "b3",
         },
       ],
     },
     {
-      title: "Item C",
+      label: "Item C",
       options: [
         {
-          title: "Item C - First Option",
+          label: "Item C - First Option",
           value: "c1",
         },
         {
-          title: "Item C - Ten Option",
+          label: "Item C - Ten Option",
           value: "c10",
         },
       ],
@@ -416,7 +416,7 @@
 <main>
   <ComponentDetail hint="@responsive-ui/header" block={true}>
     <Tooltip text="Responsive UI">
-      <Header title="Responsive UI" />
+      <Header label="Responsive UI" />
     </Tooltip>
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/menu">
@@ -426,7 +426,7 @@
   </ComponentDetail>
   <div>
     <ComponentDetail hint="@responsive-ui/label">
-      <Label title="Text" />
+      <Label label="Text" />
     </ComponentDetail>
     <ComponentDetail hint="@responsive-ui/input">
       <Input style="width: 240px;" placeholder="Enter your text..." />
@@ -498,13 +498,13 @@
 
   <!-- <div class="padding" style="text-align: center">
     <span
-      title="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      label="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       use:tooltip>Lorem ipsum</span
     >
   </div> -->
 
   <!-- <div class="padding" style="text-align: center">
-    <span title="Lorem Ipsum!" use:tooltip
+    <span label="Lorem Ipsum!" use:tooltip
       >Lorem Ipsum is simply dummy text of the printing and typesetting
       industry. Lorem Ipsum has been the industry's standard dummy text ever
       since the 1500s, when an unknown printer took a galley of type and
@@ -518,7 +518,7 @@
   </div> -->
   <Dock bind:open={openLeftDock} />
   <!--
-    <Header title="Responsive UI">
+    <Header label="Responsive UI">
       <div>
         <Icon type="filter" on:click={() => (showBottomSheet = true)} />
         <Icon type="right-arrow" on:click={() => (showModal = true)} />
@@ -538,8 +538,8 @@
       current={step}
       on:change={(e) => console.log(e.detail)}
       items={[
-        { title: "Step 1", description: "testing .asdasd" },
-        { title: "Step 2" },
+        { label: "Step 1", description: "testing .asdasd" },
+        { label: "Step 2" },
       ]}
     />
   </ComponentDetail>
@@ -554,10 +554,10 @@
     <Select
       value="c"
       options={[
-        { title: "Option A", value: "a" },
-        { title: "Option B", value: "b" },
-        { title: "Option C", value: "c" },
-        { title: "Option D", value: "d" },
+        { label: "Option A", value: "a" },
+        { label: "Option B", value: "b" },
+        { label: "Option C", value: "c" },
+        { label: "Option D", value: "d" },
       ]}
       on:change={onChange}
     />
@@ -565,15 +565,15 @@
       multiple={true}
       size={5}
       options={[
-        { title: "CC", value: "cc" },
-        { title: "Option A", value: "a", disabled: true },
-        { title: "Z", value: "z" },
-        { title: "Option B", value: "b" },
-        { title: "Option C", value: "c" },
-        { title: "Option D", value: "d" },
-        { title: "Option E", value: "e" },
-        { title: "Option F", value: "f" },
-        { title: "Option G", value: "g" },
+        { label: "CC", value: "cc" },
+        { label: "Option A", value: "a", disabled: true },
+        { label: "Z", value: "z" },
+        { label: "Option B", value: "b" },
+        { label: "Option C", value: "c" },
+        { label: "Option D", value: "d" },
+        { label: "Option E", value: "e" },
+        { label: "Option F", value: "f" },
+        { label: "Option G", value: "g" },
       ]}
     />
   </ComponentDetail>
@@ -712,7 +712,7 @@
     </Row>
   </Card>
 
-  <Label title="Number">
+  <Label label="Number">
     <InputNumber format={(v) => `${v}%`} />
   </Label>
 
@@ -782,7 +782,7 @@
   on:change={console.log}
 />
 
-<!-- <BottomSheet title="Testing" bind:open={showModal} items={tabItems} /> -->
+<!-- <BottomSheet label="Testing" bind:open={showModal} items={tabItems} /> -->
 
 <!-- <Snackbar.default text={`testing\nJello wordl`} /> -->
 <style>
@@ -819,7 +819,7 @@
     padding: 10px 0;
   }
 
-  :global(span[title], span[data-tooltip]) {
+  :global(span[label], span[data-tooltip]) {
     background: #f5f5f5;
   }
 </style>

@@ -1,7 +1,7 @@
 import Component from "~/components/modal/Modal.svelte";
 
 export default {
-  title: "Example/General",
+  label: "Example/General",
   component: Component,
   argTypes: {
     open: { control: "boolean" },

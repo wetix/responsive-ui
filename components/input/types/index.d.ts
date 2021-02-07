@@ -6,7 +6,7 @@ export interface InputProps {
   id?: string;
   name?: string;
   type?: string;
-  title?: string;
+  label?: string;
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;

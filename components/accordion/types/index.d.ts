@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface AccordionItem {
-  title: string;
+  label: string;
   content?: any;
   disabled?: boolean;
   collapsed?: boolean;

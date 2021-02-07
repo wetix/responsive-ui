@@ -77,7 +77,7 @@
       data-item={stringify(item, i)}
     >
       <div
-        class="responsive-ui-menu__title"
+        class="responsive-ui-menu__label"
         class:responsive-ui-menu--submenu={item.submenus}
         class:responsive-ui-menu--open={item.collapsed === false}
       >
@@ -132,13 +132,13 @@
       //   background-color: #e5e7eb;
       // }
 
-      &:hover:not(&--disabled) > .responsive-ui-menu__title {
+      &:hover:not(&--disabled) > .responsive-ui-menu__label {
         // color: var(--primary-color, #fc4451);
         background: #f5f5f5;
       }
     }
 
-    &__title {
+    &__label {
       position: relative;
       display: flex;
       color: #3b3b3b;

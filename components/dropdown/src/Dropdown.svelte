@@ -1,30 +1,31 @@
 <script lang="ts">
+  import { tick } from "svelte";
+
   import type { DropdownItem, DropdownTriggerMode } from "../types";
 
   let className = "";
   export { className as class };
+  export let ref: null | HTMLDivElement = null;
   export let items: DropdownItem[] = [];
   export let value: string[] = [];
-  export let disabled = false;
   export let trigger: DropdownTriggerMode = "click";
-  export let maxDisplayItem = 5;
+  export let size = 5;
 
   let x = 0;
   let y = 0;
   // ((inner padding + (font-size * line height)) * maxDisplayItem) + outer padding
-  const maxHeight =
-    maxDisplayItem <= 0 ? "100%" : `${(10 + 14 * 1.5) * maxDisplayItem + 20}px`;
-  let input: null | HTMLInputElement;
+  const maxHeight = size <= 0 ? "100%" : `${(10 + 14 * 1.5) * size + 20}px`;
   let show = false;
   let clientHeight: number;
   let menuList: HTMLDivElement;
 
-  $: (() => {
-    if (!menuList) return;
-    const rect = menuList.getBoundingClientRect();
-    x = Math.min(window.innerWidth - rect.width, x);
-    if (y > window.innerHeight - rect.height) y -= clientHeight;
-  })();
+  $: {
+    if (menuList) {
+      const rect = menuList.getBoundingClientRect();
+      x = Math.min(window.innerWidth - rect.width, x);
+      if (y > window.innerHeight - rect.height) y -= clientHeight;
+    }
+  }
 
   const eventHandler = () => {
     show = !show;
@@ -33,7 +34,7 @@
   const onContextMenu = async (e: MouseEvent) => {
     if (show) {
       show = false;
-      await new Promise((res) => setTimeout(res, 100));
+      await tick();
     }
     x = e.clientX;
     y = e.clientY;
@@ -48,6 +49,8 @@
 </script>
 
 <div
+  {...$$restProps}
+  bind:this={ref}
   class="responsive-ui-dropdown {className}"
   on:click={onClickOutside}
   on:mouseenter={trigger === "hover"
@@ -91,7 +94,7 @@
             class:responsive-ui-dropdown__item--disabled={item.disabled}
             href={item.href}
           >
-            {item.title || ""}
+            {item.label || ""}
           </a>
         {:else}
           <div
@@ -99,7 +102,7 @@
             class:responsive-ui-dropdown__item--disabled={item.disabled}
             on:click={item.onClick ? item.onClick : () => {}}
           >
-            {item.title || ""}
+            {item.label || ""}
           </div>
         {/if}
       {/each}
@@ -112,6 +115,7 @@
     position: relative;
 
     &__list {
+      min-width: 100px;
       background: #fff;
       margin: 0;
       padding: 0;

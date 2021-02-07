@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type SelectOption = {
-  title: string;
+  label: string;
   disabled?: boolean;
   value: any;
 };

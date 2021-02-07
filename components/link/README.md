@@ -33,7 +33,7 @@ alt="@responsive-ui/link" />
 
 ```ts
 interface linkProps {
-  title: string;
+  label: string;
   for?: string;
   form?: string;
   class?: string;
@@ -60,7 +60,7 @@ declare class link extends SvelteComponentTyped<
   import link from '@responsive-ui/link';
 </script>
 
-<link title="testing">
+<link label="testing">
   description here
 </link>
 ```

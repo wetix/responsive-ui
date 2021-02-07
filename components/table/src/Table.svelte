@@ -53,7 +53,7 @@
             class="responsive-ui-table__column--align-{column.align || 'left'}"
             width={column.width}
           >
-            {column.title || ""}
+            {column.label || ""}
           </th>
         {/each}
       </tr>

@@ -29,6 +29,7 @@
 </script>
 
 <input
+  {...$$restProps}
   class="responsive-ui-input-number {className}"
   bind:this={ref}
   value={format(value)}
@@ -38,7 +39,6 @@
   {placeholder}
   {disabled}
   {readonly}
-  {...$$restProps}
   on:blur={onBlur}
   on:blur
   on:change

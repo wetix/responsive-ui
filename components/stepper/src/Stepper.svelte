@@ -53,7 +53,7 @@
   </div>
   <div class="responsive-ui-stepper__header">
     <div class="responsive-ui-stepper__header-current">
-      {current < items.length ? items[current].title : "Completed"}
+      {current < items.length ? items[current].label : "Completed"}
     </div>
     <div>
       {#if current < items.length && items[current].description}
@@ -61,7 +61,7 @@
       {/if}
     </div>
     <div class="responsive-ui-stepper__header-next">
-      {current < items.length - 1 ? `Next: ${items[current + 1].title}` : ""}
+      {current < items.length - 1 ? `Next: ${items[current + 1].label}` : ""}
     </div>
   </div>
 </div>

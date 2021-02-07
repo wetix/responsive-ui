@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface LabelProps {
-  title: string;
+  label: string;
   for?: string;
   form?: string;
   class?: string;

@@ -33,7 +33,7 @@ alt="@responsive-ui/dropdown" />
 
 ```ts
 export type DropdownItem = {
-  title: string;
+  label: string;
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
@@ -43,7 +43,7 @@ export type DropdownItem = {
 export type DropdownTriggerMode = "click" | "hover" | "context";
 
 interface DropdownProps {
-  title: string;
+  label: string;
   disabled?: boolean;
   items: DropdownItem[];
   size: number;
@@ -69,10 +69,10 @@ declare class Dropdown extends SvelteComponentTyped<
   import Dropdown from '@responsive-ui/dropdown';
 
   const items = [
-    { title: "CC", onClick: () => {console.log("clicked!!!!")} },
-    { title: "Option A", disabled: true },
+    { label: "CC", onClick: () => {console.log("clicked!!!!")} },
+    { label: "Option A", disabled: true },
     { divider: true },
-    { title: "Option B", value: "b", href: "#B" },
+    { label: "Option B", value: "b", href: "#B" },
   ]
 </script>
 

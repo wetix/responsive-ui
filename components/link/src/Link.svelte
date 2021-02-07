@@ -1,20 +1,16 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let title = "";
-  export let target = "";
+  export let label = "";
   export let href = "javascript:void(0)";
-  export let style = "";
 </script>
 
 <a
-  {...$$props}
+  {...$$restProps}
   class="responsive-ui-link {className}"
-  aria-label={title}
+  aria-label={label}
   {href}
-  {target}
-  on:click
-  {style}><slot /></a
+  on:click><slot /></a
 >
 
 <style lang="scss">

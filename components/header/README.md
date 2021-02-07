@@ -33,7 +33,7 @@ alt="@responsive-ui/header" />
 
 ```ts
 interface HeaderProps {
-  title: string;
+  label: string;
   style?: string;
 }
 
@@ -57,7 +57,7 @@ declare class Header extends SvelteComponentTyped<
   import Header from '@responsive-ui/header';
 </script>
 
-<Header title="Responsive UI" />
+<Header label="Responsive UI" />
 ```
 
 [Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=latest)

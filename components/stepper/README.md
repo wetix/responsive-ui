@@ -33,7 +33,7 @@ alt="@responsive-ui/stepper" /> -->
 
 ```ts
 type StepperItem = {
-  title: string;
+  label: string;
   description?: string;
 };
 

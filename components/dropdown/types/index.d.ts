@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type DropdownItem = {
-  title: string;
+  label: string;
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
@@ -11,12 +11,13 @@ export type DropdownItem = {
 export type DropdownTriggerMode = "click" | "hover" | "contextmenu";
 
 interface DropdownProps {
-  title: string;
+  id?: string;
+  class?: string;
   disabled?: boolean;
   items: DropdownItem[];
-  size: number;
+  value?: string[];
+  size?: number;
   trigger: DropdownTriggerMode;
-  maxDisplayItem: number;
 }
 
 interface DropdownSlot {

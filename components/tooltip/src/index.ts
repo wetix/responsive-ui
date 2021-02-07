@@ -11,9 +11,9 @@ const tooltip = (node: Node, params: Partial<TooltipProps> = {}) => {
 
   const target = <HTMLElement>node;
 
-  const title = (target.title || target.getAttribute(attrName) || "").trim();
-  target.setAttribute(attrName, title);
-  target.removeAttribute("title");
+  const label = (target.title || target.getAttribute(attrName) || "").trim();
+  target.setAttribute(attrName, label);
+  target.removeAttribute("label");
 
   const onDestroy = () => {
     comp && comp.$destroy();

@@ -33,7 +33,7 @@ alt="@responsive-ui/label" />
 
 ```ts
 interface LabelProps {
-  title: string;
+  label: string;
   for?: string;
   form?: string;
   class?: string;
@@ -60,7 +60,7 @@ declare class Label extends SvelteComponentTyped<
   import Label from '@responsive-ui/label';
 </script>
 
-<Label title="testing">
+<Label label="testing">
   description here
 </Label>
 ```

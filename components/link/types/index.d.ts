@@ -3,7 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface LinkProps {
   id?: string;
   class?: string;
-  title?: string;
+  label?: string;
   href?: string;
   style?: string;
 }

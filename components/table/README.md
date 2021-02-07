@@ -34,7 +34,7 @@ alt="@responsive-ui/table" />
 ```ts
 type TableColumn = {
   key: string;
-  title: string;
+  label: string;
   class: string;
   align: string | "left" | "center" | "right";
   width: number | string;
@@ -78,20 +78,20 @@ declare class Table extends SvelteComponentTyped<
   import Table from "@responsive-ui/table";
 
    const columns = [
-    { title: "Name", key: "name" },
+    { label: "Name", key: "name" },
     {
-      title: "Email",
+      label: "Email",
       key: "email",
       value: (v) => (v ? v : "-"),
     },
     {
-      title: "Amount",
+      label: "Amount",
       align: "right",
       value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
     },
-    { title: "Offline" },
-    { title: "Age", align: "center", key: "age" },
-    { title: "Created", key: "created" },
+    { label: "Offline" },
+    { label: "Age", align: "center", key: "age" },
+    { label: "Created", key: "created" },
   ];
 
   const datas = [
