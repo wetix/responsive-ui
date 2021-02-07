@@ -27,6 +27,15 @@ or
 yarn add responsive-ui
 ```
 
+Component is come with different kind of file format for bundle file, such as :
+
+- common js (cjs)
+- es module (esm)
+- minify version
+- iife format of js
+
+You should choose whichever file format suitable for your use case.
+
 ## Component List
 
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/master/components/accordion)
