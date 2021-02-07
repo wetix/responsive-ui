@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   const queue: string[] = [];
-  window.addEventListener("click", (e) => {
-    console.log(queue);
+  window.addEventListener("click", () => {
+    // console.log(queue);
   });
 </script>
 
