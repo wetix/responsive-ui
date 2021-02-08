@@ -1,6 +1,4 @@
 node_modules
-/public/build/
-
 .DS_Store
 .idea
 lib
@@ -11,3 +9,5 @@ bundle.css
 *.log
 *.lock
 .bin
+public
+public/main.js

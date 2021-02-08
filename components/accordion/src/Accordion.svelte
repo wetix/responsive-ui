@@ -10,22 +10,29 @@
   const id = `accordion-${Math.floor(Math.random() * Date.now())}`;
 
   let props = { type: "checkbox" };
-  if (multiple) props = Object.assign(props, { type: "radio", name: id });
+  if (!multiple) props = Object.assign(props, { type: "radio", name: id });
 </script>
 
 <div class="responsive-ui-accordion {className}" {style}>
   {#each items as item, i}
     <div class="responsive-ui-accordion__tab">
-      <input id="{id}-{i}" {...props} />
+      <input
+        id="{id}-{i}"
+        {...props}
+        checked={item.collapsed === false ? true : false}
+        disabled={item.disabled}
+      />
       <label class="responsive-ui-accordion__tab-label" for="{id}-{i}"
-        >{item.title}</label
+        >{item.label}</label
       >
       <div class="responsive-ui-accordion__tab-content">
-        {#if typeof item.content === "function"}
-          <svelte:component this={item.content} />
-        {:else}
-          <div>{item.content}</div>
-        {/if}
+        <slot name="tab" index={i}>
+          {#if typeof item.content === "function"}
+            <svelte:component this={item.content} />
+          {:else}
+            {item.content}
+          {/if}
+        </slot>
       </div>
     </div>
   {/each}
@@ -75,6 +82,13 @@
       ~ .responsive-ui-accordion__tab-content {
         height: auto;
         padding: 10px;
+      }
+    }
+
+    input:disabled {
+      ~ .responsive-ui-accordion__tab-label {
+        cursor: not-allowed;
+        opacity: 0.5;
       }
     }
   }

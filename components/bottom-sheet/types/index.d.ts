@@ -1,7 +1,7 @@
 import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 
 type BottomSheetOption = {
-  title: string;
+  label: string;
   value: string;
   icon?: string | SvelteComponentDev | ReturnType<SvelteComponentDev>;
   disabled?: boolean;
@@ -10,7 +10,7 @@ type BottomSheetOption = {
 };
 
 export interface BottomSheetItem {
-  title: string;
+  label: string;
   options: BottomSheetOption[];
   selected?: Map<string, boolean>;
   style?: string;

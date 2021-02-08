@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-modal.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-modal.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fbottom-modal)](https://bundlephobia.com/result?p=@responsive-ui/bottom-modal)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-modal.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -43,13 +44,13 @@ declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
 
 ```svelte
 <script>
-  import BottomBar from '@responsive-ui/bottom-modal';
+  import BottomModal from '@responsive-ui/bottom-modal';
 </script>
 
-<BottomBar>Bottom Bar</BottomBar>
+<BottomModal closable={true}>Bottom Modal</BottomModal>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/00bbb3aaea2d43fcaca9e8ba9dfef718?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/77cd21e263a14e2e9e6feed4a23c1631?version=latest)
 
 ## Sponsors
 

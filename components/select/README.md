@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/select.svg)](https://www.npmjs.com/package/@responsive-ui/select)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/select.svg)](https://www.npmjs.com/package/@responsive-ui/select)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fselect)](https://bundlephobia.com/result?p=@responsive-ui/select)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/select.svg)](https://www.npmjs.com/package/@responsive-ui/select)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/select" />
 
 ```ts
 type SelectOption = {
-  title: string;
+  label: string;
   selected?: boolean;
   disabled?: boolean;
   value: any;
@@ -46,7 +47,7 @@ interface SelectProps {
 }
 
 interface SelectEvents {
-  change?: (e: Event) => void;
+  change?: any;
 }
 
 interface SelectSlots {
@@ -67,10 +68,10 @@ declare class Select extends SvelteComponentTyped<
   import Select from '@responsive-ui/select';
 
   const options = [
-    { title: "Option A", value: "a" },
-    { title: "Option B", value: "b" },
-    { title: "Option C", value: "c" },
-    { title: "Option D", value: "d" },
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+    { label: "Option C", value: "c" },
+    { label: "Option D", value: "d" },
   ];
 
   const onChange = (e) => {
@@ -85,7 +86,7 @@ declare class Select extends SvelteComponentTyped<
 />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/e95880d4083f4e80bb162678c4676ccd?version=latest)
 
 ## Sponsors
 

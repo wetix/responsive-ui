@@ -1,7 +1,6 @@
 <script lang="ts">
   import { zoom } from "@wetix/animation";
   import { getNodeAttribute } from "@wetix/utils";
-  import { onMount } from "svelte";
 
   import type { SelectOption } from "../types";
 
@@ -16,16 +15,12 @@
 
   const maxHeight = 25 + size * 20;
 
-  type Item = { title: string; value: string };
+  type Item = { label: string; value: string };
 
   let items: Item[] = [];
   let input: null | HTMLInputElement;
   let show = false;
-  let clientHeight;
-
-  onMount(() => {
-    input.focus();
-  });
+  let clientHeight = 0;
 
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
@@ -33,14 +28,14 @@
       const [index, item] = <[number, Item]>JSON.parse(data);
       const pos = items.findIndex((v) => v.value === item.value);
       if (pos > -1) {
-        options[index].selected = false;
+        // options[index].selected = false;
         items = items.filter((v) => v.value !== item.value);
       } else {
-        options[index].selected = true;
+        // options[index].selected = true;
         items = [...items, item];
       }
       options = [...options];
-      input.focus();
+      input && input.focus();
     }
   };
 
@@ -70,10 +65,11 @@
     <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each items as item}
         <span class="responsive-ui-select__tag" in:zoom out:zoom>
-          <span>{item.title}</span>
+          <span>{item.label}</span>
           <span
             class="responsive-ui-select__close-icon"
-            data-value={item.value}>
+            data-value={item.value}
+          >
             <svg
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +78,8 @@
               y="0px"
               viewBox="0 0 512.001 512.001"
               style="enable-background:new 0 0 512.001 512.001;"
-              xml:space="preserve">
+              xml:space="preserve"
+            >
               <g>
                 <path
                   d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
@@ -115,11 +112,10 @@
       {#each options as item, i}
         <div
           class="responsive-ui-select__option"
-          class:responsive-ui-select__option--selected={item.selected}
           class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
-          {item.title || ""}
+          {item.label || ""}
         </div>
       {/each}
     </div>

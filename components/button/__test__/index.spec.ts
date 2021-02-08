@@ -8,7 +8,7 @@ export {};
 //   test("should render component correctly", async () => {
 //     const props = {
 //       name: "test-button",
-//       title: "Hello World!",
+//       label: "Hello World!",
 //     };
 //     const { container, getByText, getByRole, component } = render(Button, {
 //       props,
@@ -20,7 +20,7 @@ export {};
 //     expect(button.getAttribute("type")).toEqual("button");
 //     expect(button.getAttribute("name")).toEqual(props.name);
 //     expect(button.getAttribute("class")).toEqual("responsive-ui-button");
-//     expect(button.textContent).toEqual(props.title);
+//     expect(button.textContent).toEqual(props.label);
 
 //     await component.$set({ disabled: true, type: "reset" });
 //     screen.debug();

@@ -44,7 +44,7 @@
     xhr.addEventListener("readystatechange", () => {
       if (xhr.readyState === 4) {
         let response = xhr.responseXML;
-        const contentType = xhr.getResponseHeader("Content-Type");
+        const contentType = xhr.getResponseHeader("Content-Type") || "";
         try {
           if (xhr.status != 204 && /json/i.test(contentType))
             response = JSON.parse(xhr.responseText);
@@ -64,12 +64,14 @@
       }
     });
 
-    if (multiple) {
-      for (let i = 0; i < files.length; i++) {
-        formData.append(`${name}[]`, files[i]);
+    if (files) {
+      if (multiple) {
+        for (let i = 0; i < files.length; i++) {
+          formData.append(`${name}[]`, files[i]);
+        }
+      } else {
+        formData.append(name, files[0]);
       }
-    } else {
-      formData.append(name, files[0]);
     }
 
     xhr.send(formData);
@@ -80,7 +82,8 @@
   class="responsive-ui-upload {className}"
   {style}
   on:change
-  on:click={() => file && file.click()}>
+  on:click={() => file && file.click()}
+>
   <slot {loading}>
     <svg
       version="1.1"
@@ -92,7 +95,8 @@
       height="24px"
       viewBox="0 0 512.056 512.056"
       style="enable-background:new 0 0 512.056 512.056;"
-      xml:space="preserve">
+      xml:space="preserve"
+    >
       <g>
         <g>
           <g>
@@ -121,7 +125,6 @@
     {multiple}
     {accept}
     on:change={onChange}
-    style="display:none;"
     tabindex="-1"
   />
 </span>
@@ -130,5 +133,9 @@
   .responsive-ui-upload {
     cursor: pointer;
     display: inline-flex;
+
+    input[type="file"] {
+      display: none;
+    }
   }
 </style>

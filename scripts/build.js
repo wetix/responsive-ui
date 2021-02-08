@@ -7,7 +7,8 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
-// import css from "rollup-plugin-css-only";
+import { terser } from "rollup-plugin-terser";
+import { babel } from "@rollup/plugin-babel";
 import sveltePreprocess from "svelte-preprocess";
 
 const extractCss = () => {
@@ -51,7 +52,11 @@ const extractCss = () => {
       return "";
     },
     generateBundle(opts, bundle) {
-      // // No stylesheet needed
+      // No stylesheet needed, only emit single css file
+      if (opts.format !== "iife") {
+        return;
+      }
+
       // if (!changes || options.output === false) {
       //   return
       // }
@@ -61,6 +66,11 @@ const extractCss = () => {
       for (let x = 0; x < order.length; x++) {
         const id = order[x];
         css += styles[id] || "";
+      }
+
+      // Don't create unwanted empty stylesheets
+      if (css.length == 0) {
+        return;
       }
       // // Emit styles through callback
       // if (typeof options.output === 'function') {
@@ -85,17 +95,51 @@ const extractCss = () => {
       //   }
       //   dest = dest + '.css'
       // }
-      // // Emit styles to file
+
+      // Emit styles to file
       this.emitFile({ type: "asset", fileName: "index.css", source: css });
     },
   };
 };
 
 const production = !process.env.ROLLUP_WATCH;
+const rollupPlugins = [
+  svelte({
+    compilerOptions: {
+      // enable run-time checks when not in production
+      dev: !production,
+    },
+    emitCss: true,
+    // we'll extract any component CSS out into
+    // a separate file - better for performance
+    preprocess: sveltePreprocess(),
+  }),
+  extractCss(),
+  // css({ output: "index.css" }),
+  resolve({
+    preferBuiltins: true,
+    browser: true,
+    dedupe: ["svelte"],
+  }),
+  commonjs(),
+  typescript({
+    sourceMap: false,
+  }),
+];
 
-const analyzePackageJson = async (bundle, filepath, pkg) => {
+const analyzePackageJson = async (filepath, pkg) => {
+  let bundle = await rollup({
+    input: path.resolve(`${filepath}/${pkg.svelte}`),
+    plugins: rollupPlugins,
+  });
+
+  const name = camelCase(pkg.name.replace("@responsive-ui/", ""), {
+    pascalCase: true,
+  });
+
   const files = [pkg.main, pkg.module, pkg.browser];
   const map = new Map();
+
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     if (!file) continue;
@@ -104,20 +148,16 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     map.set(filename, true);
     if (map.has(file)) continue;
 
-    const name = camelCase(pkg.name.replace("@responsive-ui/", ""), {
-      pascalCase: true,
-    });
-    const ext = path.extname(file).toLowerCase();
     let result = {
       file: filename,
     };
 
-    switch (ext) {
-      case ".mjs":
+    switch (true) {
+      case /(mjs|esm)/i.test(file):
         result = Object.assign(result, { format: "es" });
         break;
 
-      case ".cjs":
+      case /(cjs)/i.test(file):
         result = Object.assign(result, { format: "cjs", exports: "auto" });
         break;
 
@@ -130,7 +170,7 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
     for (const chunk of output) {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
-
+      console.log(chalk.green(outputPath));
       if (chunk.type === "asset") {
         fs.outputFileSync(outputPath, chunk.source);
       } else {
@@ -138,6 +178,53 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
       }
     }
   }
+
+  // generate
+  bundle = await rollup({
+    input: path.resolve(`${filepath}/${pkg.svelte}`),
+    plugins: [
+      ...rollupPlugins,
+      babel({
+        extensions: [".js", ".mjs", ".ts", ".html", ".svelte"],
+        babelHelpers: "runtime",
+        exclude: ["node_modules/@babel/**"],
+        presets: [
+          [
+            "@babel/preset-env",
+            {
+              targets: "> 0.25%, not dead",
+            },
+          ],
+        ],
+        plugins: [
+          "@babel/plugin-syntax-dynamic-import",
+          // "@babel/plugin-syntax-import-meta",
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              useESModules: true,
+            },
+          ],
+        ],
+      }),
+      terser({
+        module: true,
+      }),
+    ],
+  });
+
+  console.log("Generating minify version of js.");
+  const fileName = "index.min.js";
+  const { output } = await bundle.generate({
+    format: "iife",
+    name,
+    file: fileName,
+  });
+
+  const chunk = output.shift();
+  const outputPath = `${filepath}/lib/${fileName}`;
+  fs.outputFileSync(outputPath, chunk.code);
+  console.log("Generated successful!", chalk.green(outputPath));
 };
 
 // const excludedFolders = [".ds_store", "lib"];
@@ -145,13 +232,11 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
 (async function Bundle() {
   const lernaPath = path.resolve("./lerna.json");
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
-  console.log(lerna);
 
   const pkgs = lerna.packages || [];
   // const excFolders = `/^(${excludedFolders.join("|")})$/`
   for (let i = 0; i < pkgs.length; i++) {
     const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
-    console.log(pkgPath);
     const folders = fs.readdirSync(pkgPath);
 
     for (let j = 0; j < folders.length; j++) {
@@ -167,40 +252,17 @@ const analyzePackageJson = async (bundle, filepath, pkg) => {
       //   continue;
       // }
 
-      console.log(chalk.green(file));
+      console.log(`Bundling for component ${chalk.green(file)}`);
       const basePath = `${pkgPath}/${file}`;
       const pkg = JSON.parse(
         fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
       );
 
-      const bundle = await rollup({
-        input: path.resolve(`${basePath}/${pkg.svelte}`),
-        plugins: [
-          svelte({
-            compilerOptions: {
-              // enable run-time checks when not in production
-              dev: !production,
-            },
-            emitCss: true,
-            // we'll extract any component CSS out into
-            // a separate file - better for performance
-            preprocess: sveltePreprocess(),
-          }),
-          extractCss(),
-          // css({ output: "index.css" }),
-          resolve({
-            preferBuiltins: true,
-            browser: true,
-            dedupe: ["svelte"],
-          }),
-          commonjs(),
-          typescript({
-            sourceMap: false,
-          }),
-        ],
-      });
+      if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
+        fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+      }
 
-      await analyzePackageJson(bundle, basePath, pkg);
+      await analyzePackageJson(basePath, pkg);
     }
   }
 })();

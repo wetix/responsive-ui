@@ -22,10 +22,10 @@
     return v;
   });
 
-  const onOptionChange = ({ detail }) => {
+  const onOptionChange = ({ detail }: CustomEvent<any>) => {
     const { checked, value } = detail;
-    if (checked) items[selected].selected.set(value, true);
-    else items[selected].selected.delete(value);
+    if (checked) items[selected].selected?.set(value, true);
+    else items[selected].selected?.delete(value);
     dispatch("change", {
       selected,
       value: items[selected].selected,
@@ -69,7 +69,7 @@
         {#each items[selected].options || [] as opt (opt.value)}
           <Option
             {...opt}
-            checked={items[selected].selected.has(opt.value)}
+            checked={items[selected].selected?.has(opt.value)}
             on:change={onOptionChange}
           />
         {/each}

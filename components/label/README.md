@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/label.svg)](https://www.npmjs.com/package/@responsive-ui/label)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/label.svg)](https://www.npmjs.com/package/@responsive-ui/label)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Flabel)](https://bundlephobia.com/result?p=@responsive-ui/label)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/label.svg)](https://www.npmjs.com/package/@responsive-ui/label)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/label" />
 
 ```ts
 interface LabelProps {
-  title: string;
+  label: string;
   for?: string;
   form?: string;
   class?: string;
@@ -59,12 +60,12 @@ declare class Label extends SvelteComponentTyped<
   import Label from '@responsive-ui/label';
 </script>
 
-<Label title="testing">
+<Label label="testing">
   description here
 </Label>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/b95c9457a368429583c5c5eb40f666eb?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/b95c9457a368429583c5c5eb40f666eb?version=latest)
 
 ## Sponsors
 

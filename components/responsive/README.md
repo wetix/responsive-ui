@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/responsive.svg)](https://www.npmjs.com/package/@responsive-ui/responsive)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/responsive.svg)](https://www.npmjs.com/package/@responsive-ui/responsive)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fresponsive)](https://bundlephobia.com/result?p=@responsive-ui/responsive)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/responsive.svg)](https://www.npmjs.com/package/@responsive-ui/responsive)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/responsive" /> -->
 
 ## Example
 
-<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/b95c9457a368429583c5c5eb40f666eb?version=3.31.2) -->
+<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/b95c9457a368429583c5c5eb40f666eb?version=latest) -->
 
 ## Sponsors
 

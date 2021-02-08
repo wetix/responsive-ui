@@ -1,84 +1,219 @@
 <script lang="ts">
-  import { onDestroy } from "svelte";
+  import { onMount } from "svelte";
 
-  import type { TooltipTrigger } from "../types";
+  import type { TooltipTrigger } from "../types/tooltip";
 
   let className = "";
   export { className as class };
-  export let placeholder = "";
-  export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
-  export let show = false;
+  export let offset = 10;
+  export let text = "";
+  export let html = false;
+  export let placement = "top";
+  export let target: null | HTMLElement = null;
+  // export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
 
-  let style = "";
+  const hasSlot = Object.keys($$slots).length > 0;
+  let clientWidth = 0;
   let clientHeight = 0;
-  const callbacks: [Node, string, EventListener][] = [];
-  const mounted = (node: HTMLSpanElement) => {
-    const children = node.children;
 
-    let child;
-    let len = children.length;
-    for (let i = 0; i < len; i++) {
-      child = children[i];
-      trigger.forEach((evt: TooltipTrigger) => {
-        const cb = (e: Event) => {
-          if (evt === "click" && show) {
-            show = false;
-            style = "";
-            return;
-          }
+  const getAbsolutePosition = (el: HTMLElement) => {
+    let top = el.offsetTop,
+      left = el.offsetLeft;
+    const height = el.offsetHeight,
+      width = el.offsetWidth;
 
-          const rect = (<HTMLElement>e.currentTarget).getBoundingClientRect();
-          const rect1 = document.body.getBoundingClientRect();
-          const x = rect.x - rect1.x;
-          const y = rect.y - rect1.y - clientHeight - 15;
-          show = true;
-          style = `top:${y}px;left:${x}px;visibility:visible;`;
-        };
-        child.addEventListener(evt, cb);
-        callbacks.push([child, evt, cb]);
-      });
+    while (el.offsetParent) {
+      el = <HTMLElement>el.offsetParent;
+      const style = window.getComputedStyle(el);
+      if (
+        ["absolute", "fixed", "relative"].includes(
+          style.getPropertyValue("position")
+        )
+      )
+        break;
+      top += el.offsetTop;
+      left += el.offsetLeft;
     }
-    node.replaceWith(...children);
+
+    return {
+      top: top,
+      left: left,
+      right: left + width,
+      bottom: top + height,
+      height,
+      width,
+    };
   };
 
-  onDestroy(() => {
-    callbacks.forEach(([child, evt, cb]: [Node, string, EventListener]) => {
-      child.removeEventListener(evt, cb);
-    });
+  let hide = true;
+  let top = 0;
+  let left = 0;
+
+  const setPos = (target: HTMLElement) => {
+    const rect = getAbsolutePosition(target);
+    top = rect.top - clientHeight - offset;
+    left = rect.left + (rect.width - clientWidth) / 2;
+    if (placement === "auto") {
+      if (top <= 0) top = offset;
+      if (left <= 0) left = offset;
+    }
+    switch (placement) {
+      case "top-left":
+        left = rect.left;
+        break;
+      case "top-right":
+        left = rect.right - clientWidth;
+        break;
+      case "left":
+        top = rect.top + (rect.height - clientHeight) / 2;
+        left = rect.left - clientWidth - offset;
+        break;
+      case "right":
+        top = rect.top + (rect.height - clientHeight) / 2;
+        left = rect.right + offset;
+        break;
+      case "bottom":
+        top = rect.bottom + offset;
+        break;
+      case "bottom-left":
+        top = rect.bottom + offset;
+        left = rect.left;
+        break;
+      case "bottom-right":
+        top = rect.bottom + offset;
+        left = rect.right - clientWidth;
+        break;
+      default:
+    }
+  };
+
+  let firstChild: null | ChildNode;
+  const queue: [string, EventListener][] = [];
+  onMount(() => {
+    if (!hasSlot && target) {
+      setPos(target);
+      hide = false;
+    }
+
+    return () => {
+      if (firstChild) {
+        queue.forEach(([evt, cb]) => {
+          (<ChildNode>firstChild).removeEventListener(evt, cb);
+        });
+      }
+    };
   });
+
+  const mounted = (node: Node) => {
+    const parent = <HTMLDivElement>node.parentNode;
+    firstChild = <ChildNode>node.firstChild;
+    if (firstChild.nodeType === Node.ELEMENT_NODE) {
+      parent.insertBefore(firstChild, node);
+      parent.removeChild(node);
+
+      firstChild.addEventListener("click", (e: Event) => {
+        setPos(<HTMLElement>e.currentTarget);
+        hide = !hide;
+      });
+      firstChild.addEventListener("mouseenter", (e: Event) => {
+        setPos(<HTMLElement>e.currentTarget);
+        hide = false;
+      });
+      firstChild.addEventListener("mouseleave", () => {
+        hide = true;
+      });
+    }
+  };
 </script>
 
-<span use:mounted><slot /></span>
-
-<span class="responsive-ui-tooltip {className}" bind:clientHeight {style}
-  >{placeholder}</span
+{#if hasSlot}
+  <span use:mounted><slot /></span>
+{/if}
+<span
+  class="responsive-ui-tooltip responsive-ui-tooltip--align-{placement} {className}"
+  class:responsive-ui-tooltip--hide={hide}
+  bind:clientWidth
+  bind:clientHeight
+  style={`top:${top}px;left:${left}px;`}
 >
+  {#if html}
+    {@html text}
+  {:else}
+    {text}
+  {/if}
+</span>
 
 <style lang="scss">
   .responsive-ui-tooltip {
     position: absolute;
     background: #3b3b3b;
-    padding: 8px 10px;
+    padding: 8px 12px;
     max-width: 250px;
     font-size: var(--font-size-sm, 12px);
     border-radius: var(--border-radius, 5px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     color: #fff;
-    visibility: hidden;
-    z-index: 10;
+    transition: opacity 0.35s;
+    opacity: 1;
+    z-index: 50;
+
+    $width: 6px;
 
     &:after {
-      $width: 6px;
-
       content: "";
       position: absolute;
-      left: calc(50% - 6px);
-      bottom: -$width;
       width: 0;
       height: 0;
+    }
+
+    &--align-top:after,
+    &--align-top-left:after,
+    &--align-top-right:after {
+      left: calc(50% - 6px);
+      bottom: -$width;
       border-left: $width solid transparent;
       border-right: $width solid transparent;
       border-top: $width solid #3b3b3b;
+    }
+
+    &--align-bottom:after,
+    &--align-bottom-left:after,
+    &--align-bottom-right:after {
+      top: -$width;
+      left: calc(50% - 6px);
+      border-left: $width solid transparent;
+      border-right: $width solid transparent;
+      border-bottom: $width solid #3b3b3b;
+    }
+
+    &--align-top-left:after,
+    &--align-bottom-left:after {
+      left: calc(75% - 6px);
+    }
+    &--align-top-right:after,
+    &--align-bottom-right:after {
+      left: calc(25% - 6px);
+    }
+
+    &--align-left:after {
+      right: -$width;
+      top: calc(50% - 6px);
+      border-top: $width solid transparent;
+      border-bottom: $width solid transparent;
+      border-left: $width solid #3b3b3b;
+    }
+
+    &--align-right:after {
+      left: -$width;
+      top: calc(50% - 6px);
+      border-top: $width solid transparent;
+      border-bottom: $width solid transparent;
+      border-right: $width solid #3b3b3b;
+    }
+
+    &--hide {
+      opacity: 0;
+      z-index: -1;
     }
   }
 </style>

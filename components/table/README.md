@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftable)](https://bundlephobia.com/result?p=@responsive-ui/table)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -33,7 +34,7 @@ alt="@responsive-ui/table" />
 ```ts
 type TableColumn = {
   key: string;
-  title: string;
+  label: string;
   class: string;
   align: string | "left" | "center" | "right";
   width: number | string;
@@ -77,20 +78,20 @@ declare class Table extends SvelteComponentTyped<
   import Table from "@responsive-ui/table";
 
    const columns = [
-    { title: "Name", key: "name" },
+    { label: "Name", key: "name" },
     {
-      title: "Email",
+      label: "Email",
       key: "email",
       value: (v) => (v ? v : "-"),
     },
     {
-      title: "Amount",
+      label: "Amount",
       align: "right",
       value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
     },
-    { title: "Offline" },
-    { title: "Age", align: "center", key: "age" },
-    { title: "Created", key: "created" },
+    { label: "Offline" },
+    { label: "Age", align: "center", key: "age" },
+    { label: "Created", key: "created" },
   ];
 
   const datas = [
@@ -141,7 +142,7 @@ declare class Table extends SvelteComponentTyped<
 <Table key="key" columns={columns} items={datas} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=latest)
 
 ## Sponsors
 

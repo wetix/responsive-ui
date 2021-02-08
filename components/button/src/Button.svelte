@@ -1,25 +1,23 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let title = "";
-  export let name = "";
+  export let ref: null | HTMLButtonElement = null;
+  export let label = "";
   export let type = "button";
   export let outline = false;
   export let disabled = false;
-  export let form = "";
-  export let style = "";
 </script>
 
 <button
+  {...$$restProps}
   class="responsive-ui-button {className}"
   class:responsive-ui-button--outline={outline}
-  {name}
   {type}
   {disabled}
-  {form}
-  {style}
-  on:click>
-  <slot>{title}</slot>
+  bind:this={ref}
+  on:click
+>
+  <slot>{label}</slot>
 </button>
 
 <style lang="scss">
@@ -29,6 +27,7 @@
     color: #fff;
     border: none;
     outline: none;
+    appearance: none;
     font-size: var(--font-size, 14px);
     border: 1px solid var(--primary-color, #fc4451);
     background: var(--primary-color, #fc4451);

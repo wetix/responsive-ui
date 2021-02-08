@@ -1,7 +1,7 @@
 # Component List
 
 - ✅ Accordion (@responsive-ui/accordion)
-- ✅ Badge (@responsive-ui/badge)
+- 🚧 Badge (@responsive-ui/badge)
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
 - ✅ Bottom Modal (@responsive-ui/bottom-modal)
 - ✅ Bottom Sheet (@responsive-ui/bottom-sheet)
@@ -11,6 +11,7 @@
 - ✅ Column (@responsive-ui/column)
 - 🚧 DatePicker (@responsive-ui/date-picker)
 - ✅ Dock (@responsive-ui/dock)
+- 🚧 Dropdown (@responsive-ui/dropdown)
 - ✅ Ellipsis (@responsive-ui/ellipsis)
 - ✅ Floating Action Button (@responsive-ui/fab)
 - ✅ Header (@responsive-ui/header)
@@ -37,3 +38,7 @@
 - ✅ Textarea (@responsive-ui/textarea)
 - 🚧 Tooltip (@responsive-ui/tooltip)
 - ✅ Upload (@responsive-ui/upload)
+
+# Features
+
+- storybook

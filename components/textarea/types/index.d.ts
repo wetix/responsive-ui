@@ -1,8 +1,9 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface TextareaProps {
-  name: string;
-  value: any;
+  ref?: null | HTMLTextAreaElement;
+  name?: string;
+  value?: any;
   form?: string;
   cols?: number;
   rows?: number;
@@ -10,9 +11,7 @@ export interface TextareaProps {
   disabled?: boolean;
   readonly?: boolean;
   placeholder?: string;
-  autofocus?: boolean;
-  autoresize?: boolean;
-  wrap?: "hard" | "soft";
+  autoResize?: boolean;
 }
 
 export interface TextareaEvents {

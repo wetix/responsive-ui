@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/accordion.svg)](https://www.npmjs.com/package/@responsive-ui/accordion)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/accordion.svg)](https://www.npmjs.com/package/@responsive-ui/accordion)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Faccordion)](https://bundlephobia.com/result?p=@responsive-ui/accordion)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/accordion.svg)](https://www.npmjs.com/package/@responsive-ui/accordion)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/accordion" />
 
 ```ts
 interface AccordionItem {
-  title: string;
+  label: string;
   content: string | SvelteComponentDev;
 }
 
@@ -62,12 +63,12 @@ declare class Accordion extends SvelteComponentTyped<
 
   const accordionItems = [
     {
-      title: "Title 1",
+      label: "label 1",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
     },
     {
-      title: "Title 2",
+      label: "label 2",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
     },
@@ -77,7 +78,7 @@ declare class Accordion extends SvelteComponentTyped<
 <Accordion items={accordionItems} multiple={true} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/647efdb8779c4b7ebe14b01f5bd32b5f?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/647efdb8779c4b7ebe14b01f5bd32b5f?version=latest)
 
 ## Sponsors
 

@@ -4,10 +4,13 @@
 
 <p>
 
-[![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
-[![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/responsive-ui)](https://bundlephobia.com/result?p=responsive-ui)
+[![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=master)](https://github.com/wetix/responsive-ui)
+[![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
+[![Known Vulnerabilities](https://snyk.io/test/github/wetix/responsive-ui/badge.svg)](https://snyk.io/test/github/wetix/responsive-ui)
+[![Styled](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -24,10 +27,16 @@ or
 yarn add responsive-ui
 ```
 
-## Component List
+Component is come with different kind of file format for bundle file, such as :
 
-<!-- - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/master/components/checkbox) -->
-<!-- - [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/master/components/date-picker) -->
+- common js (cjs)
+- es module (esm)
+- minify version
+- iife format of js
+
+You should choose whichever file format suitable for your use case.
+
+## Component List
 
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/master/components/accordion)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
@@ -36,6 +45,7 @@ yarn add responsive-ui
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/master/components/card)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/master/components/column)
+- [@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/master/components/dock)
 - [@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/master/components/ellipsis)
 - [@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/master/components/fab)
 - [@responsive-ui/header](https://github.com/wetix/responsive-ui/tree/master/components/header)

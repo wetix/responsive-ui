@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/header.svg)](https://www.npmjs.com/package/@responsive-ui/header)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/header.svg)](https://www.npmjs.com/package/@responsive-ui/header)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fheader)](https://bundlephobia.com/result?p=@responsive-ui/header)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/header.svg)](https://www.npmjs.com/package/@responsive-ui/header)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/header" />
 
 ```ts
 interface HeaderProps {
-  title: string;
+  label: string;
   style?: string;
 }
 
@@ -56,10 +57,10 @@ declare class Header extends SvelteComponentTyped<
   import Header from '@responsive-ui/header';
 </script>
 
-<Header title="Responsive UI" />
+<Header label="Responsive UI" />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=latest)
 
 ## Sponsors
 

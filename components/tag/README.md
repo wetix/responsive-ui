@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/tag.svg)](https://www.npmjs.com/package/@responsive-ui/tag)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/tag.svg)](https://www.npmjs.com/package/@responsive-ui/tag)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftag)](https://bundlephobia.com/result?p=@responsive-ui/tag)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/tag.svg)](https://www.npmjs.com/package/@responsive-ui/tag)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -56,7 +57,7 @@ declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
 <Tag>tag text</Tag>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/ca76fb109f624b21923e3f304a3bbe5c?version=latest)
 
 ## Sponsors
 

@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ffab)](https://bundlephobia.com/result?p=@responsive-ui/fab)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -47,7 +48,7 @@ type FloatingActionButtonProps = {
 <FloatingActionButton on:click={console.log} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/c4b79c26ad2149d6a1359d5ce5e68186?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/c4b79c26ad2149d6a1359d5ce5e68186?version=latest)
 
 ## Sponsors
 

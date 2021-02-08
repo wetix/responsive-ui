@@ -11,6 +11,9 @@
   export let disabled = false;
   export let readonly = false;
   export let options: SelectOption[] = [];
+
+  // if not multiple, enforce it to size 1
+  if (!multiple) size = 1;
 </script>
 
 {#if multiple}
@@ -18,18 +21,18 @@
 {:else}
   <select
     class="responsive-ui-select {className}"
-    {multiple}
     {name}
-    size={1}
+    {size}
     {readonly}
     {disabled}
     on:change
-    on:blur>
+    on:blur
+  >
     {#each options as option}
       <option
         value={option.value}
-        selected={option.selected ? option.selected : option.value === value}
-        >{option.title}</option
+        selected={option.value === value}
+        disabled={option.disabled}>{option.label}</option
       >
     {/each}
   </select>

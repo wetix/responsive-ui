@@ -3,18 +3,18 @@
 
   let className = "";
   export { className as class };
-  export let text;
+  export let text = "";
   export let threshold = 100;
   export let style = "";
 
-  let updatedHeight = "auto";
-  let height;
-  let clientHeight;
+  let updatedHeight: number | string = "auto";
+  let height = 0;
+  let clientHeight = 0;
 
   $: isExpanded = updatedHeight === height;
   $: isExtensible = threshold < height;
 
-  const handleClick = () => {
+  const onClick = () => {
     updatedHeight = updatedHeight !== height ? height : threshold;
   };
 
@@ -34,7 +34,7 @@
   </slot>
 </div>
 {#if isExtensible}
-  <div class="responsive-ui-show-more__trigger" on:click={handleClick}>
+  <div class="responsive-ui-show-more__trigger" on:click={onClick}>
     <slot name="trigger">{isExpanded ? "- Less" : "+ More"}</slot>
   </div>
 {/if}
@@ -50,12 +50,13 @@
     }
 
     &__trigger {
+      cursor: pointer;
       box-sizing: border-box;
       font-size: var(--font-size-lg, 14px);
       font-weight: 600;
       text-align: right;
       width: 100%;
-      padding: 4px 15px 4px 0;
+      padding: 5px 15px 5px 0;
     }
   }
 </style>

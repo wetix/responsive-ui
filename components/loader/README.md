@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/loader.svg)](https://www.npmjs.com/package/@responsive-ui/loader)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/loader.svg)](https://www.npmjs.com/package/@responsive-ui/loader)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Floader)](https://bundlephobia.com/result?p=@responsive-ui/loader)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/loader.svg)](https://www.npmjs.com/package/@responsive-ui/loader)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -25,12 +26,18 @@ yarn add @responsive-ui/loader
 
 ## Look and Feel
 
-<!-- <img src="https://user-images.githubusercontent.com/28108597/104027903-052ac280-5203-11eb-9326-2ee47aa1901b.png"
-alt="@responsive-ui/loader" /> -->
+<img src="https://user-images.githubusercontent.com/28108597/106019879-17ab6400-60fe-11eb-9456-d24fc8fd5ed9.png"
+alt="@responsive-ui/loader" />
 
 ## Properties, Events & Slots
 
 ```ts
+interface LoaderProps {
+  fit?: "viewport" | "none";
+  size?: "default" | "small";
+}
+
+declare class Loader extends SvelteComponentTyped<LoaderProps> {}
 ```
 
 ## Example
@@ -43,7 +50,7 @@ alt="@responsive-ui/loader" /> -->
 <Loader />
 ```
 
-<!-- [Try it yourself in Svelte Repl](https://svelte.dev/repl/f2f4c638c5734107b3c72a8794a961ee?version=3.31.2) -->
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/f38d0c0bf6754647bbc78cfe74cc356c?version=latest)
 
 ## Sponsors
 

@@ -13,6 +13,7 @@ import Header from "@responsive-ui/header/types";
 import Icon from "@responsive-ui/icon/types";
 import Input from "@responsive-ui/input/types";
 import Label from "@responsive-ui/label/types";
+import Link from "@responsive-ui/link/types";
 import Loader from "@responsive-ui/loader/types";
 import Poster from "@responsive-ui/poster/types";
 import Responsive from "@responsive-ui/responsive/types";
@@ -27,6 +28,7 @@ import Tab from "@responsive-ui/tab/types";
 import Table from "@responsive-ui/table/types";
 import Tag from "@responsive-ui/tag/types";
 import Textarea from "@responsive-ui/textarea/types";
+import { tooltip } from "@responsive-ui/tooltip/types";
 import Upload from "@responsive-ui/upload/types";
 
 export {
@@ -44,6 +46,7 @@ export {
   Icon,
   Input,
   Label,
+  Link,
   Loader,
   Poster,
   Responsive,
@@ -58,5 +61,6 @@ export {
   Table,
   Tag,
   Textarea,
+  tooltip,
   Upload,
 };

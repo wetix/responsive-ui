@@ -27,7 +27,8 @@
       viewBox="0 0 106 106"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink">
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-17.000000, -17.000000)">
           <circle
@@ -52,7 +53,7 @@
   </div>
   <div class="responsive-ui-stepper__header">
     <div class="responsive-ui-stepper__header-current">
-      {current < items.length ? items[current].title : "Completed"}
+      {current < items.length ? items[current].label : "Completed"}
     </div>
     <div>
       {#if current < items.length && items[current].description}
@@ -60,7 +61,7 @@
       {/if}
     </div>
     <div class="responsive-ui-stepper__header-next">
-      {current < items.length - 1 ? `Next: ${items[current + 1].title}` : ""}
+      {current < items.length - 1 ? `Next: ${items[current + 1].label}` : ""}
     </div>
   </div>
 </div>

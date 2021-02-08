@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fbottom-sheet)](https://bundlephobia.com/result?p=@responsive-ui/bottom-sheet)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/bottom-sheet" />
 
 ```ts
 type BottomSheetOption = {
-  title: string;
+  label: string;
   value: string;
   icon?: string | SvelteComponentDev;
   disabled?: boolean;
@@ -40,7 +41,7 @@ type BottomSheetOption = {
 };
 
 interface BottomSheetItem {
-  title: string;
+  label: string;
   options: BottomSheetOption[];
   selected?: Map<string, boolean>;
   style?: string;
@@ -76,56 +77,56 @@ declare class BottomSheet extends SvelteComponentTyped<
 
   const tabItems = [
     {
-      title: "Item A",
+      label: "Item A",
       options: [
         {
-          title: "Item A - First Option",
+          label: "Item A - First Option",
           value: "a1",
         },
         {
-          title: "Item A - Second Option",
+          label: "Item A - Second Option",
           value: "a2",
         },
         {
-          title: "Item A - Third Option",
+          label: "Item A - Third Option",
           value: "a3",
         },
         {
-          title: "Item A - Fourth Option",
+          label: "Item A - Fourth Option",
           value: "a4",
         },
         {
-          title: "Item A - Fifth Option",
+          label: "Item A - Fifth Option",
           value: "a5",
         },
       ],
     },
     {
-      title: "Item B",
+      label: "Item B",
       options: [
         {
-          title: "Item B - First Option",
+          label: "Item B - First Option",
           value: "b1",
         },
         {
-          title: "Item B - Second Option",
+          label: "Item B - Second Option",
           value: "b2",
         },
         {
-          title: "Item B - Third Option",
+          label: "Item B - Third Option",
           value: "b3",
         },
       ],
     },
     {
-      title: "Item C",
+      label: "Item C",
       options: [
         {
-          title: "Item C - First Option",
+          label: "Item C - First Option",
           value: "c1",
         },
         {
-          title: "Item C - Ten Option",
+          label: "Item C - Ten Option",
           value: "c10",
         },
       ],
@@ -143,7 +144,7 @@ declare class BottomSheet extends SvelteComponentTyped<
   on:filter={onConfirm} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/33e75aaad3dc4ca29194c90acc0dfbed?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/33e75aaad3dc4ca29194c90acc0dfbed?version=latest)
 
 <br/>
 

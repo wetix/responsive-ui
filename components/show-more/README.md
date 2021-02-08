@@ -2,6 +2,16 @@
 
 > A show more component of responsive-ui.
 
+<p>
+
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
+[![npm](https://img.shields.io/npm/v/@responsive-ui/show-more.svg)](https://www.npmjs.com/package/@responsive-ui/show-more)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fshow-more)](https://bundlephobia.com/result?p=@responsive-ui/show-more)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/show-more.svg)](https://www.npmjs.com/package/@responsive-ui/show-more)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+
+</p>
+
 ## Install
 
 ```console
@@ -71,7 +81,7 @@ declare class ShowMore extends SvelteComponentTyped<
 </ShowMore>
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e70235a5b5d041cb84e52e3b5998c45c?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/e70235a5b5d041cb84e52e3b5998c45c?version=latest)
 
 ## Sponsors
 

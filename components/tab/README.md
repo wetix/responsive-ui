@@ -4,9 +4,10 @@
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/tab.svg)](https://www.npmjs.com/package/@responsive-ui/tab)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/tab.svg)](https://www.npmjs.com/package/@responsive-ui/tab)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftab)](https://bundlephobia.com/result?p=@responsive-ui/tab)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/tab.svg)](https://www.npmjs.com/package/@responsive-ui/tab)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
 </p>
@@ -32,7 +33,7 @@ alt="@responsive-ui/tab" />
 
 ```ts
 interface TabItem {
-  title: string;
+  label: string;
   component?: SvelteComponent;
   style?: string;
 }
@@ -61,17 +62,17 @@ declare class Tab extends SvelteComponentTyped<TabProps, TabEvents, TabSlots> {}
   import Tab from '@responsive-ui/tab';
 
   const tabItems = [
-    { title: "Option A", value: "a" },
-    { title: "Option B", value: "b" },
-    { title: "Option C", value: "c" },
-    { title: "Option D", value: "d" },
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+    { label: "Option C", value: "c" },
+    { label: "Option D", value: "d" },
   ];
 </script>
 
 <Tab items={tabItems} />
 ```
 
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/95ab0950fa2740bea8b2338a497c46cf?version=3.31.2)
+[Try it yourself in Svelte Repl](https://svelte.dev/repl/95ab0950fa2740bea8b2338a497c46cf?version=latest)
 
 ## Sponsors
 

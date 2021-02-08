@@ -3,13 +3,13 @@
   let className = "";
   export { forName as for };
   export { className as class };
-  export let title = "";
+  export let label = "";
   export let form = "";
   export let style = "";
 </script>
 
 <label class="responsive-ui-label {className}" for={forName} {form} {style}>
-  {title}
+  {label}
 </label>
 <slot />
 

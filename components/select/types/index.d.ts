@@ -1,13 +1,13 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type SelectOption = {
-  title: string;
-  selected?: boolean;
+  label: string;
   disabled?: boolean;
   value: any;
 };
 
 interface SelectProp {
+  ref?: null | HTMLSelectElement;
   name?: string;
   size?: number;
   disabled?: boolean;
@@ -17,7 +17,7 @@ interface SelectProp {
 
 interface SingleSelectProps extends SelectProp {
   value?: string;
-  multiple: false;
+  multiple: false | undefined;
 }
 
 interface MultipleSelectProps extends SelectProp {

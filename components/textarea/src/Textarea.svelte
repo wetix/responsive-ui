@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
+  export let ref: null | HTMLTextAreaElement = null;
   export let name = "";
   export let form = "";
   export let readonly = false;
@@ -10,29 +9,20 @@
   export let rows = 4;
   export let maxlength = 100;
   export let value = "";
-  export let autofocus = false;
-  export let autoresize = true;
+  export let autoResize = true;
 
-  let input: null | HTMLTextAreaElement;
-
-  onMount(() => {
-    if (input && autofocus) {
-      input.focus();
-    }
-  });
-
-  const onInput = (e: Event) => {
+  const onChange = (e: Event) => {
     value = (e.target as HTMLTextAreaElement).value;
-    if (autoresize) {
-      input.style.height = "auto";
-      input.style.height = input.scrollHeight + "px";
+    if (autoResize && ref) {
+      ref.style.height = "auto";
+      ref.style.height = ref.scrollHeight + "px";
     }
   };
 </script>
 
 <textarea
   class="responsive-ui-textarea"
-  bind:this={input}
+  bind:this={ref}
   {name}
   {form}
   {rows}
@@ -44,7 +34,7 @@
   {maxlength}
   on:blur
   on:change
-  on:input={onInput}
+  on:change={onChange}
   on:input
 />
 

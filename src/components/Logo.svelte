@@ -1,3 +1,10 @@
+<span class="logo"
+  ><img
+    src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg"
+    alt=""
+  /></span
+>
+
 <style lang="scss">
   .logo {
     display: inline-block;
@@ -13,6 +20,3 @@
     }
   }
 </style>
-
-<span class="logo"><img
-    src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg" /></span>

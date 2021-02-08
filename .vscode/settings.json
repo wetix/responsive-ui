@@ -3,10 +3,15 @@
   "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
+  "files.autoSave": "onWindowChange",
+  "files.trimTrailingWhitespace": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "**/*.min.css": "ignore",
     "template.html": "ignore"
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
