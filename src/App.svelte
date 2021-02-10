@@ -39,9 +39,9 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
+  import type { SvelteComponentDev } from "svelte/internal";
+  import Badge from "../components/badge/src/Badge.svelte";
   import Quantity from "../components/quantity/src/Quantity.svelte";
-  // import InfiniteScroll from "../components/infinite-scroll/src/InfiniteScroll.svelte";
-  // import FloatingActionButton from "../components/fab/src/FloatingActionButton.svelte";
 
   console.log(Snackbar);
 
@@ -414,6 +414,11 @@
 </script>
 
 <main>
+  <Badge count={1}>testing</Badge>
+  <Badge count={0}>testing</Badge>
+  <Badge count={90}>testing</Badge>
+  <Badge count={100}>testing</Badge>
+  <!-- <Badge count={100} /><Badge count={98} /> -->
   <ComponentDetail hint="@responsive-ui/header" block={true}>
     <Tooltip text="Responsive UI">
       <Header label="Responsive UI" />
