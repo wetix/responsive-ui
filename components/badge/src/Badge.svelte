@@ -16,6 +16,8 @@
 <style lang="scss">
   .responsive-ui-badge {
     position: relative;
+    display: inline-block;
+    vertical-align: middle;
 
     &:not([data-count="0"]):after {
       content: attr(data-count);

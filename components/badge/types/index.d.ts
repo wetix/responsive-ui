@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface BadgeProps {
+  id?: string;
   class?: string;
   count: number;
   max?: number;
@@ -9,7 +10,9 @@ export interface BadgeProps {
 
 export interface BadgeEvents {}
 
-export interface BadgeSlots {}
+export interface BadgeSlots {
+  default: {};
+}
 
 declare class Badge extends SvelteComponentTyped<
   BadgeProps,
