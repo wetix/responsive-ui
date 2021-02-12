@@ -77,22 +77,16 @@
       data-item={stringify(item, i)}
     >
       <div
-        class="responsive-ui-menu__label"
+        class="responsive-ui-menu__item"
         class:responsive-ui-menu--submenu={item.submenus}
         class:responsive-ui-menu--open={item.collapsed === false}
       >
-        <!--  -->
         {#if item.icon}
           <svelte:component this={item.icon} />
         {/if}
         <div class="responsive-ui-menu__label">
           {item.label}
         </div>
-        <!-- {#if item.submenus}
-          <svg class="responsive-ui-menu__control" viewBox="0 0 20 20">
-            <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-          </svg>
-        {/if} -->
       </div>
       {#if item.submenus && item.collapsed === false}
         <svelte:self
@@ -142,7 +136,7 @@
       position: relative;
       display: flex;
       color: #3b3b3b;
-      padding: 8px 10px;
+      padding: 6px 10px;
       flex-direction: row;
       align-items: center;
       text-decoration: none;
