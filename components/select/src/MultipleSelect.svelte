@@ -1,8 +1,11 @@
 <script lang="ts">
   import { zoom } from "@wetix/animation";
   import { getNodeAttribute } from "@wetix/utils";
+  import { createEventDispatcher } from "svelte";
 
   import type { SelectOption } from "../types";
+
+  const dispatch = createEventDispatcher();
 
   let className = "";
   export { className as class };
@@ -36,6 +39,10 @@
       }
       options = [...options];
       input && input.focus();
+      dispatch(
+        "change",
+        items.map((v) => v.value)
+      );
     }
   };
 
@@ -48,6 +55,10 @@
     if (value) {
       e.stopPropagation();
       items = items.filter((v) => v.value !== value);
+      dispatch(
+        "change",
+        items.map((v) => v.value)
+      );
     }
   };
 </script>
