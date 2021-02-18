@@ -229,7 +229,7 @@ const analyzePackageJson = async (filepath, pkg) => {
 
 // const excludedFolders = [".ds_store", "lib"];
 
-(async function Bundle() {
+(async function buildScript() {
   const lernaPath = path.resolve("./lerna.json");
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
 
