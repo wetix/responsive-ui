@@ -8,6 +8,7 @@
   "main": "lib/index.cjs",
   "browser": "lib/index.js",
   "module": "lib/index.mjs",
+  "unpkg": "lib/index.min.js",
   "svelte": "src/Badge.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {

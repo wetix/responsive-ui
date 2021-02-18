@@ -8,6 +8,7 @@
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",
+  "unpkg": "lib/index.min.js",
   "svelte": "src/Column.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
