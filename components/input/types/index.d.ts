@@ -20,6 +20,7 @@ export interface InputProps {
 export interface InputEvents {
   change?: any;
   input?: any;
+  blur?: any;
   enter?: any;
 }
 
