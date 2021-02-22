@@ -34,9 +34,16 @@
   {maxlength}
   on:blur
   on:change
-  on:change={onChange}
+  on:input={onChange}
   on:input
 />
+{#if maxlength > 0}
+  <slot name="text-length">
+    <div class="responsive-ui-textarea__text-length">
+      {value.length}/{maxlength} characters
+    </div>
+  </slot>
+{/if}
 
 <style lang="scss">
   .responsive-ui-textarea {
@@ -55,6 +62,12 @@
 
     &:hover {
       border: none;
+    }
+
+    &__text-length {
+      display: block;
+      text-align: right;
+      font-size: var(--font-size-xs, 10px);
     }
   }
 </style>

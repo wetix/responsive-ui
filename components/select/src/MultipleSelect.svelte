@@ -1,7 +1,20 @@
+<script context="module" lang="ts">
+  const queue: [Node, Function][] = [];
+  const runIfContains = (node: Node, cb: Function) => {
+    queue.push([node, cb]);
+  };
+  window.addEventListener("click", (e: Event) => {
+    const el = e.target! as Node;
+    queue.forEach(([node, cb]) => {
+      if (!node.contains(el)) cb();
+    });
+  });
+</script>
+
 <script lang="ts">
   import { zoom } from "@wetix/animation";
   import { getNodeAttribute } from "@wetix/utils";
-  import { createEventDispatcher } from "svelte";
+  import { onMount, createEventDispatcher } from "svelte";
 
   import type { SelectOption } from "../types";
 
@@ -9,6 +22,7 @@
 
   let className = "";
   export { className as class };
+  export let ref: null | HTMLDivElement = null;
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
@@ -17,6 +31,12 @@
   export let readonly = false;
 
   const maxHeight = 25 + size * 20;
+
+  onMount(() => {
+    runIfContains(ref as Node, () => {
+      show = false;
+    });
+  });
 
   type Item = { label: string; value: string };
 
@@ -38,16 +58,13 @@
         items = [...items, item];
       }
       options = [...options];
+      value.push(item.value);
       input && input.focus();
       dispatch(
         "change",
         items.map((v) => v.value)
       );
     }
-  };
-
-  const onClick = () => {
-    show = !show;
   };
 
   const onRemove = (e: Event) => {
@@ -63,8 +80,8 @@
   };
 </script>
 
-<div class="responsive-ui-select--multiple {className}">
-  <div class="responsive-ui-select-input" on:click={onClick}>
+<div class="responsive-ui-select--multiple {className}" bind:this={ref}>
+  <div class="responsive-ui-select-input" on:click={() => (show = !show)}>
     <input
       {name}
       type="hidden"
@@ -75,33 +92,14 @@
     />
     <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each items as item}
-        <span class="responsive-ui-select__tag" in:zoom out:zoom>
+        <span
+          class="responsive-ui-select__tag"
+          data-value={item.value}
+          in:zoom
+          out:zoom
+        >
           <span>{item.label}</span>
-          <span
-            class="responsive-ui-select__close-icon"
-            data-value={item.value}
-          >
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px"
-              y="0px"
-              viewBox="0 0 512.001 512.001"
-              style="enable-background:new 0 0 512.001 512.001;"
-              xml:space="preserve"
-            >
-              <g>
-                <path
-                  d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
-        L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859
-        c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287
-        l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285
-        L284.286,256.002z"
-                />
-              </g>
-            </svg>
-          </span>
+          <i class="responsive-ui-select__close" />
         </span>
       {/each}
       <input
@@ -117,12 +115,15 @@
   <div
     class="responsive-ui-select__dropdown"
     on:click={onSelect}
-    style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
+    style={`height:${show ? clientHeight : 0}px;max-height:${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as item, i}
         <div
           class="responsive-ui-select__option"
+          class:responsive-ui-select__option--selected={value.includes(
+            item.value
+          )}
           class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
@@ -174,8 +175,6 @@
     &__tag {
       // float: left;
       cursor: default;
-      vertical-align: middle;
-      display: inline-block;
       font-size: var(--font-size-sm, 12px);
       padding: 3px 6px;
       border-radius: var(--border-radius-sm, 3px);
@@ -183,18 +182,37 @@
       margin-bottom: 4px;
       background: #fff;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+
+      span {
+        vertical-align: middle;
+        display: inline-block;
+      }
     }
 
-    &__close-icon {
+    &__close {
       cursor: pointer;
-      margin-left: 3px;
+      position: relative;
+      vertical-align: middle;
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 12px;
+      height: 12px;
 
-      svg {
-        width: 100%;
-        height: 100%;
+      &:after {
+        content: "";
+        height: 12px;
+        border-left: 1px solid #3b3b3b;
+        position: absolute;
+        transform: rotate(45deg);
+        left: 5px;
+      }
+
+      &:before {
+        content: "";
+        height: 12px;
+        border-left: 1px solid #3b3b3b;
+        position: absolute;
+        transform: rotate(-45deg);
+        left: 5px;
       }
     }
 

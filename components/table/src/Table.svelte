@@ -5,6 +5,7 @@
 
   let className = "";
   export { className as class };
+  export let ref: null | HTMLDivElement = null;
   export let key = "id";
   export let columns: Partial<TableColumn>[] = [];
   export let items: null | TableItem[] = null;
@@ -44,6 +45,7 @@
 <div
   class="responsive-ui-table {className}"
   class:responsive-ui-table__bordered={bordered}
+  bind:this={ref}
 >
   <table class:responsive-ui-table__striped={striped} {style}>
     <thead>
