@@ -4,7 +4,7 @@
   export let src = "";
   export let width = "110px";
   export let height = "150px";
-  export let shadow = true;
+  export let shadowed = true;
   export let rounded = true;
   export let size = "middle";
   export let style = "";
@@ -14,7 +14,11 @@
   img.onload = () => {
     opacity = 0;
   };
-  $: img.src = src;
+
+  $: {
+    opacity = 1;
+    img.src = src;
+  }
 
   if (size === "small") {
     width = "80px";
@@ -27,7 +31,7 @@
 
 <div
   class="responsive-ui-poster {className}"
-  class:responsive-ui-poster--shadow={shadow}
+  class:responsive-ui-poster--shadowed={shadowed}
   class:responsive-ui-poster--rounded={rounded}
   style={`background-image:url(${src});width:${width};height:${height};${style}`}
   on:click
@@ -48,7 +52,7 @@
       border-radius: var(--border-radius-sm, 3px);
     }
 
-    &--shadow {
+    &--shadowed {
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
 

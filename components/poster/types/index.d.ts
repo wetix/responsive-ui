@@ -5,7 +5,7 @@ export interface PosterProps {
   src: string;
   width?: string;
   height?: string;
-  shadow?: boolean;
+  shadowed?: boolean;
   rounded?: boolean;
   size?: "small" | "medium";
   style?: string;
