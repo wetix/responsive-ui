@@ -555,6 +555,23 @@
     <button on:click={() => (openRightDock = true)}>open right dock</button>
   </div>
 
+  <Select
+    multiple={true}
+    size={5}
+    value={["b", "c"]}
+    options={[
+      { label: "CC", value: "cc" },
+      { label: "Option A", value: "a", disabled: true },
+      { label: "Z", value: "z" },
+      { label: "Option B", value: "b" },
+      { label: "Option C", value: "c" },
+      { label: "Option D", value: "d" },
+      { label: "Option E", value: "e" },
+      { label: "Option F", value: "f" },
+      { label: "Option G", value: "g" },
+    ]}
+  />
+
   <ComponentDetail hint="@responsive-ui/select">
     <Select
       value="c"

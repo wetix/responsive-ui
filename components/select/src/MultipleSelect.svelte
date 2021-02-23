@@ -45,8 +45,7 @@
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
     if (data) {
-      console.log(data);
-      const [index, item] = <[number, Item]>JSON.parse(data);
+      const [_, item] = <[number, Item]>JSON.parse(data);
       const pos = value.findIndex((v) => v === item.value);
       if (pos > -1) {
         value.splice(pos, 1);
@@ -62,6 +61,7 @@
   const onRemove = (e: Event) => {
     const val = getNodeAttribute(e, "data-value");
     if (val) {
+      e.stopPropagation();
       value = value.filter((v) => v !== val);
       dispatch("change", { value });
     }
@@ -69,12 +69,12 @@
 </script>
 
 <div class="responsive-ui-select--multiple {className}" bind:this={ref}>
-  <div class="responsive-ui-select-input">
+  <div
+    class="responsive-ui-select-input"
+    on:click|stopPropagation={() => (show = true)}
+  >
     <input {name} type="hidden" value={value.join(",")} />
-    <span
-      class="responsive-ui-select__tags"
-      on:click|stopPropagation={onRemove}
-    >
+    <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each value as item}
         <span
           class="responsive-ui-select__tag"
@@ -89,7 +89,6 @@
       <input
         bind:this={input}
         type="text"
-        on:focus|stopPropagation={() => (show = true)}
         autocomplete="off"
         on:blur
         {disabled}
@@ -140,7 +139,7 @@
     &-input {
       display: flex;
       width: 100%;
-      border: 1px solid #f1f1f1;
+      border: 1px solid rgba(241, 241, 241, 0.9);
       border-radius: var(--border-radius, 5px);
       min-height: var(--height, 34px);
       color: #1a1b1c;
@@ -151,10 +150,12 @@
 
     &__tags {
       display: inline-flex;
+      width: 100%;
       padding: 4px 0 4px 10px;
       flex-direction: row;
       justify-content: flex-start;
       flex-wrap: wrap;
+      box-sizing: border-box;
     }
 
     &__tag {
@@ -220,8 +221,8 @@
     }
 
     &__option {
-      cursor: pointer;
       position: relative;
+      cursor: pointer;
       white-space: nowrap;
       font-size: var(--font-size-sm, 12px);
       transition: all 0.3s;
