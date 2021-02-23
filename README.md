@@ -13,6 +13,8 @@
 [![Styled](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
 
+[![NPM Stat](https://nodei.co/npm/responsive-ui.png)](https://www.npmjs.com/package/responsive-ui)
+
 </p>
 
 ## Installation and Usage
