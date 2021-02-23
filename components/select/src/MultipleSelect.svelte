@@ -1,16 +1,3 @@
-<script context="module" lang="ts">
-  const queue: [Node, Function][] = [];
-  const runIfContains = (node: Node, cb: Function) => {
-    queue.push([node, cb]);
-  };
-  window.addEventListener("click", (e: Event) => {
-    const el = e.target! as Node;
-    queue.forEach(([node, cb]) => {
-      if (!node.contains(el)) cb();
-    });
-  });
-</script>
-
 <script lang="ts">
   import { zoom } from "@wetix/animation";
   import { getNodeAttribute } from "@wetix/utils";
@@ -30,81 +17,79 @@
   export let disabled = false;
   export let readonly = false;
 
-  const maxHeight = 25 + size * 20;
-
-  onMount(() => {
-    runIfContains(ref as Node, () => {
-      show = false;
-    });
-  });
+  const maxHeight = 15 + size * 24;
 
   type Item = { label: string; value: string };
 
-  let items: Item[] = [];
+  const dict = new Map();
+  $: {
+    options.forEach((opt) => {
+      dict.set(opt.value, opt);
+    });
+  }
   let input: null | HTMLInputElement;
   let show = false;
   let clientHeight = 0;
 
+  onMount(() => {
+    const onClick = () => {
+      show = false;
+    };
+    window.addEventListener("click", onClick);
+
+    return () => {
+      window.removeEventListener("click", onClick);
+    };
+  });
+
   const onSelect = (e: Event) => {
     const data = getNodeAttribute(e, "data-option");
     if (data) {
+      console.log(data);
       const [index, item] = <[number, Item]>JSON.parse(data);
-      const pos = items.findIndex((v) => v.value === item.value);
+      const pos = value.findIndex((v) => v === item.value);
       if (pos > -1) {
-        // options[index].selected = false;
-        items = items.filter((v) => v.value !== item.value);
+        value.splice(pos, 1);
       } else {
-        // options[index].selected = true;
-        items = [...items, item];
+        value.push(item.value);
       }
-      options = [...options];
-      value.push(item.value);
-      input && input.focus();
-      dispatch(
-        "change",
-        items.map((v) => v.value)
-      );
+      value = [...value];
+      input!.focus();
+      dispatch("change", { value });
     }
   };
 
   const onRemove = (e: Event) => {
-    const value = getNodeAttribute(e, "data-value");
-    if (value) {
-      e.stopPropagation();
-      items = items.filter((v) => v.value !== value);
-      dispatch(
-        "change",
-        items.map((v) => v.value)
-      );
+    const val = getNodeAttribute(e, "data-value");
+    if (val) {
+      value = value.filter((v) => v !== val);
+      dispatch("change", { value });
     }
   };
 </script>
 
 <div class="responsive-ui-select--multiple {className}" bind:this={ref}>
-  <div class="responsive-ui-select-input" on:click={() => (show = !show)}>
-    <input
-      {name}
-      type="hidden"
-      value={items.reduce((acc, { value }, i) => {
-        if (i > 0) acc += ",";
-        return (acc += value);
-      }, "")}
-    />
-    <span class="responsive-ui-select__tags" on:click={onRemove}>
-      {#each items as item}
+  <div class="responsive-ui-select-input">
+    <input {name} type="hidden" value={value.join(",")} />
+    <span
+      class="responsive-ui-select__tags"
+      on:click|stopPropagation={onRemove}
+    >
+      {#each value as item}
         <span
           class="responsive-ui-select__tag"
-          data-value={item.value}
+          data-value={item}
           in:zoom
           out:zoom
         >
-          <span>{item.label}</span>
+          <span>{dict.get(item).label}</span>
           <i class="responsive-ui-select__close" />
         </span>
       {/each}
       <input
         bind:this={input}
         type="text"
+        on:focus|stopPropagation={() => (show = true)}
         autocomplete="off"
         on:blur
         {disabled}
@@ -114,17 +99,17 @@
   </div>
   <div
     class="responsive-ui-select__dropdown"
-    on:click={onSelect}
+    on:click|stopPropagation={onSelect}
     style={`height:${show ? clientHeight : 0}px;max-height:${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as item, i}
         <div
           class="responsive-ui-select__option"
+          class:responsive-ui-select__option--disabled={item.disabled}
           class:responsive-ui-select__option--selected={value.includes(
             item.value
           )}
-          class:responsive-ui-select__option--disabled={item.disabled}
           data-option={JSON.stringify([i, item])}
         >
           {item.label || ""}
@@ -173,10 +158,9 @@
     }
 
     &__tag {
-      // float: left;
       cursor: default;
       font-size: var(--font-size-sm, 12px);
-      padding: 3px 6px;
+      padding: 3px 8px;
       border-radius: var(--border-radius-sm, 3px);
       margin-right: 4px;
       margin-bottom: 4px;
@@ -192,6 +176,7 @@
     &__close {
       cursor: pointer;
       position: relative;
+      margin-left: 3px;
       vertical-align: middle;
       display: inline-block;
       width: 12px;
@@ -255,7 +240,7 @@
       }
 
       &--selected {
-        background: rgba(252, 68, 81, 0.3) !important;
+        background: rgba(252, 68, 81, 0.1) !important;
       }
     }
   }

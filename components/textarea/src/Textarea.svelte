@@ -67,7 +67,7 @@
     &__text-length {
       display: block;
       text-align: right;
-      font-size: var(--font-size-xs, 10px);
+      font-size: var(--font-size-xs, 11px);
     }
   }
 </style>

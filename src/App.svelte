@@ -569,6 +569,7 @@
     <Select
       multiple={true}
       size={5}
+      value={["b", "c"]}
       options={[
         { label: "CC", value: "cc" },
         { label: "Option A", value: "a", disabled: true },

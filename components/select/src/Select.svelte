@@ -4,8 +4,7 @@
 
   let className = "";
   export { className as class };
-  export let name = "";
-  export let value = "";
+  export let value: string | string[] = "";
   export let size = 10;
   export let multiple = false;
   export let disabled = false;
@@ -20,8 +19,8 @@
   <Select {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <select
+    {...$$restProps}
     class="responsive-ui-select {className}"
-    {name}
     {size}
     {readonly}
     {disabled}
