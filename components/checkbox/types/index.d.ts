@@ -1,22 +1,20 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface CheckboxProps {
-  name: string;
-  options: CheckboxOptions[];
-  value: (string | number)[];
-}
-
-export type CheckboxOptions = {
-  label: string;
-  value: string | number;
+  ref?: null | HTMLInputElement;
+  label?: string;
+  id?: string;
+  name?: string;
+  value?: string;
   disabled?: boolean;
-};
+  checked?: boolean;
+  style?: string;
+}
 
 export interface CheckboxEvents {
-  change?: (
-    e: CustomEvent<{ value: string | number; checked: boolean }>
-  ) => void;
+  change?: any;
 }
+
 export interface CheckboxSlots {
   default: {};
 }
@@ -25,4 +23,5 @@ declare class Checkbox extends SvelteComponentTyped<
   CheckboxProps,
   CheckboxEvents
 > {}
+
 export default Checkbox;

@@ -17,6 +17,7 @@ export interface AccordionProps {
 export interface AccordionEvents {}
 
 export interface AccordionSlots {
+  label: { index: number };
   tab: {
     index: number;
   };

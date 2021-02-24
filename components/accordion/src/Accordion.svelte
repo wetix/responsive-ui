@@ -7,7 +7,7 @@
   export let multiple = false;
   export let style = "";
 
-  const id = `accordion-${Math.floor(Math.random() * Date.now())}`;
+  const id = `acd-${Math.floor(Math.random() * Date.now())}`;
 
   let props = { type: "checkbox" };
   if (!multiple) props = Object.assign(props, { type: "radio", name: id });
@@ -22,9 +22,9 @@
         checked={item.collapsed === false ? true : false}
         disabled={item.disabled}
       />
-      <label class="responsive-ui-accordion__tab-label" for="{id}-{i}"
-        >{item.label}</label
-      >
+      <label class="responsive-ui-accordion__tab-label" for="{id}-{i}">
+        <slot name="label" index={i}>{item.label}</slot>
+      </label>
       <div class="responsive-ui-accordion__tab-content">
         <slot name="tab" index={i}>
           {#if typeof item.content === "function"}
@@ -54,14 +54,31 @@
       overflow: hidden;
 
       &-label {
+        position: relative;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         color: #1a1b1c;
         font-size: var(--font-size, 14px);
         padding: 5px 10px;
+        padding-right: 28px;
         border-bottom: 1px solid #e1e1e1;
         font-weight: 500;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: calc(50% - 4px);
+          right: 10px;
+          border: solid black;
+          border-width: 0 1px 1px 0;
+          display: inline-block;
+          padding: 4px;
+          transition: all 0.3s;
+          transform-origin: 50% 50%;
+          transform: rotate(225deg);
+          -webkit-transform: rotate(225deg);
+        }
 
         &:hover {
           background: #f5f5f5;
@@ -80,6 +97,13 @@
       ~ .responsive-ui-accordion__tab-content {
         height: auto;
         padding: 10px;
+      }
+    }
+
+    input:checked {
+      ~ .responsive-ui-accordion__tab-label:after {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
       }
     }
 

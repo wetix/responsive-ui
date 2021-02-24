@@ -39,7 +39,6 @@
   import Tab from "../components/tab/src/Tab.svelte";
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
-  import type { SvelteComponentDev } from "svelte/internal";
   import Badge from "../components/badge/src/Badge.svelte";
   import Quantity from "../components/quantity/src/Quantity.svelte";
 
@@ -154,7 +153,7 @@
     },
   ];
 
-  const uploadSuccessful = ({ detail }) => {
+  const uploadSuccessful = ({ detail }: CustomEvent) => {
     console.log(detail.response);
     console.log(detail);
   };
@@ -438,6 +437,7 @@
   <Badge count={0}>testing</Badge>
   <Badge count={90}>testing</Badge>
   <Badge count={100}>testing</Badge>
+
   <!-- <Badge count={100} /><Badge count={98} /> -->
   <ComponentDetail hint="@responsive-ui/header" block={true}>
     <Tooltip text="Responsive UI">
@@ -456,6 +456,8 @@
     <ComponentDetail hint="@responsive-ui/input">
       <Input style="width: 240px;" placeholder="Enter your text..." />
     </ComponentDetail>
+    <Checkbox>testing</Checkbox>
+    <Checkbox disabled label="Hello world" />
     <ComponentDetail hint="@responsive-ui/input-number">
       <InputNumber min={0} format={(v) => `${v}%`} />
     </ComponentDetail>
@@ -745,16 +747,6 @@
       <Column span={{ sm: 6, xs: 10 }}>Disabled Button</Column>
       <Column span={{ sm: 18 }}>
         <Switch bind:checked={disabledButton} />
-      </Column>
-    </Row>
-    <Row>
-      <Column span={{ sm: 6, xs: 10 }} />
-      <Column span={12}>
-        <Checkbox
-          options={checkboxOptions}
-          on:change={onCheckboxChanged}
-          value={["value1"]}
-        />
       </Column>
     </Row>
   </Card>
