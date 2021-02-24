@@ -390,6 +390,22 @@
     },
   ];
 
+  const checkboxOptions = [
+    {
+      label: "Checkbox1",
+      value: "value1",
+    },
+    {
+      label: "Checkkbox2",
+      value: "value2",
+    },
+    {
+      label: "Checkkbox3",
+      value: "value3",
+      disabled: true,
+    },
+  ];
+
   const handleSelectMenu = ({ detail }: CustomEvent): void => {
     console.log(detail);
   };
@@ -404,6 +420,10 @@
 
   const onChange = () => {
     // console.log((<HTMLSelectElement>e.currentTarget).value);
+  };
+
+  const onCheckboxChanged = (e: CustomEvent<{ value: any[] }>) => {
+    console.log(e.detail.value);
   };
 
   let openLeftDock = false;
@@ -727,12 +747,6 @@
       <Column span={{ sm: 6, xs: 10 }}>Disabled Button</Column>
       <Column span={{ sm: 18 }}>
         <Switch bind:checked={disabledButton} />
-      </Column>
-    </Row>
-    <Row>
-      <Column span={{ sm: 6, xs: 10 }} />
-      <Column span={12}>
-        <Checkbox />
       </Column>
     </Row>
   </Card>
