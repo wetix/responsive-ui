@@ -13,7 +13,7 @@ import sveltePreprocess from "svelte-preprocess";
 
 const extractCss = () => {
   const styles = {};
-  const order = [];
+  let order = [];
   let changes = 0;
 
   return {
@@ -35,7 +35,7 @@ const extractCss = () => {
       //   }
       // }
 
-      code = code.replace(/.svelte\-[A-Z0-9]+/gi, "");
+      code = code.replace(/\.svelte\-[A-Z0-9]+/gi, "");
 
       // Track the order that each stylesheet is imported.
       if (!order.includes(id)) {
@@ -53,6 +53,7 @@ const extractCss = () => {
     },
     generateBundle(opts, bundle) {
       // No stylesheet needed, only emit single css file
+      // console.log(opts.format);
       if (opts.format !== "iife") {
         return;
       }
@@ -66,12 +67,16 @@ const extractCss = () => {
       for (let x = 0; x < order.length; x++) {
         const id = order[x];
         css += styles[id] || "";
+        styles[id] = ""; // reset style on every cycle
       }
+
+      order = [];
 
       // Don't create unwanted empty stylesheets
       if (css.length == 0) {
         return;
       }
+
       // // Emit styles through callback
       // if (typeof options.output === 'function') {
       //   options.output(css, styles, bundle)

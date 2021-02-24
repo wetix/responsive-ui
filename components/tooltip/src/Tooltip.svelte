@@ -144,6 +144,8 @@
 </span>
 
 <style lang="scss">
+  $width: 6px;
+
   .responsive-ui-tooltip {
     position: absolute;
     background: #3b3b3b;
@@ -156,8 +158,6 @@
     transition: opacity 0.35s;
     opacity: 1;
     z-index: 50;
-
-    $width: 6px;
 
     &:after {
       content: "";
