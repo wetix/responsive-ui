@@ -1,39 +1,56 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import type { CheckboxOptions } from "../types";
+
   let id = 0;
 
-  export let name = "";
-  export let value = "";
-  export let group = [];
-  export let disabled = false;
-  export let checked = false;
-  export let onChange = (_) => {};
+  export let options: CheckboxOptions[] = [];
+  export let value: (string | number)[] = [];
 
-  $: updateChekbox(group);
-  $: updateGroup(checked);
+  const dispatch = createEventDispatcher();
 
-  const updateChekbox = (group) => {
-    checked = group.indexOf(value) >= 0;
+  const isChecked = (v: string | number): boolean => {
+    return value.indexOf(v) >= 0;
   };
 
-  const updateGroup = (checked) => {
-    const index = group.indexOf(value);
-    if (checked) {
+  const handleOnChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    const index = value.indexOf(target.value);
+    if (target.checked) {
       if (index < 0) {
-        group.push(value);
-        group = group;
+        value = value.concat(target.value);
       }
     } else {
       if (index >= 0) {
-        group.splice(index, 1);
-        group = group;
+        value.splice(index, 1);
+        value = value;
       }
     }
-  };
-
-  const handleOnChange = (e) => {
-    onChange(e.target.checked);
+    dispatch("change", {
+      value,
+    });
   };
 </script>
+
+{#each options as { label, value, disabled }}
+  <label class="bounce" class:disabled>
+    <span class="responsive-ui-checkbox">
+      <input
+        type="checkbox"
+        on:change={handleOnChange}
+        {disabled}
+        {value}
+        checked={isChecked(value)}
+      />
+      <svg viewBox="0 0 21 21">
+        <polyline points="5 10.75 8.5 14.25 16 6" />
+      </svg>
+    </span>
+    <caption>
+      {label}
+    </caption>
+  </label>
+{/each}
 
 <style lang="scss">
   label {
@@ -129,22 +146,3 @@
     }
   }
 </style>
-
-<label class="bounce" class:disabled>
-  <span class="responsive-ui-checkbox">
-    <input
-      type="checkbox"
-      on:change
-      on:change={handleOnChange}
-      {name}
-      {disabled}
-      {value}
-      bind:checked />
-    <svg viewBox="0 0 21 21">
-      <polyline points="5 10.75 8.5 14.25 16 6" />
-    </svg>
-  </span>
-  <caption>
-    <slot />
-  </caption>
-</label>
