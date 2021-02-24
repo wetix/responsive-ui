@@ -13,7 +13,7 @@ export type TableColumn = {
 export type TableItem = Record<string, any> | object;
 
 export type TableProps = {
-  ref: null | HTMLDivElement;
+  ref?: null | HTMLDivElement;
   key: string;
   columns: Partial<TableColumn>[];
   items: null | TableItem[];

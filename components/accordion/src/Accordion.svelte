@@ -7,7 +7,7 @@
   export let multiple = false;
   export let style = "";
 
-  const id = `accordion-${Math.floor(Math.random() * Date.now())}`;
+  const id = `acd-${Math.floor(Math.random() * Date.now())}`;
 
   let props = { type: "checkbox" };
   if (!multiple) props = Object.assign(props, { type: "radio", name: id });
