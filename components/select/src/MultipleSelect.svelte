@@ -32,13 +32,13 @@
   let clientHeight = 0;
 
   onMount(() => {
-    const onClick = () => {
-      show = false;
+    const onHide = (e: Event) => {
+      if (!ref!.contains(e.target as Node)) show = false;
     };
-    window.addEventListener("click", onClick);
+    window.addEventListener("click", onHide);
 
     return () => {
-      window.removeEventListener("click", onClick);
+      window.removeEventListener("click", onHide);
     };
   });
 
@@ -54,7 +54,7 @@
       }
       value = [...value];
       input!.focus();
-      dispatch("change", { value });
+      dispatch("change", value);
     }
   };
 
@@ -63,16 +63,13 @@
     if (val) {
       e.stopPropagation();
       value = value.filter((v) => v !== val);
-      dispatch("change", { value });
+      dispatch("change", value);
     }
   };
 </script>
 
 <div class="responsive-ui-select--multiple {className}" bind:this={ref}>
-  <div
-    class="responsive-ui-select-input"
-    on:click|stopPropagation={() => (show = true)}
-  >
+  <div class="responsive-ui-select-input" on:click={() => (show = true)}>
     <input {name} type="hidden" value={value.join(",")} />
     <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each value as item}
@@ -98,7 +95,7 @@
   </div>
   <div
     class="responsive-ui-select__dropdown"
-    on:click|stopPropagation={onSelect}
+    on:click={onSelect}
     style={`height:${show ? clientHeight : 0}px;max-height:${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">

@@ -11,7 +11,7 @@ interface SelectProps {
   ref?: null | HTMLSelectElement;
   name?: string;
   size?: number;
-  multiple?: false;
+  multiple?: boolean;
   value?: string | string[];
   disabled?: boolean;
   readonly?: boolean;
