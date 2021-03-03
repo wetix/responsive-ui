@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/search",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "A search component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/search#README.md",
@@ -22,7 +22,7 @@
     "svelte-search"
   ],
   "dependencies": {
-    "@responsive-ui/loader": "^0.11.1"
+    "@responsive-ui/loader": "^0.12.0"
   },
   "peerDependencies": {
     "svelte": "^3.29.0",

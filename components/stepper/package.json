@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/stepper",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "A stepper component of responsive-ui.",
   "author": "Oyster Lee <oysterd3@gmail.com> (https://github.com/OysterD3)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/stepper#README.md",
