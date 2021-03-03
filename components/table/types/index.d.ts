@@ -1,3 +1,4 @@
+import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type TableColumn = {
@@ -7,14 +8,14 @@ export type TableColumn = {
   align: string | "left" | "center" | "right";
   width: number | string;
   value: ReturnType<any>;
-  component: any;
+  component: typeof SvelteComponent;
 };
 
 export type TableItem = Record<string, any> | object;
 
 export type TableProps = {
   ref?: null | HTMLDivElement;
-  key: string;
+  key?: string;
   columns: Partial<TableColumn>[];
   items: null | TableItem[];
   striped?: boolean;
