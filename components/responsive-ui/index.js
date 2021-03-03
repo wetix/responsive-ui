@@ -12,6 +12,7 @@ import FloatingActionButton from "@responsive-ui/fab/src/FloatingActionButton.sv
 import Header from "@responsive-ui/header/src/Header.svelte";
 import Icon from "@responsive-ui/icon/src/Icon.svelte";
 import Input from "@responsive-ui/input/src/Input.svelte";
+import InputNumber from "@responsive-ui/input-number/src/InputNumber.svelte";
 import Label from "@responsive-ui/label/src/Label.svelte";
 import Link from "@responsive-ui/link/src/Link.svelte";
 import Loader from "@responsive-ui/loader/src/Loader.svelte";
@@ -45,6 +46,7 @@ export {
   Header,
   Icon,
   Input,
+  InputNumber,
   Label,
   Link,
   Loader,

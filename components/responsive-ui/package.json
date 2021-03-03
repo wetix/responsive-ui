@@ -35,6 +35,7 @@
     "@responsive-ui/header": "^0.11.1",
     "@responsive-ui/icon": "^0.11.1",
     "@responsive-ui/input": "^0.11.1",
+    "@responsive-ui/input-number": "^0.11.1",
     "@responsive-ui/label": "^0.11.1",
     "@responsive-ui/link": "^0.11.1",
     "@responsive-ui/loader": "^0.11.1",

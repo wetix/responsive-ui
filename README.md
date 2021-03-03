@@ -53,6 +53,7 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/header](https://github.com/wetix/responsive-ui/tree/master/components/header)
 - [@responsive-ui/icon](https://github.com/wetix/responsive-ui/tree/master/components/icon)
 - [@responsive-ui/input](https://github.com/wetix/responsive-ui/tree/master/components/input)
+- [@responsive-ui/input-number](https://github.com/wetix/responsive-ui/tree/master/components/input-number)
 - [@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/master/components/label)
 - [@responsive-ui/poster](https://github.com/wetix/responsive-ui/tree/master/components/poster)
 - [@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/master/components/responsive)

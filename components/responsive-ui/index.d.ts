@@ -12,6 +12,7 @@ import FloatingActionButton from "@responsive-ui/fab/types";
 import Header from "@responsive-ui/header/types";
 import Icon from "@responsive-ui/icon/types";
 import Input from "@responsive-ui/input/types";
+import InputNumber from "@responsive-ui/input-number/types";
 import Label from "@responsive-ui/label/types";
 import Link from "@responsive-ui/link/types";
 import Loader from "@responsive-ui/loader/types";
@@ -45,6 +46,7 @@ export {
   Header,
   Icon,
   Input,
+  InputNumber,
   Label,
   Link,
   Loader,
