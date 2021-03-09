@@ -9,7 +9,7 @@ export interface LinkProps {
 }
 
 export interface LinkEvents {
-  click?: void;
+  click?: any;
 }
 
 export interface LinkSlots {
