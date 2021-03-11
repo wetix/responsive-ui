@@ -38,11 +38,5 @@
       border-radius: 10px;
       z-index: 1;
     }
-
-    // &[data-count="0"] {
-    //   &:after {
-    //     display: none;
-    //   }
-    // }
   }
 </style>

@@ -39,29 +39,10 @@
       border-radius: 50%;
       animation: rotate 1s linear infinite;
 
-      // &:after {
-      //   content: "";
-      //   width: 5px;
-      //   height: 5px;
-      //   background: var(--primary-color, #fc4451);
-      //   border-radius: 50%;
-      //   position: absolute;
-      //   top: 1px;
-      //   left: 29px;
-      // }
-
       &--small {
         width: 18px;
         height: 18px;
         border-width: 2px;
-
-        // &:after {
-        //   content: "";
-        //   width: 2px;
-        //   height: 2px;
-        //   border-radius: 50%;
-        //   position: absolute;
-        // }
       }
     }
   }

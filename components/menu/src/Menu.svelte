@@ -122,12 +122,7 @@
         opacity: 0.65;
       }
 
-      // &--selected {
-      //   background-color: #e5e7eb;
-      // }
-
       &:hover:not(&--disabled) > .responsive-ui-menu__label {
-        // color: var(--primary-color, #fc4451);
         background: #f5f5f5;
       }
     }

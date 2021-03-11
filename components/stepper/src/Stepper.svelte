@@ -70,7 +70,6 @@
   .responsive-ui-stepper {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
 
     &__progress {
       display: inline-flex;
@@ -99,8 +98,6 @@
     }
 
     &__header {
-      // text-align: right;
-
       &-current {
         font-size: var(--font-size-lg, 16px);
         font-weight: 600;

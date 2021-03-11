@@ -4,7 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "noEmit": true,
-    // "skipLibCheck": false,
     "types": ["svelte", "node"]
   },
   "include": ["src", "components"],

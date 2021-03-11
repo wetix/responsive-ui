@@ -47,7 +47,6 @@
         width: 19px;
         height: 19px;
         border-radius: 50%;
-        // transform: scale(1);
         vertical-align: middle;
         border: 1px solid $gray;
         transition: all 0.2s ease;
@@ -95,7 +94,6 @@
       &:nth-child(2) {
         border-color: var(--primary-color, #fc4451);
         background: var(--primary-color, #fc4451);
-        // animation: check 0.6s ease;
       }
       svg {
         stroke-dashoffset: 0;
