@@ -18,6 +18,7 @@ export interface TooltipProps {
   text: string;
   html?: boolean;
   trigger?: TooltipTrigger[];
+  timeout?: number;
 }
 
 interface TooltipEvents {}

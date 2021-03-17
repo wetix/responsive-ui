@@ -10,7 +10,8 @@
   export let html = false;
   export let placement = "top";
   export let target: null | HTMLElement = null;
-  // export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
+  export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
+  export let timeout = 2000;
 
   const hasSlot = Object.keys($$slots).length > 0;
   let clientWidth = 0;
@@ -111,17 +112,24 @@
       parent.insertBefore(firstChild, node);
       parent.removeChild(node);
 
-      firstChild.addEventListener("click", (e: Event) => {
-        setPos(<HTMLElement>e.currentTarget);
-        hide = !hide;
-      });
-      firstChild.addEventListener("mouseenter", (e: Event) => {
-        setPos(<HTMLElement>e.currentTarget);
-        hide = false;
-      });
-      firstChild.addEventListener("mouseleave", () => {
-        hide = true;
-      });
+      if (trigger.includes("click")) {
+        firstChild.addEventListener("click", (e: Event) => {
+          setPos(<HTMLElement>e.currentTarget);
+          hide = false;
+          setTimeout(() => {
+            hide = true;
+          }, timeout);
+        });
+      }
+      if (trigger.includes("mouseenter")) {
+        firstChild.addEventListener("mouseenter", (e: Event) => {
+          setPos(<HTMLElement>e.currentTarget);
+          hide = false;
+        });
+        firstChild.addEventListener("mouseleave", () => {
+          hide = true;
+        });
+      }
     }
   };
 </script>
