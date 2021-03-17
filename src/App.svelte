@@ -440,7 +440,7 @@
 
   <!-- <Badge count={100} /><Badge count={98} /> -->
   <ComponentDetail hint="@responsive-ui/header" block={true}>
-    <Tooltip text="Responsive UI">
+    <Tooltip trigger={["click"]} text="Responsive UI">
       <Header label="Responsive UI" />
     </Tooltip>
   </ComponentDetail>
@@ -518,6 +518,13 @@
           title="Hover me for Tooltip"
           use:tooltip={{ placement: "bottom-right" }}
           >Hover me for Tooltip on bottomRight</span
+        >
+      </Column>
+      <Column span={8}>
+        <span
+          title="Click me for Tooltip"
+          use:tooltip={{ placement: "bottom-right", trigger: ["click"] }}
+          >Click me for Tooltip on bottomRight</span
         >
       </Column>
     </Row>
