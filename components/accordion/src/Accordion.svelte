@@ -26,7 +26,7 @@
         <slot name="label" index={i}>{item.label}</slot>
       </label>
       <div class="responsive-ui-accordion__tab-content">
-        <slot name="tab" index={i}>
+        <slot name="item" index={i}>
           {#if typeof item.content === "function"}
             <svelte:component this={item.content} />
           {:else}

@@ -8,7 +8,7 @@ export type TableColumn = {
   align: string | "left" | "center" | "right";
   width: number | string;
   value: ReturnType<any>;
-  component: typeof SvelteComponent;
+  component: typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
 };
 
 export type TableItem = Record<string, any> | object;

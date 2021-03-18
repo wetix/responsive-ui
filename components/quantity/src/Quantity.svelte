@@ -4,6 +4,8 @@
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
   export let min = 0;
   export let max = 10;
   export let value = 0;
@@ -34,8 +36,9 @@
 </script>
 
 <div
-  class="responsive-ui-quantity"
+  class="responsive-ui-quantity {className}"
   class:responsive-ui-quantity--disabled={disabled}
+  {...$$restProps}
 >
   <span on:click={!disabled ? onDecrement : undefined}>
     <Icon type="minus" stroke={value > min ? "#505050" : "#ababab"} />
