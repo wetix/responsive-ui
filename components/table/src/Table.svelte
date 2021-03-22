@@ -53,7 +53,7 @@
         {#each columns as column}
           <th
             class="responsive-ui-table__column--align-{column.align || 'left'}"
-            width={column.width}
+            style="width:{column.width || 'auto'}"
           >
             {column.label || ""}
           </th>
@@ -70,11 +70,14 @@
                   <td
                     class="responsive-ui-table__column--align-{column.align ||
                       'left'}"
+                    style="width:{column.width || 'auto'}"
                   >
                     {#if column.component}
                       <svelte:component this={getComponent(column, item)} />
                     {:else}
-                      <div>{getValue(column, item)}</div>
+                      <div class="responsive-ui-table__cell">
+                        {getValue(column, item)}
+                      </div>
                     {/if}
                   </td>
                 {/each}
@@ -204,7 +207,7 @@
 <style lang="scss">
   .responsive-ui-table {
     position: relative;
-    min-width: 100%;
+    width: 100%;
     border: 1px solid transparent;
     overflow-y: auto;
     font-size: var(--font-size, 14px);
@@ -212,7 +215,8 @@
     border-radius: var(--border-radius, 5px);
 
     table {
-      min-width: 100%;
+      width: 100%;
+      table-layout: auto;
       border-collapse: collapse;
       table-layout: auto;
       overflow: visible;
@@ -258,12 +262,16 @@
       td {
         padding: 10px;
         font-weight: normal;
-        white-space: nowrap;
         vertical-align: middle;
+      }
+
+      th {
+        overflow-wrap: break-word;
       }
 
       td {
         padding: 6px 10px;
+        word-break: break-all;
       }
 
       .responsive-ui-table__column--align-left {

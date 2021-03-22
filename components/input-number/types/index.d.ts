@@ -17,9 +17,9 @@ export interface InputNumberProps {
 }
 
 export interface InputNumberEvents {
-  input?: any;
-  blur?: any;
-  change?: any;
+  input?: WindowEventMap["input"];
+  blur?: WindowEventMap["blur"];
+  change?: WindowEventMap["change"];
 }
 
 declare class InputNumber extends SvelteComponentTyped<

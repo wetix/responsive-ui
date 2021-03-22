@@ -73,6 +73,7 @@
   const columns = [
     {
       label: "Name",
+      width: "150px",
       key: "name",
     },
     {
@@ -112,7 +113,8 @@
   const datas = [
     {
       key: "1",
-      name: "John Doe",
+      name:
+        "John Doe (7C29D63E49B7AB3D7C249EF995C30FF37DB7883EA89E93A5F8FCFCCA8FC35CC7)",
       age: 19,
       online: false,
       amount: 10.5,
@@ -164,10 +166,12 @@
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
-  const onSearch = ({ detail }) => {
-    const regexp = new RegExp(detail, "i");
+  const onSearch = ({
+    detail: { value, setLoading },
+  }: CustomEvent<{ value: string; setLoading: Function }>) => {
+    const regexp = new RegExp(value, "i");
     items = defaultItems.filter((v) => regexp.test(v));
-    console.log(detail);
+    setLoading(false);
   };
 
   const showNotification = (variant: string) => () => {

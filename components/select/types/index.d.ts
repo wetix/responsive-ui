@@ -20,8 +20,8 @@ interface SelectProps {
 }
 
 export interface SelectEvents {
-  change?: any;
-  blur?: any;
+  change?: WindowEventMap["change"];
+  blur?: WindowEventMap["blur"];
 }
 
 declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}

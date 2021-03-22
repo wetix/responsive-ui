@@ -9,7 +9,7 @@ export interface SnackbarProps {
 }
 
 export interface SnackbarEvents {
-  close?: void;
+  close?: any;
 }
 
 export interface SnackbarSlots {

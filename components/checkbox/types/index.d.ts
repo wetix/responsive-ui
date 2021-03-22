@@ -12,7 +12,7 @@ export interface CheckboxProps {
 }
 
 export interface CheckboxEvents {
-  change?: any;
+  change?: WindowEventMap["change"];
 }
 
 export interface CheckboxSlots {

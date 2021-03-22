@@ -15,7 +15,7 @@ export interface ButtonProps {
 }
 
 export interface ButtonEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
 export interface ButtonSlots {

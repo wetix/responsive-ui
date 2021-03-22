@@ -9,7 +9,7 @@ export interface LinkProps {
 }
 
 export interface LinkEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
 export interface LinkSlots {

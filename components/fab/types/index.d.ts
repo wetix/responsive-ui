@@ -1,12 +1,13 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface FloatingActionButtonProps {
+  id?: string;
   class?: string;
   style?: string;
 }
 
 export interface FloatingActionButtonEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
 export interface FloatingActionButtonSlots {}

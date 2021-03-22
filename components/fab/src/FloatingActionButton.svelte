@@ -4,7 +4,7 @@
   export let style = "";
 </script>
 
-<span class="responsive-ui-fab {className}" on:click {style}>
+<span {...$$restProps} class="responsive-ui-fab {className}" on:click {style}>
   <svg
     width="18px"
     height="18px"

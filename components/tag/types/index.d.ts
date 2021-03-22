@@ -8,7 +8,7 @@ export interface TagProps {
 }
 
 export interface TagEvents {
-  close: any;
+  close?: any;
 }
 
 export interface TagSlots {

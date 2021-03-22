@@ -18,9 +18,9 @@ export interface InputProps {
 }
 
 export interface InputEvents {
-  change?: any;
-  input?: any;
-  blur?: any;
+  change?: WindowEventMap["change"];
+  input?: WindowEventMap["input"];
+  blur?: WindowEventMap["blur"];
   enter?: any;
 }
 

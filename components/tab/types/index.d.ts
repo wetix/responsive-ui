@@ -1,4 +1,4 @@
-import type { SvelteComponent } from "svelte";
+import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface TabItem {

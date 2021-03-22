@@ -2,11 +2,12 @@
   import { createEventDispatcher } from "svelte";
   import Loader from "@responsive-ui/loader";
 
-  import type { SearchState } from "../types";
-
   const dispatch = createEventDispatcher();
 
+  let loading = false;
+  let timer: NodeJS.Timeout | undefined;
   let className = "";
+
   export { className as class };
   export let ref: null | HTMLInputElement = null;
   export let name = "";
@@ -17,19 +18,24 @@
   export let spellcheck = false;
   export let placeholder = "";
 
-  let state: null | SearchState;
-  let timer: NodeJS.Timeout | undefined;
+  // read only
+  export const setLoading = (v: boolean) => {
+    loading = v;
+  };
 
   const onClear = (e: Event) => {
     const v = (<HTMLInputElement>e.currentTarget).value;
-    if (v === "") dispatch("clear");
+    if (v === "") {
+      dispatch("clear");
+      value = "";
+    }
   };
 
   const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
     value = v;
-    state = "loading";
+    setLoading(true);
 
     let timeout = debounceTimer;
     // when user click enter
@@ -40,8 +46,10 @@
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      dispatch("search", v);
-      state = null;
+      dispatch("search", {
+        value,
+        setLoading,
+      });
     }, timeout);
   };
 </script>
@@ -61,14 +69,14 @@
   on:keyup={onKeyup}
 />
 
-{#if state}
+{#if loading}
   <div class="responsive-ui-search__state">
     <Loader size="small" />
     <div class="responsive-ui-search__state-text">Searching...</div>
   </div>
 {/if}
 
-<slot {state} />
+<slot {loading} />
 
 <style lang="scss">
   .responsive-ui-search {

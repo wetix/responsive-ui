@@ -6,7 +6,7 @@ export interface CardProps {
 }
 
 export interface CardEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
 export interface CardSlots {

@@ -1,7 +1,5 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type SearchState = "loading";
-
 export interface SearchProps {
   ref?: null | HTMLInputElement;
   class?: string;
@@ -17,12 +15,12 @@ export interface SearchProps {
 export interface SearchEvents {
   search?: any;
   clear?: any;
-  input?: any;
+  input?: WindowEventMap["input"];
 }
 
 export interface SearchSlots {
   default: {
-    state: SearchState;
+    loading: boolean;
   };
 }
 
