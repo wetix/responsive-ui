@@ -100,5 +100,6 @@
   "peerDependencies": {
     "svelte": "^3.29.0",
     "typescript": "^4.0.0"
-  }
+  },
+  "version": "0.0.0"
 }
