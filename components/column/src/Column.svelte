@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { keyword } from "chalk";
-
   import type { Device } from "../types";
 
   let className = "";
