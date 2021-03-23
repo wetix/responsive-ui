@@ -8,6 +8,7 @@ export interface SearchProps {
   disabled?: boolean;
   placeholder?: string;
   size?: number;
+  loading?: boolean;
   spellcheck?: boolean;
   debounceTimer?: number;
 }

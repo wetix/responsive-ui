@@ -4,7 +4,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 type BottomSheetOption = {
   label: string;
   value: string;
-  icon?: string | typeof SvelteComponent;
+  icon?: string | typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
   disabled?: boolean;
   nowrap?: boolean;
   selected?: boolean;

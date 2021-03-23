@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { SvelteComponentDev } from "svelte/internal";
-
   import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
@@ -41,6 +39,7 @@
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";
   import Badge from "../components/badge/src/Badge.svelte";
   import Quantity from "../components/quantity/src/Quantity.svelte";
+  import type { SvelteComponent } from "svelte";
 
   console.log(Snackbar);
 
@@ -53,7 +52,7 @@
     Component: any,
     props: Record<string, any> = {},
     events: Record<string, Function> = {}
-  ): ((_: Record<string, any>) => SvelteComponentDev) => {
+  ): ((_: Record<string, any>) => SvelteComponent) => {
     return function (opts: Record<string, any>) {
       opts.props || (opts.props = {});
       Object.assign(opts.props, props);
@@ -166,12 +165,11 @@
   const defaultItems = ["John Doe", "Testing", "tester", "unittest"];
   let items = defaultItems.slice();
 
-  const onSearch = ({
-    detail: { value, setLoading },
-  }: CustomEvent<{ value: string; setLoading: Function }>) => {
-    const regexp = new RegExp(value, "i");
+  let searchLoading = false;
+  const onSearch = ({ detail }: CustomEvent<string>) => {
+    const regexp = new RegExp(detail, "i");
     items = defaultItems.filter((v) => regexp.test(v));
-    setLoading(false);
+    searchLoading = false;
   };
 
   const showNotification = (variant: string) => () => {
@@ -414,7 +412,7 @@
     console.log(detail);
   };
 
-  const onConfirm = ({ detail }) => {
+  const onConfirm = ({ detail }: CustomEvent<string>) => {
     console.log(detail);
   };
 
@@ -568,7 +566,7 @@
     <Accordion items={accordionItems} multiple={true} />
     <Accordion items={accordionItems} />
     <Accordion items={accordionItems}>
-      <div slot="tab" let:index>{index}</div>
+      <div slot="item" let:index>{index}</div>
     </Accordion>
   </ComponentDetail>
   <ComponentDetail hint="@responsive-ui/stepper" block={true}>
@@ -730,6 +728,7 @@
   <ComponentDetail hint="@responsive-ui/search" block={true}>
     <Search
       on:search={onSearch}
+      bind:loading={searchLoading}
       placeholder="Enter your keyword here to search..."
     />
 

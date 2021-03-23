@@ -4,7 +4,6 @@
 
   const dispatch = createEventDispatcher();
 
-  let loading = false;
   let timer: NodeJS.Timeout | undefined;
   let className = "";
 
@@ -14,14 +13,10 @@
   export let value = "";
   export let disabled = false;
   export let size = 100;
+  export let loading = false;
   export let debounceTimer = 1000;
   export let spellcheck = false;
   export let placeholder = "";
-
-  // read only
-  export const setLoading = (v: boolean) => {
-    loading = v;
-  };
 
   const onClear = (e: Event) => {
     const v = (<HTMLInputElement>e.currentTarget).value;
@@ -34,9 +29,11 @@
   const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
+    if (e.ctrlKey || e.metaKey) {
+      return;
+    }
     value = v;
-    setLoading(true);
-
+    loading = true;
     let timeout = debounceTimer;
     // when user click enter
     if (key === "Enter" || key === 13) {
@@ -46,10 +43,7 @@
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      dispatch("search", {
-        value,
-        setLoading,
-      });
+      dispatch("search", v);
     }, timeout);
   };
 </script>
