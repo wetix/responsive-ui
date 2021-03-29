@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@wetix/utils": "^0.1.8"
+    "@wetix/utils": "^0.2.1"
   },
   "peerDependencies": {
     "svelte": "^3.29.0"
