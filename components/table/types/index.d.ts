@@ -6,6 +6,7 @@ export type TableColumn = {
   label: string;
   class: string;
   align: string | "left" | "center" | "right";
+  nowrap: boolean;
   width: number | string;
   value: ReturnType<any>;
   component: typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
