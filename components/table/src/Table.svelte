@@ -53,7 +53,7 @@
         {#each columns as column}
           <th
             class="responsive-ui-table__col--align-{column.align || 'left'}"
-            class:responsive-ui-table__col--wrap={column.nowrap === false}
+            class:responsive-ui-table__col--nowrap={column.nowrap === true}
             style="width:{column.width || 'auto'}"
           >
             {column.label || ""}
@@ -161,7 +161,6 @@
 
       th,
       td {
-        white-space: nowrap;
         padding: 10px;
         font-weight: normal;
         vertical-align: middle;
@@ -176,8 +175,11 @@
         word-break: break-all;
       }
 
-      td.responsive-ui-table__col--wrap {
-        white-space: initial;
+      .responsive-ui-table__col--nowrap {
+        word-break: unset;
+        word-wrap: unset;
+        overflow-wrap: unset;
+        white-space: nowrap;
       }
 
       .responsive-ui-table__col--align-left {
