@@ -10,6 +10,7 @@
 - 🚧 Checkbox (@responsive-ui/checkbox)
 - ✅ Column (@responsive-ui/column)
 - 🚧 DatePicker (@responsive-ui/date-picker)
+- ❌ Date (@responsive-ui/date)
 - ✅ Dock (@responsive-ui/dock)
 - 🚧 Dropdown (@responsive-ui/dropdown)
 - ✅ Ellipsis (@responsive-ui/ellipsis)
@@ -41,4 +42,5 @@
 
 # Features
 
-- storybook
+- setup storybook
+- write test cases
