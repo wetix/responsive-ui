@@ -22,7 +22,7 @@
     "svelte-button"
   ],
   "peerDependencies": {
-    "svelte": "^3.29.0",
+    "svelte": "^3.27.0",
     "svelte-preprocess": "^4.5.0",
     "typescript": "^4.0.0"
   },
@@ -45,5 +45,5 @@
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
   },
-  "gitHead": "4bb395a8d082fdb75dd798a481f33d10c348d457"
+  "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe"
 }
