@@ -19,7 +19,7 @@
     bottom: 0;
     left: 0;
     background: #fff;
-    padding-bottom: env(safe-area-inset-bottom, 10px);
+    padding-bottom: env(safe-area-inset-bottom, 15px);
     z-index: 50;
 
     &__wrapper {
