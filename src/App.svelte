@@ -854,6 +854,11 @@
 <style>
   @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
+  :root {
+    --padding-sm: 0.7rem;
+    --padding: 1rem;
+    --font-size-lg: 20px;
+  }
   :global(body) {
     height: 100vh;
     overflow: hidden;

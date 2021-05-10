@@ -2,6 +2,7 @@
   let className = "";
   export { className as class };
   export let src = "";
+  export let orientation = "portrait";
   export let responsive = true;
   export let shadowed = true;
   export let rounded = true;
@@ -17,7 +18,7 @@
 </script>
 
 <div
-  class="responsive-ui-poster {className}"
+  class="responsive-ui-poster responsive-ui-poster--{orientation} {className}"
   class:responsive-ui-poster--responsive={responsive}
   class:responsive-ui-poster--shadowed={shadowed}
   class:responsive-ui-poster--rounded={rounded}
@@ -35,8 +36,13 @@
     background-position: center;
     background-color: #f5f5f5;
     overflow: hidden;
-    width: 110px;
-    height: 150px;
+    width: 120px;
+    height: 170px;
+
+    &--landscape {
+      width: 250px;
+      height: 135px;
+    }
 
     &--rounded {
       border-radius: var(--border-radius-sm, 3px);
@@ -66,8 +72,8 @@
       }
 
       @media screen and (min-width: 1024px) {
-        width: 203px;
-        height: 290px;
+        width: 165px; // 300px
+        height: 225px; // 450px
       }
     }
   }

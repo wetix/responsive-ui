@@ -5,6 +5,7 @@
 </script>
 
 <div
+  {...$$restProps}
   class="responsive-ui-card {className}"
   class:responsive-ui-card--compact={compact}
   on:click
@@ -14,12 +15,12 @@
 
 <style lang="scss">
   .responsive-ui-card {
-    padding: 10px;
+    padding: var(--padding);
     word-break: break-word;
     overflow: hidden;
-    margin-bottom: 15px;
-    border-radius: var(--border-radius, 5px);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+    margin-bottom: var(--margin-bottom);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 
     &--compact {
       padding: 0;

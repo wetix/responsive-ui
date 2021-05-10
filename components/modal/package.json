@@ -1,0 +1,49 @@
+{
+  "name": "@responsive-ui/modal",
+  "version": "0.16.0",
+  "description": "A modal component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/modal#README.md",
+  "license": "MIT",
+  "main": "lib/cjs/index.js",
+  "browser": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "unpkg": "lib/index.min.js",
+  "svelte": "src/Modal.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "modal",
+    "svelte-modal"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.29.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  },
+  "gitHead": "b0e17338f862e29a90c3371001ee1a4b57e9e984"
+}

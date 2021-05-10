@@ -15,11 +15,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 0 10px;
+    padding: var(--padding);
 
     &__label {
       text-transform: capitalize;
-      font-size: var(--font-size-lg, 20px);
+      font-size: var(--font-size-lg);
       font-weight: 600;
       color: #1a1b1c;
     }
