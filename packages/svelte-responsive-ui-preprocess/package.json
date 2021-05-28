@@ -1,17 +1,34 @@
 {
   "name": "svelte-responsive-ui-preprocess",
-  "version": "1.0.1-alpha.0",
-  "description": "> TODO: description",
-  "author": "Si3nLoong <sianloong90@gmail.com>",
-  "homepage": "https://github.com/wetix/responsive-ui#readme",
-  "license": "ISC",
-  "main": "lib/svelte-responsive-ui-preprocess.js",
+  "version": "1.0.0-alpha.0",
+  "description": "",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "unpkg": "lib/index.min.js",
+  "svelte": "src/index.ts",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "responsive-ui-preprocess"
+  ],
+  "peerDependencies": {
+    "typescript": "^4.0.0"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "types",
+    "src"
   ],
   "repository": {
     "type": "git",
