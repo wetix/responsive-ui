@@ -6,7 +6,7 @@
     "noEmit": true,
     "types": ["svelte", "node"]
   },
-  "include": ["src", "components"],
+  "include": ["src", "components", "node_modules/@wetix/utils"],
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "exclude": ["node_modules/*", "__sapper__/*"]
+  "exclude": ["__sapper__/*"]
 }
