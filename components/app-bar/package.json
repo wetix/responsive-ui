@@ -1,0 +1,49 @@
+{
+  "name": "@responsive-ui/app-bar",
+  "version": "1.0.1-alpha.0",
+  "description": "An app bar component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/app-bar#README.md",
+  "license": "MIT",
+  "main": "lib/index.cjs",
+  "browser": "lib/index.js",
+  "module": "lib/index.mjs",
+  "unpkg": "lib/index.min.js",
+  "svelte": "src/AppBar.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "app-bar",
+    "svelte-app-bar"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.27.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  },
+  "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe"
+}

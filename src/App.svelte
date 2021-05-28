@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AppBar from "../components/app-bar/src/AppBar.svelte";
   import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
@@ -432,8 +433,10 @@
   let openRightDock = false;
 
   let placement = "left";
+
 </script>
 
+<AppBar title="XXXX" />
 <main>
   <Badge count={1}>testing</Badge>
   <Badge count={0}>testing</Badge>
@@ -893,4 +896,5 @@
   :global(span[label], span[data-tooltip]) {
     background: #f5f5f5;
   }
+
 </style>
