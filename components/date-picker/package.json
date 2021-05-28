@@ -15,7 +15,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@wetix/utils": "^0.1.7"
+    "@wetix/utils": "^0.2.2"
   },
   "peerDependencies": {
     "svelte": "^3.27.0"
