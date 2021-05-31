@@ -12,7 +12,7 @@
 
   const handleScroll = () => {
     let offsetY = height - window.scrollY * 0.5;
-    if (offsetY <= 0) offsetY = 0;
+    if (offsetY <= clientHeight) offsetY = 0;
     y = offsetY;
   };
 
@@ -22,7 +22,7 @@
 
 <header
   class="responsive-ui-app-bar {className}"
-  class:responsive-ui-app-bar--float={y === 0}
+  class:responsive-ui-app-bar--fixed={y === 0}
   class:responsive-ui-app-bar--with-bg={hasBg}
   bind:clientHeight
 >
@@ -32,6 +32,7 @@
   </div>
   <slot />
 </header>
+<div style="height:{clientHeight}px" />
 {#if hasBg}
   <div class="responsive-ui-app-bar__semi-circ" {style}>
     <svg {height} width="100%">
@@ -62,7 +63,7 @@
       color: #fff;
     }
 
-    &--float {
+    &--fixed {
       color: #000;
       background: #fff;
       box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);

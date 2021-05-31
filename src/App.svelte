@@ -436,7 +436,7 @@
 
 </script>
 
-<AppBar title="XXXX" />
+<AppBar title="XXXX" hasBg={true} />
 <main>
   <Badge count={1}>testing</Badge>
   <Badge count={0}>testing</Badge>
