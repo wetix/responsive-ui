@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/select",
-  "version": "1.0.1-alpha.1",
+  "version": "1.0.3-alpha.0",
   "description": "A select component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/select#README.md",
@@ -15,8 +15,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@wetix/animation": "^0.2.1",
-    "@wetix/utils": "^0.2.2"
+    "@wetix/animation": "^0.2.2",
+    "@wetix/utils": "^1.0.0-alpha.0"
   },
   "peerDependencies": {
     "svelte": "^3.27.0",

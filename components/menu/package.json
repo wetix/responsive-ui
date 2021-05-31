@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/menu",
-  "version": "1.0.1-alpha.1",
+  "version": "1.0.3-alpha.0",
   "description": "A menu component for responsive-ui",
   "author": "Oyster Lee <oysterd3@gmail.com> (https://github.com/OysterD3)",
   "contributors": [
@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@wetix/utils": "^0.2.2"
+    "@wetix/utils": "^1.0.0-alpha.0"
   },
   "peerDependencies": {
     "svelte": "^3.27.0"
