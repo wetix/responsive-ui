@@ -2,11 +2,10 @@
   let className = "";
   export { className as class };
   export let src = "";
-  export let orientation = "portrait";
+  export let size = "portrait";
   export let responsive = true;
   export let shadowed = true;
   export let rounded = true;
-  // export let size = "xs";
   export let style = "";
 
   let opacity = 1;
@@ -15,10 +14,11 @@
     opacity = 0;
   };
   img.src = src;
+
 </script>
 
 <div
-  class="responsive-ui-poster responsive-ui-poster--{orientation} {className}"
+  class="responsive-ui-poster responsive-ui-poster--{size} {className}"
   class:responsive-ui-poster--responsive={responsive}
   class:responsive-ui-poster--shadowed={shadowed}
   class:responsive-ui-poster--rounded={rounded}
@@ -77,4 +77,5 @@
       }
     }
   }
+
 </style>

@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface PosterProps {
   class?: string;
+  size?: "portrait" | "landscape" | "square";
   src: string;
   responsive?: boolean;
   shadowed?: boolean;
