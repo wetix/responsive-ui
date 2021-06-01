@@ -41,11 +41,13 @@ You should choose whichever file format suitable for your use case.
 ## Component List
 
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/master/components/accordion)
+- [@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/master/components/app-bar)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/master/components/bottom-bar)
 - [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/master/components/bottom-modal)
 - [@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/master/components/bottom-sheet)
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/master/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/master/components/card)
+- [@responsive-ui/carousel](https://github.com/wetix/responsive-ui/tree/master/components/carousel)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/master/components/column)
 - [@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/master/components/dock)
 - [@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/master/components/ellipsis)

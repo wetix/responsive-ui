@@ -1,0 +1,48 @@
+{
+  "name": "@responsive-ui/carousel",
+  "version": "1.0.3-alpha.0",
+  "description": "A carousel component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/carousel#README.md",
+  "license": "MIT",
+  "main": "lib/cjs/index.js",
+  "browser": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "unpkg": "lib/index.min.js",
+  "svelte": "src/Carousel.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "carousel",
+    "svelte-carousel"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.27.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetix/responsive-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  }
+}
