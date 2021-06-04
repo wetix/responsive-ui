@@ -4,6 +4,7 @@
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
   import Button from "../components/button/src/Button.svelte";
+  import Carousel from "../components/carousel/src/Carousel.svelte";
   import DatePicker from "../components/date-picker/src/DatePicker.svelte";
   import Header from "../components/header/src/Header.svelte";
   import Dock from "../components/dock/src/Dock.svelte";
@@ -437,6 +438,13 @@
 </script>
 
 <AppBar title="XXXX" hasBg={true} />
+<Carousel items={[1, 2, 3, 4, 5]} style="margin-top:20px;">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+</Carousel>
 <main>
   <Badge count={1}>testing</Badge>
   <Badge count={0}>testing</Badge>
