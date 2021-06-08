@@ -6,9 +6,11 @@
   export let type = "button";
   export let outline = false;
   export let disabled = false;
+
 </script>
 
 <button
+  role="button"
   {...$$restProps}
   class="responsive-ui-button {className}"
   class:responsive-ui-button--outline={outline}
@@ -51,4 +53,5 @@
       color: var(--primary-text-color, #fc4451);
     }
   }
+
 </style>
