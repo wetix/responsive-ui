@@ -1,6 +1,9 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type CarouselItem = {};
+export type CarouselItem = {
+  src:string;
+  url:string;
+};
 
 export interface CarouselProps {
   class?: string;

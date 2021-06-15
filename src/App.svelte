@@ -4,6 +4,7 @@
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
   import Button from "../components/button/src/Button.svelte";
+  import Carousel from "../components/carousel/src/Carousel.svelte";
   import DatePicker from "../components/date-picker/src/DatePicker.svelte";
   import Header from "../components/header/src/Header.svelte";
   import Dock from "../components/dock/src/Dock.svelte";
@@ -434,9 +435,55 @@
 
   let placement = "left";
 
+  let innerWidth = window.innerWidth;
+
 </script>
 
-<AppBar title="XXXX" hasBg={true} />
+<svelte:window bind:innerWidth />
+
+<AppBar title={`xxx`} hasBg={true} />
+
+<div style={`width:100%; display:flex; justify-content:center;`}>
+  <Carousel
+    items={[
+      {
+        src: "https://asset.wetix.my/images/1tOzB9WuHEsqNXEAMRj7Hzqn8q0.jpg",
+        url: "https://google.com",
+      },
+      {
+        src: "https://asset.wetix.my/images/marathon.png",
+        url: "https://google.com",
+      },
+      {
+        src:
+          "https://asset.wetix.my/images/af910e1d-9112-4fec-b4b5-3671c1b4c87b.jpg",
+        url: "https://google.com",
+      },
+      {
+        src:
+          "https://asset.wetix.my/images/39131d05-37d9-4902-948b-183e24a8a2ae.jpeg",
+        url: "https://google.com",
+      },
+      {
+        src:
+          "https://asset.wetix.my/images/da132468-8677-4675-b8f5-c32f9a751f3a.png",
+        url: "https://google.com",
+      },
+      {
+        src:
+          "https://asset.wetix.my/images/02a86a0b-ac84-4df1-ba71-d707045815e6.png",
+        url: "https://google.com",
+      },
+    ]}
+    heightRatio={0.55}
+    gap={10}
+    leftAndRight={innerWidth > 640 ? 30 : 20}
+    perPage={innerWidth > 640 ? 3 : 1}
+    style="width:100%;"
+    autoPlay={false}
+  />
+</div>
+
 <main>
   <Badge count={1}>testing</Badge>
   <Badge count={0}>testing</Badge>
