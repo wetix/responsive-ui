@@ -20,7 +20,12 @@
     const { width, height } = screen;
     queue.forEach(({ store }) => {
       store.update((v) =>
-        Object.assign(v, { aspectRatio: width / height, width, height })
+        Object.assign(v, {
+          aspectRatio: width / height,
+          width,
+          height,
+          innerWidth: window.innerWidth,
+        })
       );
     });
   });
@@ -30,6 +35,7 @@
     const store$ = writable<ResponsiveState>({
       orientation: screen.orientation.type,
       aspectRatio: width / height,
+      innerWidth: window.innerWidth,
     });
     const id = `responsive-${Math.floor(Math.random() * Date.now())}`;
     queue.push({
@@ -57,4 +63,8 @@
   });
 </script>
 
-<slot aspectRatio={$store$.aspectRatio} orientation={$store$.orientation} />
+<slot
+  aspectRatio={$store$.aspectRatio}
+  orientation={$store$.orientation}
+  innerWidth={$store$.innerWidth}
+/>

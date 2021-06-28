@@ -6,6 +6,7 @@ declare module "*.svelte" {
 
 export type ResponsiveState = {
   aspectRatio: number;
+  innerWidth: number;
   orientation:
     | "landscape-primary"
     | "landscape-secondary"
