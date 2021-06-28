@@ -432,57 +432,60 @@
 
   let openLeftDock = false;
   let openRightDock = false;
-
-  let placement = "left";
-
-  let innerWidth = window.innerWidth;
-
 </script>
-
-<svelte:window bind:innerWidth />
 
 <AppBar title={`xxx`} hasBg={true} />
 
-<div style={`width:100%; display:flex; justify-content:center;`}>
-  <Carousel
-    items={[
-      {
-        src: "https://asset.wetix.my/images/1tOzB9WuHEsqNXEAMRj7Hzqn8q0.jpg",
-        url: "https://google.com",
-      },
-      {
-        src: "https://asset.wetix.my/images/marathon.png",
-        url: "https://google.com",
-      },
-      {
-        src:
-          "https://asset.wetix.my/images/af910e1d-9112-4fec-b4b5-3671c1b4c87b.jpg",
-        url: "https://google.com",
-      },
-      {
-        src:
-          "https://asset.wetix.my/images/39131d05-37d9-4902-948b-183e24a8a2ae.jpeg",
-        url: "https://google.com",
-      },
-      {
-        src:
-          "https://asset.wetix.my/images/da132468-8677-4675-b8f5-c32f9a751f3a.png",
-        url: "https://google.com",
-      },
-      {
-        src:
-          "https://asset.wetix.my/images/02a86a0b-ac84-4df1-ba71-d707045815e6.png",
-        url: "https://google.com",
-      },
-    ]}
-    heightRatio={0.55}
-    gap={10}
-    leftAndRight={innerWidth > 640 ? 30 : 20}
-    perPage={innerWidth > 640 ? 3 : 1}
-    style="width:100%;"
-    autoPlay={false}
-  />
-</div>
+<Responsive let:aspectRatio let:innerWidth let:orientation>
+  <div style={`width:100%; display:flex; justify-content:center;`}>
+    <Carousel
+      items={[
+        {
+          src: "https://asset.wetix.my/images/1tOzB9WuHEsqNXEAMRj7Hzqn8q0.jpg",
+          url: "https://google.com",
+        },
+        {
+          src: "https://asset.wetix.my/images/marathon.png",
+          url: "https://google.com",
+        },
+        {
+          src:
+            "https://asset.wetix.my/images/af910e1d-9112-4fec-b4b5-3671c1b4c87b.jpg",
+          url: "https://google.com",
+        },
+        {
+          src:
+            "https://asset.wetix.my/images/39131d05-37d9-4902-948b-183e24a8a2ae.jpeg",
+          url: "https://google.com",
+        },
+        {
+          src:
+            "https://asset.wetix.my/images/da132468-8677-4675-b8f5-c32f9a751f3a.png",
+          url: "https://google.com",
+        },
+        {
+          src:
+            "https://asset.wetix.my/images/02a86a0b-ac84-4df1-ba71-d707045815e6.png",
+          url: "https://google.com",
+        },
+      ]}
+      heightRatio={0.55}
+      gap={10}
+      leftAndRight={innerWidth > 640 ? 30 : 20}
+      perPage={innerWidth > 640 ? 3 : 1}
+      style="width:90%;"
+      autoPlay={true}
+    />
+  </div>
+</Responsive>
+
+<Responsive let:aspectRatio let:innerWidth let:orientation>
+  <div style={`margin:10px`}>
+    <p>{`aspectRatio: ${aspectRatio}`}</p>
+    <p>{`innerWidth: ${innerWidth}`}</p>
+    <p>{`orientation: ${orientation}`}</p>
+  </div>
+</Responsive>
 
 <main>
   <Badge count={1}>testing</Badge>
@@ -943,5 +946,4 @@
   :global(span[label], span[data-tooltip]) {
     background: #f5f5f5;
   }
-
 </style>

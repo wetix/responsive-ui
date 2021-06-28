@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getNodeAttribute } from "@wetix/utils";
+  import { onDestroy } from "svelte";
 
   import type { CarouselItem } from "../types/index";
 
@@ -48,7 +49,10 @@
   };
 
   if (autoPlay) {
-    setInterval(onRight, 3000);
+    const interval = setInterval(onRight, 3000);
+    onDestroy(() => {
+      clearInterval(interval);
+    });
   }
 
   const handleClick = (e: Event) => {
@@ -67,12 +71,10 @@
       slideStyle = `--slideWidth:${slideWidth}px;--slideHeight:${slideHeight}px;--slideMarginRight:${gap}px;--tx:-${translateX}px;}`;
     }
   }
-
 </script>
 
 <div
   style={`${style}`}
-  bind:this={el}
   bind:offsetWidth={width}
   class="responsive-ui-carousel"
   on:mousedown|preventDefault
@@ -80,33 +82,28 @@
   on:mousewheel|preventDefault
   on:click={handleClick}
 >
-  <div
-    class="left-btn"
-    style={`margin-top:${0.5 * slideHeight}px`}
-    on:click|stopPropagation={onLeft}
-  >
+  <div class="left-btn" style={`left:0;`} on:click|stopPropagation={onLeft}>
     &lt
   </div>
-  <div
-    class="right-btn"
-    style={`margin-top:${0.5 * slideHeight}px; margin-left:${width - 30}px;`}
-    on:click|stopPropagation={onRight}
-  >
+  <div class="right-btn" style={`right:0;`} on:click|stopPropagation={onRight}>
     &gt
   </div>
-  {#each items as item}
-    <div
-      class="responsive-ui-carousel__slide"
-      data-value={item.url}
-      style={slideStyle}
-    >
-      <img src={item.src} alt="" />
-    </div>
-  {/each}
+
+  <div class="responsive-ui-carousel__container" bind:this={el}>
+    {#each items as item}
+      <div
+        class="responsive-ui-carousel__slide"
+        data-value={item.url}
+        style={slideStyle}
+      >
+        <img src={item.src} alt="" />
+      </div>
+    {/each}
+  </div>
 </div>
 
 <style lang="scss">
-  .responsive-ui-carousel {
+  .responsive-ui-carousel__container {
     box-sizing: border-box;
     position: relative;
     width: 100%;
@@ -115,17 +112,6 @@
     scroll-behavior: smooth;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-
-    .left-btn,
-    .right-btn {
-      position: fixed;
-      cursor: pointer;
-      z-index: 1;
-      width: 30px;
-      height: 25px;
-      background-color: rgba(0, 0, 0, 0.3);
-      color: white;
-    }
 
     .responsive-ui-carousel__slide {
       cursor: pointer;
@@ -149,8 +135,23 @@
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
-  .responsive-ui-carousel::-webkit-scrollbar {
+  .responsive-ui-carousel__container::-webkit-scrollbar {
     display: none;
   }
 
+  .right-btn,
+  .left-btn {
+    position: absolute;
+    width: 25px;
+    height: 30px;
+    right: 0;
+    top: 50%;
+    cursor: pointer;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
 </style>
