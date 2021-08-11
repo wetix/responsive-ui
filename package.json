@@ -43,7 +43,7 @@
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^2.0.1",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.0.0",
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
     "camelcase": "^6.2.0",
