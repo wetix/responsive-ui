@@ -11,3 +11,4 @@ bundle.css
 .bin
 public
 public/main.js
+*.log

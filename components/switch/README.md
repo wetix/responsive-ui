@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fswitch)](https://bundlephobia.com/result?p=@responsive-ui/switch)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -62,7 +62,7 @@ declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
 
 ## License
 
-[@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/master/components/switch) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/main/components/switch) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

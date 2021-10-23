@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
-  const queue: string[] = [];
-  window.addEventListener("click", () => {
-    // console.log(queue);
-  });
+  // const queue: string[] = [];
+  // window.addEventListener("click", () => {
+  //   // console.log(queue);
+  // });
 </script>
 
 <script lang="ts">
@@ -15,7 +15,7 @@
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLInputElement = null;
+  export let ref: null | HTMLInputElement;
   export let name = "";
   export let readonly = false;
   export let disabled = false;

@@ -1,4 +1,4 @@
-const sass = require("node-sass");
+const sass = require("sass");
 const custom = require("../webpack.config.js");
 
 module.exports = {

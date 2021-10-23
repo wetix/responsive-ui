@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/menu.svg)](https://www.npmjs.com/package/@responsive-ui/menu)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fposter)](https://bundlephobia.com/result?p=@responsive-ui/menu)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/menu.svg)](https://www.npmjs.com/package/@responsive-ui/menu)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -93,7 +93,7 @@ declare class Menu extends SvelteComponentTyped<MenuProps> {}
 
 ## License
 
-[@responsive-ui/menu](https://github.com/wetix/responsive-ui/tree/master/components/menu) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/menu](https://github.com/wetix/responsive-ui/tree/main/components/menu) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

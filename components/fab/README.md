@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ffab)](https://bundlephobia.com/result?p=@responsive-ui/fab)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/fab.svg)](https://www.npmjs.com/package/@responsive-ui/fab)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -56,7 +56,7 @@ type FloatingActionButtonProps = {
 
 ## License
 
-[@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/master/components/fab) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/main/components/fab) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

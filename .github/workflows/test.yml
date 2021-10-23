@@ -6,13 +6,13 @@ name: test
 on:
   push:
     branches:
+      - main
       - sandbox
-      - master
 
   pull_request:
     branches:
+      - main
       - sandbox
-      - master
 
 jobs:
   deploy:

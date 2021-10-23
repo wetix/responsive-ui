@@ -7,7 +7,7 @@
     "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
     "Mohamad Harith <mohamadharith.my@gmail.com> (https://github.com/mohamadHarith)"
   ],
-  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/quantity#README.md",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/quantity#README.md",
   "license": "MIT",
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",

@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fapp-bar)](https://bundlephobia.com/result?p=@responsive-ui/app-bar)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -30,7 +30,7 @@ yarn add @responsive-ui/app-bar
 
 ## License
 
-[@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/master/components/app-bar) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 
