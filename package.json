@@ -77,6 +77,7 @@
     "vite": "^2.6.10"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.ts$": "ts-jest",
