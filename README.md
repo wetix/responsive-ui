@@ -1,12 +1,11 @@
 # Responsive UI
 
-> WeTix Responsive UI framework.
+> WeTix responsive UI components.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/responsive-ui)](https://bundlephobia.com/result?p=responsive-ui)
 [![Build Status](https://github.com/wetix/responsive-ui/workflows/test/badge.svg?branch=main)](https://github.com/wetix/responsive-ui)
 [![download](https://img.shields.io/npm/dw/responsive-ui.svg)](https://www.npmjs.com/package/responsive-ui)
 [![Known Vulnerabilities](https://snyk.io/test/github/wetix/responsive-ui/badge.svg)](https://snyk.io/test/github/wetix/responsive-ui)
