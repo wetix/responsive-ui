@@ -2,12 +2,16 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface DatePickerProps {
   class?: string;
-  ref?: null | HTMLInputElement;
-  name?: string;
-  disabled?: boolean;
-  readonly?: boolean;
-  value?: string;
   placeholder?: string;
+  value?: string;
+  ref?: null | HTMLInputElement;
+  size: "small" | "default" | "large";
+  name?: string;
+  readonly?: boolean;
+  disabled?: boolean;
+  bordered?: boolean;
+  format?: (v: Date) => string;
+  disabledDate?: (v: Date) => boolean;
 }
 
 export interface DatePickerEvents {

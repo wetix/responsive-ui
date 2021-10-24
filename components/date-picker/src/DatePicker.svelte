@@ -1,111 +1,230 @@
-<script context="module" lang="ts">
-  const queue: string[] = [];
-  window.addEventListener("click", () => {
-    // console.log(queue);
-  });
-</script>
-
 <script lang="ts">
-  import { onMount, onDestroy, SvelteComponentTyped } from "svelte";
-  import type { SvelteComponent } from "svelte";
-
   import Calendar from "./Calendar.svelte";
+  import { isValidDate, toDateString } from "./datetime";
 
   const today = new Date();
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLInputElement = null;
+  export let placeholder = "Select date";
+  export let value = "";
   export let name = "";
+  export let ref: null | HTMLInputElement;
   export let readonly = false;
+  export let size = "default";
+  export let bordered = true;
   export let disabled = false;
-  export let value = `${today.getFullYear()}-${String(
-    today.getMonth() + 1
-  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-  export let placeholder = "";
+  export let format = (v: Date) => v;
+  export let disabledDate = (v: Date) => today > v;
 
-  let calendar: null | SvelteComponent;
-  onMount(() => {
-    // queue.push([datepicker]);
+  let open = false;
+
+  window.addEventListener("click", () => {
+    focused = false;
+    open = false;
   });
 
-  const handleToggle = (e: Event) => {
-    const rect = (<HTMLInputElement>e.currentTarget).getBoundingClientRect();
-    // const { top, bottom } = getAbsoluteBoundingRect(e.currentTarget);
-    if (!calendar) {
-      calendar = new Calendar({
-        target: document.body,
-        props: {
-          value,
-        },
-      });
-      calendar.$on("change", ({ detail }: CustomEvent<string>) => {
-        value = detail;
-        setTimeout(() => {
-          (<SvelteComponentTyped>calendar).$set({ visible: false });
-        }, 200);
-      });
-    }
+  let day = 1;
+  let month = 1;
+  let year = 2021;
+  let clientHeight = 0;
+  let focused = false;
+  // $: formatDate = format(value);
 
-    calendar.$set({
-      style: `top:${rect.top + 10}px;left:${rect.left}px;`,
-      visible: !calendar.visible,
-      value,
-    });
+  const setDateOnlyIfValid = (value: string) => {
+    if (!/^\d{4}\-\d{2}\-\d{2}$/.test(value)) return false;
+    if (isValidDate(value)) {
+      const date = new Date(value);
+      year = date.getFullYear();
+      month = date.getMonth();
+      day = date.getDate();
+      return true;
+    }
+    return false;
   };
 
-  onDestroy(() => {
-    calendar && calendar.$destroy();
-  });
+  const handleSelectDate = (e: CustomEvent<Date>) => {
+    const { detail } = e;
+    value = toDateString(detail);
+    month = detail.getMonth();
+    day = detail.getDate();
+    year = detail.getFullYear();
+  };
+
+  const handleChange = (e: Event) => {
+    value = (<HTMLInputElement>e.currentTarget).value;
+    setDateOnlyIfValid(value);
+  };
+
+  const handleFocus = () => {
+    focused = true;
+    setTimeout(() => {
+      open = true;
+    }, 200);
+  };
+
+  const handleBlur = () => {
+    if (!setDateOnlyIfValid(value)) value = "";
+  };
+
+  const handleClear = () => {
+    ref!!.focus();
+    focused = false;
+    value = "";
+    day = 0;
+    setTimeout(() => {
+      open = false;
+    }, 200);
+  };
 </script>
 
-<div class="responsive-ui-date {className}" on:click={handleToggle}>
-  <div class="responsive-ui-date__wrapper">
-    <div class="responsive-ui-date__input">
-      <input
-        bind:this={ref}
-        type="date"
-        {name}
-        {disabled}
-        {placeholder}
-        {readonly}
-        {value}
-        on:change
-        on:blur
+<div
+  class="date-picker date-picker--{size} {className}"
+  class:date-picker--focused={focused}
+  class:date-picker--bordered={bordered}
+  class:date-picker--disabled={disabled}
+  bind:clientHeight
+  on:click|stopPropagation={handleFocus}
+>
+  <input
+    bind:this={ref}
+    type="text"
+    {name}
+    {disabled}
+    on:focus={handleFocus}
+    {placeholder}
+    {readonly}
+    on:input={handleChange}
+    on:blur={handleBlur}
+    size="20"
+    autocomplete="off"
+    {value}
+  />
+  <span
+    class="date-picker-calendar-icon"
+    role="img"
+    aria-label="calendar"
+    on:click={() => (open = true)}
+    ><svg
+      viewBox="64 64 896 896"
+      focusable="false"
+      data-icon="calendar"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      aria-hidden="true"
+      ><path
+        d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+      /></svg
+    >
+  </span>
+  {#if open}
+    <span
+      class="date-picker-close-icon"
+      role="button"
+      on:click|stopPropagation={handleClear}
+    >
+      <svg
+        viewBox="64 64 896 896"
+        focusable="false"
+        data-icon="close-circle"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        aria-hidden="true"
+        ><path
+          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+        /></svg
+      ></span
+    >
+  {/if}
+
+  {#if open}
+    <div class="date-picker-calendar" style={`top:${clientHeight + 5}px`}>
+      <Calendar
+        bind:day
+        bind:month
+        bind:year
+        {disabledDate}
+        on:change={handleSelectDate}
       />
     </div>
-  </div>
+  {/if}
 </div>
 
 <style lang="scss">
-  .responsive-ui-date {
-    width: 100%;
+  .date-picker {
+    display: inline-flex;
+    position: relative;
+    padding: 0 8px;
+    height: var(--input-height, 30px);
+    line-height: var(--input-height, 30px);
+    background: #fff;
+    align-items: center;
+    border-radius: 3px;
+    transition: all 0.5s;
 
-    &__wrapper {
-      position: relative;
+    &--bordered {
+      border: 1px solid #dcdcdc;
     }
 
-    &__input {
-      border-radius: var(--border-radius, 5px);
-      position: relative;
-      overflow: hidden;
+    &--focused,
+    &:hover {
+      border-color: #fc4451;
+    }
 
-      input[type="date"] {
-        display: block;
-        border: none;
-        background: #f1f1f1;
-        width: 100%;
-        height: var(--height, 34px);
-        line-height: var(--height, 34px);
-        margin: 0;
-        padding: 0 10px;
-        appearance: none;
-        font-size: var(--font-size, 14px);
-        font-family: var(--font-family, inherit);
-        outline: none;
-        text-transform: none;
-        box-sizing: border-box;
+    &--focused {
+      box-shadow: 0 0 0 2px rgba(252, 68, 81, 0.3);
+
+      .date-picker-calendar-icon {
+        opacity: 0;
       }
+    }
+
+    &--disabled {
+      background: #f7f7f7;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &--small {
+      height: 24px;
+      line-height: 24px;
+    }
+
+    &--big {
+      height: 36px;
+      line-height: 36px;
+    }
+
+    input[type="text"] {
+      cursor: inherit;
+      font-family: inherit;
+      display: inline-block;
+      background: inherit;
+      outline: none;
+      border: none;
+      flex: auto;
+    }
+
+    &-close-icon {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      color: #bebebe;
+      line-height: 1;
+      background: transparent;
+      transform: translateY(-50%);
+      cursor: pointer;
+      // opacity: 0;
+      transition: opacity 0.3s, color 0.3s;
+      z-index: 1;
+    }
+
+    &-calendar {
+      position: absolute;
+      left: 0;
+      z-index: 5;
     }
   }
 </style>

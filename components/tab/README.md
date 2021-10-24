@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/tab.svg)](https://www.npmjs.com/package/@responsive-ui/tab)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftab)](https://bundlephobia.com/result?p=@responsive-ui/tab)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/tab.svg)](https://www.npmjs.com/package/@responsive-ui/tab)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -80,7 +80,7 @@ declare class Tab extends SvelteComponentTyped<TabProps, TabEvents, TabSlots> {}
 
 ## License
 
-[@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/master/components/tab) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/main/components/tab) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

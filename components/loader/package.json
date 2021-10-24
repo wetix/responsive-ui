@@ -3,7 +3,7 @@
   "version": "1.0.3-alpha.0",
   "description": "A loader component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
-  "homepage": "https://github.com/wetix/responsive-ui/blob/master/components/loader#README.md",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/loader#README.md",
   "license": "MIT",
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",

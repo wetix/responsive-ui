@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Faccordion)](https://bundlephobia.com/result?p=@responsive-ui/dock)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -76,7 +76,7 @@ declare class Dock extends SvelteComponentTyped<
 
 ## License
 
-[@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/master/components/dock) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/main/components/dock) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

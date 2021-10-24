@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/label.svg)](https://www.npmjs.com/package/@responsive-ui/label)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Flabel)](https://bundlephobia.com/result?p=@responsive-ui/label)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/label.svg)](https://www.npmjs.com/package/@responsive-ui/label)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -73,7 +73,7 @@ declare class Label extends SvelteComponentTyped<
 
 ## License
 
-[@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/master/components/label) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/main/components/label) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

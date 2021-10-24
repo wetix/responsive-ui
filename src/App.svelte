@@ -1,5 +1,6 @@
 <script lang="ts">
   import AppBar from "../components/app-bar/src/AppBar.svelte";
+  import Date from "../components/date-picker/src/DatePicker.svelte";
   import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
@@ -434,7 +435,10 @@
   let openRightDock = false;
 </script>
 
-<AppBar title={`xxx`} hasBg={true} />
+<!-- <AppBar title={`xxx`} hasBg={true} /> -->
+<div style="padding: 1rem">
+  <Date />
+</div>
 
 <Responsive let:aspectRatio let:innerWidth let:orientation>
   <div style={`width:100%; display:flex; justify-content:center;`}>

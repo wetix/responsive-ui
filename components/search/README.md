@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/search.svg)](https://www.npmjs.com/package/@responsive-ui/search)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsearch)](https://bundlephobia.com/result?p=@responsive-ui/search)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/search.svg)](https://www.npmjs.com/package/@responsive-ui/search)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -61,7 +61,7 @@ type SearchProps = {
 
 ## License
 
-[@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/master/components/search) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/main/components/search) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 

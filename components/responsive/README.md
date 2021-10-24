@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@responsive-ui/responsive.svg)](https://www.npmjs.com/package/@responsive-ui/responsive)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fresponsive)](https://bundlephobia.com/result?p=@responsive-ui/responsive)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/responsive.svg)](https://www.npmjs.com/package/@responsive-ui/responsive)
-[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/master/LICENSE)
+[![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
@@ -41,7 +41,7 @@ alt="@responsive-ui/responsive" /> -->
 
 ## License
 
-[@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/master/components/responsive) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/master/LICENSE).
+[@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/main/components/responsive) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## Big Thanks To
 
