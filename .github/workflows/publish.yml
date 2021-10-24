@@ -5,24 +5,39 @@ name: Publish to NPM
 
 on:
   release:
-    branches:
-      - main
+    types: [created]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v3.x
-
       - name: Checkout
         uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
 
-      - uses: actions/setup-node@v2
+      - name: Cache node_modules
+        id: cache-modules
+        uses: actions/cache@v2
         with:
-          node-version: "16"
+          path: node_modules
+          key: 16.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
 
-      - name: Install NPM and run jest
+      - name: Setup Nodejs 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Set variables
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+
+      - name: Publish packages
         run: |
-          npm install
-          npm run test
+          lerna publish --yes --message '🔖 chore: release version ${{ steps.vars.outputs.tag }}'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
