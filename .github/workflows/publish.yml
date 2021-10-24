@@ -58,6 +58,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Create Git Tag
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          version: ${{ env.CURRENT_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
+
       # - name: Publish packages
       #   run: |
       #     lerna publish from-package --yes --message '🔖 chore: release version ${{ steps.vars.outputs.tag }}'
