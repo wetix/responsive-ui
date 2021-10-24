@@ -16,12 +16,12 @@
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },
     // backgroundColor: { control: "color" },
-    // onClick: { action: "onClick" },
+    onChange: { action: "onChange" },
   }}
 />
 
 <Template let:args>
-  <DatePicker {...args} on:click={args.onClick} />
+  <DatePicker {...args} on:change={args.onChange} />
 </Template>
 
 <Story

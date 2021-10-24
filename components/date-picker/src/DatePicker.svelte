@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
 
   const today = new Date();
+  const dispatch = createEventDispatcher<{
+    change: { date: null | Date; dateString: string };
+  }>();
 
   let className = "";
   export { className as class };
@@ -38,17 +42,19 @@
       year = date.getFullYear();
       month = date.getMonth();
       day = date.getDate();
+      dispatch("change", { date, dateString: value });
       return true;
     }
     return false;
   };
 
   const handleSelectDate = (e: CustomEvent<Date>) => {
-    const { detail } = e;
-    value = toDateString(detail);
-    month = detail.getMonth();
-    day = detail.getDate();
-    year = detail.getFullYear();
+    const date = e.detail;
+    value = toDateString(date);
+    month = date.getMonth();
+    day = date.getDate();
+    year = date.getFullYear();
+    dispatch("change", { date, dateString: value });
   };
 
   const handleChange = (e: Event) => {
@@ -72,6 +78,7 @@
     focused = false;
     value = "";
     day = 0;
+    dispatch("change", { date: null, dateString: value });
     setTimeout(() => {
       open = false;
     }, 200);
