@@ -38,6 +38,6 @@ jobs:
 
       - name: Publish packages
         run: |
-          lerna publish --yes --message '🔖 chore: release version ${{ steps.vars.outputs.tag }}'
+          lerna publish from-package --yes --message '🔖 chore: release version ${{ steps.vars.outputs.tag }}'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
