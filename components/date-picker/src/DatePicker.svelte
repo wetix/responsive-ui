@@ -15,7 +15,7 @@
   export let name = "";
   export let ref: null | HTMLInputElement;
   export let readonly = false;
-  export let size = "default";
+  export let size = "middle";
   export let bordered = true;
   export let disabled = false;
   export let format = (v: Date) => v;
@@ -33,6 +33,7 @@
   let year = 2021;
   let clientHeight = 0;
   let focused = false;
+  const duration = 150;
   // $: formatDate = format(value);
 
   const setDateOnlyIfValid = (value: string) => {
@@ -66,7 +67,7 @@
     focused = true;
     setTimeout(() => {
       open = true;
-    }, 200);
+    }, duration);
   };
 
   const handleBlur = () => {
@@ -81,7 +82,7 @@
     dispatch("change", { date: null, dateString: value });
     setTimeout(() => {
       open = false;
-    }, 200);
+    }, duration);
   };
 </script>
 
@@ -230,6 +231,9 @@
 
     &-calendar {
       position: absolute;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       left: 0;
       z-index: 5;
     }

@@ -1,9 +1,29 @@
 <script>
   import Date from "@responsive-ui/date-picker/src/DatePicker.svelte";
+  import Button from "@responsive-ui/button/src/Button.svelte";
+  import Modal from "@responsive-ui/modal/src/Modal.svelte";
+  import DateRangePicker from "@responsive-ui/date-picker/src/DateRangePicker.svelte";
 </script>
 
+<Modal>
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+  when an unknown printer took a galley of type and scrambled it to make a type
+  specimen book. It has survived not only five centuries, but also the leap into
+  electronic typesetting, remaining essentially unchanged. It was popularised in
+  the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+  and more recently with desktop publishing software like Aldus PageMaker
+  including versions of Lorem Ipsum.
+</Modal>
 <div style="padding: 1rem">
   <Date />
+  <div>
+    <Button size="small">Test 1</Button>
+    <Button>Test 2</Button>
+  </div>
+  <div>
+    <DateRangePicker />
+  </div>
 </div>
 
 <style lang="scss">

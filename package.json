@@ -1,6 +1,7 @@
 {
   "name": "responsive-ui-monorepo",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "workspaces": [
     "components/*",

@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { SvelteComponentDev } from "svelte/internal";
-
   import type { TableColumn, TableItem } from "../types";
 
   let className = "";
@@ -43,17 +42,17 @@
 </script>
 
 <div
-  class="responsive-ui-table {className}"
-  class:responsive-ui-table__bordered={bordered}
+  class="resp-table {className}"
+  class:resp-table__bordered={bordered}
   bind:this={ref}
 >
-  <table class:responsive-ui-table__striped={striped} {style}>
+  <table class:resp-table__striped={striped} {style}>
     <thead>
       <tr>
         {#each columns as column}
           <th
-            class="responsive-ui-table__col--align-{column.align || 'left'}"
-            class:responsive-ui-table__col--nowrap={column.nowrap === true}
+            class="resp-table__col--align-{column.align || 'left'}"
+            class:resp-table__col--nowrap={column.nowrap === true}
             style="width:{column.width || 'auto'}"
           >
             {column.label || ""}
@@ -69,14 +68,13 @@
               <tr>
                 {#each columns as column}
                   <td
-                    class="responsive-ui-table__col--align-{column.align ||
-                      'left'}"
+                    class="resp-table__col--align-{column.align || 'left'}"
                     style="width:{column.width || 'auto'}"
                   >
                     {#if column.component}
                       <svelte:component this={getComponent(column, item)} />
                     {:else}
-                      <div class="responsive-ui-table__cell">
+                      <div class="resp-table__cell">
                         {getValue(column, item)}
                       </div>
                     {/if}
@@ -90,7 +88,7 @@
             <tr>
               <td
                 colspan={columns.length}
-                class="responsive-ui-table__col--empty responsive-ui-table__col--align-center"
+                class="resp-table__col--empty resp-table__col--align-center"
               >
                 <p>NO RECORD.</p>
               </td>
@@ -106,7 +104,7 @@
 </div>
 
 <style lang="scss">
-  .responsive-ui-table {
+  .resp-table {
     position: relative;
     width: 100%;
     border: 1px solid transparent;
@@ -175,26 +173,26 @@
         word-break: break-all;
       }
 
-      .responsive-ui-table__col--nowrap {
+      .resp-table__col--nowrap {
         word-break: unset;
         word-wrap: unset;
         overflow-wrap: unset;
         white-space: nowrap;
       }
 
-      .responsive-ui-table__col--align-left {
+      .resp-table__col--align-left {
         text-align: left;
       }
 
-      .responsive-ui-table__col--align-center {
+      .resp-table__col--align-center {
         text-align: center;
       }
 
-      .responsive-ui-table__col--align-right {
+      .resp-table__col--align-right {
         text-align: right;
       }
 
-      .responsive-ui-table__col--empty {
+      .resp-table__col--empty {
         padding: var(--padding, 15px);
       }
     }

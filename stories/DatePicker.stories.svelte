@@ -8,7 +8,7 @@
   component={DatePicker}
   argTypes={{
     size: {
-      control: { type: "select", options: ["small", "default", "large"] },
+      control: { type: "select", options: ["small", "middle", "large"] },
     },
     placeholder: { control: "text" },
     name: { control: "text" },
@@ -27,7 +27,7 @@
 <Story
   name="Default"
   args={{
-    size: "default",
+    size: "middle",
     placeholder: "Select Date",
   }}
 />
