@@ -1,282 +1,288 @@
-<svelte:options accessors />
-
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
-  // import { getNodeAttribute } from "@wetix/utils";
+  import {
+    get2DimensionDate,
+    monthNames,
+    toDateString,
+    weekdays,
+  } from "./datetime";
 
   const dispatch = createEventDispatcher();
 
-  export let style = "";
-  export let value = "";
-  export let visible = false;
-  export let availableDays = [];
-  export let hoveredDate = "";
+  export let year = 0;
+  export let month = 0;
+  export let day = 0;
+  export let disabledDate = (v: Date) => false;
 
-  let today = value ? new Date(value) : new Date();
-  let month = today.getMonth();
-  let year = today.getFullYear();
+  let selectedMonth = month;
+  let selectedYear = year;
 
-  const MONTH_NAMES = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const DAYS = ["S", "M", "T", "W", "T", "F", "S"];
+  $: selectedMonth = month;
+  $: selectedYear = year;
 
-  const nextMonth = (): void => {
-    if (++month > 11) {
-      year++;
-      month = 0;
-    }
-    getNoOfDays();
+  const handlePrevYear = () => {
+    if (selectedYear - 1 > 1970) selectedYear--;
   };
 
-  const prevMonth = (): void => {
-    if (--month < 0) {
-      year--;
-      month = 11;
-    }
-    getNoOfDays();
+  const handleNextYear = () => {
+    if (selectedYear + 1 < 9999) selectedYear++;
   };
 
-  const getNoOfDays = (): void => {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // find where to start calendar day of week
-    const dayOfWeek = new Date(year, month).getDay();
-    const blankDaysArray = [];
-    for (let i = 1; i <= dayOfWeek - 1; i++) {
-      // blankDaysArray.push(i);
-      blankDaysArray.push("");
+  const handlePrevMonth = () => {
+    if (selectedMonth - 1 < 0) {
+      selectedYear--;
+      selectedMonth = 11;
+    } else {
+      selectedMonth--;
     }
-
-    const daysArray = [];
-    for (let i = 1; i <= daysInMonth; i++) {
-      daysArray.push(i);
-    }
-
-    // blankDays = blankDaysArray;
-    // availableDays = daysArray;
-    const days = [...blankDaysArray, ...daysArray];
-    availableDays = days.reduce((arr, item, idx) => {
-      const cIdx = Math.floor(idx / 7);
-
-      if (!arr[cIdx]) {
-        arr[cIdx] = [];
-      }
-
-      arr[cIdx].push(item);
-      return arr;
-    }, []);
   };
 
-  $: isSelectedDay = (date: string, type?: "end" | "start"): boolean => {
-    if (type === "end") {
-      return value[1] === date;
+  const handleNextMonth = () => {
+    if (selectedMonth + 1 > 11) {
+      selectedYear++;
+      selectedMonth = 0;
+    } else {
+      selectedMonth++;
     }
-    if (type === "start") {
-      return value[0] === date;
-    }
-    return false;
   };
 
-  const onSelectDate = (e: Event) => {
-    // const date = getNodeAttribute(e, "data-date");
-    // console.log(date);
-    // if (date) {
-    //   value = date;
-    //   dispatch("change", value);
-    // }
+  const handleSelectDate = (date: Date) => (e: Event) => {
+    dispatch("change", date);
   };
 
-  getNoOfDays();
+  $: isValid = year > 0 && month >= 0 && day > 0;
+  $: getClassList = (v: Date) => {
+    const clsList: Array<string> = [];
+
+    if (v.getMonth() != selectedMonth) {
+      clsList.push("calendar__date--not-in-view");
+    } else {
+      if (
+        isValid &&
+        v.getDate() == day &&
+        v.getMonth() == month &&
+        v.getFullYear() == year
+      )
+        clsList.push("calendar__date--selected");
+    }
+    if (disabledDate(v)) clsList.push("calendar__date--disabled");
+    return clsList.join(" ");
+  };
+  $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
-{#if visible}
-  <div
-    class="responsive-ui-date__container"
-    transition:fade={{ duration: 150 }}
-    {style}
-  >
-    <div class="responsive-ui-date__panels">
-      <div class="responsive-ui-date__panel">
-        <div class="responsive-ui-date__header">
-          <div
-            class="responsive-ui-date__buttons responsive-ui-date__buttons-prev"
-          >
-            <button type="button" on:click|stopPropagation={prevMonth}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="responsive-ui-date__month-year">
-            {MONTH_NAMES[month]}
-            {year}
-          </div>
-          <div
-            class="responsive-ui-date__buttons responsive-ui-date__buttons-next"
-          >
-            <button type="button" on:click|stopPropagation={nextMonth}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="responsive-ui-date__body">
-          <table>
-            <thead>
-              <tr>
-                {#each DAYS as day}
-                  <th class="responsive-ui-date__day">{day}</th>
-                {/each}
-              </tr>
-            </thead>
-            <tbody on:click|stopPropagation={onSelectDate}>
-              {#each availableDays as dateRow}
-                <tr style="margin-bottom: 6px">
-                  {#each dateRow as date}
-                    <td
-                      class="responsive-ui-date__date"
-                      class:responsive-ui-date__date-selected={isSelectedDay(
-                        `${year}-${month + 1}-${date}`
-                      )}
-                      on:mouseenter={() => {
-                        hoveredDate = `${year}-${month + 1}-${date}`;
-                      }}
-                      on:mouseleave={() => {
-                        hoveredDate = "";
-                      }}
-                      data-date={`${year}-${String(month + 1).padStart(
-                        2,
-                        "0"
-                      )}-${String(date).padStart(2, "0")}`}
-                    >
-                      <span>{date}</span>
-                    </td>
-                  {/each}
-                </tr>
-              {/each}
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="calendar" on:click|stopPropagation in:fade out:fade>
+  <div class="calendar-header">
+    <button class="calendar-button" on:click={handlePrevYear}>
+      <span class="calendar-most-prev-icon" />
+    </button>
+    <button class="calendar-button" on:click={handlePrevMonth}>
+      <span class="calendar-prev-icon" />
+    </button>
+    <div class="calendar-header-caption">
+      <button class="calendar-button"
+        >{monthNames[selectedMonth].substr(0, 3)}
+      </button>
+      <button class="calendar-button">{selectedYear}</button>
     </div>
+    <button class="calendar-button" on:click={handleNextMonth}>
+      <span class="calendar-next-icon" />
+    </button>
+    <button class="calendar-button" on:click={handleNextYear}>
+      <span class="calendar-most-next-icon" />
+    </button>
   </div>
-{/if}
+  <div class="calendar-body">
+    <table>
+      <thead>
+        <tr>
+          {#each weekdays as v}
+            <td>{v.substr(0, 2)}</td>
+          {/each}
+        </tr>
+      </thead>
+      <tbody>
+        {#each Array.from({ length: 6 }) as _, i}
+          <tr>
+            {#each Array.from({ length: 7 }) as _, j}
+              <td
+                data-date={toDateString(data[i * 7 + j])}
+                on:click={handleSelectDate(data[i * 7 + j])}
+              >
+                <div class="calendar__date {getClassList(data[i * 7 + j])}">
+                  {data[i * 7 + j].getDate()}
+                </div>
+              </td>
+            {/each}
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+  <slot name="footer">
+    <div class="calendar-footer">
+      <button class="calendar-button" on:click={handleSelectDate(new Date())}
+        >Today</button
+      >
+    </div>
+  </slot>
+</div>
 
 <style lang="scss">
-  .responsive-ui-date__container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 50;
-    background: #fff;
-    max-height: 360px;
-    border-radius: 10px;
-    box-shadow: 0 0 13px -4px rgba(0, 0, 0, 0.2);
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    // padding: var(--padding, 15px);
+    width: 260px;
 
-    .responsive-ui-date__panels {
-      display: inline-flex;
-      max-width: 650px;
-      width: 100%;
+    &-header-caption {
+      flex-grow: 1;
+      text-align: center;
     }
 
-    .responsive-ui-date__panel {
-      padding: 10px;
-      max-width: 300px;
+    .calendar-button {
+      cursor: pointer;
+      font-family: inherit;
+      // padding: 0 3px;
+      // -webkit-appearance: button;
+      background: transparent;
+      border: none;
     }
 
-    .responsive-ui-date__header {
-      display: block;
-      position: relative;
-      margin-bottom: 16px;
+    .calendar-header,
+    .calendar-footer {
+      display: flex;
+      justify-content: center;
+      height: 36px;
+      padding: 0 8px;
+      align-items: center;
+    }
 
-      .responsive-ui-date__buttons {
+    .calendar-header {
+      border-bottom: 1px solid #f5f5f5;
+
+      .calendar-prev-icon,
+      .calendar-most-prev-icon,
+      .calendar-next-icon,
+      .calendar-most-next-icon {
+        position: relative;
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+      }
+      .calendar-prev-icon,
+      .calendar-most-prev-icon {
+        transform: rotate(-45deg);
+      }
+      .calendar-next-icon,
+      .calendar-most-next-icon {
+        transform: rotate(135deg);
+      }
+      .calendar-prev-icon::before,
+      .calendar-most-prev-icon::before,
+      .calendar-next-icon::before,
+      .calendar-most-next-icon::before {
         position: absolute;
         top: 0;
-        bottom: 0;
-
-        &-prev {
-          left: 0;
-        }
-
-        &-next {
-          right: 0;
-        }
-
-        button {
-          display: inline-flex;
-          padding: 4px;
-          background-color: transparent;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-
-          &:hover {
-            background-color: #dbdbdb;
-          }
-        }
-
-        svg {
-          height: 20px;
-          width: 20px;
-          display: inline-flex;
-          color: #fc4451;
-        }
+        left: 0;
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border: 0 solid currentColor;
+        border-width: 1.5px 0 0 1.5px;
+        content: "";
       }
-
-      .responsive-ui-date__month-year {
-        font-size: 16px;
-        text-align: center;
-        padding-top: 4px;
-        user-select: none;
+      .calendar-most-prev-icon::after,
+      .calendar-most-next-icon::after {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border: 0 solid currentColor;
+        border-width: 1.5px 0 0 1.5px;
+        content: "";
       }
     }
 
-    .responsive-ui-date__body {
-      .responsive-ui-date__day,
-      .responsive-ui-date__date {
-        width: 34px;
-        height: 34px;
+    .calendar-body {
+      padding: 8px;
+    }
+
+    table {
+      table-layout: fixed;
+      border-collapse: collapse;
+      width: 100%;
+
+      th,
+      td {
         text-align: center;
-        color: #3d3d3d;
-        border-radius: 9999px;
+        vertical-align: middle;
+        padding: 2px 0;
+      }
+    }
+
+    th {
+      font-weight: 650;
+    }
+
+    .calendar__date {
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+      height: 25px;
+      line-height: 25px;
+      width: 25px;
+      // border: 1px solid red;
+      // border-radius: 50%;
+      transition: all 0.3s;
+
+      &--selected {
+        background: #fc4451;
+        color: #fff;
       }
 
-      .responsive-ui-date__date {
-        position: relative;
-        cursor: pointer;
-        &:hover {
-          background-color: #dbdbdb;
-        }
-
-        span {
-          user-select: none;
-        }
+      &--disabled:before {
+        background: #bebebe !important;
       }
+
+      &--not-in-view {
+        color: #bebebe;
+      }
+
+      &:hover {
+        background: #fc4451;
+        color: #fff;
+      }
+    }
+
+    .calendar-footer {
+      border-top: 1px solid #f5f5f5;
+      justify-content: center;
+    }
+
+    // &:before {
+    //   content: "";
+    //   position: fixed;
+    //   display: block;
+    //   top: 0;
+    //   bottom: 0;
+    //   right: 0;
+    //   background: red;
+    //   height: 100%;
+    //   z-index: 100;
+    // }
+    @media screen and (max-width: 640px) {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      width: auto;
+      // box-shadow: none;
     }
   }
 </style>

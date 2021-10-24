@@ -1,6 +1,6 @@
 <script lang="ts">
   import AppBar from "../components/app-bar/src/AppBar.svelte";
-  import Date from "../components/date-picker/src/Date.svelte";
+  import Date from "../components/date-picker/src/DatePicker.svelte";
   import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
   import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";

@@ -15,8 +15,8 @@
     "dev:vite": "vite",
     "start": "sirv public --port 3600",
     "validate": "svelte-check --workspace=components",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006 -s public --no-manager-cache",
+    "build-storybook": "build-storybook -s public",
     "test": "jest components"
   },
   "engines": {
@@ -37,8 +37,9 @@
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
-    "@storybook/addon-viewport": "^6.3.12",
+    "@storybook/addon-svelte-csf": "^1.1.0",
     "@storybook/svelte": "^6.3.12",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^2.0.1",
