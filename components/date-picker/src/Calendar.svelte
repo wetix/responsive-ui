@@ -56,7 +56,7 @@
     const clsList: Array<string> = [];
 
     if (v.getMonth() != selectedMonth) {
-      clsList.push("calendar__date--not-in-view");
+      clsList.push("resp-calendar__date--not-in-view");
     } else {
       if (
         isValid &&
@@ -64,36 +64,36 @@
         v.getMonth() == month &&
         v.getFullYear() == year
       )
-        clsList.push("calendar__date--selected");
+        clsList.push("resp-calendar__date--selected");
     }
-    if (disabledDate(v)) clsList.push("calendar__date--disabled");
+    if (disabledDate(v)) clsList.push("resp-calendar__date--disabled");
     return clsList.join(" ");
   };
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
-<div class="calendar" on:click|stopPropagation in:fade out:fade>
-  <div class="calendar-header">
-    <button class="calendar-button" on:click={handlePrevYear}>
-      <span class="calendar-most-prev-icon" />
+<div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
+  <div class="resp-calendar-header">
+    <button class="resp-calendar-button" on:click={handlePrevYear}>
+      <span class="resp-calendar-most-prev-icon" />
     </button>
-    <button class="calendar-button" on:click={handlePrevMonth}>
-      <span class="calendar-prev-icon" />
+    <button class="resp-calendar-button" on:click={handlePrevMonth}>
+      <span class="resp-calendar-prev-icon" />
     </button>
-    <div class="calendar-header-caption">
-      <button class="calendar-button"
+    <div class="resp-calendar-header-caption">
+      <button class="resp-calendar-button"
         >{monthNames[selectedMonth].substr(0, 3)}
       </button>
-      <button class="calendar-button">{selectedYear}</button>
+      <button class="resp-calendar-button">{selectedYear}</button>
     </div>
-    <button class="calendar-button" on:click={handleNextMonth}>
-      <span class="calendar-next-icon" />
+    <button class="resp-calendar-button" on:click={handleNextMonth}>
+      <span class="resp-calendar-next-icon" />
     </button>
-    <button class="calendar-button" on:click={handleNextYear}>
-      <span class="calendar-most-next-icon" />
+    <button class="resp-calendar-button" on:click={handleNextYear}>
+      <span class="resp-calendar-most-next-icon" />
     </button>
   </div>
-  <div class="calendar-body">
+  <div class="resp-calendar-body">
     <table>
       <thead>
         <tr>
@@ -110,7 +110,9 @@
                 data-date={toDateString(data[i * 7 + j])}
                 on:click={handleSelectDate(data[i * 7 + j])}
               >
-                <div class="calendar__date {getClassList(data[i * 7 + j])}">
+                <div
+                  class="resp-calendar__date {getClassList(data[i * 7 + j])}"
+                >
                   {data[i * 7 + j].getDate()}
                 </div>
               </td>
@@ -121,16 +123,17 @@
     </table>
   </div>
   <slot name="footer">
-    <div class="calendar-footer">
-      <button class="calendar-button" on:click={handleSelectDate(new Date())}
-        >Today</button
+    <div class="resp-calendar-footer">
+      <button
+        class="resp-calendar-button"
+        on:click={handleSelectDate(new Date())}>Today</button
       >
     </div>
   </slot>
 </div>
 
 <style lang="scss">
-  .calendar {
+  .resp-calendar {
     display: flex;
     flex-direction: column;
     border-radius: 4px;
@@ -143,7 +146,7 @@
       text-align: center;
     }
 
-    .calendar-button {
+    .resp-calendar-button {
       cursor: pointer;
       font-family: inherit;
       // padding: 0 3px;
@@ -152,8 +155,8 @@
       border: none;
     }
 
-    .calendar-header,
-    .calendar-footer {
+    .resp-calendar-header,
+    .resp-calendar-footer {
       display: flex;
       justify-content: center;
       height: 36px;
@@ -161,30 +164,30 @@
       align-items: center;
     }
 
-    .calendar-header {
+    .resp-calendar-header {
       border-bottom: 1px solid #f5f5f5;
 
-      .calendar-prev-icon,
-      .calendar-most-prev-icon,
-      .calendar-next-icon,
-      .calendar-most-next-icon {
+      .resp-calendar-prev-icon,
+      .resp-calendar-most-prev-icon,
+      .resp-calendar-next-icon,
+      .resp-calendar-most-next-icon {
         position: relative;
         display: inline-block;
         width: 7px;
         height: 7px;
       }
-      .calendar-prev-icon,
-      .calendar-most-prev-icon {
+      .resp-calendar-prev-icon,
+      .resp-calendar-most-prev-icon {
         transform: rotate(-45deg);
       }
-      .calendar-next-icon,
-      .calendar-most-next-icon {
+      .resp-calendar-next-icon,
+      .resp-calendar-most-next-icon {
         transform: rotate(135deg);
       }
-      .calendar-prev-icon::before,
-      .calendar-most-prev-icon::before,
-      .calendar-next-icon::before,
-      .calendar-most-next-icon::before {
+      .resp-calendar-prev-icon::before,
+      .resp-calendar-most-prev-icon::before,
+      .resp-calendar-next-icon::before,
+      .resp-calendar-most-next-icon::before {
         position: absolute;
         top: 0;
         left: 0;
@@ -195,8 +198,8 @@
         border-width: 1.5px 0 0 1.5px;
         content: "";
       }
-      .calendar-most-prev-icon::after,
-      .calendar-most-next-icon::after {
+      .resp-calendar-most-prev-icon::after,
+      .resp-calendar-most-next-icon::after {
         position: absolute;
         top: 4px;
         left: 4px;
@@ -209,7 +212,7 @@
       }
     }
 
-    .calendar-body {
+    .resp-calendar-body {
       padding: 8px;
     }
 
@@ -230,7 +233,7 @@
       font-weight: 650;
     }
 
-    .calendar__date {
+    .resp-calendar__date {
       cursor: pointer;
       display: inline-block;
       vertical-align: middle;
@@ -260,7 +263,7 @@
       }
     }
 
-    .calendar-footer {
+    .resp-calendar-footer {
       border-top: 1px solid #f5f5f5;
       justify-content: center;
     }

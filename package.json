@@ -11,11 +11,10 @@
   },
   "scripts": {
     "build": "node ./scripts/build.js",
-    "dev": "rollup -c -w",
-    "dev:vite": "vite",
+    "dev": "vite",
     "start": "sirv public --port 3600",
     "validate": "svelte-check --workspace=components",
-    "storybook": "start-storybook -p 6006 -s ./public --no-manager-cache",
+    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider; start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "test": "jest components",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb"

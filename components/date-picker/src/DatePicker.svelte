@@ -79,10 +79,10 @@
 </script>
 
 <div
-  class="date-picker date-picker--{size} {className}"
-  class:date-picker--focused={focused}
-  class:date-picker--bordered={bordered}
-  class:date-picker--disabled={disabled}
+  class="resp-date-picker resp-date-picker--{size} {className}"
+  class:resp-date-picker--focused={focused}
+  class:resp-date-picker--bordered={bordered}
+  class:resp-date-picker--disabled={disabled}
   bind:clientHeight
   on:click|stopPropagation={handleFocus}
 >
@@ -101,7 +101,7 @@
     {value}
   />
   <span
-    class="date-picker-calendar-icon"
+    class="resp-date-picker-calendar-icon"
     role="img"
     aria-label="calendar"
     on:click={() => (open = true)}
@@ -120,7 +120,7 @@
   </span>
   {#if open}
     <span
-      class="date-picker-close-icon"
+      class="resp-date-picker-close-icon"
       role="button"
       on:click|stopPropagation={handleClear}
     >
@@ -140,7 +140,7 @@
   {/if}
 
   {#if open}
-    <div class="date-picker-calendar" style={`top:${clientHeight + 5}px`}>
+    <div class="resp-date-picker-calendar" style={`top:${clientHeight + 5}px`}>
       <Calendar
         bind:day
         bind:month
@@ -153,7 +153,7 @@
 </div>
 
 <style lang="scss">
-  .date-picker {
+  .resp-date-picker {
     display: inline-flex;
     position: relative;
     padding: 0 8px;
@@ -176,7 +176,7 @@
     &--focused {
       box-shadow: 0 0 0 2px rgba(252, 68, 81, 0.3);
 
-      .date-picker-calendar-icon {
+      .resp-date-picker-calendar-icon {
         opacity: 0;
       }
     }

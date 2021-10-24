@@ -12,15 +12,15 @@
 
 {#if open}
   <div
-    class="responsive-ui-dock__overlay"
+    class="resp-dock__overlay"
     on:click={closable ? () => (open = !open) : undefined}
     in:fade
     out:fade
   />
 {/if}
 <div
-  class="responsive-ui-dock responsive-ui-dock--{placement} {className}"
-  class:responsive-ui-dock--close={!open}
+  class="resp-dock resp-dock--{placement} {className}"
+  class:resp-dock--close={!open}
   style={`width:${width};${style}`}
 >
   <slot />
@@ -38,21 +38,21 @@
     z-index: 100;
   }
 
-  .responsive-ui-dock {
+  .resp-dock {
     @include dockStyle;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(0%);
 
     &--left {
       left: 0;
-      &.responsive-ui-dock--close {
+      &.resp-dock--close {
         transform: translateX(-110%);
       }
     }
 
     &--right {
       right: 0;
-      &.responsive-ui-dock--close {
+      &.resp-dock--close {
         transform: translateX(110%);
       }
     }
@@ -68,7 +68,7 @@
   }
 
   @media screen and (max-width: 480px) {
-    .responsive-ui-dock {
+    .resp-dock {
       width: 100% !important;
     }
   }
