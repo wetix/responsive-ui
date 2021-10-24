@@ -12,3 +12,4 @@ bundle.css
 public
 public/main.js
 *.log
+package-lock.json
