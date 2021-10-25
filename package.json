@@ -11,7 +11,10 @@
     "npm-packlist": "^1.4.4"
   },
   "scripts": {
-    "versionup": "lerna version --conventional-commits --no-git-tag-version",
+    "bump": "lerna version --conventional-commits --no-git-tag-version",
+    "patch": "lerna version patch --conventional-commits --no-git-tag-version",
+    "minor": "lerna version minor --conventional-commits --no-git-tag-version",
+    "major": "lerna version major --conventional-commits --no-git-tag-version",
     "build": "node ./scripts/build.js",
     "dev": "vite",
     "start": "sirv public --port 3600",
@@ -20,6 +23,7 @@
     "build-storybook": "build-storybook -s ./public",
     "test": "jest components",
     "commit": "cz",
+    "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb"
   },
   "engines": {
