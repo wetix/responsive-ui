@@ -4,6 +4,10 @@
 name: Publish to NPM
 
 on:
+  push:
+    branches:
+      - main
+
   pull_request:
     branches:
       - main
