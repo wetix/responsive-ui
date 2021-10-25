@@ -1,3 +1,4 @@
+
 # @responsive-ui/accordion
 
 > A accordion component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/accordion.svg)](https://www.npmjs.com/package/@responsive-ui/accordion)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Faccordion)](https://bundlephobia.com/result?p=@responsive-ui/accordion)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Faccordion)](https://bundlephobia.com/result?p=%40responsive-ui%2Faccordion)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/accordion.svg)](https://www.npmjs.com/package/@responsive-ui/accordion)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/accordion
@@ -24,71 +25,15 @@ or
 yarn add @responsive-ui/accordion
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/105443082-e79b3580-5ca5-11eb-864d-d3b2c7b5d1a2.png"
-alt="@responsive-ui/accordion" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
-
-```ts
-interface AccordionItem {
-  label: string;
-  content: string | SvelteComponentDev;
-}
-
-interface AccordionProps {
-  class?: string;
-  items: AccordionItem[];
-  multiple?: boolean;
-  style?: string;
-}
-
-interface AccordionEvents {}
-
-interface AccordionSlots {}
-
-declare class Accordion extends SvelteComponentTyped<
-  AccordionProps,
-  AccordionEvents,
-  AccordionSlots
-> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import Accordion from '@responsive-ui/accordion';
-
-  const accordionItems = [
-    {
-      label: "label 1",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in!",
-    },
-    {
-      label: "label 2",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. B, in!",
-    },
-  ];
-</script>
-
-<Accordion items={accordionItems} multiple={true} />
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/647efdb8779c4b7ebe14b01f5bd32b5f?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
+## 📄 License
 
 [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

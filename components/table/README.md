@@ -1,4 +1,5 @@
-# `@responsive-ui/table`
+
+# @responsive-ui/table
 
 > A table component of responsive-ui.
 
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftable)](https://bundlephobia.com/result?p=@responsive-ui/table)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftable)](https://bundlephobia.com/result?p=%40responsive-ui%2Ftable)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/table.svg)](https://www.npmjs.com/package/@responsive-ui/table)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/table
@@ -24,135 +25,15 @@ or
 yarn add @responsive-ui/table
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/104023615-e1647e00-51fc-11eb-8600-989bf7245263.png"
-alt="@responsive-ui/table" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-type TableColumn = {
-  key: string;
-  label: string;
-  class: string;
-  align: string | "left" | "center" | "right";
-  width: number | string;
-  value: ReturnType<any>;
-  component: any;
-};
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-type TableItem = Record<string, any> | object;
-
-type TableProps = {
-  key: string;
-  columns: Partial<TableColumn>[];
-  items: null | TableItem[];
-  striped?: boolean;
-  bordered?: boolean;
-  class?: string;
-  style?: string;
-};
-
-interface TableEvents {}
-
-interface TableSlots {
-  row: {
-    index: number;
-    item: TableItem;
-  };
-  empty: {};
-}
-
-declare class Table extends SvelteComponentTyped<
-  TableProps,
-  TableEvents,
-  TableSlots
-> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import Table from "@responsive-ui/table";
-
-   const columns = [
-    { label: "Name", key: "name" },
-    {
-      label: "Email",
-      key: "email",
-      value: (v) => (v ? v : "-"),
-    },
-    {
-      label: "Amount",
-      align: "right",
-      value: ({ amount }) => `RM ${(amount || 0).toFixed(2)}`,
-    },
-    { label: "Offline" },
-    { label: "Age", align: "center", key: "age" },
-    { label: "Created", key: "created" },
-  ];
-
-  const datas = [
-    {
-      key: "1",
-      name: "John Doe",
-      age: 19,
-      online: false,
-      amount: 10.5,
-      created: "2020 Jan 01",
-    },
-    {
-      key: "2",
-      name: "Willie",
-      email: "willie@hotmail.com",
-      age: 24,
-      online: false,
-      amount: 3.38,
-      created: "2020 Feb 27",
-    },
-    {
-      key: "3",
-      name: "The Joker",
-      age: 16,
-      online: true,
-      amount: 1020.6,
-      created: "2006 Oct 1",
-    },
-    {
-      key: "4",
-      name: "Batman",
-      age: 30,
-      online: false,
-      amount: 1.445,
-      created: "2006 Oct 1",
-    },
-    {
-      key: "5",
-      name: "The Joker",
-      age: 16,
-      online: true,
-      amount: 45.78,
-      created: "2006 Oct 1",
-    },
-  ];
-</script>
-
-<Table key="key" columns={columns} items={datas} />
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/201ffa5d9c80454f87918ea23535d088?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/main/components/table) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

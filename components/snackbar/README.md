@@ -1,17 +1,19 @@
-# `@responsive-ui/snackbar`
+
+# @responsive-ui/snackbar
 
 > A snackbar component of responsive-ui.
 
 <p>
 
+[![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/snackbar.svg)](https://www.npmjs.com/package/@responsive-ui/snackbar)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsnackbar)](https://bundlephobia.com/result?p=%40responsive-ui%2Fsnackbar)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/snackbar.svg)](https://www.npmjs.com/package/@responsive-ui/snackbar)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsnackbar)](https://bundlephobia.com/result?p=@responsive-ui/snackbar)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/snackbar
@@ -23,63 +25,15 @@ or
 yarn add @responsive-ui/snackbar
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/104030411-4ec8dc80-5206-11eb-98b1-b8fe246b38b0.png"
-alt="@responsive-ui/snackbar" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-interface SnackbarProps {
-  text: string;
-  variant?: string;
-  class?: string;
-  timeout?: number;
-  rounded?: boolean;
-}
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-interface SnackbarEvents {
-  close?: void;
-}
-
-interface SnackbarSlots {
-  default: {};
-}
-
-declare class Snackbar extends SvelteComponentTyped<
-  SnackbarProps,
-  SnackbarEvents,
-  SnackbarSlots
-> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import Snackbar from "@responsive-ui/snackbar";
-
-  Snackbar.show({
-    timeout: 10000,
-    text: "Snackbar message",
-  });
-</script>
-
-<Snackbar.default>
-  Default Message
-</Snackbar.default>
-```
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/snackbar](https://github.com/wetix/responsive-ui/tree/main/components/snackbar) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

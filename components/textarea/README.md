@@ -1,18 +1,19 @@
+
 # @responsive-ui/textarea
 
-> An textarea component of responsive-ui.
+> A textarea component of responsive-ui.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/textarea.svg)](https://www.npmjs.com/package/@responsive-ui/textarea)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftextarea)](https://bundlephobia.com/result?p=@responsive-ui/textarea)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Ftextarea)](https://bundlephobia.com/result?p=%40responsive-ui%2Ftextarea)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/textarea.svg)](https://www.npmjs.com/package/@responsive-ui/textarea)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/textarea
@@ -24,54 +25,15 @@ or
 yarn add @responsive-ui/textarea
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/104733584-de780900-5779-11eb-8a5b-c54019866418.png"
-alt="@responsive-ui/button" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-interface TextareaProps {
-  name: string;
-  value: any;
-  rows?: number;
-  placeholder?: string;
-  autofocus?: boolean;
-  autoresize?: boolean;
-}
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-interface TextareaEvents {
-  input?: void;
-}
-
-declare class Textarea extends SvelteComponentTyped<
-  TextareaProps,
-  TextareaEvents
-> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import Textarea from '@responsive-ui/textarea';
-</script>
-
-<Textarea />
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/5d4146f8408a49b18558d60cb1619aea?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/textarea](https://github.com/wetix/responsive-ui/tree/main/components/textarea) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

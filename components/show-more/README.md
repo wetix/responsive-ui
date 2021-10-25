@@ -1,3 +1,4 @@
+
 # @responsive-ui/show-more
 
 > A show more component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/show-more.svg)](https://www.npmjs.com/package/@responsive-ui/show-more)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fshow-more)](https://bundlephobia.com/result?p=@responsive-ui/show-more)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fshow-more)](https://bundlephobia.com/result?p=%40responsive-ui%2Fshow-more)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/show-more.svg)](https://www.npmjs.com/package/@responsive-ui/show-more)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/show-more
@@ -24,74 +25,15 @@ or
 yarn add @responsive-ui/show-more
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/105342925-ee7d6600-5c1b-11eb-826a-f24ae3a30545.png"
-alt="@responsive-ui/show-more" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-interface ShowMoreProps {
-  text?: string;
-  threshold?: number;
-  class?: string;
-  style?: string;
-}
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-interface ShowMoreEvents {}
-
-interface ShowMoreSlots {
-  default: {};
-  trigger: {};
-}
-
-declare class ShowMore extends SvelteComponentTyped<
-  ShowMoreProps,
-  ShowMoreEvents,
-  ShowMoreSlots
-> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import ShowMore from '@responsive-ui/show-more';
-</script>
-
-<ShowMore threshold={80}>
-  <p>
-			Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-			roots in a piece of classical Latin literature from 45 BC, making it over
-			2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-			College in Virginia, looked up one of the more obscure Latin words,
-			consectetur, from a Lorem Ipsum passage, and going through the cites of
-			the word in classical literature, discovered the undoubtable source. Lorem
-			Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-			Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This
-			book is a treatise on the theory of ethics, very popular during the
-			Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-			amet..", comes from a line in section 1.10.32.
-	</p>
-	The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-	those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum"
-	by Cicero are also reproduced in their exact original form, accompanied by English
-	versions from the 1914 translation by H. Rackham.
-</ShowMore>
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/e70235a5b5d041cb84e52e3b5998c45c?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/show-more](https://github.com/wetix/responsive-ui/tree/main/components/show-more) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

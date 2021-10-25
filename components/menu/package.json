@@ -1,7 +1,7 @@
 {
   "name": "@responsive-ui/menu",
   "version": "1.0.4-alpha",
-  "description": "A menu component for responsive-ui",
+  "description": "A menu component of responsive-ui",
   "author": "Oyster Lee <oysterd3@gmail.com> (https://github.com/OysterD3)",
   "contributors": [
     "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",

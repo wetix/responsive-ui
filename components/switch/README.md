@@ -1,3 +1,4 @@
+
 # @responsive-ui/switch
 
 > A switch component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fswitch)](https://bundlephobia.com/result?p=@responsive-ui/switch)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fswitch)](https://bundlephobia.com/result?p=%40responsive-ui%2Fswitch)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/switch.svg)](https://www.npmjs.com/package/@responsive-ui/switch)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/switch
@@ -24,47 +25,15 @@ or
 yarn add @responsive-ui/switch
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/104030012-b03c7b80-5205-11eb-81d0-b5e5a04af252.png"
-alt="@responsive-ui/switch" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-interface SwitchProps {
-  checked?: boolean;
-  disabled?: boolean;
-}
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-interface SwitchEvents {
-  change?: () => {} | void;
-}
-
-declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
-```
-
-## Example
-
-```svelte
-<script>
-  import Switch from '@responsive-ui/switch';
-</script>
-
-<Switch checked={false} />
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/69f8b2f7d5944e25949a87c30b009256?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/main/components/switch) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

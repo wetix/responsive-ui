@@ -1,7 +1,7 @@
 {
   "name": "responsive-ui",
   "version": "1.0.4-alpha",
-  "description": "WeTix UI Framework",
+  "description": "WeTix svelte UI components",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",

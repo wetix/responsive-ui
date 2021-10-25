@@ -9,6 +9,8 @@ bundle.css
 *.log
 *.lock
 .bin
+bk
+backup
 public
 public/main.js
 *.log

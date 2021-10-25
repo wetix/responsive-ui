@@ -1,3 +1,4 @@
+
 # @responsive-ui/app-bar
 
 > An app bar component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fapp-bar)](https://bundlephobia.com/result?p=@responsive-ui/app-bar)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fapp-bar)](https://bundlephobia.com/result?p=%40responsive-ui%2Fapp-bar)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/app-bar
@@ -24,15 +25,15 @@ or
 yarn add @responsive-ui/app-bar
 ```
 
-## Sponsors
+## 🔋 Sponsors
 
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## License
+## 📄 License
 
-[@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

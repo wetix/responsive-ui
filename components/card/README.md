@@ -1,3 +1,4 @@
+
 # @responsive-ui/card
 
 > A card component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fcard)](https://bundlephobia.com/result?p=@responsive-ui/card)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fcard)](https://bundlephobia.com/result?p=%40responsive-ui%2Fcard)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/card.svg)](https://www.npmjs.com/package/@responsive-ui/card)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/card
@@ -24,43 +25,15 @@ or
 yarn add @responsive-ui/card
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/104024747-8f245c80-51fe-11eb-959f-34c879828373.png"
-alt="@responsive-ui/card" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-type CardProps = {
-  compact?: boolean;
-  class?: string;
-};
-```
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-## Example
-
-```svelte
-<script>
-  import Card from '@responsive-ui/card';
-</script>
-
-<Card>
-  Card content here...
-</Card>
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/32edf1b8b1a64be789c567980d5a5240?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/main/components/card) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 

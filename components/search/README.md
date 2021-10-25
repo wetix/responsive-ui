@@ -1,3 +1,4 @@
+
 # @responsive-ui/search
 
 > A search component of responsive-ui.
@@ -6,13 +7,13 @@
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/@responsive-ui/search.svg)](https://www.npmjs.com/package/@responsive-ui/search)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsearch)](https://bundlephobia.com/result?p=@responsive-ui/search)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fsearch)](https://bundlephobia.com/result?p=%40responsive-ui%2Fsearch)
 [![download](https://img.shields.io/npm/dw/@responsive-ui/search.svg)](https://www.npmjs.com/package/@responsive-ui/search)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
 
-## Install
+## 🔨 Install
 
 ```console
 npm install @responsive-ui/search
@@ -24,46 +25,15 @@ or
 yarn add @responsive-ui/search
 ```
 
-## Look and Feel
+## 🔋 Sponsors
 
-<img src="https://user-images.githubusercontent.com/28108597/105341711-63e83700-5c1a-11eb-9c29-1f743e03bb4d.png"
-alt="@responsive-ui/search" />
+<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="200px">
 
-## Properties, Events & Slots
+## 📄 License
 
-```ts
-type SearchProps = {
-  name: string;
-  value: any;
-  placeholder?: string;
-  size?: number;
-  loading?: boolean;
-  spellcheck?: boolean;
-  debounceTimer?: number;
-};
-```
+[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-## Example
-
-```svelte
-<script>
-  import Search from '@responsive-ui/search';
-</script>
-
-<Search placeholder="Searching..."></Search>
-```
-
-[Try it yourself in Svelte Repl](https://svelte.dev/repl/098739b0d1ac44f2a994c9a615c213fd?version=latest)
-
-## Sponsors
-
-<img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
-
-## License
-
-[@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/main/components/search) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
-
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 
