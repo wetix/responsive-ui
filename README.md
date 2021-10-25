@@ -48,6 +48,7 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/main/components/card)
 - [@responsive-ui/carousel](https://github.com/wetix/responsive-ui/tree/main/components/carousel)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/main/components/column)
+- [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/main/components/date-picker)
 - [@responsive-ui/dock](https://github.com/wetix/responsive-ui/tree/main/components/dock)
 - [@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/main/components/ellipsis)
 - [@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/main/components/fab)
