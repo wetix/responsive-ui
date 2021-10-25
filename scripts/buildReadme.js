@@ -55,12 +55,6 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 };
 
 (async function createREADME() {
-  // const lernaPath = path.resolve("./lerna.json");
-  // const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
-
-  // const pkgs = lerna.packages || [];
-
-  // const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
   const folderPath = path.resolve("./components");
   const folders = fs.readdirSync(folderPath);
 
