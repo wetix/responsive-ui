@@ -100,7 +100,7 @@ jobs:
       - name: Build and Publish
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          lerna version ${{ env.CURRENT_VERSION }} --conventional-commits --create-release github --yes
+          lerna version ${{ env.CURRENT_VERSION }} --conventional-commits --force-publish --create-release github --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
