@@ -40,11 +40,17 @@
 <style lang="scss">
   @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-  :root {
+  :global(:root) {
     --padding-sm: 0.7rem;
     --padding: 1rem;
     --font-size-lg: 20px;
   }
+
+  :global(::selection) {
+    color: #fff;
+    background: #fc4451;
+  }
+
   :global(body) {
     height: 100vh;
     overflow: hidden;

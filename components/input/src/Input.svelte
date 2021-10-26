@@ -6,10 +6,12 @@
   let className = "";
   export { className as class };
   export let ref: null | HTMLInputElement = null;
+  export let variant = "medium";
   export let type = "text";
   export let bordered = true;
   export let value = "";
 
+  let focused = false;
   const onKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
     const key = e.key || e.keyCode;
@@ -22,44 +24,73 @@
   };
 </script>
 
-<input
-  {...$$restProps}
-  class="responsive-ui-input {className}"
-  class:responsive-ui-input--bordered={bordered}
-  bind:this={ref}
-  {value}
-  {type}
-  on:keyup={onKeyup}
-  on:input
-  on:change
-/>
+<div
+  class="resp-input resp-input--{variant} {className}"
+  class:resp-input--bordered={bordered}
+  class:resp-input--focused={focused}
+  on:click|stopPropagation={() => (focused = true)}
+>
+  <slot name="prefix" />
+  <input
+    {...$$restProps}
+    bind:this={ref}
+    {value}
+    {type}
+    on:blur={() => (focused = false)}
+    on:keyup={onKeyup}
+    on:input
+    on:change
+  />
+  <slot name="suffix" />
+</div>
 
 <style lang="scss">
-  .responsive-ui-input {
-    margin: 0;
-    display: block;
+  .resp-input {
+    display: inline-flex;
     color: var(--text-color, #1a1b1c);
-    background: #f1f1f1;
-    font-size: var(--font-size, 14px);
-    font-family: var(--font-family, inherit);
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    user-select: text;
-    -webkit-user-select: text;
-    -khtml-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    padding: 0 10px;
+    background: #fff;
+    height: var(--input-height, 30px);
+    line-height: var(--input-height, 30px);
+    padding: 0 8px;
     box-sizing: border-box;
-    height: var(--height, 34px);
-    line-height: var(--height, 34px);
-    border: none;
-    border-radius: var(--border-radius, 5px);
+    border-radius: 3px;
+    transition: all 0.5s;
+
+    input {
+      cursor: inherit;
+      font-family: inherit;
+      display: inline-block;
+      background: inherit;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      border: none;
+      flex: auto;
+    }
+
+    &--small {
+      height: var(--input-height-sm, 24px);
+      line-height: var(--input-height-sm, 24px);
+    }
+
+    &--large {
+      min-width: 240px;
+      height: var(--input-height-lg, 42px);
+      line-height: var(--input-height-lg, 42px);
+    }
 
     &--bordered {
-      border-color: #f1f1f1;
+      border: 1px solid #f1f1f1;
+    }
+
+    &--focused,
+    &:hover {
+      border-color: #fc4451;
+    }
+
+    &--focused {
+      border-color: #fc4451;
+      box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
     }
   }
 </style>

@@ -7,6 +7,7 @@ export interface InputProps {
   name?: string;
   type?: string;
   label?: string;
+  variant?: "small" | "medium" | "large";
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;
@@ -24,6 +25,15 @@ export interface InputEvents {
   enter?: any;
 }
 
-declare class Input extends SvelteComponentTyped<InputProps, InputEvents> {}
+export interface InputSlots {
+  prefix: {};
+  suffix: {};
+}
+
+declare class Input extends SvelteComponentTyped<
+  InputProps,
+  InputEvents,
+  InputSlots
+> {}
 
 export default Input;

@@ -10,6 +10,7 @@
     title: { control: "text" },
     content: { control: "text" },
     open: { control: "boolean" },
+    closable: { control: "boolean" },
     maskClosable: { control: "boolean" },
     onCancel: { action: "onCancel" },
     onConfirm: { action: "onClick" },

@@ -28,14 +28,14 @@
     cursor: pointer;
     display: inline-block;
     border: none;
-    outline: none;
+    outline: 0;
     appearance: none;
     font-family: inherit;
     min-width: 65px;
     font-size: var(--font-size, 14px);
     border: 1px solid #dcdcdc;
     background: #fff;
-    padding: 0 12px;
+    padding: 0 15px;
     margin: 0;
     height: var(--input-height, 30px);
     line-height: var(--input-height, 30px);
@@ -43,6 +43,10 @@
     text-transform: capitalize;
     transition: opacity 0.3s;
     border-radius: var(--border-radius, 5px);
+
+    &:hover {
+      background: #f5f5f5;
+    }
 
     &--small {
       height: 24px;
@@ -53,6 +57,16 @@
       border-color: var(--primary-color, #fc4451);
       background: var(--primary-color, #fc4451);
       color: #fff;
+
+      &:hover {
+        background: rgba(255, 69, 82, 0.9);
+        border-color: rgba(255, 69, 82, 0.9);
+      }
+
+      &:active {
+        background: rgba(209, 54, 65, 1) !important;
+        border-color: rgba(209, 54, 65, 1) !important;
+      }
     }
 
     &--link {

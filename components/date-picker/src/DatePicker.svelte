@@ -165,10 +165,12 @@
     display: inline-flex;
     position: relative;
     padding: 0 8px;
+    margin: 0;
     height: var(--input-height, 30px);
     line-height: var(--input-height, 30px);
     background: #fff;
     align-items: center;
+    box-sizing: border-box;
     border-radius: 3px;
     transition: all 0.5s;
 
@@ -182,7 +184,7 @@
     }
 
     &--focused {
-      box-shadow: 0 0 0 2px rgba(252, 68, 81, 0.3);
+      box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
 
       .resp-date-picker-calendar-icon {
         opacity: 0;
@@ -210,9 +212,12 @@
       font-family: inherit;
       display: inline-block;
       background: inherit;
+      margin: 0;
+      padding: 0;
       outline: none;
       border: none;
       flex: auto;
+      color: var(--text-color, #1a1b1c);
     }
 
     &-close-icon {

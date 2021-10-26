@@ -8,9 +8,9 @@
   let className = "";
   export { className as class };
   export let title: null | string = null;
-  // export let useKeyboard = false;
   export let width = "480px";
   export let open = true;
+  export let closable = true;
   export let maskClosable = true;
   export let style = "";
 
@@ -43,6 +43,27 @@
       {#if title != null}
         <header class="resp-modal__header">
           <caption>{title}</caption>
+          {#if closable}
+            <span class="resp-modal__header-close">
+              <span
+                class="resp-modal__header-close-icon"
+                on:click={() => (open = false)}
+              >
+                <svg
+                  viewBox="64 64 896 896"
+                  focusable="false"
+                  data-icon="close"
+                  width="1em"
+                  height="1em"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  ><path
+                    d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                  /></svg
+                >
+              </span>
+            </span>
+          {/if}
         </header>
       {/if}
     </slot>
@@ -93,6 +114,30 @@
         font-size: var(--font-size-lg, 24px);
         font-weight: 600;
       }
+
+      .resp-modal__header-close {
+        cursor: pointer;
+        display: inline-flex;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #373737;
+
+        &-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 28px;
+          height: 28px;
+          transition: all 0.3s;
+
+          &:hover {
+            color: #000;
+            border-radius: 50%;
+            background: #f7f7f7;
+          }
+        }
+      }
     }
 
     &__header,
@@ -104,25 +149,6 @@
     &__footer {
       display: flex;
       flex-direction: row-reverse;
-      //   position: absolute;
-      //   bottom: 0;
-      //   width: 100%;
-      //   border-top: 1px solid var(--color-primary, #fc4451);
-
-      //   .btn {
-      //     display: flex;
-      //     justify-content: center;
-      //     align-items: center;
-      //     width: 50%;
-      //     height: 50px;
-      //     color: var(--color-white, #ffffff);
-      //     background: var(--color-primary, #fc4451);
-
-      //     &.secondary {
-      //       background: var(--color-white, #ffffff);
-      //       color: var(--color-primary, #fc4451);
-      //     }
-      //   }
     }
   }
 </style>

@@ -4,6 +4,7 @@ export interface ModalProps {
   class?: string;
   title?: null | string;
   width?: string;
+  closable?: boolean;
   maskClosable?: boolean;
   open?: boolean;
   style?: string;

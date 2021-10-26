@@ -8,18 +8,18 @@
   component={Table}
   argTypes={{
     label: { control: "text" },
-    // size: {
-    //   control: { type: "select", options: ["small", "default", "large"] },
-    // },
-    // type: { control: "text" },
     disabled: { control: "boolean" },
-    // backgroundColor: { control: "color" },
+    bordered: { control: "boolean" },
     onClick: { action: "onClick" },
   }}
 />
 
 <Template let:args>
-  <Table {...args} on:click={args.onClick}>
+  <Table
+    {...args}
+    columns={[{ key: "status", label: "Status" }]}
+    on:click={args.onClick}
+  >
     {args.label}
   </Table>
 </Template>
