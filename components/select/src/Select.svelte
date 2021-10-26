@@ -20,7 +20,7 @@
 {:else}
   <select
     {...$$restProps}
-    class="responsive-ui-select {className}"
+    class="resp-select {className}"
     {size}
     {readonly}
     {disabled}
@@ -38,7 +38,7 @@
 {/if}
 
 <style lang="scss">
-  .responsive-ui-select {
+  .resp-select {
     display: block;
     width: 100%;
     border: 1px solid #f1f1f1;

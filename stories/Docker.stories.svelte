@@ -1,11 +1,11 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Dock from "../components/docker/src/Docker.svelte";
+  import Docker from "../components/docker/src/Docker.svelte";
 </script>
 
 <Meta
-  title="Components/Dock"
-  component={Dock}
+  title="Components/Docker"
+  component={Docker}
   argTypes={{
     content: { control: "text" },
     disabled: { control: "boolean" },
@@ -15,9 +15,9 @@
 />
 
 <Template let:args>
-  <Dock {...args} on:click={args.onClick}>
+  <Docker {...args} on:click={args.onClick}>
     {args.content}
-  </Dock>
+  </Docker>
 </Template>
 
 <Story
