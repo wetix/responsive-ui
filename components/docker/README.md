@@ -1,14 +1,14 @@
 
-# @responsive-ui/dock
+# @responsive-ui/docker
 
-> A dock component of responsive-ui.
+> A docker component of responsive-ui.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
-[![npm](https://img.shields.io/npm/v/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fdock)](https://bundlephobia.com/result?p=%40responsive-ui%2Fdock)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/dock.svg)](https://www.npmjs.com/package/@responsive-ui/dock)
+[![npm](https://img.shields.io/npm/v/@responsive-ui/docker.svg)](https://www.npmjs.com/package/@responsive-ui/docker)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fdocker)](https://bundlephobia.com/result?p=%40responsive-ui%2Fdocker)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/docker.svg)](https://www.npmjs.com/package/@responsive-ui/docker)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
@@ -16,13 +16,13 @@
 ## 🔨 Install
 
 ```console
-npm install @responsive-ui/dock
+npm install @responsive-ui/docker
 ```
 
 or
 
 ```console
-yarn add @responsive-ui/dock
+yarn add @responsive-ui/docker
 ```
 
 ## 🔋 Sponsors
