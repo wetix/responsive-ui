@@ -14,4 +14,3 @@ backup
 public
 public/main.js
 *.log
-package-lock.json

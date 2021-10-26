@@ -43,7 +43,7 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install
+      - name: NPM Install
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm install
 
