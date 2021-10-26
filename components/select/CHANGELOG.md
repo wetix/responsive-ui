@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.3...v1.0.8-alpha.0) (2021-10-26)
+
+
+### Bug Fixes
+
+* `package.json` ([3b1a854](https://github.com/wetix/responsive-ui/commit/3b1a8541e595da415fe5bd50c0508c32c232a02c))
+
+
+
+
+
 ## [1.0.7-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.2...v1.0.7-alpha.3) (2021-10-26)
 
 **Note:** Version bump only for package @responsive-ui/select
