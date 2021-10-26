@@ -1,7 +1,10 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface CardProps {
+  id?: string;
+  title?: string;
   class?: string;
+  style?: string;
   compact?: boolean;
 }
 

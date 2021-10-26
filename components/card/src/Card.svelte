@@ -6,21 +6,24 @@
 
 <div
   {...$$restProps}
-  class="responsive-ui-card {className}"
-  class:responsive-ui-card--compact={compact}
+  class="resp-card {className}"
+  class:resp-card--compact={compact}
   on:click
 >
   <slot />
 </div>
 
 <style lang="scss">
-  .responsive-ui-card {
-    padding: var(--padding);
+  .resp-card {
+    padding: 15px;
     word-break: break-word;
     overflow: hidden;
+    font-family: inherit;
+    font-size: inherit;
     margin-bottom: var(--margin-bottom);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 
     &--compact {
       padding: 0;
