@@ -27,9 +27,15 @@ jobs:
       - name: Cache node_modules
         id: cache-modules
         uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          path: node_modules
-          key: 16.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Setup Nodejs 16
         uses: actions/setup-node@v2
