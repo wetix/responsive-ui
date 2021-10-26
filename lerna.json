@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "components/*",
-    "packages/*"
-  ],
+  "packages": ["components/*", "packages/*"],
   "ignoreChanges": [
     "**/__fixtures__/**",
     "**/__tests__/**",
@@ -13,6 +10,9 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
+    "publish": {
+      "conventionalCommits": true
+    },
     "version": {
       "message": "🔖 chore(release): release version %s"
     }

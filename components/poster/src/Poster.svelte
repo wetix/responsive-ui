@@ -14,22 +14,21 @@
     opacity = 0;
   };
   img.src = src;
-
 </script>
 
 <div
-  class="responsive-ui-poster responsive-ui-poster--{size} {className}"
-  class:responsive-ui-poster--responsive={responsive}
-  class:responsive-ui-poster--shadowed={shadowed}
-  class:responsive-ui-poster--rounded={rounded}
+  class="resp-poster resp-poster--{size} {className}"
+  class:resp-poster--responsive={responsive}
+  class:resp-poster--shadowed={shadowed}
+  class:resp-poster--rounded={rounded}
   style={`background-image:url(${src});${style}`}
   on:click
 >
-  <div class="responsive-ui-poster__overlay" style={`opacity:${opacity};`} />
+  <div class="resp-poster__overlay" style={`opacity: ${opacity}`} />
 </div>
 
 <style lang="scss">
-  .responsive-ui-poster {
+  .resp-poster {
     display: block;
     position: relative;
     background-size: cover;
@@ -52,7 +51,7 @@
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .responsive-ui-poster__overlay {
+    .resp-poster__overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -77,5 +76,4 @@
       }
     }
   }
-
 </style>
