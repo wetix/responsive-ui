@@ -25,6 +25,14 @@
 </Template>
 
 <Story
+  name="Primary"
+  args={{
+    variant: "primary",
+    label: "Button",
+  }}
+/>
+
+<Story
   name="Default"
   args={{
     label: "Button",

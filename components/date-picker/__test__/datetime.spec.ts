@@ -1,4 +1,4 @@
-import { isLeapYear, toDateString } from "../src/datetime";
+import { isValidDate, isLeapYear, toDateString } from "../src/datetime";
 
 test("Test isLeapYear", () => {
   expect(isLeapYear(2000)).toBeTruthy();
@@ -16,4 +16,10 @@ test("Test toDateString", () => {
   expect(toDateString(new Date(2021, 1, 13))).toBe("2021-02-13");
   expect(toDateString(new Date(2021, 10, 1))).toBe("2021-11-01");
   expect(toDateString(new Date(2021, 3, 25))).toBe("2021-04-25");
+});
+
+test("Test isValidDate", () => {
+  expect(isValidDate("abcd")).toBeFalsy();
+  expect(isValidDate("2021-01-01")).toBeTruthy();
+  // expect(isValidDate("2021-02-30")).toBeFalsy();
 });
