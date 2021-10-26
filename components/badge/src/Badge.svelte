@@ -7,14 +7,14 @@
 
 <span
   {...$$restProps}
-  class="responsive-ui-badge {className}"
+  class="resp-badge {className}"
   data-count={count > max ? `${max}+` : count}
 >
   <slot />
 </span>
 
 <style lang="scss">
-  .responsive-ui-badge {
+  .resp-badge {
     position: relative;
     display: inline-block;
     vertical-align: middle;
