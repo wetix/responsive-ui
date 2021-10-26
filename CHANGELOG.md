@@ -3,18 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.0.7-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.7-alpha.2) (2021-10-26)
+## [1.0.7-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.2...v1.0.7-alpha.3) (2021-10-26)
 
 
 ### Bug Fixes
 
-* github workflows ([5635851](https://github.com/wetix/responsive-ui/commit/56358515ce5fdbc2f418b636a3cd7c2478d5c0b4))
+* force publish package ([3a71080](https://github.com/wetix/responsive-ui/commit/3a71080de258504448441b63d29dca48a1983be3))
 
 
 
 
 
-# [1.0.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.0) (2021-10-26)
+# [1.0.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.2...v1.0.0) (2021-10-26)
+
+
+### Bug Fixes
+
+* force publish package ([3a71080](https://github.com/wetix/responsive-ui/commit/3a71080de258504448441b63d29dca48a1983be3))
+
+
+
+## [1.0.7-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.7-alpha.2) (2021-10-26)
 
 
 ### Bug Fixes

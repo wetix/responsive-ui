@@ -1,5 +1,8 @@
 {
-  "packages": ["components/*", "packages/*"],
+  "packages": [
+    "components/*",
+    "packages/*"
+  ],
   "ignoreChanges": [
     "**/__fixtures__/**",
     "**/__tests__/**",
