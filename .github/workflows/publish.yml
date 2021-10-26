@@ -54,7 +54,7 @@ jobs:
 
       - name: Set Current Version
         run: |
-          CURRENT_VERSION=$(node -p 'require("./package.json").version')
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
           echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
           echo ${{ env.CURRENT_VERSION }}
 
@@ -100,7 +100,7 @@ jobs:
       - name: Build and Publish
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          lerna version ${{ env.CURRENT_VERSION }} --force-publish --create-release github --yes
+          lerna version prepatch --force-publish --create-release github --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
