@@ -4,17 +4,15 @@
   export { forName as for };
   export { className as class };
   export let label = "";
-  export let form = "";
-  export let style = "";
 </script>
 
-<label class="responsive-ui-label {className}" for={forName} {form} {style}>
+<label {...$$restProps} class="resp-label {className}" for={forName}>
   {label}
 </label>
 <slot />
 
 <style lang="scss">
-  .responsive-ui-label {
+  .resp-label {
     display: block;
     padding: 6px 0;
     margin: 0;

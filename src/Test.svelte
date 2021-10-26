@@ -3,7 +3,7 @@
   import Button from "@responsive-ui/button/src/Button.svelte";
   import Modal from "@responsive-ui/modal/src/Modal.svelte";
   import DateRangePicker from "@responsive-ui/date-picker/src/DateRangePicker.svelte";
-  import Docker from "../components/dock/src/Dock.svelte";
+  import Docker from "../components/docker/src/Docker.svelte";
 
   let showModal = true;
   let showDocker = false;

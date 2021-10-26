@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Dock from "../components/dock/src/Dock.svelte";
+  import Dock from "../components/docker/src/Docker.svelte";
 </script>
 
 <Meta

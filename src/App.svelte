@@ -8,7 +8,7 @@
   import Carousel from "../components/carousel/src/Carousel.svelte";
   import DatePicker from "../components/date-picker/src/DatePicker.svelte";
   import Header from "../components/header/src/Header.svelte";
-  import Dock from "../components/dock/src/Dock.svelte";
+  import Dock from "../components/docker/src/Docker.svelte";
   import Menu from "../components/menu/src/Menu.svelte";
   import Dropdown from "../components/dropdown/src/Dropdown.svelte";
   import Icon from "../components/icon/src/Icon.svelte";

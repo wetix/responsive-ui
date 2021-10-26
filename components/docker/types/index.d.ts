@@ -1,6 +1,6 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface DockProps {
+export interface DockerProps {
   class?: string;
   open?: boolean;
   closable?: boolean;
@@ -9,16 +9,16 @@ export interface DockProps {
   style?: string;
 }
 
-export interface DockEvents {}
+export interface DockerEvents {}
 
-export interface DockSlots {
+export interface DockerSlots {
   default: {};
 }
 
-declare class Dock extends SvelteComponentTyped<
-  DockProps,
-  DockEvents,
-  DockSlots
+declare class Docker extends SvelteComponentTyped<
+  DockerProps,
+  DockerEvents,
+  DockerSlots
 > {}
 
-export default Dock;
+export default Docker;
