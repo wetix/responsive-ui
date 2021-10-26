@@ -15,18 +15,17 @@
     if (offsetY <= clientHeight) offsetY = 0;
     y = offsetY;
   };
-
 </script>
 
 <svelte:window on:scroll={handleScroll} bind:innerWidth />
 
 <header
-  class="responsive-ui-app-bar {className}"
-  class:responsive-ui-app-bar--fixed={y === 0}
-  class:responsive-ui-app-bar--with-bg={hasBg}
+  class="resp-app-bar {className}"
+  class:resp-app-bar--fixed={y === 0}
+  class:resp-app-bar--with-bg={hasBg}
   bind:clientHeight
 >
-  <div class="responsive-ui-app-bar__header">
+  <div class="resp-app-bar__header">
     <slot name="left">{title}</slot>
     <slot name="right" />
   </div>
@@ -34,7 +33,7 @@
 </header>
 <div style="height:{clientHeight}px" />
 {#if hasBg}
-  <div class="responsive-ui-app-bar__semi-circ" {style}>
+  <div class="resp-app-bar__semi-circ" {style}>
     <svg {height} width="100%">
       <ellipse
         cx={innerWidth / 2}
@@ -48,7 +47,7 @@
 {/if}
 
 <style lang="scss">
-  .responsive-ui-app-bar {
+  .resp-app-bar {
     position: fixed;
     box-sizing: border-box;
     padding: var(--padding);
@@ -98,5 +97,4 @@
       box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
     }
   }
-
 </style>
