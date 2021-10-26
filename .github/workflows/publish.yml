@@ -24,28 +24,33 @@ jobs:
           fetch-depth: "0"
       # Setup .npmrc file to publish to npm
 
-      - name: Cache node_modules
-        id: cache-modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
       - name: Setup Nodejs 16
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: NPM Install
+      - name: Restore lerna
+        id: cache-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Yarn Install
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: npm install
+        run: |
+          yarn install
+
+      - name: Git Identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set Current Version
         run: |
@@ -96,7 +101,7 @@ jobs:
       - name: Build and Publish
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          npm run build
+          yarn build
           lerna publish prepatch --force-publish --yes -m '🔖 chore: release version ${{ env.CURRENT_VERSION }}'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
