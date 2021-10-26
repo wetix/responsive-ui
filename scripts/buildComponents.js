@@ -1,4 +1,5 @@
 import fs from "fs-extra";
+import asyncJs from "async";
 import path from "path";
 import chalk from "chalk";
 import { rollup } from "rollup";
@@ -10,6 +11,11 @@ import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import { babel } from "@rollup/plugin-babel";
 import sveltePreprocess from "svelte-preprocess";
+
+const debug = process.env.DEBUG ? process.env.DEBUG : false;
+const println = (...v) => {
+  debug && console.log(...v);
+};
 
 const extractCss = () => {
   const styles = {};
@@ -175,7 +181,7 @@ const analyzePackageJson = async (filepath, pkg) => {
     for (const chunk of output) {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
-      console.log(chalk.green(outputPath));
+      println(chalk.green(outputPath));
       if (chunk.type === "asset") {
         fs.outputFileSync(outputPath, chunk.source);
       } else {
@@ -218,7 +224,7 @@ const analyzePackageJson = async (filepath, pkg) => {
     ],
   });
 
-  console.log("Generating minify version of js.");
+  println("Generating minify version of js.");
   const fileName = "index.min.js";
   const { output } = await bundle.generate({
     format: "iife",
@@ -229,16 +235,28 @@ const analyzePackageJson = async (filepath, pkg) => {
   const chunk = output.shift();
   const outputPath = `${filepath}/lib/${fileName}`;
   fs.outputFileSync(outputPath, chunk.code);
-  console.log("Generated successful!", chalk.green(outputPath));
+  println("Generated successful!", chalk.green(outputPath));
 };
-
-// const excludedFolders = [".ds_store", "lib"];
 
 (async function buildScript() {
   const lernaPath = path.resolve("./lerna.json");
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
 
   const pkgs = lerna.packages || [];
+  const queue = asyncJs.queue(async (task, callback) => {
+    const { basePath, pkgPath, file } = task;
+    println(`Bundling for component ${chalk.green(file)}`);
+    const pkg = JSON.parse(
+      fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
+    );
+    if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
+      fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+    }
+
+    await analyzePackageJson(basePath, pkg);
+    callback && callback();
+  }, 2);
+
   // const excFolders = `/^(${excludedFolders.join("|")})$/`
   for (let i = 0; i < pkgs.length; i++) {
     const pkgPath = path.resolve(pkgs[i].replace("/*", ""));
@@ -257,17 +275,13 @@ const analyzePackageJson = async (filepath, pkg) => {
       //   continue;
       // }
 
-      console.log(`Bundling for component ${chalk.green(file)}`);
       const basePath = `${pkgPath}/${file}`;
-      const pkg = JSON.parse(
-        fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
-      );
 
-      if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
-        fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
-      }
-
-      await analyzePackageJson(basePath, pkg);
+      queue.push({ file, pkgPath, basePath });
     }
   }
+
+  await queue.drain();
+
+  console.log(chalk.green("Generation of bundle files completed"));
 })();

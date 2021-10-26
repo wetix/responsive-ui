@@ -8,5 +8,10 @@
   ],
   "version": "1.0.7-alpha.0",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "message": "🔖 chore(release): release version %s"
+    }
+  }
 }
