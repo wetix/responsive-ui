@@ -1,4 +1,29 @@
-# [1.0.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.0...v1.0.0) (2021-10-26)
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.0.7-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.7-alpha.2) (2021-10-26)
+
+
+### Bug Fixes
+
+* github workflows ([5635851](https://github.com/wetix/responsive-ui/commit/56358515ce5fdbc2f418b636a3cd7c2478d5c0b4))
+
+
+
+
+
+# [1.0.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.0) (2021-10-26)
+
+
+### Bug Fixes
+
+* github workflows ([5635851](https://github.com/wetix/responsive-ui/commit/56358515ce5fdbc2f418b636a3cd7c2478d5c0b4))
+
+
+
+## [1.0.7-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.0...v1.0.7-alpha.1) (2021-10-26)
 
 
 
@@ -26,26 +51,18 @@
 
 
 
-## [1.0.5-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.5-alpha...v1.0.5-alpha.0) (2021-10-25)
+## [1.0.5-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.4-alpha...v1.0.5-alpha.0) (2021-10-25)
 
 
 ### Bug Fixes
 
+* `jest` and add test CI ([03f48b6](https://github.com/wetix/responsive-ui/commit/03f48b624250e7b4b9929725d7998ec17e0226a4))
 * ci script ([c814a47](https://github.com/wetix/responsive-ui/commit/c814a475856ead2421b46822247a0de471c8326e))
 
 
 ### Features
 
 * add commitizen ([c71def9](https://github.com/wetix/responsive-ui/commit/c71def96a0f88e5540be697c1d122d12bcf83ada))
-
-
-
-## [1.0.5-alpha](https://github.com/wetix/responsive-ui/compare/v1.0.4-alpha...v1.0.5-alpha) (2021-10-24)
-
-
-### Bug Fixes
-
-* `jest` and add test CI ([03f48b6](https://github.com/wetix/responsive-ui/commit/03f48b624250e7b4b9929725d7998ec17e0226a4))
 
 
 
@@ -777,6 +794,3 @@
 * **TextField:** add ([ea0c4fe](https://github.com/wetix/responsive-ui/commit/ea0c4fed97aecd799a86862a62b36f3c9953152d))
 * update Selection ([4dbd6bf](https://github.com/wetix/responsive-ui/commit/4dbd6bf255652b82c3400751cf0fb99ba2a2b6a3))
 * update Table ([d2e5995](https://github.com/wetix/responsive-ui/commit/d2e59956858775f8e0f33f16615b090cad5cd66e))
-
-
-
