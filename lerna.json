@@ -1,7 +1,10 @@
 {
-  "packages": [
-    "components/*",
-    "packages/*"
+  "packages": ["components/*", "packages/*"],
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/__test__/**",
+    "**/*.md"
   ],
   "version": "1.0.7-alpha.0",
   "npmClient": "yarn",
