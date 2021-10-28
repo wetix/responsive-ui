@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface UploadProps {
+  id?: string;
   url: string;
   name?: string;
   class?: string;

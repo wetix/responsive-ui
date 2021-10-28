@@ -1,33 +1,35 @@
 <script lang="ts">
+  import { noop } from "svelte/internal";
   import { fade } from "svelte/transition";
 
   let className = "";
   export { className as class };
   export let open = false;
   export let closable = true;
+  export let maskedClosable = true;
   export let width = "280px";
   export let placement = "left";
-  export let style = "";
 </script>
 
 {#if open}
   <div
-    class="resp-dock__overlay"
-    on:click={closable ? () => (open = !open) : undefined}
+    class="resp-docker__overlay"
+    on:click={maskedClosable ? () => (open = !open) : noop}
     in:fade
     out:fade
   />
 {/if}
 <div
-  class="resp-dock resp-dock--{placement} {className}"
-  class:resp-dock--close={!open}
-  style={`width:${width};${style}`}
+  {...$$restProps}
+  class="resp-docker resp-docker--{placement} {className}"
+  class:resp-docker--close={!open}
+  style={`width: ${width}`}
 >
   <slot />
 </div>
 
 <style lang="scss">
-  @mixin dockStyle {
+  @mixin dockerStyle {
     position: fixed;
     top: 0;
     background-color: #fff;
@@ -38,27 +40,27 @@
     z-index: 100;
   }
 
-  .resp-dock {
-    @include dockStyle;
+  .resp-docker {
+    @include dockerStyle;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(0%);
 
     &--left {
       left: 0;
-      &.resp-dock--close {
+      &.resp-docker--close {
         transform: translateX(-110%);
       }
     }
 
     &--right {
       right: 0;
-      &.resp-dock--close {
+      &.resp-docker--close {
         transform: translateX(110%);
       }
     }
 
     &__overlay {
-      @include dockStyle;
+      @include dockerStyle;
       left: 0;
       right: 0;
       bottom: 0;
@@ -68,7 +70,7 @@
   }
 
   @media screen and (max-width: 480px) {
-    .resp-dock {
+    .resp-docker {
       width: 100% !important;
     }
   }

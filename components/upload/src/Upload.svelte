@@ -1,3 +1,4 @@
+<!-- <svelte:options accessors /> -->
 <script lang="ts">
   import { onMount, createEventDispatcher } from "svelte";
 
@@ -13,7 +14,6 @@
   export let directory = false;
   export let multiple = false;
   export let value = "";
-  export let style = "";
 
   let loading = false;
   let file: null | HTMLInputElement;
@@ -79,8 +79,8 @@
 </script>
 
 <span
-  class="responsive-ui-upload {className}"
-  {style}
+  {...$$restProps}
+  class="resp-upload {className}"
   on:change
   on:click={() => file && file.click()}
 >
@@ -124,7 +124,7 @@
 </span>
 
 <style lang="scss">
-  .responsive-ui-upload {
+  .resp-upload {
     cursor: pointer;
     display: inline-flex;
 

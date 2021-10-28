@@ -1,12 +1,19 @@
 <script>
+  import { onMount } from "svelte";
   import Date from "@responsive-ui/date-picker/src/DatePicker.svelte";
   import Button from "@responsive-ui/button/src/Button.svelte";
   import Modal from "@responsive-ui/modal/src/Modal.svelte";
   import DateRangePicker from "@responsive-ui/date-picker/src/DateRangePicker.svelte";
   import Docker from "../components/docker/src/Docker.svelte";
+  import Upload from "../components/upload/src/Upload.svelte";
 
   let showModal = true;
   let showDocker = false;
+  let upload = null;
+
+  onMount(() => {
+    console.log("debug =>", upload);
+  });
 </script>
 
 <Modal
@@ -33,6 +40,7 @@
   <div>
     <DateRangePicker />
   </div>
+  <div><Upload bind:this={upload} /></div>
 </div>
 
 <Docker bind:open={showDocker} />
