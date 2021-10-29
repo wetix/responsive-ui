@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.1-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.0...v1.1.1-alpha.0) (2021-10-29)
+
+**Note:** Version bump only for package responsive-ui-monorepo
+
+
+
+
+
 ## [1.0.9-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.0...v1.0.9-alpha.0) (2021-10-29)
 
 
@@ -817,6 +830,3 @@
 * **TextField:** add ([ea0c4fe](https://github.com/wetix/responsive-ui/commit/ea0c4fed97aecd799a86862a62b36f3c9953152d))
 * update Selection ([4dbd6bf](https://github.com/wetix/responsive-ui/commit/4dbd6bf255652b82c3400751cf0fb99ba2a2b6a3))
 * update Table ([d2e5995](https://github.com/wetix/responsive-ui/commit/d2e59956858775f8e0f33f16615b090cad5cd66e))
-
-
-
