@@ -19,7 +19,8 @@
     "ui-component",
     "responsive-ui",
     "poster",
-    "svelte-poster"
+    "svelte-poster",
+    "ssr-compatible"
   ],
   "peerDependencies": {
     "svelte": "^3.27.0",

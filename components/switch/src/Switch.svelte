@@ -1,12 +1,17 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let name = "";
   export let checked = false;
   export let disabled = false;
 </script>
 
-<span class="resp-switch {className}" class:resp-switch--disabled={disabled}>
-  <input type="checkbox" bind:checked on:change {disabled} />
+<span
+  {...$$restProps}
+  class="resp-switch {className}"
+  class:resp-switch--disabled={disabled}
+>
+  <input {name} type="checkbox" bind:checked on:change {disabled} />
   <b class="resp-switch__toggle" />
   <b class="resp-switch__track" />
 </span>

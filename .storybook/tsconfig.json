@@ -1,0 +1,12 @@
+{
+  "include": [
+    "src",
+    "components",
+    "@wetix/animation",
+    "@wetix/utils",
+    "node_modules/@wetix/animation",
+    "node_modules/@wetix/utils"
+  ],
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "exclude": ["__sapper__/*"]
+}

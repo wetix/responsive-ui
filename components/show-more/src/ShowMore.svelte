@@ -14,7 +14,7 @@
   $: isExpanded = updatedHeight === height;
   $: isExtensible = threshold < height;
 
-  const onClick = () => {
+  const handleClick = () => {
     updatedHeight = updatedHeight !== height ? height : threshold;
   };
 
@@ -25,22 +25,23 @@
 </script>
 
 <div
-  class="responsive-ui-show-more {className}"
+  {...$$restProps}
+  class="resp-show-more {className}"
   bind:clientHeight
-  style={`height:${updatedHeight}px;${style}`}
+  style={`height: ${updatedHeight}px`}
 >
   <slot>
     <p>{text}</p>
   </slot>
 </div>
 {#if isExtensible}
-  <div class="responsive-ui-show-more__trigger" on:click={onClick}>
+  <div class="resp-show-more__trigger" on:click={handleClick}>
     <slot name="trigger">{isExpanded ? "- Less" : "+ More"}</slot>
   </div>
 {/if}
 
 <style lang="scss">
-  .responsive-ui-show-more {
+  .resp-show-more {
     overflow: hidden;
     transition: all 0.5s;
 

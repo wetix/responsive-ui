@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ShowMoreProps {
+  id?: string;
   text?: string;
   threshold?: number;
   class?: string;
