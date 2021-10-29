@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.0.9-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.8-alpha.0...v1.0.9-alpha.0) (2021-10-26)
+# [1.1.0-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.0...v1.1.0-alpha.0) (2021-10-29)
 
 **Note:** Version bump only for package responsive-ui-monorepo
 
@@ -71,18 +71,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.0.5-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.4-alpha...v1.0.5-alpha.0) (2021-10-25)
+## [1.0.5-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.5-alpha...v1.0.5-alpha.0) (2021-10-25)
 
 
 ### Bug Fixes
 
-* `jest` and add test CI ([03f48b6](https://github.com/wetix/responsive-ui/commit/03f48b624250e7b4b9929725d7998ec17e0226a4))
 * ci script ([c814a47](https://github.com/wetix/responsive-ui/commit/c814a475856ead2421b46822247a0de471c8326e))
 
 
 ### Features
 
 * add commitizen ([c71def9](https://github.com/wetix/responsive-ui/commit/c71def96a0f88e5540be697c1d122d12bcf83ada))
+
+
+
+## [1.0.5-alpha](https://github.com/wetix/responsive-ui/compare/v1.0.4-alpha...v1.0.5-alpha) (2021-10-24)
+
+
+### Bug Fixes
+
+* `jest` and add test CI ([03f48b6](https://github.com/wetix/responsive-ui/commit/03f48b624250e7b4b9929725d7998ec17e0226a4))
 
 
 
