@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
   let className = "";
   export { className as class };
   export let src = "";
@@ -10,14 +8,15 @@
   export let rounded = true;
 
   let opacity = 0;
-  onMount(() => {
+
+  if (Image) {
     opacity = 1;
     const img = new Image();
     img.onload = () => {
       opacity = 0;
     };
     img.src = src;
-  });
+  }
 </script>
 
 <div
