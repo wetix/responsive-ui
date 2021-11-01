@@ -23,7 +23,7 @@
     "dev": "vite",
     "start": "sirv public --port 3600",
     "validate": "svelte-check --workspace=components",
-    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider; start-storybook -p 6006 -s ./public",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "test": "jest components",
     "commit": "cz",

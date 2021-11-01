@@ -12,3 +12,4 @@ backup
 public
 public/main.js
 *.log
+storybook-static
