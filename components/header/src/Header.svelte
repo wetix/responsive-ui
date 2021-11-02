@@ -13,8 +13,8 @@
   .resp-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: var(--padding);
+    align-items: flex-end;
+    padding: var(--padding) 0;
 
     &__label {
       text-transform: capitalize;
