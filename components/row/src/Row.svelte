@@ -4,21 +4,19 @@
   export let direction = "";
   export let alignItems = "";
   export let justifyContent = "";
-  export let style = "";
 
   let cssStyle = "";
-  if (direction) cssStyle += `flex-direction:${direction}`;
-  if (alignItems) cssStyle += `align-items:${alignItems}`;
-  if (justifyContent) cssStyle += `justify-content:${justifyContent}`;
-  cssStyle += `;${style}`;
+  if (direction) cssStyle += `flex-direction: ${direction}`;
+  if (alignItems) cssStyle += `align-items: ${alignItems}`;
+  if (justifyContent) cssStyle += `justify-content: ${justifyContent}`;
 </script>
 
-<div class="responsive-ui-row {className}" style={cssStyle}>
+<div {...$$restProps} class="resp-row {className}" style={cssStyle}>
   <slot />
 </div>
 
 <style lang="scss">
-  .responsive-ui-row {
+  .resp-row {
     display: flex;
     flex-wrap: wrap;
     margin: 6px 0;

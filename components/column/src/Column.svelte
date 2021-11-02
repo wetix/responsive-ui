@@ -5,22 +5,21 @@
   export { className as class };
   export let span: number | Device = 24;
   export let justify = "center";
-  export let style = "";
 
-  let cls = `responsive-ui-column--${span}`;
+  let cls = `resp-column--${span}`;
   if (isNaN(Number(span))) {
     cls = Object.entries(<Device>span)
-      .map(([k, v]) => `responsive-ui-column--${k}-${v}`)
+      .map(([k, v]) => `resp-column--${k}-${v}`)
       .join(" ");
   }
 </script>
 
-<div class={`responsive-ui-column--${justify} ${cls} ${className}`} {style}>
+<div {...$$restProps} class="resp-column--{justify} {cls} {className}">
   <slot />
 </div>
 
 <style lang="scss">
-  .responsive-ui-column {
+  .resp-column {
     position: relative;
     max-width: 100%;
     min-height: 1px;
@@ -150,7 +149,7 @@
   }
 
   @media (max-width: 480px) {
-    .responsive-ui-column {
+    .resp-column {
       &--sm-1 {
         $width: 4.16666667%;
         flex: 0 0 $width;

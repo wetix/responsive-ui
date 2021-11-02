@@ -1,6 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface RowProps {
+  id?: string;
+  title?: string;
   class?: string;
   direction?:
     | "row"
