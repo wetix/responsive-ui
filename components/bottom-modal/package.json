@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/bottom-modal",
-  "version": "1.1.1-alpha.0",
+  "version": "1.1.1-alpha.1",
   "description": "A bottom modal component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/bottom-modal#README.md",
@@ -47,6 +47,6 @@
   },
   "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe",
   "dependencies": {
-    "@responsive-ui/icon": "^1.1.1-alpha.0"
+    "@responsive-ui/icon": "^1.1.1-alpha.1"
   }
 }
