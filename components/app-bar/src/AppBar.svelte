@@ -5,9 +5,9 @@
   import Tab from "../components/Tab.svelte";
   import Drawer from "../components/Drawer.svelte";
   import Dropdown from "../components/Dropdown.svelte";
-  import type { TabItem, NavItem } from "../types";
+  import type { NavItem } from "../types";
 
-  export let tabItems: TabItem[];
+  export let tabItems: NavItem[];
   export let selecteTabIndex = 0;
   export let centerItems: NavItem[];
   export let dropdownItems: NavItem[];
@@ -118,7 +118,7 @@
     }
 
     .resp__app-bar__container {
-      padding: 10px;
+      padding: 10px 25px 10px 25px;
       display: flex;
       justify-content: space-between;
       width: 100%;
