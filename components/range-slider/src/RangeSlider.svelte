@@ -45,7 +45,7 @@
   };
 </script>
 
-<div class="multi-range">
+<div class="resp__multi-range">
   <input
     id="lower"
     type="range"
@@ -68,7 +68,7 @@
 </div>
 
 <style lang="scss">
-  .multi-range {
+  .resp__multi-range {
     position: relative;
     width: 100%;
 
