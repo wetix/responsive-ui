@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { DropdownItem } from "../types";
+  import type { NavItem } from "../types";
   import Icon from "../../icon/src/Icon.svelte";
 
-  export let items: DropdownItem[] = [];
+  export let items: NavItem[] = [];
   export let user: string = "John Doe";
   export let show = false;
 </script>
@@ -21,7 +21,7 @@
           <Icon
             stroke="#fc4451"
             style="width:40px; height:40px"
-            type={item.icon}
+            type={`${item.icon || ""}`}
           />
           <span>
             {item.value}

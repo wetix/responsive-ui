@@ -3,32 +3,21 @@
 
   import Icon from "../../icon/src/Icon.svelte";
   import Tab from "../components/Tab.svelte";
-  import Drawer from "../components/Sidebar.svelte";
+  import Drawer from "../components/Drawer.svelte";
   import Dropdown from "../components/Dropdown.svelte";
-  import type { TabItem, CenterItem, DropdownItem } from "../types";
+  import type { TabItem, NavItem } from "../types";
 
   export let tabItems: TabItem[];
   export let selecteTabIndex = 0;
-  export let centerItems: CenterItem[];
-  export let dropdownItems: DropdownItem[];
+  export let centerItems: NavItem[];
+  export let dropdownItems: NavItem[];
 
   let logoSrc = "https://asset.wetix.my/images/logo/wetix.png";
 
   let showDropdown = false;
-  let sideBar: HTMLElement;
-  let width: number;
+  let openDrawer = false;
 
   const dispatch = createEventDispatcher();
-
-  const onCloseSidebar = () => {
-    sideBar.style.transition = "0.5s";
-    sideBar.style.left = `-${width}px`;
-  };
-
-  const onOpenSidebar = () => {
-    sideBar.style.transition = "0.5s";
-    sideBar.style.left = `0px`;
-  };
 
   const toggleShowDropdown = () => {
     showDropdown = !showDropdown;
@@ -50,14 +39,7 @@
   onDestroy(() => {
     document.removeEventListener("click", closeDropdown);
   });
-
-  // $: if (width) {
-  //   sideBar.style.transition = "none";
-  //   sideBar.style.left = `-${width}px`;
-  // }
 </script>
-
-<svelte:window bind:innerWidth={width} />
 
 <nav
   class="resp__app-bar"
@@ -65,8 +47,13 @@
     ? ""
     : "box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);"}
 >
-  <!-- side-bar button -->
-  <div class="resp__app-bar__sidebar-button" on:click={onOpenSidebar}>
+  <!-- drawer button -->
+  <div
+    class="resp__app-bar__drawer-button"
+    on:click={() => {
+      openDrawer = true;
+    }}
+  >
     <Icon type="hamburger" stroke="#ffff" style="width:35px; height:35px;" />
   </div>
 
@@ -115,7 +102,7 @@
 {/if}
 
 <!-- drawer  -->
-<Drawer />
+<Drawer bind:open={openDrawer} items={[...centerItems, ...dropdownItems]} />
 
 <style lang="scss">
   .resp__app-bar {
@@ -125,7 +112,7 @@
     width: 100vw;
     z-index: 100;
 
-    .resp__app-bar__sidebar-button {
+    .resp__app-bar__drawer-button {
       background-color: #fc4451;
       padding: 5px;
     }
@@ -181,7 +168,7 @@
   }
 
   @media (min-width: 640px) {
-    .resp__app-bar__sidebar-button {
+    .resp__app-bar__drawer-button {
       display: none;
     }
   }

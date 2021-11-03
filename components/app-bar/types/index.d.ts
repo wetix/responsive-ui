@@ -1,11 +1,6 @@
-export type CenterItem = {
+export type NavItem = {
   value: string;
-  link: string;
-};
-
-export type DropdownItem = {
-  value: string;
-  icon: string;
+  icon?: string;
   link: string;
 };
 

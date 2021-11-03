@@ -19,11 +19,11 @@
   ];
 
   let dropdownItems = [
-    { value: "Profile", icon: "profile", link: `/store/me` },
+    { value: "Profile", icon: "profile", link: `/me` },
     {
       value: "Purchase History",
       icon: "history",
-      link: `/store/me/purchase-history`,
+      link: `/me/purchase-history`,
     },
     // { value: "My Tickets", icon: "ticket" },
     // { value: "My Vouchers", icon: "voucher" },
