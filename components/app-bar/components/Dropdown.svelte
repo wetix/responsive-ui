@@ -16,18 +16,18 @@
   </div>
   <ul>
     {#each items as item}
-      <li>
-        <a href={item.link}>
+      <a href={item.link}>
+        <li>
           <Icon
             stroke="#fc4451"
-            style="width:40px; height:40px"
+            style="margin-right:5px; width:40px; height:40px"
             type={`${item.icon || ""}`}
           />
           <span>
             {item.value}
           </span>
-        </a>
-      </li>
+        </li>
+      </a>
     {/each}
   </ul>
 </div>
@@ -38,6 +38,7 @@
   }
 
   .resp__app-bar__dropdown {
+    padding: 15px;
     position: absolute;
     z-index: 101;
     right: 0;
@@ -48,8 +49,9 @@
     min-width: 200px;
 
     .resp__app-bar__user {
-      padding: 15px;
       cursor: default;
+      padding-bottom: 10px;
+      border-bottom: #fc4451 1px dashed;
       .text {
         color: #444444;
         font-size: 0.813rem;
@@ -70,22 +72,14 @@
       margin: 0;
       padding: 0;
 
-      li {
-        a {
-          display: flex;
-          align-items: center;
-          white-space: nowrap;
-          padding: 5px 15px 5px 5px;
-          text-decoration: none;
-          font-size: 0.813rem;
-          color: #444444;
+      a {
+        text-decoration: none;
+        color: #1a1b1c;
+        font-size: 0.813rem;
+        white-space: nowrap;
+        li {
+          padding: 2.5px 0;
         }
-        a:hover {
-          background-color: #f0f0f0;
-        }
-      }
-      li:nth-child(1) {
-        border-top: 1px #fc4451 dashed;
       }
     }
   }

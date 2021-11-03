@@ -32,7 +32,12 @@
 <nav bind:this={drawer} class="resp__app-bar__drawer">
   <!-- header  -->
   <div class="resp__app-bar__drawer__header">
-    <Icon type="x" style="width:15px; height:15px;" on:click={onClose} />
+    <Icon
+      type="x"
+      stroke="#fc4451"
+      style="width:15px; height:15px;"
+      on:click={onClose}
+    />
   </div>
   <div class="resp__app-bar__drawer__container">
     <!-- user  -->
@@ -44,16 +49,16 @@
     </div>
     <ul>
       {#each items as item}
-        <li>
-          <a href={item.link}>
+        <a href={item.link}>
+          <li>
             <Icon
               type={item.icon}
               stroke="#fc4451"
-              style="margin-right:15px; width:40px; height:40px;"
+              style="margin-right:5px; width:40px; height:40px;"
             />
             {item.value}
-          </a>
-        </li>
+          </li>
+        </a>
       {/each}
     </ul>
   </div>
@@ -91,13 +96,12 @@
       }
 
       ul {
-        li {
-          list-style: none;
-          border-bottom: 1px #f0f0f0 dashed;
-
-          a {
-            text-decoration: none;
-            color: #1a1b1c;
+        a {
+          text-decoration: none;
+          color: #1a1b1c;
+          li {
+            list-style: none;
+            border-bottom: 1px #f0f0f0 dashed;
           }
         }
       }

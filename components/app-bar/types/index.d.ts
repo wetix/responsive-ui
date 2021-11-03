@@ -1,10 +1,6 @@
 export type NavItem = {
-  value: string;
+  title?: string;
   icon?: string;
-  link: string;
-};
-
-export type TabItem = {
-  title: string;
   value: string;
+  link: string;
 };

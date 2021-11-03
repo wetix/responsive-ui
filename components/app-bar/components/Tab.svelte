@@ -1,14 +1,10 @@
 <script lang="ts">
   import { createEventDispatcher, onMount } from "svelte";
-
-  type TabItem = {
-    title: string;
-    value: string;
-  };
+  import type { NavItem } from "../types";
 
   const dispatch = createEventDispatcher();
 
-  export let items: TabItem[];
+  export let items: NavItem[];
   export let selected = 0;
 
   let tab: HTMLDivElement;
