@@ -7,10 +7,10 @@
   import Dropdown from "../components/Dropdown.svelte";
   import type { NavItem } from "../types";
 
-  export let tabItems: NavItem[];
+  export let tabItems: NavItem[] = [];
   export let selecteTabIndex = 0;
-  export let centerItems: NavItem[];
-  export let dropdownItems: NavItem[];
+  export let centerItems: NavItem[] = [];
+  export let dropdownItems: NavItem[] = [];
 
   let logoSrc = "https://asset.wetix.my/images/logo/wetix.png";
 
