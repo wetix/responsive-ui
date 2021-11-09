@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy, createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from "svelte";
 
   import Icon from "../../icon/src/Icon.svelte";
   import Tab from "../components/Tab.svelte";
@@ -9,7 +9,7 @@
 
   export let tabItems: NavItem[] = [];
   export let selecteTabIndex = 0;
-  export let centerItems: NavItem[] = [];
+  export let navItems: NavItem[] = [];
   export let dropdownItems: NavItem[] = [];
 
   let logoSrc = "https://asset.wetix.my/images/logo/wetix.png";
@@ -34,22 +34,13 @@
     dispatch("change", e.detail);
   };
 
-  document.addEventListener("click", closeDropdown);
-
-  onDestroy(() => {
-    document.removeEventListener("click", closeDropdown);
-  });
+  // document.addEventListener("click", closeDropdown);
 </script>
 
-<nav
-  class="resp__app-bar"
-  style={tabItems.length > 0
-    ? ""
-    : "box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);"}
->
+<nav class="resp-app-bar" class:resp-app-bar--shadowed={tabItems.length <= 0}>
   <!-- drawer button -->
   <div
-    class="resp__app-bar__drawer-button"
+    class="resp-app-bar__drawer-button"
     on:click={() => {
       openDrawer = true;
     }}
@@ -58,24 +49,26 @@
   </div>
 
   <!-- container -->
-  <div class="resp__app-bar__container">
+  <div class="resp-app-bar__container">
     <!-- logo-->
-    <a class="resp__app-bar__logo" href="/store">
-      <img src={logoSrc} alt="logo" />
+    <a class="resp-app-bar__logo" href="/">
+      <slot name="logo">
+        <img src={logoSrc} alt="logo" />
+      </slot>
     </a>
 
     <!-- navs -->
-    <div class="resp__app-bar__navs">
+    <div class="resp-app-bar__nav">
       <ul>
-        {#each centerItems as item}
-          <li><a href={item.link}>{item.value}</a></li>
+        {#each navItems as item}
+          <li><a href={item.link}>{item.label}</a></li>
         {/each}
       </ul>
     </div>
 
     <!-- dropdown -->
-    <div class="resp__app-bar__right">
-      <div class="resp__app-bar__right-dropdown">
+    <div class="resp-app-bar__right">
+      <div class="resp-app-bar__right-dropdown">
         <a
           href="/me"
           on:click|preventDefault|stopPropagation={toggleShowDropdown}
@@ -93,38 +86,46 @@
 </nav>
 
 <!-- tab -->
-{#if tabItems}
+<!-- {#if tabItems}
   <Tab
     on:change={handleTabChange}
     items={tabItems}
     selected={selecteTabIndex}
   />
-{/if}
+{/if} -->
 
 <!-- drawer  -->
-<Drawer bind:open={openDrawer} items={[...centerItems, ...dropdownItems]} />
+<Drawer bind:open={openDrawer} items={[...navItems, ...dropdownItems]} />
 
 <style lang="scss">
-  .resp__app-bar {
+  .resp-app-bar {
     position: relative;
     display: flex;
     top: 0;
-    width: 100vw;
+    height: 60px;
+    width: 100%;
     z-index: 100;
 
-    .resp__app-bar__drawer-button {
+    &--shadowed {
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .resp-app-bar__drawer-button {
       background-color: #fc4451;
       padding: 5px;
     }
 
-    .resp__app-bar__container {
-      padding: 10px 25px 10px 25px;
+    .resp-app-bar__container {
+      max-width: 1280px;
+      width: 80%;
+      margin: 0 auto;
+      align-items: center;
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      min-height: 45px;
+      // width: 100%;
+      // min-height: 45px;
 
-      .resp__app-bar__logo {
+      .resp-app-bar__logo {
         align-self: center;
         img {
           display: block;
@@ -134,7 +135,7 @@
         }
       }
 
-      .resp__app-bar__navs {
+      .resp-app-bar__nav {
         align-self: center;
         ul {
           display: flex;
@@ -143,7 +144,7 @@
           padding: 0;
 
           li {
-            margin-right: 15px;
+            margin: 0 1rem;
             a {
               text-decoration: none;
               color: #444444;
@@ -156,11 +157,11 @@
         }
       }
 
-      .resp__app-bar__right {
+      .resp-app-bar__right {
         align-self: center;
         display: flex;
 
-        .resp__app-bar__right-dropdown {
+        .resp-app-bar__right-dropdown {
           position: relative;
         }
       }
@@ -168,14 +169,14 @@
   }
 
   @media (min-width: 640px) {
-    .resp__app-bar__drawer-button {
+    .resp-app-bar__drawer-button {
       display: none;
     }
   }
 
   @media (max-width: 640px) {
-    .resp__app-bar__navs,
-    .resp__app-bar__right-dropdown {
+    .resp-app-bar__nav,
+    .resp-app-bar__right-dropdown {
       display: none;
     }
   }
