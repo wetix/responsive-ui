@@ -6,9 +6,9 @@
 </script>
 
 <span
-  {...$$restProps}
   class="resp-badge {className}"
   data-count={count > max ? `${max}+` : count}
+  {...$$restProps}
 >
   <slot />
 </span>

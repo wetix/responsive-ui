@@ -11,7 +11,6 @@
 </script>
 
 <button
-  {...$$restProps}
   class="resp-button resp-button--{variant} resp-button--{size} {className}"
   class:resp-button--outline={outline}
   role="button"
@@ -19,6 +18,7 @@
   {disabled}
   bind:this={ref}
   on:click
+  {...$$restProps}
 >
   <slot>{label}</slot>
 </button>

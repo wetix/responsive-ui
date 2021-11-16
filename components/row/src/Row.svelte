@@ -13,12 +13,12 @@
   cssStyle += `;${style}`;
 </script>
 
-<div class="responsive-ui-row {className}" style={cssStyle}>
+<div class="resp-row {className}" style={cssStyle}>
   <slot />
 </div>
 
 <style lang="scss">
-  .responsive-ui-row {
+  .resp-row {
     display: flex;
     flex-wrap: wrap;
     margin: 6px 0;

@@ -9,20 +9,20 @@
   export let color = "blue";
   export let value = "";
 
-  const onClick = () => {
+  const handleClose = () => {
     dispatch("close");
   };
 </script>
 
-<span class="responsive-ui-tag responsive-ui-tag--{color} {className}">
+<span class="resp-tag resp-tag--{color} {className}" {...$$restProps}>
   <slot>{value}</slot>
   {#if closable}
-    <span class="responsive-ui-tag__close" on:click={onClick}>&#10005;</span>
+    <span class="resp-tag__close" on:click={handleClose}>&#10005;</span>
   {/if}
 </span>
 
 <style lang="scss">
-  .responsive-ui-tag {
+  .resp-tag {
     position: relative;
     display: inline-flex;
     align-items: center;

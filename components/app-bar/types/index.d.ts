@@ -1,14 +1,16 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type NavItem = {
-  title?: string;
+  label?: string;
   icon?: string;
   value: string;
   link: string;
 };
 
 export interface AppBarProps {
+  id?: string;
   class?: string;
+  logoSrc?: string;
   title?: string;
   navItems: Array<any>;
   hasBg?: boolean;
@@ -18,6 +20,7 @@ export interface AppBarProps {
 export interface AppBarEvents {}
 
 export interface AppBarSlots {
+  logo: {};
   left: {};
   right: {};
 }

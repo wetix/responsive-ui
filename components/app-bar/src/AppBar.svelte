@@ -7,14 +7,13 @@
   import Dropdown from "../components/Dropdown.svelte";
   import type { NavItem } from "../types";
 
+  export let logoSrc = "";
   export let tabItems: NavItem[] = [];
   export let selecteTabIndex = 0;
   export let navItems: NavItem[] = [];
   export let dropdownItems: NavItem[] = [];
 
-  let logoSrc = "https://asset.wetix.my/images/logo/wetix.png";
-
-  let showDropdown = false;
+  let showDropdown = true;
   let openDrawer = false;
 
   const dispatch = createEventDispatcher();
@@ -68,19 +67,11 @@
 
     <!-- dropdown -->
     <div class="resp-app-bar__right">
-      <div class="resp-app-bar__right-dropdown">
-        <a
-          href="/me"
-          on:click|preventDefault|stopPropagation={toggleShowDropdown}
-        >
-          <Icon
-            type="profile"
-            stroke="#fc4451"
-            style="width:40px; height:40px;"
-          />
-        </a>
-        <Dropdown show={showDropdown} items={dropdownItems} />
-      </div>
+      <slot name="right">
+        {#each dropdownItems as item}
+          <a href={item.link}><Icon useHref={item.icon} /></a>
+        {/each}
+      </slot>
     </div>
   </div>
 </nav>
