@@ -8,6 +8,8 @@ export type Device = {
 };
 
 export interface ColumnProps {
+  id?: string;
+  title?: string;
   span?: number | Device;
   justify?: string;
   class?: string;
