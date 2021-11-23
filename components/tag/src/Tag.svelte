@@ -5,9 +5,9 @@
 
   let className = "";
   export { className as class };
+  export let label = "";
   export let closable = false;
   export let color = "blue";
-  export let value = "";
 
   const handleClose = () => {
     dispatch("close");
@@ -15,7 +15,7 @@
 </script>
 
 <span class="resp-tag resp-tag--{color} {className}" {...$$restProps}>
-  <slot>{value}</slot>
+  <slot>{label}</slot>
   {#if closable}
     <span class="resp-tag__close" on:click={handleClose}>&#10005;</span>
   {/if}
