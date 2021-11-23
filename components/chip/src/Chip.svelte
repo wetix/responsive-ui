@@ -1,0 +1,54 @@
+<script lang="ts">
+  let className = "";
+  export { className as class };
+  export let size = "large";
+  export let label = "";
+  export let disabled = false;
+  export let checked = false;
+  export let value = "";
+
+  const id = `chip-${Math.floor(Math.random() * Date.now())}`;
+</script>
+
+<input {id} type="checkbox" bind:checked {disabled} />
+<label
+  class="resp-chip resp-chip--{size} {className}"
+  class:resp-chip--disabled={disabled}
+  data-value={value}
+  for={id}
+  {...$$restProps}
+>
+  <slot>{label}</slot>
+</label>
+
+<style lang="scss">
+  .resp-chip {
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #fc4451;
+    border: 1px solid #fc4451;
+    background: transparent;
+    overflow: hidden;
+
+    &--large {
+      font-size: 14px;
+      padding: 3px 12px;
+      border-radius: 14px;
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input:checked ~ .resp-chip {
+    // border: 1px solid #fc4451;
+    color: #fff;
+    background: #fc4451;
+  }
+</style>
