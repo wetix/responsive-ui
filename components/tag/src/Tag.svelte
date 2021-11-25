@@ -6,6 +6,7 @@
   let className = "";
   export { className as class };
   export let label = "";
+  export let outline = false;
   export let closable = false;
   export let color = "blue";
 
@@ -14,7 +15,11 @@
   };
 </script>
 
-<span class="resp-tag resp-tag--{color} {className}" {...$$restProps}>
+<span
+  class="resp-tag resp-tag--{color} {className}"
+  class:resp-tag--outline={outline}
+  {...$$restProps}
+>
   <slot>{label}</slot>
   {#if closable}
     <span class="resp-tag__close" on:click={handleClose}>&#10005;</span>
@@ -26,7 +31,8 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    font-size: var(--font-size-sm, 10px);
+    font-size: var(--font-size-sm);
+    border: 1px solid #dcdcdc;
     border-radius: var(--border-radius, 5px);
     padding: 3px 8px;
     overflow: hidden;
@@ -37,6 +43,7 @@
     }
 
     &--blue {
+      border-color: rgba(190, 227, 248, 1);
       color: rgba(49, 130, 206, 1);
       background: rgba(190, 227, 248, 1);
     }
@@ -79,6 +86,10 @@
     &--grey {
       color: rgba(113, 128, 150, 1);
       background: rgba(237, 242, 247, 1);
+    }
+
+    &--outline {
+      background: inherit;
     }
   }
 </style>

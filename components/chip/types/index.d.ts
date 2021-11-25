@@ -3,6 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface ChipProps {
   id?: string;
   title?: string;
+  name?: string;
   label?: string;
   disabled?: boolean;
   checked?: boolean;

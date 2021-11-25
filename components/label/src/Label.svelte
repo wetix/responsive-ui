@@ -6,7 +6,7 @@
   export let label = "";
 </script>
 
-<label {...$$restProps} class="resp-label {className}" for={forName}>
+<label class="resp-label {className}" for={forName} {...$$restProps}>
   {label}
 </label>
 <slot />

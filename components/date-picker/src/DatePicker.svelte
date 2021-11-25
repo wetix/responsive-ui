@@ -74,6 +74,11 @@
     if (!setDateOnlyIfValid(value)) value = "";
   };
 
+  const handleKeydown = (e: KeyboardEvent) => {
+    const code = e.keyCode || e.which;
+    if (code === 13) open = !open;
+  };
+
   const handleClear = () => {
     ref!!.focus();
     focused = false;
@@ -105,6 +110,7 @@
     on:input={handleChange}
     on:blur={handleBlur}
     size="20"
+    on:keydown={handleKeydown}
     autocomplete="off"
     {value}
   />

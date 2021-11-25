@@ -4,8 +4,8 @@ export interface CardProps {
   id?: string;
   title?: string;
   class?: string;
-  style?: string;
   compact?: boolean;
+  style?: string;
 }
 
 export interface CardEvents {

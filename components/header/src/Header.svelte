@@ -2,16 +2,15 @@
   let className = "";
   export { className as class };
   export let label = "";
-  export let style = "";
 </script>
 
-<header class="responsive-ui-header {className}" {style}>
-  <span class="responsive-ui-header__label">{label}</span>
+<header class="resp-header {className}" {...$$restProps}>
+  <span class="resp-header__label">{label}</span>
   <slot />
 </header>
 
 <style lang="scss">
-  .responsive-ui-header {
+  .resp-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

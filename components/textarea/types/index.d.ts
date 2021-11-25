@@ -25,7 +25,9 @@ export interface TextareaEvents {
   blur?: WindowEventMap["blur"];
 }
 
-export interface TextareaSlots {}
+export interface TextareaSlots {
+  default: {};
+}
 
 declare class Textarea extends SvelteComponentTyped<
   TextareaProps,

@@ -3,6 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface IconProps {
   id?: string;
   class?: string;
+  size?: "small" | "medium" | "large";
   fill?: string;
   stroke?: string;
   width?: string;

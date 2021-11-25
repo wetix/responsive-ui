@@ -34,7 +34,7 @@
   />
   {#if maxlength > 0}
     <slot>
-      <div class="resp-textarea__text-len">
+      <div class="resp-textarea__charlen">
         {value.length}/{maxlength} characters
       </div>
     </slot>
@@ -79,7 +79,7 @@
       cursor: not-allowed;
     }
 
-    &__text-len {
+    &__charlen {
       margin-top: 8px;
       display: block;
       text-align: right;

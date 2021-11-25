@@ -1,6 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let name = "";
   export let size = "large";
   export let label = "";
   export let disabled = false;
@@ -10,7 +11,7 @@
   const id = `chip-${Math.floor(Math.random() * Date.now())}`;
 </script>
 
-<input {id} type="checkbox" bind:checked {disabled} />
+<input {id} {name} type="checkbox" bind:checked {disabled} />
 <label
   class="resp-chip resp-chip--{size} {className}"
   class:resp-chip--disabled={disabled}
@@ -39,6 +40,11 @@
       font-size: 14px;
       padding: 3px 12px;
       border-radius: 14px;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      text-decoration: line-through;
     }
   }
 

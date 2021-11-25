@@ -38,7 +38,7 @@
     padding: 0 15px;
     margin: 0;
     height: var(--input-height, 30px);
-    line-height: var(--input-height, 30px);
+    line-height: 1;
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
@@ -50,7 +50,7 @@
 
     &--small {
       height: 24px;
-      line-height: 24px;
+      line-height: 1;
     }
 
     &--primary {

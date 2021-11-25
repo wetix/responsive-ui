@@ -5,17 +5,17 @@
 </script>
 
 <div
-  {...$$restProps}
   class="resp-card {className}"
   class:resp-card--compact={compact}
   on:click
+  {...$$restProps}
 >
   <slot />
 </div>
 
 <style lang="scss">
   .resp-card {
-    padding: 15px;
+    padding: var(--padding);
     word-break: break-word;
     overflow: hidden;
     font-family: inherit;

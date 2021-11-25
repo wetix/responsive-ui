@@ -6,7 +6,16 @@ export interface TagProps {
   title?: string;
   class?: string;
   closable?: boolean;
-  color?: string;
+  color?:
+    | "blue"
+    | "red"
+    | "green"
+    | "teal"
+    | "orange"
+    | "yellow"
+    | "purple"
+    | "pink"
+    | "grey";
   style?: string;
 }
 
