@@ -6,6 +6,7 @@ export interface TagProps {
   title?: string;
   class?: string;
   closable?: boolean;
+  outline?: boolean;
   color?:
     | "blue"
     | "red"
