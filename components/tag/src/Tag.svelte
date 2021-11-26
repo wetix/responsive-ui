@@ -8,7 +8,7 @@
   export let label = "";
   export let outline = false;
   export let closable = false;
-  export let color = "blue";
+  export let color = "default";
 
   const handleClose = () => {
     dispatch("close");
@@ -32,7 +32,8 @@
     display: inline-flex;
     align-items: center;
     font-size: var(--font-size-sm);
-    border: 1px solid #dcdcdc;
+    border: 1px solid #817e7e;
+    color: #817e7e;
     border-radius: var(--border-radius, 5px);
     padding: 3px 8px;
     overflow: hidden;
