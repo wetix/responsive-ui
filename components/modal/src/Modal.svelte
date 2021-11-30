@@ -113,17 +113,14 @@
       caption {
         font-size: var(--font-size-lg, 24px);
         font-weight: 600;
+        flex-grow: 1;
       }
 
       .resp-modal__header-close {
-        cursor: pointer;
-        display: inline-flex;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        color: #373737;
+        flex: 0 0 30px;
 
         &-icon {
+          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
