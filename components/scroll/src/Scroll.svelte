@@ -3,6 +3,7 @@
 
   let className = "";
   export { className as class };
+  export let scrollable = true;
 
   let el: HTMLDivElement;
   let maxWidth = 0;
@@ -62,7 +63,12 @@
       {@html `<svg viewBox="0 0 16 16" width="24px" height="24px"><path d="M10.15,13.35L4.79,8l5.35-5.35l0.71,0.71L6.21,8l4.65,4.65L10.15,13.35z" /></svg>`}
     </div>
   </span>
-  <div class="resp-scroll__container" bind:this={el} on:scroll>
+  <div
+    class="resp-scroll__container"
+    class:resp-scroll__container--scrollable={scrollable}
+    bind:this={el}
+    on:scroll
+  >
     <slot />
   </div>
   <div
@@ -88,8 +94,12 @@
       flex-grow: 1;
       scroll-behavior: smooth;
       transition: all 0.5s;
-      overflow-x: auto;
+      overflow-x: hidden;
       scrollbar-width: none; /* for Firefox */
+
+      &--scrollable {
+        overflow-x: auto;
+      }
 
       & > * {
         font-size: initial;

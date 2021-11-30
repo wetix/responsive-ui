@@ -4,6 +4,7 @@ export interface ScrollProps {
   id?: string;
   title?: string;
   class?: string;
+  scrollable?: boolean;
   style?: string;
 }
 

@@ -8,6 +8,7 @@
   component={Scroll}
   argTypes={{
     height: { control: { type: "range", min: 100, max: 500, step: 10 } },
+    scrollable: { control: "boolean" },
   }}
 />
 
