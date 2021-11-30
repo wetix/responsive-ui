@@ -16,10 +16,10 @@
 
 <Template let:args>
   <Scroll {...args} on:click={args.onClick}>
-    {#each new Array(100) as _, index}
+    {#each new Array(30) as _, index}
       <span
         style="display: inline-flex; border: 1px solid #dcdcdc; width: 120px; justify-content: center; padding: 1rem 0;"
-        >{index}</span
+        >{index + 1}</span
       >
     {/each}
   </Scroll>
