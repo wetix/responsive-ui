@@ -2,12 +2,14 @@ import fs from "fs";
 import path from "path";
 import chalk from "chalk";
 
-// const toBase64Str = (data) => {
-//   let buff = new Buffer(data);
-//   return buff.toString("base64");
-// };
-
-const toTemplateString = (pkgName, pkgDesc) => {
+/**
+ *
+ * @param {string} relPath - Relative path for the component
+ * @param {string} pkgName - Package name
+ * @param {string} pkgDesc - Package description
+ * @return {string} - README string
+ */
+const toTemplateString = (relPath, pkgName, pkgDesc) => {
   return `
 # ${pkgName}
 
@@ -43,7 +45,7 @@ yarn add ${pkgName}
 
 ## üìÑ License
 
-[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[${pkgName}](https://github.com/wetix/responsive-ui/tree/main/${relPath}) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## üéâ Big Thanks To
 
@@ -55,7 +57,8 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 };
 
 (async function createREADME() {
-  const folderPath = path.resolve("./components");
+  const root = "./components";
+  const folderPath = path.resolve(root);
   const folders = fs.readdirSync(folderPath);
 
   for (let i = 0; i < folders.length; i++) {
@@ -69,11 +72,16 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 
     // read `package.json`
     const basePath = `${folderPath}/${file}`;
+    /** @type {{name: string, description: string}} */
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
 
-    const content = toTemplateString(pkg.name, pkg.description);
+    const content = toTemplateString(
+      path.relative(process.cwd(), basePath),
+      pkg.name,
+      pkg.description
+    );
 
     fs.writeFileSync(path.resolve(`${basePath}/README.md`), content);
 

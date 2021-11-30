@@ -31,7 +31,7 @@ yarn add @responsive-ui/date-picker
 
 ## 📄 License
 
-[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/main/components/date-picker) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## 🎉 Big Thanks To
 

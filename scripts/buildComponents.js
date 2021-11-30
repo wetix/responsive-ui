@@ -138,6 +138,11 @@ const rollupPlugins = [
   }),
 ];
 
+/**
+ *
+ * @param {string} filepath - Relative path
+ * @param {{name: string, main: string, module: string, browser: string, svelte: string}} pkg - package.json
+ */
 const analyzePackageJson = async (filepath, pkg) => {
   let bundle = await rollup({
     input: path.resolve(`${filepath}/${pkg.svelte}`),
@@ -149,6 +154,7 @@ const analyzePackageJson = async (filepath, pkg) => {
   });
 
   const files = [pkg.main, pkg.module, pkg.browser];
+  /** @type {Map<String, boolean>} */
   const map = new Map();
 
   for (let i = 0; i < files.length; i++) {
@@ -240,6 +246,7 @@ const analyzePackageJson = async (filepath, pkg) => {
 
 (async function buildScript() {
   const lernaPath = path.resolve("./lerna.json");
+  /** @type {{packages: string[]}} */
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
 
   const pkgs = lerna.packages || [];
