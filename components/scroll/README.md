@@ -1,14 +1,14 @@
 
-# @responsive-ui/chip
+# @responsive-ui/scroll
 
-> A chip component of responsive-ui.
+> A scroll component of responsive-ui.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
-[![npm](https://img.shields.io/npm/v/@responsive-ui/chip.svg)](https://www.npmjs.com/package/@responsive-ui/chip)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fchip)](https://bundlephobia.com/result?p=%40responsive-ui%2Fchip)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/chip.svg)](https://www.npmjs.com/package/@responsive-ui/chip)
+[![npm](https://img.shields.io/npm/v/@responsive-ui/scroll.svg)](https://www.npmjs.com/package/@responsive-ui/scroll)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fscroll)](https://bundlephobia.com/result?p=%40responsive-ui%2Fscroll)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/scroll.svg)](https://www.npmjs.com/package/@responsive-ui/scroll)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
@@ -16,13 +16,13 @@
 ## 🔨 Install
 
 ```console
-npm install @responsive-ui/chip
+npm install @responsive-ui/scroll
 ```
 
 or
 
 ```console
-yarn add @responsive-ui/chip
+yarn add @responsive-ui/scroll
 ```
 
 ## 🔋 Sponsors

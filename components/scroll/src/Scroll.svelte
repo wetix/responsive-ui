@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
 
+  let className = "";
+  export { className as class };
+
   let el: HTMLDivElement;
   let maxWidth = 0;
   let maxOffsetWidth = 0;
@@ -49,17 +52,17 @@
   };
 </script>
 
-<div class="resp-scroll">
+<div class="resp-scroll {className}" {...$$restProps}>
   <span
     class="resp-scroll__prev-icon"
     class:resp-scroll__icon--visible={scrollDistance > 0}
     on:click={handlePrev}
   >
-    <div class="resp-scroll__icon" style="width: 30px;">
+    <div class="resp-scroll__icon">
       {@html `<svg viewBox="0 0 16 16" width="24px" height="24px"><path d="M10.15,13.35L4.79,8l5.35-5.35l0.71,0.71L6.21,8l4.65,4.65L10.15,13.35z" /></svg>`}
     </div>
   </span>
-  <div class="resp-scroll__container" bind:this={el}>
+  <div class="resp-scroll__container" bind:this={el} on:scroll>
     <slot />
   </div>
   <div

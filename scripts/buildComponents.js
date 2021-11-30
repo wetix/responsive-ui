@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import fs from "fs";
 import asyncJs from "async";
 import path from "path";
 import chalk from "chalk";
@@ -250,7 +250,7 @@ const analyzePackageJson = async (filepath, pkg) => {
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
     if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
-      fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+      fs.rmSync(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
     }
 
     await analyzePackageJson(basePath, pkg);

@@ -1,6 +1,6 @@
 <script lang="ts">
   import AppBar from "../components/app-bar/src/AppBar.svelte";
-  import RangeSlider from "../components/range-slider/src/RangeSlider.svelte";
+  import RangeSlider from "../components/range/src/Range.svelte";
 
   const tabItems = [
     { value: "PERSONALDETAILS", title: "Personal Details" },

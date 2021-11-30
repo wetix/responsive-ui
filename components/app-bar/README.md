@@ -1,14 +1,14 @@
 
-# @responsive-ui/chip
+# @responsive-ui/app-bar
 
-> A chip component of responsive-ui.
+> An app bar component of responsive-ui.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
-[![npm](https://img.shields.io/npm/v/@responsive-ui/chip.svg)](https://www.npmjs.com/package/@responsive-ui/chip)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fchip)](https://bundlephobia.com/result?p=%40responsive-ui%2Fchip)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/chip.svg)](https://www.npmjs.com/package/@responsive-ui/chip)
+[![npm](https://img.shields.io/npm/v/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fapp-bar)](https://bundlephobia.com/result?p=%40responsive-ui%2Fapp-bar)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/app-bar.svg)](https://www.npmjs.com/package/@responsive-ui/app-bar)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
@@ -16,13 +16,13 @@
 ## 🔨 Install
 
 ```console
-npm install @responsive-ui/chip
+npm install @responsive-ui/app-bar
 ```
 
 or
 
 ```console
-yarn add @responsive-ui/chip
+yarn add @responsive-ui/app-bar
 ```
 
 ## 🔋 Sponsors

@@ -7,22 +7,28 @@
   title="Components/Scroll"
   component={Scroll}
   argTypes={{
-    // placeholder: { control: "text" },
-    // disabled: { control: "boolean" },
-    // bordered: { control: "boolean" },
-    // readonly: { control: "boolean" },
+    height: { control: { type: "range", min: 100, max: 500, step: 10 } },
   }}
 />
 
 <Template let:args>
   <Scroll {...args} on:click={args.onClick}>
     {#each new Array(30) as _, index}
-      <span
-        style="display: inline-flex; border: 1px solid #dcdcdc; width: 120px; justify-content: center; padding: 1rem 0;"
+      <span class="slide-item" style="min-height: {args.height}px"
         >{index + 1}</span
       >
     {/each}
   </Scroll>
 </Template>
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{ height: 120 }} />
+
+<style>
+  .slide-item {
+    display: inline-flex;
+    border: 1px solid #dcdcdc;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
