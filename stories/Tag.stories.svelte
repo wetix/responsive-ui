@@ -14,12 +14,14 @@
 />
 
 <Template let:args>
-  <Tag label="Test" value="Test" {...args} on:click={args.onClick} />
+  <Tag {...args} on:click={args.onClick} />
 </Template>
 
 <Story
   name="Default"
   args={{
+    label: "Hello World",
     placeholder: "Input your text...",
+    value: "test",
   }}
 />

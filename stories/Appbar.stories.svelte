@@ -4,7 +4,7 @@
 </script>
 
 <Meta
-  title="Components/AppBar"
+  title="Components/App Bar"
   component={AppBar}
   argTypes={{
     tabItems: { control: "object" },
