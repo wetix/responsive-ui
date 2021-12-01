@@ -18,9 +18,8 @@
   };
 </script>
 
-<div class="resp-textarea-box">
+<div class="resp-textarea__box">
   <textarea
-    {...$$restProps}
     class="resp-textarea {className}"
     class:resp-textarea--bordered={bordered}
     bind:this={ref}
@@ -31,10 +30,11 @@
     on:change
     on:input={handleChange}
     on:input
+    {...$$restProps}
   />
   {#if maxlength > 0}
     <slot>
-      <div class="resp-textarea__charlen">
+      <div class="resp-textarea__char">
         {value.length}/{maxlength} characters
       </div>
     </slot>
@@ -42,11 +42,6 @@
 </div>
 
 <style lang="scss">
-  .resp-textarea-box {
-    display: inline-flex;
-    flex-direction: column;
-  }
-
   .resp-textarea {
     font-size: inherit;
     font-family: inherit;
@@ -59,6 +54,11 @@
     margin: 0;
     border-radius: 3px;
     transition: all 0.5s;
+
+    &__box {
+      display: inline-flex;
+      flex-direction: column;
+    }
 
     &--bordered {
       border: 1px solid #f1f1f1;
@@ -79,7 +79,7 @@
       cursor: not-allowed;
     }
 
-    &__charlen {
+    &__char {
       margin-top: 8px;
       display: block;
       text-align: right;
