@@ -2,7 +2,10 @@
   "name": "@responsive-ui/range",
   "version": "1.0.9-alpha.0",
   "description": "A range component of responsive-ui.",
-  "author": "Si3nLoong <sianloong90@gmail.com>",
+  "author": "Mohamad Harith <mohamadharith.my@gmail.com> (https://github.com/mohamadHarith)",
+  "contributors": [
+    "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)"
+  ],
   "homepage": "https://github.com/wetix/responsive-ui#readme",
   "license": "MIT",
   "main": "lib/cjs/index.js",
