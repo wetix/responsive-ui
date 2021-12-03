@@ -1,174 +1,147 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import Scroll from "@responsive-ui/scroll";
 
-  import Icon from "../../icon/src/Icon.svelte";
-  import Tab from "../components/Tab.svelte";
-  import Drawer from "../components/Drawer.svelte";
-  import Dropdown from "../components/Dropdown.svelte";
-  import type { NavItem } from "../types";
-
-  export let logoSrc = "";
-  export let tabItems: NavItem[] = [];
-  export let selecteTabIndex = 0;
-  export let navItems: NavItem[] = [];
-  export let dropdownItems: NavItem[] = [];
-
-  let showDropdown = true;
-  let openDrawer = false;
-
-  const dispatch = createEventDispatcher();
-
-  const toggleShowDropdown = () => {
-    showDropdown = !showDropdown;
-  };
-
-  const closeDropdown = (e: MouseEvent) => {
-    if (showDropdown) {
-      showDropdown = false;
-      e.stopPropagation();
-    }
-  };
-
-  const handleTabChange = (e: CustomEvent) => {
-    dispatch("change", e.detail);
-  };
-
-  // document.addEventListener("click", closeDropdown);
+  export let items: any = [];
 </script>
 
-<nav class="resp-app-bar" class:resp-app-bar--shadowed={tabItems.length <= 0}>
-  <!-- drawer button -->
-  <div
-    class="resp-app-bar__drawer-button"
-    on:click={() => {
-      openDrawer = true;
-    }}
-  >
-    <Icon type="hamburger" stroke="#ffff" style="width:35px; height:35px;" />
-  </div>
-
-  <!-- container -->
-  <div class="resp-app-bar__container">
-    <!-- logo-->
-    <a class="resp-app-bar__logo" href="/">
-      <slot name="logo">
-        <img src={logoSrc} alt="logo" />
-      </slot>
-    </a>
-
-    <!-- navs -->
-    <div class="resp-app-bar__nav">
-      <ul>
-        {#each navItems as item}
-          <li><a href={item.link}>{item.label}</a></li>
-        {/each}
-      </ul>
-    </div>
-
-    <!-- dropdown -->
-    <div class="resp-app-bar__right">
-      <slot name="right">
-        {#each dropdownItems as item}
-          <a href={item.link}><Icon useHref={item.icon} /></a>
-        {/each}
-      </slot>
+<header class="resp-app-bar" class:resp-app-bar--shadowed={true} on:click>
+  <div class="resp-app-bar__box">
+    <div class="resp-app-bar__main">
+      <div class="resp-app-bar__leading"><slot name="leading" /></div>
+      <div class="resp-app-bar__center">
+        <slot name="center">
+          <ul>
+            {#each items as { link, label, selected, ...otherProps }}
+              <li class:resp-app-bar__subnav-item--selected={selected}>
+                <a href={link} {...otherProps}>{label}</a>
+              </li>
+            {/each}
+          </ul>
+        </slot>
+      </div>
+      <div class="resp-app-bar__trailing">
+        <slot name="trailing">
+          <ul>
+            {#each items as { link, label, selected, ...otherProps }, index}
+              <li class:resp-app-bar__subnav-item--selected={selected}>
+                <slot name="trailing-item" {index} {selected}>
+                  <a href={link} {...otherProps}>{label}</a>
+                </slot>
+              </li>
+            {/each}
+          </ul>
+        </slot>
+      </div>
     </div>
   </div>
-</nav>
+  <!-- subnav -->
+  {#if items.length > 0}
+    <div class="resp-app-bar__subnav">
+      <Scroll>
+        <ul>
+          {#each items as { link, label, selected, ...otherProps }}
+            <li class:resp-app-bar__subnav-item--selected={selected}>
+              <a href={link} {...otherProps}>{label}</a>
+            </li>
+          {/each}
+        </ul>
+      </Scroll>
+    </div>
+  {/if}
+</header>
 
-<!-- tab -->
-<!-- {#if tabItems}
-  <Tab
-    on:change={handleTabChange}
-    items={tabItems}
-    selected={selecteTabIndex}
-  />
-{/if} -->
-
-<!-- drawer  -->
-<Drawer bind:open={openDrawer} items={[...navItems, ...dropdownItems]} />
-
-<style lang="scss">
+<style lang="scss" global>
   .resp-app-bar {
-    position: relative;
-    display: flex;
+    position: fixed;
+    display: inline-flex;
+    flex-direction: column;
     top: 0;
-    height: 60px;
-    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: inherit;
+    height: auto;
     z-index: 100;
 
-    &--shadowed {
-      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    ul {
+      list-style: none;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      li {
+        padding: 0 5px;
+        white-space: nowrap;
+      }
     }
 
-    .resp-app-bar__drawer-button {
-      background-color: #fc4451;
-      padding: 5px;
+    &__box {
+      position: relative;
+      height: 50px;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+      z-index: 500;
     }
 
-    .resp-app-bar__container {
-      max-width: 1280px;
+    &__main {
       width: 80%;
+      height: 100%;
+      padding: 0 1rem;
       margin: 0 auto;
       align-items: center;
       display: flex;
       justify-content: space-between;
-      // width: 100%;
-      // min-height: 45px;
 
-      .resp-app-bar__logo {
-        align-self: center;
-        img {
-          display: block;
-          width: 80px;
-          height: calc(80px / (2567px / 601px));
-          object-fit: cover;
-        }
-      }
-
-      .resp-app-bar__nav {
-        align-self: center;
-        ul {
-          display: flex;
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-
-          li {
-            margin: 0 1rem;
-            a {
-              text-decoration: none;
-              color: #444444;
-              font-size: 1rem;
-            }
-            a:hover {
-              color: #fc4451;
-            }
-          }
-        }
-      }
-
-      .resp-app-bar__right {
-        align-self: center;
-        display: flex;
-
-        .resp-app-bar__right-dropdown {
-          position: relative;
-        }
+      @media screen and (max-width: 720px) {
+        width: auto;
       }
     }
-  }
 
-  @media (min-width: 640px) {
-    .resp-app-bar__drawer-button {
-      display: none;
-    }
-  }
+    &__center {
+      // max-width: 40%;
+      overflow: hidden;
 
-  @media (max-width: 640px) {
-    .resp-app-bar__nav,
-    .resp-app-bar__right-dropdown {
-      display: none;
+      @media screen and (max-width: 720px) {
+        display: none;
+      }
     }
+
+    &__trailing {
+      ul {
+        justify-content: flex-end;
+      }
+      @media screen and (max-width: 720px) {
+        max-width: none;
+        flex-grow: 1;
+      }
+    }
+
+    &__subnav {
+      background-color: #fc4451;
+      color: #fff;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+      z-index: 450;
+
+      &-item--selected {
+        font-weight: 600;
+      }
+
+      ul {
+        height: 42px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    // &--shadowed {
+    //   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    // }
   }
 </style>
