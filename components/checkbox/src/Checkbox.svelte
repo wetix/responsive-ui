@@ -1,4 +1,6 @@
 <script lang="ts">
+  let className = "";
+  export { className as class };
   export let ref: null | HTMLInputElement = null;
   export let label = "";
   export let name = "";
@@ -7,7 +9,7 @@
   export let checked = false;
 </script>
 
-<label class="responsive-ui-checkbox" {...$$restProps}>
+<label class="resp-checkbox {className}" {...$$restProps}>
   <input
     bind:this={ref}
     type="checkbox"
@@ -16,22 +18,20 @@
     {disabled}
     {value}
     bind:checked
-    style="display:none"
+    style="display: none"
   />
   <span>
-    <svg viewBox="0 0 12 9" width="10px" height="9px">
-      <polyline points="1 5 4 8 11 1" />
-    </svg>
+    {@html `<svg viewBox="0 0 12 9" width="10px" height="10px"><polyline points="1 5 4 8 11 1" /></svg>`}
   </span><span>
     <slot>{label}</slot>
   </span>
 </label>
 
-<style lang="scss">
+<style lang="scss" global>
   $primary: #3c53c7;
   $gray: #b9b8c3;
 
-  .responsive-ui-checkbox {
+  .resp-checkbox {
     display: inline-block;
     cursor: pointer;
     user-select: none;
