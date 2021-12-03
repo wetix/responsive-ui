@@ -115,7 +115,7 @@
     {value}
   />
   <span
-    class="resp-date-picker-calendar-icon"
+    class="resp-date-picker__calendar-icon"
     role="img"
     aria-label="calendar"
     on:click={() => (open = true)}
@@ -123,8 +123,8 @@
       viewBox="64 64 896 896"
       focusable="false"
       data-icon="calendar"
-      width="1em"
-      height="1em"
+      width="16px"
+      height="16px"
       fill="currentColor"
       aria-hidden="true"
       ><path
@@ -154,7 +154,7 @@
   {/if}
 
   {#if open}
-    <div class="resp-date-picker-calendar" style={`top:${clientHeight + 5}px`}>
+    <div class="resp-date-picker__calendar">
       <Calendar
         bind:day
         bind:month
@@ -189,10 +189,16 @@
       border-color: #fc4451;
     }
 
+    &__calendar-icon {
+      svg {
+        display: block;
+      }
+    }
+
     &--focused {
       box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
 
-      .resp-date-picker-calendar-icon {
+      .resp-date-picker__calendar-icon {
         opacity: 0;
       }
     }
@@ -240,12 +246,13 @@
       z-index: 1;
     }
 
-    &-calendar {
+    &__calendar {
       position: absolute;
-      border-radius: 4px;
+      top: calc(100% + 10px);
+      left: 0;
+      border-radius: 5px;
       background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      left: 0;
       z-index: 5;
     }
   }
