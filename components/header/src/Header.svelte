@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--padding);
+    padding: var(--padding) 0;
 
     &__label {
       text-transform: capitalize;

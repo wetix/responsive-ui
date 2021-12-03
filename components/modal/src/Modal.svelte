@@ -40,7 +40,7 @@
     }px; max-height: ${maxHeight}px; ${style}`}
   >
     <slot name="header">
-      {#if title != null}
+      {#if title}
         <header class="resp-modal__header">
           <caption>{title}</caption>
           {#if closable}
