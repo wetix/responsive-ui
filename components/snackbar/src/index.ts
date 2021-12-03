@@ -3,7 +3,7 @@ import { SvelteComponent, tick } from "svelte/internal";
 import Snackbar from "./Snackbar.svelte";
 import type { SnackbarProps } from "../types/Snack";
 
-const queue: Array<SvelteComponent> = [];
+const queue: SvelteComponent[] = [];
 
 interface SnackbarComponent {
   close(): void;

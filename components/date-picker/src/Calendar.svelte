@@ -53,7 +53,7 @@
 
   $: isValid = year > 0 && month >= 0 && day > 0;
   $: getClassList = (v: Date) => {
-    const clsList: Array<string> = [];
+    const clsList: string[] = [];
 
     if (v.getMonth() != selectedMonth) {
       clsList.push("resp-calendar__date--not-in-view");

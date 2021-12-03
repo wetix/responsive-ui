@@ -5,6 +5,7 @@ export type NavItem = {
   icon?: string;
   value: string;
   link: string;
+  selected?: boolean;
 };
 
 export interface AppBarProps {
@@ -12,7 +13,7 @@ export interface AppBarProps {
   class?: string;
   logoSrc?: string;
   title?: string;
-  navItems: Array<any>;
+  navItems: NavItem[];
   hasBg?: boolean;
   style?: string;
 }

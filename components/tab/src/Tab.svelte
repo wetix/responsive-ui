@@ -3,7 +3,7 @@
 
   import type { TabItem } from "../types";
 
-  export let items: Array<TabItem> = [];
+  export let items: TabItem[] = [];
   export let selected = 0;
   export let style = "";
 

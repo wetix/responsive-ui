@@ -8,6 +8,7 @@ export interface IconProps {
   stroke?: string;
   width?: string;
   height?: string;
+  viewBox?: string;
   useHref?: string;
   style?: string;
 }
