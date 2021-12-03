@@ -41,7 +41,7 @@
   {/if}
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-textarea {
     font-size: inherit;
     font-family: inherit;

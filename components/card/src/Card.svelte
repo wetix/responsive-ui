@@ -13,7 +13,7 @@
   <slot />
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-card {
     padding: var(--padding);
     word-break: break-word;

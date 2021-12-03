@@ -23,7 +23,7 @@
   <slot>{label}</slot>
 </button>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-button {
     cursor: pointer;
     display: inline-block;

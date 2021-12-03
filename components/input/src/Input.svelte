@@ -44,7 +44,7 @@
   <slot name="suffix" />
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-input {
     display: inline-flex;
     color: var(--text-color, #1a1b1c);

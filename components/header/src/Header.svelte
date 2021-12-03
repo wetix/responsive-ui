@@ -9,7 +9,7 @@
   <slot />
 </header>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-header {
     display: flex;
     justify-content: space-between;

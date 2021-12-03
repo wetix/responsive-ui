@@ -18,7 +18,7 @@
   </slot>
 </span>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-icon {
     display: inline-block;
     width: 24px;

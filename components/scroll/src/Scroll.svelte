@@ -82,7 +82,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-scroll {
     display: flex;
     align-items: center;

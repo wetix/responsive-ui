@@ -22,7 +22,7 @@
   <slot>{label}</slot>
 </label>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-chip {
     cursor: pointer;
     position: relative;
