@@ -40,9 +40,10 @@ You should choose whichever file format suitable for your use case.
 ## ✨ Features
 
 - Responsive by default
-- Support CommonJS and ES Module
+- Support **Common JS** and **ES Module**
 - Support server-side rendering
-- TypeScript and Sass as First Class Citizen
+- **TypeScript** and **Sass** as First Class Citizen
+- Compactible with `SvelteKit` and `Svelte v3`
 
 ## 💅 Component List
 
