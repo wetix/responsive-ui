@@ -9,30 +9,46 @@ export type TableColumn = {
   nowrap: boolean;
   width: number | string;
   value: ReturnType<any>;
-  component: typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
+  ellipsis: boolean;
 };
 
-export type TableItem = Record<string, any> | object;
+export type TableItem = Record<string, any>;
 
 export type TableProps = {
+  id?: string;
   ref?: null | HTMLDivElement;
-  key?: string;
+  rowKey?: keyof TableItem;
+  title?: string;
+  tableLayout?: "fixed" | "auto" | "inherit" | "initial";
+  size?: "small" | "medium" | "large";
   columns: Partial<TableColumn>[];
   items: null | TableItem[];
-  striped?: boolean;
-  bordered?: boolean;
   class?: string;
+  striped?: boolean;
+  showHeader?: boolean;
+  loading?: boolean;
+  bordered?: boolean;
   style?: string;
 };
 
 export interface TableEvents {}
 
 export interface TableSlots {
-  row: {
+  "table-head": {
+    index: number;
+  };
+  "table-row": {
     index: number;
     item: TableItem;
   };
+  "table-cell": {
+    rowIndex: number;
+    columnIndex: number;
+    item: TableItem;
+    column: TableColumn;
+  };
   empty: {};
+  loader: {};
 }
 
 declare class Table extends SvelteComponentTyped<
