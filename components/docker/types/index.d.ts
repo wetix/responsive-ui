@@ -3,7 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface DockerProps {
   class?: string;
   open?: boolean;
-  closable?: boolean;
+  maskClosable?: boolean;
   width?: string;
   placement?: "left" | "right";
   style?: string;
