@@ -1,16 +1,22 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let text = "";
+  export let width = "100%";
   export let style = "";
 </script>
 
-<p class="responsive-ui-ellipsis {className}" {style} on:click>
-  <slot>{text}</slot>
-</p>
+<div
+  class="resp-ellipsis {className}"
+  style={`width: ${width}; ${style}`}
+  {...$$restProps}
+  on:click
+>
+  <slot />
+</div>
 
-<style lang="scss">
-  .responsive-ui-ellipsis {
+<style lang="scss" global>
+  .resp-ellipsis {
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

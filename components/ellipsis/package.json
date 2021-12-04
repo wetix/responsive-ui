@@ -11,6 +11,9 @@
   "unpkg": "lib/index.min.js",
   "svelte": "src/Ellipsis.svelte",
   "types": "types/index.d.ts",
+  "exports": {
+    "require": "./lib/cjs/index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -37,7 +40,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wetix/responsive-ui.git"
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/ellipsis"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
