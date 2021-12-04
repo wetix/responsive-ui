@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import FAB from "../components/fab/src/FloatingActionButton.svelte";
+  import FAB from "@responsive-ui/fab";
 </script>
 
 <Meta

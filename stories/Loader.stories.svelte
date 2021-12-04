@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Loader from "../components/loader/src/Loader.svelte";
+  import Loader from "@responsive-ui/loader";
 </script>
 
 <Meta

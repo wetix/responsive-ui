@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Scroll from "../components/scroll/src/Scroll.svelte";
+  import Scroll from "@responsive-ui/scroll";
 </script>
 
 <Meta

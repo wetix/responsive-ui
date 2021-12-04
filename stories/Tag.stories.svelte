@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Tag from "../components/tag/src/Tag.svelte";
+  import Tag from "@responsive-ui/tag";
 </script>
 
 <Meta

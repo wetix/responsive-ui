@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Input from "../components/input/src/Input.svelte";
+  import Input from "@responsive-ui/input";
 </script>
 
 <Meta

@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Chip from "../components/chip/src/Chip.svelte";
+  import Chip from "@responsive-ui/chip";
 </script>
 
 <Meta

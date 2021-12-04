@@ -1,6 +1,8 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Upload from "../components/upload/src/Upload.svelte";
+  import Upload from "@responsive-ui/upload";
+
+  let ref = null;
 </script>
 
 <Meta
@@ -14,7 +16,7 @@
 />
 
 <Template let:args>
-  <Upload {...args} on:click={args.onClick} />
+  <Upload {ref} {...args} />
 </Template>
 
 <Story

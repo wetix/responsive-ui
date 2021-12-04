@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import AppBar from "../components/app-bar/src/AppBar.svelte";
+  import AppBar from "@responsive-ui/app-bar";
 </script>
 
 <Meta
