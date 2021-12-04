@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ChipProps {
   id?: string;
+  ref?: null | HTMLInputElement;
   title?: string;
   name?: string;
   label?: string;

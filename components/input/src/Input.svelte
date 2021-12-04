@@ -34,8 +34,8 @@
   <input
     {...$$restProps}
     bind:this={ref}
-    {value}
     {type}
+    {value}
     on:blur={() => (focused = false)}
     on:keyup={onKeyup}
     on:input

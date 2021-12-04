@@ -1,8 +1,9 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface HeaderProps {
-  label: string;
   id?: string;
+  label: string;
+  title?: string;
   class?: string;
   style?: string;
 }

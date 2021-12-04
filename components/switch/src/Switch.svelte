@@ -19,7 +19,7 @@
   <b class="resp-switch__track" />
 </span>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-switch {
     display: inline-block;
     position: relative;

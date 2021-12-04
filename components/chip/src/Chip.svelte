@@ -1,6 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let ref: null | HTMLInputElement = null;
   export let name = "";
   export let size = "large";
   export let label = "";
@@ -11,7 +12,7 @@
   const id = `chip-${Math.floor(Math.random() * Date.now())}`;
 </script>
 
-<input {id} {name} type="checkbox" bind:checked {disabled} />
+<input bind:this={ref} {id} {name} type="checkbox" bind:checked {disabled} />
 <label
   class="resp-chip resp-chip--{size} {className}"
   class:resp-chip--disabled={disabled}
