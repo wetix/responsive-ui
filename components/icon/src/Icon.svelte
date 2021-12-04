@@ -6,7 +6,7 @@
   export let useHref = "";
 </script>
 
-<span
+<i
   class="resp-icon resp-icon--{size} {className}"
   class:resp-icon--clickable={clickable}
   on:click
@@ -16,7 +16,7 @@
       <use xlink:href={useHref} />
     </svg>
   </slot>
-</span>
+</i>
 
 <style lang="scss" global>
   .resp-icon {

@@ -8,7 +8,8 @@
   component={Checkbox}
   argTypes={{
     content: { control: "text" },
-    onClick: { action: "onClick" },
+    disabled: { control: "boolean" },
+    checked: { control: "boolean" },
   }}
 />
 
@@ -21,6 +22,7 @@
 <Story
   name="Default"
   args={{
+    disabled: false,
     content: "Apple",
   }}
 />
