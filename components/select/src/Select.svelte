@@ -37,7 +37,7 @@
   </select>
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-select {
     display: block;
     width: 100%;

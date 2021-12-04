@@ -11,6 +11,9 @@
   "unpkg": "lib/index.min.js",
   "svelte": "src/Chip.svelte",
   "types": "types/index.d.ts",
+  "exports": {
+    "require": "./lib/index.cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -35,7 +38,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wetix/responsive-ui.git"
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/chip"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"

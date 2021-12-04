@@ -26,7 +26,7 @@
   {/if}
 </span>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-tag {
     position: relative;
     display: inline-flex;

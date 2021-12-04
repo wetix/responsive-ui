@@ -16,7 +16,7 @@
 
 </p>
 
-## Installation and Usage
+## 🔨 Installation and Usage
 
 ```console
 npm install responsive-ui
@@ -37,7 +37,14 @@ Component is come with different kind of file format for bundle file, such as :
 
 You should choose whichever file format suitable for your use case.
 
-## Component List
+## ✨ Features
+
+- Responsive by default
+- Support CommonJS and ES Module
+- Support server-side rendering
+- TypeScript and Sass as First Class Citizen
+
+## 💅 Component List
 
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion)
 - [@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar)
@@ -77,11 +84,11 @@ You should choose whichever file format suitable for your use case.
 
 <img src="https://asset.wetix.my/images/logo/wetix.png" alt="WeTix" width="240px">
 
-## License
+## 📄 License
 
 [responsive-ui](https://github.com/wetix/responsive-ui) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
-## Big Thanks To
+## 🎉 Big Thanks To
 
 Thanks to these awesome companies for their support of Open Source developers ❤
 
