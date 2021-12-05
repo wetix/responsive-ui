@@ -101,10 +101,6 @@
         overflow-x: auto;
       }
 
-      & > * {
-        font-size: initial;
-      }
-
       &::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
         width: 0px;

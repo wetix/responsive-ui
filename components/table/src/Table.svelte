@@ -101,8 +101,10 @@
       {:else}
         {#each new Array(3) as _}
           <tr
-            >{#each new Array(columns.length) as _}
-              <td><span class="resp-table__placeholder" /></td>
+            >{#each columns as column}
+              <td class="resp-table__col--align-{column.align || 'left'}"
+                ><i class="resp-table__placeholder" /></td
+              >
             {/each}
           </tr>
         {/each}
@@ -127,6 +129,7 @@
     table {
       width: 100%;
       margin: 0 auto;
+      border-spacing: 0;
       border-collapse: collapse;
       overflow: visible;
 
@@ -225,12 +228,12 @@
     }
 
     &__placeholder {
-      display: inline-flex;
+      display: inline-block;
+      vertical-align: middle;
       background-color: #444;
       width: 90%;
       height: 12px;
       border-radius: 100px;
-      margin: 0 auto;
       opacity: 0.1;
       animation: fading 1.5s infinite;
     }
