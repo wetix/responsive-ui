@@ -98,8 +98,10 @@
 
     &__header {
       display: flex;
+      border-bottom: 1px solid #f5f5f5;
 
       caption {
+        text-align: left;
         font-size: var(--font-size-lg, 24px);
         font-weight: 600;
         flex-grow: 1;

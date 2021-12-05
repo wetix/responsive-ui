@@ -63,7 +63,7 @@
       align-items: center;
       padding: 0 15px;
       height: $headerHeight;
-      border-bottom: 1px solid #dcdcdc;
+      border-bottom: 1px solid #f5f5f5;
 
       &-label {
         flex-grow: 1;
