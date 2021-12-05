@@ -3,6 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export type SelectOption = {
   label: string;
   disabled?: boolean;
+  selected?: boolean;
   value: string;
 };
 
@@ -15,6 +16,7 @@ interface SelectProps {
   value?: string | string[];
   disabled?: boolean;
   readonly?: boolean;
+  placeholder?: string;
   options: SelectOption[];
   style?: string;
 }

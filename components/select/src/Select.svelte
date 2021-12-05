@@ -4,11 +4,11 @@
 
   let className = "";
   export { className as class };
+  export let placeholder = "";
+  export let ref: HTMLSelectElement;
   export let value: string | string[] = "";
   export let size = 10;
   export let multiple = false;
-  export let disabled = false;
-  export let readonly = false;
   export let options: SelectOption[] = [];
 
   // if not multiple, enforce it to size 1
@@ -19,19 +19,20 @@
   <Select {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <select
-    {...$$restProps}
     class="resp-select {className}"
+    bind:this={ref}
     {size}
-    {readonly}
-    {disabled}
     on:change
     on:blur
+    bind:value
+    {...$$restProps}
   >
+    {#if placeholder}
+      <option value="" readonly hidden selected>{placeholder}</option>
+    {/if}
     {#each options as option}
-      <option
-        value={option.value}
-        selected={option.value === value}
-        disabled={option.disabled}>{option.label}</option
+      <option value={option.value} disabled={option.disabled}
+        >{option.label}</option
       >
     {/each}
   </select>
@@ -39,22 +40,28 @@
 
 <style lang="scss" global>
   .resp-select {
-    display: block;
-    width: 100%;
+    display: inline-flex;
     border: 1px solid #f1f1f1;
     border-radius: var(--border-radius, 5px);
-    font-size: var(--font-size, 14px);
+    font-size: var(--font-size);
     font-family: var(--font-family, inherit);
-    height: var(--height, 34px);
+    height: var(--height, 30px);
+    min-width: 120px;
     color: #1a1b1c;
     padding: 0 10px;
-    background: #f1f1f1;
+    background: #fff;
     outline: none;
     box-sizing: border-box;
-    /* hide arrow */
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
+
+    &:hover {
+      border-color: #fc4451;
+    }
+
+    &:focus {
+      border-color: #fc4451;
+      box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
+    }
 
     &::-ms-expand {
       display: none;

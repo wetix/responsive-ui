@@ -115,10 +115,8 @@
       width: auto;
       background-color: rgba(0, 0, 0, 0.6);
     }
-  }
 
-  @media screen and (max-width: 480px) {
-    .resp-docker {
+    @media (max-width: 576px) {
       width: 100% !important;
     }
   }

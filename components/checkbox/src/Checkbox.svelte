@@ -3,6 +3,7 @@
   export { className as class };
   export let ref: null | HTMLInputElement = null;
   export let name = "";
+  export let disabled = false;
   export let label = "";
   export let value = "";
   export let checked = false;
@@ -11,6 +12,7 @@
 <label class="resp-checkbox {className}" {...$$restProps}>
   <input
     {name}
+    {disabled}
     bind:this={ref}
     bind:checked
     type="checkbox"
