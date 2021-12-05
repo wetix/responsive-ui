@@ -6,7 +6,7 @@
   let className = "";
   export { className as class };
   export let id = "";
-  export let ref: null | HTMLInputElement;
+  export let ref: HTMLInputElement;
   export let name = "file";
   export let url = "";
   export let headers = {};

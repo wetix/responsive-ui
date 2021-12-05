@@ -4,7 +4,7 @@
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLDivElement = null;
+  export let ref: HTMLDivElement;
   export let rowKey: keyof TableItem = "id";
   export let loading = false;
   export let tableLayout = "fixed";
