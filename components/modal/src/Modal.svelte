@@ -104,6 +104,9 @@
         font-weight: 600;
         flex-grow: 1;
         min-width: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       .resp-modal__header-close {
@@ -130,7 +133,7 @@
     &__header,
     &__body,
     &__footer {
-      padding: 10px;
+      padding: 1rem;
     }
 
     &__footer {
