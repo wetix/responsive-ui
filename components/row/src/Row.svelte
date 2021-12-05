@@ -20,7 +20,7 @@
   .resp-row {
     display: flex;
     flex-direction: column;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     row-gap: 0;
 
     &--nowrap {
