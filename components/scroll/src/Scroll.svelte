@@ -64,8 +64,8 @@
     </div>
   </span>
   <div
-    class="resp-scroll__container"
-    class:resp-scroll__container--scrollable={scrollable}
+    class="resp-scroll__box"
+    class:resp-scroll__box--scrollable={scrollable}
     bind:this={el}
     on:scroll
   >
@@ -90,7 +90,7 @@
     white-space: nowrap;
     overflow: hidden;
 
-    &__container {
+    &__box {
       flex-grow: 1;
       scroll-behavior: smooth;
       transition: all 0.5s;

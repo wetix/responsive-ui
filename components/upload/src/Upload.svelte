@@ -7,6 +7,7 @@
   export { className as class };
   export let name = "file";
   export let url = "";
+  export let ref: null | HTMLInputElement;
   export let headers = {};
   export let accept = "image/*";
   export let withCredentials = true;
@@ -16,15 +17,14 @@
   export let style = "";
 
   let loading = false;
-  let file: null | HTMLInputElement;
   onMount(() => {
-    if (file && directory) {
-      file.setAttribute("webkitdirectory", "true");
-      file.setAttribute("mozdirectory", "true");
+    if (ref && directory) {
+      ref.setAttribute("webkitdirectory", "true");
+      ref.setAttribute("mozdirectory", "true");
     }
   });
 
-  const onChange = (e: Event) => {
+  const handleChange = (e: Event) => {
     const { files } = <HTMLInputElement>e.target;
 
     loading = true;
@@ -78,12 +78,7 @@
   };
 </script>
 
-<span
-  class="responsive-ui-upload {className}"
-  {style}
-  on:change
-  on:click={() => file && file.click()}
->
+<label class="resp-upload {className}" on:change {...$$restProps}>
   <slot {loading}>
     <svg
       version="1.1"
@@ -112,24 +107,21 @@
     </svg>
   </slot>
   <input
-    bind:this={file}
+    bind:this={ref}
     type="file"
     {name}
     bind:value
     {multiple}
     {accept}
-    on:change={onChange}
+    on:change={handleChange}
     tabindex="-1"
+    style="display: none"
   />
-</span>
+</label>
 
-<style lang="scss">
-  .responsive-ui-upload {
+<style lang="scss" global>
+  .resp-upload {
     cursor: pointer;
     display: inline-flex;
-
-    input[type="file"] {
-      display: none;
-    }
   }
 </style>

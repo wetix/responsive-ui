@@ -13,12 +13,12 @@
 <button
   class="resp-button resp-button--{variant} resp-button--{size} {className}"
   class:resp-button--outline={outline}
+  {...$$restProps}
   role="button"
   {type}
   {disabled}
   bind:this={ref}
   on:click
-  {...$$restProps}
 >
   <slot>{label}</slot>
 </button>

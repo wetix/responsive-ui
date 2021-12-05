@@ -12,7 +12,15 @@
   const id = `chip-${Math.floor(Math.random() * Date.now())}`;
 </script>
 
-<input bind:this={ref} {id} {name} type="checkbox" bind:checked {disabled} />
+<input
+  bind:this={ref}
+  {id}
+  {name}
+  {disabled}
+  type="checkbox"
+  bind:checked
+  on:change
+/>
 <label
   class="resp-chip resp-chip--{size} {className}"
   class:resp-chip--disabled={disabled}

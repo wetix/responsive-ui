@@ -1,6 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface UploadProps {
+  id?: string;
+  ref?: Readonly<HTMLInputElement>;
   url: string;
   name?: string;
   class?: string;

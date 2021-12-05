@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Loader from "@responsive-ui/loader";
   import type { TableColumn, TableItem } from "../types";
   import { fade } from "svelte/transition";
 
@@ -110,11 +109,6 @@
       {/if}
     </tbody>
   </table>
-  {#if loading}
-    <div class="resp-table__loader" in:fade out:fade>
-      <slot name="loader"><Loader size="small" /></slot>
-    </div>
-  {/if}
 </div>
 
 <style lang="scss" global>
@@ -129,19 +123,6 @@
     font-size: var(--font-size);
     font-family: var(--font-family, inherit);
     border-color: transparent;
-
-    &__loader {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.65);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-    }
 
     table {
       width: 100%;

@@ -72,7 +72,7 @@
   </div>
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-modal {
     position: fixed;
     top: 50%;
@@ -103,6 +103,7 @@
         font-size: var(--font-size-lg, 24px);
         font-weight: 600;
         flex-grow: 1;
+        min-width: 0;
       }
 
       .resp-modal__header-close {

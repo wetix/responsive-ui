@@ -32,7 +32,6 @@
 >
   <slot name="prefix" />
   <input
-    {...$$restProps}
     bind:this={ref}
     {type}
     {value}
@@ -40,6 +39,7 @@
     on:keyup={onKeyup}
     on:input
     on:change
+    {...$$restProps}
   />
   <slot name="suffix" />
 </div>

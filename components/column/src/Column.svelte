@@ -3,10 +3,26 @@
 
   let className = "";
   export { className as class };
+  export let flex: null | number | string;
+  export let xs: number;
+  export let sm: number;
+  export let md: number;
+  export let lg: number;
+  export let xl: number;
+  export let sl: number;
   export let span: number | Device = 24;
   export let justify = "center";
 
+  const getClassName = (size: string, span: number) =>
+    `resp-col--${size}-${span}`;
+
+  const clsNames: string[] = [];
   let cls = `resp-col--${span}`;
+  if (sm) clsNames.push(getClassName("sm", sm));
+  if (md) clsNames.push(getClassName("md", md));
+  if (lg) clsNames.push(getClassName("lg", lg));
+  if (xl) clsNames.push(getClassName("xl", xl));
+  if (sl) clsNames.push(getClassName("sl", sl));
   if (isNaN(Number(span))) {
     cls = Object.entries(<Device>span)
       .map(([k, v]) => `resp-col--${k}-${v}`)
@@ -14,11 +30,22 @@
   }
 </script>
 
-<div class={`resp-col--${justify} ${cls} ${className}`} {...$$restProps}>
+<div
+  class={`resp-col--${justify} ${clsNames.join(" ")} ${className}`}
+  style="flex: {flex}"
+  {...$$restProps}
+>
   <slot />
 </div>
 
 <style lang="scss" global>
+  $sm: 576px;
+  $md: 768px;
+  $lg: 992px;
+  $xl: 1200px;
+  $sl: 1400px;
+  // $ul: 2048px;
+
   .resp-col {
     position: relative;
     max-width: 100%;
@@ -28,7 +55,7 @@
     word-break: break-word;
 
     &--24 {
-      $width: 100;
+      $width: 100%;
       flex: 0 0 $width;
       max-width: $width;
     }
@@ -82,6 +109,13 @@
       flex: 0 0 $width;
       max-width: $width;
     }
+    &--md--12 {
+      @media (min-width: $md) {
+        $width: 50%;
+        flex: 0 0 $width;
+        max-width: $width;
+      }
+    }
     &--11 {
       $width: 45.83333333%;
       flex: 0 0 $width;
@@ -117,14 +151,8 @@
       flex: 0 0 $width;
       max-width: $width;
     }
-
-    &--1 {
-      $width: 4.16666667%;
-      flex: 0 0 $width;
-      max-width: $width;
-    }
-    &--2 {
-      $width: 8.33333333%;
+    &--4 {
+      $width: 16.66666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
@@ -133,8 +161,13 @@
       flex: 0 0 $width;
       max-width: $width;
     }
-    &--4 {
-      $width: 16.66666667%;
+    &--2 {
+      $width: 8.33333333%;
+      flex: 0 0 $width;
+      max-width: $width;
+    }
+    &--1 {
+      $width: 4.16666667%;
       flex: 0 0 $width;
       max-width: $width;
     }
@@ -186,10 +219,5 @@
         max-width: $width;
       }
     }
-  }
-
-  @media (min-width: 700px) {
-  }
-  @media (min-width: 1200px) {
   }
 </style>
