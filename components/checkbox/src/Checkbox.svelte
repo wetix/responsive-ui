@@ -1,7 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let ref: null | HTMLInputElement = null;
+  export let ref: HTMLInputElement;
   export let name = "";
   export let disabled = false;
   export let label = "";
