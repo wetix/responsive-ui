@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { Device } from "../types";
-
   let className = "";
   export { className as class };
   export let flex: null | number | string;
@@ -10,7 +8,6 @@
   export let lg: number;
   export let xl: number;
   export let sl: number;
-  export let span: number | Device = 24;
   export let justify = "center";
 
   const getClassName = (size: string, span: number) =>
@@ -34,6 +31,7 @@
 </div>
 
 <style lang="scss" global>
+  // https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
   @use "sass:math";
 
   $sm: 576px;

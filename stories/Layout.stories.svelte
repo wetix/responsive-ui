@@ -4,16 +4,7 @@
   import Column from "@responsive-ui/column";
 </script>
 
-<Meta
-  title="Components/Layout"
-  argTypes={{
-    content: { control: "text" },
-    placeholder: { control: "text" },
-    disabled: { control: "boolean" },
-    bordered: { control: "boolean" },
-    // readonly: { control: "boolean" },
-  }}
-/>
+<Meta title="Components/Layout" argTypes={{}} />
 
 <Template let:args>
   <Row>

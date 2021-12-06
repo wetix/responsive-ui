@@ -72,8 +72,7 @@
   };
 
   const handleKeydown = (e: KeyboardEvent) => {
-    const code = e.keyCode || e.which;
-    if (code === 13) open = !open;
+    if (e.key === "Enter") open = !open;
   };
 
   const handleClear = () => {

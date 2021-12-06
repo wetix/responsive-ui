@@ -13,7 +13,7 @@
   export let year = 0;
   export let month = 0;
   export let day = 0;
-  export let disabledDate = (v: Date) => false;
+  export let disabledDate = (_: Date) => false;
 
   let selectedMonth = month;
   let selectedYear = year;
@@ -47,7 +47,7 @@
     }
   };
 
-  const handleSelectDate = (date: Date) => (e: Event) => {
+  const handleSelectDate = (date: Date) => () => {
     dispatch("change", date);
   };
 

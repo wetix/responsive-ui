@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { TableColumn, TableItem } from "../types";
-  import { fade } from "svelte/transition";
 
   let className = "";
   export { className as class };
