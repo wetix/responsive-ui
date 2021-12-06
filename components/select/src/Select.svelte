@@ -28,7 +28,7 @@
     {...$$restProps}
   >
     {#if placeholder}
-      <option value="" readonly hidden selected>{placeholder}</option>
+      <option readonly hidden selected>{placeholder}</option>
     {/if}
     {#each options as option}
       <option value={option.value} disabled={option.disabled}

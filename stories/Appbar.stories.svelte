@@ -7,16 +7,50 @@
   title="Components/App Bar"
   component={AppBar}
   argTypes={{
-    tabItems: { control: "object" },
-    centerItems: { control: "object" },
-    dropdownItems: { control: "object" },
+    shadowed: { control: "boolean" },
+    // centerItems: { control: "object" },
+    // dropdownItems: { control: "object" },
   }}
 />
 
 <Template let:args>
-  <AppBar {...args} on:click={(e) => e.preventDefault()}>
-    <div slot="leading">WeTix</div>
-    <svg
+  <AppBar
+    {...args}
+    leadingItems={[
+      {
+        label: "Tickets",
+        link: "/tickets",
+        subItems: [
+          {
+            label: "Movie",
+            link: "/movie",
+          },
+          {
+            label: "Event",
+            link: "/event",
+          },
+          {
+            label: "Concert",
+            link: "/concert",
+          },
+        ],
+      },
+      { label: "Profile", link: "/me/profile" },
+      { label: "Events", link: "/events" },
+    ]}
+    trailingItems={[
+      { label: "A", link: "/" },
+      { label: "B", link: "/" },
+      { label: "C", link: "/" },
+      { label: "D", link: "/" },
+    ]}
+    on:click={(e) => e.preventDefault()}
+  >
+    <div slot="logo">WeTix</div>
+    <span slot="trailing-item" let:item>
+      {item.label}
+    </span>
+    <!-- <svg
       slot="trailing-item"
       width="24"
       height="24"
@@ -31,7 +65,7 @@
           />
         </g>
       </g>
-    </svg>
+    </svg> -->
     <!-- <div slot="trailing">WeTix</div> -->
   </AppBar>
   <div style="margin-top: 100px;">
@@ -51,32 +85,4 @@
   </div>
 </Template>
 
-<Story
-  name="Default"
-  args={{
-    tabItems: [
-      { value: "PERSONALDETAILS", title: "Personal Details" },
-      { value: "PURCHASEHISTORY", title: "Purchase History" },
-      { value: "PURCHASEHISTORY", title: "Purchase History" },
-      { value: "PURCHASEHISTORY", title: "Purchase History" },
-      { value: "PURCHASEHISTORY", title: "Purchase History" },
-      { value: "PURCHASEHISTORY", title: "Purchase History" },
-    ],
-    items: [
-      { label: "Personal Details", link: "/movie" },
-      { label: "Purchase History", link: "/store" },
-      { label: "My Address", link: "https://articles.wetix.my/" },
-      { label: "Loyalty", link: "https://articles.wetix.my/" },
-      { label: "My Voucher", link: "https://articles.wetix.my/" },
-    ],
-    dropdownItems: [
-      { value: "Profile", icon: "profile", link: `/store/me` },
-      {
-        value: "Purchase History",
-        icon: "history",
-        link: `/me/purchase-history`,
-      },
-      { value: "Logout", icon: "logout", link: `/logout` },
-    ],
-  }}
-/>
+<Story name="Default" />

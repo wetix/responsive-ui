@@ -1,20 +1,18 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type NavItem = {
+export interface NavItem extends Record<string, string> {
   label?: string;
-  icon?: string;
-  value: string;
   link: string;
+  subItems?: Omit<NavItem, "subItems">[];
   selected?: boolean;
-};
+}
 
 export interface AppBarProps {
   id?: string;
   class?: string;
-  logoSrc?: string;
   title?: string;
-  navItems: NavItem[];
-  hasBg?: boolean;
+  leadingItems: NavItem[];
+  trailingItems: NavItem[];
   style?: string;
 }
 

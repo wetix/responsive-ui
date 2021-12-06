@@ -1,19 +1,30 @@
 <script lang="ts">
   import Scroll from "@responsive-ui/hscroll";
+  import type { NavItem } from "../types";
 
-  export let items: any = [];
+  export let mode = "sticky";
+  export let shadowed = true;
+  export let leadingItems: NavItem[] = [];
+  export let trailingItems: NavItem[] = [];
 </script>
 
-<header class="resp-app-bar" class:resp-app-bar--shadowed={true} on:click>
+<header class="resp-app-bar" class:resp-app-bar--shadowed={shadowed} on:click>
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
-      <div class="resp-app-bar__leading"><slot name="leading" /></div>
-      <div class="resp-app-bar__center">
+      <div class="resp-app-bar__logo"><slot name="logo" /></div>
+      <div class="resp-app-bar__leading">
         <slot name="center">
           <ul>
-            {#each items as { link, label, selected, ...otherProps }}
+            {#each leadingItems as { link, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
-                <a href={link} {...otherProps}>{label}</a>
+                <slot
+                  name="leading-item"
+                  item={leadingItems[index]}
+                  {index}
+                  {selected}
+                >
+                  <a href={link} {...otherProps}>{label}</a>
+                </slot>
               </li>
             {/each}
           </ul>
@@ -22,9 +33,14 @@
       <div class="resp-app-bar__trailing">
         <slot name="trailing">
           <ul>
-            {#each items as { link, label, selected, ...otherProps }, index}
+            {#each trailingItems as { link, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot name="trailing-item" {index} {selected}>
+                <slot
+                  name="trailing-item"
+                  item={trailingItems[index]}
+                  {index}
+                  {selected}
+                >
                   <a href={link} {...otherProps}>{label}</a>
                 </slot>
               </li>
@@ -35,22 +51,23 @@
     </div>
   </div>
   <!-- subnav -->
-  {#if items.length > 0}
-    <div class="resp-app-bar__subnav">
+  {#if leadingItems.length > 0}
+    <nav class="resp-app-bar__subnav">
       <Scroll>
         <ul>
-          {#each items as { link, label, selected, ...otherProps }}
+          {#each leadingItems[0].subItems as { link, label, selected, ...otherProps }}
             <li class:resp-app-bar__subnav-item--selected={selected}>
               <a href={link} {...otherProps}>{label}</a>
             </li>
           {/each}
         </ul>
       </Scroll>
-    </div>
+    </nav>
   {/if}
 </header>
 
 <style lang="scss" global>
+  $sm: 576px;
   .resp-app-bar {
     position: fixed;
     display: inline-flex;
@@ -83,12 +100,11 @@
       height: 50px;
       width: 100%;
       background: #fff;
-      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
       z-index: 500;
     }
 
     &__main {
-      width: 80%;
+      width: 100%;
       height: 100%;
       padding: 0 1rem;
       margin: 0 auto;
@@ -96,17 +112,19 @@
       display: flex;
       justify-content: space-between;
 
-      @media screen and (max-width: 720px) {
-        width: auto;
+      @media (min-width: $sm) {
+        width: 80%;
       }
     }
 
-    &__center {
-      // max-width: 40%;
+    &__leading {
+      flex-grow: 1;
+      min-width: 0;
+      display: none;
       overflow: hidden;
 
-      @media screen and (max-width: 720px) {
-        display: none;
+      @media (min-width: $sm) {
+        display: initial;
       }
     }
 
@@ -114,16 +132,11 @@
       ul {
         justify-content: flex-end;
       }
-      @media screen and (max-width: 720px) {
-        max-width: none;
-        flex-grow: 1;
-      }
     }
 
     &__subnav {
       background-color: #fc4451;
       color: #fff;
-      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
       z-index: 450;
 
       &-item--selected {
@@ -132,6 +145,10 @@
 
       ul {
         height: 42px;
+
+        li {
+          padding: 0 1.5rem;
+        }
       }
 
       a {
@@ -140,8 +157,11 @@
       }
     }
 
-    // &--shadowed {
-    //   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
-    // }
+    &--shadowed {
+      .resp-app-bar__box,
+      .resp-app-bar__subnav {
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+      }
+    }
   }
 </style>
