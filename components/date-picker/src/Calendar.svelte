@@ -52,11 +52,12 @@
   };
 
   $: isValid = year > 0 && month >= 0 && day > 0;
+  const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
     const clsList: string[] = [];
 
     if (v.getMonth() != selectedMonth) {
-      clsList.push("resp-calendar__date--not-in-view");
+      clsList.push(`${dateClass}--not-in-view`);
     } else {
       if (
         isValid &&
@@ -64,23 +65,23 @@
         v.getMonth() == month &&
         v.getFullYear() == year
       )
-        clsList.push("resp-calendar__date--selected");
+        clsList.push(`${dateClass}--selected`);
     }
-    if (disabledDate(v)) clsList.push("resp-calendar__date--disabled");
+    if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
     return clsList.join(" ");
   };
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
 <div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
-  <div class="resp-calendar-header">
+  <div class="resp-calendar__header">
     <button class="resp-calendar-button" on:click={handlePrevYear}>
       <span class="resp-calendar-most-prev-icon" />
     </button>
     <button class="resp-calendar-button" on:click={handlePrevMonth}>
       <span class="resp-calendar-prev-icon" />
     </button>
-    <div class="resp-calendar-header-caption">
+    <div class="resp-calendar__header-caption">
       <button class="resp-calendar-button"
         >{monthNames[selectedMonth].substr(0, 3)}
       </button>
@@ -93,7 +94,7 @@
       <span class="resp-calendar-most-next-icon" />
     </button>
   </div>
-  <div class="resp-calendar-body">
+  <div class="resp-calendar__body">
     <table>
       <thead>
         <tr>
@@ -123,7 +124,7 @@
     </table>
   </div>
   <slot name="footer">
-    <div class="resp-calendar-footer">
+    <div class="resp-calendar__footer">
       <button
         class="resp-calendar-button"
         on:click={handleSelectDate(new Date())}>Today</button
@@ -132,28 +133,22 @@
   </slot>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-calendar {
     display: flex;
     flex-direction: column;
     width: 260px;
 
-    &-header-caption {
-      flex-grow: 1;
-      text-align: center;
-    }
-
-    .resp-calendar-button {
+    &-button {
       cursor: pointer;
       font-family: inherit;
-      // padding: 0 3px;
-      // -webkit-appearance: button;
+      margin: 0;
       background: transparent;
       border: none;
     }
 
-    .resp-calendar-header,
-    .resp-calendar-footer {
+    &__header,
+    &__footer {
       display: flex;
       justify-content: center;
       height: 36px;
@@ -161,8 +156,14 @@
       align-items: center;
     }
 
-    .resp-calendar-header {
+    &__header {
       border-bottom: 1px solid #f5f5f5;
+
+      &-caption {
+        flex-grow: 1;
+        min-width: 0;
+        text-align: center;
+      }
 
       .resp-calendar-prev-icon,
       .resp-calendar-most-prev-icon,
@@ -209,28 +210,28 @@
       }
     }
 
-    .resp-calendar-body {
+    &__body {
       padding: 8px;
-    }
 
-    table {
-      table-layout: fixed;
-      border-collapse: collapse;
-      width: 100%;
+      table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
 
-      th,
-      td {
-        text-align: center;
-        vertical-align: middle;
-        padding: 2px 0;
+        th {
+          font-weight: 650;
+        }
+
+        th,
+        td {
+          text-align: center;
+          vertical-align: middle;
+          padding: 2px 0;
+        }
       }
     }
 
-    th {
-      font-weight: 650;
-    }
-
-    .resp-calendar__date {
+    &__date {
       cursor: pointer;
       display: inline-block;
       vertical-align: middle;
@@ -260,22 +261,11 @@
       }
     }
 
-    .resp-calendar-footer {
+    &__footer {
       border-top: 1px solid #f5f5f5;
       justify-content: center;
     }
 
-    // &:before {
-    //   content: "";
-    //   position: fixed;
-    //   display: block;
-    //   top: 0;
-    //   bottom: 0;
-    //   right: 0;
-    //   background: red;
-    //   height: 100%;
-    //   z-index: 100;
-    // }
     @media screen and (max-width: 640px) {
       position: fixed;
       bottom: 10px;

@@ -13,7 +13,7 @@
   export let placeholder = "Select date";
   export let value = "";
   export let name = "";
-  export let ref: null | HTMLInputElement;
+  export let ref: HTMLInputElement;
   export let readonly = false;
   export let size = "middle";
   export let bordered = true;
@@ -76,7 +76,7 @@
   };
 
   const handleClear = () => {
-    ref!!.focus();
+    ref && ref.focus();
     focused = false;
     value = "";
     day = 0;
