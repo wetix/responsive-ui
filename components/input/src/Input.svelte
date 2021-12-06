@@ -50,7 +50,7 @@
     color: var(--text-color, #1a1b1c);
     background: #fff;
     height: var(--input-height, 30px);
-    line-height: var(--input-height, 30px);
+    line-height: 1;
     padding: 0 8px;
     box-sizing: border-box;
     border-radius: 3px;
