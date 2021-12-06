@@ -61,7 +61,7 @@
       right: 0;
       display: flex;
       align-items: center;
-      padding: 0 15px;
+      padding: 0 1rem;
       height: $headerHeight;
       border-bottom: 1px solid #f5f5f5;
 

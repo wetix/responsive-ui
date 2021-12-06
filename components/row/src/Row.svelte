@@ -19,15 +19,12 @@
 <style lang="scss" global>
   .resp-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     row-gap: 0;
 
     &--nowrap {
       flex-wrap: nowrap;
-    }
-    @media (min-width: 576px) {
-      flex-direction: row;
     }
   }
 </style>

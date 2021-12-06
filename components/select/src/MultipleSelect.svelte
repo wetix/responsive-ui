@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { zoom } from "@wetix/animation";
-  import { getNodeAttribute } from "@wetix/utils";
+  // import { zoom } from "@wetix/animation";
+  // import { getNodeAttribute } from "@wetix/utils";
   import { onMount, createEventDispatcher } from "svelte";
 
   import type { SelectOption } from "../types";
@@ -43,28 +43,28 @@
   });
 
   const onSelect = (e: Event) => {
-    const data = getNodeAttribute(e, "data-option");
-    if (data) {
-      const [_, item] = <[number, Item]>JSON.parse(data);
-      const pos = value.findIndex((v) => v === item.value);
-      if (pos > -1) {
-        value.splice(pos, 1);
-      } else {
-        value.push(item.value);
-      }
-      value = [...value];
-      input!.focus();
-      dispatch("change", value);
-    }
+    // const data = getNodeAttribute(e, "data-option");
+    // if (data) {
+    //   const [_, item] = <[number, Item]>JSON.parse(data);
+    //   const pos = value.findIndex((v) => v === item.value);
+    //   if (pos > -1) {
+    //     value.splice(pos, 1);
+    //   } else {
+    //     value.push(item.value);
+    //   }
+    //   value = [...value];
+    //   input!.focus();
+    //   dispatch("change", value);
+    // }
   };
 
   const onRemove = (e: Event) => {
-    const val = getNodeAttribute(e, "data-value");
-    if (val) {
-      e.stopPropagation();
-      value = value.filter((v) => v !== val);
-      dispatch("change", value);
-    }
+    // const val = getNodeAttribute(e, "data-value");
+    // if (val) {
+    //   e.stopPropagation();
+    //   value = value.filter((v) => v !== val);
+    //   dispatch("change", value);
+    // }
   };
 </script>
 
@@ -73,12 +73,7 @@
     <input {name} type="hidden" value={value.join(",")} />
     <span class="responsive-ui-select__tags" on:click={onRemove}>
       {#each value as item}
-        <span
-          class="responsive-ui-select__tag"
-          data-value={item}
-          in:zoom
-          out:zoom
-        >
+        <span class="responsive-ui-select__tag" data-value={item}>
           <span>{dict.get(item).label}</span>
           <i class="responsive-ui-select__close" />
         </span>
