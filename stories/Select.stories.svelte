@@ -8,6 +8,7 @@
   component={Select}
   argTypes={{
     disabled: { control: "boolean" },
+    // value: { control: "text" },
     checked: { control: "boolean" },
   }}
 />
@@ -29,6 +30,6 @@
   />
 </Template>
 
-<Story name="Default" />
+<Story name="Default" args={{ value: "f" }} />
 
 <Story name="Multiple" args={{ value: ["a", "c", "f"], multiple: true }} />

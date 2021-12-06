@@ -30,7 +30,8 @@
   "peerDependencies": {
     "svelte": "^3.27.0",
     "svelte-preprocess": "^4.5.0",
-    "typescript": "^4.0.0"
+    "typescript": "^4.0.0",
+    "@responsive-ui/hscroll": "^1.0.9-alpha.0"
   },
   "directories": {
     "lib": "lib",
@@ -52,8 +53,5 @@
   "bugs": {
     "url": "https://github.com/wetix/responsive-ui/issues"
   },
-  "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe",
-  "dependencies": {
-    "@responsive-ui/scroll": "^1.0.9-alpha.0"
-  }
+  "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe"
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Scroll from "@responsive-ui/scroll";
+  import Scroll from "@responsive-ui/hscroll";
 
   export let items: any = [];
 </script>

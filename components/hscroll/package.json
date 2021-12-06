@@ -1,7 +1,7 @@
 {
-  "name": "@responsive-ui/scroll",
+  "name": "@responsive-ui/hscroll",
   "version": "1.0.9-alpha.0",
-  "description": "A scroll component of responsive-ui.",
+  "description": "A horizontal scroll component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com>",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/scroll#README.md",
   "license": "MIT",
@@ -9,7 +9,7 @@
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",
   "unpkg": "lib/index.min.js",
-  "svelte": "src/Scroll.svelte",
+  "svelte": "src/HScroll.svelte",
   "types": "types/index.d.ts",
   "directories": {
     "lib": "lib",

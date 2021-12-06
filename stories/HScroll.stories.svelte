@@ -1,10 +1,10 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Scroll from "@responsive-ui/scroll";
+  import Scroll from "@responsive-ui/hscroll";
 </script>
 
 <Meta
-  title="Components/Scroll"
+  title="Components/Horizontal Scroll"
   component={Scroll}
   argTypes={{
     height: { control: { type: "range", min: 100, max: 500, step: 10 } },
