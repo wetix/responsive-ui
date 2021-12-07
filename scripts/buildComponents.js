@@ -188,10 +188,13 @@ const analyzePackageJson = async (filepath, pkg) => {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
       println(chalk.green(outputPath));
+
+      fs.mkdirSync(`${filepath}/${path.dirname(file)}`, { recursive: true });
+
       if (chunk.type === "asset") {
-        fs.outputFileSync(outputPath, chunk.source);
+        fs.writeFileSync(outputPath, chunk.source);
       } else {
-        fs.outputFileSync(outputPath, chunk.code);
+        fs.writeFileSync(outputPath, chunk.code);
       }
     }
   }
@@ -256,9 +259,12 @@ const analyzePackageJson = async (filepath, pkg) => {
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
-    if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
-      fs.rmSync(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+    const baseFolder = `${pkgPath}/${file}/lib`;
+    if (fs.existsSync(baseFolder)) {
+      fs.rmSync(baseFolder, { recursive: true, force: true });
     }
+
+    // fs.mkdirSync(baseFolder, { recursive: true });
 
     await analyzePackageJson(basePath, pkg);
     callback && callback();
