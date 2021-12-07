@@ -88,11 +88,9 @@
       }
     }
 
-    $sizes: "sm", "md", "lg", "xl", "sl";
-
-    @each $size in $sizes {
+    @each $breakpoint, $width in $breakpoints {
       @for $i from 1 through 24 {
-        @include responsive($size, $i);
+        @include responsive($breakpoint, $i);
       }
     }
   }
