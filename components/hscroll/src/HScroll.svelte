@@ -83,6 +83,8 @@
 </div>
 
 <style lang="scss" global>
+  $lightWhite: rgba(255, 255, 255, 0.9);
+
   .resp-scroll {
     display: flex;
     align-items: center;
@@ -110,7 +112,7 @@
     &__icon {
       display: flex;
       align-items: center;
-      background: #fff;
+      background: $lightWhite;
       height: 100%;
     }
 
@@ -149,10 +151,10 @@
     }
 
     &__prev-icon:before {
-      background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+      background: linear-gradient(90deg, $lightWhite, hsla(0, 0%, 100%, 0));
     }
     &__next-icon:before {
-      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff);
+      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), $lightWhite);
     }
   }
 </style>

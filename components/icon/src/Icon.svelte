@@ -2,14 +2,16 @@
   let className = "";
   export { className as class };
   export let clickable = false;
-  export let size = "small";
+  export let sizeOf = "sm";
   export let useHref = "";
+  export let style = "";
 </script>
 
 <i
-  class="resp-icon resp-icon--{size} {className}"
+  class="resp-icon resp-icon--{sizeOf} {className}"
   class:resp-icon--clickable={clickable}
   on:click
+  {style}
 >
   <slot>
     <svg {...$$restProps}>
@@ -29,12 +31,12 @@
       cursor: pointer;
     }
 
-    &--medium {
+    &--md {
       width: 32px;
       height: 32px;
     }
 
-    &--big {
+    &--lg {
       width: 48px;
       height: 48px;
     }

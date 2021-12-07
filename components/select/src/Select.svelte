@@ -6,6 +6,7 @@
   export { className as class };
   export let placeholder = "";
   export let ref: HTMLSelectElement;
+  export let sizeOf = "md";
   export let value: string | string[] = "";
   export let size = 10;
   export let multiple = false;
@@ -19,7 +20,7 @@
   <Select {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <select
-    class="resp-select {className}"
+    class="resp-select resp-select--{sizeOf} {className}"
     bind:this={ref}
     {size}
     on:change

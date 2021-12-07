@@ -8,7 +8,6 @@
   export let lg: number;
   export let xl: number;
   export let sl: number;
-  export let justify = "center";
 
   const getClassName = (size: string, span: number) =>
     `resp-col--${size}-${span}`;
@@ -23,7 +22,7 @@
 </script>
 
 <div
-  class={`resp-col--${justify} ${clsNames.join(" ")} ${className}`}
+  class={`resp-col ${clsNames.join(" ")} ${className}`}
   style="flex: {flex}"
   {...$$restProps}
 >

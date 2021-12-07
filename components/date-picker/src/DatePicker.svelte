@@ -15,7 +15,7 @@
   export let name = "";
   export let ref: HTMLInputElement;
   export let readonly = false;
-  export let size = "middle";
+  export let sizeOf = "md";
   export let bordered = true;
   export let disabled = false;
   export let format = (v: Date) => v;
@@ -88,7 +88,7 @@
 </script>
 
 <div
-  class="resp-date-picker resp-date-picker--{size} {className}"
+  class="resp-date-picker resp-date-picker--{sizeOf} {className}"
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -179,12 +179,12 @@
       pointer-events: none;
     }
 
-    &--small {
+    &--sm {
       height: 24px;
       line-height: 24px;
     }
 
-    &--big {
+    &--lg {
       height: 36px;
       line-height: 36px;
     }

@@ -5,27 +5,26 @@
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLInputElement = null;
-  export let variant = "medium";
+  export let ref: HTMLInputElement;
+  export let sizeOf = "medium";
   export let type = "text";
   export let bordered = true;
   export let value = "";
 
   let focused = false;
-  const onKeyup = (e: KeyboardEvent) => {
+  const handleKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
-    const key = e.key || e.keyCode;
     value = v;
 
     // when user click enter
-    if (key === "Enter" || key === 13) {
+    if (e.key === "Enter") {
       dispatch("enter", value);
     }
   };
 </script>
 
 <div
-  class="resp-input resp-input--{variant} {className}"
+  class="resp-input resp-input--{sizeOf} {className}"
   class:resp-input--bordered={bordered}
   class:resp-input--focused={focused}
   on:click|stopPropagation={() => (focused = true)}
@@ -36,7 +35,7 @@
     {type}
     {value}
     on:blur={() => (focused = false)}
-    on:keyup={onKeyup}
+    on:keyup={handleKeyup}
     on:input
     on:change
     {...$$restProps}
@@ -54,6 +53,7 @@
     padding: 0 8px;
     box-sizing: border-box;
     border-radius: 3px;
+    align-items: center;
     transition: all 0.5s;
 
     input {
@@ -68,12 +68,12 @@
       flex: auto;
     }
 
-    &--small {
+    &--sm {
       height: var(--input-height-sm, 24px);
       line-height: var(--input-height-sm, 24px);
     }
 
-    &--large {
+    &--lg {
       min-width: 240px;
       height: var(--input-height-lg, 42px);
       line-height: var(--input-height-lg, 42px);

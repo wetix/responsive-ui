@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-bottom-bar {
     box-shadow: 0px -1px 26px rgba(0, 0, 0, 0.1);
     position: fixed;

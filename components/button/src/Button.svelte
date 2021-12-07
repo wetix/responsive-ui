@@ -1,22 +1,18 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let ref: HTMLButtonElement;
   export let variant = "default";
-  export let size = "medium";
-  export let ref: null | HTMLButtonElement = null;
+  export let sizeOf = "md";
   export let label = "";
-  export let type = "button";
   export let outline = false;
-  export let disabled = false;
 </script>
 
 <button
-  class="resp-button resp-button--{variant} resp-button--{size} {className}"
+  class="resp-button resp-button--{variant} resp-button--{sizeOf} {className}"
   class:resp-button--outline={outline}
   {...$$restProps}
   role="button"
-  {type}
-  {disabled}
   bind:this={ref}
   on:click
 >
@@ -48,9 +44,12 @@
       background: #f5f5f5;
     }
 
-    &--small {
+    &--sm {
       height: 24px;
-      line-height: 1;
+    }
+
+    &--lg {
+      height: 36px;
     }
 
     &--primary {

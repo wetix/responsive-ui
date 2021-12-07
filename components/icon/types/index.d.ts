@@ -3,18 +3,16 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface IconProps {
   id?: string;
   class?: string;
-  size?: "small" | "medium" | "large";
+  sizeOf?: "sm" | "md" | "lg";
   fill?: string;
   stroke?: string;
-  width?: string;
-  height?: string;
   viewBox?: string;
   useHref?: string;
   style?: string;
 }
 
 export interface IconEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
 export interface IconSlots {

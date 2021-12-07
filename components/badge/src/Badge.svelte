@@ -13,7 +13,7 @@
   <slot />
 </span>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-badge {
     position: relative;
     display: inline-block;

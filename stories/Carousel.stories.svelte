@@ -23,6 +23,16 @@
   name="Default"
   args={{
     disabled: false,
-    content: "Apple",
+    items: [
+      {
+        src: "https://www.themoviedb.org/t/p/w1000_and_h563_face/qw3J9cNeLioOLoR68WX7z79aCdK.jpg",
+      },
+      {
+        src: "https://www.themoviedb.org/t/p/w1000_and_h563_face/2kzwrXJ7LUtVLohiw4xZDcB8eWz.jpg",
+      },
+      {
+        src: "https://www.themoviedb.org/t/p/w1000_and_h563_face/4y6kEEfdrNIUnWnmELkoc3EmgG7.jpg",
+      },
+    ],
   }}
 />

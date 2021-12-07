@@ -2,6 +2,7 @@
   let className = "";
   export { className as class };
   export let src = "";
+  export let alt = "";
   export let size = "portrait";
   export let responsive = true;
   export let shadowed = true;
@@ -24,6 +25,11 @@
   style={`background-image:url(${src});${style}`}
   on:click
 >
+  <!-- <picture>
+    <source srcset="logo-768.png 768w, logo-768-1.5x.png 1.5x" />
+    <source srcset="logo-480.png, logo-480-2x.png 2x" />
+    <img {src} {alt} />
+  </picture> -->
   <div class="resp-poster__overlay" style={`opacity: ${opacity}`} />
 </div>
 

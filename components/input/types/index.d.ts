@@ -7,7 +7,7 @@ export interface InputProps {
   name?: string;
   type?: string;
   label?: string;
-  variant?: "small" | "medium" | "large";
+  sizeOf?: "sm" | "md" | "lg";
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;

@@ -5,6 +5,7 @@
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/poster#README.md",
   "license": "MIT",
+  "type": "module",
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",

@@ -1,16 +1,18 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface NavItem extends Record<string, string> {
+export interface NavItem extends Record<string, any> {
   label?: string;
-  link: string;
+  href?: string;
   subItems?: Omit<NavItem, "subItems">[];
   selected?: boolean;
 }
 
 export interface AppBarProps {
   id?: string;
+  ref?: HTMLHeadElement;
   class?: string;
   title?: string;
+  clientHeight?: number;
   leadingItems: NavItem[];
   trailingItems: NavItem[];
   style?: string;
@@ -20,8 +22,22 @@ export interface AppBarEvents {}
 
 export interface AppBarSlots {
   logo: {};
-  left: {};
-  right: {};
+  leading: {
+    items: NavItem[];
+  };
+  trailing: {
+    items: NavItem[];
+  };
+  "leading-item": {
+    index: number;
+    selected: boolean;
+    item: NavItem;
+  };
+  "trailing-item": {
+    index: number;
+    selected: boolean;
+    item: NavItem;
+  };
 }
 
 declare class AppBar extends SvelteComponentTyped<

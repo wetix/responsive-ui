@@ -3,19 +3,28 @@
   import type { NavItem } from "../types";
 
   export let mode = "sticky";
+  export let ref: HTMLHeadElement;
+  export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
 </script>
 
-<header class="resp-app-bar" class:resp-app-bar--shadowed={shadowed} on:click>
+<header
+  {...$$restProps}
+  class="resp-app-bar"
+  class:resp-app-bar--shadowed={shadowed}
+  bind:this={ref}
+  bind:clientHeight
+  on:click
+>
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
       <div class="resp-app-bar__logo"><slot name="logo" /></div>
       <div class="resp-app-bar__leading">
-        <slot name="center">
+        <slot name="leading" items={leadingItems}>
           <ul>
-            {#each leadingItems as { link, label, selected, ...otherProps }, index}
+            {#each leadingItems as { href, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
                 <slot
                   name="leading-item"
@@ -23,7 +32,7 @@
                   {index}
                   {selected}
                 >
-                  <a href={link} {...otherProps}>{label}</a>
+                  <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
             {/each}
@@ -31,9 +40,9 @@
         </slot>
       </div>
       <div class="resp-app-bar__trailing">
-        <slot name="trailing">
+        <slot name="trailing" items={trailingItems}>
           <ul>
-            {#each trailingItems as { link, label, selected, ...otherProps }, index}
+            {#each trailingItems as { href, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
                 <slot
                   name="trailing-item"
@@ -41,7 +50,7 @@
                   {index}
                   {selected}
                 >
-                  <a href={link} {...otherProps}>{label}</a>
+                  <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
             {/each}
@@ -55,9 +64,9 @@
     <nav class="resp-app-bar__subnav">
       <Scroll>
         <ul>
-          {#each leadingItems[0].subItems as { link, label, selected, ...otherProps }}
+          {#each leadingItems[0].subItems as { href, label, selected, ...otherProps }}
             <li class:resp-app-bar__subnav-item--selected={selected}>
-              <a href={link} {...otherProps}>{label}</a>
+              <a {href} {...otherProps}>{label}</a>
             </li>
           {/each}
         </ul>
