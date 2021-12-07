@@ -88,12 +88,12 @@
       }
     }
 
-    @for $i from 1 through 24 {
-      @include responsive("sm", $i);
-      @include responsive("md", $i);
-      @include responsive("lg", $i);
-      @include responsive("xl", $i);
-      @include responsive("sl", $i);
+    $sizes: "sm", "md", "lg", "xl", "sl";
+
+    @each $size in $sizes {
+      @for $i from 1 through 24 {
+        @include responsive($size, $i);
+      }
     }
   }
 </style>
