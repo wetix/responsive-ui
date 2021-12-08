@@ -30,12 +30,13 @@
   .resp-tag {
     position: relative;
     display: inline-flex;
+    flex-wrap: nowrap;
     align-items: center;
     font-size: var(--font-size-sm);
-    border: 1px solid #817e7e;
     color: #817e7e;
-    border-radius: var(--border-radius, 5px);
-    padding: 3px 8px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px solid #817e7e;
     overflow: hidden;
 
     &__close {

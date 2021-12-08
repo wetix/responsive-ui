@@ -61,6 +61,7 @@
       font-family: inherit;
       display: inline-block;
       background: inherit;
+      width: inherit;
       margin: 0;
       padding: 0;
       outline: none;
@@ -91,6 +92,10 @@
     &--focused {
       border-color: #fc4451;
       box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
+    }
+
+    @media (max-width: 576px) {
+      width: 100%;
     }
   }
 </style>

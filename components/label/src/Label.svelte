@@ -14,7 +14,7 @@
 <style lang="scss">
   .resp-label {
     display: block;
-    padding: 6px 0;
+    padding: 1rem 0 0.5rem;
     margin: 0;
     color: var(--text-color, #3b3b3b);
   }

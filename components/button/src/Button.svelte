@@ -83,7 +83,7 @@
       color: var(--primary-text-color, #fc4451);
     }
 
-    @media screen and (max-width: 640px) {
+    @media (max-width: 576px) {
       width: 100%;
     }
   }
