@@ -19,7 +19,8 @@
   {disabled}
   type="checkbox"
   bind:checked
-  on:change
+  on:change|preventDefault
+  on:click|preventDefault
 />
 <label
   class="resp-chip resp-chip--{size} {className}"
