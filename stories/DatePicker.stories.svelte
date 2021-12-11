@@ -7,9 +7,6 @@
   title="Components/Date Picker"
   component={DatePicker}
   argTypes={{
-    size: {
-      control: { type: "select", options: ["small", "middle", "large"] },
-    },
     placeholder: { control: "text" },
     name: { control: "text" },
     disabled: { control: "boolean" },
@@ -17,25 +14,22 @@
     bordered: { control: "boolean" },
     // backgroundColor: { control: "color" },
     onChange: { action: "onChange" },
+    onDateChange: { action: "onChange" },
   }}
 />
 
 <Template let:args>
-  <DatePicker {...args} on:change={args.onChange} />
+  <DatePicker
+    {...args}
+    on:change={args.onChange}
+    on:datechange={args.onDateChange}
+  />
 </Template>
 
 <Story
   name="Default"
   args={{
     size: "middle",
-    placeholder: "Select Date",
-  }}
-/>
-
-<Story
-  name="Small"
-  args={{
-    size: "small",
     placeholder: "Select Date",
   }}
 />

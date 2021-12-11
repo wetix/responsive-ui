@@ -1,11 +1,12 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
+export type DateChangeEvent = { date: null | Date; dateString: string };
+
 export interface DatePickerProps {
   class?: string;
   placeholder?: string;
   value?: string;
   ref?: null | HTMLInputElement;
-  sizeOf: "sm" | "md" | "lg";
   name?: string;
   readonly?: boolean;
   disabled?: boolean;
@@ -15,7 +16,8 @@ export interface DatePickerProps {
 }
 
 export interface DatePickerEvents {
-  change?: void;
+  datechange?: CustomEvent<DateChangeEvent>;
+  change?: WindowEventMap["change"];
 }
 
 export interface DatePickerSlots {}

@@ -2,10 +2,9 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ButtonProps {
   id?: string;
-  variant?: "default" | "primary" | "link";
+  variant?: "default" | "primary";
   ref?: HTMLButtonElement;
   label?: string;
-  sizeOf?: "sm" | "md" | "lg";
   title?: string;
   name?: string;
   type?: "button" | "submit" | "reset";

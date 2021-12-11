@@ -8,12 +8,11 @@
   component={Button}
   argTypes={{
     label: { control: "text" },
-    // size: {
-    //   control: { type: "select", options: ["small", "default", "large"] },
-    // },
-    // type: { control: "text" },
+    variant: {
+      control: { type: "select", options: ["default", "primary"] },
+    },
     disabled: { control: "boolean" },
-    // backgroundColor: { control: "color" },
+    outline: { control: "boolean" },
     onClick: { action: "onClick" },
   }}
 />

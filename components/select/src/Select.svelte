@@ -6,7 +6,6 @@
   export { className as class };
   export let placeholder = "";
   export let ref: HTMLSelectElement;
-  export let sizeOf = "md";
   export let value: string | string[] = "";
   export let size = 10;
   export let multiple = false;
@@ -20,7 +19,7 @@
   <Select {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <select
-    class="resp-select resp-select--{sizeOf} {className}"
+    class="resp-select {className}"
     bind:this={ref}
     {size}
     on:change
@@ -40,20 +39,28 @@
 {/if}
 
 <style lang="scss" global>
+  $sm: 576px;
+
   .resp-select {
     display: inline-flex;
     border: 1px solid #f1f1f1;
     border-radius: var(--border-radius, 5px);
     font-size: var(--font-size);
     font-family: var(--font-family, inherit);
-    height: var(--height, 30px);
+    height: 32px;
+    line-height: 1.5;
     min-width: 120px;
+    width: 100%;
     color: #1a1b1c;
     padding: 0 10px;
     background: #fff;
     outline: none;
     box-sizing: border-box;
     appearance: none;
+
+    @media (min-width: $sm) {
+      width: auto;
+    }
 
     &:hover {
       border-color: #fc4451;

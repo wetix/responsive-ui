@@ -71,6 +71,7 @@
                 {#each columns as column, j}
                   <td
                     class="resp-table__col--align-{column.align || 'left'}"
+                    class:resp-table__col--nowrap={!!column.nowrap}
                     class:resp-table__col--ellipsis={!hasCellSlot &&
                       !!column.ellipsis}
                   >
@@ -121,6 +122,7 @@
     width: 100%;
     border: 1px solid transparent;
     overflow-y: auto;
+    text-align: left;
     font-size: var(--font-size);
     font-family: var(--font-family, inherit);
     border-color: transparent;
@@ -131,17 +133,6 @@
       border-spacing: 0;
       border-collapse: collapse;
       overflow: visible;
-
-      thead {
-        text-align: left;
-
-        tr {
-          background: #f5f5f5;
-          // border-width: 1px;
-          // border-style: solid;
-          // border-color: inherit;
-        }
-      }
 
       th {
         font-weight: 600;

@@ -8,11 +8,13 @@ on:
     branches:
       - main
       - sandbox
+      - dev
 
   pull_request:
     branches:
       - main
       - sandbox
+      - dev
 
 jobs:
   deploy:

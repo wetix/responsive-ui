@@ -31,5 +31,7 @@
     width: 120px;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
+    box-shadow: 1px 1px 5px rgba(255, 0, 0, 0.3);
   }
 </style>

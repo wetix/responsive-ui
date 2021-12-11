@@ -108,6 +108,7 @@
         min-width: 0;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-right: 0.25rem;
         overflow: hidden;
       }
 

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import type { DateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
 
   const today = new Date();
-  const dispatch = createEventDispatcher<{
-    change: { date: null | Date; dateString: string };
-  }>();
+  const dateChangeEvent = "datechange";
+  const duration = 150;
+  const dispatch = createEventDispatcher<{ datechange: DateChangeEvent }>();
 
   let className = "";
   export { className as class };
@@ -15,13 +16,11 @@
   export let name = "";
   export let ref: HTMLInputElement;
   export let readonly = false;
-  export let sizeOf = "md";
   export let bordered = true;
   export let disabled = false;
   export let format = (v: Date) => v;
   export let disabledDate = (v: Date) => today > v;
 
-  const duration = 150;
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
@@ -40,7 +39,7 @@
       year = date.getFullYear();
       month = date.getMonth();
       day = date.getDate();
-      dispatch("change", { date, dateString: value });
+      dispatch(dateChangeEvent, { date, dateString: value });
       return true;
     }
     return false;
@@ -52,7 +51,7 @@
     month = date.getMonth();
     day = date.getDate();
     year = date.getFullYear();
-    dispatch("change", { date, dateString: value });
+    dispatch(dateChangeEvent, { date, dateString: value });
   };
 
   const handleChange = (e: Event) => {
@@ -80,7 +79,7 @@
     focused = false;
     value = "";
     day = 0;
-    dispatch("change", { date: null, dateString: value });
+    dispatch(dateChangeEvent, { date: null, dateString: value });
     setTimeout(() => {
       open = false;
     }, duration);
@@ -88,7 +87,7 @@
 </script>
 
 <div
-  class="resp-date-picker resp-date-picker--{sizeOf} {className}"
+  class="resp-date-picker {className}"
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -102,6 +101,7 @@
     on:focus={handleFocus}
     {placeholder}
     {readonly}
+    on:change
     on:input={handleChange}
     on:blur={handleBlur}
     size="20"
@@ -139,18 +139,25 @@
 </div>
 
 <style lang="scss" global>
+  $sm: 576px;
+
   .resp-date-picker {
     display: inline-flex;
     position: relative;
     padding: 0 8px;
     margin: 0;
-    height: var(--input-height, 30px);
-    line-height: 1;
+    height: 32px;
+    width: 100%;
+    line-height: 1.5;
     background: #fff;
     align-items: center;
     box-sizing: border-box;
     border-radius: 3px;
     transition: all 0.5s;
+
+    @media (min-width: $sm) {
+      width: auto;
+    }
 
     &--bordered {
       border: 1px solid #dcdcdc;
@@ -177,16 +184,6 @@
       background: #f7f7f7;
       cursor: not-allowed;
       pointer-events: none;
-    }
-
-    &--sm {
-      height: 24px;
-      line-height: 24px;
-    }
-
-    &--lg {
-      height: 36px;
-      line-height: 36px;
     }
 
     input[type="text"] {

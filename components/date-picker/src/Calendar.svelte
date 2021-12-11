@@ -134,10 +134,22 @@
 </div>
 
 <style lang="scss" global>
+  $sm: 576px;
+
   .resp-calendar {
     display: flex;
     flex-direction: column;
     width: 260px;
+
+    @media (max-width: $sm) {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
 
     &-button {
       cursor: pointer;
@@ -233,13 +245,12 @@
 
     &__date {
       cursor: pointer;
-      display: inline-block;
-      vertical-align: middle;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       height: 25px;
-      line-height: 25px;
       width: 25px;
-      // border: 1px solid red;
-      // border-radius: 50%;
+      border-radius: 50%;
       transition: all 0.3s;
 
       &--selected {
@@ -264,15 +275,6 @@
     &__footer {
       border-top: 1px solid #f5f5f5;
       justify-content: center;
-    }
-
-    @media screen and (max-width: 640px) {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      width: auto;
-      // box-shadow: none;
     }
   }
 </style>

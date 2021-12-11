@@ -3,14 +3,15 @@
   export { className as class };
   export let ref: HTMLButtonElement;
   export let variant = "default";
-  export let sizeOf = "md";
+  export let type = "submit";
   export let label = "";
   export let outline = false;
 </script>
 
 <button
-  class="resp-button resp-button--{variant} resp-button--{sizeOf} {className}"
+  class="resp-button resp-button--{variant} {className}"
   class:resp-button--outline={outline}
+  {type}
   {...$$restProps}
   role="button"
   bind:this={ref}
@@ -20,25 +21,35 @@
 </button>
 
 <style lang="scss" global>
+  $sm: 576px;
+
   .resp-button {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     border: none;
     outline: 0;
     appearance: none;
     font-family: inherit;
+    align-items: center;
+    justify-content: center;
     min-width: 65px;
     font-size: var(--font-size, 14px);
     border: 1px solid #dcdcdc;
     background: #fff;
     padding: 0 15px;
     margin: 0;
-    height: var(--input-height, 30px);
-    line-height: 1;
+    height: 42px;
+    width: 100%;
+    line-height: 1.5;
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
     border-radius: var(--border-radius, 5px);
+
+    @media (min-width: $sm) {
+      height: 32px;
+      width: auto;
+    }
 
     &:hover {
       background: #f5f5f5;
@@ -81,10 +92,6 @@
     &--outline {
       background: none;
       color: var(--primary-text-color, #fc4451);
-    }
-
-    @media (max-width: 576px) {
-      width: 100%;
     }
   }
 </style>
