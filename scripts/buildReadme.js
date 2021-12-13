@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
+import { TSDocParser, ParserContext } from "@microsoft/tsdoc";
 
 /**
  *
@@ -72,10 +73,33 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 
     // read `package.json`
     const basePath = `${folderPath}/${file}`;
-    /** @type {{name: string, description: string}} */
+    /** @type {{name: string, description: string, types: string}} */
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
+
+    const tsDoc = fs.readFileSync(path.resolve(`${basePath}/${pkg.types}`));
+    /** @type {import("@microsoft/tsdoc").TSDocParser} */
+    const tsdocParser = new TSDocParser();
+
+    /** @type {import("@microsoft/tsdoc").ParserContext} */
+    const ctx = tsdocParser.parseString(tsDoc);
+    const docNode = ctx.docComment;
+    // console.log();
+    // console.log(ctx.docComment.typeParams);
+    console.log(
+      typeof ctx.content,
+      docNode.kind,
+      typeof docNode.content,
+      docNode.excerptKind
+    );
+    console.log(ctx.log.messages);
+    console.log(docNode.getChildNodes().length);
+
+    // Check for any syntax errors
+    // if (parserContext.log.messages.length > 0) {
+    //   throw new Error("Syntax error: " + parserContext.log.messages[0].text);
+    // }
 
     const content = toTemplateString(
       path.relative(process.cwd(), basePath),
@@ -86,6 +110,8 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
     fs.writeFileSync(path.resolve(`${basePath}/README.md`), content);
 
     console.log(`Generated ${chalk.blue("README")} for ${chalk.green(file)}`);
+
+    if (file === "button") break;
   }
 
   console.log(chalk.green("Successfully generated README files."));

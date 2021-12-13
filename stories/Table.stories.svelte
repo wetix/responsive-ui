@@ -69,6 +69,14 @@
   }}
 />
 
+<Story
+  name="Loading"
+  args={{
+    columns,
+    loading: true,
+  }}
+/>
+
 <Template let:args id="CustomSlot">
   <Table
     {...args}

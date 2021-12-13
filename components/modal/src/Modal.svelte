@@ -63,7 +63,7 @@
       <footer class="resp-modal__footer">
         <Button
           variant="primary"
-          on:click={() => dispatch("confirm")}
+          on:click={() => dispatch("ok")}
           style="margin-left: 6px">OK</Button
         >
         <Button on:click={() => dispatch("cancel")}>Cancel</Button>

@@ -12,7 +12,7 @@ export interface ModalProps {
 
 export interface ModalEvents {
   cancel?: WindowEventMap["click"];
-  confirm?: WindowEventMap["click"];
+  ok?: WindowEventMap["click"];
 }
 
 export interface ModalSlots {
