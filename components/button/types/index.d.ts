@@ -1,6 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ButtonProps {
+  /** component id */
   id?: string;
   variant?: "default" | "primary";
   ref?: HTMLButtonElement;

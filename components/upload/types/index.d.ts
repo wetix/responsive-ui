@@ -23,7 +23,8 @@ export interface UploadEvents {
 
 export interface UploadSlots {
   default: {
-    loading: boolean;
+    uploading: boolean;
+    dragover: boolean;
   };
 }
 

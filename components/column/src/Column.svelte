@@ -13,12 +13,12 @@
     `resp-col--${size}-${span}`;
 
   const clsNames: string[] = [];
-  if (xs) clsNames.push(getClassName("xs", xs));
-  if (sm) clsNames.push(getClassName("sm", sm));
-  if (md) clsNames.push(getClassName("md", md));
-  if (lg) clsNames.push(getClassName("lg", lg));
-  if (xl) clsNames.push(getClassName("xl", xl));
-  if (sl) clsNames.push(getClassName("sl", sl));
+  if (!isNaN(xs)) clsNames.push(getClassName("xs", xs));
+  if (!isNaN(sm)) clsNames.push(getClassName("sm", sm));
+  if (!isNaN(md)) clsNames.push(getClassName("md", md));
+  if (!isNaN(lg)) clsNames.push(getClassName("lg", lg));
+  if (!isNaN(xl)) clsNames.push(getClassName("xl", xl));
+  if (!isNaN(sl)) clsNames.push(getClassName("sl", sl));
 </script>
 
 <div
@@ -79,6 +79,12 @@
     flex: 0 0 100%;
     box-sizing: border-box;
     word-break: break-word;
+
+    &--xs-0 {
+      @media (max-width: $sm) {
+        display: none;
+      }
+    }
 
     @for $i from 1 through 24 {
       &--xs-#{$i} {

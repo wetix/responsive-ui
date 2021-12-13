@@ -9,16 +9,16 @@ describe("Table", () => {
     items: [{ id: 1 }, { id: 2 }],
   };
 
-  const { getByRole, getAllByRole } = render(Table, { props });
+  const { getByRole, container } = render(Table, { props });
 
   test("shows proper heading when rendered", () => {
     const component = getByRole("table");
     expect(() => component).not.toThrow();
 
-    const ths = document.querySelectorAll("thead th");
+    const ths = container.querySelectorAll("thead th");
     expect(ths).toHaveLength(props.columns.length);
 
-    const tds = document.querySelectorAll("tbody td");
+    const tds = container.querySelectorAll("tbody td");
     expect(tds).toHaveLength(props.columns.length * props.items.length);
   });
 });

@@ -16,7 +16,9 @@
 />
 
 <Template let:args>
-  <Upload {ref} {...args} />
+  <Upload {ref} {...args}>
+    <div let:uploading let:dragover>BOX {uploading} {dragover}</div>
+  </Upload>
 </Template>
 
 <Story
