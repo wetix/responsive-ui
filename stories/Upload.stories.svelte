@@ -16,8 +16,15 @@
 />
 
 <Template let:args>
-  <Upload {ref} {...args}>
-    <div let:uploading let:dragover>BOX {uploading} {dragover}</div>
+  <Upload
+    {ref}
+    {...args}
+    url="https://api.imgur.com/3/upload"
+    headers={{ Authorization: "Client-ID a70383e65634c6d" }}
+    let:uploading
+    let:dragover
+  >
+    <div>BOX {uploading} {dragover}</div>
   </Upload>
 </Template>
 

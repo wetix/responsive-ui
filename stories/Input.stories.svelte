@@ -28,22 +28,6 @@
   }}
 />
 
-<Story
-  name="Small"
-  args={{
-    variant: "small",
-    placeholder: "Input your text...",
-  }}
-/>
-
-<Story
-  name="Large"
-  args={{
-    variant: "large",
-    placeholder: "Input your text...",
-  }}
-/>
-
 <Template let:args id="prefixInput">
   <Input {...args} on:click={args.onClick}>
     <svg slot="prefix" viewBox="0 0 44 44" width="24px" height="24px">
