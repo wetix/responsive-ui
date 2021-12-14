@@ -141,16 +141,6 @@
     flex-direction: column;
     width: 260px;
 
-    @media (max-width: $sm) {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      width: auto;
-      border-radius: 8px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    }
-
     &-button {
       cursor: pointer;
       font-family: inherit;

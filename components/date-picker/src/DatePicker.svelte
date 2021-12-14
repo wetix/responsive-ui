@@ -14,6 +14,7 @@
   export let placeholder = "Select date";
   export let value = "";
   export let name = "";
+  export let open = false;
   export let ref: HTMLInputElement;
   export let readonly = false;
   export let bordered = true;
@@ -25,7 +26,6 @@
   let month = today.getMonth();
   let year = today.getFullYear();
   let focused = false;
-  let open = false;
 
   window.addEventListener("click", () => {
     focused = false;
@@ -160,7 +160,7 @@
     }
 
     &--bordered {
-      border: 1px solid #dcdcdc;
+      border: 1px solid #f1f1f1;
     }
 
     &--focused,
@@ -221,6 +221,17 @@
       background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
+
+      @media (max-width: $sm) {
+        position: fixed;
+        top: unset;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 </style>

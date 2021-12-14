@@ -4,6 +4,7 @@ export type DateChangeEvent = { date: null | Date; dateString: string };
 
 export interface DatePickerProps {
   class?: string;
+  open?: boolean;
   placeholder?: string;
   value?: string;
   ref?: null | HTMLInputElement;
