@@ -50,6 +50,7 @@
     height: 32px;
     line-height: 1.5;
     min-width: 120px;
+    align-items: center;
     width: 100%;
     color: #1a1b1c;
     padding: 0 10px;

@@ -3,7 +3,6 @@
 
   let className = "";
   export { className as class };
-  export let text = "";
   export let threshold = 100;
   export let style = "";
 
@@ -14,7 +13,7 @@
   $: isExpanded = updatedHeight === height;
   $: isExtensible = threshold < height;
 
-  const onClick = () => {
+  const handleClick = () => {
     updatedHeight = updatedHeight !== height ? height : threshold;
   };
 
@@ -25,29 +24,23 @@
 </script>
 
 <div
-  class="responsive-ui-show-more {className}"
+  {...$$restProps}
+  class="resp-show-more {className}"
   bind:clientHeight
-  style={`height:${updatedHeight}px;${style}`}
+  style={`height: ${updatedHeight}px; ${style}`}
 >
-  <slot>
-    <p>{text}</p>
-  </slot>
+  <slot />
 </div>
 {#if isExtensible}
-  <div class="responsive-ui-show-more__trigger" on:click={onClick}>
+  <div class="resp-show-more__trigger" on:click={handleClick}>
     <slot name="trigger">{isExpanded ? "- Less" : "+ More"}</slot>
   </div>
 {/if}
 
-<style lang="scss">
-  .responsive-ui-show-more {
+<style lang="scss" global>
+  .resp-show-more {
     overflow: hidden;
     transition: all 0.5s;
-
-    p {
-      font-size: var(--font-size, 14px);
-      text-align: left;
-    }
 
     &__trigger {
       cursor: pointer;

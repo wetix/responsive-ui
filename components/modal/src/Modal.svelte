@@ -82,7 +82,7 @@
     margin: 0 auto;
     background: var(--color-white, #fff);
     box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
-    border-radius: var(--border-radius, 5px);
+    border-radius: var(--border-radius, 10px);
     overflow: hidden;
     z-index: 999;
 
