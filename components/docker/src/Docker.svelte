@@ -7,7 +7,7 @@
   export let label = "";
   export let open = false;
   export let maskClosable = true;
-  export let width = "280px";
+  export let width = 280;
   export let placement = "left";
   export let style = "";
 </script>
@@ -23,7 +23,7 @@
 <aside
   class="resp-docker resp-docker--{placement} {className}"
   class:resp-docker--close={!open}
-  style={`width: ${width}; ${style}`}
+  style={`width: ${isNaN(width) ? width : `${width}px`}; ${style}`}
   on:click
   {...$$restProps}
 >
@@ -63,14 +63,14 @@
       right: 0;
       display: flex;
       align-items: center;
-      padding: 0 1rem;
+      padding: 0 0.7rem;
       height: $headerHeight;
       border-bottom: 1px solid #f5f5f5;
 
       &-label {
         flex-grow: 1;
         min-width: 0;
-        margin-right: 0.25rem;
+        margin: 0 0.3rem;
       }
 
       h2 {
@@ -98,7 +98,6 @@
     &__icon {
       cursor: pointer;
       position: relative;
-      left: 5px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -122,6 +121,11 @@
 
     &--right {
       right: 0;
+
+      .resp-docker__header {
+        flex-direction: row-reverse;
+      }
+
       &.resp-docker--close {
         transform: translateX(110%);
       }

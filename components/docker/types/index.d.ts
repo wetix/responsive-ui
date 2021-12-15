@@ -7,7 +7,7 @@ export interface DockerProps {
   open?: boolean;
   label: string;
   maskClosable?: boolean;
-  width?: string;
+  width?: string | number;
   placement?: "left" | "right";
   style?: string;
 }

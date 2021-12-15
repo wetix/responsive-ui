@@ -1,23 +1,25 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  // import { onMount, tick } from "svelte";
 
   import type { TooltipTrigger } from "../types/tooltip";
+
+  const titleAttr = "data-tooltip";
 
   let className = "";
   export { className as class };
   export let offset = 10;
-  export let text = "";
-  export let html = false;
-  export let placement = "top";
-  export let target: null | HTMLElement = null;
-  export let trigger: TooltipTrigger[] = ["mouseenter", "click"];
-  export let timeout = 2000;
+  export let trigger: TooltipTrigger[] = ["click", "mouseenter"];
 
-  const hasSlot = Object.keys($$slots).length > 0;
+  // const hasSlot = Object.keys($$slots).length > 0;
   let clientWidth = 0;
   let clientHeight = 0;
+  let translateX = 0;
+  let translateY = 0;
+  let placement = "top";
+  let show = false;
+  let title = "";
 
-  const getAbsolutePosition = (el: HTMLElement) => {
+  const getAbsPos = (el: HTMLElement) => {
     let top = el.offsetTop,
       left = el.offsetLeft;
     const height = el.offsetHeight,
@@ -46,126 +48,117 @@
     };
   };
 
-  let hide = true;
-  let top = 0;
-  let left = 0;
-
-  const setPos = (target: HTMLElement) => {
-    const rect = getAbsolutePosition(target);
-    top = rect.top - clientHeight - offset;
-    left = rect.left + (rect.width - clientWidth) / 2;
-    if (placement === "auto") {
-      if (top <= 0) top = offset;
-      if (left <= 0) left = offset;
-    }
-    switch (placement) {
-      case "top-left":
-        left = rect.left;
-        break;
-      case "top-right":
-        left = rect.right - clientWidth;
-        break;
-      case "left":
-        top = rect.top + (rect.height - clientHeight) / 2;
-        left = rect.left - clientWidth - offset;
-        break;
-      case "right":
-        top = rect.top + (rect.height - clientHeight) / 2;
-        left = rect.right + offset;
-        break;
-      case "bottom":
-        top = rect.bottom + offset;
-        break;
-      case "bottom-left":
-        top = rect.bottom + offset;
-        left = rect.left;
-        break;
-      case "bottom-right":
-        top = rect.bottom + offset;
-        left = rect.right - clientWidth;
-        break;
-      default:
-    }
+  const findTarget = (e: Event) => {
+    const target = e.composedPath().find((el) => {
+      return (
+        el instanceof HTMLElement &&
+        ((el as HTMLElement).hasAttribute(titleAttr) ||
+          (el as HTMLElement).title)
+      );
+    }) as HTMLElement;
   };
 
-  let firstChild: null | ChildNode;
-  const queue: [string, EventListener][] = [];
-  onMount(() => {
-    if (!hasSlot && target) {
-      setPos(target);
-      hide = false;
-    }
-
-    return () => {
-      if (firstChild) {
-        queue.forEach(([evt, cb]) => {
-          (<ChildNode>firstChild).removeEventListener(evt, cb);
-        });
-      }
-    };
-  });
-
-  const mounted = (node: Node) => {
+  const tooltip = (node: Node) => {
+    const listeners: [string, EventListener][] = [];
     const parent = <HTMLDivElement>node.parentNode;
-    firstChild = <ChildNode>node.firstChild;
-    if (firstChild.nodeType === Node.ELEMENT_NODE) {
-      parent.insertBefore(firstChild, node);
-      parent.removeChild(node);
+    // const firstChild = <ChildNode>node.firstChild;
+    const { firstChild } = node;
+    if (!firstChild) return;
 
-      if (trigger.includes("click")) {
-        firstChild.addEventListener("click", (e: Event) => {
-          setPos(<HTMLElement>e.currentTarget);
-          hide = false;
-          setTimeout(() => {
-            hide = true;
-          }, timeout);
-        });
+    const attachEvent = (el: Node, event: string, cb: EventListener) => {
+      el.addEventListener(event, cb);
+      listeners.push([event, cb]);
+    };
+
+    // if (firstChild.nodeType === Node.ELEMENT_NODE) {
+    parent.insertBefore(firstChild, node);
+    parent.removeChild(node);
+    console.log(parent, firstChild);
+    const toggleTooltip = (e: Event) => {
+      console.log(e.target, e.composedPath());
+      const target = e.composedPath().find((el) => {
+        return (
+          el instanceof HTMLElement &&
+          ((el as HTMLElement).hasAttribute(titleAttr) ||
+            (el as HTMLElement).title)
+        );
+      }) as HTMLElement;
+      if (!target) return;
+      title = target.title || target.getAttribute(titleAttr) || "";
+      target.removeAttribute("title");
+      target.setAttribute(titleAttr, title);
+      const rect = getAbsPos(target);
+      let newPlacement = "top";
+      let newTop = rect.top - clientHeight - offset;
+      let newLeft = rect.left + (clientWidth - rect.width + offset * 2) / 2;
+      if (newTop <= 0) {
+        newTop = rect.height + offset;
+        newPlacement = "bottom";
       }
-      if (trigger.includes("mouseenter")) {
-        firstChild.addEventListener("mouseenter", (e: Event) => {
-          setPos(<HTMLElement>e.currentTarget);
-          hide = false;
-        });
-        firstChild.addEventListener("mouseleave", () => {
-          hide = true;
-        });
-      }
+      if (newLeft <= 0) newLeft = offset;
+      setTimeout(() => {
+        translateY = newTop;
+        translateX = newLeft;
+        placement = newPlacement;
+        show = !show;
+      }, 0);
+    };
+    if (trigger.includes("click")) {
+      attachEvent(firstChild, "click", toggleTooltip);
     }
+    if (trigger.includes("mouseenter")) {
+      console.log("attachMouse");
+      attachEvent(firstChild, "mouseenter", toggleTooltip);
+      attachEvent(firstChild, "mouseleave", () => {
+        show = false;
+      });
+    }
+    // }
+    return {
+      destroy() {
+        listeners.forEach(([k, cb]) => {
+          firstChild.removeEventListener(k, cb);
+        });
+      },
+    };
   };
+
+  // $: console.log($$slots);
 </script>
 
-{#if hasSlot}
-  <span use:mounted><slot /></span>
-{/if}
-<span
-  class="responsive-ui-tooltip responsive-ui-tooltip--align-{placement} {className}"
-  class:responsive-ui-tooltip--hide={hide}
-  bind:clientWidth
-  bind:clientHeight
-  style={`top:${top}px;left:${left}px;`}
->
-  {#if html}
-    {@html text}
-  {:else}
-    {text}
-  {/if}
+<span use:tooltip>
+  <slot />
 </span>
 
-<style lang="scss">
+<span
+  class="resp-tooltip resp-tooltip--align-{placement} {className}"
+  class:resp-tooltip--hide={!show}
+  bind:clientWidth
+  bind:clientHeight
+  {...$$restProps}
+  style="top: {translateY}px; left: {translateX}px"
+>
+  <slot name="tooltip" {title}>{title}</slot>
+</span>
+
+<style lang="scss" global>
   $width: 6px;
 
-  .responsive-ui-tooltip {
+  .resp-tooltip {
     position: absolute;
+    pointer-events: none;
     background: #3b3b3b;
+    margin: 0;
     padding: 8px 12px;
-    max-width: 250px;
+    max-width: calc(100vw - 20px);
     font-size: var(--font-size-sm, 12px);
     border-radius: var(--border-radius, 5px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     color: #fff;
+    visibility: visible;
     transition: opacity 0.35s;
     opacity: 1;
-    z-index: 50;
+    z-index: 999;
 
     &:after {
       content: "";
@@ -220,8 +213,9 @@
     }
 
     &--hide {
+      visibility: hidden;
       opacity: 0;
-      z-index: -1;
+      z-index: -999;
     }
   }
 </style>

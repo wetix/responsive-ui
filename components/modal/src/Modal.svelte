@@ -9,7 +9,7 @@
   export { className as class };
   export let title: null | string = null;
   export let outlined = false;
-  export let width: number = "480px" as unknown as number;
+  export let width = 480;
   export let open = true;
   export let closable = true;
   export let maskClosable = true;
