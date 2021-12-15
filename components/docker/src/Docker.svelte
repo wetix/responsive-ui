@@ -97,6 +97,8 @@
 
     &__icon {
       cursor: pointer;
+      position: relative;
+      left: 5px;
       display: flex;
       justify-content: center;
       align-items: center;

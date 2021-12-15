@@ -120,6 +120,8 @@
         flex: 0 0 30px;
 
         &-icon {
+          position: relative;
+          left: 5px;
           cursor: pointer;
           display: flex;
           justify-content: center;
