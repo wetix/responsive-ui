@@ -9,7 +9,7 @@
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",
   "unpkg": "lib/index.min.js",
-  "svelte": "src/index.ts",
+  "svelte": "src/Tooltip.svelte",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
