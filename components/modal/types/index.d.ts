@@ -2,11 +2,12 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ModalProps {
   class?: string;
-  title?: null | string;
-  width?: string;
+  title?: string;
+  open?: boolean;
+  width?: number | string;
+  outlined?: boolean;
   closable?: boolean;
   maskClosable?: boolean;
-  open?: boolean;
   style?: string;
 }
 

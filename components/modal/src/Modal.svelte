@@ -8,38 +8,29 @@
   let className = "";
   export { className as class };
   export let title: null | string = null;
-  export let width = "480px";
+  export let outlined = false;
+  export let width: number = "480px" as unknown as number;
   export let open = true;
   export let closable = true;
   export let maskClosable = true;
   export let style = "";
-
-  $: maxHeight = window.innerHeight - 60;
-
-  let clientWidth = 0;
-  let clientHeight = 0;
 </script>
 
 {#if open}
-  <div
-    class="resp-modal__overlay"
-    in:fade
-    out:fade
-    on:click={maskClosable ? () => (open = false) : undefined}
-  />
-  <div
-    class="resp-modal {className}"
-    bind:clientWidth
-    bind:clientHeight
-    in:fade
-    out:fade
-    style={`width: ${width}; margin-top: ${
-      (-1 * clientHeight) / 2
-    }px; margin-left: ${
-      (-1 * clientWidth) / 2
-    }px; max-height: ${maxHeight}px; ${style}`}
-  >
-    <slot name="header">
+  <div class="resp-modal__box" class:resp-modal--outlined={outlined}>
+    <div
+      class="resp-modal__overlay"
+      in:fade
+      out:fade
+      on:click={maskClosable ? () => (open = false) : undefined}
+    />
+    <div
+      {...$$restProps}
+      class="resp-modal {className}"
+      in:fade
+      out:fade
+      style="width: {isNaN(width) ? width : `${width}px`}; {style}"
+    >
       {#if title}
         <header class="resp-modal__header">
           <caption>{title}</caption>
@@ -55,50 +46,63 @@
           {/if}
         </header>
       {/if}
-    </slot>
-    <div class="resp-modal__body">
-      <slot />
-    </div>
-    <slot name="footer">
+      <div class="resp-modal__body">
+        <slot />
+      </div>
       <footer class="resp-modal__footer">
-        <Button
-          variant="primary"
-          on:click={() => dispatch("ok")}
-          style="margin-left: 6px">OK</Button
-        >
-        <Button on:click={() => dispatch("cancel")}>Cancel</Button>
+        <slot name="footer">
+          <Button
+            variant="primary"
+            on:click={() => dispatch("ok")}
+            style="margin-left: 6px">OK</Button
+          >
+          <Button on:click={() => dispatch("cancel")}>Cancel</Button>
+        </slot>
       </footer>
-    </slot>
+    </div>
   </div>
 {/if}
 
 <style lang="scss" global>
   .resp-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     font-family: inherit;
-    // word-break: break-word;
     margin: 0 auto;
+    width: 480px;
+    max-width: calc(100% - 40px);
+    max-height: calc(100vh - 40px);
     background: var(--color-white, #fff);
     box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
     border-radius: var(--border-radius, 10px);
     overflow: hidden;
     z-index: 999;
 
-    &__overlay {
+    &__overlay,
+    &__box {
       position: fixed;
-      background: rgba(0, 0, 0, 0.65);
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 999;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__overlay {
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 900;
+    }
+
+    &__box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__header {
       display: flex;
-      border-bottom: 1px solid #f5f5f5;
 
       caption {
         text-align: left;
@@ -136,12 +140,30 @@
     &__header,
     &__body,
     &__footer {
+      width: 100%;
       padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    &__body {
+      overflow-y: scroll;
+      flex-grow: 1;
+      min-height: 0;
     }
 
     &__footer {
       display: flex;
       flex-direction: row-reverse;
+    }
+
+    &--outlined {
+      $borderColor: #f5f5f5;
+      .resp-modal__header {
+        border-bottom: 1px solid $borderColor;
+      }
+      .resp-modal__footer {
+        border-top: 1px solid $borderColor;
+      }
     }
   }
 </style>
