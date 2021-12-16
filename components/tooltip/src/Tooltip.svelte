@@ -53,11 +53,11 @@
       const rect = target.getBoundingClientRect();
       const { innerWidth } = window;
       let newPlacement: [string, string] = ["top", ""];
-      let newTop = rect.top - height - offset;
-      let newLeft = rect.left + (rect.width - width) / 2;
+      let newTop = rect.top - height - offset + window.scrollY;
+      let newLeft = rect.left + window.scrollX + (rect.width - width) / 2;
 
       if (newTop <= 0) {
-        newTop = rect.top + rect.height + offset;
+        newTop = rect.top + rect.height + offset + window.scrollY;
         newPlacement[0] = "bottom";
       }
       if (newLeft <= 0) {
@@ -65,7 +65,7 @@
         newLeft = offset;
       }
       if (newLeft + width >= innerWidth) {
-        newLeft = innerWidth - (width + offset);
+        newLeft = innerWidth - (width + offset) + window.scrollX;
         newPlacement[1] = "left";
       }
 
