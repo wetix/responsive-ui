@@ -17,7 +17,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: inherit;
+    background: #fff;
     padding-bottom: env(safe-area-inset-bottom, 15px);
     z-index: 50;
 

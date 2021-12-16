@@ -43,13 +43,13 @@
       if (!target) return;
       title = target.title || target.getAttribute(titleAttr) || "";
       target.removeAttribute("title");
+      target.setAttribute(titleAttr, title);
 
       // let it render first
       await tick();
 
       const { width, height } = shallowDom.getBoundingClientRect();
 
-      target.setAttribute(titleAttr, title);
       const rect = target.getBoundingClientRect();
       const { innerWidth } = window;
       let newPlacement: [string, string] = ["top", ""];
@@ -106,9 +106,9 @@
   }, "resp-tooltip--align");
 </script>
 
-<span use:tooltip>
+<div use:tooltip>
   <slot />
-</span>
+</div>
 
 {#if show}
   <span
