@@ -4,7 +4,6 @@
   export let ref: HTMLButtonElement;
   export let variant = "default";
   export let type = "submit";
-  export let label = "";
   export let outline = false;
 </script>
 
@@ -17,7 +16,7 @@
   bind:this={ref}
   on:click
 >
-  <slot>{label}</slot>
+  <slot />
 </button>
 
 <style lang="scss" global>

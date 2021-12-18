@@ -17,10 +17,6 @@ export interface ButtonProps {
    */
   ref?: HTMLButtonElement;
   /**
-   * Specifies the label of the button.
-   */
-  label?: string;
-  /**
    * Specifies extra information about an element.
    */
   title?: string;
