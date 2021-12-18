@@ -33,9 +33,6 @@
   title="Components/Table"
   component={Table}
   argTypes={{
-    size: {
-      control: { type: "select", options: ["small", "default", "large"] },
-    },
     bordered: { control: "boolean" },
     striped: { control: "boolean" },
     ellipsis: { control: "boolean" },

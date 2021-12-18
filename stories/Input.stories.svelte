@@ -12,7 +12,6 @@
     placeholder: { control: "text" },
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
-    // readonly: { control: "boolean" },
   }}
 />
 
