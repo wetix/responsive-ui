@@ -6,7 +6,6 @@
   let className = "";
   export { className as class };
   export let ref: HTMLInputElement;
-  export let sizeOf = "medium";
   export let type = "text";
   export let bordered = true;
   export let value = "";
@@ -24,7 +23,7 @@
 </script>
 
 <div
-  class="resp-input resp-input--{sizeOf} {className}"
+  class="resp-input {className}"
   class:resp-input--bordered={bordered}
   class:resp-input--focused={focused}
   on:click|stopPropagation={() => (focused = true)}
@@ -74,16 +73,16 @@
       }
     }
 
-    &--sm {
-      height: var(--input-height-sm, 24px);
-      line-height: var(--input-height-sm, 24px);
-    }
+    // &--sm {
+    //   height: var(--input-height-sm, 24px);
+    //   line-height: var(--input-height-sm, 24px);
+    // }
 
-    &--lg {
-      min-width: 240px;
-      height: var(--input-height-lg, 42px);
-      line-height: var(--input-height-lg, 42px);
-    }
+    // &--lg {
+    //   min-width: 240px;
+    //   height: var(--input-height-lg, 42px);
+    //   line-height: var(--input-height-lg, 42px);
+    // }
 
     &--bordered {
       border: 1px solid #f1f1f1;
