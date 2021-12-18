@@ -42,6 +42,8 @@
 </div>
 
 <style lang="scss" global>
+  $sm: 576px;
+
   .resp-textarea {
     font-size: inherit;
     font-family: inherit;
@@ -51,6 +53,8 @@
     outline: 0;
     resize: none;
     padding: 8px;
+    width: 100%;
+    word-wrap: break-word;
     margin: 0;
     border-radius: 3px;
     transition: all 0.5s;
@@ -84,6 +88,10 @@
       display: block;
       text-align: right;
       font-size: var(--font-size-xs, 11px);
+    }
+
+    @media (min-width: $sm) {
+      width: auto;
     }
   }
 </style>
