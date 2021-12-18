@@ -3,10 +3,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface ChipProps {
   id?: string;
   ref?: HTMLInputElement;
-  sizeOf?: "sm" | "md" | "lg";
   title?: string;
   name?: string;
-  label?: string;
   disabled?: boolean;
   checked?: boolean;
   value: string;

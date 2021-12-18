@@ -3,9 +3,11 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export type TooltipTrigger = "mouseover" | "focus" | "click";
 
 export interface TooltipProps {
+  id?: string;
   class?: string;
   offset?: number;
   trigger?: TooltipTrigger[];
+  style?: string;
 }
 
 interface TooltipEvents {}

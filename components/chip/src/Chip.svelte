@@ -3,8 +3,6 @@
   export { className as class };
   export let ref: HTMLInputElement;
   export let name = "";
-  export let size = "large";
-  export let label = "";
   export let disabled = false;
   export let checked = false;
   export let value = "";
@@ -23,13 +21,13 @@
   on:click
 />
 <label
-  class="resp-chip resp-chip--{size} {className}"
+  class="resp-chip {className}"
   class:resp-chip--disabled={disabled}
   data-value={value}
   for={id}
   {...$$restProps}
 >
-  <slot>{label}</slot>
+  <slot />
 </label>
 
 <style lang="scss" global>
@@ -45,12 +43,6 @@
     border: 1px solid #fc4451;
     background: transparent;
     overflow: hidden;
-
-    &--large {
-      font-size: 14px;
-      padding: 3px 12px;
-      border-radius: 14px;
-    }
 
     &--disabled {
       cursor: not-allowed;

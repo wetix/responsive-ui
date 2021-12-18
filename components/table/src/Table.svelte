@@ -7,7 +7,6 @@
   export let rowKey: keyof TableItem = "id";
   export let loading = false;
   export let tableLayout = "fixed";
-  export let size = "small";
   export let showHeader = true;
   export let columns: Partial<TableColumn>[] = [];
   export let items: TableItem[] = [];
@@ -40,7 +39,7 @@
 </script>
 
 <div
-  class="resp-table resp-table--{size} {className}"
+  class="resp-table {className}"
   class:resp-table--bordered={bordered}
   class:resp-table--striped={striped}
   bind:this={ref}
@@ -169,20 +168,6 @@
         tr:last-child > td {
           border-bottom: none;
         }
-      }
-    }
-
-    &--small table tr {
-      td,
-      th {
-        padding: 6px 10px;
-      }
-    }
-
-    &--large table tr {
-      td,
-      th {
-        padding: 15px;
       }
     }
 

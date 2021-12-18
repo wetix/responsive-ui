@@ -20,7 +20,6 @@ export type TableProps = {
   rowKey?: keyof TableItem;
   title?: string;
   tableLayout?: "fixed" | "auto" | "inherit" | "initial";
-  size?: "small" | "medium" | "large";
   columns: Partial<TableColumn>[];
   items: null | TableItem[];
   class?: string;
