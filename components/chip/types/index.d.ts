@@ -12,7 +12,16 @@ export interface ChipProps {
   style?: string;
 }
 
-export interface ChipEvents {}
+export interface ChipEvents {
+  /**
+   * The onclick event occurs when the user clicks on an element.
+   */
+  click?: WindowEventMap["click"];
+  /**
+   * The onchange event occurs when the value of an element has been changed.
+   */
+  change?: WindowEventMap["change"];
+}
 
 export interface ChipSlots {
   default: {};

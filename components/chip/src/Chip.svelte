@@ -12,10 +12,11 @@
 
 <input
   bind:this={ref}
+  type="checkbox"
   {id}
   {name}
   {disabled}
-  type="checkbox"
+  {value}
   bind:checked
   on:change
   on:click
