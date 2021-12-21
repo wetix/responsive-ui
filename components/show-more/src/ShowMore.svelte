@@ -24,8 +24,8 @@
 </script>
 
 <div
-  {...$$restProps}
   class="resp-show-more {className}"
+  {...$$restProps}
   bind:clientHeight
   style={`height: ${updatedHeight}px; ${style}`}
 >

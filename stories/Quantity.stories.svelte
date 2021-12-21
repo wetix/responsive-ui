@@ -1,11 +1,11 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Search from "@responsive-ui/search";
+  import Quantity from "@responsive-ui/quantity";
 </script>
 
 <Meta
-  title="Components/Search"
-  component={Search}
+  title="Components/Quantity"
+  component={Quantity}
   argTypes={{
     label: { control: "text" },
     value: { control: "text" },
@@ -14,7 +14,7 @@
 />
 
 <Template let:args>
-  <Search {...args} on:click={args.onClick} />
+  <Quantity {...args} on:click={args.onClick} />
 </Template>
 
 <Story

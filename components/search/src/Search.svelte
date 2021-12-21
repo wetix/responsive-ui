@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import Loader from "@responsive-ui/loader";
+  // import Loader from "@resp/loader";
 
   const dispatch = createEventDispatcher();
 
@@ -49,7 +49,7 @@
 </script>
 
 <input
-  class="responsive-ui-search {className}"
+  class="resp-search {className}"
   bind:this={ref}
   type="search"
   {name}
@@ -64,16 +64,16 @@
 />
 
 {#if loading}
-  <div class="responsive-ui-search__state">
-    <Loader size="small" />
-    <div class="responsive-ui-search__state-text">Searching...</div>
+  <div class="resp-search__state">
+    <!-- <Loader size="small" /> -->
+    <div class="resp-search__state-text">Searching...</div>
   </div>
 {/if}
 
 <slot {loading} />
 
 <style lang="scss">
-  .responsive-ui-search {
+  .resp-search {
     display: block;
     border: 1px solid #dcdcdc;
     overflow: hidden;

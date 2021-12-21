@@ -5,10 +5,10 @@
 
   let className = "";
   export { className as class };
-  export let id = "";
   export let ref: HTMLInputElement;
   export let name = "file";
-  export let url = "";
+  export let method = "POST";
+  export let action = "";
   export let headers: Object = {};
   export let accept = "image/*";
   export let withCredentials = true;
@@ -16,29 +16,39 @@
   export let multiple = false;
   export let value = "";
 
-  let uploadFiles: File[] = [];
+  let noOfFiles: number;
   let uploading = false;
   let dragover = false;
-  // onMount(() => {
-  //   if (ref && directory) {
-  //     ref.setAttribute("webkitdirectory", "true");
-  //     ref.setAttribute("mozdirectory", "true");
-  //   }
-  // });
+  const queue: File[] = [];
 
-  const handleSubmit = (e: Event) => {
-    const { files } = <HTMLInputElement>e.target;
+  onMount(() => {
+    if (directory) {
+      ref.setAttribute("directory", "true");
+      ref.setAttribute("webkitdirectory", "true");
+      ref.setAttribute("mozdirectory", "true");
+    }
+  });
 
-    uploading = true;
+  const uploadFiles = (file: File) => {
+    let reader = new FileReader();
+    console.log("File =>", file);
+    reader.readAsDataURL(file);
+    reader.onloadend = (e: Event) => {
+      console.log(e);
+      console.log(reader.result);
+    };
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    xhr.open("POST", action, true);
     xhr.withCredentials = withCredentials;
     Object.entries(headers).forEach(([k, v]) => {
       xhr.setRequestHeader(k, v);
     });
     xhr.addEventListener("loadstart", (e) => {
-      dispatch("progress", e);
+      dispatch("uploadprogress", e);
+    });
+    xhr.upload.addEventListener("progress", function (e) {
+      console.log((e.loaded * 100.0) / e.total || 100);
     });
     xhr.addEventListener("error", (e) => {
       dispatch("error", e);
@@ -68,17 +78,23 @@
     });
 
     const formData = new FormData();
-    if (files) {
-      if (multiple) {
-        for (let i = 0; i < files.length; i++) {
-          formData.append(`${name}[]`, files[i]);
-        }
-      } else {
-        formData.append(name, files[0]);
-      }
-    }
+    // if (files) {
+    //   if (multiple) {
+    //     for (let i = 0; i < files.length; i++) {
+    //       formData.append(`${name}[]`, files[i]);
+    //     }
+    //   } else {
+    //   }
+    // }
 
+    formData.append(name, file);
     xhr.send(formData);
+  };
+
+  const handleSubmit = (e: Event) => {
+    const { files } = <HTMLInputElement>e.target;
+
+    uploading = true;
   };
 
   const dragUpload = (node: Node) => {
@@ -86,52 +102,61 @@
     return { destroy() {} };
   };
 
-  const handleDragEnter = () => {
+  const preventDefault = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragEnter = (e: Event) => {
+    preventDefault(e);
     dragover = true;
   };
 
-  const handleDragLeave = () => {
+  const handleDragLeave = (e: Event) => {
+    preventDefault(e);
     dragover = false;
   };
 
   const handleDrop = (e: DragEvent) => {
-    console.log(e.dataTransfer);
+    preventDefault(e);
+    const { files } = e.dataTransfer!;
+    queue.push(...files);
+    [...files].forEach(uploadFiles);
+    // uploadFiles(files);
   };
 </script>
 
-<div
-  on:dragover={handleDragEnter}
-  on:dragenter={handleDragEnter}
-  on:dragleave={handleDragLeave}
-  on:drop={handleDragLeave}
-  on:drop={handleDrop}
->
-  <form
-    method="POST"
-    action={url}
-    on:submit|preventDefault|stopPropagation={handleSubmit}
+<form {method} {action} on:submit|preventDefault|stopPropagation={handleSubmit}>
+  <label
+    class="resp-upload {className}"
+    on:dragover={handleDragEnter}
+    on:dragenter={handleDragEnter}
+    on:dragleave={handleDragLeave}
+    on:drop={handleDragLeave}
+    on:drop={handleDrop}
+    {...$$restProps}
   >
-    <label class="resp-upload {className}" {...$$restProps}>
-      <input
-        {id}
-        bind:this={ref}
-        use:dragUpload
-        type="file"
-        {name}
-        bind:value
-        {multiple}
-        {accept}
-        on:change
-        tabindex="-1"
-      />
-      <slot {uploading} {dragover} />
-    </label>
-  </form>
-</div>
+    <input
+      bind:this={ref}
+      use:dragUpload
+      type="file"
+      {name}
+      bind:value
+      {multiple}
+      {accept}
+      on:change
+      tabindex="-1"
+    />
+    <slot {uploading} {dragover} file="" />
+  </label>
+</form>
 
 <style lang="scss" global>
   .resp-upload {
     cursor: pointer;
     display: inline-flex;
+
+    input[type="file"] {
+      display: none;
+    }
   }
 </style>

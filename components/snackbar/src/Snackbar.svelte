@@ -2,7 +2,6 @@
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
   import { slideY } from "@wetix/animation";
-  import Icon from "@responsive-ui/icon";
 
   const dispatch = createEventDispatcher();
 
@@ -28,7 +27,7 @@
   >
     <slot>{text}</slot>
     <span class="responsive-ui-snackbar__close">
-      <Icon type="x" stroke="#fff" on:click={onClose} />
+      <!-- <Icon type="x" stroke="#fff" on:click={onClose} /> -->
     </span>
   </div>
 {/if}
