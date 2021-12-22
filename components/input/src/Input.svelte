@@ -45,6 +45,7 @@
 <style lang="scss" global>
   .resp-input {
     display: inline-flex;
+    border: 1px solid transparent;
     color: var(--text-color, #1a1b1c);
     background: #fff;
     height: var(--input-height, 30px);
@@ -85,7 +86,7 @@
     // }
 
     &--bordered {
-      border: 1px solid #f1f1f1;
+      border-color: #f1f1f1;
     }
 
     &--focused,

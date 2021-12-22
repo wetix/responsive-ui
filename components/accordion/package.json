@@ -21,13 +21,11 @@
     "accordion",
     "svelte-accordion"
   ],
-  "dependencies": {
-    "@responsive-ui/icon": "^1.0.9-alpha.0"
-  },
   "peerDependencies": {
     "svelte": "^3.27.0",
     "svelte-preprocess": "^4.5.0",
-    "typescript": "^4.0.0"
+    "typescript": "^4.0.0",
+    "@responsive-ui/icon": "*"
   },
   "directories": {
     "lib": "lib",

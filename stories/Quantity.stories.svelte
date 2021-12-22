@@ -7,21 +7,30 @@
   title="Components/Quantity"
   component={Quantity}
   argTypes={{
-    label: { control: "text" },
-    value: { control: "text" },
-    outline: { control: "boolean" },
+    disabled: { control: "boolean" },
+    min: { control: { type: "range", min: 0, max: 100, step: 1 } },
+    max: { control: { type: "range", min: 1, max: 100, step: 1 } },
+    step: { control: { type: "range", min: 1, max: 10, step: 1 } },
+    onChange: { action: "change" },
   }}
 />
 
 <Template let:args>
-  <Quantity {...args} on:click={args.onClick} />
+  <Quantity
+    {...args}
+    on:input={args.onChange}
+    on:change={args.onChange}
+    on:mouseup={args.onChange}
+    on:keyup={args.onChange}
+  />
 </Template>
 
 <Story
   name="Default"
   args={{
-    label: "Hello World",
-    placeholder: "Input your text...",
-    value: "test",
+    disabled: false,
+    min: 5,
+    max: 99,
+    value: 0,
   }}
 />

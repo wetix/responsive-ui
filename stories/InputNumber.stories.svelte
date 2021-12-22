@@ -23,7 +23,7 @@
   name="Default"
   args={{
     variant: "medium",
-    placeholder: "Input your text...",
+    placeholder: "0",
   }}
 />
 
