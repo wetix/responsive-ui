@@ -54,6 +54,7 @@
     resize: none;
     padding: 8px;
     width: 100%;
+    border: 1px solid transparent;
     word-wrap: break-word;
     margin: 0;
     border-radius: 3px;
@@ -65,7 +66,7 @@
     }
 
     &--bordered {
-      border: 1px solid #f1f1f1;
+      border-color: var(--input-border-color, #dcdcdc);
     }
 
     &:focus,

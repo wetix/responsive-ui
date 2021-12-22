@@ -33,7 +33,7 @@
     justify-content: center;
     min-width: 65px;
     font-size: var(--font-size, 14px);
-    border: 1px solid #dcdcdc;
+    border: 1px solid var(--input-border-color, #dcdcdc);
     background: #fff;
     padding: 0 15px;
     margin: 0;

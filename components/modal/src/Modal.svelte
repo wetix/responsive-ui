@@ -148,7 +148,7 @@
     }
 
     &__body {
-      overflow-y: scroll;
+      overflow-y: auto;
       flex-grow: 1;
       min-height: 0;
     }

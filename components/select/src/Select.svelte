@@ -43,7 +43,7 @@
 
   .resp-select {
     display: inline-flex;
-    border: 1px solid #f1f1f1;
+    border: 1px solid var(--input-border-color, #dcdcdc);
     border-radius: var(--border-radius, 5px);
     font-size: var(--font-size);
     font-family: var(--font-family, inherit);

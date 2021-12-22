@@ -151,7 +151,7 @@
     &__input {
       display: flex;
       width: 100%;
-      border: 1px solid #f1f1f1;
+      border: 1px solid var(--input-border-color, #dcdcdc);
       border-radius: var(--border-radius, 5px);
       min-height: var(--height, 34px);
       color: #1a1b1c;

@@ -148,6 +148,7 @@
     margin: 0;
     height: 32px;
     width: 100%;
+    border: 1px solid transparent;
     line-height: 1.5;
     background: #fff;
     align-items: center;
@@ -160,7 +161,7 @@
     }
 
     &--bordered {
-      border: 1px solid #f1f1f1;
+      border-color: var(--input-border-color, #dcdcdc);
     }
 
     &--focused,

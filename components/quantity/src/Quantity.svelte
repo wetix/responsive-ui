@@ -99,7 +99,7 @@
     display: inline-flex;
     align-items: center;
     padding-right: 5px;
-    border: 1px solid #dcdcdc;
+    border: 1px solid var(--input-border-color, #dcdcdc);
     border-radius: 3px;
     transition: all 0.5s;
 

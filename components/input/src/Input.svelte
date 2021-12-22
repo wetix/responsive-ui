@@ -74,19 +74,8 @@
       }
     }
 
-    // &--sm {
-    //   height: var(--input-height-sm, 24px);
-    //   line-height: var(--input-height-sm, 24px);
-    // }
-
-    // &--lg {
-    //   min-width: 240px;
-    //   height: var(--input-height-lg, 42px);
-    //   line-height: var(--input-height-lg, 42px);
-    // }
-
     &--bordered {
-      border-color: #f1f1f1;
+      border-color: var(--input-border-color, #dcdcdc);
     }
 
     &--focused,

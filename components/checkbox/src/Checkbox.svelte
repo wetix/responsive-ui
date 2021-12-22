@@ -43,7 +43,7 @@
       height: 19px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid #b9b8c3;
+      border: 1px solid var(--input-border-color, #dcdcdc);
       transition: all 0.2s ease;
 
       svg {
