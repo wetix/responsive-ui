@@ -22,7 +22,7 @@
     z-index: 50;
 
     &__box {
-      padding: 12px 15px;
+      padding: 1rem;
     }
   }
 </style>

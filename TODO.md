@@ -1,10 +1,10 @@
 # Component List
 
 - ✅ Accordion (@responsive-ui/accordion)
+- ✅ Action Sheet (@responsive-ui/action-sheet)
 - 🚧 Badge (@responsive-ui/badge)
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
 - ✅ Bottom Modal (@responsive-ui/bottom-modal)
-- ✅ Bottom Sheet (@responsive-ui/bottom-sheet)
 - ✅ Button (@responsive-ui/button)
 - ✅ Card (@responsive-ui/card)
 - 🚧 Checkbox (@responsive-ui/checkbox)
@@ -24,7 +24,7 @@
 - ✅ Loader (@responsive-ui/loader)
 - ❌ Menu (@responsive-ui/menu)
 - ✅ Poster (@responsive-ui/poster)
-- 🚧 Quantity (@responsive-ui/quantity)
+- ✅ Quantity (@responsive-ui/quantity)
 - ✅ Responsive (@responsive-ui/responsive)
 - ✅ Row (@responsive-ui/row)
 - ✅ Search (@responsive-ui/search)

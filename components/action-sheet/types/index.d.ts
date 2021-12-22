@@ -1,7 +1,7 @@
 import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
-type BottomSheetOption = {
+type ActionSheetOption = {
   label: string;
   value: string;
   icon?: string | typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
@@ -10,30 +10,30 @@ type BottomSheetOption = {
   selected?: boolean;
 };
 
-export interface BottomSheetItem {
+export interface ActionSheetItem extends Record<string, any> {
   label: string;
-  options: BottomSheetOption[];
+  options: ActionSheetOption[];
   selected?: Map<string, boolean>;
   style?: string;
 }
 
-export interface BottomSheetProps {
-  items: BottomSheetItem[];
+export interface ActionSheetProps {
+  items: ActionSheetItem[];
   open?: boolean;
   selected?: number;
   disabled?: boolean;
   closable?: boolean;
 }
 
-export interface BottomSheetEvents {
+export interface ActionSheetEvents {
   change?: any;
   filter?: any;
   reset?: any;
 }
 
-declare class BottomSheet extends SvelteComponentTyped<
-  BottomSheetProps,
-  BottomSheetEvents
+declare class ActionSheet extends SvelteComponentTyped<
+  ActionSheetProps,
+  ActionSheetEvents
 > {}
 
-export default BottomSheet;
+export default ActionSheet;

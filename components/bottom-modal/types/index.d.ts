@@ -6,6 +6,17 @@ export interface BottomModalProps {
   style?: string;
 }
 
-declare class BottomModal extends SvelteComponentTyped<BottomModalProps> {}
+/**
+ * Component slots.
+ */
+export interface BottomModalSlots {
+  default: {};
+}
+
+declare class BottomModal extends SvelteComponentTyped<
+  BottomModalProps,
+  {},
+  BottomModalSlots
+> {}
 
 export default BottomModal;

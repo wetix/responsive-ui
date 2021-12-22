@@ -78,23 +78,23 @@ Thanks to these awesome companies for their support of Open Source developers â
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
 
-    const tsDoc = fs.readFileSync(path.resolve(`${basePath}/${pkg.types}`));
-    /** @type {import("@microsoft/tsdoc").TSDocParser} */
-    const tsdocParser = new TSDocParser();
+    // const tsDoc = fs.readFileSync(path.resolve(`${basePath}/${pkg.types}`));
+    // /** @type {import("@microsoft/tsdoc").TSDocParser} */
+    // const tsdocParser = new TSDocParser();
 
-    /** @type {import("@microsoft/tsdoc").ParserContext} */
-    const ctx = tsdocParser.parseString(tsDoc);
-    const docNode = ctx.docComment;
-    // console.log();
-    // console.log(ctx.docComment.typeParams);
-    console.log(
-      typeof ctx.content,
-      docNode.kind,
-      typeof docNode.content,
-      docNode.excerptKind
-    );
-    console.log(ctx.log.messages);
-    console.log(docNode.getChildNodes().length);
+    // /** @type {import("@microsoft/tsdoc").ParserContext} */
+    // const ctx = tsdocParser.parseString(tsDoc);
+    // const docNode = ctx.docComment;
+    // // console.log();
+    // // console.log(ctx.docComment.typeParams);
+    // console.log(
+    //   typeof ctx.content,
+    //   docNode.kind,
+    //   typeof docNode.content,
+    //   docNode.excerptKind
+    // );
+    // console.log(ctx.log.messages);
+    // console.log(docNode.getChildNodes().length);
 
     // Check for any syntax errors
     // if (parserContext.log.messages.length > 0) {

@@ -2,7 +2,7 @@
   import Date from "../components/date-picker/src/DatePicker.svelte";
   import Accordion from "../components/accordion/src/Accordion.svelte";
   import BottomBar from "../components/bottom-bar/src/BottomBar.svelte";
-  import BottomSheet from "../components/bottom-sheet/src/BottomSheet.svelte";
+  import BottomSheet from "../components/action-sheet/src/ActionSheet.svelte";
   import Button from "../components/button/src/Button.svelte";
   import Carousel from "../components/carousel/src/Carousel.svelte";
   import DatePicker from "../components/date-picker/src/DatePicker.svelte";
@@ -114,8 +114,7 @@
   const datas = [
     {
       key: "1",
-      name:
-        "John Doe (7C29D63E49B7AB3D7C249EF995C30FF37DB7883EA89E93A5F8FCFCCA8FC35CC7)",
+      name: "John Doe (7C29D63E49B7AB3D7C249EF995C30FF37DB7883EA89E93A5F8FCFCCA8FC35CC7)",
       age: 19,
       online: false,
       amount: 10.5,
@@ -452,23 +451,19 @@
           url: "https://google.com",
         },
         {
-          src:
-            "https://asset.wetix.my/images/af910e1d-9112-4fec-b4b5-3671c1b4c87b.jpg",
+          src: "https://asset.wetix.my/images/af910e1d-9112-4fec-b4b5-3671c1b4c87b.jpg",
           url: "https://google.com",
         },
         {
-          src:
-            "https://asset.wetix.my/images/39131d05-37d9-4902-948b-183e24a8a2ae.jpeg",
+          src: "https://asset.wetix.my/images/39131d05-37d9-4902-948b-183e24a8a2ae.jpeg",
           url: "https://google.com",
         },
         {
-          src:
-            "https://asset.wetix.my/images/da132468-8677-4675-b8f5-c32f9a751f3a.png",
+          src: "https://asset.wetix.my/images/da132468-8677-4675-b8f5-c32f9a751f3a.png",
           url: "https://google.com",
         },
         {
-          src:
-            "https://asset.wetix.my/images/02a86a0b-ac84-4df1-ba71-d707045815e6.png",
+          src: "https://asset.wetix.my/images/02a86a0b-ac84-4df1-ba71-d707045815e6.png",
           url: "https://google.com",
         },
       ]}

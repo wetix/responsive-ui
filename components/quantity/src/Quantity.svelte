@@ -58,7 +58,7 @@
   {...$$restProps}
 >
   {#if slim}
-    <span
+    <i
       class="resp-quantity__control"
       class:resp-quantity__control--limit={minLimit}
       on:click={!disabled ? handleDecrement : noop}
@@ -66,7 +66,7 @@
       {@html `<svg width="1em" height="1em" viewBox="0 0 31.427 31.427">
         <path d="M1.111 16.832A1.117 1.117 0 010 15.706c0-.619.492-1.111 1.111-1.111H30.3c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H1.111z" />
       </svg>`}
-    </span>
+    </i>
   {/if}
   <input
     bind:this={ref}
@@ -82,7 +82,7 @@
     bind:value
   />
   {#if slim}
-    <span
+    <i
       class="resp-quantity__control"
       class:resp-quantity__control--limit={maxLimit}
       on:click={!disabled ? handleIncrement : noop}
@@ -90,7 +90,7 @@
       {@html `<svg width="1em" height="1em" viewBox="0 0 31.444 31.444">
         <path d="M1.119 16.841a1.118 1.118 0 01-1.111-1.127c0-.619.492-1.111 1.111-1.111h13.475V1.127A1.133 1.133 0 0115.722 0c.619 0 1.111.508 1.111 1.127v13.476h13.475c.619 0 1.127.492 1.127 1.111s-.508 1.127-1.127 1.127H16.833v13.476c0 .619-.492 1.127-1.111 1.127a1.131 1.131 0 01-1.127-1.127V16.841H1.119z" />
       </svg>`}
-    </span>
+    </i>
   {/if}
 </div>
 

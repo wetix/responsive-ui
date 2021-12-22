@@ -4,12 +4,12 @@
   import BottomModal from "@responsive-ui/bottom-modal";
   import Tab from "@responsive-ui/tab";
 
-  import type { BottomSheetItem } from "../types";
+  import type { ActionSheetItem } from "../types";
   import Option from "./Option.svelte";
 
   const dispatch = createEventDispatcher();
 
-  export let items: BottomSheetItem[] = [];
+  export let items: ActionSheetItem[] = [];
   export let open = false;
   export let selected = 0;
   export let disabled = false;
@@ -55,17 +55,12 @@
 </script>
 
 <BottomModal bind:open {closable}>
-  <div class="responsive-ui-bottom-sheet" style={`height:${height}px;`}>
-    <header class="responsive-ui-bottom-sheet__header">
-      <span class="responsive-ui-bottom-sheet__reset" on:click={onReset}
-        >Reset</span
-      >
+  <div class="resp-action-sheet" style={`height:${height}px;`}>
+    <header class="resp-action-sheet__header">
+      <span class="resp-action-sheet__reset" on:click={onReset}>Reset</span>
     </header>
     <Tab {items} bind:selected>
-      <div
-        class="responsive-ui-bottom-sheet__body"
-        style={`height:${height - 150}px`}
-      >
+      <div class="resp-action-sheet__body" style={`height:${height - 150}px`}>
         {#each items[selected].options || [] as opt (opt.value)}
           <Option
             {...opt}
@@ -76,13 +71,13 @@
       </div>
     </Tab>
   </div>
-  <footer class="responsive-ui-bottom-sheet__footer">
+  <footer class="resp-action-sheet__footer">
     <Button {disabled} on:click={onFilter}>FILTER</Button>
   </footer>
 </BottomModal>
 
 <style lang="scss">
-  .responsive-ui-bottom-sheet {
+  .resp-action-sheet {
     padding-top: var(--padding, 15px);
     position: relative;
 
