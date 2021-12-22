@@ -5,11 +5,11 @@ export interface QuantityProps {
   ref?: HTMLInputElement;
   name?: string;
   class?: string;
+  autofocus?: boolean;
   min?: number;
   max?: number;
-  autofocus?: boolean;
-  value?: number;
   step?: number;
+  value?: number;
   disabled?: boolean;
   style?: string;
 }
