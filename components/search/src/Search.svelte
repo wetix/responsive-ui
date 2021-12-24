@@ -72,7 +72,7 @@
 
 <slot {loading} />
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-search {
     display: block;
     border: 1px solid #dcdcdc;

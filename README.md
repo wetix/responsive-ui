@@ -55,19 +55,22 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal)
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/main/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/main/components/card)
-<!-- - [@responsive-ui/carousel](https://github.com/wetix/responsive-ui/tree/main/components/carousel) -->
+- [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/main/components/checkbox)
+- [@responsive-ui/chip](https://github.com/wetix/responsive-ui/tree/main/components/chip)
 - [@responsive-ui/column](https://github.com/wetix/responsive-ui/tree/main/components/column)
 - [@responsive-ui/date-picker](https://github.com/wetix/responsive-ui/tree/main/components/date-picker)
 - [@responsive-ui/docker](https://github.com/wetix/responsive-ui/tree/main/components/docker)
 - [@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/main/components/ellipsis)
 - [@responsive-ui/fab](https://github.com/wetix/responsive-ui/tree/main/components/fab)
 - [@responsive-ui/header](https://github.com/wetix/responsive-ui/tree/main/components/header)
+- [@responsive-ui/hscroll](https://github.com/wetix/responsive-ui/tree/main/components/hscroll)
 - [@responsive-ui/icon](https://github.com/wetix/responsive-ui/tree/main/components/icon)
 - [@responsive-ui/input](https://github.com/wetix/responsive-ui/tree/main/components/input)
 <!-- - [@responsive-ui/input-number](https://github.com/wetix/responsive-ui/tree/main/components/input-number) -->
-- [@responsive-ui/modal](https://github.com/wetix/responsive-ui/tree/main/components/modal)
 - [@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/main/components/label)
+- [@responsive-ui/modal](https://github.com/wetix/responsive-ui/tree/main/components/modal)
 - [@responsive-ui/poster](https://github.com/wetix/responsive-ui/tree/main/components/poster)
+- [@responsive-ui/quantity](https://github.com/wetix/responsive-ui/tree/main/components/quantity)
 <!-- - [@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/main/components/responsive) -->
 - [@responsive-ui/row](https://github.com/wetix/responsive-ui/tree/main/components/row)
 <!-- - [@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/main/components/search) -->
@@ -80,6 +83,7 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/main/components/table)
 <!-- - [@responsive-ui/tag](https://github.com/wetix/responsive-ui/tree/main/components/tag) -->
 - [@responsive-ui/textarea](https://github.com/wetix/responsive-ui/tree/main/components/textarea)
+- [@responsive-ui/tooltip](https://github.com/wetix/responsive-ui/tree/main/components/tooltip)
 <!-- - [@responsive-ui/upload](https://github.com/wetix/responsive-ui/tree/main/components/upload) -->
 
 ## Sponsors
