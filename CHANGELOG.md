@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.0...v1.0.9-alpha.1) (2021-12-24)
+
+
+### Bug Fixes
+
+* `Chip` typing ([df4edcf](https://github.com/wetix/responsive-ui/commit/df4edcf2371ee22a5b512f05dcafecc9a264f55c))
+* `Input`'s css and refactor `InputNumber` ([d84e914](https://github.com/wetix/responsive-ui/commit/d84e9148b52bcf4d573dd5c21721f163a8d60344))
+* `Row` and `Column` component ([890557c](https://github.com/wetix/responsive-ui/commit/890557c264c71340a3e8ed21c6728cf189d02de6))
+* anchor tags ([11d984f](https://github.com/wetix/responsive-ui/commit/11d984f5c7e61b80ae0cc1ae913ba812232fc46c))
+* app bar component, make it more dynamic ([7290c50](https://github.com/wetix/responsive-ui/commit/7290c50711b4647c19acc5168823a0d5aded724d))
+* appbar component ([2614407](https://github.com/wetix/responsive-ui/commit/2614407908cbd24881fe71fd589c47d6b8b89a2f))
+* component styling ([02ab289](https://github.com/wetix/responsive-ui/commit/02ab289258b12ae63f13556b2eb0c1ea19e34acc))
+* components ([32ce89c](https://github.com/wetix/responsive-ui/commit/32ce89ca4a26a532fb1faf1c5bb2c406ebdbd3b6))
+* components ([c9e034e](https://github.com/wetix/responsive-ui/commit/c9e034e494cdc9edfb41252244535787bb3904c2))
+* components ([11a03f8](https://github.com/wetix/responsive-ui/commit/11a03f8811f669cad8d3701039018b48c41070cd))
+* components ([afbdecb](https://github.com/wetix/responsive-ui/commit/afbdecb0b213fde7416a5860ab60a5d852f43ac1))
+* correction for PR comments ([c22e704](https://github.com/wetix/responsive-ui/commit/c22e70448d3f4b04a7fbabe70decd855660783e4))
+* css ([16c8736](https://github.com/wetix/responsive-ui/commit/16c8736a6bcdd458472cf5f3dd1086509960f290))
+* css ([6811049](https://github.com/wetix/responsive-ui/commit/6811049c129eeb1c18371de4322b610159815737))
+* CSS naming convention ([9ee50e2](https://github.com/wetix/responsive-ui/commit/9ee50e2cf9b9b7b0dd055dcd364c5a37918a9a6b))
+* date picker style ([eeb6402](https://github.com/wetix/responsive-ui/commit/eeb6402af6731cfbba41cef3e45c96f7e88cf98d))
+* input css ([6e3eae9](https://github.com/wetix/responsive-ui/commit/6e3eae9828faaae7dfbabc05b34a7ac1a7a2500e))
+* missing props ([23c5bc6](https://github.com/wetix/responsive-ui/commit/23c5bc61f8099614332f37945363c73d7b6d6957))
+* sequence of restProps and amend `AppBar` component ([81e52ff](https://github.com/wetix/responsive-ui/commit/81e52ffc71edf06877d32db21d3d10d81fe8917b))
+* storybook ([d0aa317](https://github.com/wetix/responsive-ui/commit/d0aa31786a1a7206998620b2df206b575edc07a4))
+* type and padding ([156759f](https://github.com/wetix/responsive-ui/commit/156759fd9ca4c7f95e3db8538d670f103073a684))
+* typing ([da8eb73](https://github.com/wetix/responsive-ui/commit/da8eb736b77b1e871c013260c0fabe65e6921a73))
+* typing ([ef7a49a](https://github.com/wetix/responsive-ui/commit/ef7a49a34af8c5a41ef4d109b011ed8859553dbe))
+* warning of `svelte-check` ([1c36534](https://github.com/wetix/responsive-ui/commit/1c3653479b337972ea262c3a05e0ef55af843069))
+
+
+### Features
+
+* add `Scroll` component ([8244763](https://github.com/wetix/responsive-ui/commit/82447634f223b56901a8b645f076f593121ef6c8))
+* complete `Scroll` component ([8bc006f](https://github.com/wetix/responsive-ui/commit/8bc006fcd4299731cd21a291fdb4586071c1bdd5))
+
+
+
+
+
 ## [1.0.9-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.8-alpha.0...v1.0.9-alpha.0) (2021-10-26)
 
 **Note:** Version bump only for package responsive-ui-monorepo

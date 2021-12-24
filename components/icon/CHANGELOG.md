@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.0...v1.0.9-alpha.1) (2021-12-24)
+
+
+### Bug Fixes
+
+* missing props ([23c5bc6](https://github.com/wetix/responsive-ui/commit/23c5bc61f8099614332f37945363c73d7b6d6957))
+* sequence of restProps and amend `AppBar` component ([81e52ff](https://github.com/wetix/responsive-ui/commit/81e52ffc71edf06877d32db21d3d10d81fe8917b))
+
+
+
+
+
 ## [1.0.9-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.8-alpha.0...v1.0.9-alpha.0) (2021-10-26)
 
 **Note:** Version bump only for package @responsive-ui/icon

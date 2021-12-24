@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/action-sheet",
-  "version": "1.0.9-alpha.0",
+  "version": "1.0.9-alpha.1",
   "description": "An action sheet component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/action-sheet#README.md",
@@ -22,13 +22,13 @@
     "svelte-action-sheet"
   ],
   "peerDependencies": {
-    "svelte": "^3.27.0",
-    "svelte-preprocess": "^4.5.0",
-    "typescript": "^4.0.0",
     "@responsive-ui/bottom-modal": "*",
     "@responsive-ui/button": "*",
     "@responsive-ui/icon": "*",
-    "@responsive-ui/tab": "*"
+    "@responsive-ui/tab": "*",
+    "svelte": "^3.27.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
   },
   "directories": {
     "lib": "lib",
