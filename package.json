@@ -16,7 +16,7 @@
     "patch": "lerna version patch --conventional-commits --no-git-tag-version",
     "minor": "lerna version minor --conventional-commits --no-git-tag-version",
     "major": "lerna version major --conventional-commits --no-git-tag-version",
-    "preversion": "npm run generate:readme && npm run generate:changelog && npm run build",
+    "preversion": "npm run build:readme && npm run build",
     "build": "node ./scripts/buildComponents.js",
     "build:readme": "node ./scripts/buildReadme.js",
     "build:debug": "DEBUG=true node ./scripts/buildComponents.js",
