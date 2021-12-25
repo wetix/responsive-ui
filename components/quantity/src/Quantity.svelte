@@ -49,7 +49,7 @@
   };
 </script>
 
-<div
+<span
   class="resp-quantity {className}"
   class:resp-quantity--slim={slim}
   class:resp-quantity--focused={focused}
@@ -92,7 +92,7 @@
       </svg>`}
     </i>
   {/if}
-</div>
+</span>
 
 <style lang="scss" global>
   .resp-quantity {

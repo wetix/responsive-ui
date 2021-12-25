@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["14", "16", "17"]
+        node: ["16", "17"]
     name: Node ${{ matrix.node }} sample
     steps:
       - name: Checkout
