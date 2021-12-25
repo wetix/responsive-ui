@@ -3,7 +3,6 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface CheckboxProps {
   id?: string;
   ref?: HTMLInputElement;
-  label?: string;
   class?: string;
   name?: string;
   value?: string;

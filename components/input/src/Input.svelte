@@ -33,8 +33,10 @@
     bind:this={ref}
     {type}
     {value}
-    on:blur={() => (focused = false)}
     on:keyup={handleKeyup}
+    on:blur={() => (focused = false)}
+    on:focus
+    on:blur
     on:input
     on:change
     {...$$restProps}

@@ -26,9 +26,10 @@
     {rows}
     {cols}
     {value}
+    on:input={handleChange}
+    on:focus
     on:blur
     on:change
-    on:input={handleChange}
     on:input
     {...$$restProps}
   />

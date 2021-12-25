@@ -4,7 +4,6 @@
   export let ref: HTMLInputElement;
   export let name = "";
   export let disabled = false;
-  export let label = "";
   export let value = "";
   export let checked = false;
 </script>
@@ -25,7 +24,7 @@
       {@html `<svg viewBox="0 0 12 9" width="10px" height="10px"><polyline points="1 5 4 8 11 1" /></svg>`}
     </i>
   </span><span class="resp-checkbox__label">
-    <slot>{label}</slot>
+    <slot />
   </span>
 </label>
 

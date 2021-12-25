@@ -17,8 +17,10 @@ export interface DatePickerProps {
 }
 
 export interface DatePickerEvents {
-  datechange?: CustomEvent<DateChangeEvent>;
+  focus?: WindowEventMap["focus"];
+  blur?: WindowEventMap["blur"];
   change?: WindowEventMap["change"];
+  datechange?: CustomEvent<DateChangeEvent>;
 }
 
 export interface DatePickerSlots {}

@@ -99,13 +99,15 @@
     {name}
     {disabled}
     on:focus={handleFocus}
+    on:blur={handleBlur}
+    on:input={handleChange}
+    on:keydown={handleKeydown}
+    size="20"
     {placeholder}
     {readonly}
+    on:focus
+    on:blur
     on:change
-    on:input={handleChange}
-    on:blur={handleBlur}
-    size="20"
-    on:keydown={handleKeydown}
     autocomplete="off"
     {value}
   />
