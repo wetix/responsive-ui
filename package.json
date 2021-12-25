@@ -32,7 +32,8 @@
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

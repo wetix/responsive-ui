@@ -7,6 +7,7 @@
   const today = new Date();
   const dateChangeEvent = "datechange";
   const duration = 150;
+  const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
   const dispatch = createEventDispatcher<{ datechange: DateChangeEvent }>();
 
   let className = "";
@@ -19,21 +20,28 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
-  export let format = (v: Date) => v;
+  // export let format = (v: Date) => v;
   export let disabledDate = (v: Date) => today > v;
 
+  let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
-  let focused = false;
+  let matches = dateRegex.exec(value);
+  if (matches) {
+    const date = new Date(matches[0]);
+    day = date.getDate();
+    month = date.getMonth();
+    year = date.getFullYear();
+  }
 
-  window.addEventListener("click", () => {
+  const handleClickOutside = () => {
     focused = false;
     open = false;
-  });
+  };
 
   const setDateOnlyIfValid = (value: string) => {
-    if (!/^\d{4}\-\d{2}\-\d{2}$/.test(value)) return false;
+    if (!dateRegex.test(value)) return false;
     if (isValidDate(value)) {
       const date = new Date(value);
       year = date.getFullYear();
@@ -85,6 +93,8 @@
     }, duration);
   };
 </script>
+
+<svelte:window on:click={handleClickOutside} />
 
 <div
   class="resp-date-picker {className}"

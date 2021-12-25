@@ -13,3 +13,4 @@ public
 public/main.js
 *.log
 storybook-static
+package-lock.json
