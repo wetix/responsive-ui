@@ -25,15 +25,13 @@
 
   const handleDecrement = () => {
     if (minLimit) return;
-    const ratio = -step;
-    value += ratio;
+    value += -step;
     ref.stepDown(step);
   };
 
   const handleIncrement = () => {
     if (maxLimit) return;
-    const ratio = +step;
-    value += ratio;
+    value += step;
     ref.stepUp(step);
   };
 
