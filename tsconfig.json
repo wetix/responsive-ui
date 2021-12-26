@@ -9,7 +9,7 @@
   "include": [
     "src",
     "components",
-    "node_modules/@wetix/animation",
+    "node_modules/@wetix/animation/**/*",
     "node_modules/@wetix/utils"
   ],
   "extends": "@tsconfig/svelte/tsconfig.json",

@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface SearchProps {
-  ref?: null | HTMLInputElement;
+  ref?: HTMLInputElement;
   class?: string;
   name?: string;
   value?: any;
@@ -14,9 +14,9 @@ export interface SearchProps {
 }
 
 export interface SearchEvents {
-  search?: any;
-  clear?: any;
   input?: WindowEventMap["input"];
+  search?: CustomEvent<{}>;
+  clear?: CustomEvent<{}>;
 }
 
 export interface SearchSlots {

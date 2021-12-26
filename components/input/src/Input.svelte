@@ -38,7 +38,6 @@
     on:focus
     on:blur
     on:input
-    on:change
     {...$$restProps}
   />
   <slot name="suffix" />

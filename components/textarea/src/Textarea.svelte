@@ -29,7 +29,6 @@
     on:input={handleChange}
     on:focus
     on:blur
-    on:change
     on:input
     {...$$restProps}
   />

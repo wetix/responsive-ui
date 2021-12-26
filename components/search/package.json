@@ -22,9 +22,6 @@
     "search",
     "svelte-search"
   ],
-  "dependencies": {
-    "@responsive-ui/loader": "^1.0.9-alpha.2"
-  },
   "peerDependencies": {
     "svelte": "^3.27.0",
     "svelte-preprocess": "^4.5.0",
@@ -41,7 +38,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wetix/responsive-ui.git"
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/search"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
