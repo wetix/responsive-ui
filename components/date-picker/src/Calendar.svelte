@@ -58,14 +58,13 @@
 
     if (v.getMonth() != selectedMonth) {
       clsList.push(`${dateClass}--not-in-view`);
-    } else {
-      if (
-        isValid &&
-        v.getDate() == day &&
-        v.getMonth() == month &&
-        v.getFullYear() == year
-      )
-        clsList.push(`${dateClass}--selected`);
+    } else if (
+      isValid &&
+      v.getDate() == day &&
+      v.getMonth() == month &&
+      v.getFullYear() == year
+    ) {
+      clsList.push(`${dateClass}--selected`);
     }
     if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
     return clsList.join(" ");
@@ -75,24 +74,24 @@
 
 <div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
   <div class="resp-calendar__header">
-    <button class="resp-calendar-button" on:click={handlePrevYear}>
-      <span class="resp-calendar-most-prev-icon" />
-    </button>
-    <button class="resp-calendar-button" on:click={handlePrevMonth}>
-      <span class="resp-calendar-prev-icon" />
-    </button>
+    <span class="resp-calendar__icon" on:click={handlePrevYear}>
+      <i class="resp-calendar-most-prev-icon" />
+    </span>
+    <span class="resp-calendar__icon" on:click={handlePrevMonth}>
+      <i class="resp-calendar-prev-icon" />
+    </span>
     <div class="resp-calendar__header-caption">
-      <button class="resp-calendar-button"
+      <button class="resp-calendar__icon"
         >{monthNames[selectedMonth].substr(0, 3)}
       </button>
-      <button class="resp-calendar-button">{selectedYear}</button>
+      <button class="resp-calendar__icon">{selectedYear}</button>
     </div>
-    <button class="resp-calendar-button" on:click={handleNextMonth}>
-      <span class="resp-calendar-next-icon" />
-    </button>
-    <button class="resp-calendar-button" on:click={handleNextYear}>
-      <span class="resp-calendar-most-next-icon" />
-    </button>
+    <span class="resp-calendar__icon" on:click={handleNextMonth}>
+      <i class="resp-calendar-next-icon" />
+    </span>
+    <span class="resp-calendar__icon" on:click={handleNextYear}>
+      <i class="resp-calendar-most-next-icon" />
+    </span>
   </div>
   <div class="resp-calendar__body">
     <table>
@@ -126,7 +125,7 @@
   <slot name="footer">
     <div class="resp-calendar__footer">
       <button
-        class="resp-calendar-button"
+        class="resp-calendar__icon"
         on:click={handleSelectDate(new Date())}>Today</button
       >
     </div>
@@ -141,12 +140,13 @@
     flex-direction: column;
     width: 260px;
 
-    &-button {
+    &__icon {
       cursor: pointer;
       font-family: inherit;
       margin: 0;
       background: transparent;
       border: none;
+      width: 25px;
     }
 
     &__header,
@@ -159,6 +159,8 @@
     }
 
     &__header {
+      text-align: center;
+      justify-content: space-between;
       border-bottom: 1px solid #f5f5f5;
 
       &-caption {
