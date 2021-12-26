@@ -14,3 +14,4 @@ public/main.js
 *.log
 storybook-static
 yarn.lock
+package-lock.json

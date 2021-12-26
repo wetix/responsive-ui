@@ -25,15 +25,13 @@
 
   const handleDecrement = () => {
     if (minLimit) return;
-    const ratio = -step;
-    value += ratio;
+    value += -step;
     ref.stepDown(step);
   };
 
   const handleIncrement = () => {
     if (maxLimit) return;
-    const ratio = +step;
-    value += ratio;
+    value += step;
     ref.stepUp(step);
   };
 
@@ -49,7 +47,7 @@
   };
 </script>
 
-<div
+<span
   class="resp-quantity {className}"
   class:resp-quantity--slim={slim}
   class:resp-quantity--focused={focused}
@@ -92,7 +90,7 @@
       </svg>`}
     </i>
   {/if}
-</div>
+</span>
 
 <style lang="scss" global>
   .resp-quantity {

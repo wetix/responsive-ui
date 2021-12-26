@@ -33,3 +33,12 @@
     placeholder: "Select Date",
   }}
 />
+
+<Story
+  name="With Default Value"
+  args={{
+    size: "middle",
+    value: "2018-02-24",
+    placeholder: "Select Date",
+  }}
+/>

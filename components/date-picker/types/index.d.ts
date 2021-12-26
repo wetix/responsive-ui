@@ -7,7 +7,7 @@ export interface DatePickerProps {
   open?: boolean;
   placeholder?: string;
   value?: string;
-  ref?: null | HTMLInputElement;
+  ref?: HTMLInputElement;
   name?: string;
   readonly?: boolean;
   disabled?: boolean;
