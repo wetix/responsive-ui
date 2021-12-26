@@ -14,6 +14,27 @@
   export let closable = true;
   export let maskClosable = true;
   export let style = "";
+
+  $: if (open) {
+    const { scrollY = 0 } = window;
+    const bodyStyle = document.body.getAttribute("style") || "";
+    document.body.dataset.style = bodyStyle;
+    document.body.dataset.scrollY = scrollY.toString();
+    setTimeout(() => {
+      document.body.setAttribute(
+        "style",
+        `position: fixed; top: -${scrollY}px; ${bodyStyle}`
+      );
+    }, 0);
+  } else {
+    const { scrollY = "0", style = "" } = document.body.dataset;
+    // restore to original style
+    document.body.setAttribute("style", style);
+    setTimeout(() => {
+      // restore scroll position-y
+      window.scrollTo(0, parseInt(scrollY, 10));
+    }, 0);
+  }
 </script>
 
 {#if open}
