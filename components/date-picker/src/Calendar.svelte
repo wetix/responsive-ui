@@ -81,10 +81,7 @@
       <i class="resp-calendar-prev-icon" />
     </span>
     <div class="resp-calendar__header-caption">
-      <button class="resp-calendar__icon"
-        >{monthNames[selectedMonth].substr(0, 3)}
-      </button>
-      <button class="resp-calendar__icon">{selectedYear}</button>
+      {`${monthNames[selectedMonth].substring(0, 3)} ${selectedYear}`}
     </div>
     <span class="resp-calendar__icon" on:click={handleNextMonth}>
       <i class="resp-calendar-next-icon" />
