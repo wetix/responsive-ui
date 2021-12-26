@@ -1,7 +1,6 @@
 import { SvelteComponent, tick } from "svelte/internal";
-
 import Snackbar from "./Snackbar.svelte";
-import type { SnackbarProps } from "../types/Snack";
+import type { SnackbarProps } from "../types/Snackbarbar";
 
 const queue: SvelteComponent[] = [];
 
@@ -10,7 +9,7 @@ interface SnackbarComponent {
 }
 
 const show = (props: SnackbarProps): SnackbarComponent => {
-  const { timeout = 3000 } = props;
+  const { duration = 3000 } = props;
   props = Object.assign({ rounded: true }, props);
   const component = new Snackbar({
     target: document.body,
@@ -19,7 +18,7 @@ const show = (props: SnackbarProps): SnackbarComponent => {
   });
 
   const pos = queue.length;
-  const onClose = () => {
+  const close = () => {
     setTimeout(async () => {
       const arr = queue.splice(pos, 1);
       if (arr.length > 0) {
@@ -29,17 +28,15 @@ const show = (props: SnackbarProps): SnackbarComponent => {
           arr[0].$destroy();
         }, 50);
       }
-    }, timeout);
+    }, duration);
   };
 
-  if (timeout > 0) {
-    onClose();
+  if (duration > 0) {
+    close();
   }
   queue.push(component);
   return {
-    close() {
-      onClose();
-    },
+    close,
   };
 };
 

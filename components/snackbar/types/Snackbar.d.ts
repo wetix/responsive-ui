@@ -1,15 +1,16 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface SnackbarProps {
-  text: string;
+  message: string;
   variant?: string;
   class?: string;
-  timeout?: number;
+  duration?: number;
+  closable?: string;
   rounded?: boolean;
 }
 
 export interface SnackbarEvents {
-  close?: any;
+  close?: CustomEvent<{}>;
 }
 
 export interface SnackbarSlots {
