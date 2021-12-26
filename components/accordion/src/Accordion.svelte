@@ -13,19 +13,19 @@
   if (!multiple) props = Object.assign(props, { type: "radio", name: id });
 </script>
 
-<div class="responsive-ui-accordion {className}" {style}>
+<div class="resp-accordion {className}" {style}>
   {#each items as item, i}
-    <div class="responsive-ui-accordion__tab">
+    <div class="resp-accordion__tab">
       <input
         id="{id}-{i}"
         {...props}
         checked={item.collapsed === false ? true : false}
         disabled={item.disabled}
       />
-      <label class="responsive-ui-accordion__tab-label" for="{id}-{i}">
+      <label class="resp-accordion__tab-label" for="{id}-{i}">
         <slot name="label" index={i}>{item.label}</slot>
       </label>
-      <div class="responsive-ui-accordion__tab-content">
+      <div class="resp-accordion__tab-content">
         <slot name="item" index={i}>
           {#if typeof item.content === "function"}
             <svelte:component this={item.content} />
@@ -39,7 +39,7 @@
 </div>
 
 <style lang="scss">
-  .responsive-ui-accordion {
+  .resp-accordion {
     position: relative;
     overflow: hidden;
 
@@ -94,21 +94,21 @@
     }
 
     input:checked {
-      ~ .responsive-ui-accordion__tab-content {
+      ~ .resp-accordion__tab-content {
         height: auto;
         padding: 10px;
       }
     }
 
     input:checked {
-      ~ .responsive-ui-accordion__tab-label:after {
+      ~ .resp-accordion__tab-label:after {
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
       }
     }
 
     input:disabled {
-      ~ .responsive-ui-accordion__tab-label {
+      ~ .resp-accordion__tab-label {
         cursor: not-allowed;
         opacity: 0.5;
       }

@@ -1,11 +1,11 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import BottomSheet from "@responsive-ui/bottom-modal";
+  import ActionSheet from "@responsive-ui/bottom-modal";
 </script>
 
 <Meta
   title="Components/Action Sheet"
-  component={BottomSheet}
+  component={ActionSheet}
   argTypes={{
     open: { control: "boolean" },
     outline: { control: "boolean" },
@@ -14,7 +14,7 @@
 />
 
 <Template let:args>
-  <BottomSheet {...args} on:click={args.onClick}>
+  <ActionSheet {...args} on:click={args.onClick}>
     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     Lorem Ipsum has been the industry's standard dummy text ever since the
     1500s, when an unknown printer took a galley of type and scrambled it to
@@ -23,7 +23,7 @@
     was popularised in the 1960s with the release of Letraset sheets containing
     Lorem Ipsum passages, and more recently with desktop publishing software
     like Aldus PageMaker including versions of Lorem Ipsum.
-  </BottomSheet>
+  </ActionSheet>
 </Template>
 
 <Story

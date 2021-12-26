@@ -1,6 +1,6 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface AccordionItem {
+export interface AccordionItem extends Record<string, any> {
   label: string;
   content?: any;
   disabled?: boolean;
