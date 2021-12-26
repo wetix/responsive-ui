@@ -121,9 +121,9 @@
   </div>
   <slot name="footer">
     <div class="resp-calendar__footer">
-      <button
-        class="resp-calendar__icon"
-        on:click={handleSelectDate(new Date())}>Today</button
+      <span
+        class="resp-calendar__button"
+        on:click={handleSelectDate(new Date())}>Today</span
       >
     </div>
   </slot>
@@ -137,12 +137,15 @@
     flex-direction: column;
     width: 260px;
 
+    &__button,
     &__icon {
       cursor: pointer;
       font-family: inherit;
       margin: 0;
       background: transparent;
       border: none;
+    }
+    &__icon {
       width: 25px;
     }
 

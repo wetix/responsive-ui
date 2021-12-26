@@ -12,7 +12,6 @@
     disabled: { control: "boolean" },
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },
-    // backgroundColor: { control: "color" },
     onChange: { action: "onChange" },
     onDateChange: { action: "onChange" },
   }}
@@ -30,14 +29,12 @@
   name="Default"
   args={{
     size: "middle",
-    placeholder: "Select Date",
   }}
 />
 
 <Story
   name="With Default Value"
   args={{
-    size: "middle",
     value: "2018-02-24",
     placeholder: "Select Date",
   }}

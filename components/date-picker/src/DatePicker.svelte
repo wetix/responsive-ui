@@ -12,7 +12,7 @@
 
   let className = "";
   export { className as class };
-  export let placeholder = "Select date";
+  export let placeholder = "YYYY-MM-DD";
   export let value = "";
   export let name = "";
   export let open = false;
