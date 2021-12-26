@@ -18,13 +18,20 @@ export interface InputNumberProps {
 
 export interface InputNumberEvents {
   input?: WindowEventMap["input"];
+  focus?: WindowEventMap["focus"];
   blur?: WindowEventMap["blur"];
   change?: WindowEventMap["change"];
 }
 
+export interface InputNumberSlots {
+  prefix: {};
+  suffix: {};
+}
+
 declare class InputNumber extends SvelteComponentTyped<
   InputNumberProps,
-  InputNumberEvents
+  InputNumberEvents,
+  InputNumberSlots
 > {}
 
 export default InputNumber;

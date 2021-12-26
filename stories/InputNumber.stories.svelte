@@ -11,6 +11,9 @@
     placeholder: { control: "text" },
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
+    direction: {
+      control: { type: "select", options: ["ltr", "rtl"] },
+    },
     // readonly: { control: "boolean" },
   }}
 />
@@ -22,23 +25,51 @@
 <Story
   name="Default"
   args={{
-    variant: "medium",
-    placeholder: "0",
+    placeholder: "0.00",
   }}
 />
 
+<Template id="withPrefix" let:args>
+  <InputNumber {...args} on:click={args.onClick}>
+    <svelte:fragment slot="prefix">MYR</svelte:fragment>
+  </InputNumber>
+</Template>
+
 <Story
-  name="Small"
+  template="withPrefix"
+  name="With Prefix"
   args={{
-    variant: "small",
-    placeholder: "Input your text...",
+    placeholder: "0.00",
   }}
 />
 
+<Template id="withSuffix" let:args>
+  <InputNumber {...args} on:click={args.onClick}>
+    <svelte:fragment slot="suffix">$</svelte:fragment>
+  </InputNumber>
+</Template>
+
 <Story
-  name="Large"
+  template="withSuffix"
+  name="With Suffix"
   args={{
-    variant: "large",
-    placeholder: "Input your text...",
+    direction: "rtl",
+    placeholder: "0.00",
+  }}
+/>
+
+<Template id="withPrefixNSuffix" let:args>
+  <InputNumber {...args} on:click={args.onClick}>
+    <svelte:fragment slot="prefix">Currency</svelte:fragment>
+    <svelte:fragment slot="suffix">$</svelte:fragment>
+  </InputNumber>
+</Template>
+
+<Story
+  template="withPrefixNSuffix"
+  name="With Prefix and Suffix"
+  args={{
+    direction: "rtl",
+    placeholder: "0.00",
   }}
 />
