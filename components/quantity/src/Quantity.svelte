@@ -118,14 +118,14 @@
       cursor: inherit;
       border: none;
       margin: 0;
-      padding: 0;
+      padding: 0 5px;
       background: inherit;
       outline: none;
       appearance: textfield;
       height: var(--input-height, 30px);
       color: var(--theme-color);
       text-align: center;
-      width: 65px;
+      min-width: 65px;
       border-radius: inherit;
     }
 
@@ -134,7 +134,7 @@
       padding: 0 5px;
 
       input[type="number"] {
-        width: 35px;
+        min-width: 35px;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
