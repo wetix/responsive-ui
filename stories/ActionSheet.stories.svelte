@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import ActionSheet from "@responsive-ui/bottom-modal";
+  import ActionSheet from "@responsive-ui/action-sheet";
 </script>
 
 <Meta

@@ -54,14 +54,6 @@
       background: #f5f5f5;
     }
 
-    &--sm {
-      height: 24px;
-    }
-
-    &--lg {
-      height: 36px;
-    }
-
     &--primary {
       border-color: var(--primary-color, #fc4451);
       background: var(--primary-color, #fc4451);

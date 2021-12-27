@@ -20,6 +20,7 @@ export interface ActionSheetItem extends Record<string, any> {
 export interface ActionSheetProps {
   items: ActionSheetItem[];
   open?: boolean;
+  maskClosable?: boolean;
   selected?: number;
   disabled?: boolean;
   closable?: boolean;
