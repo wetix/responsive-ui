@@ -55,7 +55,6 @@
   }
 
   input:checked ~ .resp-chip {
-    // border: 1px solid #fc4451;
     color: #fff;
     background: #fc4451;
   }
