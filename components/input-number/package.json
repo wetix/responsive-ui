@@ -39,7 +39,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wetix/responsive-ui.git"
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/input-number"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
