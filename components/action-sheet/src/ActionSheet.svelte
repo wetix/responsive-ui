@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import Button from "@responsive-ui/button";
-  import BottomModal from "@responsive-ui/bottom-modal";
+  import BottomModal from "@responsive-ui/bottom-sheet";
   import Tab from "@responsive-ui/tab";
 
   import type { ActionSheetItem } from "../types";

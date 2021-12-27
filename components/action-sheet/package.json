@@ -23,7 +23,7 @@
     "svelte-action-sheet"
   ],
   "peerDependencies": {
-    "@responsive-ui/bottom-modal": "*",
+    "@responsive-ui/bottom-sheet": "*",
     "@responsive-ui/button": "*",
     "@responsive-ui/icon": "*",
     "@responsive-ui/tab": "*",

@@ -52,7 +52,7 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/action-sheet](https://github.com/wetix/responsive-ui/tree/main/components/action-sheet)
 - [@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/main/components/bottom-bar)
-- [@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal)
+- [@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal)
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/main/components/button)
 - [@responsive-ui/card](https://github.com/wetix/responsive-ui/tree/main/components/card)
 - [@responsive-ui/checkbox](https://github.com/wetix/responsive-ui/tree/main/components/checkbox)

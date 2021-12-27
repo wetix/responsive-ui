@@ -11,7 +11,7 @@ export interface AppBarProps {
   id?: string;
   ref?: HTMLHeadElement;
   class?: string;
-  title?: string;
+  menuCaption?: string;
   clientHeight?: number;
   leadingItems: NavItem[];
   trailingItems: NavItem[];
