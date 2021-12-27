@@ -1,14 +1,13 @@
-
-# @responsive-ui/bottom-modal
+# @responsive-ui/bottom-sheet
 
 > A bottom modal component of responsive-ui.
 
 <p>
 
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
-[![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-modal.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
+[![npm](https://img.shields.io/npm/v/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
 [![Bundle Size](https://badgen.net/bundlephobia/minzip/%40responsive-ui%2Fbottom-modal)](https://bundlephobia.com/result?p=%40responsive-ui%2Fbottom-modal)
-[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-modal.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-modal)
+[![download](https://img.shields.io/npm/dw/@responsive-ui/bottom-sheet.svg)](https://www.npmjs.com/package/@responsive-ui/bottom-sheet)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
 </p>
@@ -16,13 +15,13 @@
 ## 🔨 Install
 
 ```console
-npm install @responsive-ui/bottom-modal
+npm install @responsive-ui/bottom-sheet
 ```
 
 or
 
 ```console
-yarn add @responsive-ui/bottom-modal
+yarn add @responsive-ui/bottom-sheet
 ```
 
 ## 🔋 Sponsors
@@ -31,7 +30,7 @@ yarn add @responsive-ui/bottom-modal
 
 ## 📄 License
 
-[@responsive-ui/bottom-modal](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## 🎉 Big Thanks To
 
