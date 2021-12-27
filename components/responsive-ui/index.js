@@ -1,6 +1,6 @@
 import Accordion from "@responsive-ui/accordion/src/Accordion.svelte";
 import BottomBar from "@responsive-ui/bottom-bar/src/BottomBar.svelte";
-import BottomModal from "@responsive-ui/bottom-modal/src/BottomModal.svelte";
+import BottomModal from "@responsive-ui/bottom-sheet/src/BottomModal.svelte";
 import BottomSheet from "@responsive-ui/action-sheet/src/BottomSheet.svelte";
 import Button from "@responsive-ui/button/src/Button.svelte";
 import Card from "@responsive-ui/card/src/Card.svelte";

@@ -7,7 +7,7 @@
 
   let className = "";
   export { className as class };
-  export let title: null | string = null;
+  export let caption: null | string = null;
   export let outlined = false;
   export let width = 480;
   export let open = true;
@@ -52,9 +52,9 @@
       out:fade
       style="width: {isNaN(width) ? width : `${width}px`}; {style}"
     >
-      {#if title}
+      {#if caption}
         <header class="resp-modal__header">
-          <caption>{title}</caption>
+          <caption>{caption}</caption>
           {#if closable}
             <span class="resp-modal__header-close">
               <i

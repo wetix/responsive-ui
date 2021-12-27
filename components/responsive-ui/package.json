@@ -25,7 +25,7 @@
     "@responsive-ui/accordion": "*",
     "@responsive-ui/action-sheet": "*",
     "@responsive-ui/bottom-bar": "*",
-    "@responsive-ui/bottom-modal": "*",
+    "@responsive-ui/bottom-sheet": "*",
     "@responsive-ui/button": "*",
     "@responsive-ui/card": "*",
     "@responsive-ui/checkbox": "*",

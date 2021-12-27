@@ -47,7 +47,7 @@
     border-radius: 3px;
     font-size: var(--font-size);
     font-family: var(--font-family, inherit);
-    height: 32px;
+    height: var(--input-height, 32px);
     line-height: 1.5;
     min-width: 120px;
     align-items: center;

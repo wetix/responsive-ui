@@ -35,7 +35,7 @@
   import Select from "../components/select/src/Select.svelte";
   import Online from "./components/Online.svelte";
   import Logo from "./components/Logo.svelte";
-  import BottomModal from "../components/bottom-modal/src/BottomModal.svelte";
+  import BottomModal from "../components/bottom-sheet/src/BottomSheet.svelte";
   import Tab from "../components/tab/src/Tab.svelte";
   import ShowMore from "../components/show-more/src/ShowMore.svelte";
   import Checkbox from "../components/checkbox/src/Checkbox.svelte";

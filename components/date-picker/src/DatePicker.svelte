@@ -12,7 +12,7 @@
 
   let className = "";
   export { className as class };
-  export let placeholder = "YYYY-MM-DD";
+  export let placeholder = "DD/MM/YYYY";
   export let value = "";
   export let name = "";
   export let open = false;
@@ -104,7 +104,18 @@
   on:click|stopPropagation={handleFocus}
 >
   <input
-    bind:this={ref}
+    type="date"
+    {name}
+    {disabled}
+    size="20"
+    {placeholder}
+    {readonly}
+    on:focus
+    on:blur
+    on:change
+    {value}
+  />
+  <!-- <input
     type="text"
     {name}
     {disabled}
@@ -120,9 +131,9 @@
     on:change
     autocomplete="off"
     {value}
-  />
+  /> -->
   <i
-    class="resp-date-picker__calendar-icon"
+    class="resp-date-picker__icon-calendar"
     role="img"
     aria-label="calendar"
     on:click={() => (open = true)}
@@ -130,7 +141,7 @@
   </i>
   {#if open}
     <i
-      class="resp-date-picker__close-icon"
+      class="resp-date-picker__icon-close"
       role="button"
       on:click|stopPropagation={handleClear}
       >{@html `<svg viewBox="64 64 896 896" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" /></svg>`}
@@ -158,7 +169,7 @@
     position: relative;
     padding: 0 8px;
     margin: 0;
-    height: 32px;
+    height: var(--input-height, 32px);
     width: 100%;
     border: 1px solid transparent;
     line-height: 1.5;
@@ -188,7 +199,7 @@
     &--focused {
       box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
 
-      .resp-date-picker__calendar-icon {
+      .resp-date-picker__icon-calendar {
         opacity: 0;
       }
     }
@@ -199,7 +210,7 @@
       pointer-events: none;
     }
 
-    input[type="text"] {
+    input {
       cursor: inherit;
       font-family: inherit;
       display: inline-block;
@@ -210,9 +221,24 @@
       border: none;
       flex: auto;
       color: var(--text-color, #1a1b1c);
+
+      @media (min-width: $sm) {
+        &::-webkit-inner-spin-button,
+        &::-webkit-calendar-picker-indicator {
+          display: none;
+          -webkit-appearance: none;
+        }
+      }
     }
 
-    &__close-icon {
+    &__icon-calendar,
+    &__icon-close {
+      @media (max-width: $sm) {
+        display: none;
+      }
+    }
+
+    &__icon-close {
       position: absolute;
       top: 50%;
       right: 8px;
@@ -236,14 +262,7 @@
       z-index: 5;
 
       @media (max-width: $sm) {
-        position: fixed;
-        top: unset;
-        bottom: 10px;
-        left: 10px;
-        right: 10px;
-        width: auto;
-        border-radius: 8px;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        display: none;
       }
     }
   }
