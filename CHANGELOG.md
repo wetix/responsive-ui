@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.2...v1.0.9-alpha.3) (2021-12-27)
+
+
+### Bug Fixes
+
+* `Chip` component ([a537ea1](https://github.com/wetix/responsive-ui/commit/a537ea1f30ead97e94b5690922d31541771fb3b9))
+* `date-picker` HTML ([14e042c](https://github.com/wetix/responsive-ui/commit/14e042c2a0558825dd4230611290ad9d9d4b7299))
+* date picker ([dee7af2](https://github.com/wetix/responsive-ui/commit/dee7af2c846f55cb041093bb47d5efa7386d1c47))
+* quantity component CSS ([db682a2](https://github.com/wetix/responsive-ui/commit/db682a2a960d3fe4bf7de2f00b3c7a0a532d7003))
+* remove hardcode ([6fe7f83](https://github.com/wetix/responsive-ui/commit/6fe7f830b9c625e6f4e8b310f5cf1b9cde1bcd69))
+
+
+
+
+
 ## [1.0.9-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.1...v1.0.9-alpha.2) (2021-12-24)
 
 
