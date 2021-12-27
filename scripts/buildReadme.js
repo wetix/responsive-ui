@@ -110,8 +110,6 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
     fs.writeFileSync(path.resolve(`${basePath}/README.md`), content);
 
     console.log(`Generated ${chalk.blue("README")} for ${chalk.green(file)}`);
-
-    if (file === "button") break;
   }
 
   console.log(chalk.green("Successfully generated README files."));
