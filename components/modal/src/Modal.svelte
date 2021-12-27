@@ -31,7 +31,7 @@
     // restore to original style
     document.body.setAttribute("style", style);
     setTimeout(() => {
-      // restore scroll position-y
+      // restore to position scroll-y
       window.scrollTo(0, parseInt(scrollY, 10));
     }, 0);
   }
