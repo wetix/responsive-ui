@@ -4,7 +4,7 @@
 - ✅ Action Sheet (@responsive-ui/action-sheet)
 - 🚧 Badge (@responsive-ui/badge)
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
-- ✅ Bottom Modal (@responsive-ui/bottom-modal)
+- ✅ Bottom Modal (@responsive-ui/bottom-sheet)
 - ✅ Button (@responsive-ui/button)
 - ✅ Card (@responsive-ui/card)
 - 🚧 Checkbox (@responsive-ui/checkbox)

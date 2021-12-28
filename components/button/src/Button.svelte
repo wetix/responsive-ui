@@ -43,23 +43,16 @@
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
-    border-radius: var(--border-radius, 5px);
+    border-radius: 5px;
 
     @media (min-width: $sm) {
       height: 32px;
       width: auto;
+      border-radius: 3px;
     }
 
     &:hover {
       background: #f5f5f5;
-    }
-
-    &--sm {
-      height: 24px;
-    }
-
-    &--lg {
-      height: 36px;
     }
 
     &--primary {

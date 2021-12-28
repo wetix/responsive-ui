@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import Button from "@responsive-ui/button";
-  import BottomModal from "@responsive-ui/bottom-modal";
+  import BottomModal from "@responsive-ui/bottom-sheet";
   import Tab from "@responsive-ui/tab";
 
   import type { ActionSheetItem } from "../types";
@@ -13,6 +13,7 @@
   export let open = false;
   export let selected = 0;
   export let disabled = false;
+  export let maskClosable = true;
   export let closable = true;
 
   $: height = window.innerHeight * 0.8;
@@ -55,11 +56,11 @@
 </script>
 
 <BottomModal bind:open {closable}>
-  <div class="resp-action-sheet" style={`height:${height}px;`}>
+  <div class="resp-action-sheet" style={`height: ${height}px;`}>
     <header class="resp-action-sheet__header">
       <span class="resp-action-sheet__reset" on:click={onReset}>Reset</span>
     </header>
-    <Tab {items} bind:selected>
+    <!-- <Tab {items} bind:selected>
       <div class="resp-action-sheet__body" style={`height:${height - 150}px`}>
         {#each items[selected].options || [] as opt (opt.value)}
           <Option
@@ -69,25 +70,26 @@
           />
         {/each}
       </div>
-    </Tab>
+    </Tab> -->
+    <slot />
   </div>
   <footer class="resp-action-sheet__footer">
-    <Button {disabled} on:click={onFilter}>FILTER</Button>
+    <Button variant="primary" {disabled} on:click={onFilter}>FILTER</Button>
   </footer>
 </BottomModal>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-action-sheet {
     padding-top: var(--padding, 15px);
     position: relative;
 
     &__header {
-      padding: 0 15px 5px;
+      padding: 0 1rem 5px;
     }
 
     &__body {
       overflow-y: auto;
-      padding: 12px 15px;
+      padding: 1rem;
     }
 
     &__reset {
@@ -98,11 +100,16 @@
     &__footer {
       box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1);
       background: var(--background-color, #fff);
-      padding: 12px 15px;
+      padding: 1rem;
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
+
+      .resp-button {
+        height: 42px;
+        width: 100%;
+      }
     }
   }
 </style>

@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.0.9-alpha.4](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.3...v1.0.9-alpha.4) (2021-12-28)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 
 
@@ -13,61 +13,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.0.9-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.2...v1.0.9-alpha.3) (2021-12-27)
 
-
-### Bug Fixes
-
-* `date-picker` HTML ([14e042c](https://github.com/wetix/responsive-ui/commit/14e042c2a0558825dd4230611290ad9d9d4b7299))
-* date picker ([dee7af2](https://github.com/wetix/responsive-ui/commit/dee7af2c846f55cb041093bb47d5efa7386d1c47))
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.9-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.1...v1.0.9-alpha.2) (2021-12-24)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.9-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.0...v1.0.9-alpha.1) (2021-12-24)
 
-
-### Bug Fixes
-
-* components ([afbdecb](https://github.com/wetix/responsive-ui/commit/afbdecb0b213fde7416a5860ab60a5d852f43ac1))
-* date picker style ([eeb6402](https://github.com/wetix/responsive-ui/commit/eeb6402af6731cfbba41cef3e45c96f7e88cf98d))
-* warning of `svelte-check` ([1c36534](https://github.com/wetix/responsive-ui/commit/1c3653479b337972ea262c3a05e0ef55af843069))
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.9-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.8-alpha.0...v1.0.9-alpha.0) (2021-10-26)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.8-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.3...v1.0.8-alpha.0) (2021-10-26)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.7-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.2...v1.0.7-alpha.3) (2021-10-26)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
-
-
-
-
+**Note:** Version bump only for package @responsive-ui/bottom-sheet
 
 ## [1.0.7-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.0.7-alpha.1...v1.0.7-alpha.2) (2021-10-26)
 
-**Note:** Version bump only for package @responsive-ui/date-picker
+**Note:** Version bump only for package @responsive-ui/bottom-sheet

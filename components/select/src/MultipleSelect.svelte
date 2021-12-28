@@ -152,7 +152,7 @@
       display: flex;
       width: 100%;
       border: 1px solid var(--input-border-color, #dcdcdc);
-      border-radius: var(--border-radius, 5px);
+      border-radius: 3px;
       min-height: var(--height, 34px);
       color: #1a1b1c;
       // background: #f1f1f1;

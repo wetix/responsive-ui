@@ -3,7 +3,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface ModalProps {
   id?: string;
   class?: string;
-  title?: string;
+  caption?: string;
   open?: boolean;
   width?: number | string;
   outlined?: boolean;

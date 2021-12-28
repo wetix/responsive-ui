@@ -49,7 +49,7 @@
     border: 1px solid transparent;
     color: var(--text-color, #1a1b1c);
     background: #fff;
-    height: var(--input-height, 30px);
+    height: var(--input-height, 32px);
     line-height: 1;
     padding: 0 8px;
     box-sizing: border-box;

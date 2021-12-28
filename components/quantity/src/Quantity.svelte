@@ -122,7 +122,7 @@
       background: inherit;
       outline: none;
       appearance: textfield;
-      height: var(--input-height, 30px);
+      height: var(--input-height, 32px);
       color: var(--theme-color);
       text-align: center;
       min-width: 65px;

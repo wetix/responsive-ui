@@ -124,7 +124,7 @@
       justify-content: center;
       align-items: center;
       height: 100%;
-      z-index: 100;
+      z-index: 10;
     }
 
     &__prev-icon {
@@ -147,7 +147,7 @@
       height: 100%;
       width: 50px;
       pointer-events: none;
-      z-index: 150;
+      z-index: 15;
     }
 
     &__prev-icon:before {

@@ -1,12 +1,9 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import Icon from "@responsive-ui/icon";
-  import type { SvelteComponentDev } from "svelte/internal";
 
   const dispatch = createEventDispatcher();
 
   export let label = "";
-  export let icon: null | string | SvelteComponentDev = null;
   export let value = "";
   export let nowrap = false;
   export let disabled = false;
@@ -19,28 +16,19 @@
 </script>
 
 <div
-  class="responsive-ui-option"
-  class:responsive-ui-option--checked={checked}
-  class:responsive-ui-option--disabled={disabled}
+  class="resp-action-sheet__option"
+  class:resp-action-sheet__option--checked={checked}
+  class:resp-action-sheet__option--disabled={disabled}
   on:click={disabled ? undefined : onClick}
 >
-  {#if icon}
-    <span class="responsive-ui-option__icon">
-      {#if typeof icon === "string"}
-        <Icon type={icon} />
-      {:else}
-        <svelte:component this={icon} />
-      {/if}
-    </span>
-  {/if}
   <span
-    class="responsive-ui-option__label"
-    class:responsive-ui-option__label--nowrap={nowrap}>{label}</span
+    class="resp-action-sheet__option-label"
+    class:resp-action-sheet__option-label--nowrap={nowrap}>{label}</span
   >
 </div>
 
 <style lang="scss">
-  .responsive-ui-option {
+  .resp-action-sheet-option {
     cursor: pointer;
     border-bottom: 1px solid #f1f1f1;
     display: flex;

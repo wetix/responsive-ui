@@ -9,12 +9,12 @@ export interface NavItem extends Record<string, any> {
 
 export interface AppBarProps {
   id?: string;
-  ref?: HTMLHeadElement;
   class?: string;
-  title?: string;
+  menuCaption: string;
   clientHeight?: number;
   leadingItems: NavItem[];
   trailingItems: NavItem[];
+  menuItems: NavItem[];
   style?: string;
 }
 
@@ -34,6 +34,11 @@ export interface AppBarSlots {
     item: NavItem;
   };
   "trailing-item": {
+    index: number;
+    selected: boolean;
+    item: NavItem;
+  };
+  "menu-item": {
     index: number;
     selected: boolean;
     item: NavItem;
