@@ -110,6 +110,11 @@
     size="20"
     {placeholder}
     {readonly}
+    on:focus={handleFocus}
+    on:blur={handleBlur}
+    on:input={handleChange}
+    on:keydown={handleKeydown}
+    on:change={handleChange}
     on:focus
     on:blur
     on:change

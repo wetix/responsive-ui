@@ -244,7 +244,8 @@
 
     &__menu {
       background: #fff;
-      width: 90%;
+      width: 70%;
+      min-width: 250px;
       transform: translateX(0%);
       transition: transform 0.5s;
 
