@@ -13,7 +13,7 @@
   let openMenu = false;
 
   const handleMenu = (e: Event) => {
-    // if the element is underneath anchor link
+    // if the element is underneath an anchor link, we will close the side menu
     const anchor = (e.target as HTMLElement).closest("a");
     if (!anchor) return;
     openMenu = false;
