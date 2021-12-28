@@ -12,6 +12,7 @@
   export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
+  export let menuItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
 
   let openMenu = false;
@@ -21,6 +22,13 @@
   } else {
     tween.set(1);
   }
+
+  const handleMenu = (e: Event) => {
+    // if the element is underneath anchor link
+    const anchor = (e.target as HTMLElement).closest("a");
+    if (!anchor) return;
+    openMenu = false;
+  };
 </script>
 
 <header
@@ -80,7 +88,7 @@
     </div>
   </div>
   <!-- subnav -->
-  {#if leadingItems.length > 0}
+  {#if leadingItems.length > 0 && leadingItems[0].subItems}
     <nav class="resp-app-bar__subnav">
       <Scroll>
         <ul>
@@ -105,6 +113,7 @@
   <aside
     class="resp-app-bar__menu"
     style={`transform: translateX(-${$tween * 100}%);`}
+    on:click={handleMenu}
   >
     <header class="resp-app-bar__menu-header">
       <caption>{menuCaption}</caption>
@@ -114,14 +123,9 @@
     </header>
     <div class="resp-app-bar__menu-body">
       <ul>
-        {#each leadingItems as { href, label, selected, ...otherProps }, index}
+        {#each menuItems as { href, label, selected, ...otherProps }, index}
           <li>
-            <slot
-              name="leading-item"
-              item={leadingItems[index]}
-              {index}
-              {selected}
-            >
+            <slot name="menu-item" item={menuItems[index]} {index} {selected}>
               <a {href} {...otherProps}>{label}</a>
             </slot>
           </li>
@@ -226,11 +230,6 @@
           padding: 0 1.5rem;
         }
       }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
     }
 
     &--shadowed {
@@ -299,6 +298,15 @@
           padding: 0.5rem 0;
         }
       }
+    }
+  }
+
+  .resp-app-bar,
+  .resp-app-bar__subnav,
+  .resp-app-bar__menu {
+    a {
+      cursor: pointer;
+      text-decoration: none;
     }
   }
 </style>

@@ -39,6 +39,12 @@
       { label: "Profile", link: "/me/profile" },
       { label: "Events", link: "/events" },
     ]}
+    menuItems={[
+      { label: "A", link: "/" },
+      { label: "B", link: "/" },
+      { label: "C", link: "/" },
+      { label: "D", link: "/" },
+    ]}
     trailingItems={[
       { label: "A", link: "/" },
       { label: "B", link: "/" },
