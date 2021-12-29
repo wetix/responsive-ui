@@ -1,6 +1,6 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface BottomModalProps {
+export interface BottomSheetProps {
   open?: boolean;
   height?: number;
   draggable?: boolean;
@@ -9,17 +9,19 @@ export interface BottomModalProps {
   style?: string;
 }
 
+export interface BottomSheetEvents {}
+
 /**
  * Component slots.
  */
-export interface BottomModalSlots {
+export interface BottomSheetSlots {
   default: {};
 }
 
-declare class BottomModal extends SvelteComponentTyped<
-  BottomModalProps,
-  {},
-  BottomModalSlots
+declare class BottomSheet extends SvelteComponentTyped<
+  BottomSheetProps,
+  BottomSheetEvents,
+  BottomSheetSlots
 > {}
 
-export default BottomModal;
+export default BottomSheet;
