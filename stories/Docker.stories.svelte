@@ -7,7 +7,7 @@
   title="Components/Docker"
   component={Docker}
   argTypes={{
-    label: { control: "text" },
+    caption: { control: "text" },
     width: { control: { type: "range", min: 280, max: 600, step: 10 } },
     placement: {
       control: { type: "select", options: ["left", "right"] },
@@ -40,7 +40,7 @@
 <Story
   name="Default"
   args={{
-    label: "Such as Long Docker Title",
+    caption: "Such as Long Docker Title",
     open: true,
     width: 280,
   }}
@@ -49,7 +49,7 @@
 <Story
   name="Placement Right"
   args={{
-    label: "Such as Long Docker Title",
+    caption: "Such as Long Docker Title",
     open: true,
     placement: "right",
     width: 280,
