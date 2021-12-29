@@ -3,7 +3,7 @@
   "version": "1.0.9-alpha.5",
   "description": "A bottom sheet component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
-  "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/bottom-modal#README.md",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/bottom-sheet#README.md",
   "license": "MIT",
   "type": "module",
   "main": "lib/cjs/index.js",
@@ -19,8 +19,8 @@
     "svelte",
     "ui-component",
     "responsive-ui",
-    "bottom-modal",
-    "svelte-bottom-modal"
+    "bottom-sheet",
+    "svelte-bottom-sheet"
   ],
   "peerDependencies": {
     "svelte": "^3.27.0",
@@ -39,7 +39,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wetix/responsive-ui",
-    "directory": "components/bottom-modal"
+    "directory": "components/bottom-sheet"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
