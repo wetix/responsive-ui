@@ -16,8 +16,7 @@
 <style lang="scss" global>
   .resp-badge {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
 
     &:not([data-count="0"]):after {
       content: attr(data-count);

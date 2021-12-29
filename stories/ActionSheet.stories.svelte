@@ -30,6 +30,16 @@
   name="Default"
   args={{
     open: true,
+    caption: "Mobile App",
+    items: [
+      {
+        label: "XXX",
+        options: new Array(20).fill("").map((_, idx) => ({
+          label: `Option ${idx + 1}`,
+          value: `Option ${idx + 1}`,
+        })),
+      },
+    ],
     label: "Button",
   }}
 />

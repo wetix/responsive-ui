@@ -2,6 +2,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface BottomModalProps {
   open?: boolean;
+  height?: number;
+  draggable?: boolean;
   maskClosable?: boolean;
   closable?: boolean;
   style?: string;

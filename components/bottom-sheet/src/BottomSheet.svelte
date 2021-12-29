@@ -1,24 +1,24 @@
 <script context="module" lang="ts">
-  const queue: boolean[] = [];
+  const queue: HTMLElement[] = [];
   // remove window scroll when all gone
 
   let scrollY = 0;
   const toggleOpen = (i: number, open: boolean) => {
-    queue[i] = open;
-    if (queue.some((v) => v === true)) {
-      scrollY = window.scrollY;
-      document.body.setAttribute(
-        "style",
-        `position: fixed; top: -${scrollY}px`
-      );
-    } else {
-      document.body.setAttribute("style", "");
-      window.scrollTo(0, scrollY);
-    }
+    // queue[i] = open;
+    // if (queue.some((v) => v === true)) {
+    //   scrollY = window.scrollY;
+    //   document.body.setAttribute(
+    //     "style",
+    //     `position: fixed; top: -${scrollY}px`
+    //   );
+    // } else {
+    //   document.body.setAttribute("style", "");
+    //   window.scrollTo(0, scrollY);
+    // }
   };
 
   const pushQueue = (open: boolean): number => {
-    queue.push(open);
+    // queue.push(open);
     return queue.length - 1;
   };
 
@@ -34,9 +34,9 @@
   import { tweened } from "svelte/motion";
 
   export let open = false;
+  export let height = 0;
   export let maskClosable = true;
   export let draggable = true;
-  export let closable = true;
   export let style = "";
 
   const tween = tweened(1, {
@@ -54,10 +54,10 @@
   }
 
   onMount(() => {
-    index = pushQueue(open);
-    return () => {
-      popQueue(index);
-    };
+    // index = pushQueue(open);
+    // return () => {
+    //   popQueue(index);
+    // };
   });
 
   $: height = window.innerHeight * 0.85;
@@ -78,9 +78,11 @@
     1 - $tween <= 0 ? "hidden" : "visible"
   }; ${style}`}
 >
-  <div class="resp-bottom-sheet__header">
-    <div class="resp-bottom-sheet__drag" />
-  </div>
+  {#if draggable}
+    <div class="resp-bottom-sheet__header">
+      <div class="resp-bottom-sheet__drag" />
+    </div>
+  {/if}
   <slot />
 </div>
 
@@ -127,6 +129,7 @@
     }
 
     &__drag {
+      cursor: grab;
       height: 4px;
       width: 100px;
       border-radius: 3px;

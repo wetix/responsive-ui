@@ -83,7 +83,7 @@
 </div>
 
 <style lang="scss" global>
-  $lightWhite: rgba(255, 255, 255, 0.9);
+  $lightWhite: rgba(255, 255, 255, 1);
 
   .resp-scroll {
     display: flex;

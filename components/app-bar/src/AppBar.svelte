@@ -209,7 +209,7 @@
       z-index: 450;
 
       &-item--selected {
-        font-weight: 600;
+        font-weight: 500;
       }
 
       ul {
@@ -247,7 +247,7 @@
       width: 70%;
       min-width: 250px;
       transform: translateX(0%);
-      transition: transform 0.5s;
+      transition: all 0.5s;
 
       &--close {
         transform: translateX(-110%);
@@ -264,7 +264,7 @@
         caption {
           text-align: left;
           font-size: var(--font-size-lg, 24px);
-          font-weight: 600;
+          font-weight: 500;
           flex-grow: 1;
           min-width: 0;
           white-space: nowrap;

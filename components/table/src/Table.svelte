@@ -134,7 +134,7 @@
       overflow: visible;
 
       th {
-        font-weight: 600;
+        font-weight: 500;
         border-bottom: 2px solid $borderColor;
       }
 

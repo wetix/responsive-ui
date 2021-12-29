@@ -24,6 +24,14 @@
 
 <Story name="Default" args={{ height: 120 }} />
 
+<Template id="nonOverflow" let:args>
+  <Scroll {...args} on:click={args.onClick}>
+    <span class="slide-item" style="min-height: {args.height}px">1</span>
+  </Scroll>
+</Template>
+
+<Story name="No overflow" template="nonOverflow" args={{ height: 120 }} />
+
 <style>
   .slide-item {
     display: inline-flex;
