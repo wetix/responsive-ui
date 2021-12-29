@@ -7,8 +7,8 @@
 
 <div
   class="resp-ellipsis {className}"
-  style={`width: ${width}; ${style}`}
   {...$$restProps}
+  style={`width: ${width}; ${style}`}
   on:click
 >
   <slot />
