@@ -1,11 +1,11 @@
 # Component List
 
 - ✅ Accordion (@responsive-ui/accordion)
-- ✅ Action Sheet (@responsive-ui/action-sheet)
-- ✅ App Bar (@responsive-ui/app-bar)
-- 🚧 Badge (@responsive-ui/badge)
+- 🚧 Action Sheet (@responsive-ui/action-sheet)
+- ✅ Appbar (@responsive-ui/app-bar)
+- ✅ Badge (@responsive-ui/badge)
 - ✅ Bottom Bar (@responsive-ui/bottom-bar)
-- ✅ Bottom Sheet (@responsive-ui/bottom-sheet)
+- 🚧 Bottom Sheet (@responsive-ui/bottom-sheet)
 - ✅ Button (@responsive-ui/button)
 - ✅ Card (@responsive-ui/card)
 - ✅ Checkbox (@responsive-ui/checkbox)

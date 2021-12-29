@@ -47,8 +47,7 @@ You should choose whichever file format suitable for your use case.
 
 ## 💅 Component List
 
-<!-- - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) -->
-
+- [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion)
 - [@responsive-ui/action-sheet](https://github.com/wetix/responsive-ui/tree/main/components/action-sheet)
 - [@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/main/components/bottom-bar)
