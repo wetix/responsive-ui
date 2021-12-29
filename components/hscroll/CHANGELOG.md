@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.5](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.4...v1.0.9-alpha.5) (2021-12-29)
+
+
+### Bug Fixes
+
+* z-index ([28f6f95](https://github.com/wetix/responsive-ui/commit/28f6f956cac163efce45a21566b0ce73c63f993f))
+
+
+
+
+
 ## [1.0.9-alpha.4](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.3...v1.0.9-alpha.4) (2021-12-28)
 
 **Note:** Version bump only for package @responsive-ui/hscroll
