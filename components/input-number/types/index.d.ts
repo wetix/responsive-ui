@@ -2,10 +2,13 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputNumberProps {
   id?: string;
-  ref?: null | HTMLInputElement;
+  ref?: HTMLInputElement;
   class?: string;
   name?: string;
+  bordered?: boolean;
+  textDirection?: "ltr" | "rtl";
   placeholder?: string;
+  form?: string;
   disabled?: boolean;
   value?: number;
   min?: number;

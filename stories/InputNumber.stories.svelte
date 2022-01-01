@@ -7,13 +7,15 @@
   title="Components/Input Number"
   component={InputNumber}
   argTypes={{
-    content: { control: "text" },
     placeholder: { control: "text" },
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
-    direction: {
+    textDirection: {
       control: { type: "select", options: ["ltr", "rtl"] },
     },
+    min: { control: { type: "range", min: 0, max: 100, step: 1 } },
+    max: { control: { type: "range", min: 1, max: 100, step: 1 } },
+    precision: { control: { type: "range", min: 0, max: 10, step: 1 } },
     // readonly: { control: "boolean" },
   }}
 />
@@ -53,7 +55,7 @@
   template="withSuffix"
   name="With Suffix"
   args={{
-    direction: "rtl",
+    textDirection: "rtl",
     placeholder: "0.00",
   }}
 />
@@ -69,7 +71,7 @@
   template="withPrefixNSuffix"
   name="With Prefix and Suffix"
   args={{
-    direction: "rtl",
+    textDirection: "rtl",
     placeholder: "0.00",
   }}
 />

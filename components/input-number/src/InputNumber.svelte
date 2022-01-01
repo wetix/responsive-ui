@@ -1,14 +1,25 @@
+<script context="module" lang="ts">
+  export const toFixedTrunc = (x: any, n: number) => {
+    const v = (typeof x === "string" ? x : x.toString()).split(".");
+    if (n <= 0) return v[0];
+    let f = v[1] || "";
+    if (f.length > n) return `${v[0]}.${f.substr(0, n)}`;
+    while (f.length < n) f += "0";
+    return `${v[0]}.${f}`;
+  };
+</script>
+
 <script lang="ts">
   let className = "";
   export { className as class };
   export let ref: HTMLInputElement;
-  export let direction: "ltr" | "rtl" = "ltr";
+  export let textDirection: "ltr" | "rtl" = "ltr";
   export let bordered = true;
   export let precision = 2;
   export let min = 0;
   export let max = 100;
-  export let parser = (v: string): number => parseFloat(v);
-  export let format = (v: number): string => v.toFixed(precision);
+  export let parser = (v: string): number => Number(v);
+  export let format = (v: number): string => toFixedTrunc(v, precision);
   export let value = 0;
 
   let focused = false;
@@ -16,25 +27,21 @@
   const handleBlur = (e: Event) => {
     focused = false;
     const v = (e.currentTarget as HTMLInputElement).value.trim();
-    if (v === "") {
-      (<HTMLInputElement>ref).value = "";
-      return;
-    }
-
-    // console.log(v, Number(v), Number(v).toFixed(2), Number(v).toPrecision(2));
-    let num = parseFloat(v);
-    if (num < min) num = min;
-    if (num > max) num = max;
+    // if (v === "") {
+    //   (<HTMLInputElement>ref).value = "";
+    //   return;
+    // }
+    const num = parser(v);
+    if (isNaN(num)) return;
+    // if (num <= min) return;
+    // if (num >= max) return;
     value = num;
-    console.log(typeof num, num < min, num > max, value, num);
-    // (<HTMLInputElement>ref).value = format(num);
+    (<HTMLInputElement>ref).value = format(num);
   };
-
-  $: formattedValue = format(value);
 </script>
 
 <div
-  class="resp-input-number resp-input-number--direction-{direction} {className}"
+  class="resp-input-number resp-input-number--text-direction-{textDirection} {className}"
   class:resp-input-number--bordered={bordered}
   class:resp-input-number--focused={focused}
   on:click|stopPropagation={() => (focused = true)}
@@ -43,9 +50,7 @@
     <span class="resp-input-number__prefix"><slot name="prefix" /></span>
   {/if}
   <input
-    {...$$restProps}
     bind:this={ref}
-    value={formattedValue}
     type="text"
     pattern="\d*"
     on:blur={handleBlur}
@@ -53,6 +58,7 @@
     on:blur
     on:change
     on:input
+    {...$$restProps}
   />
   {#if $$slots.suffix}
     <span class="resp-input-number__suffix"><slot name="suffix" /></span>
@@ -73,7 +79,7 @@
     align-items: center;
     transition: all 0.5s;
 
-    &--direction {
+    &--text-direction {
       &-rtl input {
         text-align: right;
       }
