@@ -8,6 +8,7 @@
 
   let className = "";
   let selectedIndex = 0;
+  let modalHeight = 0;
   export { className as class };
   export { selectedIndex as selected };
   export let items: ActionSheetItem[] = [];
@@ -17,25 +18,7 @@
   export let maskClosable = true;
   export let closable = true;
 
-  let headerHeight = 0;
-  let modalHeight = 0;
-
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
-  // const onOptionChange = ({ detail }: CustomEvent<any>) => {
-  //   const { checked, value } = detail;
-  //   if (checked) items[selectedIndex].selected?.set(value, true);
-  //   else items[selectedIndex].selected?.delete(value);
-  //   dispatch("change", {
-  //     selectedIndex,
-  //     value: items[selectedIndex].selected,
-  //   });
-  // };
-
-  const closeModal = () => {
-    setTimeout(() => {
-      open = false;
-    }, 150);
-  };
 
   const findElement = (e: Event) => {
     return e
@@ -93,8 +76,8 @@
 </script>
 
 <BottomSheet
-  bind:height={modalHeight}
   bind:open
+  bind:height={modalHeight}
   class={className}
   {maskClosable}
   {closable}
@@ -193,7 +176,12 @@
       }
 
       label {
+        cursor: pointer;
         white-space: nowrap;
+      }
+
+      input[type="radio"] {
+        display: none;
       }
     }
 
