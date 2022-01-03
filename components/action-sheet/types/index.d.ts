@@ -4,17 +4,16 @@ import type { SvelteComponentTyped } from "svelte/internal";
 type ActionSheetOption = {
   label: string;
   value: string;
-  icon?: string | typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
   disabled?: boolean;
-  nowrap?: boolean;
-  checked?: boolean;
+  selected?: boolean;
+  // nowrap?: boolean;
 };
 
 export interface ActionSheetItem extends Record<string, any> {
+  key: string;
   label: string;
   options: ActionSheetOption[];
-  // selected?: Map<string, boolean>;
-  // style?: string;
+  selected?: boolean;
 }
 
 export interface ActionSheetProps {
@@ -28,6 +27,12 @@ export interface ActionSheetProps {
 
 export interface ActionSheetEvents {
   ok?: CustomEvent<{}>;
+  reset?: CustomEvent<{}>;
+  valuechange?: CustomEvent<{ option: ActionSheetOption }>;
+  tabchange?: CustomEvent<{
+    key: string;
+    item: Omit<ActionSheetItem, "options">;
+  }>;
 }
 
 export interface ActionSheetSlots {}

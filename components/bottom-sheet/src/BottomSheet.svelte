@@ -33,6 +33,8 @@
   import { noop } from "svelte/internal";
   import { tweened } from "svelte/motion";
 
+  let className = "";
+  export { className as class };
   export let open = false;
   export let height = 0;
   export let maskClosable = true;
@@ -71,7 +73,7 @@
   }`}
 />
 <div
-  class="resp-bottom-sheet"
+  class="resp-bottom-sheet {className}"
   style={`transform: translateY(${
     $tween * 100
   }%); height: ${height}px; visibility: ${

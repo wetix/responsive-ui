@@ -1,35 +1,35 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import Button from "@responsive-ui/button";
-  import BottomModal from "@responsive-ui/bottom-sheet";
+  import BottomSheet from "@responsive-ui/bottom-sheet";
   import type { ActionSheetItem } from "../types";
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  let selectedIndex = 0;
+  export { className as class };
+  export { selectedIndex as selected };
   export let items: ActionSheetItem[] = [];
   export let open = false;
   export let caption = "";
-  export let selected = 0;
   export let disabled = false;
   export let maskClosable = true;
   export let closable = true;
 
+  let headerHeight = 0;
   let modalHeight = 0;
-  items = items.map((v) => {
-    if (v.selected) return v;
-    v.selected = new Map();
-    return v;
-  });
 
-  const onOptionChange = ({ detail }: CustomEvent<any>) => {
-    const { checked, value } = detail;
-    if (checked) items[selected].selected?.set(value, true);
-    else items[selected].selected?.delete(value);
-    dispatch("change", {
-      selected,
-      value: items[selected].selected,
-    });
-  };
+  const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
+  // const onOptionChange = ({ detail }: CustomEvent<any>) => {
+  //   const { checked, value } = detail;
+  //   if (checked) items[selectedIndex].selected?.set(value, true);
+  //   else items[selectedIndex].selected?.delete(value);
+  //   dispatch("change", {
+  //     selectedIndex,
+  //     value: items[selectedIndex].selected,
+  //   });
+  // };
 
   const closeModal = () => {
     setTimeout(() => {
@@ -37,58 +37,115 @@
     }, 150);
   };
 
-  const onReset = () => {
-    for (let i = 0; i < items.length; i++) {
-      items[i].selected = new Map();
-    }
-    dispatch("reset");
-    // closeModal();
-  };
-
-  const onFilter = () => {
-    dispatch("filter", {
-      value: items.map((v) => v.selected),
-    });
-    // closeModal();
-  };
-
-  const handleClickOption = (e: Event) => {
-    const el = e
+  const findElement = (e: Event) => {
+    return e
       .composedPath()
       .find((v) => v instanceof HTMLElement && v.dataset.json) as HTMLElement;
+  };
+
+  const handleSelectOption = (e: Event) => {
+    const el = findElement(e) as HTMLInputElement;
     if (!el) return;
-    const obj = JSON.parse(el.dataset.json as string);
-    console.log(obj);
+    const item = JSON.parse(el.dataset.json as string) as ActionSheetItem;
+    const { value, selected } = item;
+    const { options = [] } = items[selectedIndex];
+    const idx = options.findIndex((v) => v.value === value);
+    if (idx < 1) return;
+    if (selected) {
+      options[idx].selected = false;
+    } else {
+      options[idx].selected = true;
+    }
+    items[selectedIndex].options = options;
+    items = [...items];
+    dispatch("valuechange", { option: options[idx] });
+  };
+
+  const handleTabChange = (e: Event) => {
+    const el = findElement(e) as HTMLInputElement;
+    if (!el) return;
+    const item = JSON.parse(el.dataset.json as string);
+    const { key } = item;
+    const idx = items.findIndex((v) => v.key === key);
+    if (idx < 1) return;
+    if (el.checked) {
+      items[idx].selected = true;
+    } else {
+      items[idx].selected = false;
+    }
+    items = [...items];
+    dispatch("tabchange", { key, item });
+  };
+
+  const handleReset = () => {
+    items = items.map((item) => {
+      if (item.options) {
+        item.options = item.options.map((v) => ({ ...v, selected: false }));
+      }
+      return item;
+    });
+    dispatch("reset", {});
+  };
+
+  const handleOk = () => {
+    dispatch("ok", {});
   };
 </script>
 
-<BottomModal bind:height={modalHeight} bind:open {maskClosable} {closable}>
+<BottomSheet
+  bind:height={modalHeight}
+  bind:open
+  class={className}
+  {maskClosable}
+  {closable}
+>
   <header class="resp-action-sheet__header">
-    <caption>{caption}</caption>
-    <span class="resp-action-sheet__reset" on:click={onReset}>Reset</span>
+    <div class="resp-action-sheet__header-label">
+      <caption>{caption}</caption>
+      <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
+    </div>
+    <ul class="resp-action-sheet__tab" on:change={handleTabChange}>
+      {#each items as item (item.key)}
+        <li data-json={JSON.stringify({ ...item, options: undefined })}>
+          <label>
+            <input
+              name={tabName}
+              type="radio"
+              checked={item.selected || false}
+            />
+            {item.label}
+          </label>
+        </li>
+      {/each}
+    </ul>
   </header>
   <ul
     class="resp-action-sheet__body"
-    style="height: {modalHeight - 170}px"
-    on:click={handleClickOption}
+    style="height: {modalHeight - 200}px"
+    on:change={handleSelectOption}
   >
-    {#each items[selected].options || [] as { value, label, checked = false }, idx (value)}
+    {#each items[selectedIndex].options || [] as { label, value, disabled = false, selected = false, ...otherProps }}
       <li
         class="resp-action-sheet__option"
-        class:resp-action-sheet__option--checked={checked}
-        data-json={JSON.stringify([selected, idx])}
+        data-json={JSON.stringify({
+          ...otherProps,
+          label,
+          value,
+          selected,
+          disabled,
+        })}
       >
-        <!-- <input id={value} type="checkbox" {value} {checked} /> -->
-        <label for={value}>
-          <span class="resp-action-sheet__option-label">{label}</span>
+        <label>
+          <input type="checkbox" {disabled} {value} checked={selected} />
+          <div class="resp-action-sheet__option-label">{label}</div>
         </label>
       </li>
     {/each}
   </ul>
   <footer class="resp-action-sheet__footer">
-    <Button variant="primary" {disabled} on:click>FILTER</Button>
+    <Button variant="primary" {disabled} on:click={handleOk}>FILTER</Button>
   </footer>
-</BottomModal>
+</BottomSheet>
 
 <style lang="scss" global>
   .resp-action-sheet {
@@ -96,10 +153,14 @@
     padding-top: var(--padding, 1rem);
 
     &__header {
-      display: flex;
-      padding: 0.5rem 1rem;
-      align-items: center;
+      // padding: 0 1rem;
       box-shadow: 0 5px 6px -4px rgba(0, 0, 0, 0.15);
+
+      &-label {
+        display: flex;
+        align-items: center;
+        padding: 0.25rem 1rem;
+      }
 
       caption {
         text-align: left;
@@ -114,7 +175,30 @@
       }
     }
 
+    &__tab {
+      display: flex;
+      list-style: none;
+      list-style-position: inside;
+      padding: 0.5rem 0;
+      margin: 0;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+        width: 0px;
+      }
+
+      li {
+        margin: 0 1rem;
+      }
+
+      label {
+        white-space: nowrap;
+      }
+    }
+
     &__body {
+      display: block;
       list-style: none;
       list-style-position: inside;
       overflow-y: auto;
@@ -123,12 +207,10 @@
     }
 
     &__option {
-      cursor: pointer;
       border-bottom: 1px solid #f1f1f1;
       display: flex;
       position: relative;
       align-items: center;
-      padding: 6px 0;
       text-transform: capitalize;
       color: var(--text-color-black, #505050);
 
@@ -136,13 +218,31 @@
         border: none;
       }
 
-      &--checked:after {
+      label {
+        cursor: pointer;
+        width: 100%;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      input:checked ~ :after {
         position: absolute;
-        right: 6px;
-        top: -2px;
+        right: 5px;
+        top: 0px;
         font-size: 20px;
         content: "\02143";
         transform: rotate(40deg);
+      }
+
+      input:disabled ~ &-label {
+        cursor: not-allowed;
+        color: #ababab;
+      }
+
+      &-label {
+        padding: 6px 0;
       }
     }
 

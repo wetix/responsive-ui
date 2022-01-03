@@ -1,6 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface BottomSheetProps {
+  id?: string;
+  class?: string;
   open?: boolean;
   height?: number;
   draggable?: boolean;
