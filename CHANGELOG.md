@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.5...v1.0.9-alpha.6) (2022-01-03)
+
+
+### Bug Fixes
+
+* `ActionSheet` ([fcea15a](https://github.com/wetix/responsive-ui/commit/fcea15a7e58b0861cbd50340be793c4712293fb6))
+
+
+
+
+
 ## [1.0.9-alpha.5](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.4...v1.0.9-alpha.5) (2021-12-29)
 
 
