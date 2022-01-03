@@ -1,6 +1,6 @@
 import { SvelteComponent, tick } from "svelte/internal";
 import Snackbar from "./Snackbar.svelte";
-import type { SnackbarProps } from "../types/Snackbarbar";
+import type { SnackbarProps } from "../types/Snackbar";
 
 const queue: SvelteComponent[] = [];
 
