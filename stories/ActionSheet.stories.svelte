@@ -1,6 +1,9 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import ActionSheet from "@responsive-ui/action-sheet";
+
+  let component;
+  $: console.log(component);
 </script>
 
 <Meta
@@ -18,6 +21,7 @@
 <Template let:args>
   <ActionSheet
     {...args}
+    bind:this={component}
     on:tabchange={args.onTabChange}
     on:valuechange={args.onValueChange}
     on:reset={args.onReset}
@@ -45,7 +49,7 @@
         label: "Section A",
         options: new Array(20).fill("").map((_, idx) => ({
           label: `Option ${idx + 1}`,
-          disabled: [0, 5, 8].includes(idx) ? true : false,
+          disabled: [1, 5, 8].includes(idx) ? true : false,
           selected: [2, 3].includes(idx) ? true : false,
           value: `option_${idx + 1}`,
         })),
@@ -53,10 +57,18 @@
       {
         key: "b",
         label: "Section B",
+        options: new Array(10).fill("").map((_, idx) => ({
+          label: `Option B - ${idx + 1}`,
+          value: `option_b_${idx + 1}`,
+        })),
       },
       {
         key: "c",
         label: "Section C",
+        options: new Array(5).fill("").map((_, idx) => ({
+          label: `Option C - ${idx + 1}`,
+          value: `option_c_${idx + 1}`,
+        })),
       },
       {
         key: "d",
@@ -65,6 +77,10 @@
       {
         key: "z",
         label: "Section Z (Lorem Ipsum)",
+        options: new Array(12).fill("").map((_, idx) => ({
+          label: `Option Z - ${idx + 1}`,
+          value: `option_z_${idx + 1}`,
+        })),
       },
     ],
     label: "Button",

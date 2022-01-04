@@ -1,12 +1,11 @@
 import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
-type ActionSheetOption = {
+export type ActionSheetOption = {
   label: string;
   value: string;
   disabled?: boolean;
   selected?: boolean;
-  // nowrap?: boolean;
 };
 
 export interface ActionSheetItem extends Record<string, any> {
@@ -17,6 +16,8 @@ export interface ActionSheetItem extends Record<string, any> {
 }
 
 export interface ActionSheetProps {
+  class?: string;
+  caption?: string;
   items: ActionSheetItem[];
   open?: boolean;
   maskClosable?: boolean;
@@ -26,7 +27,7 @@ export interface ActionSheetProps {
 }
 
 export interface ActionSheetEvents {
-  ok?: CustomEvent<{}>;
+  ok?: CustomEvent<{ values: string[] }>;
   reset?: CustomEvent<{}>;
   valuechange?: CustomEvent<{ option: ActionSheetOption }>;
   tabchange?: CustomEvent<{

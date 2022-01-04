@@ -102,7 +102,7 @@
     min-height: 120px;
     background: #fff;
     transition: all 0.3s;
-    z-index: 50;
+    z-index: 999;
 
     &__overlay {
       position: fixed;
@@ -112,7 +112,7 @@
       bottom: 0;
       background: rgba(0, 0, 0, 0.5);
       transition: opacity 0.3s;
-      z-index: 50;
+      z-index: 900;
     }
 
     &__close {
@@ -121,7 +121,6 @@
       display: block;
       top: 10px;
       right: 15px;
-      z-index: 50;
     }
 
     &__header {

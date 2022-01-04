@@ -49,6 +49,7 @@
     align-items: center;
     justify-content: center;
     width: 360px;
+    max-width: 100%;
     height: 150px;
   }
 

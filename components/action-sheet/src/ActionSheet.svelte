@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import Button from "@responsive-ui/button";
   import BottomSheet from "@responsive-ui/bottom-sheet";
-  import type { ActionSheetItem } from "../types";
+  import type { ActionSheetItem, ActionSheetOption } from "../types";
 
   const dispatch = createEventDispatcher();
 
@@ -10,7 +10,6 @@
   let selectedIndex = 0;
   let modalHeight = 0;
   export { className as class };
-  export { selectedIndex as selected };
   export let items: ActionSheetItem[] = [];
   export let open = false;
   export let caption = "";
@@ -18,7 +17,19 @@
   export let maskClosable = true;
   export let closable = true;
 
+  export const reset = () => {
+    items = items.map((item) => {
+      if (item.options) {
+        item.options = item.options.map((v) => ({ ...v, selected: false }));
+      }
+      return item;
+    });
+  };
+
+  let activeKey = "";
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
+
+  $: selectedIndex = items.findIndex((v) => v.key === activeKey);
 
   const findElement = (e: Event) => {
     return e
@@ -26,52 +37,48 @@
       .find((v) => v instanceof HTMLElement && v.dataset.json) as HTMLElement;
   };
 
-  const handleSelectOption = (e: Event) => {
+  const handleTabChange = (e: Event) => {
     const el = findElement(e) as HTMLInputElement;
     if (!el) return;
     const item = JSON.parse(el.dataset.json as string) as ActionSheetItem;
-    const { value, selected } = item;
+    const { key } = item;
+    const idx = items.findIndex((v) => v.key === key);
+    if (idx < 0) return;
+    // if (el.checked) {
+    //   items[idx].selected = false;
+    // } else {
+    //   items[idx].selected = true;
+    // }
+    // items = [...items];
+    activeKey = key;
+    console.log(activeKey, item);
+    dispatch("tabchange", { item });
+  };
+
+  const handleSelectOption = (e: Event) => {
+    const el = findElement(e) as HTMLInputElement;
+    if (!el) return;
+    const item = JSON.parse(el.dataset.json as string) as ActionSheetOption;
+    const { value } = item;
     const { options = [] } = items[selectedIndex];
     const idx = options.findIndex((v) => v.value === value);
-    if (idx < 1) return;
-    if (selected) {
-      options[idx].selected = false;
-    } else {
-      options[idx].selected = true;
-    }
+    if (idx < 0) return;
+    options[idx].selected = el.checked;
     items[selectedIndex].options = options;
     items = [...items];
     dispatch("valuechange", { option: options[idx] });
   };
 
-  const handleTabChange = (e: Event) => {
-    const el = findElement(e) as HTMLInputElement;
-    if (!el) return;
-    const item = JSON.parse(el.dataset.json as string);
-    const { key } = item;
-    const idx = items.findIndex((v) => v.key === key);
-    if (idx < 1) return;
-    if (el.checked) {
-      items[idx].selected = true;
-    } else {
-      items[idx].selected = false;
-    }
-    items = [...items];
-    dispatch("tabchange", { key, item });
-  };
-
   const handleReset = () => {
-    items = items.map((item) => {
-      if (item.options) {
-        item.options = item.options.map((v) => ({ ...v, selected: false }));
-      }
-      return item;
-    });
+    reset();
     dispatch("reset", {});
   };
 
   const handleOk = () => {
-    dispatch("ok", {});
+    dispatch("ok", {
+      activeKey,
+      values: [],
+    });
   };
 </script>
 
@@ -88,10 +95,18 @@
       <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
     <ul class="resp-action-sheet__tab" on:change={handleTabChange}>
-      {#each items as item (item.key)}
-        <li data-json={JSON.stringify({ ...item, options: undefined })}>
-          <label>
+      {#each items as item, idx (item.key)}
+        <li>
+          <label
+            class:resp-action-sheet__tab-item--selected={(idx == 0 &&
+              activeKey == "") ||
+              activeKey === item.key}
+          >
             <input
+              data-json={JSON.stringify({
+                ...item,
+                options: undefined,
+              })}
               name={tabName}
               type="radio"
               checked={item.selected || false}
@@ -104,22 +119,25 @@
   </header>
   <ul
     class="resp-action-sheet__body"
-    style="height: {modalHeight - 200}px"
+    style="height: {modalHeight - 180}px"
     on:change={handleSelectOption}
   >
-    {#each items[selectedIndex].options || [] as { label, value, disabled = false, selected = false, ...otherProps }}
-      <li
-        class="resp-action-sheet__option"
-        data-json={JSON.stringify({
-          ...otherProps,
-          label,
-          value,
-          selected,
-          disabled,
-        })}
-      >
+    {#each items[selectedIndex < 0 ? 0 : selectedIndex].options || [] as { label, value, disabled = false, selected = false, ...otherProps }}
+      <li class="resp-action-sheet__option">
         <label>
-          <input type="checkbox" {disabled} {value} checked={selected} />
+          <input
+            type="checkbox"
+            data-json={JSON.stringify({
+              ...otherProps,
+              label,
+              value,
+              selected,
+              disabled,
+            })}
+            {disabled}
+            {value}
+            checked={selected}
+          />
           <div class="resp-action-sheet__option-label">{label}</div>
         </label>
       </li>
@@ -165,6 +183,7 @@
       padding: 0.5rem 0;
       margin: 0;
       overflow-x: auto;
+      transition: all 0.5s;
 
       &::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
@@ -178,10 +197,17 @@
       label {
         cursor: pointer;
         white-space: nowrap;
+        transition: all 0.5s;
       }
 
       input[type="radio"] {
         display: none;
+      }
+
+      &-item {
+        &--selected {
+          color: var(--primary-color, #fc4451);
+        }
       }
     }
 
