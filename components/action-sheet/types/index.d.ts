@@ -17,12 +17,12 @@ export interface ActionSheetItem extends Record<string, any> {
 
 export interface ActionSheetProps {
   class?: string;
+  activeKey?: string;
   caption?: string;
   items: ActionSheetItem[];
   open?: boolean;
-  maskClosable?: boolean;
-  selected?: number;
   disabled?: boolean;
+  maskClosable?: boolean;
   closable?: boolean;
 }
 

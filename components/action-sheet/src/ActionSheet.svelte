@@ -10,9 +10,10 @@
   let selectedIndex = 0;
   let modalHeight = 0;
   export { className as class };
+  export let activeKey = "";
+  export let caption = "";
   export let items: ActionSheetItem[] = [];
   export let open = false;
-  export let caption = "";
   export let disabled = false;
   export let maskClosable = true;
   export let closable = true;
@@ -26,7 +27,6 @@
     });
   };
 
-  let activeKey = "";
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
 
   $: selectedIndex = items.findIndex((v) => v.key === activeKey);
