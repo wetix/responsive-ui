@@ -6,18 +6,17 @@
 </script>
 
 <span
-  {...$$restProps}
   class="resp-badge {className}"
   data-count={count > max ? `${max}+` : count}
+  {...$$restProps}
 >
   <slot />
 </span>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-badge {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
 
     &:not([data-count="0"]):after {
       content: attr(data-count);

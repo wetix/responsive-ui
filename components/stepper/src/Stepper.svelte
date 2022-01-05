@@ -100,7 +100,7 @@
     &__header {
       &-current {
         font-size: var(--font-size-lg, 16px);
-        font-weight: 600;
+        font-weight: 500;
       }
 
       &-next {

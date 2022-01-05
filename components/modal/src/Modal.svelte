@@ -7,123 +7,143 @@
 
   let className = "";
   export { className as class };
-  export let title: null | string = null;
-  export let width = "480px";
+  export let caption: null | string = null;
+  export let outlined = false;
+  export let width = 480;
   export let open = true;
   export let closable = true;
   export let maskClosable = true;
   export let style = "";
 
-  $: maxHeight = window.innerHeight - 60;
-
-  let clientWidth = 0;
-  let clientHeight = 0;
+  $: if (open) {
+    const { scrollY = 0 } = window;
+    const bodyStyle = document.body.getAttribute("style") || "";
+    document.body.dataset.style = bodyStyle;
+    document.body.dataset.scrollY = scrollY.toString();
+    setTimeout(() => {
+      document.body.setAttribute(
+        "style",
+        `position: fixed; top: -${scrollY}px; ${bodyStyle}`
+      );
+    }, 0);
+  } else {
+    const { scrollY = "0", style = "" } = document.body.dataset;
+    // restore to original style
+    document.body.setAttribute("style", style);
+    setTimeout(() => {
+      // restore to position scroll-y
+      window.scrollTo(0, parseInt(scrollY, 10));
+    }, 0);
+  }
 </script>
 
 {#if open}
-  <div
-    class="resp-modal__overlay"
-    in:fade
-    out:fade
-    on:click={maskClosable ? () => (open = false) : undefined}
-  />
-  <div
-    class="resp-modal {className}"
-    bind:clientWidth
-    bind:clientHeight
-    in:fade
-    out:fade
-    style={`width: ${width}; margin-top: ${
-      (-1 * clientHeight) / 2
-    }px; margin-left: ${
-      (-1 * clientWidth) / 2
-    }px; max-height: ${maxHeight}px; ${style}`}
-  >
-    <slot name="header">
-      {#if title != null}
+  <div class="resp-modal__box" class:resp-modal--outlined={outlined}>
+    <div
+      class="resp-modal__overlay"
+      in:fade
+      out:fade
+      on:click={maskClosable ? () => (open = false) : undefined}
+    />
+    <div
+      {...$$restProps}
+      class="resp-modal {className}"
+      in:fade
+      out:fade
+      style="width: {isNaN(width) ? width : `${width}px`}; {style}"
+    >
+      {#if caption}
         <header class="resp-modal__header">
-          <caption>{title}</caption>
+          <caption>{caption}</caption>
           {#if closable}
             <span class="resp-modal__header-close">
-              <span
+              <i
                 class="resp-modal__header-close-icon"
                 on:click={() => (open = false)}
               >
-                <svg
-                  viewBox="64 64 896 896"
-                  focusable="false"
-                  data-icon="close"
-                  width="1em"
-                  height="1em"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  ><path
-                    d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
-                  /></svg
-                >
-              </span>
+                {@html `<svg viewBox="64 64 896 896" focusable="false" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z" /></svg>`}
+              </i>
             </span>
           {/if}
         </header>
       {/if}
-    </slot>
-    <div class="resp-modal__body">
-      <slot />
-    </div>
-    <slot name="footer">
+      <div class="resp-modal__body">
+        <slot />
+      </div>
       <footer class="resp-modal__footer">
-        <Button
-          variant="primary"
-          on:click={() => dispatch("confirm")}
-          style="margin-left: 6px">OK</Button
-        >
-        <Button on:click={() => dispatch("cancel")}>Cancel</Button>
+        <slot name="footer">
+          <Button
+            variant="primary"
+            on:click={() => dispatch("ok")}
+            style="margin-left: 6px">OK</Button
+          >
+          <Button on:click={() => dispatch("cancel")}>Cancel</Button>
+        </slot>
       </footer>
-    </slot>
+    </div>
   </div>
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     font-family: inherit;
-    // word-break: break-word;
     margin: 0 auto;
+    width: 480px;
+    max-width: calc(100% - 40px);
+    max-height: calc(100vh - 40px);
     background: var(--color-white, #fff);
     box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
-    border-radius: var(--border-radius, 5px);
+    border-radius: var(--border-radius, 10px);
     overflow: hidden;
     z-index: 999;
 
-    &__overlay {
+    &__overlay,
+    &__box {
       position: fixed;
-      background: rgba(0, 0, 0, 0.65);
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 999;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__overlay {
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 900;
+    }
+
+    &__box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__header {
       display: flex;
 
       caption {
+        text-align: left;
         font-size: var(--font-size-lg, 24px);
-        font-weight: 600;
+        font-weight: 500;
+        flex-grow: 1;
+        min-width: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: 0.25rem;
+        overflow: hidden;
       }
 
       .resp-modal__header-close {
-        cursor: pointer;
-        display: inline-flex;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        color: #373737;
+        flex: 0 0 30px;
 
         &-icon {
+          position: relative;
+          left: 5px;
+          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -143,12 +163,30 @@
     &__header,
     &__body,
     &__footer {
-      padding: 10px;
+      width: 100%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    &__body {
+      overflow-y: auto;
+      flex-grow: 1;
+      min-height: 0;
     }
 
     &__footer {
       display: flex;
       flex-direction: row-reverse;
+    }
+
+    &--outlined {
+      $borderColor: #f5f5f5;
+      .resp-modal__header {
+        border-bottom: 1px solid $borderColor;
+      }
+      .resp-modal__footer {
+        border-top: 1px solid $borderColor;
+      }
     }
   }
 </style>

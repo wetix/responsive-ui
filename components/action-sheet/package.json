@@ -1,0 +1,53 @@
+{
+  "name": "@responsive-ui/action-sheet",
+  "version": "1.0.9-alpha.6",
+  "description": "An action sheet component of responsive-ui.",
+  "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
+  "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/action-sheet#README.md",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/cjs/index.js",
+  "browser": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "unpkg": "lib/index.min.js",
+  "svelte": "src/ActionSheet.svelte",
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "svelte",
+    "ui-component",
+    "responsive-ui",
+    "action-sheet",
+    "svelte-action-sheet"
+  ],
+  "peerDependencies": {
+    "@responsive-ui/bottom-sheet": "*",
+    "@responsive-ui/button": "*",
+    "svelte": "^3.27.0",
+    "svelte-preprocess": "^4.5.0",
+    "typescript": "^4.0.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "types",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/action-sheet"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wetix/responsive-ui/issues"
+  },
+  "gitHead": "fd5010a4fe0e250d52c7292f70d8e3702b7ffcfe"
+}

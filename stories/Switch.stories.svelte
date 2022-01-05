@@ -1,18 +1,19 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Switch from "../components/switch/src/Switch.svelte";
+  import Switch from "@responsive-ui/switch";
 </script>
 
 <Meta
   title="Components/Switch"
   component={Switch}
   argTypes={{
-    onChange: { action: "onChange" },
+    disabled: { control: "boolean" },
+    checked: { control: "boolean" },
   }}
 />
 
 <Template let:args>
-  <Switch {...args} on:change={args.onChange} />
+  <Switch {...args} on:click={args.onClick} />
 </Template>
 
-<Story name="Default" args={{}} />
+<Story name="Default" />

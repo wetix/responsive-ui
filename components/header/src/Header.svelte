@@ -4,22 +4,22 @@
   export let label = "";
 </script>
 
-<header {...$$restProps} class="resp-header {className}">
+<header class="resp-header {className}" {...$$restProps}>
   <span class="resp-header__label">{label}</span>
   <slot />
 </header>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: var(--padding) 0;
 
     &__label {
       text-transform: capitalize;
       font-size: var(--font-size-lg);
-      font-weight: 600;
+      font-weight: 500;
       color: #1a1b1c;
     }
   }

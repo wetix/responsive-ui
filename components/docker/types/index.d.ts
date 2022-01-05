@@ -5,9 +5,9 @@ export interface DockerProps {
   title?: string;
   class?: string;
   open?: boolean;
-  closable?: boolean;
-  width?: string;
-  maskedClosable?: boolean;
+  caption: string;
+  maskClosable?: boolean;
+  width?: string | number;
   placement?: "left" | "right";
   style?: string;
 }

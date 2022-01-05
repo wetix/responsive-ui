@@ -13,7 +13,7 @@
   export let year = 0;
   export let month = 0;
   export let day = 0;
-  export let disabledDate = (v: Date) => false;
+  export let disabledDate = (_: Date) => false;
 
   let selectedMonth = month;
   let selectedYear = year;
@@ -47,58 +47,55 @@
     }
   };
 
-  const handleSelectDate = (date: Date) => (e: Event) => {
+  const handleSelectDate = (date: Date) => () => {
     dispatch("change", date);
   };
 
   $: isValid = year > 0 && month >= 0 && day > 0;
+  const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
-    const clsList: Array<string> = [];
+    const clsList: string[] = [];
 
     if (v.getMonth() != selectedMonth) {
-      clsList.push("resp-calendar__date--not-in-view");
-    } else {
-      if (
-        isValid &&
-        v.getDate() == day &&
-        v.getMonth() == month &&
-        v.getFullYear() == year
-      )
-        clsList.push("resp-calendar__date--selected");
+      clsList.push(`${dateClass}--not-in-view`);
+    } else if (
+      isValid &&
+      v.getDate() == day &&
+      v.getMonth() == month &&
+      v.getFullYear() == year
+    ) {
+      clsList.push(`${dateClass}--selected`);
     }
-    if (disabledDate(v)) clsList.push("resp-calendar__date--disabled");
+    if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
     return clsList.join(" ");
   };
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
 <div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
-  <div class="resp-calendar-header">
-    <button class="resp-calendar-button" on:click={handlePrevYear}>
-      <span class="resp-calendar-most-prev-icon" />
-    </button>
-    <button class="resp-calendar-button" on:click={handlePrevMonth}>
-      <span class="resp-calendar-prev-icon" />
-    </button>
-    <div class="resp-calendar-header-caption">
-      <button class="resp-calendar-button"
-        >{monthNames[selectedMonth].substr(0, 3)}
-      </button>
-      <button class="resp-calendar-button">{selectedYear}</button>
+  <div class="resp-calendar__header">
+    <span class="resp-calendar__icon" on:click={handlePrevYear}>
+      <i class="resp-calendar-most-prev-icon" />
+    </span>
+    <span class="resp-calendar__icon" on:click={handlePrevMonth}>
+      <i class="resp-calendar-prev-icon" />
+    </span>
+    <div class="resp-calendar__header-caption">
+      {`${monthNames[selectedMonth].substring(0, 3)} ${selectedYear}`}
     </div>
-    <button class="resp-calendar-button" on:click={handleNextMonth}>
-      <span class="resp-calendar-next-icon" />
-    </button>
-    <button class="resp-calendar-button" on:click={handleNextYear}>
-      <span class="resp-calendar-most-next-icon" />
-    </button>
+    <span class="resp-calendar__icon" on:click={handleNextMonth}>
+      <i class="resp-calendar-next-icon" />
+    </span>
+    <span class="resp-calendar__icon" on:click={handleNextYear}>
+      <i class="resp-calendar-most-next-icon" />
+    </span>
   </div>
-  <div class="resp-calendar-body">
+  <div class="resp-calendar__body">
     <table>
       <thead>
         <tr>
           {#each weekdays as v}
-            <td>{v.substr(0, 2)}</td>
+            <td>{v.substring(0, 2)}</td>
           {/each}
         </tr>
       </thead>
@@ -123,37 +120,37 @@
     </table>
   </div>
   <slot name="footer">
-    <div class="resp-calendar-footer">
-      <button
-        class="resp-calendar-button"
-        on:click={handleSelectDate(new Date())}>Today</button
+    <div class="resp-calendar__footer">
+      <span
+        class="resp-calendar__button"
+        on:click={handleSelectDate(new Date())}>Today</span
       >
     </div>
   </slot>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
+  $sm: 576px;
+
   .resp-calendar {
     display: flex;
     flex-direction: column;
     width: 260px;
 
-    &-header-caption {
-      flex-grow: 1;
-      text-align: center;
-    }
-
-    .resp-calendar-button {
+    &__button,
+    &__icon {
       cursor: pointer;
       font-family: inherit;
-      // padding: 0 3px;
-      // -webkit-appearance: button;
+      margin: 0;
       background: transparent;
       border: none;
     }
+    &__icon {
+      width: 25px;
+    }
 
-    .resp-calendar-header,
-    .resp-calendar-footer {
+    &__header,
+    &__footer {
       display: flex;
       justify-content: center;
       height: 36px;
@@ -161,8 +158,16 @@
       align-items: center;
     }
 
-    .resp-calendar-header {
+    &__header {
+      text-align: center;
+      justify-content: space-between;
       border-bottom: 1px solid #f5f5f5;
+
+      &-caption {
+        flex-grow: 1;
+        min-width: 0;
+        text-align: center;
+      }
 
       .resp-calendar-prev-icon,
       .resp-calendar-most-prev-icon,
@@ -209,36 +214,35 @@
       }
     }
 
-    .resp-calendar-body {
+    &__body {
       padding: 8px;
-    }
 
-    table {
-      table-layout: fixed;
-      border-collapse: collapse;
-      width: 100%;
+      table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
 
-      th,
-      td {
-        text-align: center;
-        vertical-align: middle;
-        padding: 2px 0;
+        th {
+          font-weight: 650;
+        }
+
+        th,
+        td {
+          text-align: center;
+          vertical-align: middle;
+          padding: 2px 0;
+        }
       }
     }
 
-    th {
-      font-weight: 650;
-    }
-
-    .resp-calendar__date {
+    &__date {
       cursor: pointer;
-      display: inline-block;
-      vertical-align: middle;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       height: 25px;
-      line-height: 25px;
       width: 25px;
-      // border: 1px solid red;
-      // border-radius: 50%;
+      border-radius: 50%;
       transition: all 0.3s;
 
       &--selected {
@@ -260,29 +264,9 @@
       }
     }
 
-    .resp-calendar-footer {
+    &__footer {
       border-top: 1px solid #f5f5f5;
       justify-content: center;
-    }
-
-    // &:before {
-    //   content: "";
-    //   position: fixed;
-    //   display: block;
-    //   top: 0;
-    //   bottom: 0;
-    //   right: 0;
-    //   background: red;
-    //   height: 100%;
-    //   z-index: 100;
-    // }
-    @media screen and (max-width: 640px) {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      width: auto;
-      // box-shadow: none;
     }
   }
 </style>

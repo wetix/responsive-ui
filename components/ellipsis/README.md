@@ -31,7 +31,7 @@ yarn add @responsive-ui/ellipsis
 
 ## 📄 License
 
-[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[@responsive-ui/ellipsis](https://github.com/wetix/responsive-ui/tree/main/components/ellipsis) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## 🎉 Big Thanks To
 

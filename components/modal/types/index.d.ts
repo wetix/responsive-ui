@@ -1,18 +1,20 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ModalProps {
+  id?: string;
   class?: string;
-  title?: null | string;
-  width?: string;
+  caption?: string;
+  open?: boolean;
+  width?: number | string;
+  outlined?: boolean;
   closable?: boolean;
   maskClosable?: boolean;
-  open?: boolean;
   style?: string;
 }
 
 export interface ModalEvents {
   cancel?: WindowEventMap["click"];
-  confirm?: WindowEventMap["click"];
+  ok?: WindowEventMap["click"];
 }
 
 export interface ModalSlots {

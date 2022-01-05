@@ -2,10 +2,10 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface DatePickerProps {
   class?: string;
+  open?: boolean;
   placeholder?: string;
   value?: string;
-  ref?: null | HTMLInputElement;
-  size: "small" | "default" | "large";
+  ref?: HTMLInputElement;
   name?: string;
   readonly?: boolean;
   disabled?: boolean;
@@ -14,8 +14,16 @@ export interface DatePickerProps {
   disabledDate?: (v: Date) => boolean;
 }
 
+export type DatePickerDateChangeEvent = {
+  date: null | Date;
+  dateString: string;
+};
+
 export interface DatePickerEvents {
-  change?: void;
+  focus?: WindowEventMap["focus"];
+  blur?: WindowEventMap["blur"];
+  change?: WindowEventMap["change"];
+  datechange?: CustomEvent<DateChangeEvent>;
 }
 
 export interface DatePickerSlots {}

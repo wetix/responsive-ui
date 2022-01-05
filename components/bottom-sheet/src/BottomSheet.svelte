@@ -1,113 +1,140 @@
-<script lang="ts">
-  import { createEventDispatcher } from "svelte";
-  import Button from "@responsive-ui/button";
-  import BottomModal from "@responsive-ui/bottom-modal";
-  import Tab from "@responsive-ui/tab";
+<script context="module" lang="ts">
+  const queue: HTMLElement[] = [];
+  // remove window scroll when all gone
 
-  import type { BottomSheetItem } from "../types";
-  import Option from "./Option.svelte";
-
-  const dispatch = createEventDispatcher();
-
-  export let items: BottomSheetItem[] = [];
-  export let open = false;
-  export let selected = 0;
-  export let disabled = false;
-  export let closable = true;
-
-  $: height = window.innerHeight * 0.8;
-  items = items.map((v) => {
-    if (v.selected) return v;
-    v.selected = new Map();
-    return v;
-  });
-
-  const onOptionChange = ({ detail }: CustomEvent<any>) => {
-    const { checked, value } = detail;
-    if (checked) items[selected].selected?.set(value, true);
-    else items[selected].selected?.delete(value);
-    dispatch("change", {
-      selected,
-      value: items[selected].selected,
-    });
+  let scrollY = 0;
+  const toggleOpen = (i: number, open: boolean) => {
+    // queue[i] = open;
+    // if (queue.some((v) => v === true)) {
+    //   scrollY = window.scrollY;
+    //   document.body.setAttribute(
+    //     "style",
+    //     `position: fixed; top: -${scrollY}px`
+    //   );
+    // } else {
+    //   document.body.setAttribute("style", "");
+    //   window.scrollTo(0, scrollY);
+    // }
   };
 
-  const closeModal = () => {
-    setTimeout(() => {
-      open = false;
-    }, 150);
+  const pushQueue = (open: boolean): number => {
+    // queue.push(open);
+    return queue.length - 1;
   };
 
-  const onReset = () => {
-    for (let i = 0; i < items.length; i++) {
-      items[i].selected = new Map();
-    }
-    dispatch("reset");
-    closeModal();
-  };
-
-  const onFilter = () => {
-    dispatch("filter", {
-      value: items.map((v) => v.selected),
-    });
-    closeModal();
+  const popQueue = (i: number) => {
+    if (i >= queue.length) return;
+    queue.splice(i, 1);
   };
 </script>
 
-<BottomModal bind:open {closable}>
-  <div class="responsive-ui-bottom-sheet" style={`height:${height}px;`}>
-    <header class="responsive-ui-bottom-sheet__header">
-      <span class="responsive-ui-bottom-sheet__reset" on:click={onReset}
-        >Reset</span
-      >
-    </header>
-    <Tab {items} bind:selected>
-      <div
-        class="responsive-ui-bottom-sheet__body"
-        style={`height:${height - 150}px`}
-      >
-        {#each items[selected].options || [] as opt (opt.value)}
-          <Option
-            {...opt}
-            checked={items[selected].selected?.has(opt.value)}
-            on:change={onOptionChange}
-          />
-        {/each}
-      </div>
-    </Tab>
-  </div>
-  <footer class="responsive-ui-bottom-sheet__footer">
-    <Button {disabled} on:click={onFilter}>FILTER</Button>
-  </footer>
-</BottomModal>
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { noop } from "svelte/internal";
+  import { tweened } from "svelte/motion";
 
-<style lang="scss">
-  .responsive-ui-bottom-sheet {
-    padding-top: var(--padding, 15px);
-    position: relative;
+  let className = "";
+  export { className as class };
+  export let open = false;
+  export let height = 0;
+  export let maskClosable = true;
+  export let draggable = true;
+  export let style = "";
 
-    &__header {
-      padding: 0 15px 5px;
-    }
+  const tween = tweened(1, {
+    duration: 150,
+  });
 
-    &__body {
-      overflow-y: auto;
-      padding: 12px 15px;
-    }
+  let index = 0;
 
-    &__reset {
-      cursor: pointer;
-      color: var(--primary-color, #fc4451);
-    }
+  $: if (open) {
+    toggleOpen(index, open);
+    tween.set(0);
+  } else {
+    toggleOpen(index, open);
+    tween.set(1);
+  }
 
-    &__footer {
-      box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1);
-      background: var(--background-color, #fff);
-      padding: 12px 15px;
-      position: absolute;
-      bottom: 0;
+  onMount(() => {
+    // index = pushQueue(open);
+    // return () => {
+    //   popQueue(index);
+    // };
+  });
+
+  $: height = window.innerHeight * 0.85;
+</script>
+
+<div
+  class="resp-bottom-sheet__overlay"
+  on:click={maskClosable ? () => (open = false) : noop}
+  style={`opacity: ${1 - $tween}; visibility: ${
+    1 - $tween <= 0 ? "hidden" : "visible"
+  }`}
+/>
+<div
+  class="resp-bottom-sheet {className}"
+  style={`transform: translateY(${
+    $tween * 100
+  }%); height: ${height}px; visibility: ${
+    1 - $tween <= 0 ? "hidden" : "visible"
+  }; ${style}`}
+>
+  {#if draggable}
+    <div class="resp-bottom-sheet__header">
+      <div class="resp-bottom-sheet__drag" />
+    </div>
+  {/if}
+  <slot />
+</div>
+
+<style lang="scss" global>
+  .resp-bottom-sheet {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 -4px 26px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 85%;
+    padding-bottom: env(safe-area-inset-bottom, 15px);
+    min-height: 120px;
+    background: #fff;
+    transition: all 0.3s;
+    z-index: 999;
+
+    &__overlay {
+      position: fixed;
+      top: 0;
       left: 0;
       right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      transition: opacity 0.3s;
+      z-index: 900;
+    }
+
+    &__close {
+      cursor: pointer;
+      position: absolute;
+      display: block;
+      top: 10px;
+      right: 15px;
+    }
+
+    &__header {
+      display: flex;
+      padding: 0.5rem;
+      justify-content: center;
+    }
+
+    &__drag {
+      cursor: grab;
+      height: 4px;
+      width: 100px;
+      border-radius: 3px;
+      background: #dcdcdc;
     }
   }
 </style>

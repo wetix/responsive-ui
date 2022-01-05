@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface UploadProps {
   id?: string;
+  ref?: HTMLInputElement;
   url: string;
   name?: string;
   class?: string;
@@ -17,12 +18,13 @@ export interface UploadProps {
 export interface UploadEvents {
   success?: any;
   error?: any;
-  progress?: any;
+  uploadprogress?: CustomEvent<{}>;
 }
 
 export interface UploadSlots {
   default: {
-    loading: boolean;
+    uploading: boolean;
+    dragover: boolean;
   };
 }
 

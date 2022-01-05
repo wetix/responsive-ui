@@ -2,6 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface BadgeProps {
   id?: string;
+  title?: string;
   class?: string;
   count: number;
   max?: number;

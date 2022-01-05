@@ -1,13 +1,16 @@
-import fs from "fs-extra";
+import fs from "fs";
 import path from "path";
 import chalk from "chalk";
+import { TSDocParser, ParserContext } from "@microsoft/tsdoc";
 
-// const toBase64Str = (data) => {
-//   let buff = new Buffer(data);
-//   return buff.toString("base64");
-// };
-
-const toTemplateString = (pkgName, pkgDesc) => {
+/**
+ *
+ * @param {string} relPath - Relative path for the component
+ * @param {string} pkgName - Package name
+ * @param {string} pkgDesc - Package description
+ * @return {string} - README string
+ */
+const toTemplateString = (relPath, pkgName, pkgDesc) => {
   return `
 # ${pkgName}
 
@@ -43,7 +46,7 @@ yarn add ${pkgName}
 
 ## üìÑ License
 
-[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[${pkgName}](https://github.com/wetix/responsive-ui/tree/main/${relPath}) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## üéâ Big Thanks To
 
@@ -55,7 +58,8 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 };
 
 (async function createREADME() {
-  const folderPath = path.resolve("./components");
+  const root = "./components";
+  const folderPath = path.resolve(root);
   const folders = fs.readdirSync(folderPath);
 
   for (let i = 0; i < folders.length; i++) {
@@ -69,11 +73,39 @@ Thanks to these awesome companies for their support of Open Source developers ‚ù
 
     // read `package.json`
     const basePath = `${folderPath}/${file}`;
+    /** @type {{name: string, description: string, types: string}} */
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
 
-    const content = toTemplateString(pkg.name, pkg.description);
+    // const tsDoc = fs.readFileSync(path.resolve(`${basePath}/${pkg.types}`));
+    // /** @type {import("@microsoft/tsdoc").TSDocParser} */
+    // const tsdocParser = new TSDocParser();
+
+    // /** @type {import("@microsoft/tsdoc").ParserContext} */
+    // const ctx = tsdocParser.parseString(tsDoc);
+    // const docNode = ctx.docComment;
+    // // console.log();
+    // // console.log(ctx.docComment.typeParams);
+    // console.log(
+    //   typeof ctx.content,
+    //   docNode.kind,
+    //   typeof docNode.content,
+    //   docNode.excerptKind
+    // );
+    // console.log(ctx.log.messages);
+    // console.log(docNode.getChildNodes().length);
+
+    // Check for any syntax errors
+    // if (parserContext.log.messages.length > 0) {
+    //   throw new Error("Syntax error: " + parserContext.log.messages[0].text);
+    // }
+
+    const content = toTemplateString(
+      path.relative(process.cwd(), basePath),
+      pkg.name,
+      pkg.description
+    );
 
     fs.writeFileSync(path.resolve(`${basePath}/README.md`), content);
 

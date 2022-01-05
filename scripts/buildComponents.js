@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import fs from "fs";
 import asyncJs from "async";
 import path from "path";
 import chalk from "chalk";
@@ -138,6 +138,11 @@ const rollupPlugins = [
   }),
 ];
 
+/**
+ *
+ * @param {string} filepath - Relative path
+ * @param {{name: string, main: string, module: string, browser: string, svelte: string}} pkg - package.json
+ */
 const analyzePackageJson = async (filepath, pkg) => {
   let bundle = await rollup({
     input: path.resolve(`${filepath}/${pkg.svelte}`),
@@ -149,6 +154,7 @@ const analyzePackageJson = async (filepath, pkg) => {
   });
 
   const files = [pkg.main, pkg.module, pkg.browser];
+  /** @type {Map<String, boolean>} */
   const map = new Map();
 
   for (let i = 0; i < files.length; i++) {
@@ -182,10 +188,13 @@ const analyzePackageJson = async (filepath, pkg) => {
       const { fileName } = chunk;
       const outputPath = `${filepath}/${path.dirname(file)}/${fileName}`;
       println(chalk.green(outputPath));
+
+      fs.mkdirSync(`${filepath}/${path.dirname(file)}`, { recursive: true });
+
       if (chunk.type === "asset") {
-        fs.outputFileSync(outputPath, chunk.source);
+        fs.writeFileSync(outputPath, chunk.source);
       } else {
-        fs.outputFileSync(outputPath, chunk.code);
+        fs.writeFileSync(outputPath, chunk.code);
       }
     }
   }
@@ -240,6 +249,7 @@ const analyzePackageJson = async (filepath, pkg) => {
 
 (async function buildScript() {
   const lernaPath = path.resolve("./lerna.json");
+  /** @type {{packages: string[]}} */
   const lerna = JSON.parse(fs.readFileSync(lernaPath).toString());
 
   const pkgs = lerna.packages || [];
@@ -249,9 +259,12 @@ const analyzePackageJson = async (filepath, pkg) => {
     const pkg = JSON.parse(
       fs.readFileSync(path.resolve(`${basePath}/package.json`), "utf8")
     );
-    if (fs.existsSync(`${pkgPath}/${file}/lib`)) {
-      fs.rm(`${pkgPath}/${file}/lib`, { recursive: true, force: true });
+    const baseFolder = `${pkgPath}/${file}/lib`;
+    if (fs.existsSync(baseFolder)) {
+      fs.rmSync(baseFolder, { recursive: true, force: true });
     }
+
+    // fs.mkdirSync(baseFolder, { recursive: true });
 
     await analyzePackageJson(basePath, pkg);
     callback && callback();

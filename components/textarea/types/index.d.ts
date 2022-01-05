@@ -21,11 +21,13 @@ export interface TextareaProps {
 
 export interface TextareaEvents {
   input?: WindowEventMap["input"];
-  change?: WindowEventMap["change"];
+  focus?: WindowEventMap["focus"];
   blur?: WindowEventMap["blur"];
 }
 
-export interface TextareaSlots {}
+export interface TextareaSlots {
+  default: {};
+}
 
 declare class Textarea extends SvelteComponentTyped<
   TextareaProps,

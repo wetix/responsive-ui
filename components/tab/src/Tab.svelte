@@ -3,13 +3,13 @@
 
   import type { TabItem } from "../types";
 
-  export let items: Array<TabItem> = [];
+  export let items: TabItem[] = [];
   export let selected = 0;
   export let style = "";
 
   const hasSlots = !!$$slots.default;
 
-  let tab: HTMLDivElement;
+  let tab: HTMLElement;
   let childNodes: NodeListOf<ChildNode>;
   let left = 0;
   let width = 0;
@@ -33,22 +33,19 @@
   };
 </script>
 
-<div class="responsive-ui-tab" {style}>
+<div class="resp-tab" {style}>
   <nav bind:this={tab}>
     {#each items as item, i}
       <span
-        class="responsive-ui-tab__item"
-        class:responsive-ui-tab__item--selected={selected == i}
+        class="resp-tab__item"
+        class:resp-tab__item--selected={selected == i}
         on:click={(e) => onChange(e, i)}
       >
         {item.label}
       </span>
     {/each}
   </nav>
-  <div
-    class="responsive-ui-tab__ink-bar"
-    style={`left:${left}px;width:${width}px`}
-  />
+  <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} />
 </div>
 
 {#if hasSlots}
@@ -62,7 +59,7 @@
 {/if}
 
 <style lang="scss">
-  .responsive-ui-tab {
+  .resp-tab {
     position: relative;
     display: flex;
     color: var(--text-color, #505050);

@@ -6,37 +6,50 @@
 
   let className = "";
   export { className as class };
+  export let ref: HTMLInputElement;
   export let name = "file";
-  export let url = "";
-  export let headers = {};
+  export let method = "POST";
+  export let action = "";
+  export let headers: Object = {};
   export let accept = "image/*";
   export let withCredentials = true;
   export let directory = false;
   export let multiple = false;
   export let value = "";
 
-  let loading = false;
-  let file: null | HTMLInputElement;
+  let noOfFiles: number;
+  let uploading = false;
+  let dragover = false;
+  const queue: File[] = [];
+
   onMount(() => {
-    if (file && directory) {
-      file.setAttribute("webkitdirectory", "true");
-      file.setAttribute("mozdirectory", "true");
+    if (directory) {
+      ref.setAttribute("directory", "true");
+      ref.setAttribute("webkitdirectory", "true");
+      ref.setAttribute("mozdirectory", "true");
     }
   });
 
-  const onChange = (e: Event) => {
-    const { files } = <HTMLInputElement>e.target;
+  const uploadFiles = (file: File) => {
+    let reader = new FileReader();
+    console.log("File =>", file);
+    reader.readAsDataURL(file);
+    reader.onloadend = (e: Event) => {
+      console.log(e);
+      console.log(reader.result);
+    };
 
-    loading = true;
-    const formData = new FormData();
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    xhr.open("POST", action, true);
     xhr.withCredentials = withCredentials;
-    Object.entries<string>(headers).forEach(([k, v]) => {
+    Object.entries(headers).forEach(([k, v]) => {
       xhr.setRequestHeader(k, v);
     });
     xhr.addEventListener("loadstart", (e) => {
-      dispatch("progress", e);
+      dispatch("uploadprogress", e);
+    });
+    xhr.upload.addEventListener("progress", function (e) {
+      console.log((e.loaded * 100.0) / e.total || 100);
     });
     xhr.addEventListener("error", (e) => {
       dispatch("error", e);
@@ -45,6 +58,7 @@
       if (xhr.readyState === 4) {
         let response = xhr.responseXML;
         const contentType = xhr.getResponseHeader("Content-Type") || "";
+
         try {
           if (xhr.status != 204 && /json/i.test(contentType))
             response = JSON.parse(xhr.responseText);
@@ -59,71 +73,85 @@
         } catch (e) {
           dispatch("error", xhr);
         } finally {
-          loading = false;
+          // uploading = false;
         }
       }
     });
 
-    if (files) {
-      if (multiple) {
-        for (let i = 0; i < files.length; i++) {
-          formData.append(`${name}[]`, files[i]);
-        }
-      } else {
-        formData.append(name, files[0]);
-      }
-    }
+    const formData = new FormData();
+    // if (files) {
+    //   if (multiple) {
+    //     for (let i = 0; i < files.length; i++) {
+    //       formData.append(`${name}[]`, files[i]);
+    //     }
+    //   } else {
+    //   }
+    // }
 
+    formData.append(name, file);
     xhr.send(formData);
+  };
+
+  const handleSubmit = (e: Event) => {
+    const { files } = <HTMLInputElement>e.target;
+
+    uploading = true;
+  };
+
+  const dragUpload = (node: Node) => {
+    console.log(node);
+    return { destroy() {} };
+  };
+
+  const preventDefault = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragEnter = (e: Event) => {
+    preventDefault(e);
+    dragover = true;
+  };
+
+  const handleDragLeave = (e: Event) => {
+    preventDefault(e);
+    dragover = false;
+  };
+
+  const handleDrop = (e: DragEvent) => {
+    preventDefault(e);
+    const { files } = e.dataTransfer!;
+    queue.push(...files);
+    [...files].forEach(uploadFiles);
+    // uploadFiles(files);
   };
 </script>
 
-<span
-  {...$$restProps}
-  class="resp-upload {className}"
-  on:change
-  on:click={() => file && file.click()}
->
-  <slot {loading}>
-    <svg
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      width="24px"
-      height="24px"
-      viewBox="0 0 512.056 512.056"
-      style="enable-background:new 0 0 512.056 512.056;"
-      xml:space="preserve"
-    >
-      <g>
-        <path
-          d="M426.635,188.224C402.969,93.946,307.358,36.704,213.08,60.37C139.404,78.865,85.907,142.542,80.395,218.303
-				C28.082,226.93-7.333,276.331,1.294,328.644c7.669,46.507,47.967,80.566,95.101,80.379h80v-32h-80c-35.346,0-64-28.654-64-64
-				c0-35.346,28.654-64,64-64c8.837,0,16-7.163,16-16c-0.08-79.529,64.327-144.065,143.856-144.144
-				c68.844-0.069,128.107,48.601,141.424,116.144c1.315,6.744,6.788,11.896,13.6,12.8c43.742,6.229,74.151,46.738,67.923,90.479
-				c-5.593,39.278-39.129,68.523-78.803,68.721h-64v32h64c61.856-0.187,111.848-50.483,111.66-112.339
-				C511.899,245.194,476.655,200.443,426.635,188.224z"
-        />
-        <path
-          d="M245.035,253.664l-64,64l22.56,22.56l36.8-36.64v153.44h32v-153.44l36.64,36.64l22.56-22.56l-64-64
-				C261.354,247.46,251.276,247.46,245.035,253.664z"
-        />
-      </g>
-    </svg>
-  </slot>
-  <input
-    bind:this={file}
-    type="file"
-    {name}
-    bind:value
-    {multiple}
-    {accept}
-    on:change={onChange}
-    tabindex="-1"
-  />
-</span>
+<form {method} {action} on:submit|preventDefault|stopPropagation={handleSubmit}>
+  <label
+    class="resp-upload {className}"
+    on:dragover={handleDragEnter}
+    on:dragenter={handleDragEnter}
+    on:dragleave={handleDragLeave}
+    on:drop={handleDragLeave}
+    on:drop={handleDrop}
+    {...$$restProps}
+  >
+    <input
+      bind:this={ref}
+      use:dragUpload
+      type="file"
+      {name}
+      bind:value
+      {multiple}
+      {accept}
+      on:change
+      tabindex="-1"
+    />
+    <slot {uploading} {dragover} file="" />
+  </label>
+</form>
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-upload {
     cursor: pointer;
     display: inline-flex;

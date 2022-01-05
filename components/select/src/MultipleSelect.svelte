@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { zoom } from "@wetix/animation";
-  import { getNodeAttribute } from "@wetix/utils";
+  // import { zoom } from "@wetix/animation";
   import { onMount, createEventDispatcher } from "svelte";
 
   import type { SelectOption } from "../types";
@@ -9,10 +8,11 @@
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLDivElement = null;
+  export let ref: HTMLDivElement;
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
+  export let sizeOf = "md";
   export let value: string[] = [];
   export let disabled = false;
   export let readonly = false;
@@ -27,13 +27,13 @@
       dict.set(opt.value, opt);
     });
   }
-  let input: null | HTMLInputElement;
-  let show = false;
+  let input: HTMLInputElement;
+  let focused = false;
   let clientHeight = 0;
 
   onMount(() => {
     const onHide = (e: Event) => {
-      if (!ref!.contains(e.target as Node)) show = false;
+      if (!ref!.contains(e.target as Node)) focused = false;
     };
     window.addEventListener("click", onHide);
 
@@ -42,45 +42,60 @@
     };
   });
 
-  const onSelect = (e: Event) => {
-    const data = getNodeAttribute(e, "data-option");
-    if (data) {
-      const [_, item] = <[number, Item]>JSON.parse(data);
-      const pos = value.findIndex((v) => v === item.value);
-      if (pos > -1) {
-        value.splice(pos, 1);
-      } else {
-        value.push(item.value);
-      }
-      value = [...value];
-      input!.focus();
-      dispatch("change", value);
-    }
+  const findNodeByAttr = (e: Event, attr: string) => {
+    const target = e
+      .composedPath()
+      .find(
+        (el) =>
+          el instanceof Element && el.classList.contains("resp-select__option")
+      );
+    if (!target) return null;
+    const option = (target as Element).getAttribute(attr);
+    if (!option) return null;
+    return option;
   };
 
-  const onRemove = (e: Event) => {
-    const val = getNodeAttribute(e, "data-value");
-    if (val) {
-      e.stopPropagation();
-      value = value.filter((v) => v !== val);
-      dispatch("change", value);
+  const handleSelect = (e: Event) => {
+    const option = findNodeByAttr(e, "data-option");
+    if (!option) return;
+    const [_, item] = <[number, Item]>JSON.parse(option);
+    const newValue = value.slice(0);
+    const pos = newValue.findIndex((v) => v === item.value);
+    if (pos > -1) {
+      newValue.splice(pos, 1);
+    } else {
+      newValue.push(item.value);
     }
+    value = [...newValue];
+    console.log(newValue);
+    input.focus();
+  };
+
+  const handleRemove = (e: Event) => {
+    // const val = getNodeAttribute(e, "data-value");
+    // if (val) {
+    //   e.stopPropagation();
+    //   value = value.filter((v) => v !== val);
+    //   dispatch("change", value);
+    // }
   };
 </script>
 
-<div class="responsive-ui-select--multiple {className}" bind:this={ref}>
-  <div class="responsive-ui-select-input" on:click={() => (show = true)}>
+<div
+  class="resp-select--multiple resp-select--{sizeOf} {className}"
+  bind:this={ref}
+>
+  <div
+    class="resp-select__input"
+    class:resp-select__input--focused={focused}
+    on:click={() => (focused = true)}
+  >
     <input {name} type="hidden" value={value.join(",")} />
-    <span class="responsive-ui-select__tags" on:click={onRemove}>
+    <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
-        <span
-          class="responsive-ui-select__tag"
-          data-value={item}
-          in:zoom
-          out:zoom
-        >
+        <span class="resp-select__tag" data-value={item}>
           <span>{dict.get(item).label}</span>
-          <i class="responsive-ui-select__close" />
+          <i class="resp-select__close" />
         </span>
       {/each}
       <input
@@ -94,29 +109,29 @@
     </span>
   </div>
   <div
-    class="responsive-ui-select__dropdown"
-    on:click={onSelect}
-    style={`height:${show ? clientHeight : 0}px;max-height:${maxHeight}px;`}
+    class="resp-select__dropdown"
+    on:click={handleSelect}
+    style={`height: ${
+      focused ? clientHeight : 0
+    }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
-      {#each options as item, i}
+      {#each options as option, i}
         <div
-          class="responsive-ui-select__option"
-          class:responsive-ui-select__option--disabled={item.disabled}
-          class:responsive-ui-select__option--selected={value.includes(
-            item.value
-          )}
-          data-option={JSON.stringify([i, item])}
+          class="resp-select__option"
+          class:resp-select__option--disabled={option.disabled}
+          class:resp-select__option--selected={value.includes(option.value)}
+          data-option={JSON.stringify([i, option])}
         >
-          {item.label || ""}
+          {option.label || ""}
         </div>
       {/each}
     </div>
   </div>
 </div>
 
-<style lang="scss">
-  .responsive-ui-select {
+<style lang="scss" global>
+  .resp-select {
     &--multiple {
       position: relative;
 
@@ -133,16 +148,21 @@
       }
     }
 
-    &-input {
+    &__input {
       display: flex;
       width: 100%;
-      border: 1px solid rgba(241, 241, 241, 0.9);
-      border-radius: var(--border-radius, 5px);
+      border: 1px solid var(--input-border-color, #dcdcdc);
+      border-radius: 3px;
       min-height: var(--height, 34px);
       color: #1a1b1c;
-      background: #f1f1f1;
+      // background: #f1f1f1;
       outline: none;
       box-sizing: border-box;
+
+      &--focused {
+        border-color: #fc4451;
+        box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
+      }
     }
 
     &__tags {

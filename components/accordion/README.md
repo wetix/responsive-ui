@@ -1,7 +1,7 @@
 
 # @responsive-ui/accordion
 
-> A accordion component of responsive-ui.
+> An accordion component of responsive-ui.
 
 <p>
 

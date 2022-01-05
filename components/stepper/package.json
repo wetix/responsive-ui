@@ -1,10 +1,11 @@
 {
   "name": "@responsive-ui/stepper",
-  "version": "1.1.1-alpha.2",
+  "version": "1.0.9-alpha.6",
   "description": "A stepper component of responsive-ui.",
   "author": "Oyster Lee <oysterd3@gmail.com> (https://github.com/OysterD3)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/stepper#README.md",
   "license": "MIT",
+  "type": "module",
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",
