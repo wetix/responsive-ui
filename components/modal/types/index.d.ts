@@ -13,8 +13,8 @@ export interface ModalProps {
 }
 
 export interface ModalEvents {
-  cancel?: WindowEventMap["click"];
-  ok?: WindowEventMap["click"];
+  cancel?: CustomEvent<{}>;
+  ok?: CustomEvent<{}>;
 }
 
 export interface ModalSlots {
