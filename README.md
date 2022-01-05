@@ -50,6 +50,7 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion)
 - [@responsive-ui/action-sheet](https://github.com/wetix/responsive-ui/tree/main/components/action-sheet)
 - [@responsive-ui/app-bar](https://github.com/wetix/responsive-ui/tree/main/components/app-bar)
+- [@responsive-ui/badge](https://github.com/wetix/responsive-ui/tree/main/components/badge)
 - [@responsive-ui/bottom-bar](https://github.com/wetix/responsive-ui/tree/main/components/bottom-bar)
 - [@responsive-ui/bottom-sheet](https://github.com/wetix/responsive-ui/tree/main/components/bottom-modal)
 - [@responsive-ui/button](https://github.com/wetix/responsive-ui/tree/main/components/button)
@@ -65,8 +66,9 @@ You should choose whichever file format suitable for your use case.
 - [@responsive-ui/hscroll](https://github.com/wetix/responsive-ui/tree/main/components/hscroll)
 - [@responsive-ui/icon](https://github.com/wetix/responsive-ui/tree/main/components/icon)
 - [@responsive-ui/input](https://github.com/wetix/responsive-ui/tree/main/components/input)
-<!-- - [@responsive-ui/input-number](https://github.com/wetix/responsive-ui/tree/main/components/input-number) -->
+- [@responsive-ui/input-number](https://github.com/wetix/responsive-ui/tree/main/components/input-number)
 - [@responsive-ui/label](https://github.com/wetix/responsive-ui/tree/main/components/label)
+- [@responsive-ui/loader](https://github.com/wetix/responsive-ui/tree/main/components/loader)
 - [@responsive-ui/modal](https://github.com/wetix/responsive-ui/tree/main/components/modal)
 - [@responsive-ui/poster](https://github.com/wetix/responsive-ui/tree/main/components/poster)
 - [@responsive-ui/quantity](https://github.com/wetix/responsive-ui/tree/main/components/quantity)

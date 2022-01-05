@@ -28,13 +28,13 @@ export interface UploadSlots {
   };
 }
 
-declare class Upload extends SvelteComponentTyped<
+export declare class UploadComponent extends SvelteComponentTyped<
   UploadProps,
   UploadEvents,
   UploadSlots
 > {}
 
-export default Upload;
+export default UploadComponent;
 
 // export let onSuccess = (_: XMLHttpRequest) => {};
 // export let onProgress = (_: ProgressEvent<XMLHttpRequestEventTarget>) => {};

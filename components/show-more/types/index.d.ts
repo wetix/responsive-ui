@@ -15,10 +15,10 @@ export interface ShowMoreSlots {
   trigger: {};
 }
 
-declare class ShowMore extends SvelteComponentTyped<
+export declare class ShowMoreComponent extends SvelteComponentTyped<
   ShowMoreProps,
   ShowMoreEvents,
   ShowMoreSlots
 > {}
 
-export default ShowMore;
+export default ShowMoreComponent;

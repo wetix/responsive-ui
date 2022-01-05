@@ -14,6 +14,12 @@ export interface SwitchEvents {
   change?: WindowEventMap["change"];
 }
 
-declare class Switch extends SvelteComponentTyped<SwitchProps, SwitchEvents> {}
+export interface SwitchSlots {}
 
-export default Switch;
+export declare class SwitchComponent extends SvelteComponentTyped<
+  SwitchProps,
+  SwitchEvents,
+  SwitchSlots
+> {}
+
+export default SwitchComponent;

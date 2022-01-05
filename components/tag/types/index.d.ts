@@ -28,6 +28,10 @@ export interface TagSlots {
   default: {};
 }
 
-declare class Tag extends SvelteComponentTyped<TagProps, TagEvents, TagSlots> {}
+export declare class TagComponent extends SvelteComponentTyped<
+  TagProps,
+  TagEvents,
+  TagSlots
+> {}
 
-export default Tag;
+export default TagComponent;

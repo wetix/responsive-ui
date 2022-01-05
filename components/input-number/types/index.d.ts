@@ -31,10 +31,10 @@ export interface InputNumberSlots {
   suffix: {};
 }
 
-declare class InputNumber extends SvelteComponentTyped<
+export declare class InputNumberComponent extends SvelteComponentTyped<
   InputNumberProps,
   InputNumberEvents,
   InputNumberSlots
 > {}
 
-export default InputNumber;
+export default InputNumberComponent;

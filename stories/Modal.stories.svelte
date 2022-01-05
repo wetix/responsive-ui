@@ -55,6 +55,7 @@
 />
 
 <Template id="docBodyOverflow" let:args>
+  <div id="appBar">Position fixed</div>
   <div>
     {#each new Array(10) as _}
       <p>
@@ -114,3 +115,16 @@
 />
 
 <Story template="modalBodyOverflow" name="Content Overflow without Title" />
+
+<style>
+  #appBar {
+    position: fixed;
+    background: #000;
+    color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 10;
+  }
+</style>

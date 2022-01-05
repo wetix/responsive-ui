@@ -23,10 +23,10 @@ export interface ModalSlots {
   footer: {};
 }
 
-declare class Modal extends SvelteComponentTyped<
+export declare class ModalComponent extends SvelteComponentTyped<
   ModalProps,
   ModalEvents,
   ModalSlots
 > {}
 
-export default Modal;
+export default ModalComponent;

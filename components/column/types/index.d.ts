@@ -26,10 +26,10 @@ export interface ColumnSlots {
   default: {};
 }
 
-declare class Column extends SvelteComponentTyped<
+export declare class ColumnComponent extends SvelteComponentTyped<
   ColumnProps,
   ColumnEvents,
   ColumnSlots
 > {}
 
-export default Column;
+export default ColumnComponent;

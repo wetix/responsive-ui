@@ -15,10 +15,10 @@ export interface BadgeSlots {
   default: {};
 }
 
-declare class Badge extends SvelteComponentTyped<
+export declare class BadgeComponent extends SvelteComponentTyped<
   BadgeProps,
   BadgeEvents,
   BadgeSlots
 > {}
 
-export default Badge;
+export default BadgeComponent;

@@ -7,7 +7,7 @@ export type SelectOption = {
   value: string;
 };
 
-interface SelectProps {
+export interface SelectProps {
   id?: string;
   ref?: null | HTMLSelectElement;
   name?: string;
@@ -26,6 +26,9 @@ export interface SelectEvents {
   blur?: WindowEventMap["blur"];
 }
 
-declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}
+export declare class SelectComponent extends SvelteComponentTyped<
+  SelectProps,
+  SelectEvents
+> {}
 
-export default Select;
+export default SelectComponent;

@@ -1,9 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import ActionSheet from "@responsive-ui/action-sheet";
-
-  let component;
-  $: console.log(component);
 </script>
 
 <Meta
@@ -21,7 +18,6 @@
 <Template let:args>
   <ActionSheet
     {...args}
-    bind:this={component}
     on:tabchange={args.onTabChange}
     on:valuechange={args.onValueChange}
     on:reset={args.onReset}

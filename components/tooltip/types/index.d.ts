@@ -10,19 +10,19 @@ export interface TooltipProps {
   style?: string;
 }
 
-interface TooltipEvents {}
+export interface TooltipEvents {}
 
-interface TooltipSlots {
+export interface TooltipSlots {
   default: {};
   tooltip: {
     title: string;
   };
 }
 
-declare class Tooltip extends SvelteComponentTyped<
+export declare class TooltipComponent extends SvelteComponentTyped<
   TooltipProps,
   TooltipEvents,
   TooltipSlots
 > {}
 
-export default Tooltip;
+export default TooltipComponent;

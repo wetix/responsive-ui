@@ -26,11 +26,20 @@
       return item;
     });
   };
+  export const getKeyValues = () => {
+    return items.map(({ key, options = [] }) => ({
+      key,
+      values: options
+        .filter((v) => v.selected === true)
+        .map(({ value }) => value),
+    }));
+  };
 
   let tab: HTMLUListElement;
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
 
   $: selectedIndex = items.findIndex((v) => v.key === activeKey);
+  $: options = items[selectedIndex < 0 ? 0 : selectedIndex].options || [];
 
   const findElement = (e: Event) => {
     return e
@@ -56,7 +65,8 @@
     if (!el) return;
     const item = JSON.parse(el.dataset.json as string) as ActionSheetOption;
     const { value } = item;
-    const { options = [] } = items[selectedIndex];
+    const { options = [] } = items[selectedIndex] || {};
+    if (options.length < 1) return;
     const idx = options.findIndex((v) => v.value === value);
     if (idx < 0) return;
     options[idx].selected = el.checked;
@@ -73,7 +83,7 @@
   const handleOk = () => {
     dispatch("ok", {
       activeKey,
-      values: [],
+      keyValues: getKeyValues(),
     });
   };
 </script>
@@ -111,7 +121,7 @@
               type="radio"
               checked={item.selected || false}
             />
-            {item.label}
+            <slot name="tab-item">{item.label}</slot>
           </label>
         </li>
       {/each}
@@ -122,7 +132,7 @@
     style="height: {modalHeight - 180}px"
     on:change={handleSelectOption}
   >
-    {#each items[selectedIndex < 0 ? 0 : selectedIndex].options || [] as { label, value, disabled = false, selected = false, ...otherProps }}
+    {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${activeKey}.${value}`)}
       <li class="resp-action-sheet__option">
         <label>
           <input
@@ -138,13 +148,26 @@
             {value}
             checked={selected}
           />
-          <div class="resp-action-sheet__option-label">{label}</div>
+          <div class="resp-action-sheet__option-label">
+            <slot
+              name="option"
+              option={{
+                ...otherProps,
+                label,
+                value,
+                selected,
+                disabled,
+              }}>{label}</slot
+            >
+          </div>
         </label>
       </li>
     {/each}
   </ul>
   <footer class="resp-action-sheet__footer">
-    <Button variant="primary" {disabled} on:click={handleOk}>FILTER</Button>
+    <slot name="footer">
+      <Button variant="primary" {disabled} on:click={handleOk}>FILTER</Button>
+    </slot>
   </footer>
 </BottomSheet>
 
@@ -226,7 +249,6 @@
       display: flex;
       position: relative;
       align-items: center;
-      text-transform: capitalize;
       color: var(--text-color-black, #505050);
 
       &:last-child {

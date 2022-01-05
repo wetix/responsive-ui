@@ -17,10 +17,10 @@ export interface SnackbarSlots {
   default: {};
 }
 
-declare class Snackbar extends SvelteComponentTyped<
+export declare class SnackbarComponent extends SvelteComponentTyped<
   SnackbarProps,
   SnackbarEvents,
   SnackbarSlots
 > {}
 
-export default Snackbar;
+export default SnackbarComponent;

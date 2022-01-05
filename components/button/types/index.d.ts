@@ -80,13 +80,13 @@ export interface ButtonSlots {
  *  import Button from '@responsive-ui/button';
  * </script>
  *
- * <Button>CLICK ME</Button>
+ * <Button on:click={console.log}>CLICK ME</Button>
  * ```
  */
-declare class Button extends SvelteComponentTyped<
+export declare class ButtonComponent extends SvelteComponentTyped<
   ButtonProps,
   ButtonEvents,
   ButtonSlots
 > {}
 
-export default Button;
+export default ButtonComponent;

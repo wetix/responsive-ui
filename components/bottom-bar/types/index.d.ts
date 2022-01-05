@@ -7,6 +7,16 @@ export interface BottomBarProps {
   style?: string;
 }
 
-declare class BottomBar extends SvelteComponentTyped<BottomBarProps> {}
+export interface BottomBarEvents {}
 
-export default BottomBar;
+export interface BottomBarSlots {
+  default: {};
+}
+
+export declare class BottomBarComponent extends SvelteComponentTyped<
+  BottomBarProps,
+  BottomBarEvents,
+  BottomBarSlots
+> {}
+
+export default BottomBarComponent;

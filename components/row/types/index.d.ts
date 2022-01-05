@@ -30,6 +30,10 @@ export interface RowSlots {
   default: {};
 }
 
-declare class Row extends SvelteComponentTyped<RowProps, RowEvents, RowSlots> {}
+export declare class RowComponent extends SvelteComponentTyped<
+  RowProps,
+  RowEvents,
+  RowSlots
+> {}
 
-export default Row;
+export default RowComponent;

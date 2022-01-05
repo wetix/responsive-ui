@@ -28,10 +28,10 @@ export interface DatePickerEvents {
 
 export interface DatePickerSlots {}
 
-declare class DatePicker extends SvelteComponentTyped<
+export declare class DatePickerComponent extends SvelteComponentTyped<
   DatePickerProps,
   DatePickerEvents,
   DatePickerSlots
 > {}
 
-export default DatePicker;
+export default DatePickerComponent;

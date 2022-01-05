@@ -1,6 +1,6 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface ScrollProps {
+export interface HScrollProps {
   id?: string;
   title?: string;
   class?: string;
@@ -8,18 +8,18 @@ export interface ScrollProps {
   style?: string;
 }
 
-export interface ScrollEvents {
+export interface HScrollEvents {
   scroll?: WindowEventMap["scroll"];
 }
 
-export interface ScrollSlots {
+export interface HScrollSlots {
   default: {};
 }
 
-declare class Scroll extends SvelteComponentTyped<
-  ScrollProps,
-  ScrollEvents,
-  ScrollSlots
+export declare class HScrollComponent extends SvelteComponentTyped<
+  HScrollProps,
+  HScrollEvents,
+  HScrollSlots
 > {}
 
-export default Scroll;
+export default HScrollComponent;

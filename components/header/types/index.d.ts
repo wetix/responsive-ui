@@ -14,10 +14,10 @@ export interface HeaderSlots {
   default: {};
 }
 
-declare class Header extends SvelteComponentTyped<
+export declare class HeaderComponent extends SvelteComponentTyped<
   HeaderProps,
   HeaderEvents,
   HeaderSlots
 > {}
 
-export default Header;
+export default HeaderComponent;

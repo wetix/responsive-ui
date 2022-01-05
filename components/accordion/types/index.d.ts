@@ -21,10 +21,10 @@ export interface AccordionSlots {
   };
 }
 
-declare class Accordion extends SvelteComponentTyped<
+export declare class AccordionComponent extends SvelteComponentTyped<
   AccordionProps,
   AccordionEvents,
   AccordionSlots
 > {}
 
-export default Accordion;
+export default AccordionComponent;

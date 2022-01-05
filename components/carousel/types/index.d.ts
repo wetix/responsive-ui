@@ -19,10 +19,10 @@ export interface CarouselSlots {
   slide: {};
 }
 
-declare class Carousel extends SvelteComponentTyped<
+declare class CarouselComponent extends SvelteComponentTyped<
   CarouselProps,
   CarouselEvents,
   CarouselSlots
 > {}
 
-export default Carousel;
+export default CarouselComponent;

@@ -98,7 +98,7 @@
     box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
     border-radius: var(--border-radius, 10px);
     overflow: hidden;
-    z-index: 999;
+    z-index: inherit;
 
     &__overlay,
     &__box {
@@ -113,13 +113,14 @@
 
     &__overlay {
       background: rgba(0, 0, 0, 0.65);
-      z-index: 900;
+      z-index: inherit;
     }
 
     &__box {
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 999;
     }
 
     &__header {

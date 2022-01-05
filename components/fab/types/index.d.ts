@@ -12,9 +12,12 @@ export interface FloatingActionButtonEvents {
   click?: WindowEventMap["click"];
 }
 
-declare class FloatingActionButton extends SvelteComponentTyped<
+export interface FloatingActionButtonSlots {}
+
+export declare class FloatingActionButtonComponent extends SvelteComponentTyped<
   FloatingActionButtonProps,
-  FloatingActionButtonEvents
+  FloatingActionButtonEvents,
+  FloatingActionButtonSlots
 > {}
 
-export default FloatingActionButton;
+export default FloatingActionButtonComponent;

@@ -19,10 +19,10 @@ export interface IconSlots {
   default: {};
 }
 
-declare class Icon extends SvelteComponentTyped<
+export declare class IconComponent extends SvelteComponentTyped<
   IconProps,
   IconEvents,
   IconSlots
 > {}
 
-export default Icon;
+export default IconComponent;

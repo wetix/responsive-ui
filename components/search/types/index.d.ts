@@ -25,10 +25,10 @@ export interface SearchSlots {
   };
 }
 
-declare class Search extends SvelteComponentTyped<
+export declare class SearchComponent extends SvelteComponentTyped<
   SearchProps,
   SearchEvents,
   SearchSlots
 > {}
 
-export default Search;
+export default SearchComponent;

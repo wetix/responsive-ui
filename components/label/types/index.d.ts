@@ -16,10 +16,10 @@ export interface LabelSlots {
   default: {};
 }
 
-declare class Label extends SvelteComponentTyped<
+export declare class LabelComponent extends SvelteComponentTyped<
   LabelProps,
   LabelEvents,
   LabelSlots
 > {}
 
-export default Label;
+export default LabelComponent;

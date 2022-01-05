@@ -29,10 +29,10 @@ export interface TextareaSlots {
   default: {};
 }
 
-declare class Textarea extends SvelteComponentTyped<
+export declare class TextareaComponent extends SvelteComponentTyped<
   TextareaProps,
   TextareaEvents,
   TextareaSlots
 > {}
 
-export default Textarea;
+export default TextareaComponent;

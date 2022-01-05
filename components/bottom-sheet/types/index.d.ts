@@ -20,10 +20,10 @@ export interface BottomSheetSlots {
   default: {};
 }
 
-declare class BottomSheet extends SvelteComponentTyped<
+export declare class BottomSheetComponent extends SvelteComponentTyped<
   BottomSheetProps,
   BottomSheetEvents,
   BottomSheetSlots
 > {}
 
-export default BottomSheet;
+export default BottomSheetComponent;

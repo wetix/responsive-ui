@@ -11,6 +11,7 @@
   export let value = 0;
   export let autofocus = false;
   export let disabled = false;
+  export let style = "";
 
   let slim = false;
   let focused = false;
@@ -54,7 +55,7 @@
   class:resp-quantity--focused={focused}
   class:resp-quantity--disabled={disabled}
   on:click|stopPropagation={() => (focused = true)}
-  {...$$restProps}
+  {style}
 >
   {#if slim}
     <i
@@ -79,6 +80,7 @@
     on:change
     on:input
     bind:value
+    {...$$restProps}
   />
   {#if slim}
     <i

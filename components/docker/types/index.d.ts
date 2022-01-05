@@ -18,10 +18,10 @@ export interface DockerSlots {
   default: {};
 }
 
-declare class Docker extends SvelteComponentTyped<
+export declare class DockerComponent extends SvelteComponentTyped<
   DockerProps,
   DockerEvents,
   DockerSlots
 > {}
 
-export default Docker;
+export default DockerComponent;

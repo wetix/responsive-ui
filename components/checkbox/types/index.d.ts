@@ -20,10 +20,10 @@ export interface CheckboxSlots {
   default: {};
 }
 
-declare class Checkbox extends SvelteComponentTyped<
+export declare class CheckboxComponent extends SvelteComponentTyped<
   CheckboxProps,
   CheckboxEvents,
   CheckboxSlots
 > {}
 
-export default Checkbox;
+export default CheckboxComponent;

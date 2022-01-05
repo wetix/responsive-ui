@@ -50,10 +50,10 @@ export interface TableSlots {
   loader: {};
 }
 
-declare class Table extends SvelteComponentTyped<
+export declare class TableComponent extends SvelteComponentTyped<
   TableProps,
   TableEvents,
   TableSlots
 > {}
 
-export default Table;
+export default TableComponent;

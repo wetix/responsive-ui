@@ -12,10 +12,10 @@ export interface RangeEvents {
 
 export interface RangeSlots {}
 
-declare class Range extends SvelteComponentTyped<
+export declare class RangeComponent extends SvelteComponentTyped<
   RangeProps,
   RangeEvents,
   RangeSlots
 > {}
 
-export default Range;
+export default RangeComponent;

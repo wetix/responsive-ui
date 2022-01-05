@@ -16,10 +16,10 @@ export interface EllipsisSlots {
   default: {};
 }
 
-declare class Ellipsis extends SvelteComponentTyped<
+export declare class EllipsisComponent extends SvelteComponentTyped<
   EllipsisProps,
   EllipsisEvents,
   EllipsisSlots
 > {}
 
-export default Ellipsis;
+export default EllipsisComponent;

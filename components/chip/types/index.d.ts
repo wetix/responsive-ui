@@ -27,10 +27,10 @@ export interface ChipSlots {
   default: {};
 }
 
-declare class Chip extends SvelteComponentTyped<
+export declare class ChipComponent extends SvelteComponentTyped<
   ChipProps,
   ChipEvents,
   ChipSlots
 > {}
 
-export default Chip;
+export default ChipComponent;

@@ -45,10 +45,10 @@ export interface AppBarSlots {
   };
 }
 
-declare class AppBar extends SvelteComponentTyped<
+export declare class AppBarComponent extends SvelteComponentTyped<
   AppBarProps,
   AppBarEvents,
   AppBarSlots
 > {}
 
-export default AppBar;
+export default AppBarComponent;
