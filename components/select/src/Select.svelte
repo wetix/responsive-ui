@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Select from "./MultipleSelect.svelte";
+  // TODO: support multiple
+  // import Select from "./MultipleSelect.svelte";
   import type { SelectOption } from "../types";
 
   let className = "";
@@ -15,29 +16,29 @@
   if (!multiple) size = 1;
 </script>
 
-{#if multiple}
+<!-- {#if multiple}
   <Select {...$$props} {size} class={className} on:change on:blur />
-{:else}
-  <select
-    class="resp-select {className}"
-    bind:this={ref}
-    {size}
-    on:change
-    on:blur
-    bind:value
-    {...$$restProps}
-  >
-    {#if placeholder}
-      <option readonly hidden selected>{placeholder}</option>
-    {/if}
-    {#each options as option}
-      <option value={option.value} disabled={option.disabled}
-        >{option.label}</option
-      >
-    {/each}
-  </select>
-{/if}
+{:else} -->
+<select
+  class="resp-select {className}"
+  bind:this={ref}
+  {size}
+  on:change
+  on:blur
+  bind:value
+  {...$$restProps}
+>
+  {#if placeholder}
+    <option readonly hidden selected>{placeholder}</option>
+  {/if}
+  {#each options as option}
+    <option value={option.value} disabled={option.disabled}
+      >{option.label}</option
+    >
+  {/each}
+</select>
 
+<!-- {/if} -->
 <style lang="scss" global>
   $sm: 576px;
 

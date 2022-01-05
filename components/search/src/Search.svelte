@@ -27,7 +27,6 @@
 
   const handleKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
-    const key = e.keyCode || e.which;
     if (e.ctrlKey || e.metaKey) {
       return;
     }
@@ -35,7 +34,7 @@
     loading = true;
     let timeout = debounceTimer;
     // when user click enter
-    if (key === 13) {
+    if (e.key === "Enter") {
       timeout = 0;
     }
     if (timer) {

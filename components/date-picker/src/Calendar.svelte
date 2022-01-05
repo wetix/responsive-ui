@@ -95,7 +95,7 @@
       <thead>
         <tr>
           {#each weekdays as v}
-            <td>{v.substr(0, 2)}</td>
+            <td>{v.substring(0, 2)}</td>
           {/each}
         </tr>
       </thead>

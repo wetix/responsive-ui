@@ -44,6 +44,10 @@ jobs:
         run: |
           npm install
 
+      - name: Run svelte-check
+        run: |
+          npm run validate
+
       - name: Run jest
         run: |
           npm run test
