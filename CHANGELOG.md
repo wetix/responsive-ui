@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.6...v1.0.9-alpha.7) (2022-01-05)
+
+
+### Bug Fixes
+
+* missing `style` property ([4aeff46](https://github.com/wetix/responsive-ui/commit/4aeff46f7abe5c29a05575cd910ed78332536625))
+* responsive ui package ([df1859a](https://github.com/wetix/responsive-ui/commit/df1859a0f92149cc983ea0d595429c5556159432))
+* svelte-check error and types ([bf31506](https://github.com/wetix/responsive-ui/commit/bf31506b93394dabc929fbf1da34212b713ff9f7))
+* typing and `ActionSheet` bug ([e161492](https://github.com/wetix/responsive-ui/commit/e1614926cc52024ae86f8ead469fd7faf0d0a150))
+
+
+
+## [1.1.1-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.1...v1.1.1-alpha.2) (2021-11-02)
+
+
+
+## [1.1.1-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.0...v1.1.1-alpha.1) (2021-11-02)
+
+
+
+## [1.1.1-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.0...v1.1.1-alpha.0) (2021-10-29)
+
+
+
+# [1.1.0-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.0...v1.1.0-alpha.0) (2021-10-29)
+
+
+
+
+
 ## [1.0.9-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.5...v1.0.9-alpha.6) (2022-01-03)
 
 ### Bug Fixes

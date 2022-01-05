@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.6...v1.0.9-alpha.7) (2022-01-05)
+
+
+### Bug Fixes
+
+* typing and `ActionSheet` bug ([e161492](https://github.com/wetix/responsive-ui/commit/e1614926cc52024ae86f8ead469fd7faf0d0a150))
+
+
+
+
+
 ## [1.0.9-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.5...v1.0.9-alpha.6) (2022-01-03)
 
 **Note:** Version bump only for package @responsive-ui/button

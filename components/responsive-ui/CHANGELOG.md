@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.6...v1.0.9-alpha.7) (2022-01-05)
+
+
+### Bug Fixes
+
+* responsive ui package ([df1859a](https://github.com/wetix/responsive-ui/commit/df1859a0f92149cc983ea0d595429c5556159432))
+
+
+
+
+
 ## [1.0.9-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.5...v1.0.9-alpha.6) (2022-01-03)
 
 **Note:** Version bump only for package responsive-ui
