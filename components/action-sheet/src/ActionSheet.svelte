@@ -27,6 +27,7 @@
     });
   };
 
+  let tab: HTMLUListElement;
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
 
   $: selectedIndex = items.findIndex((v) => v.key === activeKey);
@@ -44,15 +45,10 @@
     const { key } = item;
     const idx = items.findIndex((v) => v.key === key);
     if (idx < 0) return;
-    // if (el.checked) {
-    //   items[idx].selected = false;
-    // } else {
-    //   items[idx].selected = true;
-    // }
-    // items = [...items];
+    const { x } = (el.parentNode as HTMLLabelElement).getBoundingClientRect();
+    tab && tab.scrollTo(x - 15, 0);
     activeKey = key;
-    console.log(activeKey, item);
-    dispatch("tabchange", { item });
+    dispatch("tabchange", { activeKey, item });
   };
 
   const handleSelectOption = (e: Event) => {
@@ -66,7 +62,7 @@
     options[idx].selected = el.checked;
     items[selectedIndex].options = options;
     items = [...items];
-    dispatch("valuechange", { option: options[idx] });
+    dispatch("valuechange", { activeKey, option: options[idx] });
   };
 
   const handleReset = () => {
@@ -94,7 +90,11 @@
       <caption>{caption}</caption>
       <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
-    <ul class="resp-action-sheet__tab" on:change={handleTabChange}>
+    <ul
+      class="resp-action-sheet__tab"
+      bind:this={tab}
+      on:change={handleTabChange}
+    >
       {#each items as item, idx (item.key)}
         <li>
           <label
@@ -183,6 +183,7 @@
       padding: 0.5rem 0;
       margin: 0;
       overflow-x: auto;
+      scroll-behavior: smooth;
       transition: all 0.5s;
 
       &::-webkit-scrollbar {

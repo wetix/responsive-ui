@@ -12,7 +12,6 @@ export interface ActionSheetItem extends Record<string, any> {
   key: string;
   label: string;
   options: ActionSheetOption[];
-  selected?: boolean;
 }
 
 export interface ActionSheetProps {
@@ -26,14 +25,28 @@ export interface ActionSheetProps {
   closable?: boolean;
 }
 
+export type ActionSheetTabChangeEvent = {
+  activeKey: string;
+  item: Omit<ActionSheetItem, "options">;
+};
+
+export type ActionSheetValueChangeEvent = {
+  activeKey: string;
+  option: ActionSheetActionSheetOption;
+};
+
+export type ActionSheetResetEvent = {};
+
+export type ActionSheetOkEvent = {
+  activeKey: string;
+  values: string[];
+};
+
 export interface ActionSheetEvents {
-  ok?: CustomEvent<{ values: string[] }>;
-  reset?: CustomEvent<{}>;
-  valuechange?: CustomEvent<{ option: ActionSheetOption }>;
-  tabchange?: CustomEvent<{
-    key: string;
-    item: Omit<ActionSheetItem, "options">;
-  }>;
+  tabchange?: CustomEvent<ActionSheetTabChangeEvent>;
+  valuechange?: CustomEvent<ActionSheetValueChangeEvent>;
+  reset?: CustomEvent<ActionSheetResetEvent>;
+  ok?: CustomEvent<ActionSheetOkEvent>;
 }
 
 export interface ActionSheetSlots {}

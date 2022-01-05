@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import type { DateChangeEvent } from "../types";
+  import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
 
@@ -8,7 +8,8 @@
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
-  const dispatch = createEventDispatcher<{ datechange: DateChangeEvent }>();
+  const dispatch =
+    createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
 
   let className = "";
   export { className as class };

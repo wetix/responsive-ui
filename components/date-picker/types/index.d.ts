@@ -1,7 +1,5 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type DateChangeEvent = { date: null | Date; dateString: string };
-
 export interface DatePickerProps {
   class?: string;
   open?: boolean;
@@ -15,6 +13,11 @@ export interface DatePickerProps {
   format?: (v: Date) => string;
   disabledDate?: (v: Date) => boolean;
 }
+
+export type DatePickerDateChangeEvent = {
+  date: null | Date;
+  dateString: string;
+};
 
 export interface DatePickerEvents {
   focus?: WindowEventMap["focus"];
