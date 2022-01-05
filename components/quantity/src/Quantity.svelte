@@ -109,6 +109,7 @@
     }
 
     &__control {
+      cursor: pointer;
       display: inline-flex;
 
       &--limit svg {
