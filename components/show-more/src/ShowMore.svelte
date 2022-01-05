@@ -4,7 +4,6 @@
   let className = "";
   export { className as class };
   export let threshold = 100;
-  export let style = "";
 
   let updatedHeight: number | string = "auto";
   let height = 0;

@@ -5,6 +5,7 @@ export interface CheckboxProps {
   ref?: HTMLInputElement;
   class?: string;
   name?: string;
+  class?: string;
   value?: string;
   disabled?: boolean;
   checked?: boolean;

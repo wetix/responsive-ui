@@ -7,40 +7,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          # pulls all commits (needed for lerna / semantic release to correctly version)
-          fetch-depth: "0"
-      # Setup .npmrc file to publish to npm
+      #       - name: Checkout
+      #         uses: actions/checkout@v2
+      #         with:
+      #           # pulls all commits (needed for lerna / semantic release to correctly version)
+      #           fetch-depth: "0"
+      #       # Setup .npmrc file to publish to npm
 
-      - name: Setup Nodejs 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16.x"
-          registry-url: "https://registry.npmjs.org"
+      #       - name: Setup Nodejs 16
+      #         uses: actions/setup-node@v2
+      #         with:
+      #           node-version: "16.x"
+      #           registry-url: "https://registry.npmjs.org"
 
-      - name: Restore lerna
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      #       - name: Restore lerna
+      #         id: cache-modules
+      #         uses: actions/cache@v2
+      #         with:
+      #           path: |
+      #             node_modules
+      #             */*/node_modules
+      #           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Yarn Install
-        if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: |
-          yarn install
+      #       - name: Yarn Install
+      #         if: steps.cache-modules.outputs.cache-hit != 'true'
+      #         run: |
+      #           yarn install
 
-      - name: Git Identity
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       - name: Git Identity
+      #         run: |
+      #           git config --global user.name 'github-actions[bot]'
+      #           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      #           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+      #         env:
+      #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set Current Version
         run: |
@@ -62,30 +62,30 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Create Git Tag
-      #   if: steps.tag_check.outputs.exists_tag == 'false'
-      #   uses: pkgdeps/git-tag-action@v2
-      #   with:
-      #     version: ${{ env.CURRENT_VERSION }}
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     github_repo: ${{ github.repository }}
-      #     git_commit_sha: ${{ github.sha }}
-      #     git_tag_prefix: "v"
+      #       # - name: Create Git Tag
+      #       #   if: steps.tag_check.outputs.exists_tag == 'false'
+      #       #   uses: pkgdeps/git-tag-action@v2
+      #       #   with:
+      #       #     version: ${{ env.CURRENT_VERSION }}
+      #       #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #       #     github_repo: ${{ github.repository }}
+      #       #     git_commit_sha: ${{ github.sha }}
+      #       #     git_tag_prefix: "v"
 
-      # - name: Create Release
-      #   id: create_release
-      #   if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: v${{ env.CURRENT_VERSION }}
-      #     # Copy Pull Request's tile and body to Release Note
-      #     release_name: ${{ github.event.pull_request.title }}
-      #     body: |
-      #       ${{ github.event.pull_request.body }}
-      #     draft: false
-      #     prerelease: false
+      #       # - name: Create Release
+      #       #   id: create_release
+      #       #   if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
+      #       #   uses: actions/create-release@v1
+      #       #   env:
+      #       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       #   with:
+      #       #     tag_name: v${{ env.CURRENT_VERSION }}
+      #       #     # Copy Pull Request's tile and body to Release Note
+      #       #     release_name: ${{ github.event.pull_request.title }}
+      #       #     body: |
+      #       #       ${{ github.event.pull_request.body }}
+      #       #     draft: false
+      #       #     prerelease: false
 
       - name: Build and Publish
         # if: steps.tag_check.outputs.exists_tag == 'false'

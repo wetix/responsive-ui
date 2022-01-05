@@ -1,3 +1,4 @@
+<!-- <svelte:options accessors /> -->
 <script lang="ts">
   import { onMount, createEventDispatcher } from "svelte";
 

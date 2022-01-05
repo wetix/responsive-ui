@@ -3,6 +3,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "baseUrl": "./",
     "noEmit": true,
     "types": ["svelte", "node", "jest"]
   },

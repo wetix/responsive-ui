@@ -3,26 +3,30 @@
   export { className as class };
   export let src = "";
   export let alt = "";
-  export let size = "portrait";
+  export let type = "portrait";
   export let responsive = true;
   export let shadowed = true;
   export let rounded = true;
-  export let style = "";
 
-  let opacity = 1;
-  const img = new Image();
-  img.onload = () => {
-    opacity = 0;
-  };
-  img.src = src;
+  let opacity = 0;
+
+  if (Image) {
+    opacity = 1;
+    const img = new Image();
+    img.onload = () => {
+      opacity = 0;
+    };
+    img.src = src;
+  }
 </script>
 
 <div
-  class="resp-poster resp-poster--{size} {className}"
+  {...$$restProps}
+  class="resp-poster resp-poster--{type} {className}"
   class:resp-poster--responsive={responsive}
   class:resp-poster--shadowed={shadowed}
   class:resp-poster--rounded={rounded}
-  style={`background-image:url(${src});${style}`}
+  style={`background-image: url(${src})`}
   on:click
 >
   <!-- <picture>

@@ -38,7 +38,7 @@
   <div class="resp-docker__body"><slot /></div>
 </aside>
 
-<style lang="scss">
+<style lang="scss" global>
   $headerHeight: 50px;
 
   @mixin dockerStyle {
