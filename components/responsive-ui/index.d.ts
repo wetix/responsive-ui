@@ -1,7 +1,7 @@
 import Accordion from "@responsive-ui/accordion/types";
+import ActionSheet from "@responsive-ui/action-sheet/types";
 import BottomBar from "@responsive-ui/bottom-bar/types";
-import BottomModal from "@responsive-ui/bottom-sheet/types";
-import BottomSheet from "@responsive-ui/action-sheet/types";
+import BottomSheet from "@responsive-ui/bottom-sheet/types";
 import Button from "@responsive-ui/button/types";
 import Card from "@responsive-ui/card/types";
 import Column from "@responsive-ui/column/types";
@@ -14,7 +14,6 @@ import Icon from "@responsive-ui/icon/types";
 import Input from "@responsive-ui/input/types";
 import InputNumber from "@responsive-ui/input-number/types";
 import Label from "@responsive-ui/label/types";
-import Link from "@responsive-ui/link/types";
 import Loader from "@responsive-ui/loader/types";
 import Poster from "@responsive-ui/poster/types";
 import Responsive from "@responsive-ui/responsive/types";
@@ -34,8 +33,8 @@ import Upload from "@responsive-ui/upload/types";
 
 export {
   Accordion,
+  ActionSheet,
   BottomBar,
-  BottomModal,
   BottomSheet,
   Button,
   Card,
@@ -48,7 +47,6 @@ export {
   Input,
   InputNumber,
   Label,
-  Link,
   Loader,
   Poster,
   Responsive,
