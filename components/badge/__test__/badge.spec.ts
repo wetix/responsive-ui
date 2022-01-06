@@ -1,7 +1,7 @@
 import { render } from '@testing-library/svelte';
 import Badge from '../src/Badge.svelte';
 
-describe('badge component', () => {
+describe('Badge', () => {
   let props = {
     class: "badge-custom",
     count: 100,
