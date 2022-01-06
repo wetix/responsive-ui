@@ -24,7 +24,7 @@
     "dev": "vite",
     "start": "sirv public --port 3600",
     "validate": "svelte-check --workspace=components",
-    "storybook": "start-storybook -p 6006 -s ./public",
+    "storybook": "set NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "test": "jest components",
     "commit": "cz",
@@ -131,5 +131,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.1",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss-flexbugs-fixes": "^5.0.2"
   }
 }
