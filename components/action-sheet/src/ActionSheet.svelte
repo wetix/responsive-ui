@@ -29,9 +29,7 @@
   export const getKeyValues = () => {
     return items.map(({ key, options = [] }) => ({
       key,
-      values: options
-        .filter((v) => v.selected === true)
-        .map(({ value }) => value),
+      values: options.filter((v) => v.selected === true).map(({ value }) => value)
     }));
   };
 
@@ -83,7 +81,7 @@
   const handleOk = () => {
     dispatch("ok", {
       activeKey,
-      keyValues: getKeyValues(),
+      keyValues: getKeyValues()
     });
   };
 </script>
@@ -100,22 +98,17 @@
       <caption>{caption}</caption>
       <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
-    <ul
-      class="resp-action-sheet__tab"
-      bind:this={tab}
-      on:change={handleTabChange}
-    >
+    <ul class="resp-action-sheet__tab" bind:this={tab} on:change={handleTabChange}>
       {#each items as item, idx (item.key)}
         <li>
           <label
-            class:resp-action-sheet__tab-item--selected={(idx == 0 &&
-              activeKey == "") ||
+            class:resp-action-sheet__tab-item--selected={(idx == 0 && activeKey == "") ||
               activeKey === item.key}
           >
             <input
               data-json={JSON.stringify({
                 ...item,
-                options: undefined,
+                options: undefined
               })}
               name={tabName}
               type="radio"
@@ -142,7 +135,7 @@
               label,
               value,
               selected,
-              disabled,
+              disabled
             })}
             {disabled}
             {value}
@@ -156,7 +149,7 @@
                 label,
                 value,
                 selected,
-                disabled,
+                disabled
               }}>{label}</slot
             >
           </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let ref: null | HTMLTextAreaElement = null;
+  export let ref: HTMLTextAreaElement;
   export let cols = 80;
   export let rows = 4;
   export let maxlength = 100;
@@ -13,7 +13,7 @@
     value = (e.target as HTMLTextAreaElement).value;
     if (autoResize && ref) {
       ref.style.height = "auto";
-      ref.style.height = ref.scrollHeight + "px";
+      ref.style.height = `${ref.scrollHeight}px`;
     }
   };
 </script>

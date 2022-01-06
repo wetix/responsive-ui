@@ -8,8 +8,7 @@
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
-  const dispatch =
-    createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
+  const dispatch = createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
 
   let className = "";
   export { className as class };

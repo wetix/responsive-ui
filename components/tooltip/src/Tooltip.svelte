@@ -33,11 +33,7 @@
 
     const toggleTooltip = (toggle: boolean) => async (e: Event) => {
       const target = e.composedPath().find((el) => {
-        return (
-          el instanceof HTMLElement &&
-          ((el as HTMLElement).hasAttribute(titleAttr) ||
-            (el as HTMLElement).title)
-        );
+        return el instanceof HTMLElement && (el.hasAttribute(titleAttr) || el.title);
       }) as HTMLElement;
 
       if (!target) return;
@@ -95,7 +91,7 @@
             firstChild.removeEventListener(k, cb);
           });
         }
-      },
+      }
     };
   };
 

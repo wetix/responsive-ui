@@ -8,10 +8,7 @@
   }
 
   const slideY = (_: HTMLElement, opt: SlideYParams) => {
-    opt = Object.assign(
-      { duration: 150, direction: "up", easing: linear },
-      opt
-    );
+    opt = Object.assign({ duration: 150, direction: "up", easing: linear }, opt);
     const { duration, direction } = opt;
     return {
       duration,
@@ -19,7 +16,7 @@
         let ratio = 100 - t * 100;
         if (direction === "up") ratio *= -1;
         return `transform: translateY(${ratio}%);`;
-      },
+      }
     };
   };
 </script>

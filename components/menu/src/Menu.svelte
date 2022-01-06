@@ -25,9 +25,7 @@
     const currentpath = <number>lvl.shift();
     if (lvl.length < 1 && obj[currentpath]) {
       obj[currentpath].collapsed =
-        obj[currentpath].collapsed === undefined
-          ? false
-          : !obj[currentpath].collapsed;
+        obj[currentpath].collapsed === undefined ? false : !obj[currentpath].collapsed;
       return;
     }
 
@@ -43,10 +41,10 @@
     return JSON.stringify({
       item: {
         ...item,
-        submenus: undefined,
+        submenus: undefined
       },
       path: [...path, index],
-      hasSubmenu: submenus.length > 0,
+      hasSubmenu: submenus.length > 0
     });
   };
 

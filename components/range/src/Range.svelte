@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let min: string = "1";
-  export let max: string = "100";
+  export let min = "1";
+  export let max = "100";
   export let lowerVal: string = min;
   export let upperVal: string = max;
 
@@ -32,12 +32,9 @@
 
   const updateInkBar = () => {
     let pxPerSlide =
-      lowerSlider.getBoundingClientRect().width /
-      (parseInt(max) - parseInt(min));
+      lowerSlider.getBoundingClientRect().width / (parseInt(max) - parseInt(min));
 
-    inkBar.style.left = `${
-      (parseInt(lowerSlider.value) - parseInt(min)) * pxPerSlide
-    }px`;
+    inkBar.style.left = `${(parseInt(lowerSlider.value) - parseInt(min)) * pxPerSlide}px`;
 
     inkBar.style.width = `${
       (parseInt(upperSlider.value) - parseInt(lowerSlider.value)) * pxPerSlide

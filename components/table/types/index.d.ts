@@ -12,7 +12,7 @@ export type TableColumn = {
   ellipsis: boolean;
 };
 
-export type TableItem = Record<string, any>;
+export type TableItem = Record<string, unknown>;
 
 export type TableProps = {
   id?: string;

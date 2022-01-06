@@ -42,7 +42,7 @@
   export let style = "";
 
   const tween = tweened(1, {
-    duration: 150,
+    duration: 150
   });
 
   let index = 0;
@@ -68,15 +68,11 @@
 <div
   class="resp-bottom-sheet__overlay"
   on:click={maskClosable ? () => (open = false) : noop}
-  style={`opacity: ${1 - $tween}; visibility: ${
-    1 - $tween <= 0 ? "hidden" : "visible"
-  }`}
+  style={`opacity: ${1 - $tween}; visibility: ${1 - $tween <= 0 ? "hidden" : "visible"}`}
 />
 <div
   class="resp-bottom-sheet {className}"
-  style={`transform: translateY(${
-    $tween * 100
-  }%); height: ${height}px; visibility: ${
+  style={`transform: translateY(${$tween * 100}%); height: ${height}px; visibility: ${
     1 - $tween <= 0 ? "hidden" : "visible"
   }; ${style}`}
 >

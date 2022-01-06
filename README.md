@@ -39,11 +39,11 @@ You should choose whichever file format suitable for your use case.
 
 ## ✨ Features
 
-- Responsive by default
-- Includes format of **IIFE**, **Common JS** and **ES Module**
-- Support server-side rendering
-- **TypeScript** and **Sass** as First Class Citizen
-- Compactible with `SvelteKit` and `Svelte v3`
+- Responsive by default.
+- Support **ES Module** and **Common JS**.
+- Support **Server-side Rendering**.
+- **TypeScript** and **Sass** as First Class Citizen.
+- Compactible with [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/).
 
 ## 💅 Component List
 

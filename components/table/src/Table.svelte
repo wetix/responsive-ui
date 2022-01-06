@@ -23,8 +23,7 @@
         key
           .split(".")
           .reduce(
-            (acc: Record<string, any>, cur: string) =>
-              cur in acc ? acc[cur] : "",
+            (acc: Record<string, any>, cur: string) => (cur in acc ? acc[cur] : ""),
             item
           ),
         item
@@ -71,16 +70,9 @@
                   <td
                     class="resp-table__col--align-{column.align || 'left'}"
                     class:resp-table__col--nowrap={!!column.nowrap}
-                    class:resp-table__col--ellipsis={!hasCellSlot &&
-                      !!column.ellipsis}
+                    class:resp-table__col--ellipsis={!hasCellSlot && !!column.ellipsis}
                   >
-                    <slot
-                      name="table-cell"
-                      rowIndex={i}
-                      columnIndex={j}
-                      {column}
-                      {item}
-                    >
+                    <slot name="table-cell" rowIndex={i} columnIndex={j} {column} {item}>
                       {getValue(column, item)}
                     </slot>
                   </td>

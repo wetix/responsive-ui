@@ -62,5 +62,5 @@ export {
   Tag,
   Textarea,
   tooltip,
-  Upload,
+  Upload
 };

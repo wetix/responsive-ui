@@ -1,20 +1,5 @@
-const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
 const getEmptyRows = (): unknown[] => {
   return Array.from({ length: 42 });
-};
-
-const getMonthDays = (index: number, year: number) => {
-  return index !== 1 ? monthDays[index] : isLeapYear(year) ? 29 : 28;
-};
-
-const getMonthStats = (monthIndex: number, year: number) => {
-  const today = new Date(year, monthIndex, 1);
-  const index = today.getMonth();
-  return {
-    // name: index[index],
-    days: getMonthDays(index, year),
-  };
 };
 
 export const isLeapYear = (year: number) =>
@@ -62,7 +47,6 @@ export const toDateString = (v: Date) => {
 };
 
 export const get2DimensionDate = (monthIndex: number, year: number): Date[] => {
-  const { days } = getMonthStats(monthIndex, year);
   const rows = getEmptyRows();
   const startIndex = new Date(year, monthIndex, 1).getDay();
   rows.forEach((_, i) => {

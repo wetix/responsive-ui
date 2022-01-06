@@ -29,10 +29,7 @@
 >
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
-      <div
-        class="resp-app-bar__icon-menu"
-        on:click={() => (openMenu = !openMenu)}
-      >
+      <div class="resp-app-bar__icon-menu" on:click={() => (openMenu = !openMenu)}>
         {@html `<svg width="24" height="24" viewBox="0 0 24 24" role="img"><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" /></svg>`}
       </div>
       <div class="resp-app-bar__logo">
@@ -43,12 +40,7 @@
           <ul>
             {#each leadingItems as { href, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot
-                  name="leading-item"
-                  item={leadingItems[index]}
-                  {index}
-                  {selected}
-                >
+                <slot name="leading-item" item={leadingItems[index]} {index} {selected}>
                   <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
@@ -61,12 +53,7 @@
           <ul>
             {#each trailingItems as { href, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot
-                  name="trailing-item"
-                  item={trailingItems[index]}
-                  {index}
-                  {selected}
-                >
+                <slot name="trailing-item" item={trailingItems[index]} {index} {selected}>
                   <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
