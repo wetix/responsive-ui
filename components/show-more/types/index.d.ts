@@ -1,7 +1,8 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface ShowMoreProps {
-  text?: string;
+  id?: string;
+  title?: string;
   threshold?: number;
   class?: string;
   style?: string;
@@ -14,10 +15,10 @@ export interface ShowMoreSlots {
   trigger: {};
 }
 
-declare class ShowMore extends SvelteComponentTyped<
+export declare class ShowMoreComponent extends SvelteComponentTyped<
   ShowMoreProps,
   ShowMoreEvents,
   ShowMoreSlots
 > {}
 
-export default ShowMore;
+export default ShowMoreComponent;

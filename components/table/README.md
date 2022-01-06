@@ -31,7 +31,7 @@ yarn add @responsive-ui/table
 
 ## 📄 License
 
-[@responsive-ui/accordion](https://github.com/wetix/responsive-ui/tree/main/components/accordion) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
+[@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/main/components/table) is 100% free and open-source, under the [MIT license](https://github.com/wetix/responsive-ui/blob/main/LICENSE).
 
 ## 🎉 Big Thanks To
 

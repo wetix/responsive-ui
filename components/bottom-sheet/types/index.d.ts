@@ -1,39 +1,29 @@
-import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
-type BottomSheetOption = {
-  label: string;
-  value: string;
-  icon?: string | typeof SvelteComponent | ReturnType<typeof SvelteComponent>;
-  disabled?: boolean;
-  nowrap?: boolean;
-  selected?: boolean;
-};
-
-export interface BottomSheetItem {
-  label: string;
-  options: BottomSheetOption[];
-  selected?: Map<string, boolean>;
+export interface BottomSheetProps {
+  id?: string;
+  class?: string;
+  open?: boolean;
+  height?: number;
+  draggable?: boolean;
+  maskClosable?: boolean;
+  closable?: boolean;
   style?: string;
 }
 
-export interface BottomSheetProps {
-  items: BottomSheetItem[];
-  open?: boolean;
-  selected?: number;
-  disabled?: boolean;
-  closable?: boolean;
+export interface BottomSheetEvents {}
+
+/**
+ * Component slots.
+ */
+export interface BottomSheetSlots {
+  default: {};
 }
 
-export interface BottomSheetEvents {
-  change?: any;
-  filter?: any;
-  reset?: any;
-}
-
-declare class BottomSheet extends SvelteComponentTyped<
+export declare class BottomSheetComponent extends SvelteComponentTyped<
   BottomSheetProps,
-  BottomSheetEvents
+  BottomSheetEvents,
+  BottomSheetSlots
 > {}
 
-export default BottomSheet;
+export default BottomSheetComponent;

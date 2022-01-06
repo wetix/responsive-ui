@@ -1,10 +1,11 @@
 {
   "name": "@responsive-ui/header",
-  "version": "1.0.9-alpha.0",
+  "version": "1.0.9-alpha.8",
   "description": "A header component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/header#README.md",
   "license": "MIT",
+  "type": "module",
   "main": "lib/cjs/index.js",
   "browser": "lib/index.js",
   "module": "lib/esm/index.js",
@@ -37,7 +38,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wetix/responsive-ui.git"
+    "url": "https://github.com/wetix/responsive-ui",
+    "directory": "components/header"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"

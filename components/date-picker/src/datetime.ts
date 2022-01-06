@@ -1,6 +1,6 @@
 const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const getEmptyRows = (): Array<any> => {
+const getEmptyRows = (): unknown[] => {
   return Array.from({ length: 42 });
 };
 
@@ -61,10 +61,7 @@ export const toDateString = (v: Date) => {
   )}-${String(v.getDate()).padStart(2, "0")}`;
 };
 
-export const get2DimensionDate = (
-  monthIndex: number,
-  year: number
-): Array<Date> => {
+export const get2DimensionDate = (monthIndex: number, year: number): Date[] => {
   const { days } = getMonthStats(monthIndex, year);
   const rows = getEmptyRows();
   const startIndex = new Date(year, monthIndex, 1).getDay();
@@ -73,5 +70,5 @@ export const get2DimensionDate = (
     rows[i] = new Date(year, monthIndex, day);
   });
 
-  return rows as Array<Date>;
+  return rows as Date[];
 };

@@ -1,8 +1,9 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface PosterProps {
+  id?: string;
   class?: string;
-  size?: "portrait" | "landscape" | "square";
+  type?: "portrait" | "landscape" | "square";
   src: string;
   responsive?: boolean;
   shadowed?: boolean;
@@ -14,6 +15,12 @@ export interface PosterEvents {
   click?: WindowEventMap["click"];
 }
 
-declare class Poster extends SvelteComponentTyped<PosterProps, PosterEvents> {}
+export interface PosterSlots {}
 
-export default Poster;
+export declare class PosterComponent extends SvelteComponentTyped<
+  PosterProps,
+  PosterEvents,
+  PosterSlots
+> {}
+
+export default PosterComponent;

@@ -1,41 +1,41 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import DatePicker from "../components/date-picker/src/DatePicker.svelte";
+  import DatePicker from "@responsive-ui/date-picker";
 </script>
 
 <Meta
-  title="Components/DatePicker"
+  title="Components/Date Picker"
   component={DatePicker}
   argTypes={{
-    size: {
-      control: { type: "select", options: ["small", "middle", "large"] },
-    },
     placeholder: { control: "text" },
     name: { control: "text" },
     disabled: { control: "boolean" },
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },
-    // backgroundColor: { control: "color" },
     onChange: { action: "onChange" },
+    onDateChange: { action: "onChange" },
   }}
 />
 
 <Template let:args>
-  <DatePicker {...args} on:change={args.onChange} />
+  <DatePicker
+    {...args}
+    on:change={args.onChange}
+    on:datechange={args.onDateChange}
+  />
 </Template>
 
 <Story
   name="Default"
   args={{
     size: "middle",
-    placeholder: "Select Date",
   }}
 />
 
 <Story
-  name="Small"
+  name="With Default Value"
   args={{
-    size: "small",
+    value: "2018-02-24",
     placeholder: "Select Date",
   }}
 />

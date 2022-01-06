@@ -8,8 +8,14 @@ export type Device = {
 };
 
 export interface ColumnProps {
-  span?: number | Device;
-  justify?: string;
+  id?: string;
+  title?: string;
+  flex?: string;
+  xs?: number;
+  sm?: number;
+  md?: number;
+  xs?: number;
+  lg?: number;
   class?: string;
   style?: string;
 }
@@ -20,10 +26,10 @@ export interface ColumnSlots {
   default: {};
 }
 
-declare class Column extends SvelteComponentTyped<
+export declare class ColumnComponent extends SvelteComponentTyped<
   ColumnProps,
   ColumnEvents,
   ColumnSlots
 > {}
 
-export default Column;
+export default ColumnComponent;

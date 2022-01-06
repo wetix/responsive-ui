@@ -2,28 +2,38 @@
   let className = "";
   export { className as class };
   export let src = "";
-  export let size = "portrait";
+  export let alt = "";
+  export let type = "portrait";
   export let responsive = true;
   export let shadowed = true;
   export let rounded = true;
-  export let style = "";
 
-  let opacity = 1;
-  const img = new Image();
-  img.onload = () => {
-    opacity = 0;
-  };
-  img.src = src;
+  let opacity = 0;
+
+  if (Image) {
+    opacity = 1;
+    const img = new Image();
+    img.onload = () => {
+      opacity = 0;
+    };
+    img.src = src;
+  }
 </script>
 
 <div
-  class="resp-poster resp-poster--{size} {className}"
+  {...$$restProps}
+  class="resp-poster resp-poster--{type} {className}"
   class:resp-poster--responsive={responsive}
   class:resp-poster--shadowed={shadowed}
   class:resp-poster--rounded={rounded}
-  style={`background-image:url(${src});${style}`}
+  style={`background-image: url(${src})`}
   on:click
 >
+  <!-- <picture>
+    <source srcset="logo-768.png 768w, logo-768-1.5x.png 1.5x" />
+    <source srcset="logo-480.png, logo-480-2x.png 2x" />
+    <img {src} {alt} />
+  </picture> -->
   <div class="resp-poster__overlay" style={`opacity: ${opacity}`} />
 </div>
 

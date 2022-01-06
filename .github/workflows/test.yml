@@ -8,18 +8,20 @@ on:
     branches:
       - main
       - sandbox
+      - dev
 
   pull_request:
     branches:
       - main
       - sandbox
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["14", "16", "17"]
+        node: ["16", "17"]
     name: Node ${{ matrix.node }} sample
     steps:
       - name: Checkout
@@ -41,6 +43,10 @@ jobs:
         # if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
           npm install
+
+      - name: Run svelte-check
+        run: |
+          npm run validate
 
       - name: Run jest
         run: |

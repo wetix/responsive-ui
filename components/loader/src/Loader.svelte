@@ -6,19 +6,15 @@
 </script>
 
 {#if fit === "viewport"}
-  <div class="responsive-ui-loader" in:fade out:fade>
-    <div
-      class="responsive-ui-loader__spinner responsive-ui-loader__spinner--{size}"
-    />
+  <div class="resp-loader" in:fade out:fade>
+    <div class="resp-loader__spinner resp-loader__spinner--{size}" />
   </div>
 {:else}
-  <div
-    class="responsive-ui-loader__spinner responsive-ui-loader__spinner--{size}"
-  />
+  <div class="resp-loader__spinner resp-loader__spinner--{size}" />
 {/if}
 
-<style lang="scss">
-  .responsive-ui-loader {
+<style lang="scss" global>
+  .resp-loader {
     position: fixed;
     top: 0;
     left: 0;

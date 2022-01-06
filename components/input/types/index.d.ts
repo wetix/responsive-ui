@@ -7,7 +7,7 @@ export interface InputProps {
   name?: string;
   type?: string;
   label?: string;
-  variant?: "small" | "medium" | "large";
+  autocomplete?: "on" | "off";
   placeholder?: string;
   disabled?: boolean;
   readonly?: boolean;
@@ -19,10 +19,9 @@ export interface InputProps {
 }
 
 export interface InputEvents {
-  change?: WindowEventMap["change"];
-  input?: WindowEventMap["input"];
+  focus?: WindowEventMap["focus"];
   blur?: WindowEventMap["blur"];
-  enter?: any;
+  input?: WindowEventMap["input"];
 }
 
 export interface InputSlots {
@@ -30,10 +29,10 @@ export interface InputSlots {
   suffix: {};
 }
 
-declare class Input extends SvelteComponentTyped<
+export declare class InputComponent extends SvelteComponentTyped<
   InputProps,
   InputEvents,
   InputSlots
 > {}
 
-export default Input;
+export default InputComponent;

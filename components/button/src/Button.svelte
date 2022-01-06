@@ -1,56 +1,58 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let ref: HTMLButtonElement;
   export let variant = "default";
-  export let size = "medium";
-  export let ref: null | HTMLButtonElement = null;
-  export let label = "";
-  export let type = "button";
+  export let type = "submit";
   export let outline = false;
-  export let disabled = false;
 </script>
 
 <button
-  {...$$restProps}
-  class="resp-button resp-button--{variant} resp-button--{size} {className}"
+  class="resp-button resp-button--{variant} {className}"
   class:resp-button--outline={outline}
-  role="button"
   {type}
-  {disabled}
+  {...$$restProps}
+  role="button"
   bind:this={ref}
   on:click
 >
-  <slot>{label}</slot>
+  <slot />
 </button>
 
-<style lang="scss">
+<style lang="scss" global>
+  $sm: 576px;
+
   .resp-button {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     border: none;
     outline: 0;
     appearance: none;
     font-family: inherit;
+    align-items: center;
+    justify-content: center;
     min-width: 65px;
     font-size: var(--font-size, 14px);
-    border: 1px solid #dcdcdc;
+    border: 1px solid var(--input-border-color, #dcdcdc);
     background: #fff;
-    padding: 0 15px;
+    padding: 0 1rem;
     margin: 0;
-    height: var(--input-height, 30px);
-    line-height: var(--input-height, 30px);
+    height: 42px;
+    width: 100%;
+    line-height: 1.5;
     text-align: center;
     text-transform: capitalize;
     transition: opacity 0.3s;
-    border-radius: var(--border-radius, 5px);
+    border-radius: 5px;
+
+    @media (min-width: $sm) {
+      height: 32px;
+      width: auto;
+      border-radius: 3px;
+    }
 
     &:hover {
       background: #f5f5f5;
-    }
-
-    &--small {
-      height: 24px;
-      line-height: 24px;
     }
 
     &--primary {
@@ -82,10 +84,6 @@
     &--outline {
       background: none;
       color: var(--primary-text-color, #fc4451);
-    }
-
-    @media screen and (max-width: 640px) {
-      width: 100%;
     }
   }
 </style>

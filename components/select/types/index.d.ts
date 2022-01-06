@@ -3,10 +3,11 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export type SelectOption = {
   label: string;
   disabled?: boolean;
+  selected?: boolean;
   value: string;
 };
 
-interface SelectProps {
+export interface SelectProps {
   id?: string;
   ref?: null | HTMLSelectElement;
   name?: string;
@@ -15,6 +16,7 @@ interface SelectProps {
   value?: string | string[];
   disabled?: boolean;
   readonly?: boolean;
+  placeholder?: string;
   options: SelectOption[];
   style?: string;
 }
@@ -24,6 +26,9 @@ export interface SelectEvents {
   blur?: WindowEventMap["blur"];
 }
 
-declare class Select extends SvelteComponentTyped<SelectProps, SelectEvents> {}
+export declare class SelectComponent extends SvelteComponentTyped<
+  SelectProps,
+  SelectEvents
+> {}
 
-export default Select;
+export default SelectComponent;

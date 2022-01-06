@@ -5,30 +5,38 @@
 
   let className = "";
   export { className as class };
+  export let label = "";
+  export let outline = false;
   export let closable = false;
-  export let color = "blue";
-  export let value = "";
+  export let color = "default";
 
-  const onClick = () => {
+  const handleClose = () => {
     dispatch("close");
   };
 </script>
 
-<span class="responsive-ui-tag responsive-ui-tag--{color} {className}">
-  <slot>{value}</slot>
+<span
+  class="resp-tag resp-tag--{color} {className}"
+  class:resp-tag--outline={outline}
+  {...$$restProps}
+>
+  <slot>{label}</slot>
   {#if closable}
-    <span class="responsive-ui-tag__close" on:click={onClick}>&#10005;</span>
+    <span class="resp-tag__close" on:click={handleClose}>&#10005;</span>
   {/if}
 </span>
 
-<style lang="scss">
-  .responsive-ui-tag {
+<style lang="scss" global>
+  .resp-tag {
     position: relative;
     display: inline-flex;
+    flex-wrap: nowrap;
     align-items: center;
-    font-size: var(--font-size-sm, 10px);
-    border-radius: var(--border-radius, 5px);
-    padding: 3px 8px;
+    font-size: var(--font-size-sm);
+    color: #817e7e;
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px solid #817e7e;
     overflow: hidden;
 
     &__close {
@@ -37,6 +45,7 @@
     }
 
     &--blue {
+      border-color: rgba(190, 227, 248, 1);
       color: rgba(49, 130, 206, 1);
       background: rgba(190, 227, 248, 1);
     }
@@ -79,6 +88,10 @@
     &--grey {
       color: rgba(113, 128, 150, 1);
       background: rgba(237, 242, 247, 1);
+    }
+
+    &--outline {
+      background: inherit;
     }
   }
 </style>

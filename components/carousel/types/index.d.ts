@@ -1,9 +1,10 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export type CarouselItem = {
-  src:string;
-  url:string;
-};
+export interface CarouselItem extends Record<string, any> {
+  src: string;
+  alt: string;
+  srcset: string;
+}
 
 export interface CarouselProps {
   class?: string;
@@ -15,13 +16,13 @@ export interface CarouselEvents {
 }
 
 export interface CarouselSlots {
-  default: {};
+  slide: {};
 }
 
-declare class Carousel extends SvelteComponentTyped<
+declare class CarouselComponent extends SvelteComponentTyped<
   CarouselProps,
   CarouselEvents,
   CarouselSlots
 > {}
 
-export default Carousel;
+export default CarouselComponent;

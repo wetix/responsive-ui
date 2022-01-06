@@ -1,19 +1,22 @@
 <script lang="ts">
-  import type { SvelteComponentDev } from "svelte/internal";
   import type { TableColumn, TableItem } from "../types";
 
   let className = "";
   export { className as class };
-  export let ref: null | HTMLDivElement = null;
-  export let key = "id";
+  export let ref: HTMLDivElement;
+  export let rowKey: keyof TableItem = "id";
+  export let loading = false;
+  export let tableLayout = "fixed";
+  export let showHeader = true;
   export let columns: Partial<TableColumn>[] = [];
-  export let items: null | TableItem[] = null;
+  export let items: TableItem[] = [];
   export let striped = false;
   export let bordered = true;
-  export let style = "";
+
+  const hasCellSlot = $$slots["table-cell"];
 
   const getValue = (column: Partial<TableColumn>, item: TableItem) => {
-    const { key, value = (v: any) => v } = column;
+    const { key, value = (v: unknown) => v } = column;
 
     if (key) {
       return value(
@@ -31,180 +34,208 @@
     return value(item);
   };
 
-  const getComponent = (
-    column: Partial<TableColumn>,
-    item: TableItem
-  ): SvelteComponentDev => {
-    const { component } = column;
-    if (typeof component === "function") return component(item);
-    return component;
-  };
+  const getRowKey = (item: TableItem, idx: number) =>
+    rowKey in item ? (item[rowKey] as string) : idx.toString();
 </script>
 
 <div
   class="resp-table {className}"
-  class:resp-table__bordered={bordered}
+  class:resp-table--bordered={bordered}
+  class:resp-table--striped={striped}
   bind:this={ref}
+  {...$$restProps}
 >
-  <table class:resp-table__striped={striped} {style}>
-    <thead>
-      <tr>
-        {#each columns as column}
-          <th
-            class="resp-table__col--align-{column.align || 'left'}"
-            class:resp-table__col--nowrap={column.nowrap === true}
-            style="width:{column.width || 'auto'}"
-          >
-            {column.label || ""}
-          </th>
-        {/each}
-      </tr>
-    </thead>
+  <table style="table-layout: {tableLayout}">
+    {#if showHeader}
+      <thead>
+        <tr>
+          {#each columns as column}
+            <th
+              class="resp-table__col--align-{column.align || 'left'}"
+              class:resp-table__col--nowrap={!!column.nowrap}
+              style="width: {column.width || 'auto'}"
+            >
+              <slot name="table-head">{column.label || ""}</slot>
+            </th>
+          {/each}
+        </tr>
+      </thead>
+    {/if}
     <tbody>
-      {#if items}
+      {#if !loading}
         {#if items.length > 0}
-          {#each items as item, i (item[key] || i)}
-            <slot name="row" index={i} {item}>
+          {#each items as item, i (getRowKey(item, i))}
+            <slot name="table-row" index={i} {item}>
               <tr>
-                {#each columns as column}
+                {#each columns as column, j}
                   <td
                     class="resp-table__col--align-{column.align || 'left'}"
-                    style="width:{column.width || 'auto'}"
+                    class:resp-table__col--nowrap={!!column.nowrap}
+                    class:resp-table__col--ellipsis={!hasCellSlot &&
+                      !!column.ellipsis}
                   >
-                    {#if column.component}
-                      <svelte:component this={getComponent(column, item)} />
-                    {:else}
-                      <div class="resp-table__cell">
-                        {getValue(column, item)}
-                      </div>
-                    {/if}
+                    <slot
+                      name="table-cell"
+                      rowIndex={i}
+                      columnIndex={j}
+                      {column}
+                      {item}
+                    >
+                      {getValue(column, item)}
+                    </slot>
                   </td>
                 {/each}
               </tr>
             </slot>
           {/each}
         {:else}
-          <slot name="empty">
-            <tr>
-              <td
-                colspan={columns.length}
-                class="resp-table__col--empty resp-table__col--align-center"
-              >
-                <p>NO RECORD.</p>
-              </td>
-            </tr>
-          </slot>
+          <tr>
+            <td class="resp-table--empty" colspan={columns.length}>
+              <slot name="empty">
+                <p>No data.</p>
+              </slot>
+            </td>
+          </tr>
         {/if}
+      {:else}
+        {#each new Array(3) as _}
+          <tr
+            >{#each columns as column}
+              <td class="resp-table__col--align-{column.align || 'left'}"
+                ><i class="resp-table__placeholder" /></td
+              >
+            {/each}
+          </tr>
+        {/each}
       {/if}
     </tbody>
   </table>
-  <!-- {#if loading}
-    <div class="loading" />
-  {/if} -->
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
+  $borderColor: #e1e1e1;
+
   .resp-table {
+    cursor: default;
     position: relative;
     width: 100%;
     border: 1px solid transparent;
     overflow-y: auto;
-    font-size: var(--font-size, 14px);
+    text-align: left;
+    font-size: var(--font-size);
     font-family: var(--font-family, inherit);
-    border-radius: var(--border-radius, 5px);
+    border-color: transparent;
 
     table {
       width: 100%;
-      table-layout: auto;
+      margin: 0 auto;
+      border-spacing: 0;
       border-collapse: collapse;
-      table-layout: auto;
       overflow: visible;
 
-      thead {
-        text-align: left;
-
-        tr {
-          color: #9e9e9e;
-          border-bottom: 1px solid #e1e1e1;
-        }
-
-        td {
-          &.center {
-            text-align: center;
-          }
-
-          &.right {
-            text-align: right;
-          }
-        }
-      }
-
-      tbody {
-        overflow: auto;
-        height: 200px;
-        width: 100%;
-        color: #000;
-
-        tr {
-          cursor: pointer;
-          &:not(:last-child) {
-            border-bottom: 1px solid #e1e1e1;
-          }
-
-          &:hover {
-            background: #f5f5f5;
-          }
-        }
+      th {
+        font-weight: 500;
+        border-bottom: 2px solid $borderColor;
       }
 
       th,
       td {
-        padding: 10px;
-        font-weight: normal;
-        vertical-align: middle;
-      }
-
-      th {
+        position: relative;
         overflow-wrap: break-word;
+        padding: 10px;
+        vertical-align: middle;
+        // border-width: 1px;
+        // border-style: solid;
+        // border-color: inherit;
       }
 
-      td {
-        padding: 6px 10px;
-        word-break: break-all;
+      tbody {
+        overflow: auto;
+        width: 100%;
+        color: #171717;
+
+        tr {
+          &:hover {
+            background: #f5f5f5;
+          }
+        }
+
+        tr > td {
+          border-bottom: 1px solid $borderColor;
+          word-break: break-all;
+        }
+
+        tr:last-child > td {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &__col {
+      &--ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        word-break: keep-all;
+        text-overflow: ellipsis;
       }
 
-      .resp-table__col--nowrap {
+      &--nowrap {
         word-break: unset;
         word-wrap: unset;
         overflow-wrap: unset;
         white-space: nowrap;
       }
+    }
 
-      .resp-table__col--align-left {
+    &--bordered {
+      border-color: $borderColor;
+    }
+    &__col--align {
+      &-left {
         text-align: left;
       }
-
-      .resp-table__col--align-center {
+      &-center {
         text-align: center;
       }
-
-      .resp-table__col--align-right {
+      &-right {
         text-align: right;
       }
-
-      .resp-table__col--empty {
-        padding: var(--padding, 15px);
-      }
     }
 
-    &__bordered {
-      border-color: #e1e1e1;
+    &__placeholder {
+      display: inline-block;
+      vertical-align: middle;
+      background-color: #444;
+      width: 90%;
+      height: 12px;
+      border-radius: 100px;
+      opacity: 0.1;
+      animation: fading 1.5s infinite;
     }
 
-    &__striped {
+    &--striped {
       tr:nth-child(odd) td {
         background: #f5f5f5;
       }
+    }
+
+    &--empty {
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+
+  @keyframes fading {
+    0% {
+      opacity: 0.1;
+    }
+
+    50% {
+      opacity: 0.2;
+    }
+
+    100% {
+      opacity: 0.1;
     }
   }
 </style>

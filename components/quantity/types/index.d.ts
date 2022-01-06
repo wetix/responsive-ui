@@ -2,23 +2,32 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface QuantityProps {
   id?: string;
-  name?: string;
   class?: string;
+  ref?: HTMLInputElement;
+  name?: string;
+  form?: string;
+  formaction?: string;
+  readonly?: boolean;
+  autofocus?: boolean;
   min?: number;
   max?: number;
-  value?: number;
   step?: number;
+  value?: number;
   disabled?: boolean;
   style?: string;
 }
 
 export interface QuantityEvents {
-  change?: any;
+  input?: WindowEventMap["input"];
+  change?: WindowEventMap["change"];
 }
 
-declare class Quantity extends SvelteComponentTyped<
+export interface QuantitySlots {}
+
+export declare class QuantityComponent extends SvelteComponentTyped<
   QuantityProps,
-  QuantityEvents
+  QuantityEvents,
+  QuantitySlots
 > {}
 
-export default Quantity;
+export default QuantityComponent;

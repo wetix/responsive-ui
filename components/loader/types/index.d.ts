@@ -5,6 +5,14 @@ export interface LoaderProps {
   size?: "default" | "small";
 }
 
-declare class Loader extends SvelteComponentTyped<LoaderProps> {}
+export interface LoaderEvents {}
 
-export default Loader;
+export interface LoaderSlots {}
+
+export declare class LoaderComponent extends SvelteComponentTyped<
+  LoaderProps,
+  LoaderEvents,
+  LoaderSlots
+> {}
+
+export default LoaderComponent;

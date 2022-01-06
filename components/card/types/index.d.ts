@@ -4,8 +4,8 @@ export interface CardProps {
   id?: string;
   title?: string;
   class?: string;
-  style?: string;
   compact?: boolean;
+  style?: string;
 }
 
 export interface CardEvents {
@@ -16,10 +16,22 @@ export interface CardSlots {
   default: {};
 }
 
-declare class Card extends SvelteComponentTyped<
+/**
+ * Responsive card component
+ *
+ * ### Example
+ * ```svelte
+ * <script>
+ *  import Card from '@responsive-ui/card';
+ * </script>
+ *
+ * <Card>Hello world!</Card>
+ * ```
+ */
+export declare class CardComponent extends SvelteComponentTyped<
   CardProps,
   CardEvents,
   CardSlots
 > {}
 
-export default Card;
+export default CardComponent;

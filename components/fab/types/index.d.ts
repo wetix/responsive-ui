@@ -2,6 +2,8 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface FloatingActionButtonProps {
   id?: string;
+  title?: string;
+  label?: string;
   class?: string;
   style?: string;
 }
@@ -12,10 +14,10 @@ export interface FloatingActionButtonEvents {
 
 export interface FloatingActionButtonSlots {}
 
-declare class FloatingActionButton extends SvelteComponentTyped<
+export declare class FloatingActionButtonComponent extends SvelteComponentTyped<
   FloatingActionButtonProps,
   FloatingActionButtonEvents,
   FloatingActionButtonSlots
 > {}
 
-export default FloatingActionButton;
+export default FloatingActionButtonComponent;

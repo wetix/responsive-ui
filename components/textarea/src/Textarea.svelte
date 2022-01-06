@@ -18,34 +18,31 @@
   };
 </script>
 
-<div class="resp-textarea-box">
+<div class="resp-textarea__box">
   <textarea
-    {...$$restProps}
     class="resp-textarea {className}"
     class:resp-textarea--bordered={bordered}
     bind:this={ref}
     {rows}
     {cols}
     {value}
-    on:blur
-    on:change
     on:input={handleChange}
+    on:focus
+    on:blur
     on:input
+    {...$$restProps}
   />
   {#if maxlength > 0}
     <slot>
-      <div class="resp-textarea__text-len">
+      <div class="resp-textarea__char">
         {value.length}/{maxlength} characters
       </div>
     </slot>
   {/if}
 </div>
 
-<style lang="scss">
-  .resp-textarea-box {
-    display: inline-flex;
-    flex-direction: column;
-  }
+<style lang="scss" global>
+  $sm: 576px;
 
   .resp-textarea {
     font-size: inherit;
@@ -56,12 +53,20 @@
     outline: 0;
     resize: none;
     padding: 8px;
+    width: 100%;
+    border: 1px solid transparent;
+    word-wrap: break-word;
     margin: 0;
     border-radius: 3px;
     transition: all 0.5s;
 
+    &__box {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
     &--bordered {
-      border: 1px solid #f1f1f1;
+      border-color: var(--input-border-color, #dcdcdc);
     }
 
     &:focus,
@@ -79,11 +84,15 @@
       cursor: not-allowed;
     }
 
-    &__text-len {
+    &__char {
       margin-top: 8px;
       display: block;
       text-align: right;
       font-size: var(--font-size-xs, 11px);
+    }
+
+    @media (min-width: $sm) {
+      width: auto;
     }
   }
 </style>

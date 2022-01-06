@@ -3,13 +3,14 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "baseUrl": "./",
     "noEmit": true,
     "types": ["svelte", "node", "jest"]
   },
   "include": [
     "src",
     "components",
-    "node_modules/@wetix/animation",
+    "node_modules/@wetix/animation/**/*",
     "node_modules/@wetix/utils"
   ],
   "extends": "@tsconfig/svelte/tsconfig.json",

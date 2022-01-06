@@ -1,21 +1,26 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let ref: HTMLInputElement;
   export let checked = false;
   export let disabled = false;
 </script>
 
-<span
-  class="responsive-ui-switch {className}"
-  class:responsive-ui-switch--disabled={disabled}
->
-  <input type="checkbox" bind:checked on:change {disabled} />
-  <b class="responsive-ui-switch__toggle" />
-  <b class="responsive-ui-switch__track" />
+<span class="resp-switch {className}" class:resp-switch--disabled={disabled}>
+  <input
+    {...$$restProps}
+    bind:this={ref}
+    type="checkbox"
+    bind:checked
+    on:change
+    {disabled}
+  />
+  <b class="resp-switch__toggle" />
+  <b class="resp-switch__track" />
 </span>
 
-<style lang="scss">
-  .responsive-ui-switch {
+<style lang="scss" global>
+  .resp-switch {
     display: inline-block;
     position: relative;
     width: 40px;
@@ -77,11 +82,11 @@
     }
   }
 
-  input[type="checkbox"]:checked ~ .responsive-ui-switch__track {
+  input[type="checkbox"]:checked ~ .resp-switch__track {
     box-shadow: inset 0 0 0 20px var(--primary-color, #fc4451);
   }
 
-  input[type="checkbox"]:checked ~ .responsive-ui-switch__toggle {
+  input[type="checkbox"]:checked ~ .resp-switch__toggle {
     right: 2px;
     left: 22px;
     transition: 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);

@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Card from "../components/card/src/Card.svelte";
+  import Card from "@responsive-ui/card";
 </script>
 
 <Meta

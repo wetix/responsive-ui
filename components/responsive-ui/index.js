@@ -1,7 +1,7 @@
 import Accordion from "@responsive-ui/accordion/src/Accordion.svelte";
 import BottomBar from "@responsive-ui/bottom-bar/src/BottomBar.svelte";
-import BottomModal from "@responsive-ui/bottom-modal/src/BottomModal.svelte";
 import BottomSheet from "@responsive-ui/bottom-sheet/src/BottomSheet.svelte";
+import ActionSheet from "@responsive-ui/action-sheet/src/ActionSheet.svelte";
 import Button from "@responsive-ui/button/src/Button.svelte";
 import Card from "@responsive-ui/card/src/Card.svelte";
 import Checkbox from "@responsive-ui/checkbox/src/Checkbox.svelte";
@@ -14,7 +14,6 @@ import Icon from "@responsive-ui/icon/src/Icon.svelte";
 import Input from "@responsive-ui/input/src/Input.svelte";
 import InputNumber from "@responsive-ui/input-number/src/InputNumber.svelte";
 import Label from "@responsive-ui/label/src/Label.svelte";
-import Link from "@responsive-ui/link/src/Link.svelte";
 import Loader from "@responsive-ui/loader/src/Loader.svelte";
 import Poster from "@responsive-ui/poster/src/Poster.svelte";
 import Responsive from "@responsive-ui/responsive/src/Responsive.svelte";
@@ -28,13 +27,12 @@ import Tab from "@responsive-ui/tab/src/Tab.svelte";
 import Table from "@responsive-ui/table/src/Table.svelte";
 import Tag from "@responsive-ui/tag/src/Tag.svelte";
 import Textarea from "@responsive-ui/textarea/src/Textarea.svelte";
-import { tooltip } from "@responsive-ui/tooltip/src/index.ts";
 import Upload from "@responsive-ui/upload/src/Upload.svelte";
 
 export {
   Accordion,
+  ActionSheet,
   BottomBar,
-  BottomModal,
   BottomSheet,
   Button,
   Card,
@@ -48,7 +46,6 @@ export {
   Input,
   InputNumber,
   Label,
-  Link,
   Loader,
   Poster,
   Responsive,
@@ -62,6 +59,5 @@ export {
   Table,
   Tag,
   Textarea,
-  tooltip,
   Upload,
 };

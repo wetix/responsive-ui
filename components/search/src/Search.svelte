@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import Loader from "@responsive-ui/loader";
 
   const dispatch = createEventDispatcher();
 
@@ -8,14 +7,14 @@
   let className = "";
 
   export { className as class };
-  export let ref: null | HTMLInputElement = null;
+  export let ref: HTMLInputElement;
   export let name = "";
+  export let bordered = true;
   export let value = "";
   export let disabled = false;
   export let size = 100;
   export let loading = false;
   export let debounceTimer = 1000;
-  export let spellcheck = false;
   export let placeholder = "";
 
   const onClear = (e: Event) => {
@@ -26,9 +25,8 @@
     }
   };
 
-  const onKeyup = (e: KeyboardEvent) => {
+  const handleKeyup = (e: KeyboardEvent) => {
     const v = (<HTMLInputElement>e.target).value;
-    const key = e.key || e.keyCode;
     if (e.ctrlKey || e.metaKey) {
       return;
     }
@@ -36,7 +34,7 @@
     loading = true;
     let timeout = debounceTimer;
     // when user click enter
-    if (key === "Enter" || key === 13) {
+    if (e.key === "Enter") {
       timeout = 0;
     }
     if (timer) {
@@ -49,7 +47,8 @@
 </script>
 
 <input
-  class="responsive-ui-search {className}"
+  class="resp-search {className}"
+  class:resp-search--bordered={bordered}
   bind:this={ref}
   type="search"
   {name}
@@ -57,25 +56,24 @@
   {placeholder}
   {size}
   {value}
-  {spellcheck}
   on:input
   on:input={onClear}
-  on:keyup={onKeyup}
+  on:keyup={handleKeyup}
 />
 
 {#if loading}
-  <div class="responsive-ui-search__state">
-    <Loader size="small" />
-    <div class="responsive-ui-search__state-text">Searching...</div>
+  <div class="resp-search__state">
+    <!-- <Loader size="small" /> -->
+    <div class="resp-search__state-text">Searching...</div>
   </div>
 {/if}
 
 <slot {loading} />
 
-<style lang="scss">
-  .responsive-ui-search {
-    display: block;
-    border: 1px solid #dcdcdc;
+<style lang="scss" global>
+  .resp-search {
+    display: inline-flex;
+    border: 1px solid transparent;
     overflow: hidden;
     box-sizing: border-box;
     margin: 0;
@@ -83,24 +81,33 @@
     appearance: none;
     font-family: var(--font-family, inherit);
     font-size: var(--font-size, 14px);
-    height: var(--height, 34px);
+    height: var(--input-height, 30px);
     border-radius: var(--border-radius, 5px);
-    width: 100%;
+    transition: all 0.5s;
     outline: none;
+
+    &--focused,
+    &:hover {
+      border-color: #fc4451;
+    }
+
+    &--focused,
+    &:focus {
+      border-color: #fc4451;
+      box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
+    }
 
     &:disabled {
       cursor: not-allowed !important;
       opacity: 0.5;
     }
 
-    &__state {
-      padding: 6px 0;
-      display: flex;
-      align-items: center;
+    &--bordered {
+      border-color: var(--input-border-color, #dcdcdc);
+    }
 
-      &-text {
-        margin-left: 8px;
-      }
+    @media (max-width: 576px) {
+      width: 100%;
     }
   }
 </style>

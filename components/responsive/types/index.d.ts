@@ -22,10 +22,10 @@ export interface ResponsiveSlots {
   default: ResponsiveState;
 }
 
-declare class Responsive extends SvelteComponentTyped<
+export declare class ResponsiveComponent extends SvelteComponentTyped<
   ResponsiveProps,
   ResponsiveEvents,
   ResponsiveSlots
 > {}
 
-export default Responsive;
+export default ResponsiveComponent;

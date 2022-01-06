@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Textarea from "../components/textarea/src/Textarea.svelte";
+  import Textarea from "@responsive-ui/textarea";
 </script>
 
 <Meta

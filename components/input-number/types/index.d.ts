@@ -2,10 +2,13 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputNumberProps {
   id?: string;
-  ref?: null | HTMLInputElement;
+  ref?: HTMLInputElement;
   class?: string;
   name?: string;
+  bordered?: boolean;
+  textDirection?: "ltr" | "rtl";
   placeholder?: string;
+  form?: string;
   disabled?: boolean;
   value?: number;
   min?: number;
@@ -18,13 +21,20 @@ export interface InputNumberProps {
 
 export interface InputNumberEvents {
   input?: WindowEventMap["input"];
+  focus?: WindowEventMap["focus"];
   blur?: WindowEventMap["blur"];
   change?: WindowEventMap["change"];
 }
 
-declare class InputNumber extends SvelteComponentTyped<
+export interface InputNumberSlots {
+  prefix: {};
+  suffix: {};
+}
+
+export declare class InputNumberComponent extends SvelteComponentTyped<
   InputNumberProps,
-  InputNumberEvents
+  InputNumberEvents,
+  InputNumberSlots
 > {}
 
-export default InputNumber;
+export default InputNumberComponent;

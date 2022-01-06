@@ -1,15 +1,28 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface IconProps {
-  type: string;
+  id?: string;
+  class?: string;
+  sizeOf?: "sm" | "md" | "lg";
+  fill?: string;
   stroke?: string;
+  viewBox?: string;
+  useHref?: string;
   style?: string;
 }
 
 export interface IconEvents {
-  click?: any;
+  click?: WindowEventMap["click"];
 }
 
-declare class Icon extends SvelteComponentTyped<IconProps, IconEvents> {}
+export interface IconSlots {
+  default: {};
+}
 
-export default Icon;
+export declare class IconComponent extends SvelteComponentTyped<
+  IconProps,
+  IconEvents,
+  IconSlots
+> {}
+
+export default IconComponent;

@@ -27,10 +27,10 @@ export interface MenuSlots {
   item: {};
 }
 
-declare class Menu extends SvelteComponentTyped<
+export declare class MenuComponent extends SvelteComponentTyped<
   MenuProps,
   MenuEvents,
   MenuSlots
 > {}
 
-export default Menu;
+export default MenuComponent;
