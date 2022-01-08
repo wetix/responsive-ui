@@ -1,22 +1,23 @@
 import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
+export type TableItem = Record<string, unknown>;
+
 export type TableColumn = {
   key: string;
   label: string;
   class: string;
   align: string | "left" | "center" | "right";
-  nowrap: boolean;
   width: number | string;
-  value: ReturnType<any>;
-  ellipsis: boolean;
+  nowrap: boolean;
+  colspan: number;
+  sorter: (a: TableItem, b: TableItem) => number;
+  value: (key: unknown, args: TableItem) => unknown;
 };
-
-export type TableItem = Record<string, unknown>;
 
 export type TableProps = {
   id?: string;
-  ref?: null | HTMLDivElement;
+  ref?: HTMLDivElement;
   rowKey?: keyof TableItem;
   title?: string;
   tableLayout?: "fixed" | "auto" | "inherit" | "initial";

@@ -112,13 +112,13 @@
       </tbody>
     </table>
   </div>
-  <slot name="footer">
-    <div class="resp-calendar__footer">
-      <span class="resp-calendar__button" on:click={handleSelectDate(new Date())}
-        >Today</span
-      >
-    </div>
-  </slot>
+  <div class="resp-calendar__footer">
+    <slot name="footer">
+      <div class="resp-calendar__button" on:click={handleSelectDate(new Date())}>
+        Today
+      </div>
+    </slot>
+  </div>
 </div>
 
 <style lang="scss" global>
