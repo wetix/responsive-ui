@@ -1,15 +1,15 @@
 import { render } from "@testing-library/svelte";
 import Column from "../src/Column.svelte";
+import SlotTest from "../../SlotTest/SlotTest.svelte";
 
 describe("Column", () => {
   const props = {
-    name: "datejs",
-    placeholder: "Select date",
+    id: "col",
+    title: "col title",
+    placeholder: "Select date"
   };
 
-  const { getByPlaceholderText, component } = render(Column, { props });
-
-  test("shows proper heading when rendered", () => {
-    // const checkbox = document.querySelector('input[type="checkbox"]');
+  it("should render correctly", () => {
+    const { component } = render(Column, { props });
   });
 });

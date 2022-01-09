@@ -1,11 +1,22 @@
-import { render } from '@testing-library/svelte';
+import { render, screen, fireEvent } from '@testing-library/svelte';
 import BottomBar from '../src/BottomBar.svelte';
 
-describe('BottomBar', () => {
-  const result = render(BottomBar, {class: "bottom-bar-custom"});
-  it('bottombar test', () => {
-    const bottombar = result.container.getElementsByClassName("resp-bottom-bar")[0];
+describe('BottomBar test', () => {
+  const props = {
+    title: "test title",
+    class: "bottom-bar-custom"
+  };
+
+  it('render test', () => {
+    const {container} = render(BottomBar, { props });
+    const bottombar = container.querySelector("." + props.class) as HTMLElement;
     expect(() => bottombar).not.toThrow();
-    expect(bottombar.classList).toContain("bottom-bar-custom");
+  });
+
+  it("props test", () => {
+    const {container} = render(BottomBar, { props });
+    const bottombar = container.querySelector("." + props.class) as HTMLElement;
+
+    expect(bottombar.getAttribute("title")).toEqual(props.title);
   });
 });

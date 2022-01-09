@@ -1,6 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/svelte';
 import Accordion from '../src/Accordion.svelte';
-import SlotTest from '../src/SlotTest.svelte';
+import SlotTest from "../../SlotTest/SlotTest.svelte";
 
 describe("Accordion", () => {
   const props = {
@@ -12,8 +12,8 @@ describe("Accordion", () => {
   };
 
   it("accordion should render", () => {
-    const result = render(Accordion, { props });
-    expect(() => result).not.toThrow(); //test rendering
+    const {container} = render(Accordion, { props });
+    expect(() => container).not.toThrow(); //test rendering
   });
 
   it("slots should correctly render", () => {
@@ -25,26 +25,33 @@ describe("Accordion", () => {
   });
 
   //test props
-  // it("test props", () => {
-  //   const results = render(Accordion, { props });
-  //   const accordion = results.container.getElementsByClassName("resp-accordion")[0];
+  it("props test", () => {
+    const result = render(Accordion, { props });
+    const container = result.container;
+    const div = container.querySelector("." + props.class); //custom class
 
-  //   expect(accordion.classList).toContain(props.class);
+    //label test
+    expect((div as HTMLElement)
+    .getAttribute("label")).toEqual(props.label);
 
-  //   const content = accordion.getElementsByClassName("resp-accordion__content-box")[0];
-  //   const slot = content.firstElementChild;
-  //   expect(() => slot).not.toThrow();
-  // });
+    //caption test
+    const label = container.querySelector("label");
+    expect((label as HTMLElement).textContent).toEqual(props.caption);
+  });
 
-  //test onclick event
-  // it("onclick should make content visible/invisible", () => {
-  //   const results = render(Accordion, { props });
-  //   const accordion = results.container.getElementsByClassName("resp-accordion")[0];
+  //test click event
+  it("test click event", () => {
+    const {container} = render(Accordion, { props });
+    const accordion =
+      container.querySelector("input[type='checkbox']");
 
-  //   const input = accordion.getElementsByTagName("input")[0];
+    //expect to not be collapsed (true)
+    expect((accordion as HTMLInputElement).checked).toBeTruthy();
 
-  //   fireEvent.click(input); //should make content not visible
-  //   //expect text to be not visible
-  //   expect(() => screen.getByText(props.label)).not.toThrow();
-  // });
+    //click
+    fireEvent.click(accordion as HTMLInputElement);
+
+    //expect to be collapsed (false)
+    expect((accordion as HTMLInputElement).checked).toBeFalsy();
+  });
 });

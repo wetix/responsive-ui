@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/svelte';
 import Checkbox from '../src/Checkbox.svelte';
-import SlotTest from '../src/SlotTest.svelte';
+import SlotTest from '../../SlotTest/SlotTest.svelte';
 
 describe("Checkbox", () => {
   const props = {

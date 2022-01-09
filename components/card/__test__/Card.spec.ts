@@ -1,30 +1,37 @@
 import { render } from "@testing-library/svelte";
 import Card from "../src/Card.svelte";
+import SlotTest from "../../SlotTest/SlotTest.svelte";
 
-describe("Card", () => {
+describe('card test', () => {
   const props = {
     id: "card",
     class: "custom-class",
-    name: "test-button",
-    label: "Hello World!",
-    style: "width: 100px;",
+    title: "test title",
+    compact: true,
+    style: "width: 100%;"
   };
 
-  const result = render(Card, { props });
+  it('should render correctly', () => {
+    const {container} = render(Card, { props });
+    const card = container.querySelector("." + props.class) as HTMLElement;
 
-  // test("shows proper heading when rendered", () => {
-  //   // const card = results.getByTitle("card");
-  //   // expect(() => card).not.toThrow();
-  // });
+    expect(() => card).not.toThrow();
+  });
 
-  describe('card test', () => {
-    const result = render(Card, { props });
-    it('card prop test', () => {
-      const card = result.container.getElementsByClassName("resp-card")[0];
+  it('should render slots correctly', () => {
+    const result = render(SlotTest, { Component: Card });
+    expect(() => result).not.toThrow();
+  });
 
-      expect(() => card).not.toThrow();
-      expect(card.classList).toContain(props.class);
-      //how to get class:resp-card--compact ?
-    });
+  it("should have correct props", () => {
+    const {container} = render(Card, {props});
+    const card = container.querySelector("." + props.class) as HTMLElement;
+
+    expect(card.getAttribute("id")).toEqual(props.id); //test id
+    expect(card.getAttribute("title")).toEqual(props.title); //test title
+    //test compact (adds class)
+    expect(card.classList).toContain("resp-card--compact");
+    //test style
+    expect(card.getAttribute("style")).toEqual(props.style);
   });
 });

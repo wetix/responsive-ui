@@ -1,19 +1,47 @@
 import { render } from '@testing-library/svelte';
 import Badge from '../src/Badge.svelte';
+import SlotTest from '../../SlotTest/SlotTest.svelte';
 
 describe('Badge', () => {
   let props = {
+    title: "badge",
     class: "badge-custom",
     count: 100,
     max: 99
   };
 
-  const result = render(Badge, { props });
+  it("should render", () => {
+    const result = render(Badge, {props});
+    //test render
+    expect(() => result).not.toThrow();
+  });
+
+  it("should render slots", () => {
+    const result = render(SlotTest, { Component: Badge });
+    //test slot render
+    expect(() => result).not.toThrow();
+  });
 
   it("test props", () => {
-    const badge = result.container.getElementsByClassName("resp-badge")[0];
-    expect(() => badge).not.toThrow(); //test rendering
-    expect(badge.classList).toContain("badge-custom"); //test class name
-    expect(badge.getAttribute("data-count")).toEqual(props.max + "+"); //test data count
+    const {rerender, container} = render(Badge, { props });
+    var badge = container.querySelector("." + props.class) as HTMLElement;
+
+    //previously count is more than max
+    expect(badge.getAttribute("data-count")).toEqual(props.max + "+");
+
+    //rerender
+    const props2 = {
+      title: "badge",
+      class: "badge-custom",
+      count: 90,
+      max: 99
+    };
+    rerender(props2); //change count to less than max
+
+    badge = container.querySelector("." + props2.class) as HTMLElement;
+    console.log(badge.getAttribute("data-count"));
+
+    //display should show count now
+    expect(parseInt(badge.getAttribute("data-count") as string)).toEqual(props2.count);
   });
 });
