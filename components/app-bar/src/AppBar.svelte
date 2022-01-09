@@ -25,8 +25,7 @@
   class:resp-app-bar--shadowed={shadowed}
   bind:clientHeight
   on:click
-  {...$$restProps}
->
+  {...$$restProps}>
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
       <div class="resp-app-bar__icon-menu" on:click={() => (openMenu = !openMenu)}>
@@ -84,14 +83,12 @@
     class="resp-app-bar__overlay"
     in:fade
     out:fade
-    on:click={() => (openMenu = false)}
-  />
+    on:click={() => (openMenu = false)} />
 {/if}
 <aside
   class="resp-app-bar__menu"
   class:resp-app-bar__menu--close={!openMenu}
-  on:click={handleMenu}
->
+  on:click={handleMenu}>
   <header class="resp-app-bar__menu-header">
     <caption>{menuCaption}</caption>
     <i class="resp-app-bar__menu-icon" on:click={() => (openMenu = false)}>

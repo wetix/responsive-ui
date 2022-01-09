@@ -2,8 +2,7 @@ const getEmptyRows = (): unknown[] => {
   return Array.from({ length: 42 });
 };
 
-export const isLeapYear = (year: number) =>
-  new Date(year, 1, 29).getDate() === 29;
+export const isLeapYear = (year: number) => new Date(year, 1, 29).getDate() === 29;
 
 export const isValidDate = (date: string) => {
   try {
@@ -26,7 +25,7 @@ export const monthNames = [
   "September",
   "October",
   "November",
-  "December",
+  "December"
 ];
 
 export const weekdays = [
@@ -36,14 +35,13 @@ export const weekdays = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday",
+  "Saturday"
 ];
 
 export const toDateString = (v: Date) => {
-  return `${v.getFullYear()}-${String(v.getMonth() + 1).padStart(
-    2,
-    "0"
-  )}-${String(v.getDate()).padStart(2, "0")}`;
+  return `${v.getFullYear()}-${String(v.getMonth() + 1).padStart(2, "0")}-${String(
+    v.getDate()
+  ).padStart(2, "0")}`;
 };
 
 export const get2DimensionDate = (monthIndex: number, year: number): Date[] => {

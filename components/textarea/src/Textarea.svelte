@@ -30,8 +30,7 @@
     on:focus
     on:blur
     on:input
-    {...$$restProps}
-  />
+    {...$$restProps} />
   {#if maxlength > 0}
     <slot>
       <div class="resp-textarea__char">

@@ -28,8 +28,7 @@
   class:resp-poster--shadowed={shadowed}
   class:resp-poster--rounded={rounded}
   style={`background-image: url(${src})`}
-  on:click
->
+  on:click>
   <!-- <picture>
     <source srcset="logo-768.png 768w, logo-768-1.5x.png 1.5x" />
     <source srcset="logo-480.png, logo-480-2x.png 2x" />

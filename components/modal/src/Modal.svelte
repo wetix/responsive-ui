@@ -43,15 +43,13 @@
       class="resp-modal__overlay"
       in:fade
       out:fade
-      on:click={maskClosable ? () => (open = false) : undefined}
-    />
+      on:click={maskClosable ? () => (open = false) : undefined} />
     <div
       {...$$restProps}
       class="resp-modal {className}"
       in:fade
       out:fade
-      style="width: {isNaN(width) ? width : `${width}px`}; {style}"
-    >
+      style="width: {isNaN(width) ? width : `${width}px`}; {style}">
       {#if caption}
         <header class="resp-modal__header">
           <caption>{caption}</caption>
@@ -72,8 +70,7 @@
           <Button
             variant="primary"
             on:click={() => dispatch("ok")}
-            style="margin-left: 6px">OK</Button
-          >
+            style="margin-left: 6px">OK</Button>
           <Button on:click={() => dispatch("cancel")}>Cancel</Button>
         </slot>
       </footer>

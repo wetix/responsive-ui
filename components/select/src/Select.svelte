@@ -26,8 +26,7 @@
   on:change
   on:blur
   bind:value
-  {...$$restProps}
->
+  {...$$restProps}>
   {#if placeholder}
     <option readonly hidden selected>{placeholder}</option>
   {/if}

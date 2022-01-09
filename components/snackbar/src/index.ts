@@ -14,7 +14,7 @@ const show = (props: SnackbarProps): SnackbarComponent => {
   const component = new Snackbar({
     target: document.body,
     props,
-    intro: true,
+    intro: true
   });
 
   const pos = queue.length;
@@ -36,7 +36,7 @@ const show = (props: SnackbarProps): SnackbarComponent => {
   }
   queue.push(component);
   return {
-    close,
+    close
   };
 };
 

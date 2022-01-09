@@ -26,8 +26,7 @@
       viewBox="0 0 106 106"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
+      xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-17.000000, -17.000000)">
           <circle
@@ -36,16 +35,14 @@
             fill-rule="nonzero"
             cx="70"
             cy="70"
-            r="50"
-          />
+            r="50" />
           <path
             d="M70,120 C97.6142375,120 120,97.6142375 120,70 C120,42.3857625 97.6142375,20 70,20 C42.3857625,20 20,42.3857625 20,70 C20,97.6142375 42.3857625,120 70,120 Z"
             stroke="#00ff00"
             stroke-width="5"
             stroke-dasharray={circle}
             fill-rule="nonzero"
-            transform="translate(70.000000, 70.000000) rotate(-125.000000) translate(-70.000000, -70.000000)"
-          />
+            transform="translate(70.000000, 70.000000) rotate(-125.000000) translate(-70.000000, -70.000000)" />
         </g>
       </g>
     </svg>
