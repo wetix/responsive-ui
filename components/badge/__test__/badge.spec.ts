@@ -17,11 +17,11 @@ describe('Badge', () => {
   });
 
   it("should render slots", () => {
-    const result = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: Badge, props }
     });
     //test slot render
-    expect(() => result).not.toThrow();
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("test props", () => {

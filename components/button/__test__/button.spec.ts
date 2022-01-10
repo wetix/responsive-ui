@@ -17,10 +17,10 @@ describe("Button", () => {
   });
 
   it("should render slots correctly", () => {
-    const result = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: Button, props }
     });
-    expect(() => result).not.toThrow();
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("shows proper heading when rendered", () => {

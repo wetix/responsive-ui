@@ -24,8 +24,8 @@ describe("Column", () => {
   });
 
   it("should render slots correctly", () => {
-    const result = render(SlotTest, {props : {Component: Column, props}});
-    expect(() => result).not.toThrow();
+    const {getByTestId} = render(SlotTest, {props : {Component: Column, props}});
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("prop test", () => {

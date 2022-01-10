@@ -19,10 +19,10 @@ describe('card test', () => {
   });
 
   it('should render slots correctly', () => {
-    const result = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: Card, props }
     });
-    expect(() => result).not.toThrow();
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("should have correct props", () => {

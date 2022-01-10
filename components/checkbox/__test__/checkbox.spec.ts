@@ -21,10 +21,10 @@ describe("Checkbox", () => {
 
   //render slots
   it("checkbox slot render test", () => {
-    const result = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: Checkbox, props }
     });
-    expect(() => result).not.toThrow();
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   //onclick event

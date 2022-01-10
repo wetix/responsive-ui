@@ -16,11 +16,11 @@ describe('BottomBar test', () => {
   });
 
   it('should render slots correctly', () => {
-    const result = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: BottomBar, props }
     });
 
-    expect(() => result).not.toThrow();
+    expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("props test", () => {

@@ -20,11 +20,11 @@ describe("Chip", () => {
   });
 
   it("slot render", () => {
-    const slot = render(SlotTest, {
+    const {getByTestId} = render(SlotTest, {
       props: { Component: Chip, props }
     });
 
-    expect(() => slot).not.toThrow(); //test render
+    expect(() => getByTestId("slot")).not.toThrow(); //test render
   });
 
   it("click event (checked)", () => {
