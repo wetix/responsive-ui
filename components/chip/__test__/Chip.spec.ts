@@ -8,7 +8,8 @@ describe("Chip", () => {
     label: "Hello World!",
     checked: false,
     disabled: true,
-    value: "Value"
+    value: "Value",
+    ref: document.createElement('checkbox') as HTMLInputElement
   };
 
   const { container } = render(Chip, { props });
@@ -19,7 +20,9 @@ describe("Chip", () => {
   });
 
   it("slot render", () => {
-    const slot = render(SlotTest, {Component: Chip});
+    const slot = render(SlotTest, {
+      props: { Component: Chip, props }
+    });
 
     expect(() => slot).not.toThrow(); //test render
   });

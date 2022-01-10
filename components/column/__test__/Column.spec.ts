@@ -7,8 +7,14 @@ describe("Column", () => {
     id: "col",
     class: "col-custom",
     title: "col title",
+    flex: "flex-grow",
     placeholder: "Select date",
+    xs: 0,
+    sm: 0,
     md: 2,
+    lg: 0,
+    xl: 0,
+    sl: 0,
     style: "width: 100%;"
   };
 
@@ -17,8 +23,8 @@ describe("Column", () => {
     expect(() => result).not.toThrow();
   });
 
-  it("should render props correctly", () => {
-    const result = render(SlotTest, {Component: Column});
+  it("should render slots correctly", () => {
+    const result = render(SlotTest, {props : {Component: Column, props}});
     expect(() => result).not.toThrow();
   });
 

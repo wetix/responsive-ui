@@ -1,23 +1,38 @@
 import { render } from "@testing-library/svelte";
 import DatePicker from "../src/DatePicker.svelte";
 
-describe("DatePicker", () => {
+describe("DatePicker test", () => {
   const props = {
-    name: "datejs",
+    class: "datepicker-custom",
+    open: false,
     placeholder: "Select date",
+    name: "datejs",
+    readonly: false,
+    disabled: false,
+    bordered: true,
+    ref: document.createElement('input') as HTMLInputElement
   };
 
-  const { getByPlaceholderText, component } = render(DatePicker, { props });
+  const props2 = {
+    class: "datepicker-custom2",
+    open: true,
+    placeholder: "Select date",
+    name: "datejs",
+    readonly: false,
+    disabled: false,
+    bordered: false,
+    ref: document.createElement('input') as HTMLInputElement
+  };
 
-  test("shows proper heading when rendered", () => {
-    const input = getByPlaceholderText(props.placeholder);
-    expect(() => input).not.toThrow();
-    expect(input.tagName).toBe("INPUT");
-    expect(input.nodeName).toBe("INPUT");
-    expect(input.getAttribute("name")).toBe("datejs");
+  const { container } = render(DatePicker, { props });
+  const datepicker = container.querySelector("." + props.class);
+  const con = container;
+
+  it("should render correctly", () => {
+    expect(() => con).not.toThrow();
   });
 
-  test("shows proper heading when rendered", () => {
-    component.$set({ readonly: true });
+  it("shows proper heading when rendered", () => {
+    expect(() => con).not.toThrow();
   });
 });

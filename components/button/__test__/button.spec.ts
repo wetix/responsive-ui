@@ -1,5 +1,6 @@
 import { render, fireEvent } from "@testing-library/svelte";
 import Button from "../src/Button.svelte";
+import SlotTest from "../../SlotTest/SlotTest.svelte";
 
 describe("Button", () => {
   const props = {
@@ -7,14 +8,25 @@ describe("Button", () => {
     name: "test-button",
     label: "Hello World!",
     style: "width: 100px;",
+    ref: document.createElement('button') as HTMLButtonElement
   };
 
-  test("shows proper heading when rendered", () => {
-    const results = render(Button, { props });
-    const button = results.getByRole("button");
+  it("should render correctly", () => {
+    const result = render(Button, { props });
+    expect(() => result).not.toThrow();
+  });
 
-    expect(() => button).not.toThrow();
-    expect(button.classList).not.toBe("");
+  it("should render slots correctly", () => {
+    const result = render(SlotTest, {
+      props: { Component: Button, props }
+    });
+    expect(() => result).not.toThrow();
+  });
+
+  it("shows proper heading when rendered", () => {
+    const {getByRole} = render(Button, { props });
+    const button = getByRole("button");
+
     expect(button.classList).toContain("custom-class");
     expect(button.getAttribute("type")).toEqual("submit");
     expect(button.getAttribute("name")).toEqual(props.name);

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/svelte';
+import { render, fireEvent } from '@testing-library/svelte';
 import Checkbox from '../src/Checkbox.svelte';
 import SlotTest from '../../SlotTest/SlotTest.svelte';
 
@@ -8,7 +8,8 @@ describe("Checkbox", () => {
     name: "Test",
     disabled: false,
     value: "Test Value",
-    checked: true
+    checked: false,
+    ref: document.createElement("checkbox") as HTMLInputElement
   };
 
   //render checkbox
@@ -20,15 +21,22 @@ describe("Checkbox", () => {
 
   //render slots
   it("checkbox slot render test", () => {
-    const result = render(SlotTest, { Component: Checkbox });
+    const result = render(SlotTest, {
+      props: { Component: Checkbox, props }
+    });
     expect(() => result).not.toThrow();
   });
 
   //onclick event
-  // it("check test", () => {
-  //   const {container, component} = render(Checkbox, { props });
-  //   const chkbox = container.getElementsByClassName("resp-checkbox")[0];
+  it("should react to clicks corectly", () => {
+    const {container} = render(Checkbox, { props });
+    const chkbox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
 
-  //   fireEvent.click(chkbox);
-  // });
+    //should be false
+    expect(chkbox.checked).toBeFalsy();
+
+    fireEvent.click(chkbox);
+    //should be checked
+    expect(chkbox.checked).toBeTruthy();
+  });
 });

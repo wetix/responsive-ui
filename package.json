@@ -27,7 +27,7 @@
     "storybook": "set NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "test": "jest components",
-    "test:1": "jest components/carousel --watch",
+    "test:1": "jest components/column",
     "commit": "cz",
     "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb"

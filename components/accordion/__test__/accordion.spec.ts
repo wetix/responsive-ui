@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/svelte';
+import { render, fireEvent } from '@testing-library/svelte';
 import Accordion from '../src/Accordion.svelte';
 import SlotTest from "../../SlotTest/SlotTest.svelte";
 
@@ -18,7 +18,7 @@ describe("Accordion", () => {
 
   it("slots should correctly render", () => {
     const { getByTestId } = render(SlotTest, {
-      props: { Component: Accordion }
+      props: { Component: Accordion, props }
     });
 
     expect(() => getByTestId("slot")).not.toThrow(); //test rendering
@@ -26,32 +26,31 @@ describe("Accordion", () => {
 
   //test props
   it("props test", () => {
-    const result = render(Accordion, { props });
-    const container = result.container;
-    const div = container.querySelector("." + props.class); //custom class
+    const {container} = render(Accordion, { props });
+    //custom class
+    const div = container.querySelector("." + props.class) as HTMLElement;
 
     //label test
-    expect((div as HTMLElement)
-    .getAttribute("label")).toEqual(props.label);
+    expect(div.getAttribute("label")).toEqual(props.label);
 
     //caption test
-    const label = container.querySelector("label");
-    expect((label as HTMLElement).textContent).toEqual(props.caption);
+    const label = container.querySelector("label") as HTMLElement;
+    expect(label.textContent).toEqual(props.caption);
   });
 
   //test click event
   it("test click event", () => {
     const {container} = render(Accordion, { props });
     const accordion =
-      container.querySelector("input[type='checkbox']");
+      container.querySelector("input[type='checkbox']") as HTMLInputElement;
 
     //expect to not be collapsed (true)
-    expect((accordion as HTMLInputElement).checked).toBeTruthy();
+    expect(accordion.checked).toBeTruthy();
 
     //click
-    fireEvent.click(accordion as HTMLInputElement);
+    fireEvent.click(accordion);
 
     //expect to be collapsed (false)
-    expect((accordion as HTMLInputElement).checked).toBeFalsy();
+    expect(accordion.checked).toBeFalsy();
   });
 });

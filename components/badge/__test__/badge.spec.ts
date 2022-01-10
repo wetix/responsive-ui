@@ -17,7 +17,9 @@ describe('Badge', () => {
   });
 
   it("should render slots", () => {
-    const result = render(SlotTest, { Component: Badge });
+    const result = render(SlotTest, {
+      props: { Component: Badge, props }
+    });
     //test slot render
     expect(() => result).not.toThrow();
   });
@@ -39,7 +41,6 @@ describe('Badge', () => {
     rerender(props2); //change count to less than max
 
     badge = container.querySelector("." + props2.class) as HTMLElement;
-    console.log(badge.getAttribute("data-count"));
 
     //display should show count now
     expect(parseInt(badge.getAttribute("data-count") as string)).toEqual(props2.count);

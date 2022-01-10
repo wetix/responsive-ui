@@ -1,5 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/svelte';
+import { render } from '@testing-library/svelte';
 import BottomBar from '../src/BottomBar.svelte';
+import SlotTest from '../../SlotTest/SlotTest.svelte';
+import { bounceIn } from 'svelte/easing';
 
 describe('BottomBar test', () => {
   const props = {
@@ -11,6 +13,14 @@ describe('BottomBar test', () => {
     const {container} = render(BottomBar, { props });
     const bottombar = container.querySelector("." + props.class) as HTMLElement;
     expect(() => bottombar).not.toThrow();
+  });
+
+  it('should render slots correctly', () => {
+    const result = render(SlotTest, {
+      props: { Component: BottomBar, props }
+    });
+
+    expect(() => result).not.toThrow();
   });
 
   it("props test", () => {

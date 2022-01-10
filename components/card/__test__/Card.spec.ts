@@ -19,7 +19,9 @@ describe('card test', () => {
   });
 
   it('should render slots correctly', () => {
-    const result = render(SlotTest, { Component: Card });
+    const result = render(SlotTest, {
+      props: { Component: Card, props }
+    });
     expect(() => result).not.toThrow();
   });
 
