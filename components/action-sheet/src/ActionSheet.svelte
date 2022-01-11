@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import Button from "@responsive-ui/button";
   import BottomSheet from "@responsive-ui/bottom-sheet";
   import type { ActionSheetItem, ActionSheetOption } from "../types";
@@ -36,8 +36,19 @@
   let tab: HTMLUListElement;
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
 
-  $: selectedIndex = items.findIndex((v) => v.key === activeKey);
+  $: {
+    const index = items.findIndex((v) => v.key === activeKey);
+    if (index < 0) selectedIndex = 0;
+    else selectedIndex = index;
+  }
   $: options = items[selectedIndex < 0 ? 0 : selectedIndex].options || [];
+
+  onMount(() => {
+    const el = tab.querySelector(`[data-index="${selectedIndex}"]`) as HTMLElement;
+    const offsetX = tab.scrollWidth - tab.clientWidth;
+    if (!el || offsetX <= 0) return;
+    tab.scrollTo(el.offsetLeft - 15, 0);
+  });
 
   const findElement = (e: Event) => {
     return e
@@ -99,7 +110,7 @@
     </div>
     <ul class="resp-action-sheet__tab" bind:this={tab} on:change={handleTabChange}>
       {#each items as item, idx (item.key)}
-        <li>
+        <li data-index={idx}>
           <label
             class:resp-action-sheet__tab-item--selected={(idx == 0 && activeKey == "") ||
               activeKey === item.key}>

@@ -10,7 +10,9 @@
   export let disabled = false;
   export let bordered = false;
 
-  const handleFocus = () => {};
+  const handleFocus = () => {
+    focused = true;
+  };
 </script>
 
 <div

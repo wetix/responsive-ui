@@ -1,6 +1,6 @@
 <script lang="ts">
   // import { getNodeAttribute } from "@wetix/utils";
-  import { onDestroy } from "svelte";
+  // import { onDestroy } from "svelte";
   import type { CarouselItem } from "../types/index";
 
   let className = "";
