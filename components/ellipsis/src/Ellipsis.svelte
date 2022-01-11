@@ -9,8 +9,7 @@
   class="resp-ellipsis {className}"
   {...$$restProps}
   style={`width: ${width}; ${style}`}
-  on:click
->
+  on:click>
   <slot />
 </div>
 

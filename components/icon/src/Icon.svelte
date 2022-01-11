@@ -11,8 +11,7 @@
   class="resp-icon resp-icon--{sizeOf} {className}"
   class:resp-icon--clickable={clickable}
   on:click
-  {style}
->
+  {style}>
   <slot>
     <svg {...$$restProps}>
       <use xlink:href={useHref} />

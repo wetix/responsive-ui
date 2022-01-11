@@ -13,8 +13,7 @@
     type="checkbox"
     bind:checked
     on:change
-    {disabled}
-  />
+    {disabled} />
   <b class="resp-switch__toggle" />
   <b class="resp-switch__track" />
 </span>

@@ -8,8 +8,7 @@
   class="resp-card {className}"
   class:resp-card--compact={compact}
   on:click
-  {...$$restProps}
->
+  {...$$restProps}>
   <slot />
 </div>
 

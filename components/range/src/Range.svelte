@@ -50,8 +50,7 @@
     {max}
     value={min}
     bind:this={lowerSlider}
-    on:input={onLowerSlide}
-  />
+    on:input={onLowerSlide} />
   <input
     id="upper"
     type="range"
@@ -59,8 +58,7 @@
     {max}
     value={max}
     bind:this={upperSlider}
-    on:input={onUpperSlide}
-  />
+    on:input={onUpperSlide} />
   <div class="ink-bar" style="position:absolute" bind:this={inkBar} />
 </div>
 
