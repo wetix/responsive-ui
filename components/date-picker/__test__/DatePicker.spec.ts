@@ -34,14 +34,14 @@ describe("DatePicker test", () => {
     const datepicker = container.querySelector(".resp-date-picker") as HTMLElement;
 
     //test closed
-    //expect(() => container.querySelector(".resp-calendar")).toThrow();
+    expect(() => container.querySelector(".resp-calendar")).toThrow();
     console.log(container.outerHTML);
 
     //click on datepicker input
     fireEvent.click(container);
 
     //test open
-    //expect(() => container.querySelector(".resp-calendar")).not.toThrow();
+    expect(() => container.querySelector(".resp-calendar")).not.toThrow();
     console.log(container.outerHTML);
   });
 });
