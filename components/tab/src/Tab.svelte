@@ -39,8 +39,7 @@
       <span
         class="resp-tab__item"
         class:resp-tab__item--selected={selected == i}
-        on:click={(e) => onChange(e, i)}
-      >
+        on:click={(e) => onChange(e, i)}>
         {item.label}
       </span>
     {/each}

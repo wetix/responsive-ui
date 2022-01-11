@@ -25,9 +25,7 @@
     const currentpath = <number>lvl.shift();
     if (lvl.length < 1 && obj[currentpath]) {
       obj[currentpath].collapsed =
-        obj[currentpath].collapsed === undefined
-          ? false
-          : !obj[currentpath].collapsed;
+        obj[currentpath].collapsed === undefined ? false : !obj[currentpath].collapsed;
       return;
     }
 
@@ -43,10 +41,10 @@
     return JSON.stringify({
       item: {
         ...item,
-        submenus: undefined,
+        submenus: undefined
       },
       path: [...path, index],
-      hasSubmenu: submenus.length > 0,
+      hasSubmenu: submenus.length > 0
     });
   };
 
@@ -68,19 +66,16 @@
   bind:this={ref}
   class={`responsive-ui-menu ${className}`}
   on:click={onSelect}
-  transition:slide
->
+  transition:slide>
   {#each items as item, i (item.key)}
     <li
       class="responsive-ui-menu__item"
       class:responsive-ui-menu__item--disabled={item.disabled}
-      data-item={stringify(item, i)}
-    >
+      data-item={stringify(item, i)}>
       <div
         class="responsive-ui-menu__item"
         class:responsive-ui-menu--submenu={item.submenus}
-        class:responsive-ui-menu--open={item.collapsed === false}
-      >
+        class:responsive-ui-menu--open={item.collapsed === false}>
         {#if item.icon}
           <svelte:component this={item.icon} />
         {/if}
@@ -92,8 +87,7 @@
         <svelte:self
           class="responsive-ui-menu__submenu"
           path={[...path, i]}
-          items={item.submenus}
-        />
+          items={item.submenus} />
       {/if}
     </li>
   {/each}

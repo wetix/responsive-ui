@@ -33,11 +33,7 @@
 
     const toggleTooltip = (toggle: boolean) => async (e: Event) => {
       const target = e.composedPath().find((el) => {
-        return (
-          el instanceof HTMLElement &&
-          ((el as HTMLElement).hasAttribute(titleAttr) ||
-            (el as HTMLElement).title)
-        );
+        return el instanceof HTMLElement && (el.hasAttribute(titleAttr) || el.title);
       }) as HTMLElement;
 
       if (!target) return;
@@ -95,7 +91,7 @@
             firstChild.removeEventListener(k, cb);
           });
         }
-      },
+      }
     };
   };
 
@@ -116,15 +112,13 @@
     {...$$restProps}
     in:fade
     out:fade
-    style="top: {translateY}px; left: {translateX}px"
-  >
+    style="top: {translateY}px; left: {translateX}px">
     <slot name="tooltip" {title}>{title}</slot>
   </span>
 {/if}
 
 <span class="resp-tooltip__clone" bind:this={shallowDom}
-  ><slot name="tooltip">{title}</slot></span
->
+  ><slot name="tooltip">{title}</slot></span>
 
 <style lang="scss" global>
   $width: 5px;

@@ -59,5 +59,5 @@ export {
   Table,
   Tag,
   Textarea,
-  Upload,
+  Upload
 };

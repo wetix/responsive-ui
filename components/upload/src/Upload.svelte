@@ -10,7 +10,7 @@
   export let name = "file";
   export let method = "POST";
   export let action = "";
-  export let headers: Object = {};
+  export let headers: Record<string, string> = {};
   export let accept = "image/*";
   export let withCredentials = true;
   export let directory = false;
@@ -56,16 +56,16 @@
     });
     xhr.addEventListener("readystatechange", () => {
       if (xhr.readyState === 4) {
-        let response = xhr.responseXML;
+        let response: unknown = xhr.responseXML;
         const contentType = xhr.getResponseHeader("Content-Type") || "";
 
         try {
           if (xhr.status != 204 && /json/i.test(contentType))
-            response = JSON.parse(xhr.responseText);
+            response = JSON.parse(xhr.responseText) as Record<string, unknown>;
           if (xhr.status >= 200 && xhr.status <= 299) {
             dispatch("success", {
               response,
-              xhr,
+              xhr
             });
           } else if (xhr.status >= 400) {
             dispatch("error", xhr);
@@ -134,8 +134,7 @@
     on:dragleave={handleDragLeave}
     on:drop={handleDragLeave}
     on:drop={handleDrop}
-    {...$$restProps}
-  >
+    {...$$restProps}>
     <input
       bind:this={ref}
       use:dragUpload
@@ -145,8 +144,7 @@
       {multiple}
       {accept}
       on:change
-      tabindex="-1"
-    />
+      tabindex="-1" />
     <slot {uploading} {dragover} file="" />
   </label>
 </form>

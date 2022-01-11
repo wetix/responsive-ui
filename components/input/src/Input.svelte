@@ -26,8 +26,7 @@
   class="resp-input {className}"
   class:resp-input--bordered={bordered}
   class:resp-input--focused={focused}
-  on:click|stopPropagation={() => (focused = true)}
->
+  on:click|stopPropagation={() => (focused = true)}>
   <slot name="prefix" />
   <input
     bind:this={ref}
@@ -38,8 +37,7 @@
     on:focus
     on:blur
     on:input
-    {...$$restProps}
-  />
+    {...$$restProps} />
   <slot name="suffix" />
 </div>
 

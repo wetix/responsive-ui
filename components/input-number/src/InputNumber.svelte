@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-  export const toFixedTrunc = (x: any, n: number) => {
-    const v = (typeof x === "string" ? x : x.toString()).split(".");
+  export const toFixedTrunc = (x: number, n: number) => {
+    const v = `${x}`.split(".");
     if (n <= 0) return v[0];
     let f = v[1] || "";
     if (f.length > n) return `${v[0]}.${f.substr(0, n)}`;
@@ -16,8 +16,8 @@
   export let textDirection: "ltr" | "rtl" = "ltr";
   export let bordered = true;
   export let precision = 2;
-  export let min = 0;
-  export let max = 100;
+  // export let min = 0;
+  // export let max = 100;
   export let parser = (v: string): number => Number(v);
   export let format = (v: number): string => toFixedTrunc(v, precision);
   export let value = 0;
@@ -36,7 +36,7 @@
     // if (num <= min) return;
     // if (num >= max) return;
     value = num;
-    (<HTMLInputElement>ref).value = format(num);
+    ref.value = format(num);
   };
 </script>
 
@@ -44,8 +44,7 @@
   class="resp-input-number resp-input-number--text-direction-{textDirection} {className}"
   class:resp-input-number--bordered={bordered}
   class:resp-input-number--focused={focused}
-  on:click|stopPropagation={() => (focused = true)}
->
+  on:click|stopPropagation={() => (focused = true)}>
   {#if $$slots.prefix}
     <span class="resp-input-number__prefix"><slot name="prefix" /></span>
   {/if}
@@ -58,8 +57,7 @@
     on:blur
     on:change
     on:input
-    {...$$restProps}
-  />
+    {...$$restProps} />
   {#if $$slots.suffix}
     <span class="resp-input-number__suffix"><slot name="suffix" /></span>
   {/if}

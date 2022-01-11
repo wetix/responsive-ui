@@ -14,7 +14,7 @@ export interface AccordionEvents {
 }
 
 export interface AccordionSlots {
-  label: {};
+  label: Record<string, never>;
   default: {
     collapsed: boolean;
     disabled: boolean;

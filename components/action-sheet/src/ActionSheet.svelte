@@ -29,9 +29,7 @@
   export const getKeyValues = () => {
     return items.map(({ key, options = [] }) => ({
       key,
-      values: options
-        .filter((v) => v.selected === true)
-        .map(({ value }) => value),
+      values: options.filter((v) => v.selected === true).map(({ value }) => value)
     }));
   };
 
@@ -83,7 +81,7 @@
   const handleOk = () => {
     dispatch("ok", {
       activeKey,
-      keyValues: getKeyValues(),
+      keyValues: getKeyValues()
     });
   };
 </script>
@@ -93,34 +91,26 @@
   bind:height={modalHeight}
   class={className}
   {maskClosable}
-  {closable}
->
+  {closable}>
   <header class="resp-action-sheet__header">
     <div class="resp-action-sheet__header-label">
       <caption>{caption}</caption>
       <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
-    <ul
-      class="resp-action-sheet__tab"
-      bind:this={tab}
-      on:change={handleTabChange}
-    >
+    <ul class="resp-action-sheet__tab" bind:this={tab} on:change={handleTabChange}>
       {#each items as item, idx (item.key)}
         <li>
           <label
-            class:resp-action-sheet__tab-item--selected={(idx == 0 &&
-              activeKey == "") ||
-              activeKey === item.key}
-          >
+            class:resp-action-sheet__tab-item--selected={(idx == 0 && activeKey == "") ||
+              activeKey === item.key}>
             <input
               data-json={JSON.stringify({
                 ...item,
-                options: undefined,
+                options: undefined
               })}
               name={tabName}
               type="radio"
-              checked={item.selected || false}
-            />
+              checked={item.selected || false} />
             <slot name="tab-item">{item.label}</slot>
           </label>
         </li>
@@ -130,8 +120,7 @@
   <ul
     class="resp-action-sheet__body"
     style="height: {modalHeight - 180}px"
-    on:change={handleSelectOption}
-  >
+    on:change={handleSelectOption}>
     {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${activeKey}.${value}`)}
       <li class="resp-action-sheet__option">
         <label>
@@ -142,12 +131,11 @@
               label,
               value,
               selected,
-              disabled,
+              disabled
             })}
             {disabled}
             {value}
-            checked={selected}
-          />
+            checked={selected} />
           <div class="resp-action-sheet__option-label">
             <slot
               name="option"
@@ -156,9 +144,8 @@
                 label,
                 value,
                 selected,
-                disabled,
-              }}>{label}</slot
-            >
+                disabled
+              }}>{label}</slot>
           </div>
         </label>
       </li>

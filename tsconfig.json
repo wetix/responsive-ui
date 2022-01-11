@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "remove",
     "strict": true,
     "baseUrl": "./",
     "noEmit": true,

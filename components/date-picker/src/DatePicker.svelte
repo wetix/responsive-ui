@@ -8,8 +8,7 @@
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
-  const dispatch =
-    createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
+  const dispatch = createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
 
   let className = "";
   export { className as class };
@@ -102,8 +101,7 @@
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
-  on:click|stopPropagation={handleFocus}
->
+  on:click|stopPropagation={handleFocus}>
   <input
     type="date"
     {name}
@@ -119,8 +117,7 @@
     on:focus
     on:blur
     on:change
-    {value}
-  />
+    {value} />
   <!-- <input
     type="text"
     {name}
@@ -161,8 +158,7 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={handleSelectDate}
-      />
+        on:change={handleSelectDate} />
     </div>
   {/if}
 </div>

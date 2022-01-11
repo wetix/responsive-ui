@@ -2,15 +2,14 @@
   let className = "";
   export { className as class };
   export let flex: null | number | string;
-  export let xs: number = 24;
+  export let xs = 24;
   export let sm: number;
   export let md: number;
   export let lg: number;
   export let xl: number;
   export let sl: number;
 
-  const getClassName = (size: string, span: number) =>
-    `resp-col--${size}-${span}`;
+  const getClassName = (size: string, span: number) => `resp-col--${size}-${span}`;
 
   const clsNames: string[] = [];
   if (!isNaN(xs)) clsNames.push(getClassName("xs", xs));
@@ -24,8 +23,7 @@
 <div
   class={`resp-col ${clsNames.join(" ")} ${className}`}
   style="flex: {flex}"
-  {...$$restProps}
->
+  {...$$restProps}>
   <slot />
 </div>
 
@@ -44,7 +42,7 @@
     "md": $md,
     "lg": $lg,
     "xl": $xl,
-    "sl": $sl,
+    "sl": $sl
   ) !default;
 
   /// Mixin to manage responsive breakpoints

@@ -42,7 +42,7 @@
   export let style = "";
 
   const tween = tweened(1, {
-    duration: 150,
+    duration: 150
   });
 
   let index = 0;
@@ -70,16 +70,12 @@
   on:click={maskClosable ? () => (open = false) : noop}
   style={`opacity: ${1 - $tween}; visibility: ${
     1 - $tween <= 0 ? "hidden" : "visible"
-  }`}
-/>
+  }`} />
 <div
   class="resp-bottom-sheet {className}"
-  style={`transform: translateY(${
-    $tween * 100
-  }%); height: ${height}px; visibility: ${
+  style={`transform: translateY(${$tween * 100}%); height: ${height}px; visibility: ${
     1 - $tween <= 0 ? "hidden" : "visible"
-  }; ${style}`}
->
+  }; ${style}`}>
   {#if draggable}
     <div class="resp-bottom-sheet__header">
       <div class="resp-bottom-sheet__drag" />
