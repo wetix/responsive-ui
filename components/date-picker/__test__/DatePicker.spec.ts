@@ -1,4 +1,4 @@
-import { render } from "@testing-library/svelte";
+import { render, fireEvent } from "@testing-library/svelte";
 import DatePicker from "../src/DatePicker.svelte";
 
 describe("DatePicker test", () => {
@@ -24,15 +24,24 @@ describe("DatePicker test", () => {
     ref: document.createElement('input') as HTMLInputElement
   };
 
-  const { container } = render(DatePicker, { props });
-  const datepicker = container.querySelector("." + props.class);
-  const con = container;
-
   it("should render correctly", () => {
-    expect(() => con).not.toThrow();
+    const { container } = render(DatePicker, { props });
+    expect(() => container).not.toThrow();
   });
 
-  it("shows proper heading when rendered", () => {
-    expect(() => con).not.toThrow();
+  it("should get correct props", () => {
+    const { container } = render(DatePicker, { props });
+    const datepicker = container.querySelector(".resp-date-picker") as HTMLElement;
+
+    //test closed
+    //expect(() => container.querySelector(".resp-calendar")).toThrow();
+    console.log(container.outerHTML);
+
+    //click on datepicker input
+    fireEvent.click(container);
+
+    //test open
+    //expect(() => container.querySelector(".resp-calendar")).not.toThrow();
+    console.log(container.outerHTML);
   });
 });
