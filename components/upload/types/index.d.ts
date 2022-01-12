@@ -16,9 +16,7 @@ export interface UploadProps {
 }
 
 export interface UploadEvents {
-  success?: any;
-  error?: any;
-  uploadprogress?: CustomEvent<{}>;
+  uploadprogress?: CustomEvent<Record<string, never>>;
 }
 
 export interface UploadSlots {

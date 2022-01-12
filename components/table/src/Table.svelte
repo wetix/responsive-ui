@@ -13,7 +13,21 @@
   export let striped = false;
   export let bordered = true;
 
-  const hasCellSlot = $$slots["table-cell"];
+  // const hasCellSlot = $$slots["table-cell"];
+
+  const handleSorting = (e: Event) => {
+    const el = e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.sort) as HTMLElement;
+    if (!el) return;
+    const [idx, orderBy] = JSON.parse(el.dataset.sort as string) as [number, number];
+    const { sorter = (_a, _b) => 1 } = columns[idx];
+    if (orderBy > 0) {
+      items = items.sort(sorter);
+    } else {
+      items = items.sort(sorter).reverse();
+    }
+  };
 
   const getValue = (column: Partial<TableColumn>, item: TableItem) => {
     const { key, value = (v: unknown) => v } = column;
@@ -23,15 +37,14 @@
         key
           .split(".")
           .reduce(
-            (acc: Record<string, any>, cur: string) =>
-              cur in acc ? acc[cur] : "",
+            (acc: Record<string, any>, cur: string) => (cur in acc ? acc[cur] : ""),
             item
           ),
         item
       );
     }
 
-    return value(item);
+    return (value as (v: unknown) => unknown)(item);
   };
 
   const getRowKey = (item: TableItem, idx: number) =>
@@ -39,23 +52,34 @@
 </script>
 
 <div
+  bind:this={ref}
   class="resp-table {className}"
   class:resp-table--bordered={bordered}
   class:resp-table--striped={striped}
-  bind:this={ref}
   {...$$restProps}
 >
   <table style="table-layout: {tableLayout}">
     {#if showHeader}
       <thead>
-        <tr>
-          {#each columns as column}
+        <tr on:click={handleSorting}>
+          {#each columns as column, idx}
             <th
               class="resp-table__col--align-{column.align || 'left'}"
               class:resp-table__col--nowrap={!!column.nowrap}
               style="width: {column.width || 'auto'}"
             >
-              <slot name="table-head">{column.label || ""}</slot>
+              <div class="resp-table__col">
+                <span>{column.label || ""}</span>
+                {#if column.sorter}
+                  <span class="resp-table__col-sorter">
+                    <i data-sort={`[${idx},1]`}
+                      >{@html `<svg viewBox="0 0 1024 1024" focusable="false" data-icon="caret-up" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"></path></svg>`}</i
+                    ><i data-sort={`[${idx},-1]`}
+                      >{@html `<svg viewBox="0 0 1024 1024" focusable="false" data-icon="caret-down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path></svg>`}</i
+                    >
+                  </span>
+                {/if}
+              </div>
             </th>
           {/each}
         </tr>
@@ -71,16 +95,9 @@
                   <td
                     class="resp-table__col--align-{column.align || 'left'}"
                     class:resp-table__col--nowrap={!!column.nowrap}
-                    class:resp-table__col--ellipsis={!hasCellSlot &&
-                      !!column.ellipsis}
+                    colspan={column.colspan || undefined}
                   >
-                    <slot
-                      name="table-cell"
-                      rowIndex={i}
-                      columnIndex={j}
-                      {column}
-                      {item}
-                    >
+                    <slot name="table-cell" rowIndex={i} columnIndex={j} {column} {item}>
                       {getValue(column, item)}
                     </slot>
                   </td>
@@ -144,9 +161,6 @@
         overflow-wrap: break-word;
         padding: 10px;
         vertical-align: middle;
-        // border-width: 1px;
-        // border-style: solid;
-        // border-color: inherit;
       }
 
       tbody {
@@ -172,18 +186,25 @@
     }
 
     &__col {
-      &--ellipsis {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-sorter {
+        display: inline-flex;
+        flex-direction: column;
+
+        i {
+          display: inline-flex;
+          cursor: pointer;
+        }
+      }
+
+      &--nowrap {
         white-space: nowrap;
         overflow: hidden;
         word-break: keep-all;
         text-overflow: ellipsis;
-      }
-
-      &--nowrap {
-        word-break: unset;
-        word-wrap: unset;
-        overflow-wrap: unset;
-        white-space: nowrap;
       }
     }
 

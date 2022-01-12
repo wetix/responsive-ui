@@ -16,6 +16,7 @@
     img.onload = () => {
       opacity = 0;
     };
+    img.alt = alt;
     img.src = src;
   }
 </script>

@@ -39,10 +39,7 @@
   const handleKeypress = (e: KeyboardEvent) => {
     const charCode = e.which || e.keyCode;
     // prevent if user type non-numeric value
-    if (
-      (charCode > 31 && (charCode < 48 || charCode > 57)) ||
-      charCode == 190
-    ) {
+    if ((charCode > 31 && (charCode < 48 || charCode > 57)) || charCode == 190) {
       e.preventDefault();
       return;
     }

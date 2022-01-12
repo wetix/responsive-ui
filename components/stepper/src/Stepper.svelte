@@ -20,8 +20,7 @@
 
 <div class="responsive-ui-stepper {className}">
   <div class="responsive-ui-stepper__progress">
-    <span class="responsive-ui-stepper__percent">{`${percent.toFixed()}%`}</span
-    >
+    <span class="responsive-ui-stepper__percent">{`${percent.toFixed()}%`}</span>
     <svg
       class="responsive-ui-stepper__progress-circle"
       viewBox="0 0 106 106"

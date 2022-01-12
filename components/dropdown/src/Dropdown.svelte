@@ -67,9 +67,7 @@
   <div
     class="responsive-ui-dropdown__activator"
     on:click={trigger === "click" ? eventHandler : undefined}
-    on:contextmenu|preventDefault={trigger === "contextmenu"
-      ? onContextMenu
-      : undefined}
+    on:contextmenu|preventDefault={trigger === "contextmenu" ? onContextMenu : undefined}
   >
     <slot />
   </div>

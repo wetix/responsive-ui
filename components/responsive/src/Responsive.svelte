@@ -8,9 +8,7 @@
   if (window.screen.orientation) {
     window.screen.orientation.addEventListener("change", () => {
       queue.forEach(({ store }) => {
-        store.update((v) =>
-          Object.assign(v, { orientation: screen.orientation.type })
-        );
+        store.update((v) => Object.assign(v, { orientation: screen.orientation.type }));
       });
     });
   }
@@ -24,7 +22,7 @@
           aspectRatio: width / height,
           width,
           height,
-          innerWidth: window.innerWidth,
+          innerWidth: window.innerWidth
         })
       );
     });
@@ -35,12 +33,12 @@
     const store$ = writable<ResponsiveState>({
       orientation: screen.orientation.type,
       aspectRatio: width / height,
-      innerWidth: window.innerWidth,
+      innerWidth: window.innerWidth
     });
     const id = `responsive-${Math.floor(Math.random() * Date.now())}`;
     queue.push({
       id,
-      store: store$,
+      store: store$
     });
     return [id, store$];
   };

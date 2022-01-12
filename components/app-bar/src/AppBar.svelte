@@ -1,8 +1,13 @@
 <script lang="ts">
+  // import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
-  import type { NavItem } from "../types";
+  import type { NavItem, SubNavItem } from "../types";
 
+  // const dispatch = createEventDispatcher();
+
+  export let selectedKey = "";
+  export let selectedSubmenuKey = "";
   export let menuCaption = "";
   export let clientHeight = 0;
   export let shadowed = true;
@@ -11,12 +16,47 @@
   export let trailingItems: NavItem[] = [];
 
   let openMenu = false;
+  let subnav: HTMLElement;
+  let selectedIndex = 0;
+  let subMenus: SubNavItem[] = [];
+  let subnavStyle = "";
+  $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
+  $: {
+    const menus = (leadingItems[selectedIndex] || {}).subItems || [];
+    if (menus.length > 0) selectedSubmenuKey = menus[0].key;
+    subMenus = menus;
+  }
+  $: if (subnav) {
+    const el = subnav.querySelector(`[data-key="${selectedSubmenuKey}"]`);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      subnavStyle = `left: ${rect.left}px; width: ${rect.width}px; max-width: ${rect.width}px;`;
+    }
+  }
 
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
     const anchor = (e.target as HTMLElement).closest("a");
     if (!anchor) return;
     openMenu = false;
+  };
+
+  const findElement = (e: Event) => {
+    return e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
+  };
+
+  const handleClickLeading = (e: Event) => {
+    const el = findElement(e);
+    if (!el) return;
+    selectedKey = el.dataset.key as string;
+  };
+
+  const handleClickSubmenu = (e: Event) => {
+    const el = findElement(e);
+    if (!el) return;
+    selectedSubmenuKey = el.dataset.key as string;
   };
 </script>
 
@@ -29,10 +69,7 @@
 >
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
-      <div
-        class="resp-app-bar__icon-menu"
-        on:click={() => (openMenu = !openMenu)}
-      >
+      <div class="resp-app-bar__icon-menu" on:click={() => (openMenu = !openMenu)}>
         {@html `<svg width="24" height="24" viewBox="0 0 24 24" role="img"><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" /></svg>`}
       </div>
       <div class="resp-app-bar__logo">
@@ -40,16 +77,18 @@
       </div>
       <div class="resp-app-bar__leading">
         <slot name="leading" items={leadingItems}>
-          <ul>
-            {#each leadingItems as { href, label, selected, ...otherProps }, index}
-              <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot
-                  name="leading-item"
-                  item={leadingItems[index]}
-                  {index}
-                  {selected}
-                >
-                  <a {href} {...otherProps}>{label}</a>
+          <ul on:click={handleClickLeading}>
+            {#each leadingItems as { key, href, label, ...otherProps }, index (key)}
+              <li
+                class:resp-app-bar__leading-item--selected={selectedKey === key}
+                data-key={key}
+              >
+                <slot name="leading-item" item={leadingItems[index]} {index}>
+                  {#if href}
+                    <a {href} {...otherProps}>{label}</a>
+                  {:else}
+                    {label}
+                  {/if}
                 </slot>
               </li>
             {/each}
@@ -61,12 +100,7 @@
           <ul>
             {#each trailingItems as { href, label, selected, ...otherProps }, index}
               <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot
-                  name="trailing-item"
-                  item={trailingItems[index]}
-                  {index}
-                  {selected}
-                >
+                <slot name="trailing-item" item={trailingItems[index]} {index} {selected}>
                   <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
@@ -76,16 +110,21 @@
       </div>
     </div>
   </div>
+
   <!-- subnav -->
-  {#if leadingItems.length > 0 && leadingItems[0].subItems}
-    <nav class="resp-app-bar__subnav">
+  {#if subMenus.length > 0}
+    <nav class="resp-app-bar__subnav" bind:this={subnav} on:click={handleClickSubmenu}>
       <Scroll>
         <ul>
-          {#each leadingItems[0].subItems as { href, label, selected, ...otherProps }}
-            <li class:resp-app-bar__subnav-item--selected={selected}>
+          {#each subMenus as { key, href, label, ...otherProps }}
+            <li
+              class:resp-app-bar__subnav-item--selected={selectedSubmenuKey === key}
+              data-key={key}
+            >
               <a {href} {...otherProps}>{label}</a>
             </li>
           {/each}
+          <li class="resp-app-bar__subnav-indicator" style={subnavStyle} />
         </ul>
       </Scroll>
     </nav>
@@ -112,15 +151,17 @@
     </i>
   </header>
   <div class="resp-app-bar__menu-body">
-    <ul>
-      {#each menuItems as { href, label, selected, ...otherProps }, index}
-        <li>
-          <slot name="menu-item" item={menuItems[index]} {index} {selected}>
-            <a {href} {...otherProps}>{label}</a>
-          </slot>
-        </li>
-      {/each}
-    </ul>
+    <slot name="menu-body">
+      <ul>
+        {#each menuItems as { href, label, selected, ...otherProps }, index}
+          <li>
+            <slot name="menu-item" item={menuItems[index]} {index} {selected}>
+              <a {href} {...otherProps}>{label}</a>
+            </slot>
+          </li>
+        {/each}
+      </ul>
+    </slot>
   </div>
 </aside>
 
@@ -159,7 +200,8 @@
       align-items: center;
 
       li {
-        padding: 0 5px;
+        cursor: pointer;
+        padding: 0 0.5rem;
         white-space: nowrap;
       }
     }
@@ -191,6 +233,13 @@
       min-width: 0;
       display: none;
       overflow: hidden;
+      transition: all 0.5s;
+
+      &-item {
+        &--selected {
+          color: #fc4451;
+        }
+      }
 
       @media (min-width: $sm) {
         display: initial;
@@ -208,16 +257,29 @@
       color: #fff;
       z-index: 450;
 
-      &-item--selected {
-        font-weight: 500;
-      }
+      // &-item--selected {
+      //   font-weight: 600;
+      // }
 
       ul {
+        position: relative;
         height: 42px;
 
         li {
-          padding: 0 1.5rem;
+          padding: 0 1rem;
+          transition: all 0.5s;
         }
+      }
+
+      &-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0 !important;
+        margin: 0;
+        height: 2px;
+        width: 100%;
+        background: #fff;
       }
     }
 
@@ -304,6 +366,7 @@
       cursor: pointer;
       color: inherit;
       text-decoration: none;
+      display: block;
     }
   }
 </style>

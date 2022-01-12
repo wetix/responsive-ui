@@ -1,35 +1,4 @@
-<script context="module" lang="ts">
-  const queue: HTMLElement[] = [];
-  // remove window scroll when all gone
-
-  let scrollY = 0;
-  const toggleOpen = (i: number, open: boolean) => {
-    // queue[i] = open;
-    // if (queue.some((v) => v === true)) {
-    //   scrollY = window.scrollY;
-    //   document.body.setAttribute(
-    //     "style",
-    //     `position: fixed; top: -${scrollY}px`
-    //   );
-    // } else {
-    //   document.body.setAttribute("style", "");
-    //   window.scrollTo(0, scrollY);
-    // }
-  };
-
-  const pushQueue = (open: boolean): number => {
-    // queue.push(open);
-    return queue.length - 1;
-  };
-
-  const popQueue = (i: number) => {
-    if (i >= queue.length) return;
-    queue.splice(i, 1);
-  };
-</script>
-
 <script lang="ts">
-  import { onMount } from "svelte";
   import { noop } from "svelte/internal";
   import { tweened } from "svelte/motion";
 
@@ -42,25 +11,14 @@
   export let style = "";
 
   const tween = tweened(1, {
-    duration: 150,
+    duration: 150
   });
-
-  let index = 0;
 
   $: if (open) {
-    toggleOpen(index, open);
-    tween.set(0);
+    void tween.set(0);
   } else {
-    toggleOpen(index, open);
-    tween.set(1);
+    void tween.set(1);
   }
-
-  onMount(() => {
-    // index = pushQueue(open);
-    // return () => {
-    //   popQueue(index);
-    // };
-  });
 
   $: height = window.innerHeight * 0.85;
 </script>
@@ -68,15 +26,11 @@
 <div
   class="resp-bottom-sheet__overlay"
   on:click={maskClosable ? () => (open = false) : noop}
-  style={`opacity: ${1 - $tween}; visibility: ${
-    1 - $tween <= 0 ? "hidden" : "visible"
-  }`}
+  style={`opacity: ${1 - $tween}; visibility: ${1 - $tween <= 0 ? "hidden" : "visible"}`}
 />
 <div
   class="resp-bottom-sheet {className}"
-  style={`transform: translateY(${
-    $tween * 100
-  }%); height: ${height}px; visibility: ${
+  style={`transform: translateY(${$tween * 100}%); height: ${height}px; visibility: ${
     1 - $tween <= 0 ? "hidden" : "visible"
   }; ${style}`}
 >

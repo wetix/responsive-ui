@@ -1,12 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
-  import {
-    get2DimensionDate,
-    monthNames,
-    toDateString,
-    weekdays,
-  } from "./datetime";
+  import { get2DimensionDate, monthNames, toDateString, weekdays } from "./datetime";
 
   const dispatch = createEventDispatcher();
 
@@ -107,9 +102,7 @@
                 data-date={toDateString(data[i * 7 + j])}
                 on:click={handleSelectDate(data[i * 7 + j])}
               >
-                <div
-                  class="resp-calendar__date {getClassList(data[i * 7 + j])}"
-                >
+                <div class="resp-calendar__date {getClassList(data[i * 7 + j])}">
                   {data[i * 7 + j].getDate()}
                 </div>
               </td>
@@ -119,14 +112,13 @@
       </tbody>
     </table>
   </div>
-  <slot name="footer">
-    <div class="resp-calendar__footer">
-      <span
-        class="resp-calendar__button"
-        on:click={handleSelectDate(new Date())}>Today</span
-      >
-    </div>
-  </slot>
+  <div class="resp-calendar__footer">
+    <slot name="footer">
+      <div class="resp-calendar__button" on:click={handleSelectDate(new Date())}>
+        Today
+      </div>
+    </slot>
+  </div>
 </div>
 
 <style lang="scss" global>

@@ -46,8 +46,7 @@
     const target = e
       .composedPath()
       .find(
-        (el) =>
-          el instanceof Element && el.classList.contains("resp-select__option")
+        (el) => el instanceof Element && el.classList.contains("resp-select__option")
       );
     if (!target) return null;
     const option = (target as Element).getAttribute(attr);
@@ -81,10 +80,7 @@
   };
 </script>
 
-<div
-  class="resp-select--multiple resp-select--{sizeOf} {className}"
-  bind:this={ref}
->
+<div class="resp-select--multiple resp-select--{sizeOf} {className}" bind:this={ref}>
   <div
     class="resp-select__input"
     class:resp-select__input--focused={focused}
@@ -111,9 +107,7 @@
   <div
     class="resp-select__dropdown"
     on:click={handleSelect}
-    style={`height: ${
-      focused ? clientHeight : 0
-    }px; max-height: ${maxHeight}px;`}
+    style={`height: ${focused ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as option, i}
