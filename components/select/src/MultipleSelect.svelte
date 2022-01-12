@@ -84,7 +84,8 @@
   <div
     class="resp-select__input"
     class:resp-select__input--focused={focused}
-    on:click={() => (focused = true)}>
+    on:click={() => (focused = true)}
+  >
     <input {name} type="hidden" value={value.join(",")} />
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
@@ -99,20 +100,23 @@
         autocomplete="off"
         on:blur
         {disabled}
-        {readonly} />
+        {readonly}
+      />
     </span>
   </div>
   <div
     class="resp-select__dropdown"
     on:click={handleSelect}
-    style={`height: ${focused ? clientHeight : 0}px; max-height: ${maxHeight}px;`}>
+    style={`height: ${focused ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
+  >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as option, i}
         <div
           class="resp-select__option"
           class:resp-select__option--disabled={option.disabled}
           class:resp-select__option--selected={value.includes(option.value)}
-          data-option={JSON.stringify([i, option])}>
+          data-option={JSON.stringify([i, option])}
+        >
           {option.label || ""}
         </div>
       {/each}

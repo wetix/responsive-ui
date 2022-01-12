@@ -44,7 +44,8 @@
   class="resp-input-number resp-input-number--text-direction-{textDirection} {className}"
   class:resp-input-number--bordered={bordered}
   class:resp-input-number--focused={focused}
-  on:click|stopPropagation={() => (focused = true)}>
+  on:click|stopPropagation={() => (focused = true)}
+>
   {#if $$slots.prefix}
     <span class="resp-input-number__prefix"><slot name="prefix" /></span>
   {/if}
@@ -57,7 +58,8 @@
     on:blur
     on:change
     on:input
-    {...$$restProps} />
+    {...$$restProps}
+  />
   {#if $$slots.suffix}
     <span class="resp-input-number__suffix"><slot name="suffix" /></span>
   {/if}

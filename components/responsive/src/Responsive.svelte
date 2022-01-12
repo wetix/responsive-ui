@@ -64,4 +64,5 @@
 <slot
   aspectRatio={$store$.aspectRatio}
   orientation={$store$.orientation}
-  innerWidth={$store$.innerWidth} />
+  innerWidth={$store$.innerWidth}
+/>

@@ -11,7 +11,8 @@
   class="resp-row {className}"
   class:resp-row--nowrap={nowrap}
   style="justify-content: {justifyContent}; align-items: {alignItems}; {style}"
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </div>
 

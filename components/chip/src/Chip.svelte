@@ -19,13 +19,15 @@
   {value}
   bind:checked
   on:change
-  on:click />
+  on:click
+/>
 <label
   class="resp-chip {className}"
   class:resp-chip--disabled={disabled}
   data-value={value}
   for={id}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </label>
 

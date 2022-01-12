@@ -62,11 +62,13 @@
     ? () => {
         show = false;
       }
-    : undefined}>
+    : undefined}
+>
   <div
     class="responsive-ui-dropdown__activator"
     on:click={trigger === "click" ? eventHandler : undefined}
-    on:contextmenu|preventDefault={trigger === "contextmenu" ? onContextMenu : undefined}>
+    on:contextmenu|preventDefault={trigger === "contextmenu" ? onContextMenu : undefined}
+  >
     <slot />
   </div>
   <div
@@ -78,7 +80,8 @@
     style={`height:${show ? clientHeight : 0}px; max-height: ${maxHeight};${
       trigger === "contextmenu" ? `top:${y}px;left:${x}px;` : ""
     }`}
-    bind:this={menuList}>
+    bind:this={menuList}
+  >
     <div bind:clientHeight style="padding:10px 0">
       {#each items as item, i}
         {#if item.divider}
@@ -87,14 +90,16 @@
           <a
             class="responsive-ui-dropdown__item"
             class:responsive-ui-dropdown__item--disabled={item.disabled}
-            href={item.href}>
+            href={item.href}
+          >
             {item.label || ""}
           </a>
         {:else}
           <div
             class="responsive-ui-dropdown__item"
             class:responsive-ui-dropdown__item--disabled={item.disabled}
-            on:click={item.onClick ? item.onClick : () => {}}>
+            on:click={item.onClick ? item.onClick : () => {}}
+          >
             {item.label || ""}
           </div>
         {/if}

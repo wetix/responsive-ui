@@ -17,14 +17,16 @@
     class="resp-docker__overlay"
     on:click={maskClosable ? () => (open = !open) : noop}
     in:fade
-    out:fade />
+    out:fade
+  />
 {/if}
 <aside
   class="resp-docker resp-docker--{placement} {className}"
   class:resp-docker--close={!open}
   style={`width: ${isNaN(width) ? width : `${width}px`}; ${style}`}
   on:click
-  {...$$restProps}>
+  {...$$restProps}
+>
   <header class="resp-docker__header">
     <div class="resp-docker__header-label"><h2>{caption}</h2></div>
     <span class="resp-docker__header-close">

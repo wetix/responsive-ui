@@ -18,7 +18,8 @@
 <span
   class="resp-tag resp-tag--{color} {className}"
   class:resp-tag--outline={outline}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot>{label}</slot>
   {#if closable}
     <span class="resp-tag__close" on:click={handleClose}>&#10005;</span>

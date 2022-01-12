@@ -8,7 +8,8 @@
 <span
   class="resp-badge {className}"
   data-count={count > max ? `${max}+` : count}
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </span>
 
