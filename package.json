@@ -34,10 +34,6 @@
     "lint": "eslint './components/*/src/**/*.{js,ts,svelte}'",
     "lint:fix": "eslint --fix './components/*/src/**/*.{js,ts,svelte}'"
   },
-  "pre-commit": [
-    "format",
-    "lint"
-  ],
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=7.0.0"

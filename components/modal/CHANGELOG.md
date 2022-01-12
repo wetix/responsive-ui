@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.0](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.8...v1.1.0-alpha.0) (2022-01-12)
+
+
+### Features
+
+* improve `AppBar` component ([33e89fc](https://github.com/wetix/responsive-ui/commit/33e89fc20ec80f5fb8c2480c639ae934c5677751))
+
+
+
+
+
 ## [1.0.9-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.7...v1.0.9-alpha.8) (2022-01-05)
 
 

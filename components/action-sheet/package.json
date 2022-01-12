@@ -1,6 +1,6 @@
 {
   "name": "@responsive-ui/action-sheet",
-  "version": "1.0.9-alpha.8",
+  "version": "1.1.0-alpha.0",
   "description": "An action sheet component of responsive-ui.",
   "author": "Si3nLoong <sianloong90@gmail.com> (https://github.com/si3nloong)",
   "homepage": "https://github.com/wetix/responsive-ui/blob/main/components/action-sheet#README.md",
@@ -23,8 +23,8 @@
     "svelte-action-sheet"
   ],
   "dependencies": {
-    "@responsive-ui/bottom-sheet": "^1.0.9-alpha.8",
-    "@responsive-ui/button": "^1.0.9-alpha.8"
+    "@responsive-ui/bottom-sheet": "^1.1.0-alpha.0",
+    "@responsive-ui/button": "^1.1.0-alpha.0"
   },
   "peerDependencies": {
     "svelte": "^3.27.0",
