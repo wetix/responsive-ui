@@ -100,7 +100,8 @@
             {#each Array.from({ length: 7 }) as _, j}
               <td
                 data-date={toDateString(data[i * 7 + j])}
-                on:click={handleSelectDate(data[i * 7 + j])}>
+                on:click={handleSelectDate(data[i * 7 + j])}
+              >
                 <div class="resp-calendar__date {getClassList(data[i * 7 + j])}">
                   {data[i * 7 + j].getDate()}
                 </div>

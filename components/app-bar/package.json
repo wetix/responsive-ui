@@ -25,6 +25,9 @@
     "app-bar",
     "svelte-app-bar"
   ],
+  "dependencies": {
+    "@responsive-ui/hscroll": "^1.0.9-alpha.8"
+  },
   "peerDependencies": {
     "svelte": "^3.27.0",
     "svelte-preprocess": "^4.5.0",

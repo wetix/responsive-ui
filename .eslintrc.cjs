@@ -24,8 +24,9 @@ module.exports = {
       files: ["*.svelte"],
       processor: "svelte3/svelte3",
       rules: {
-        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+        "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+        "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+        "@typescript-eslint/no-floating-promises": ["error", { ignoreVoid: true }],
       },
     },
   ],

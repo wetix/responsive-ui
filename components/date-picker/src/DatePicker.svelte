@@ -101,7 +101,8 @@
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
-  on:click|stopPropagation={handleFocus}>
+  on:click|stopPropagation={handleFocus}
+>
   <input
     type="date"
     {name}
@@ -117,7 +118,8 @@
     on:focus
     on:blur
     on:change
-    {value} />
+    {value}
+  />
   <!-- <input
     type="text"
     {name}
@@ -158,7 +160,8 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={handleSelectDate} />
+        on:change={handleSelectDate}
+      />
     </div>
   {/if}
 </div>

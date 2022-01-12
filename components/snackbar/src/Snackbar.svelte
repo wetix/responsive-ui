@@ -46,7 +46,8 @@
     class="resp-snackbar resp-snackbar--{variant} {className}"
     class:resp-snackbar--rounded={rounded}
     in:slideY={{ direction: "up", duration }}
-    out:slideY={{ direction: "down", duration }}>
+    out:slideY={{ direction: "down", duration }}
+  >
     <slot>{message}</slot>
     {#if closable}
       <i class="resp-snackbar__icon" on:click={handleClose}>

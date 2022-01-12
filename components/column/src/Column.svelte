@@ -23,7 +23,8 @@
 <div
   class={`resp-col ${clsNames.join(" ")} ${className}`}
   style="flex: {flex}"
-  {...$$restProps}>
+  {...$$restProps}
+>
   <slot />
 </div>
 

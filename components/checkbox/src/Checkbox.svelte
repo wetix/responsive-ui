@@ -17,7 +17,8 @@
     type="checkbox"
     {value}
     on:change
-    style="display: none" />
+    style="display: none"
+  />
   <span class="resp-checkbox__action">
     <i class="resp-checkbox__icon">
       {@html `<svg viewBox="0 0 12 9" width="10px" height="10px"><polyline points="1 5 4 8 11 1" /></svg>`}

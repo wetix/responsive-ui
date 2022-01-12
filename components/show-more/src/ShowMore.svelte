@@ -27,7 +27,8 @@
   class="resp-show-more {className}"
   {...$$restProps}
   bind:clientHeight
-  style={`height: ${updatedHeight}px; ${style}`}>
+  style={`height: ${updatedHeight}px; ${style}`}
+>
   <slot />
 </div>
 {#if isExtensible}

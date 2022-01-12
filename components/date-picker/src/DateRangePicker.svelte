@@ -10,7 +10,9 @@
   export let disabled = false;
   export let bordered = false;
 
-  const handleFocus = () => {};
+  const handleFocus = () => {
+    focused = true;
+  };
 </script>
 
 <div
@@ -18,7 +20,8 @@
   class:resp-date-range-picker--focused={focused}
   class:resp-date-range-picker--bordered={bordered}
   class:resp-date-range-picker--disabled={disabled}
-  on:click|stopPropagation={handleFocus}>
+  on:click|stopPropagation={handleFocus}
+>
   <input
     type="text"
     {disabled}
@@ -26,7 +29,8 @@
     placeholder={placeholder[0]}
     size="20"
     autocomplete="off"
-    value={toDateString(value[0])} />
+    value={toDateString(value[0])}
+  />
   <input
     type="text"
     {disabled}
@@ -34,7 +38,8 @@
     placeholder={placeholder[1]}
     size="20"
     autocomplete="off"
-    value={toDateString(value[1])} />
+    value={toDateString(value[1])}
+  />
 </div>
 <div class="resp-date-range-picker__calendars">
   <Calendar />

@@ -1,13 +1,15 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import AppBar from "@responsive-ui/app-bar";
+
+  let marginTop = 0;
 </script>
 
 <Meta
   title="Components/App Bar"
   component={AppBar}
   argTypes={{
-    shadowed: { control: "boolean" },
+    shadowed: { control: "boolean" }
     // centerItems: { control: "object" },
     // dropdownItems: { control: "object" },
   }}
@@ -15,41 +17,46 @@
 
 <Template let:args>
   <AppBar
+    bind:clientHeight={marginTop}
     {...args}
     menuCaption="Lorem Ipsum is simply dummy text."
     leadingItems={[
       {
+        key: "tickets",
         label: "Tickets",
         link: "/tickets",
         subItems: [
           {
+            key: "movie",
             label: "Movie",
-            link: "/movie",
+            link: "/movie"
           },
           {
+            key: "event",
             label: "Event",
-            link: "/event",
+            link: "/event"
           },
           {
+            key: "concert",
             label: "Concert",
-            link: "/concert",
-          },
-        ],
+            link: "/concert"
+          }
+        ]
       },
-      { label: "Profile", link: "/me/profile" },
-      { label: "Events", link: "/events" },
+      { key: "profile", label: "Profile", link: "/me/profile" },
+      { key: "events", label: "Events", link: "/events" }
     ]}
     menuItems={[
       { label: "A", link: "/" },
       { label: "B", link: "/" },
       { label: "C", link: "/" },
-      { label: "D", link: "/" },
+      { label: "D", link: "/" }
     ]}
     trailingItems={[
       { label: "A", link: "/" },
       { label: "B", link: "/" },
       { label: "C", link: "/" },
-      { label: "D", link: "/" },
+      { label: "D", link: "/" }
     ]}
     on:click={(e) => e.preventDefault()}
   >
@@ -60,15 +67,14 @@
     <div>
       {#each new Array(10) as item}
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+          unknown printer took a galley of type and scrambled it to make a type specimen
+          book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s
+          with the release of Letraset sheets containing Lorem Ipsum passages, and more
+          recently with desktop publishing software like Aldus PageMaker including
+          versions of Lorem Ipsum.
         </p>
       {/each}
     </div>
@@ -90,18 +96,17 @@
     </svg> -->
     <!-- <div slot="trailing">WeTix</div> -->
   </AppBar>
-  <div style="margin-top: 100px;">
+  <div style={`margin-top: ${marginTop}px`}>
     {#each new Array(10) as item}
       <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+        unknown printer took a galley of type and scrambled it to make a type specimen
+        book. It has survived not only five centuries, but also the leap into electronic
+        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions of Lorem
+        Ipsum.
       </p>
     {/each}
   </div>

@@ -12,9 +12,9 @@
   class:resp-button--outline={outline}
   {type}
   {...$$restProps}
-  role="button"
   bind:this={ref}
-  on:click>
+  on:click
+>
   <slot />
 </button>
 

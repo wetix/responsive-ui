@@ -1,15 +1,19 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
+export type SubNavItem = Omit<NavItem, "subItems">;
+
 export interface NavItem extends Record<string, any> {
-  label?: string;
+  key: string;
+  label: string;
   href?: string;
-  subItems?: Omit<NavItem, "subItems">[];
-  selected?: boolean;
+  subItems?: SubNavItem[];
 }
 
 export interface AppBarProps {
   id?: string;
   class?: string;
+  selectedKey?: string;
+  selectedSubmenuKey?: string;
   menuCaption: string;
   clientHeight?: number;
   leadingItems: NavItem[];
@@ -37,6 +41,9 @@ export interface AppBarSlots {
     index: number;
     selected: boolean;
     item: NavItem;
+  };
+  "menu-body": {
+    items: NavItem[];
   };
   "menu-item": {
     index: number;

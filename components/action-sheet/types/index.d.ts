@@ -1,7 +1,7 @@
 import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
-type KeyValues = { key: string; values: string[] };
+export type KeyValues = { key: string; values: string[] };
 
 export type ActionSheetOption = {
   label: string;
@@ -18,29 +18,30 @@ export interface ActionSheetItem extends Record<string, any> {
 
 export interface ActionSheetProps {
   class?: string;
-  activeKey?: string;
+  selectedKey?: string;
   caption?: string;
   items: ActionSheetItem[];
   open?: boolean;
   disabled?: boolean;
   maskClosable?: boolean;
   closable?: boolean;
+  draggable?: boolean;
 }
 
 export type ActionSheetTabChangeEvent = {
-  activeKey: string;
+  selectedKey: string;
   item: Omit<ActionSheetItem, "options">;
 };
 
 export type ActionSheetValueChangeEvent = {
-  activeKey: string;
+  selectedKey: string;
   option: ActionSheetActionSheetOption;
 };
 
 export type ActionSheetResetEvent = {};
 
 export type ActionSheetOkEvent = {
-  activeKey: string;
+  selectedKey: string;
   keyValues: KeyValues[];
 };
 
@@ -52,7 +53,7 @@ export interface ActionSheetEvents {
 }
 
 export interface ActionSheetSlots {
-  "tab-item": {};
+  item: {};
   option: {};
   footer: {};
 }
@@ -62,7 +63,7 @@ export declare class ActionSheetComponent extends SvelteComponentTyped<
   ActionSheetEvents,
   ActionSheetSlots
 > {
-  reset: void;
+  reset: () => void;
   getKeyValues: () => KeyValues;
 }
 

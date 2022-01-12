@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import Button from "@responsive-ui/button";
   import BottomSheet from "@responsive-ui/bottom-sheet";
   import type { ActionSheetItem, ActionSheetOption } from "../types";
@@ -10,12 +10,13 @@
   let selectedIndex = 0;
   let modalHeight = 0;
   export { className as class };
-  export let activeKey = "";
+  export let selectedKey = "";
   export let caption = "";
   export let items: ActionSheetItem[] = [];
   export let open = false;
   export let disabled = false;
   export let maskClosable = true;
+  export let draggable = false;
   export let closable = true;
 
   export const reset = () => {
@@ -36,8 +37,19 @@
   let tab: HTMLUListElement;
   const tabName = `as_${Math.floor(Math.random() * Date.now())}`;
 
-  $: selectedIndex = items.findIndex((v) => v.key === activeKey);
+  $: {
+    const index = items.findIndex((v) => v.key === selectedKey);
+    if (index < 0) selectedIndex = 0;
+    else selectedIndex = index;
+  }
   $: options = items[selectedIndex < 0 ? 0 : selectedIndex].options || [];
+
+  onMount(() => {
+    const el = tab.querySelector(`[data-index="${selectedIndex}"]`) as HTMLElement;
+    const offsetX = tab.scrollWidth - tab.clientWidth;
+    if (!el || offsetX <= 0) return;
+    tab.scrollTo(el.offsetLeft - 15, 0);
+  });
 
   const findElement = (e: Event) => {
     return e
@@ -54,8 +66,8 @@
     if (idx < 0) return;
     const { x } = (el.parentNode as HTMLLabelElement).getBoundingClientRect();
     tab && tab.scrollTo(x - 15, 0);
-    activeKey = key;
-    dispatch("tabchange", { activeKey, item });
+    selectedKey = key;
+    dispatch("tabchange", { selectedKey, item });
   };
 
   const handleSelectOption = (e: Event) => {
@@ -70,7 +82,7 @@
     options[idx].selected = el.checked;
     items[selectedIndex].options = options;
     items = [...items];
-    dispatch("valuechange", { activeKey, option: options[idx] });
+    dispatch("valuechange", { selectedKey, option: options[idx] });
   };
 
   const handleReset = () => {
@@ -80,7 +92,7 @@
 
   const handleOk = () => {
     dispatch("ok", {
-      activeKey,
+      selectedKey,
       keyValues: getKeyValues()
     });
   };
@@ -91,18 +103,25 @@
   bind:height={modalHeight}
   class={className}
   {maskClosable}
-  {closable}>
+  {closable}
+  {draggable}
+>
   <header class="resp-action-sheet__header">
-    <div class="resp-action-sheet__header-label">
+    <div
+      class="resp-action-sheet__header-label"
+      class:resp-action-sheet__header--draggable={draggable}
+    >
       <caption>{caption}</caption>
       <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
     <ul class="resp-action-sheet__tab" bind:this={tab} on:change={handleTabChange}>
       {#each items as item, idx (item.key)}
-        <li>
+        <li data-index={idx}>
           <label
-            class:resp-action-sheet__tab-item--selected={(idx == 0 && activeKey == "") ||
-              activeKey === item.key}>
+            class:resp-action-sheet__tab-item--selected={(idx == 0 &&
+              selectedKey == "") ||
+              selectedKey === item.key}
+          >
             <input
               data-json={JSON.stringify({
                 ...item,
@@ -110,7 +129,8 @@
               })}
               name={tabName}
               type="radio"
-              checked={item.selected || false} />
+              checked={item.selected || false}
+            />
             <slot name="tab-item">{item.label}</slot>
           </label>
         </li>
@@ -120,8 +140,9 @@
   <ul
     class="resp-action-sheet__body"
     style="height: {modalHeight - 180}px"
-    on:change={handleSelectOption}>
-    {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${activeKey}.${value}`)}
+    on:change={handleSelectOption}
+  >
+    {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${selectedKey}.${value}`)}
       <li class="resp-action-sheet__option">
         <label>
           <input
@@ -135,7 +156,8 @@
             })}
             {disabled}
             {value}
-            checked={selected} />
+            checked={selected}
+          />
           <div class="resp-action-sheet__option-label">
             <slot
               name="option"
@@ -145,7 +167,8 @@
                 value,
                 selected,
                 disabled
-              }}>{label}</slot>
+              }}>{label}</slot
+            >
           </div>
         </label>
       </li>
@@ -170,7 +193,11 @@
       &-label {
         display: flex;
         align-items: center;
-        padding: 0.25rem 1rem;
+        padding: 1rem 1rem 0.25rem;
+      }
+
+      &--draggable {
+        padding-top: 0.25rem;
       }
 
       caption {

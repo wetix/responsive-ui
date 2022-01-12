@@ -134,7 +134,8 @@
     on:dragleave={handleDragLeave}
     on:drop={handleDragLeave}
     on:drop={handleDrop}
-    {...$$restProps}>
+    {...$$restProps}
+  >
     <input
       bind:this={ref}
       use:dragUpload
@@ -144,7 +145,8 @@
       {multiple}
       {accept}
       on:change
-      tabindex="-1" />
+      tabindex="-1"
+    />
     <slot {uploading} {dragover} file="" />
   </label>
 </form>

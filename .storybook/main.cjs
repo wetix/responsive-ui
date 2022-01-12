@@ -1,4 +1,5 @@
 module.exports = {
+  staticDirs: ['../public'],
   webpackFinal: async (config) => {
     const svelteLoader = config.module.rules.find(
       (r) => r.loader && r.loader.includes("svelte-loader")

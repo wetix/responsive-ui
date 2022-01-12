@@ -58,7 +58,8 @@
   {value}
   on:input
   on:input={onClear}
-  on:keyup={handleKeyup} />
+  on:keyup={handleKeyup}
+/>
 
 {#if loading}
   <div class="resp-search__state">

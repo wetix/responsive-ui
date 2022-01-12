@@ -1,6 +1,6 @@
 <script lang="ts">
   // import { getNodeAttribute } from "@wetix/utils";
-  import { onDestroy } from "svelte";
+  // import { onDestroy } from "svelte";
   import type { CarouselItem } from "../types/index";
 
   let className = "";
@@ -18,7 +18,8 @@
   {...$$restProps}
   class="resp-carousel {className}"
   on:mousedown|preventDefault
-  on:touchmove|preventDefault>
+  on:touchmove|preventDefault
+>
   <div class="resp-carousel__viewport">
     {#each items as { src }}
       <div class="resp-carousel__slide">
