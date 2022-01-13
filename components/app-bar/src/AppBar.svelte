@@ -23,7 +23,7 @@
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
-    if (menus.length > 0) selectedSubmenuKey = menus[0].key;
+    if (menus.length > 0) selectedSubmenuKey = menus[0].key as string;
     subMenus = menus;
   }
   $: if (subnav) {
