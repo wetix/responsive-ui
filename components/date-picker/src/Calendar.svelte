@@ -215,7 +215,7 @@
         width: 100%;
 
         th {
-          font-weight: 650;
+          font-weight: 600;
         }
 
         th,

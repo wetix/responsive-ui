@@ -74,7 +74,7 @@
       }
 
       h2 {
-        font-weight: 500;
+        font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
         width: 100%;
