@@ -8,6 +8,7 @@
 
   export let selectedKey = "";
   export let selectedSubmenuKey = "";
+  export let selectedMenuKey = "";
   export let menuCaption = "";
   export let clientHeight = 0;
   export let shadowed = true;
@@ -57,6 +58,12 @@
     const el = findElement(e);
     if (!el) return;
     selectedSubmenuKey = el.dataset.key as string;
+  };
+
+  const handleClickMenu = (e: Event) => {
+    const el = findElement(e);
+    if (!el) return;
+    selectedMenuKey = el.dataset.key as string;
   };
 </script>
 
@@ -152,11 +159,21 @@
   </header>
   <div class="resp-app-bar__menu-body">
     <slot name="menu-body">
-      <ul>
-        {#each menuItems as { href, label, selected, ...otherProps }, index}
-          <li>
+      <ul on:click={handleClickMenu}>
+        {#each menuItems as { key, href, label, selected, ...otherProps }, index (key)}
+          <li
+            class:resp-app-bar__menu-item--selected={selectedMenuKey === key}
+            data-key={key}
+          >
             <slot name="menu-item" item={menuItems[index]} {index} {selected}>
-              <a {href} {...otherProps}>{label}</a>
+              <a style="display: flex; width: 100%;" {href} {...otherProps}>
+                <span style="display: inline-block; width: 50%;">{label}</span>
+                <span class="resp-app-bar__menu-item--ico">
+                  {@html `<svg height="8" width="6">
+                    <circle cx="3" cy="3" r="3" fill="#fc4451" />
+                  </svg>`}
+                </span>
+              </a>
             </slot>
           </li>
         {/each}
@@ -344,6 +361,22 @@
       &-body {
         height: calc(100% - $height);
         overflow-y: auto;
+      }
+
+      &-item {
+        &--selected {
+          color: #fc4451;
+        }
+
+        &--ico {
+          display: none;
+          width: 50%;
+          text-align: right;
+        }
+
+        &--selected > a > &--ico {
+          display: inline-block;
+        }
       }
 
       ul {

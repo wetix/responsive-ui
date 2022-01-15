@@ -47,16 +47,16 @@
       { key: "events", label: "Events", link: "/events" }
     ]}
     menuItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
+      { key: "A", label: "A", link: "/A" },
+      { key: "B", label: "B", link: "/B" },
+      { key: "C", label: "C", link: "/C" },
+      { key: "D", label: "D", link: "/D" }
     ]}
     trailingItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
+      { label: "A", link: "/A" },
+      { label: "B", link: "/B" },
+      { label: "C", link: "/C" },
+      { label: "D", link: "/D" }
     ]}
     on:click={(e) => e.preventDefault()}
   >

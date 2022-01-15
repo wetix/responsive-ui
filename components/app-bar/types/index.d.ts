@@ -14,6 +14,7 @@ export interface AppBarProps {
   class?: string;
   selectedKey?: string;
   selectedSubmenuKey?: string;
+  selectedMenuKey?: string;
   menuCaption: string;
   clientHeight?: number;
   leadingItems: NavItem[];
