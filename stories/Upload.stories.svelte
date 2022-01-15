@@ -21,7 +21,7 @@
   argTypes={{
     label: { control: "text" },
     value: { control: "text" },
-    outline: { control: "boolean" },
+    outline: { control: "boolean" }
   }}
 />
 

@@ -41,7 +41,7 @@
   name="Default"
   args={{
     variant: "medium",
-    placeholder: "Input your text...",
+    placeholder: "Input your text..."
   }}
 />
 

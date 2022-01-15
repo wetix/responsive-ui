@@ -13,22 +13,18 @@
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },
     onChange: { action: "onChange" },
-    onDateChange: { action: "onChange" },
+    onDateChange: { action: "onChange" }
   }}
 />
 
 <Template let:args>
-  <DatePicker
-    {...args}
-    on:change={args.onChange}
-    on:datechange={args.onDateChange}
-  />
+  <DatePicker {...args} on:change={args.onChange} on:datechange={args.onDateChange} />
 </Template>
 
 <Story
   name="Default"
   args={{
-    size: "middle",
+    size: "middle"
   }}
 />
 
@@ -36,6 +32,6 @@
   name="With Default Value"
   args={{
     value: "2018-02-24",
-    placeholder: "Select Date",
+    placeholder: "Select Date"
   }}
 />

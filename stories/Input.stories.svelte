@@ -10,7 +10,7 @@
     content: { control: "text" },
     placeholder: { control: "text" },
     disabled: { control: "boolean" },
-    bordered: { control: "boolean" },
+    bordered: { control: "boolean" }
   }}
 />
 
@@ -22,7 +22,7 @@
   name="Default"
   args={{
     variant: "medium",
-    placeholder: "Input your text...",
+    placeholder: "Input your text..."
   }}
 />
 
@@ -48,7 +48,7 @@
   name="Input with prefix"
   template="prefixInput"
   args={{
-    placeholder: "Input your text...",
+    placeholder: "Input your text..."
   }}
 />
 
@@ -74,6 +74,6 @@
   name="Input with suffix"
   template="suffixInput"
   args={{
-    placeholder: "Input your text...",
+    placeholder: "Input your text..."
   }}
 />

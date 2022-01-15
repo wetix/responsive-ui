@@ -8,7 +8,7 @@
   component={Switch}
   argTypes={{
     disabled: { control: "boolean" },
-    checked: { control: "boolean" },
+    checked: { control: "boolean" }
   }}
 />
 
