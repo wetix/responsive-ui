@@ -4,7 +4,7 @@ import Column from "../src/Column.svelte";
 describe("Column", () => {
   const props = {
     name: "datejs",
-    placeholder: "Select date",
+    placeholder: "Select date"
   };
 
   const { getByPlaceholderText, component } = render(Column, { props });

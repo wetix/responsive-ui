@@ -26,13 +26,13 @@
     "validate": "svelte-check --workspace=components",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest components",
+    "test": "jest components --no-cache",
     "commit": "cz",
     "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb",
-    "format": "prettier --write ./components/*/src/**/*.{js,svelte,ts}",
-    "lint": "eslint './components/*/src/**/*.{js,ts,svelte}'",
-    "lint:fix": "eslint --fix './components/*/src/**/*.{js,ts,svelte}'"
+    "format": "prettier --write ./components/*/{src,__test__}/**/*.{js,svelte,ts}",
+    "lint": "eslint './components/*/{src,__test__}/**/*.{js,ts,svelte}'",
+    "lint:fix": "eslint --fix './components/*/{src,__test__}/**/*.{js,ts,svelte}'"
   },
   "pre-commit": [
     "format",
@@ -124,7 +124,8 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|scss|stylesheet)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(css|scss|stylesheet)$": "<rootDir>/__mocks__/styleMock.js",
+      "@responsive-ui/(.+)": "<rootDir>/components/$1/package.json"
     },
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect"

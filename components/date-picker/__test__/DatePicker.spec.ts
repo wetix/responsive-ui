@@ -4,7 +4,7 @@ import DatePicker from "../src/DatePicker.svelte";
 describe("DatePicker", () => {
   const props = {
     name: "datejs",
-    placeholder: "Select date",
+    placeholder: "Select date"
   };
 
   const { getByPlaceholderText, component } = render(DatePicker, { props });
