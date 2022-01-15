@@ -7,7 +7,7 @@ describe("Chip", () => {
     class: "custom-class",
     name: "test-button",
     label: "Hello World!",
-    style: "width: 100px;",
+    style: "width: 100px;"
   };
 
   const result = render(Chip, { props });
