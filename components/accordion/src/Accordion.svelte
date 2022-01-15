@@ -40,7 +40,7 @@
       padding: 0.65rem 0;
       padding-right: 28px;
       border-bottom: 1px solid #e1e1e1;
-      font-weight: 500;
+      font-weight: 600;
 
       &:after {
         content: "";

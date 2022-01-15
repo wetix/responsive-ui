@@ -7,7 +7,7 @@
   title="Components/Header"
   component={Header}
   argTypes={{
-    label: { control: "text" },
+    label: { control: "text" }
   }}
 />
 
@@ -20,6 +20,6 @@
 <Story
   name="Default"
   args={{
-    label: "Component Title",
+    label: "Component Title"
   }}
 />

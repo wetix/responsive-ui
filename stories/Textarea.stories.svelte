@@ -10,7 +10,7 @@
     placeholder: { control: "text" },
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
-    readonly: { control: "boolean" },
+    readonly: { control: "boolean" }
   }}
 />
 
@@ -21,6 +21,6 @@
 <Story
   name="Default"
   args={{
-    placeholder: "Input your text...",
+    placeholder: "Input your text..."
   }}
 />

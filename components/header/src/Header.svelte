@@ -19,7 +19,7 @@
     &__label {
       text-transform: capitalize;
       font-size: var(--font-size-lg);
-      font-weight: 500;
+      font-weight: 600;
       color: #1a1b1c;
     }
   }

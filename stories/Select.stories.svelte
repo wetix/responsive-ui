@@ -8,7 +8,7 @@
   component={Select}
   argTypes={{
     disabled: { control: "boolean" },
-    checked: { control: "boolean" },
+    checked: { control: "boolean" }
   }}
 />
 
@@ -24,7 +24,7 @@
       { label: "Orange", value: "c", disabled: true },
       { label: "Pineapple", value: "d" },
       { label: "Coconut", value: "e" },
-      { label: "Durian", value: "f" },
+      { label: "Durian", value: "f" }
     ]}
   />
 </Template>

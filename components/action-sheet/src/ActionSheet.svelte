@@ -203,7 +203,7 @@
       caption {
         text-align: left;
         font-size: var(--font-size-lg, 24px);
-        font-weight: 500;
+        font-weight: 600;
         flex-grow: 1;
         min-width: 0;
         white-space: nowrap;

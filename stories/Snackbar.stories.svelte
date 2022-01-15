@@ -9,7 +9,7 @@
   argTypes={{
     show: { control: "boolean" },
     message: { control: "text" },
-    duration: { control: { type: "range", min: 100, max: 500, step: 10 } },
+    duration: { control: { type: "range", min: 100, max: 500, step: 10 } }
   }}
 />
 

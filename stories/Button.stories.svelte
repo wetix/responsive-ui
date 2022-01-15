@@ -9,11 +9,11 @@
   argTypes={{
     label: { control: "text" },
     variant: {
-      control: { type: "select", options: ["default", "primary"] },
+      control: { type: "select", options: ["default", "primary"] }
     },
     disabled: { control: "boolean" },
     outline: { control: "boolean" },
-    onClick: { action: "onClick" },
+    onClick: { action: "onClick" }
   }}
 />
 
@@ -27,13 +27,13 @@
   name="Primary"
   args={{
     variant: "primary",
-    label: "Button",
+    label: "Button"
   }}
 />
 
 <Story
   name="Default"
   args={{
-    label: "Button",
+    label: "Button"
   }}
 />

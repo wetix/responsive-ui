@@ -8,11 +8,11 @@
   component={Loader}
   argTypes={{
     fit: {
-      control: { type: "select", options: ["none", "viewport"] },
+      control: { type: "select", options: ["none", "viewport"] }
     },
     size: {
-      control: { type: "select", options: ["small", "default", "large"] },
-    },
+      control: { type: "select", options: ["small", "default", "large"] }
+    }
   }}
 />
 

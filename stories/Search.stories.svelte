@@ -9,7 +9,7 @@
   argTypes={{
     label: { control: "text" },
     value: { control: "text" },
-    outline: { control: "boolean" },
+    outline: { control: "boolean" }
   }}
 />
 
@@ -22,6 +22,6 @@
   args={{
     label: "Hello World",
     placeholder: "Input your text...",
-    value: "test",
+    value: "test"
   }}
 />

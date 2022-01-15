@@ -11,11 +11,11 @@
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
     textDirection: {
-      control: { type: "select", options: ["ltr", "rtl"] },
+      control: { type: "select", options: ["ltr", "rtl"] }
     },
     min: { control: { type: "range", min: 0, max: 100, step: 1 } },
     max: { control: { type: "range", min: 1, max: 100, step: 1 } },
-    precision: { control: { type: "range", min: 0, max: 10, step: 1 } },
+    precision: { control: { type: "range", min: 0, max: 10, step: 1 } }
     // readonly: { control: "boolean" },
   }}
 />
@@ -27,7 +27,7 @@
 <Story
   name="Default"
   args={{
-    placeholder: "0.00",
+    placeholder: "0.00"
   }}
 />
 
@@ -41,7 +41,7 @@
   template="withPrefix"
   name="With Prefix"
   args={{
-    placeholder: "0.00",
+    placeholder: "0.00"
   }}
 />
 
@@ -56,7 +56,7 @@
   name="With Suffix"
   args={{
     textDirection: "rtl",
-    placeholder: "0.00",
+    placeholder: "0.00"
   }}
 />
 
@@ -72,6 +72,6 @@
   name="With Prefix and Suffix"
   args={{
     textDirection: "rtl",
-    placeholder: "0.00",
+    placeholder: "0.00"
   }}
 />
