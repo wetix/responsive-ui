@@ -1,7 +1,6 @@
 import { render } from '@testing-library/svelte';
 import BottomBar from '../src/BottomBar.svelte';
-import SlotTest from '../../SlotTest/SlotTest.svelte';
-import { bounceIn } from 'svelte/easing';
+import SlotTest from '../../slot-test/SlotTest.svelte';
 
 describe('BottomBar test', () => {
   const props = {
@@ -17,7 +16,7 @@ describe('BottomBar test', () => {
 
   it('should render slots correctly', () => {
     const {getByTestId} = render(SlotTest, {
-      props: { Component: BottomBar, props }
+      props: { component: BottomBar, props }
     });
 
     expect(() => getByTestId("slot")).not.toThrow();

@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/svelte";
 import Button from "../src/Button.svelte";
-import SlotTest from "../../SlotTest/SlotTest.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
 describe("Button", () => {
   const props = {
@@ -18,7 +18,7 @@ describe("Button", () => {
 
   it("should render slots correctly", () => {
     const {getByTestId} = render(SlotTest, {
-      props: { Component: Button, props }
+      props: { component: Button, props }
     });
     expect(() => getByTestId("slot")).not.toThrow();
   });
@@ -33,7 +33,7 @@ describe("Button", () => {
     expect(button.getAttribute("style")).toEqual(props.style);
   });
 
-  it("test on click event", () => {
+  it("test on click event", async () => {
     const {component, getByRole} = render(Button, { props });
     //mock function
     const mock = jest.fn();
@@ -42,7 +42,7 @@ describe("Button", () => {
     component.$on('click', mock);
 
     //click button
-    fireEvent.click(button);
+    await fireEvent.click(button);
     //test function
     expect(mock).toHaveBeenCalled();
   });

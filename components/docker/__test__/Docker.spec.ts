@@ -1,6 +1,6 @@
 import {render, fireEvent} from "@testing-library/svelte";
 import Docker from "../src/Docker.svelte";
-import SlotTest from "../../SlotTest/SlotTest.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
 describe("Docker test", () => {
   const props = {
@@ -21,7 +21,7 @@ describe("Docker test", () => {
 
   it("should render slots correctly", () => {
     const {getByTestId} = render(SlotTest, {
-      props: { Component: Docker, props }
+      props: { component: Docker, props }
     });
 
     expect(() => getByTestId("slot")).not.toThrow();
@@ -43,8 +43,6 @@ describe("Docker test", () => {
     expect(docker.getAttribute("style")).toContain(props.style);
     //test if open
     expect(docker.classList).not.toContain("resp-docker--close");
-
-    console.log(container.outerHTML);
   });
 
   it("should close", () => {

@@ -27,7 +27,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest components",
-    "test:1": "jest components/docker",
     "commit": "cz",
     "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb",
@@ -142,11 +141,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@responsive-ui/hscroll": "file:components/hscroll",
-    "autoprefixer": "^10.4.1",
-    "html-webpack-plugin": "^5.5.0",
-    "postcss-flexbugs-fixes": "^5.0.2"
   }
 }

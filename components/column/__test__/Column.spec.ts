@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import Column from "../src/Column.svelte";
-import SlotTest from "../../SlotTest/SlotTest.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
 describe("Column", () => {
   const props = {
@@ -24,7 +24,7 @@ describe("Column", () => {
   });
 
   it("should render slots correctly", () => {
-    const {getByTestId} = render(SlotTest, {props : {Component: Column, props}});
+    const {getByTestId} = render(SlotTest, {props : {component: Column, props}});
     expect(() => getByTestId("slot")).not.toThrow();
   });
 

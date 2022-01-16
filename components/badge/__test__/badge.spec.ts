@@ -1,6 +1,6 @@
 import { render } from '@testing-library/svelte';
 import Badge from '../src/Badge.svelte';
-import SlotTest from '../../SlotTest/SlotTest.svelte';
+import SlotTest from '../../slot-test/SlotTest.svelte';
 
 describe('Badge', () => {
   let props = {
@@ -18,7 +18,7 @@ describe('Badge', () => {
 
   it("should render slots", () => {
     const {getByTestId} = render(SlotTest, {
-      props: { Component: Badge, props }
+      props: { component: Badge, props }
     });
     //test slot render
     expect(() => getByTestId("slot")).not.toThrow();

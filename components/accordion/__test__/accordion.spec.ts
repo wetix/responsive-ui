@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/svelte';
 import Accordion from '../src/Accordion.svelte';
-import SlotTest from "../../SlotTest/SlotTest.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
 describe("Accordion", () => {
   const props = {
@@ -18,7 +18,7 @@ describe("Accordion", () => {
 
   it("slots should correctly render", () => {
     const { getByTestId } = render(SlotTest, {
-      props: { Component: Accordion, props }
+      props: { component: Accordion, props }
     });
 
     expect(() => getByTestId("slot")).not.toThrow(); //test rendering
@@ -39,7 +39,7 @@ describe("Accordion", () => {
   });
 
   //test click event
-  it("test click event", () => {
+  it("test click event", async () => {
     const {container} = render(Accordion, { props });
     const accordion =
       container.querySelector("input[type='checkbox']") as HTMLInputElement;
@@ -48,7 +48,7 @@ describe("Accordion", () => {
     expect(accordion.checked).toBeTruthy();
 
     //click
-    fireEvent.click(accordion);
+    await fireEvent.click(accordion);
 
     //expect to be collapsed (false)
     expect(accordion.checked).toBeFalsy();

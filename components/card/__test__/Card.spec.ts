@@ -1,8 +1,8 @@
 import { render } from "@testing-library/svelte";
 import Card from "../src/Card.svelte";
-import SlotTest from "../../SlotTest/SlotTest.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
-describe('card test', () => {
+describe('Card', () => {
   const props = {
     id: "card",
     class: "custom-class",
@@ -20,7 +20,7 @@ describe('card test', () => {
 
   it('should render slots correctly', () => {
     const {getByTestId} = render(SlotTest, {
-      props: { Component: Card, props }
+      props: { component: Card, props }
     });
     expect(() => getByTestId("slot")).not.toThrow();
   });
