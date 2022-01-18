@@ -35,7 +35,7 @@ export type ActionSheetTabChangeEvent = {
 
 export type ActionSheetValueChangeEvent = {
   selectedKey: string;
-  option: ActionSheetActionSheetOption;
+  option: ActionSheetOption;
 };
 
 export type ActionSheetResetEvent = {};
