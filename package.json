@@ -22,7 +22,7 @@
     "build:debug": "DEBUG=true node ./scripts/buildComponents.js",
     "build:changelog": "npx conventional-changelog --preset angular --release-count 0 --outfile ./CHANGELOG.md",
     "dev": "vite",
-    "validate": "svelte-check --workspace=components",
+    "check": "svelte-check --workspace=components",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest components --no-cache",
