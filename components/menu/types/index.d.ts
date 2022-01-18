@@ -1,10 +1,9 @@
 import type { SvelteComponent } from "svelte";
 import type { SvelteComponentDev, SvelteComponentTyped } from "svelte/internal";
 
-export type MenuItem = {
+export interface MenuItem extends Record<string, unknown>{
   key: string;
   label: string;
-  icon?: typeof SvelteComponent;
   disabled?: boolean;
   collapsed?: boolean;
   submenus?: MenuItem[];

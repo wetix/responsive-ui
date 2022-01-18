@@ -1,10 +1,10 @@
 <script lang="ts">
-  // import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
   import type { NavItem, SubNavItem } from "../types";
 
-  // const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   export let selectedKey = "";
   export let selectedSubmenuKey = "";
@@ -36,7 +36,9 @@
     // if the element is underneath an anchor link, we will close the side menu
     const anchor = (e.target as HTMLElement).closest("a");
     if (!anchor) return;
-    openMenu = false;
+    setTimeout(() => {
+      openMenu = false;
+    }, 150);
   };
 
   const findElement = (e: Event) => {
@@ -49,12 +51,14 @@
     const el = findElement(e);
     if (!el) return;
     selectedKey = el.dataset.key as string;
+    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 
   const handleClickSubmenu = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
     selectedSubmenuKey = el.dataset.key as string;
+    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 </script>
 
@@ -161,10 +165,8 @@
               <a style="display: flex; width: 100%;" {href} {...otherProps}>
                 <span style="display: inline-block; width: 50%;">{label}</span>
                 <!-- circle icon -->
-                <span class="resp-app-bar__menu-item--ico">
-                  {@html `<svg height="8" width="6">
-                    <circle cx="3" cy="3" r="3" fill="#fc4451" />
-                  </svg>`}
+                <span class="resp-app-bar__menu-item-icon">
+                  {@html `<svg height="8px" width="6px"><circle cx="3" cy="3" r="3" fill="#fc4451" /></svg>`}
                 </span>
               </a>
             </slot>
@@ -361,7 +363,7 @@
           color: #fc4451;
         }
 
-        &--ico {
+        &-icon {
           display: none;
           width: 50%;
           text-align: right;
