@@ -19,7 +19,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "svelte": "^3.27.0"
+    "svelte": "^3.46.2"
   },
   "directories": {
     "lib": "lib",

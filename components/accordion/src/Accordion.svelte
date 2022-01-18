@@ -25,12 +25,6 @@
     position: relative;
     overflow: hidden;
 
-    input {
-      position: absolute;
-      opacity: 0;
-      z-index: -1;
-    }
-
     &__label {
       position: relative;
       cursor: pointer;
@@ -67,16 +61,20 @@
       }
     }
 
-    input:checked ~ &__label:after {
+    & > input {
+      display: none;
+    }
+
+    & > input:checked ~ &__label:after {
       transform: rotate(45deg);
     }
 
-    input:disabled ~ &__label {
+    & > input:disabled ~ &__label {
       cursor: not-allowed;
       opacity: 0.5;
     }
 
-    input:checked ~ &__content {
+    & > input:checked ~ &__content {
       height: auto;
     }
   }

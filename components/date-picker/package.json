@@ -19,7 +19,7 @@
     "@wetix/utils": "^1.0.0-alpha.0"
   },
   "peerDependencies": {
-    "svelte": "^3.27.0"
+    "svelte": "^3.46.2"
   },
   "directories": {
     "lib": "lib",

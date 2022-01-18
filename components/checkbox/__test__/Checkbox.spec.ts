@@ -1,6 +1,6 @@
-import { render, fireEvent } from '@testing-library/svelte';
-import Checkbox from '../src/Checkbox.svelte';
-import SlotTest from '../../slot-test/SlotTest.svelte';
+import { render, fireEvent } from "@testing-library/svelte";
+import Checkbox from "../src/Checkbox.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Checkbox", () => {
   const props = {
@@ -21,7 +21,7 @@ describe("Checkbox", () => {
 
   //render slots
   it("checkbox slot render test", () => {
-    const {getByTestId} = render(SlotTest, {
+    const { getByTestId } = render(SlotTest, {
       props: { component: Checkbox, props }
     });
     expect(() => getByTestId("slot")).not.toThrow();
@@ -29,7 +29,7 @@ describe("Checkbox", () => {
 
   //onclick event
   it("should react to clicks corectly", async () => {
-    const {container} = render(Checkbox, { props });
+    const { container } = render(Checkbox, { props });
     const chkbox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
 
     //should be false

@@ -13,7 +13,6 @@
   export let open = true;
   export let closable = true;
   export let maskClosable = true;
-  export let style = "";
 
   $: if (open) {
     const { scrollY = 0 } = window;
@@ -50,7 +49,7 @@
       class="resp-modal {className}"
       in:fade
       out:fade
-      style="width: {isNaN(width) ? width : `${width}px`}; {style}"
+      style:width={isNaN(width) ? `${width}` : `${width}px`}
     >
       {#if caption}
         <header class="resp-modal__header">
