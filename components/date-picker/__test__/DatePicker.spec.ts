@@ -11,7 +11,7 @@ describe("DatePicker", () => {
     readonly: true,
     disabled: false,
     bordered: true,
-    ref: document.createElement("input") 
+    ref: document.createElement("input")
   };
 
   it("should render correctly", () => {
@@ -49,7 +49,7 @@ describe("DatePicker", () => {
       readonly: false,
       disabled: false,
       bordered: true,
-      ref: document.createElement("input") 
+      ref: document.createElement("input")
     });
 
     //test open
