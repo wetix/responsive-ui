@@ -1,5 +1,5 @@
-import { render, fireEvent } from '@testing-library/svelte';
-import Accordion from '../src/Accordion.svelte';
+import { render, fireEvent } from "@testing-library/svelte";
+import Accordion from "../src/Accordion.svelte";
 import SlotTest from "../../slot-test/SlotTest.svelte";
 
 describe("Accordion", () => {
@@ -12,7 +12,7 @@ describe("Accordion", () => {
   };
 
   it("accordion should render", () => {
-    const {container} = render(Accordion, { props });
+    const { container } = render(Accordion, { props });
     expect(() => container).not.toThrow(); //test rendering
   });
 
@@ -26,7 +26,7 @@ describe("Accordion", () => {
 
   //test props
   it("props test", () => {
-    const {container} = render(Accordion, { props });
+    const { container } = render(Accordion, { props });
     //custom class
     const div = container.querySelector("." + props.class) as HTMLElement;
 
@@ -40,9 +40,10 @@ describe("Accordion", () => {
 
   //test click event
   it("test click event", async () => {
-    const {container} = render(Accordion, { props });
-    const accordion =
-      container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const { container } = render(Accordion, { props });
+    const accordion = container.querySelector(
+      "input[type='checkbox']"
+    ) as HTMLInputElement;
 
     //expect to not be collapsed (true)
     expect(accordion.checked).toBeTruthy();

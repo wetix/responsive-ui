@@ -9,7 +9,7 @@ describe("Chip", () => {
     checked: false,
     disabled: true,
     value: "Value",
-    ref: document.createElement('checkbox') as HTMLInputElement
+    ref: document.createElement("checkbox") as HTMLInputElement
   };
 
   const { container } = render(Chip, { props });
@@ -20,7 +20,7 @@ describe("Chip", () => {
   });
 
   it("slot render", () => {
-    const {getByTestId} = render(SlotTest, {
+    const { getByTestId } = render(SlotTest, {
       props: { component: Chip, props }
     });
 

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import DatePicker from "../src/DatePicker.svelte";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 describe("DatePicker test", () => {
   const props = {
@@ -11,7 +11,7 @@ describe("DatePicker test", () => {
     readonly: true,
     disabled: false,
     bordered: true,
-    ref: document.createElement('input') as HTMLInputElement
+    ref: document.createElement("input") as HTMLInputElement
   };
 
   it("should render correctly", () => {
@@ -49,7 +49,7 @@ describe("DatePicker test", () => {
       readonly: false,
       disabled: false,
       bordered: true,
-      ref: document.createElement('input') as HTMLInputElement
+      ref: document.createElement("input") as HTMLInputElement
     });
 
     //test open

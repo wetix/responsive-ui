@@ -24,12 +24,12 @@ describe("Column", () => {
   });
 
   it("should render slots correctly", () => {
-    const {getByTestId} = render(SlotTest, {props : {component: Column, props}});
+    const { getByTestId } = render(SlotTest, { props: { component: Column, props } });
     expect(() => getByTestId("slot")).not.toThrow();
   });
 
   it("prop test", () => {
-    const {container} = render(Column, { props });
+    const { container } = render(Column, { props });
     const column = container.querySelector("." + props.class) as HTMLElement;
 
     expect(column.getAttribute("id")).toEqual(props.id); //test id
