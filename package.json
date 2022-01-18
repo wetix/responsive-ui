@@ -26,7 +26,7 @@
     "validate": "svelte-check --workspace=components",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest components --no-cache",
+    "test": "jest components",
     "commit": "cz",
     "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb",

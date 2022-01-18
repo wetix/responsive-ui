@@ -46,21 +46,21 @@
       { key: "profile", label: "Profile", link: "/me/profile" },
       { key: "events", label: "Events", link: "/events" }
     ]}
-    menuItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
-    ]}
     trailingItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
+      { label: "A", link: "/A" },
+      { label: "B", link: "/B" },
+      { label: "C", link: "/C" },
+      { label: "D", link: "/D" }
     ]}
     on:click={(e) => e.preventDefault()}
   >
-    <div slot="logo">WeTix</div>
+    <div slot="logo">
+      <img
+        src="https://sb.wetix.my/_app/assets/wetix-0ab069ec.png"
+        style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
+        alt="WeTix"
+      />
+    </div>
     <span slot="trailing-item" let:item>
       {item.label}
     </span>

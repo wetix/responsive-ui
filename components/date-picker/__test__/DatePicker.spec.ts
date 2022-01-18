@@ -1,23 +1,58 @@
 import { render } from "@testing-library/svelte";
 import DatePicker from "../src/DatePicker.svelte";
+import '@testing-library/jest-dom';
 
-describe("DatePicker", () => {
+describe("DatePicker test", () => {
   const props = {
+    class: "datepicker-custom",
+    open: false,
+    placeholder: "Select date",
     name: "datejs",
-    placeholder: "Select date"
+    readonly: true,
+    disabled: false,
+    bordered: true,
+    ref: document.createElement('input') as HTMLInputElement
   };
 
-  const { getByPlaceholderText, component } = render(DatePicker, { props });
-
-  test("shows proper heading when rendered", () => {
-    const input = getByPlaceholderText(props.placeholder);
-    expect(() => input).not.toThrow();
-    expect(input.tagName).toBe("INPUT");
-    expect(input.nodeName).toBe("INPUT");
-    expect(input.getAttribute("name")).toBe("datejs");
+  it("should render correctly", () => {
+    const { container } = render(DatePicker, { props });
+    expect(() => container).not.toThrow();
   });
 
-  test("shows proper heading when rendered", () => {
-    component.$set({ readonly: true });
+  it("props test", () => {
+    const { container } = render(DatePicker, { props });
+    const div = container.querySelector("." + props.class) as HTMLElement;
+    const datepicker = container.querySelector("input[type='date']") as HTMLInputElement;
+
+    //test placeholder
+    expect(datepicker.getAttribute("placeholder")).toEqual(props.placeholder);
+    //test name
+    expect(datepicker.getAttribute("name")).toEqual(props.name);
+    //test disabled
+    expect(datepicker.disabled).toBeFalsy();
+    //test bordered
+    expect(div.classList).toContain("resp-date-picker--bordered");
+  });
+
+  it("should open and close correctly", () => {
+    const { container, rerender } = render(DatePicker, { props });
+
+    //test closed
+    expect(container.querySelector(".resp-calendar")).not.toBeInTheDocument();
+
+    //rerender opened
+    rerender({
+      class: "datepicker-custom",
+      open: true,
+      placeholder: "Select date",
+      name: "datejs",
+      readonly: false,
+      disabled: false,
+      bordered: true,
+      ref: document.createElement('input') as HTMLInputElement
+    });
+
+    //test open
+    expect(container.querySelector(".resp-calendar")).toBeInTheDocument();
   });
 });

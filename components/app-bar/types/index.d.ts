@@ -6,6 +6,7 @@ export interface NavItem extends Record<string, any> {
   key: string;
   label: string;
   href?: string;
+  search?: string;
   subItems?: SubNavItem[];
 }
 
@@ -14,11 +15,9 @@ export interface AppBarProps {
   class?: string;
   selectedKey?: string;
   selectedSubmenuKey?: string;
-  menuCaption: string;
   clientHeight?: number;
   leadingItems: NavItem[];
   trailingItems: NavItem[];
-  menuItems: NavItem[];
   style?: string;
 }
 

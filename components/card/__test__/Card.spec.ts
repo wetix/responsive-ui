@@ -1,19 +1,39 @@
 import { render } from "@testing-library/svelte";
 import Card from "../src/Card.svelte";
+import SlotTest from "../../slot-test/SlotTest.svelte";
 
-describe("Card", () => {
+describe('Card', () => {
   const props = {
     id: "card",
     class: "custom-class",
-    name: "test-button",
-    label: "Hello World!",
-    style: "width: 100px;"
+    title: "test title",
+    compact: true,
+    style: "width: 100%;"
   };
 
-  const result = render(Card, { props });
+  it('should render correctly', () => {
+    const {container} = render(Card, { props });
+    const card = container.querySelector("." + props.class) as HTMLElement;
 
-  test("shows proper heading when rendered", () => {
-    // const card = results.getByTitle("card");
-    // expect(() => card).not.toThrow();
+    expect(() => card).not.toThrow();
+  });
+
+  it('should render slots correctly', () => {
+    const {getByTestId} = render(SlotTest, {
+      props: { component: Card, props }
+    });
+    expect(() => getByTestId("slot")).not.toThrow();
+  });
+
+  it("should have correct props", () => {
+    const {container} = render(Card, {props});
+    const card = container.querySelector("." + props.class) as HTMLElement;
+
+    expect(card.getAttribute("id")).toEqual(props.id); //test id
+    expect(card.getAttribute("title")).toEqual(props.title); //test title
+    //test compact (adds class)
+    expect(card.classList).toContain("resp-card--compact");
+    //test style
+    expect(card.getAttribute("style")).toEqual(props.style);
   });
 });
