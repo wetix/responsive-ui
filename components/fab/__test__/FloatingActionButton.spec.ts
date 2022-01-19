@@ -25,7 +25,7 @@ describe("FAB", () => {
     expect(fab.getAttribute("style")).toEqual(props.style); //test style
   });
 
-  it("test click event", () => {
+  it("test click event", async () => {
     const {container, component} = render(FloatingActionButton, { props });
     const fab = container.querySelector("." + props.class) as HTMLElement;
 
@@ -33,7 +33,7 @@ describe("FAB", () => {
     component.$on('click', mock); //set function onclick
 
     //click
-    fireEvent.click(fab);
+    await fireEvent.click(fab);
 
     //expect function
     expect(mock).toHaveBeenCalled();
