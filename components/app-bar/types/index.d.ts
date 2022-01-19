@@ -21,7 +21,12 @@ export interface AppBarProps {
   style?: string;
 }
 
-export interface AppBarEvents {}
+export interface AppBarEvents {
+  /**
+   * The onclick event occurs when the user clicks on app bar.
+   */
+  click?: WindowEventMap["click"];
+}
 
 export interface AppBarSlots {
   logo: {};

@@ -17,7 +17,7 @@
   let className = "";
   export { className as class };
   export let ref: HTMLElement | null = null;
-  export let items: MenuItem[] = [];
+  export let options: MenuItem[] = [];
   export let path: number[] = [];
 
   const mutateMenu = (obj: MenuItem[], lvl: number[]) => {
@@ -28,7 +28,7 @@
       return;
     }
 
-    items.forEach((v, idx) => {
+    options.forEach((v, idx) => {
       if (idx === currentpath) {
         mutateMenu(<MenuItem[]>v.submenus, lvl);
       }
@@ -56,9 +56,9 @@
     // if (val) {
     //   const { path, hasSubmenu, item } = <MenuItemProp>JSON.parse(val);
     //   if (hasSubmenu) {
-    //     mutateMenu(items, path.slice());
+    //     mutateMenu(options, path.slice());
     //   }
-    //   items = [...items];
+    //   options = [...options];
     //   dispatch("change", { path, item });
     // }
   };
@@ -73,7 +73,7 @@
   transition:slide
 >
   <ul>
-    {#each items as item, i (item.key)}
+    {#each options as item, i (item.key)}
       <li
         class="resp-menu__item"
         class:resp-menu__item--disabled={item.disabled}
@@ -94,7 +94,7 @@
           <svelte:self
             class="resp-menu__submenu"
             path={[...path, i]}
-            items={item.submenus}
+            options={item.submenus}
           />
         {/if}
       </li>
@@ -105,6 +105,7 @@
 <style lang="scss" global>
   .resp-menu {
     display: block;
+    background: #fff;
     padding: 0.5rem;
     border-radius: var(--border-radius, 10px);
     box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
@@ -141,7 +142,7 @@
       color: #3b3b3b;
       padding: 6px 10px;
       flex-direction: row;
-      align-items: center;
+      align-options: center;
       text-decoration: none;
       transition: all 0.65s;
 

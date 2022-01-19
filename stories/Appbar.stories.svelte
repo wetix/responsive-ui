@@ -1,6 +1,7 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import AppBar from "@responsive-ui/app-bar";
+  import { menu } from "@responsive-ui/menu";
 
   let marginTop = 0;
 
@@ -146,7 +147,7 @@
       {/each}
     </div>
     <svelte:fragment slot="trailing-item" let:item>
-      {item.label}
+      <div use:menu>{item.label}</div>
     </svelte:fragment>
   </AppBar>
   <div class="body" style={`margin-top: ${marginTop}px`}>
