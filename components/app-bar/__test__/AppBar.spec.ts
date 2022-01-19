@@ -5,6 +5,7 @@ describe("AppBar", () => {
   const props = {
     class: "appbar-class"
   };
+
   const { container } = render(AppBar, { props });
 
   it("render test", () => {

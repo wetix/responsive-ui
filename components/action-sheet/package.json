@@ -23,9 +23,9 @@
     "svelte-action-sheet"
   ],
   "peerDependencies": {
-    "@responsive-ui/bottom-sheet": "^1.1.0-alpha.1",
-    "@responsive-ui/button": "^1.1.0-alpha.1",
-    "svelte": "^3.27.0",
+    "@responsive-ui/bottom-sheet": "*",
+    "@responsive-ui/button": "*",
+    "svelte": "^3.46.2",
     "svelte-preprocess": "^4.5.0",
     "typescript": "^4.0.0"
   },

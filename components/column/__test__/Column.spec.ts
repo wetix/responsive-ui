@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import Column from "../src/Column.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Column", () => {
   const props = {

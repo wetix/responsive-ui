@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/svelte";
 import Accordion from "../src/Accordion.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Accordion", () => {
   const props = {

@@ -1,6 +1,8 @@
 <script type="ts">
-  export let component: any;
-  export let props: {};
+  import { SvelteComponent } from "svelte";
+
+  export let component: SvelteComponent;
+  export let props: Record<string, unknown> = {};
 </script>
 
 <svelte:component this={component} {...props}>

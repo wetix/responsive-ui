@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import Card from "../src/Card.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Card", () => {
   const props = {

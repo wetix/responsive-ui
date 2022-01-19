@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/svelte";
 import Button from "../src/Button.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Button", () => {
   const props = {
@@ -8,7 +8,7 @@ describe("Button", () => {
     name: "test-button",
     label: "Hello World!",
     style: "width: 100px;",
-    ref: document.createElement("button") as HTMLButtonElement
+    ref: document.createElement("button")
   };
 
   it("should render correctly", () => {

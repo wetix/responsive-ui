@@ -1,6 +1,6 @@
 import { render } from "@testing-library/svelte";
 import BottomBar from "../src/BottomBar.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("BottomBar", () => {
   const props = {

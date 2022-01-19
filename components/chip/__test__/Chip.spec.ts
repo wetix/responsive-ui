@@ -1,6 +1,6 @@
-import { render, fireEvent, screen } from "@testing-library/svelte";
+import { render, fireEvent } from "@testing-library/svelte";
 import Chip from "../src/Chip.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Chip", () => {
   const props = {
@@ -28,12 +28,12 @@ describe("Chip", () => {
   });
 
   it("click event (checked)", async () => {
-    //chip should be false
+    // chip should be false
     expect((chip as HTMLInputElement).checked).toBeFalsy();
 
     await fireEvent.click(chip as HTMLInputElement); //clicked should change
 
-    //chip should be true
+    // chip should be true
     expect((chip as HTMLInputElement).checked).toBeTruthy();
   });
 });

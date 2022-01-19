@@ -49,7 +49,7 @@
       font-weight: 600;
       text-align: right;
       width: 100%;
-      padding: 5px 15px 5px 0;
+      padding: 0.5rem 1rem 0.5rem 0;
     }
   }
 </style>

@@ -1,8 +1,8 @@
-import { render, fireEvent } from "@testing-library/svelte";
+import { render } from "@testing-library/svelte";
 import Docker from "../src/Docker.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
-describe("Docker test", () => {
+describe("Docker", () => {
   const props = {
     id: "docker-id",
     title: "docker title",

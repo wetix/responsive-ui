@@ -1,9 +1,9 @@
 import { render } from "@testing-library/svelte";
 import Badge from "../src/Badge.svelte";
-import SlotTest from "../../slot-test/SlotTest.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Badge", () => {
-  let props = {
+  const props = {
     title: "badge",
     class: "badge-custom",
     count: 100,
@@ -26,7 +26,7 @@ describe("Badge", () => {
 
   it("test props", () => {
     const { rerender, container } = render(Badge, { props });
-    var badge = container.querySelector("." + props.class) as HTMLElement;
+    let badge = container.querySelector("." + props.class) as HTMLElement;
 
     //previously count is more than max
     expect(badge.getAttribute("data-count")).toEqual(props.max + "+");

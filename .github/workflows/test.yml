@@ -46,7 +46,7 @@ jobs:
 
       - name: Run svelte-check
         run: |
-          npm run validate
+          npm run check
 
       - name: Run jest
         run: |
