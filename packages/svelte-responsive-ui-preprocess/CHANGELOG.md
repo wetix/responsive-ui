@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.1...v1.1.0-alpha.2) (2022-01-20)
+
+**Note:** Version bump only for package svelte-responsive-ui-preprocess
+
+
+
+
+
 # [1.1.0-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.8...v1.1.0-alpha.1) (2022-01-12)
 
 
