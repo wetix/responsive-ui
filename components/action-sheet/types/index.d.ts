@@ -9,7 +9,7 @@ export type ActionSheetOption = {
   selected?: boolean;
 };
 
-export interface ActionSheetItem extends Record<string, unknown> {
+export interface ActionSheetItem extends Record<string, any> {
   key: string;
   label: string;
   options: ActionSheetOption[];

@@ -2,7 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export type SubNavItem = Omit<NavItem, "subItems">;
 
-export interface NavItem extends Record<string, unknown> {
+export interface NavItem extends Record<string, any> {
   key: string;
   label: string;
   href?: string;
