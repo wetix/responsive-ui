@@ -1,120 +1,96 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import type { MenuItem } from "../types";
-
-  type MenuItemProp = {
-    item: {
-      key: string;
-      label: string;
-    };
-    path: number[];
-    hasSubmenu: boolean;
-  };
+  import type { MenuOption } from "../types";
 
   const dispatch = createEventDispatcher();
 
   let className = "";
   export { className as class };
-  export let ref: HTMLElement | null = null;
-  export let options: MenuItem[] = [];
-  export let path: number[] = [];
-
-  const mutateMenu = (obj: MenuItem[], lvl: number[]) => {
-    const currentpath = <number>lvl.shift();
-    if (lvl.length < 1 && obj[currentpath]) {
-      obj[currentpath].collapsed =
-        obj[currentpath].collapsed === undefined ? false : !obj[currentpath].collapsed;
-      return;
-    }
-
-    options.forEach((v, idx) => {
-      if (idx === currentpath) {
-        mutateMenu(<MenuItem[]>v.submenus, lvl);
-      }
-    });
-  };
-
-  const stringify = (item: MenuItem, index: number) => {
-    const { submenus = [] } = item;
-    return JSON.stringify({
-      item: {
-        ...item,
-        submenus: undefined
-      },
-      path: [...path, index],
-      hasSubmenu: submenus.length > 0
-    });
-  };
+  export let open = false;
+  export let ref: HTMLElement;
+  export let options: MenuOption[] = [];
+  export const path: number[] = [];
 
   const handleSelect = (e: Event) => {
-    e.preventDefault();
-    const el = e.composedPath().find((v) => v instanceof HTMLElement && v.dataset.item);
+    e.stopPropagation();
+    const el = e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.option) as HTMLElement;
     if (!el) return;
-    console.log(el);
-    // const val = getNodeAttribute(e, "data-item");
-    // if (val) {
-    //   const { path, hasSubmenu, item } = <MenuItemProp>JSON.parse(val);
-    //   if (hasSubmenu) {
-    //     mutateMenu(options, path.slice());
-    //   }
-    //   options = [...options];
-    //   dispatch("change", { path, item });
-    // }
+    const option = JSON.parse(el.dataset.option as string) as MenuOption;
+    dispatch("optionselect", { option });
   };
 </script>
 
-<div
-  {...$$restProps}
-  class="resp-menu {className}"
-  bind:this={ref}
-  on:click={handleSelect}
-  on:click
-  transition:slide
->
-  <ul>
-    {#each options as item, i (item.key)}
-      <li
-        class="resp-menu__item"
-        class:resp-menu__item--disabled={item.disabled}
-        data-item={JSON.stringify(item)}
-      >
-        <slot name="menu-item">
-          <div
+<div class="resp-menu__trigger" on:click={() => (open = !open)}>
+  <slot />
+  {#if open}
+    <div
+      {...$$restProps}
+      class="resp-menu {className}"
+      bind:this={ref}
+      on:click={handleSelect}
+      on:click
+      transition:slide
+    >
+      <ul>
+        {#each options as option, i (option.key)}
+          {@const { href = "", label, separator = false } = option}
+          <li
             class="resp-menu__item"
-            class:resp-menu--submenu={item.submenus}
-            class:resp-menu--open={item.collapsed === false}
+            class:resp-menu__item--separator={separator}
+            class:resp-menu__item--disabled={option.disabled}
+            data-option={JSON.stringify(option)}
           >
-            <div class="resp-menu__label">
-              {item.label}
+            <div
+              class="resp-menu__item"
+              class:resp-menu--submenu={option.submenus}
+              class:resp-menu--open={option.collapsed === false}
+            >
+              <slot name="menu-option" {option}>
+                <div class="resp-menu__label">
+                  <a {href}>{label}</a>
+                </div>
+              </slot>
             </div>
-          </div>
-        </slot>
-        {#if item.submenus && item.collapsed === false}
-          <svelte:self
-            class="resp-menu__submenu"
-            path={[...path, i]}
-            options={item.submenus}
-          />
-        {/if}
-      </li>
-    {/each}
-  </ul>
+            {#if option.submenus && option.collapsed === false}
+              <svelte:self
+                class="resp-menu__submenu"
+                path={[...path, i]}
+                options={option.submenus}
+              />
+            {/if}
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
 </div>
 
 <style lang="scss" global>
   .resp-menu {
+    position: absolute;
+    top: 100%;
+    // left: 0.5rem;
+    right: 0;
     display: block;
     background: #fff;
-    padding: 0.5rem;
+    padding: 0.25rem;
     border-radius: var(--border-radius, 10px);
-    box-shadow: 0 0 26px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+    &__trigger {
+      position: relative;
+    }
 
     & > ul {
       list-style-type: none;
       list-style-position: inside;
       padding: 0;
       margin: 0;
+      display: block;
+      min-width: 250px;
     }
 
     &__item {
@@ -125,13 +101,19 @@
       font-family: var(--font-family, inherit);
       font-size: var(--font-size, 14px);
 
+      &--separator {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
       &--disabled {
         cursor: not-allowed !important;
         opacity: 0.65;
       }
 
       &:hover:not(&--disabled) > .resp-menu__label {
-        background: #fc4451;
+        // background: rgba(252, 68, 80, 0.6);
+        background: #f5f5f5;
         border-radius: 6px;
       }
     }
@@ -140,9 +122,9 @@
       position: relative;
       display: flex;
       color: #3b3b3b;
-      padding: 6px 10px;
+      padding: 0.5rem 1rem;
       flex-direction: row;
-      align-options: center;
+      align-items: center;
       text-decoration: none;
       transition: all 0.65s;
 

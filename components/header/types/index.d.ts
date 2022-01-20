@@ -8,15 +8,13 @@ export interface HeaderProps {
   style?: string;
 }
 
-export interface HeaderEvents {}
-
 export interface HeaderSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class HeaderComponent extends SvelteComponentTyped<
   HeaderProps,
-  HeaderEvents,
+  Record<string, unknown>,
   HeaderSlots
 > {}
 

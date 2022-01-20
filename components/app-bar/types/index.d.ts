@@ -2,7 +2,7 @@ import type { SvelteComponentTyped } from "svelte/internal";
 
 export type SubNavItem = Omit<NavItem, "subItems">;
 
-export interface NavItem extends Record<string, any> {
+export interface NavItem extends Record<string, unknown> {
   key: string;
   label: string;
   href?: string;
@@ -26,10 +26,11 @@ export interface AppBarEvents {
    * The onclick event occurs when the user clicks on app bar.
    */
   click?: WindowEventMap["click"];
+  menuchange?: CustomEvent<Pick<AppBarProps, "selectedKey" | "selectedSubmenuKey">>;
 }
 
 export interface AppBarSlots {
-  logo: {};
+  logo: Record<string, unknown>;
   leading: {
     items: NavItem[];
   };

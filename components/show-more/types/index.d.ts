@@ -8,16 +8,14 @@ export interface ShowMoreProps {
   style?: string;
 }
 
-export interface ShowMoreEvents {}
-
 export interface ShowMoreSlots {
-  default: {};
-  trigger: {};
+  default: Record<string, unknown>;
+  trigger: Record<string, unknown>;
 }
 
 export declare class ShowMoreComponent extends SvelteComponentTyped<
   ShowMoreProps,
-  ShowMoreEvents,
+  Record<string, unknown>,
   ShowMoreSlots
 > {}
 

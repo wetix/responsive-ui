@@ -13,7 +13,7 @@ export interface CardEvents {
 }
 
 export interface CardSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 /**

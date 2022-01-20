@@ -68,7 +68,7 @@ export interface ButtonEvents {
  * Component slots.
  */
 export interface ButtonSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 /**

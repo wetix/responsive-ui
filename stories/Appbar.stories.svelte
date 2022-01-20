@@ -1,7 +1,7 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import AppBar from "@responsive-ui/app-bar";
-  import { menu } from "@responsive-ui/menu";
+  import Menu from "@responsive-ui/menu";
 
   let marginTop = 0;
 
@@ -32,11 +32,22 @@
     { key: "events", label: "Events", link: "/events" }
   ];
   const trailingItems = [
-    { label: "A", link: "/A" },
-    { label: "B", link: "/B" },
-    { label: "C", link: "/C" },
-    { label: "D", link: "/D" }
+    { key: "A", label: "A", link: "/A" },
+    { key: "B", label: "B", link: "/B" },
+    { key: "C", label: "C", link: "/C" },
+    { key: "D", label: "D", link: "/D" }
   ];
+
+  const options = [
+    { key: "A", label: "A", link: "/A", separator: true },
+    { key: "B", label: "B", link: "/B" },
+    { key: "C", label: "C", link: "/C", separator: true },
+    { key: "D", label: "D", link: "/D" }
+  ];
+
+  const handleOptionSelect = (e) => {
+    console.log(e.detail);
+  };
 </script>
 
 <Meta
@@ -147,10 +158,14 @@
       {/each}
     </div>
     <svelte:fragment slot="trailing-item" let:item>
-      <div use:menu>{item.label}</div>
+      {#if item.key === "C"}
+        <Menu {options} on:optionselect={handleOptionSelect}>{item.label}</Menu>
+      {:else}
+        <div>{item.label}</div>
+      {/if}
     </svelte:fragment>
   </AppBar>
-  <div class="body" style={`margin-top: ${marginTop}px`}>
+  <div class="body" style:margin-top="{marginTop}px">
     {#each new Array(10) as _}
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem

@@ -9,15 +9,13 @@ export interface BadgeProps {
   style?: string;
 }
 
-export interface BadgeEvents {}
-
 export interface BadgeSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class BadgeComponent extends SvelteComponentTyped<
   BadgeProps,
-  BadgeEvents,
+  Record<string, unknown>,
   BadgeSlots
 > {}
 
