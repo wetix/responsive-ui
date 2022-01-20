@@ -27,8 +27,8 @@ export interface InputNumberEvents {
 }
 
 export interface InputNumberSlots {
-  prefix: {};
-  suffix: {};
+  prefix: Record<string, unknown>;
+  suffix: Record<string, unknown>;
 }
 
 export declare class InputNumberComponent extends SvelteComponentTyped<

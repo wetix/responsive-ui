@@ -1,7 +1,7 @@
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export interface InputProps {
-  ref?: null | HTMLInputElement;
+  ref?: HTMLInputElement;
   class?: string;
   id?: string;
   name?: string;
@@ -13,7 +13,7 @@ export interface InputProps {
   readonly?: boolean;
   size?: number;
   maxlength?: number;
-  value?: any;
+  value?: string;
   required?: boolean;
   style?: string;
 }
@@ -25,8 +25,8 @@ export interface InputEvents {
 }
 
 export interface InputSlots {
-  prefix: {};
-  suffix: {};
+  prefix: Record<string, unknown>;
+  suffix: Record<string, unknown>;
 }
 
 export declare class InputComponent extends SvelteComponentTyped<

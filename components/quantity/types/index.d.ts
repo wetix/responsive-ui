@@ -22,12 +22,9 @@ export interface QuantityEvents {
   change?: WindowEventMap["change"];
 }
 
-export interface QuantitySlots {}
-
 export declare class QuantityComponent extends SvelteComponentTyped<
   QuantityProps,
-  QuantityEvents,
-  QuantitySlots
+  QuantityEvents
 > {}
 
 export default QuantityComponent;

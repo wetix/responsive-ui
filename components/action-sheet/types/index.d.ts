@@ -1,4 +1,3 @@
-import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
 export type KeyValues = { key: string; values: string[] };
@@ -38,8 +37,6 @@ export type ActionSheetValueChangeEvent = {
   option: ActionSheetOption;
 };
 
-export type ActionSheetResetEvent = {};
-
 export type ActionSheetOkEvent = {
   selectedKey: string;
   keyValues: KeyValues[];
@@ -53,9 +50,9 @@ export interface ActionSheetEvents {
 }
 
 export interface ActionSheetSlots {
-  item: {};
-  option: {};
-  footer: {};
+  item: Record<string, unknown>;
+  option: Record<string, unknown>;
+  footer: Record<string, unknown>;
 }
 
 export declare class ActionSheetComponent extends SvelteComponentTyped<

@@ -29,9 +29,9 @@
     "commit": "cz",
     "gitcommit": "git add . && git commit -m \"🔖 chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "chromatic": "npx chromatic --project-token=eb1e588f7ddb",
-    "format": "prettier --write ./components/*/{src,__test__}/**/*.{js,svelte,ts} ./stories/**/*.{js,svelte,ts}",
-    "lint": "eslint './components/*/{src,__test__}/**/*.{js,ts,svelte}'",
-    "lint:fix": "eslint --fix './components/*/{src,__test__}/**/*.{js,ts,svelte}'"
+    "format": "prettier --write ./components/*/{src,__test__,types}/**/*.{js,svelte,ts} ./stories/**/*.{js,svelte,ts}",
+    "lint": "eslint './components/*/{src,__test__,types}/**/*.{js,ts,svelte}'",
+    "lint:fix": "eslint --fix './components/*/{src,__test__,types}/**/*.{js,ts,svelte}'"
   },
   "engines": {
     "node": ">=14.0.0",
