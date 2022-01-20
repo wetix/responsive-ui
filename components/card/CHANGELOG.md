@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.1...v1.1.0-alpha.2) (2022-01-20)
+
+
+### Bug Fixes
+
+* components, lint and bump dependencies ([56abe3b](https://github.com/wetix/responsive-ui/commit/56abe3b966be980ba751a425d81683bba51dca88))
+* edit tests, feat: appbar edit ([c0e31e7](https://github.com/wetix/responsive-ui/commit/c0e31e7b9c114f9d44ed3bae06dd57574c7aa324))
+* typing and complete `Menu` component ([de574cc](https://github.com/wetix/responsive-ui/commit/de574cc95c0a90708e792f10bd7bd0e3a0358796))
+
+
+
+
+
 # [1.1.0-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.8...v1.1.0-alpha.1) (2022-01-12)
 
 

@@ -24,7 +24,7 @@ export interface ChipEvents {
 }
 
 export interface ChipSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class ChipComponent extends SvelteComponentTyped<

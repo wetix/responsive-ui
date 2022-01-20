@@ -5,7 +5,7 @@ export interface TextareaProps {
   title?: string;
   ref?: null | HTMLTextAreaElement;
   name?: string;
-  value?: any;
+  value?: unknown;
   form?: string;
   cols?: number;
   rows?: number;
@@ -26,7 +26,7 @@ export interface TextareaEvents {
 }
 
 export interface TextareaSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class TextareaComponent extends SvelteComponentTyped<

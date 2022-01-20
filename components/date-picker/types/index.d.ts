@@ -26,12 +26,9 @@ export interface DatePickerEvents {
   datechange?: CustomEvent<DateChangeEvent>;
 }
 
-export interface DatePickerSlots {}
-
 export declare class DatePickerComponent extends SvelteComponentTyped<
   DatePickerProps,
-  DatePickerEvents,
-  DatePickerSlots
+  DatePickerEvents
 > {}
 
 export default DatePickerComponent;

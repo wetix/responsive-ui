@@ -24,15 +24,13 @@ export interface RowProps {
   style?: string;
 }
 
-export interface RowEvents {}
-
 export interface RowSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class RowComponent extends SvelteComponentTyped<
   RowProps,
-  RowEvents,
+  Record<string, unknown>,
   RowSlots
 > {}
 

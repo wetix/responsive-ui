@@ -20,15 +20,13 @@ export interface ColumnProps {
   style?: string;
 }
 
-export interface ColumnEvents {}
-
 export interface ColumnSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class ColumnComponent extends SvelteComponentTyped<
   ColumnProps,
-  ColumnEvents,
+  Record<string, unknown>,
   ColumnSlots
 > {}
 

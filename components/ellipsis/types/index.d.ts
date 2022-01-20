@@ -13,7 +13,7 @@ export interface EllipsisEvents {
 }
 
 export interface EllipsisSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class EllipsisComponent extends SvelteComponentTyped<

@@ -29,7 +29,7 @@ describe("Badge", () => {
     let badge = container.querySelector("." + props.class) as HTMLElement;
 
     //previously count is more than max
-    expect(badge.getAttribute("data-count")).toEqual(props.max + "+");
+    expect(badge.getAttribute("data-count")).toEqual(`${props.max}+`);
 
     //rerender
     const props2 = {

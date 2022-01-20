@@ -13,7 +13,7 @@ export interface HScrollEvents {
 }
 
 export interface HScrollSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class HScrollComponent extends SvelteComponentTyped<

@@ -21,10 +21,16 @@ export interface AppBarProps {
   style?: string;
 }
 
-export interface AppBarEvents {}
+export interface AppBarEvents {
+  /**
+   * The onclick event occurs when the user clicks on app bar.
+   */
+  click?: WindowEventMap["click"];
+  menuchange?: CustomEvent<Pick<AppBarProps, "selectedKey" | "selectedSubmenuKey">>;
+}
 
 export interface AppBarSlots {
-  logo: {};
+  logo: Record<string, unknown>;
   leading: {
     items: NavItem[];
   };
