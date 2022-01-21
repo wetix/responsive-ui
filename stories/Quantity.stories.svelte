@@ -11,15 +11,17 @@
     min: { control: { type: "range", min: 0, max: 100, step: 1 } },
     max: { control: { type: "range", min: 1, max: 100, step: 1 } },
     step: { control: { type: "range", min: 1, max: 10, step: 1 } },
-    onChange: { action: "change" }
+    onClick: { action: "onClick" },
+    onChange: { action: "onChange" }
   }}
 />
 
 <Template let:args>
   <Quantity
     {...args}
+    on:click={args.onClick}
     on:input={args.onChange}
-    on:change={args.onChange}
+    on:change={(e) => console.log("valuechange=>", e.currentTarget.value)}
     on:mouseup={args.onChange}
     on:keyup={args.onChange}
   />
