@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.2...v1.1.0-alpha.3) (2022-01-21)
+
+
+### Bug Fixes
+
+* `Quantity` component onchange event is not working ([50bd425](https://github.com/wetix/responsive-ui/commit/50bd42502429894b97618e7ed0ae831f6c68bb20))
+
+
+
+
+
 # [1.1.0-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.1...v1.1.0-alpha.2) (2022-01-20)
 
 
