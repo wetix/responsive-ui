@@ -36,3 +36,44 @@
     value: 0
   }}
 />
+
+<Template id="multiple" let:args>
+  <div on:change={(e) => console.log("valuechange=>", e.target.value)}>
+    <div>
+      <Quantity
+        {...args}
+        on:click={args.onClick}
+        on:input={args.onChange}
+        on:mouseup={args.onChange}
+        on:keyup={args.onChange}
+      />
+    </div>
+    <div>
+      <Quantity
+        {...args}
+        on:click={args.onClick}
+        on:input={args.onChange}
+        on:mouseup={args.onChange}
+        on:keyup={args.onChange}
+      />
+    </div>
+    <Quantity
+      {...args}
+      on:click={args.onClick}
+      on:input={args.onChange}
+      on:mouseup={args.onChange}
+      on:keyup={args.onChange}
+    />
+  </div>
+</Template>
+
+<Story
+  name="Multiple"
+  template="multiple"
+  args={{
+    disabled: false,
+    min: 5,
+    max: 99,
+    value: 0
+  }}
+/>

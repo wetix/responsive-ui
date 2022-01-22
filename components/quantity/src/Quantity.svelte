@@ -13,9 +13,11 @@
   export let disabled = false;
   export let style = "";
 
-  const readjustValue = () => {
-    if (value < min) value = min;
-    else if (value > max) value = max;
+  const readjustValue = (v: number = value) => {
+    let newValue = v;
+    if (v < min) newValue = min;
+    else if (v > max) newValue = max;
+    value = newValue;
   };
 
   readjustValue();
@@ -33,7 +35,7 @@
 
   const dispatchChange = (el: HTMLElement) => {
     setTimeout(() => {
-      el.dispatchEvent(new Event("change"));
+      el.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
     }, 0);
   };
 
@@ -63,15 +65,12 @@
   // because change always execute before blur, we need to readjust it when onblur
   const handleChange = (e: Event) => {
     const v = (e.currentTarget as HTMLInputElement).valueAsNumber;
-    if (isNaN(v)) e.stopImmediatePropagation();
+    if (isNaN(v)) value = min;
+    else readjustValue(v);
   };
 
-  const handleBlur = (e: Event) => {
-    const v = (e.currentTarget as HTMLInputElement).valueAsNumber;
-    if (isNaN(v)) value = min;
-    else readjustValue();
+  const handleBlur = () => {
     focused = false;
-    dispatchChange(ref);
   };
 </script>
 
