@@ -31,16 +31,16 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Cache dependencies
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
+      # - name: Cache dependencies
+      #   id: cache-modules
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.npm
+      #     key: npm-${{ hashFiles('package-lock.json') }}
+      #     restore-keys: npm-
 
       - name: NPM Install
-        if: steps.cache-modules.outputs.cache-hit != 'true'
+        # if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
           npm install
 
