@@ -8,6 +8,7 @@
   component={Quantity}
   argTypes={{
     disabled: { control: "boolean" },
+    readonly: { control: "boolean" },
     min: { control: { type: "range", min: 0, max: 100, step: 1 } },
     max: { control: { type: "range", min: 1, max: 100, step: 1 } },
     step: { control: { type: "range", min: 1, max: 10, step: 1 } },
