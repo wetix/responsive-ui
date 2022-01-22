@@ -19,11 +19,15 @@
   let subMenus: SubNavItem[] = [];
   let subnavStyle = "";
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
+
+  //for selecting submenu
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
-    if (menus.length > 0) selectedSubmenuKey = menus[0].key as string;
+    if (menus.length > 0 && selectedSubmenuKey === "")
+      selectedSubmenuKey = menus[0].key as string;
     subMenus = menus;
   }
+
   $: if (subnav) {
     const el = subnav.querySelector(`[data-key="${selectedSubmenuKey}"]`);
     if (el) {
