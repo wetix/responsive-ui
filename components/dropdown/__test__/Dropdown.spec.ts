@@ -1,4 +1,4 @@
-import {render, fireEvent} from "@testing-library/svelte";
+import { render, fireEvent } from "@testing-library/svelte";
 import Dropdown from "../src/Dropdown.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 
@@ -54,12 +54,14 @@ describe("Dropdown", () => {
 
   describe("click dropdown", () => {
     it("should render with click", () => {
-      const result = render(Dropdown, {propsClick});
+      const result = render(Dropdown, { propsClick });
       expect(() => result).not.toThrow();
     });
 
     it("slot test", () => {
-      const result = render(SlotTest, {props: {component: Dropdown, props: propsClick}});
+      const result = render(SlotTest, {
+        props: { component: Dropdown, props: propsClick }
+      });
       expect(() => result).not.toThrow();
     });
 
@@ -71,32 +73,33 @@ describe("Dropdown", () => {
     // it("should perform correct action", () => {
 
     // });
-
   });
 
   describe("hover dropdown", () => {
     it("should render with hover", () => {
-      const result = render(Dropdown, {propsHover});
+      const result = render(Dropdown, { propsHover });
       expect(() => result).not.toThrow();
     });
 
     it("slot test", () => {
-      const result = render(SlotTest, {props: {component: Dropdown, props: propsHover}});
+      const result = render(SlotTest, {
+        props: { component: Dropdown, props: propsHover }
+      });
       expect(() => result).not.toThrow();
     });
-
   });
 
   describe("hover context", () => {
     it("should render with context", () => {
-      const result = render(Dropdown, {propsContext});
+      const result = render(Dropdown, { propsContext });
       expect(() => result).not.toThrow();
     });
 
     it("slot test", () => {
-      const result = render(SlotTest, {props: {component: Dropdown, props: propsContext}});
+      const result = render(SlotTest, {
+        props: { component: Dropdown, props: propsContext }
+      });
       expect(() => result).not.toThrow();
     });
-
   });
-})
+});

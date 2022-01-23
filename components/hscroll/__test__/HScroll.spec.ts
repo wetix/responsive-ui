@@ -1,4 +1,4 @@
-import {render, fireEvent} from '@testing-library/svelte';
+import { render, fireEvent } from "@testing-library/svelte";
 import HScroll from "../src/HScroll.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 
@@ -23,7 +23,7 @@ describe("Horizontal Scroll", () => {
   });
 
   it("should have correct props", () => {
-    const {container} = render(HScroll, { props });
+    const { container } = render(HScroll, { props });
     const hScroll = container.querySelector("." + props.class) as HTMLElement;
 
     expect(hScroll.id).toEqual(props.id); //id test
@@ -32,12 +32,16 @@ describe("Horizontal Scroll", () => {
   });
 
   it("click test", async () => {
-    const {container} = render(HScroll, { props });
+    const { container } = render(HScroll, { props });
     const hScroll = container.querySelector(".resp-scroll") as HTMLElement;
 
     //buttons
-    const prev = hScroll.querySelector(".resp-scroll__prev-icon > .resp-scroll__icon") as HTMLElement;
-    const next = hScroll.querySelector(".resp-scroll__next-icon > .resp-scroll__icon") as HTMLElement;
+    const prev = hScroll.querySelector(
+      ".resp-scroll__prev-icon > .resp-scroll__icon"
+    ) as HTMLElement;
+    const next = hScroll.querySelector(
+      ".resp-scroll__next-icon > .resp-scroll__icon"
+    ) as HTMLElement;
 
     //mock fns
     const mockPrev = jest.fn(() => {

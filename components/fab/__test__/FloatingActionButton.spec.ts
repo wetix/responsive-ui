@@ -16,7 +16,7 @@ describe("FAB", () => {
   });
 
   it("props test", () => {
-    const {container} = render(FloatingActionButton, { props });
+    const { container } = render(FloatingActionButton, { props });
     const fab = container.querySelector("." + props.class) as HTMLElement;
 
     expect(fab.id).toEqual(props.id); //test id
@@ -26,11 +26,11 @@ describe("FAB", () => {
   });
 
   it("test click event", async () => {
-    const {container, component} = render(FloatingActionButton, { props });
+    const { container, component } = render(FloatingActionButton, { props });
     const fab = container.querySelector("." + props.class) as HTMLElement;
 
     const mock = jest.fn(); //test function
-    component.$on('click', mock); //set function onclick
+    component.$on("click", mock); //set function onclick
 
     //click
     await fireEvent.click(fab);

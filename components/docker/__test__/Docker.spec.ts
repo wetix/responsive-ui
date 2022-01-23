@@ -54,5 +54,5 @@ describe("Docker", () => {
     await fireEvent.click(container.querySelector(".resp-docker__overlay") as Element);
     //test if closed
     expect(docker.classList).toContain("resp-docker--close");
-  })
+  });
 });
