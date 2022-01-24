@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.5](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.4...v1.1.0-alpha.5) (2022-01-24)
+
+
+### Bug Fixes
+
+* code format in `__test__` ([b3db326](https://github.com/wetix/responsive-ui/commit/b3db326171cf2332a9da557da76867dd80e66e30))
+
+
+
+
+
 # [1.1.0-alpha.4](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.3...v1.1.0-alpha.4) (2022-01-22)
 
 **Note:** Version bump only for package @responsive-ui/docker
