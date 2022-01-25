@@ -23,7 +23,6 @@
 <style lang="scss" global>
   .resp-accordion {
     position: relative;
-    overflow: hidden;
 
     &__label {
       position: relative;
@@ -53,6 +52,7 @@
 
     &__content {
       height: 0;
+      overflow: hidden;
       background: #fff;
       transition: all 0.5s;
 
@@ -76,6 +76,7 @@
 
     & > input:checked ~ &__content {
       height: auto;
+      overflow: visible;
     }
   }
 </style>

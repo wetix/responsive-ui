@@ -22,7 +22,7 @@
     {...args}
     on:click={args.onClick}
     on:input={args.onChange}
-    on:change={(e) => console.log("valuechange=>", e.currentTarget.value)}
+    on:change={args.onChange}
     on:mouseup={args.onChange}
     on:keyup={args.onChange}
   />
@@ -38,8 +38,8 @@
   }}
 />
 
-<Template id="multiple" let:args>
-  <div on:change={(e) => console.log("valuechange=>", e.target.value)}>
+<Template id="eventBubbling" let:args>
+  <div on:change={args.onChange}>
     <div>
       <Quantity
         {...args}
@@ -69,8 +69,8 @@
 </Template>
 
 <Story
-  name="Multiple"
-  template="multiple"
+  name="Event Bubbling on onchange"
+  template="eventBubbling"
   args={{
     disabled: false,
     min: 5,
