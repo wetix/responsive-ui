@@ -183,6 +183,7 @@
 
 <style lang="scss" global>
   $sm: 576px;
+  $md: 768px;
   $height: 55px;
 
   .resp-app-bar {
@@ -239,7 +240,7 @@
       display: flex;
       justify-content: space-between;
 
-      @media (min-width: $sm) {
+      @media (min-width: $md) {
         width: 80%;
       }
     }
