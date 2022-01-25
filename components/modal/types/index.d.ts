@@ -8,6 +8,8 @@ export interface ModalProps {
   width?: number | string;
   outlined?: boolean;
   closable?: boolean;
+  hasHeader?: boolean;
+  hasFooter?: boolean;
   maskClosable?: boolean;
   style?: string;
 }
