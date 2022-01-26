@@ -34,15 +34,16 @@
 </script>
 
 <div class="resp-tab {className}" {...$$restProps}>
-  <nav bind:this={tab}>
+  <ul class="resp-tab__box" bind:this={tab}>
     {#each items as item, i}
-      <!-- class:resp-tab__item--selected={selected == i} -->
-      <span class="resp-tab__item" on:click={(e) => onChange(e, i)}>
+      <li class="resp-tab__item" on:click={(e) => onChange(e, i)}>
         {item.label}
-      </span>
+        <!-- <span class="resp-tab__ink-bar" /> -->
+      </li>
+      <!-- class:resp-tab__item--selected={selected == i} -->
     {/each}
-  </nav>
-  <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} />
+  </ul>
+  <!-- <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} /> -->
 </div>
 
 {#if hasSlots}
@@ -64,19 +65,24 @@
     border-top: 2px solid transparent;
     box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.15);
 
-    &__ink-bar {
-      position: absolute;
-      display: block;
-      bottom: 0;
-      margin-top: -2px;
-      height: 2px;
-      width: 100px;
-      background: #fc4451;
-      transition: all 0.5s;
-    }
+    // &__ink-bar {
+    //   position: absolute;
+    //   display: block;
+    //   bottom: 0;
+    //   margin-top: -2px;
+    //   height: 2px;
+    //   width: 100px;
+    //   background: #fc4451;
+    //   transition: all 0.5s;
+    // }
 
-    nav {
+    &__box {
       // padding: 0 15px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      list-style-position: inside;
+      display: flex;
       white-space: nowrap;
       overflow-x: scroll;
       -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -93,11 +99,10 @@
 
     &__item {
       cursor: pointer;
-      display: inline-block;
       position: relative;
       text-align: center;
       padding: 0.5rem 1rem;
-      transition: color 0.5s;
+      //   transition: color 0.5s;
     }
 
     &__item--selected {
