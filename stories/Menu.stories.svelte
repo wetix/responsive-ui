@@ -2,7 +2,7 @@
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Menu from "@responsive-ui/menu";
 
-  const items = [
+  const options = [
     {
       label: "A"
     },
@@ -32,7 +32,9 @@
 />
 
 <Template let:args>
-  <Menu {items} {...args} />
+  <Menu {options} {...args}>
+    <div>Click me</div>
+  </Menu>
 </Template>
 
 <Story name="Default" />

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
   import type { NavItem, SubNavItem } from "../types";
@@ -20,7 +21,7 @@
   let subnavStyle = "";
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
 
-  //for selecting submenu
+  // for selecting submenu
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
     if (menus.length > 0 && selectedSubmenuKey === "")
@@ -123,14 +124,18 @@
       <Scroll>
         <ul>
           {#each subMenus as { key, href, label, ...otherProps }}
+            {@const selected = selectedSubmenuKey === key}
             <li
-              class:resp-app-bar__subnav-item--selected={selectedSubmenuKey === key}
+              class="resp-app-bar__subnav-item"
+              class:resp-app-bar__subnav-item--selected={selected}
               data-key={key}
             >
               <a {href} {...otherProps}>{label}</a>
+              {#if selected}
+                <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
+              {/if}
             </li>
           {/each}
-          <li class="resp-app-bar__subnav-indicator" style={subnavStyle} />
         </ul>
       </Scroll>
     </nav>
@@ -286,6 +291,14 @@
           padding: 0 1rem;
           transition: all 0.5s;
         }
+      }
+
+      &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100%;
       }
 
       &-indicator {
