@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.5...v1.1.0-alpha.6) (2022-01-26)
+
+
+### Bug Fixes
+
+* inkbar width not relative to the parent width ([c67bcb6](https://github.com/wetix/responsive-ui/commit/c67bcb6d007068736c35fbabbe759845ba338030))
+
+
+
+
+
 # [1.1.0-alpha.5](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.4...v1.1.0-alpha.5) (2022-01-24)
 
 **Note:** Version bump only for package @responsive-ui/menu
