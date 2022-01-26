@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
   import type { TabItem } from "../types";
 
+  let className = "";
+  export { className as class };
   export let items: TabItem[] = [];
-  export let selected = 0;
-  export let style = "";
+  export let selectedKey = "";
 
   const hasSlots = !!$$slots.default;
 
@@ -16,9 +16,9 @@
 
   const setWidth = () => {
     childNodes = tab.childNodes;
-    const el = childNodes[selected] as HTMLDivElement;
-    left = el.offsetLeft;
-    width = el.offsetWidth;
+    // const el = childNodes[selected] as HTMLDivElement;
+    // left = el.offsetLeft;
+    // width = el.offsetWidth;
   };
 
   onMount(() => {
@@ -28,19 +28,16 @@
   });
 
   const onChange = (_: Event, i: number) => {
-    selected = i;
+    // selected = i;
     setWidth();
   };
 </script>
 
-<div class="resp-tab" {style}>
+<div class="resp-tab {className}" {...$$restProps}>
   <nav bind:this={tab}>
     {#each items as item, i}
-      <span
-        class="resp-tab__item"
-        class:resp-tab__item--selected={selected == i}
-        on:click={(e) => onChange(e, i)}
-      >
+      <!-- class:resp-tab__item--selected={selected == i} -->
+      <span class="resp-tab__item" on:click={(e) => onChange(e, i)}>
         {item.label}
       </span>
     {/each}
@@ -49,7 +46,7 @@
 </div>
 
 {#if hasSlots}
-  <slot {selected} />
+  <slot {selectedKey} />
 {:else}
   {#each items as item}
     {#if item && item.component}
@@ -58,7 +55,7 @@
   {/each}
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
   .resp-tab {
     position: relative;
     display: flex;
@@ -79,7 +76,7 @@
     }
 
     nav {
-      padding: 0 15px;
+      // padding: 0 15px;
       white-space: nowrap;
       overflow-x: scroll;
       -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -99,8 +96,7 @@
       display: inline-block;
       position: relative;
       text-align: center;
-      padding: 8px 0;
-      margin-right: 15px;
+      padding: 0.5rem 1rem;
       transition: color 0.5s;
     }
 

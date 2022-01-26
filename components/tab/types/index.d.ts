@@ -1,15 +1,17 @@
 import { SvelteComponent } from "svelte";
 import type { SvelteComponentTyped } from "svelte/internal";
 
-export interface TabItem {
+export interface TabItem extends Record<string, any> {
+  key: string;
   label: string;
   component?: typeof SvelteComponent;
-  style?: string;
 }
 
 export interface TabProps {
+  id?: string;
+  class?: string;
   items: TabItem[];
-  selected?: number;
+  selectedKey?: string;
   style?: string;
 }
 
@@ -17,7 +19,7 @@ export interface TabEvents {}
 
 export interface TabSlots {
   default: {
-    selected: number;
+    selectedKey: string;
   };
 }
 
