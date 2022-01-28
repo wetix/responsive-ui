@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.6...v1.1.0-alpha.7) (2022-01-28)
+
+**Note:** Version bump only for package @responsive-ui/tooltip
+
+
+
+
+
 # [1.1.0-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.5...v1.1.0-alpha.6) (2022-01-26)
 
 **Note:** Version bump only for package @responsive-ui/tooltip
