@@ -1,61 +1,84 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { tweened } from "svelte/motion";
   import type { TabItem } from "../types";
 
+  const leftTween = tweened(0, { duration: 500 });
   let className = "";
   export { className as class };
   export let items: TabItem[] = [];
   export let selectedKey = "";
 
-  const hasSlots = !!$$slots.default;
+  // const hasSlots = !!$$slots.default;
 
   let tab: HTMLElement;
   let childNodes: NodeListOf<ChildNode>;
-  let left = 0;
   let width = 0;
 
-  const setWidth = () => {
-    childNodes = tab.childNodes;
-    // const el = childNodes[selected] as HTMLDivElement;
-    // left = el.offsetLeft;
-    // width = el.offsetWidth;
-  };
+  $: {
+    const index = items.findIndex((v) => v.key === selectedKey);
+    if (tab && tab.children[index]) {
+      const el = tab.children[index] as HTMLElement;
+      // console.log(el.offsetLeft, el.offsetWidth);
+      //   width = el.offsetWidth;
+      //   console.log(leftTween, el.offsetLeft);
+      leftTween.set(1);
+    }
+  }
 
-  onMount(() => {
-    setTimeout(() => {
-      setWidth();
-    }, 0);
-  });
+  // const setWidth = () => {
+  //   childNodes = tab.childNodes;
+  //   // const el = childNodes[selected] as HTMLDivElement;
+  // };
 
-  const onChange = (_: Event, i: number) => {
-    // selected = i;
-    setWidth();
+  // onMount(() => {
+  //   setTimeout(() => {
+  //     setWidth();
+  //   }, 0);
+  // });
+
+  const handleSelectTab = (e: Event) => {
+    const el = e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
+    if (!el) return;
+    selectedKey = el.dataset.key as string;
   };
 </script>
 
 <div class="resp-tab {className}" {...$$restProps}>
-  <ul class="resp-tab__box" bind:this={tab}>
-    {#each items as item, i}
-      <li class="resp-tab__item" on:click={(e) => onChange(e, i)}>
-        {item.label}
-        <!-- <span class="resp-tab__ink-bar" /> -->
-      </li>
-      <!-- class:resp-tab__item--selected={selected == i} -->
+  <header class="resp-tab__header">
+    <ul bind:this={tab} class="resp-tab__box" on:click={handleSelectTab}>
+      {#each items as item}
+        {@const { key } = item}
+        <li
+          class="resp-tab__item"
+          class:resp-tab__item--selected={selectedKey === key}
+          data-key={key}
+        >
+          {item.label}
+          {#if selectedKey === key}
+            <span class="resp-tab__ink-bar" />
+          {/if}
+        </li>
+      {/each}
+    </ul>
+    <div class="resp-tab__ink-bar" style={`left: ${$leftTween}px; width: ${width}px`} />
+  </header>
+  <ul>
+    {#each items as item}
+      <li><slot {selectedKey} {item} /></li>
+      <!-- {#if item && item.component}
+        <svelte:component this={item.component} />
+      {/if} -->
     {/each}
   </ul>
-  <!-- <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} /> -->
 </div>
 
-{#if hasSlots}
+<!-- {#if hasSlots}
   <slot {selectedKey} />
-{:else}
-  {#each items as item}
-    {#if item && item.component}
-      <svelte:component this={item.component} />
-    {/if}
-  {/each}
-{/if}
+{:else} -->
 
+<!-- {/if} -->
 <style lang="scss" global>
   .resp-tab {
     position: relative;
@@ -64,17 +87,6 @@
     font-size: var(--font-size, 14px);
     border-top: 2px solid transparent;
     box-shadow: 0 6px 6px -4px rgba(0, 0, 0, 0.15);
-
-    // &__ink-bar {
-    //   position: absolute;
-    //   display: block;
-    //   bottom: 0;
-    //   margin-top: -2px;
-    //   height: 2px;
-    //   width: 100px;
-    //   background: #fc4451;
-    //   transition: all 0.5s;
-    // }
 
     &__box {
       // padding: 0 15px;
@@ -97,16 +109,27 @@
       }
     }
 
+    &__ink-bar {
+      position: absolute;
+      display: block;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: #fc4451;
+      // transition: all 0.5s;
+    }
+
     &__item {
       cursor: pointer;
       position: relative;
       text-align: center;
       padding: 0.5rem 1rem;
       //   transition: color 0.5s;
-    }
 
-    &__item--selected {
-      color: #fc4451;
+      &--selected {
+        color: #fc4451;
+      }
     }
   }
 </style>

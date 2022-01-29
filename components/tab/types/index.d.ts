@@ -19,6 +19,7 @@ export interface TabEvents {}
 
 export interface TabSlots {
   default: {
+    item: TabItem;
     selectedKey: string;
   };
 }
