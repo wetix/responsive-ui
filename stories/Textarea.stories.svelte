@@ -8,6 +8,7 @@
   component={Textarea}
   argTypes={{
     placeholder: { control: "text" },
+    maxlength: { control: { type: "range", min: 1, max: 100, step: 10 } },
     disabled: { control: "boolean" },
     bordered: { control: "boolean" },
     readonly: { control: "boolean" }
@@ -21,6 +22,7 @@
 <Story
   name="Default"
   args={{
-    placeholder: "Input your text..."
+    placeholder: "Input your text...",
+    maxlength: 10
   }}
 />

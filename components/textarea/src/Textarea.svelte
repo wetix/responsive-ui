@@ -23,6 +23,7 @@
     class="resp-textarea {className}"
     class:resp-textarea--bordered={bordered}
     bind:this={ref}
+    {maxlength}
     {rows}
     {cols}
     {value}
