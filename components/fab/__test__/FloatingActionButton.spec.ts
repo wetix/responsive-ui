@@ -17,7 +17,13 @@ describe("FAB", () => {
 
   it("props test", () => {
     const { container } = render(FloatingActionButton, { props });
-    const fab = container.querySelector("." + props.class) as HTMLElement;
+    const fab = container.querySelector(".resp-fab") as HTMLElement;
+
+    //test class
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(fab.classList).toContain(c);
+    }
 
     expect(fab.id).toEqual(props.id); //test id
     expect(fab.title).toEqual(props.title); //test title

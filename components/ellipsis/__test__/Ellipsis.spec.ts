@@ -20,6 +20,21 @@ describe("Ellipsis", () => {
     expect(() => result).not.toThrow();
   });
 
+  it("should render with correct props", () => {
+    const { container } = render(Ellipsis, { props });
+    const ellipsis = container.querySelector(".resp-ellipsis") as HTMLElement;
+
+    //test class
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(ellipsis.classList).toContain(c);
+    }
+
+    expect(ellipsis.id).toEqual(props.id); //test id
+    expect(ellipsis.title).toEqual(props.title); //test title
+    expect(ellipsis.getAttribute("style")).toEqual(props.style); //test style
+  });
+
   it("click event", async () => {
     const { component, container } = render(Ellipsis, { props });
 

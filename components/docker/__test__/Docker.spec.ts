@@ -36,7 +36,10 @@ describe("Docker", () => {
     //test left placement
     expect(docker.classList).toContain("resp-docker--left");
     //test class
-    expect(docker.classList).toContain(props.class);
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(docker.classList).toContain(c);
+    }
     //test title
     expect(docker.getAttribute("title")).toBe(props.title);
     //test style

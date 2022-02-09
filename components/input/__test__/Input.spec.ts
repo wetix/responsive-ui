@@ -32,8 +32,7 @@ describe("Input test", () => {
     const { container } = render(Input, { props });
     const div = container.querySelector(".resp-input") as HTMLElement;
 
-    //check classes
-    //classes are done "class-1 class-2", and they are split by spaces
+    //test class
     let customClass = props.class.split(" ");
     for (let c of customClass) {
       expect(div.classList).toContain(c);

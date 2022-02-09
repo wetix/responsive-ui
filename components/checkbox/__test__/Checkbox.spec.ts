@@ -15,7 +15,6 @@ describe("Checkbox", () => {
   //render checkbox
   it("checkbox render test", () => {
     const result = render(Checkbox, { props });
-
     expect(() => result).not.toThrow();
   });
 
@@ -27,16 +26,34 @@ describe("Checkbox", () => {
     expect(() => getByTestId("slot")).not.toThrow();
   });
 
+  //props test
+  it("should have correct props", () => {
+    const { container } = render(Checkbox, { props });
+    const checkBox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+
+    //test classes
+    const label = container.querySelector("label") as HTMLElement;
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(label.classList).toContain(c);
+    }
+
+    expect(checkBox.name).toEqual(props.name); //test name
+    expect(checkBox.disabled).toBeFalsy(); //test disabled
+    expect(checkBox.value).toEqual(props.value); //test value
+    expect(checkBox.checked).toBeFalsy(); //test checked
+  });
+
   //onclick event
   it("should react to clicks corectly", async () => {
     const { container } = render(Checkbox, { props });
-    const chkbox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const checkBox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
 
     //should be false
-    expect(chkbox.checked).toBeFalsy();
+    expect(checkBox.checked).toBeFalsy();
 
-    await fireEvent.click(chkbox);
+    await fireEvent.click(checkBox);
     //should be checked
-    expect(chkbox.checked).toBeTruthy();
+    expect(checkBox.checked).toBeTruthy();
   });
 });

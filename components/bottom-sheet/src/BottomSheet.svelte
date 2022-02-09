@@ -4,6 +4,7 @@
 
   let className = "";
   export { className as class };
+  export let id = "";
   export let open = false;
   export let height = 0;
   export let maskClosable = true;
@@ -29,6 +30,7 @@
   style={`opacity: ${1 - $tween}; visibility: ${1 - $tween <= 0 ? "hidden" : "visible"}`}
 />
 <div
+  {id}
   class="resp-bottom-sheet {className}"
   style={`transform: translateY(${$tween * 100}%); height: ${height}px; visibility: ${
     1 - $tween <= 0 ? "hidden" : "visible"
