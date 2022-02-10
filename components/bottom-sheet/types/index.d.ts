@@ -7,6 +7,7 @@ export interface BottomSheetProps {
   height?: number;
   draggable?: boolean;
   maskClosable?: boolean;
+  closable: boolean;
   style?: string;
 }
 
