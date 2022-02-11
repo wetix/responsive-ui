@@ -79,8 +79,15 @@
     box-sizing: border-box;
     word-break: break-word;
 
-    &--xs-0 {
+    &--xs-0,
+    &--sm-0 {
       @media (max-width: $sm) {
+        display: none;
+      }
+    }
+
+    &--md-0 {
+      @media (max-width: $md) {
         display: none;
       }
     }
