@@ -30,9 +30,9 @@
   style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
 />
 <div
-  {...$$restProps}
   class="resp-bottom-sheet {className}"
   style:height="{height}px"
+  {...$$restProps}
   style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
   style={`transform: translateY(${$tween * 100}%); ${style}`}
 >
