@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/svelte";
+import { render } from "@testing-library/svelte";
 import Input from "../src/Input.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 
-describe("Input test", () => {
+describe("Input", () => {
   const props = {
     ref: document.createElement("input"),
     class: "input-custom custom-2",

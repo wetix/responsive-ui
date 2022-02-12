@@ -29,7 +29,9 @@ describe("Checkbox", () => {
   //props test
   it("should have correct props", () => {
     const { container } = render(Checkbox, { props });
-    const checkBox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const checkBox = container.querySelector(
+      "input[type='checkbox']"
+    ) as HTMLInputElement;
 
     //test classes
     const label = container.querySelector("label") as HTMLElement;
@@ -47,7 +49,9 @@ describe("Checkbox", () => {
   //onclick event
   it("should react to clicks corectly", async () => {
     const { container } = render(Checkbox, { props });
-    const checkBox = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const checkBox = container.querySelector(
+      "input[type='checkbox']"
+    ) as HTMLInputElement;
 
     //should be false
     expect(checkBox.checked).toBeFalsy();

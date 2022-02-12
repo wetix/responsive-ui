@@ -1,4 +1,4 @@
-import { render, fireEvent, findAllByDisplayValue } from "@testing-library/svelte";
+import { render, fireEvent } from "@testing-library/svelte";
 import Chip from "../src/Chip.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 

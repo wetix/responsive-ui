@@ -165,7 +165,7 @@
       padding: 0 5px;
 
       input[type="number"] {
-        width: 1rem;
+        min-width: 45px;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {

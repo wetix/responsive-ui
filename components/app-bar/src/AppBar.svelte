@@ -7,14 +7,14 @@
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
   export let selectedKey = "";
   export let selectedSubmenuKey = "";
   export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
-  let className = "";
-  export { className as class };
 
   let openMenu = false;
   let subnav: HTMLElement;

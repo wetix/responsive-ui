@@ -15,7 +15,6 @@ describe("BottomSheet", () => {
 
   it("render test", () => {
     const result = render(BottomSheet, { props });
-    console.log(result.component);
     expect(() => result).not.toThrow();
   });
 
