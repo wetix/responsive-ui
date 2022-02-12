@@ -9,9 +9,8 @@ describe("BottomBar", () => {
   };
 
   it("render test", () => {
-    const { container } = render(BottomBar, { props });
-    const bottombar = container.querySelector("." + props.class) as HTMLElement;
-    expect(() => bottombar).not.toThrow();
+    const result = render(BottomBar, { props });
+    expect(() => result).not.toThrow();
   });
 
   it("should render slots correctly", () => {
@@ -24,7 +23,13 @@ describe("BottomBar", () => {
 
   it("props test", () => {
     const { container } = render(BottomBar, { props });
-    const bottombar = container.querySelector("." + props.class) as HTMLElement;
+    const bottombar = container.querySelector(".resp-bottom-bar") as HTMLElement;
+
+    //test classes
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(bottombar.classList).toContain(c);
+    }
 
     expect(bottombar.getAttribute("title")).toEqual(props.title);
   });

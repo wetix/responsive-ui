@@ -8,7 +8,7 @@ describe("Horizontal Scroll", () => {
     id: "id",
     title: "hscroll title",
     class: "hscroll-custom",
-    scrollable: false,
+    scrollable: true,
     style: "background-color: white;"
   };
 
@@ -24,11 +24,21 @@ describe("Horizontal Scroll", () => {
 
   it("should have correct props", () => {
     const { container } = render(HScroll, { props });
-    const hScroll = container.querySelector("." + props.class) as HTMLElement;
+    const hScroll = container.querySelector(".resp-scroll") as HTMLElement;
+
+    //test class
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(hScroll.classList).toContain(c);
+    }
 
     expect(hScroll.id).toEqual(props.id); //id test
     expect(hScroll.title).toEqual(props.title); //title test
     expect(hScroll.getAttribute("style")).toEqual(props.style); //style test
+
+    //scrollable test
+    const scrollBox = container.querySelector(".resp-scroll__box") as HTMLElement;
+    expect(scrollBox.classList).toContain("resp-scroll__box--scrollable");
   });
 
   it("click test", async () => {

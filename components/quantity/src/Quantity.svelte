@@ -155,6 +155,7 @@
       height: var(--input-height, 32px);
       color: var(--theme-color);
       text-align: center;
+      width: 100%;
       min-width: 65px;
       border-radius: inherit;
     }
@@ -164,7 +165,7 @@
       padding: 0 5px;
 
       input[type="number"] {
-        min-width: 35px;
+        width: 1rem;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {

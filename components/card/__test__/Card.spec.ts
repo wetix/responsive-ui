@@ -12,10 +12,9 @@ describe("Card", () => {
   };
 
   it("should render correctly", () => {
-    const { container } = render(Card, { props });
-    const card = container.querySelector("." + props.class) as HTMLElement;
+    const result = render(Card, { props });
 
-    expect(() => card).not.toThrow();
+    expect(() => result).not.toThrow();
   });
 
   it("should render slots correctly", () => {
@@ -27,11 +26,17 @@ describe("Card", () => {
 
   it("should have correct props", () => {
     const { container } = render(Card, { props });
-    const card = container.querySelector("." + props.class) as HTMLElement;
+    const card = container.querySelector(".resp-card") as HTMLElement;
+
+    //test class
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(card.classList).toContain(c);
+    }
 
     expect(card.getAttribute("id")).toEqual(props.id); //test id
     expect(card.getAttribute("title")).toEqual(props.title); //test title
-    //test compact (adds class)
+    //test compact (class)
     expect(card.classList).toContain("resp-card--compact");
     //test style
     expect(card.getAttribute("style")).toEqual(props.style);

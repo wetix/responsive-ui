@@ -21,9 +21,14 @@ describe("DatePicker", () => {
 
   it("props test", () => {
     const { container } = render(DatePicker, { props });
-    const div = container.querySelector("." + props.class) as HTMLElement;
+    const div = container.querySelector(".resp-date-picker") as HTMLElement;
     const datepicker = container.querySelector("input[type='date']") as HTMLInputElement;
 
+    //test classes
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(div.classList).toContain(c);
+    }
     //test placeholder
     expect(datepicker.getAttribute("placeholder")).toEqual(props.placeholder);
     //test name

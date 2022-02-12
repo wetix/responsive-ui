@@ -26,7 +26,13 @@ describe("Badge", () => {
 
   it("test props", () => {
     const { rerender, container } = render(Badge, { props });
-    let badge = container.querySelector("." + props.class) as HTMLElement;
+    let badge = container.querySelector(".resp-badge") as HTMLElement;
+
+    //test classes
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(badge.classList).toContain(c);
+    }
 
     //previously count is more than max
     expect(badge.getAttribute("data-count")).toEqual(`${props.max}+`);

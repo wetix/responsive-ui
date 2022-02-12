@@ -27,11 +27,14 @@ describe("Accordion", () => {
   //test props
   it("props test", () => {
     const { container } = render(Accordion, { props });
-    //custom class
-    const div = container.querySelector("." + props.class) as HTMLElement;
+    const div = container.querySelector(".resp-accordion") as HTMLElement;
 
-    //label test
-    expect(div.getAttribute("label")).toEqual(props.label);
+    //test classes
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(div.classList).toContain(c);
+    }
+    expect(div.getAttribute("label")).toEqual(props.label); //label test
 
     //caption test
     const label = container.querySelector("label") as HTMLElement;

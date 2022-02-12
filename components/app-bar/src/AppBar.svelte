@@ -13,6 +13,8 @@
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
+  let className = "";
+  export { className as class };
 
   let openMenu = false;
   let subnav: HTMLElement;
@@ -68,7 +70,7 @@
 </script>
 
 <header
-  class="resp-app-bar"
+  class="resp-app-bar {className}"
   class:resp-app-bar--shadowed={shadowed}
   bind:clientHeight
   on:click

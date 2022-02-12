@@ -27,7 +27,10 @@ describe("Button", () => {
     const { getByRole } = render(Button, { props });
     const button = getByRole("button");
 
-    expect(button.classList).toContain("custom-class");
+    const classes = props.class.split(" ");
+    for (let c of classes) {
+      expect(button.classList).toContain(c);
+    }
     expect(button.getAttribute("type")).toEqual("submit");
     expect(button.getAttribute("name")).toEqual(props.name);
     expect(button.getAttribute("style")).toEqual(props.style);
