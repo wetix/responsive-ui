@@ -2,7 +2,7 @@ import { render, fireEvent } from "@testing-library/svelte";
 import HScroll from "../src/HScroll.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 
-describe("Horizontal Scroll", () => {
+describe("HScroll", () => {
   //click event
   const props = {
     id: "id",

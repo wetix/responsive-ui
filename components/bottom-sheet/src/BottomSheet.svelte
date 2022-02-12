@@ -8,6 +8,7 @@
   export let height = 0;
   export let maskClosable = true;
   export let draggable = true;
+  export let style = "";
 
   const tween = tweened(1, {
     duration: 150
@@ -26,14 +27,14 @@
   class="resp-bottom-sheet__overlay"
   on:click={maskClosable ? () => (open = false) : noop}
   style:opacity={1 - $tween}
-  style:visible={1 - $tween <= 0 ? "hidden" : "visible"}
+  style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
 />
 <div
   {...$$restProps}
   class="resp-bottom-sheet {className}"
   style:height="{height}px"
-  style:transform="translateY({$tween * 100}%)"
-  style:visible={1 - $tween <= 0 ? "hidden" : "visible"}
+  style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
+  style={`transform: translateY(${$tween * 100}%); ${style}`}
 >
   {#if draggable}
     <div class="resp-bottom-sheet__header">
