@@ -21,19 +21,20 @@
   }
 
   $: height = window.innerHeight * 0.85;
+  $: offset = 1 - $tween;
 </script>
 
 <div
   class="resp-bottom-sheet__overlay"
   on:click={maskClosable ? () => (open = false) : noop}
-  style:opacity={1 - $tween}
-  style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
+  style:opacity={offset}
+  style:visibility={offset <= 0 ? "hidden" : "visible"}
 />
 <div
   class="resp-bottom-sheet {className}"
   style:height="{height}px"
   {...$$restProps}
-  style:visibility={1 - $tween <= 0 ? "hidden" : "visible"}
+  style:visibility={offset <= 0 ? "hidden" : "visible"}
   style={`transform: translateY(${$tween * 100}%); ${style}`}
 >
   {#if draggable}
