@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.6...v1.1.0-alpha.7) (2022-01-28)
+
+**Note:** Version bump only for package @responsive-ui/app-bar
+
+
+
+
+
+# [1.1.0-alpha.6](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.5...v1.1.0-alpha.6) (2022-01-26)
+
+
+### Bug Fixes
+
+* appbar width breakpoint ([6e7e7ef](https://github.com/wetix/responsive-ui/commit/6e7e7ef17ccb724f69b14c6ddff27a6c38080021))
+* inkbar width not relative to the parent width ([c67bcb6](https://github.com/wetix/responsive-ui/commit/c67bcb6d007068736c35fbabbe759845ba338030))
+
+
+
+
+
+# [1.1.0-alpha.5](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.4...v1.1.0-alpha.5) (2022-01-24)
+
+**Note:** Version bump only for package @responsive-ui/app-bar
+
+
+
+
+
+# [1.1.0-alpha.4](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.3...v1.1.0-alpha.4) (2022-01-22)
+
+**Note:** Version bump only for package @responsive-ui/app-bar
+
+
+
+
+
+# [1.1.0-alpha.3](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.2...v1.1.0-alpha.3) (2022-01-21)
+
+**Note:** Version bump only for package @responsive-ui/app-bar
+
+
+
+
+
+# [1.1.0-alpha.2](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.1...v1.1.0-alpha.2) (2022-01-20)
+
+
+### Bug Fixes
+
+* components, lint and bump dependencies ([56abe3b](https://github.com/wetix/responsive-ui/commit/56abe3b966be980ba751a425d81683bba51dca88))
+* dependencies ([2d429be](https://github.com/wetix/responsive-ui/commit/2d429be60ab7da1fd06f77ebb58d542b9e67103e))
+* edit tests, feat: appbar edit ([c0e31e7](https://github.com/wetix/responsive-ui/commit/c0e31e7b9c114f9d44ed3bae06dd57574c7aa324))
+* typing ([573b07d](https://github.com/wetix/responsive-ui/commit/573b07d9268283ace4bb83df7d2131a381158d90))
+* typing and complete `Menu` component ([de574cc](https://github.com/wetix/responsive-ui/commit/de574cc95c0a90708e792f10bd7bd0e3a0358796))
+
+
+
+
+
 # [1.1.0-alpha.1](https://github.com/wetix/responsive-ui/compare/v1.0.9-alpha.8...v1.1.0-alpha.1) (2022-01-12)
 
 

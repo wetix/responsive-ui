@@ -6,7 +6,7 @@ describe("Table", () => {
     id: "card",
     rowKey: "id",
     columns: [{ key: "id" }, { key: "status" }],
-    items: [{ id: 1 }, { id: 2 }],
+    items: [{ id: 1 }, { id: 2 }]
   };
 
   const { getByRole, container } = render(Table, { props });

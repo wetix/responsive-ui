@@ -12,8 +12,6 @@
 [![Styled](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![LICENCE](https://img.shields.io/github/license/wetix/responsive-ui)](https://github.com/wetix/responsive-ui/blob/main/LICENSE)
 
-[![NPM Stat](https://nodei.co/npm/responsive-ui.png)](https://www.npmjs.com/package/responsive-ui)
-
 </p>
 
 ## 🔨 Installation and Usage
@@ -28,22 +26,13 @@ or
 yarn add responsive-ui
 ```
 
-Component is come with different kind of file format for bundle file, such as :
-
-- common js (cjs)
-- es module (esm)
-- minify version
-- iife format of js
-
-You should choose whichever file format suitable for your use case.
-
 ## ✨ Features
 
 - Responsive by default.
 - Support **ES Module** and **Common JS**.
 - Support **Server-side Rendering**.
 - **TypeScript** and **Sass** as First Class Citizen.
-- Compactible with [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/).
+- Compatible with [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/).
 
 ## 💅 Component List
 

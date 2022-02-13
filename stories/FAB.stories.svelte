@@ -10,7 +10,7 @@
     content: { control: "text" },
     disabled: { control: "boolean" },
     checked: { control: "boolean" },
-    onClick: { action: "onClick" },
+    onClick: { action: "onClick" }
   }}
 />
 
@@ -21,6 +21,6 @@
 <Story
   name="Default"
   args={{
-    content: "Hello world!",
+    content: "Hello world!"
   }}
 />

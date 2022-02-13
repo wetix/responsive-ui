@@ -1,111 +1,99 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { getNodeAttribute } from "@wetix/utils";
-  import type { MenuItem } from "../types";
-
-  type MenuItemProp = {
-    item: {
-      key: string;
-      label: string;
-    };
-    path: number[];
-    hasSubmenu: boolean;
-  };
+  import type { MenuOption } from "../types";
 
   const dispatch = createEventDispatcher();
 
   let className = "";
   export { className as class };
-  export let ref: HTMLUListElement | null = null;
-  export let items: MenuItem[] = [];
-  export let path: number[] = [];
+  export let open = false;
+  export let ref: HTMLElement;
+  export let options: MenuOption[] = [];
+  export const path: number[] = [];
 
-  const mutateMenu = (obj: MenuItem[], lvl: number[]) => {
-    const currentpath = <number>lvl.shift();
-    if (lvl.length < 1 && obj[currentpath]) {
-      obj[currentpath].collapsed =
-        obj[currentpath].collapsed === undefined ? false : !obj[currentpath].collapsed;
-      return;
-    }
-
-    items.forEach((v, idx) => {
-      if (idx === currentpath) {
-        mutateMenu(<MenuItem[]>v.submenus, lvl);
-      }
-    });
-  };
-
-  const stringify = (item: MenuItem, index: number) => {
-    const { submenus = [] } = item;
-    return JSON.stringify({
-      item: {
-        ...item,
-        submenus: undefined
-      },
-      path: [...path, index],
-      hasSubmenu: submenus.length > 0
-    });
-  };
-
-  const onSelect = (e: Event) => {
-    const val = getNodeAttribute(e, "data-item");
-    if (val) {
-      const { path, hasSubmenu, item } = <MenuItemProp>JSON.parse(val);
-      if (hasSubmenu) {
-        mutateMenu(items, path.slice());
-      }
-      items = [...items];
-      dispatch("change", { path, item });
-    }
+  const handleSelect = (e: Event) => {
+    e.stopPropagation();
+    const el = e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.option) as HTMLElement;
+    if (!el) return;
+    const option = JSON.parse(el.dataset.option as string) as MenuOption;
+    dispatch("optionselect", { option });
   };
 </script>
 
-<ul
-  {...$$restProps}
-  bind:this={ref}
-  class={`responsive-ui-menu ${className}`}
-  on:click={onSelect}
-  transition:slide
->
-  {#each items as item, i (item.key)}
-    <li
-      class="responsive-ui-menu__item"
-      class:responsive-ui-menu__item--disabled={item.disabled}
-      data-item={stringify(item, i)}
-    >
-      <div
-        class="responsive-ui-menu__item"
-        class:responsive-ui-menu--submenu={item.submenus}
-        class:responsive-ui-menu--open={item.collapsed === false}
-      >
-        {#if item.icon}
-          <svelte:component this={item.icon} />
-        {/if}
-        <div class="responsive-ui-menu__label">
-          {item.label}
-        </div>
-      </div>
-      {#if item.submenus && item.collapsed === false}
-        <svelte:self
-          class="responsive-ui-menu__submenu"
-          path={[...path, i]}
-          items={item.submenus}
-        />
-      {/if}
-    </li>
-  {/each}
-</ul>
+<svelte:window on:click={() => (open = false)} />
 
-<style lang="scss">
-  .responsive-ui-menu {
+<div class="resp-menu__trigger" on:click|stopPropagation={() => (open = !open)}>
+  <slot />
+  {#if open}
+    <div
+      {...$$restProps}
+      class="resp-menu {className}"
+      bind:this={ref}
+      on:click={handleSelect}
+      on:click
+      transition:slide
+    >
+      <ul>
+        {#each options as option, i (option.key)}
+          {@const { href = "", label, separator = false } = option}
+          <li
+            class="resp-menu__item"
+            class:resp-menu__item--separator={separator}
+            class:resp-menu__item--disabled={option.disabled}
+            data-option={JSON.stringify(option)}
+          >
+            <div
+              class="resp-menu__item"
+              class:resp-menu--submenu={option.submenus}
+              class:resp-menu--open={option.collapsed === false}
+            >
+              <slot name="menu-option" {option}>
+                <div class="resp-menu__label">
+                  <a {href}>{label}</a>
+                </div>
+              </slot>
+            </div>
+            {#if option.submenus && option.collapsed === false}
+              <svelte:self
+                class="resp-menu__submenu"
+                path={[...path, i]}
+                options={option.submenus}
+              />
+            {/if}
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
+</div>
+
+<style lang="scss" global>
+  .resp-menu {
+    position: absolute;
+    top: 100%;
+    // left: 0.5rem;
+    right: 0;
     display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    list-style-position: inside;
-    transition: all 0.5s;
+    background: #fff;
+    padding: 0.25rem;
+    border-radius: var(--border-radius, 10px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+    &__trigger {
+      position: relative;
+    }
+
+    & > ul {
+      list-style-type: none;
+      list-style-position: inside;
+      padding: 0;
+      margin: 0;
+      display: block;
+      min-width: 250px;
+    }
 
     &__item {
       position: relative;
@@ -115,13 +103,20 @@
       font-family: var(--font-family, inherit);
       font-size: var(--font-size, 14px);
 
+      &--separator {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
       &--disabled {
         cursor: not-allowed !important;
         opacity: 0.65;
       }
 
-      &:hover:not(&--disabled) > .responsive-ui-menu__label {
+      &:hover:not(&--disabled) > .resp-menu__label {
+        // background: rgba(252, 68, 80, 0.6);
         background: #f5f5f5;
+        border-radius: 6px;
       }
     }
 
@@ -129,13 +124,13 @@
       position: relative;
       display: flex;
       color: #3b3b3b;
-      padding: 6px 10px;
+      padding: 0.5rem 1rem;
       flex-direction: row;
       align-items: center;
       text-decoration: none;
       transition: all 0.65s;
 
-      .responsive-ui-menu__control {
+      .resp-menu__control {
         transition: all 0.5s;
         width: 20px;
         height: 20px;
@@ -143,7 +138,7 @@
         margin-left: auto;
       }
 
-      &:not(&--collapsed) .responsive-ui-menu__control {
+      &:not(&--collapsed) .resp-menu__control {
         transform: rotate(90deg);
       }
     }
@@ -166,7 +161,7 @@
       // transform: rotate(90deg);
     }
 
-    &--submenu.responsive-ui-menu--open:after {
+    &--submenu.resp-menu--open:after {
       transform: rotate(90deg);
     }
 
@@ -177,10 +172,10 @@
       white-space: nowrap;
     }
 
-    &.responsive-ui-menu__submenu {
+    &.resp-menu__submenu {
       display: block;
 
-      .responsive-ui-menu__item {
+      .resp-menu__item {
         padding-left: 10px;
       }
     }

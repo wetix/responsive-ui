@@ -10,15 +10,13 @@ export interface LabelProps {
   style?: string;
 }
 
-export interface LabelEvents {}
-
 export interface LabelSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class LabelComponent extends SvelteComponentTyped<
   LabelProps,
-  LabelEvents,
+  Record<string, unknown>,
   LabelSlots
 > {}
 

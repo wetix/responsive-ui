@@ -8,7 +8,7 @@
   title="Components/Label"
   component={Label}
   argTypes={{
-    label: { control: "text" },
+    label: { control: "text" }
   }}
 />
 
@@ -21,6 +21,6 @@
 <Story
   name="Default"
   args={{
-    label: "Email Address",
+    label: "Email Address"
   }}
 />

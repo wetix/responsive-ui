@@ -12,15 +12,13 @@ export interface DockerProps {
   style?: string;
 }
 
-export interface DockerEvents {}
-
 export interface DockerSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class DockerComponent extends SvelteComponentTyped<
   DockerProps,
-  DockerEvents,
+  Record<string, unknown>,
   DockerSlots
 > {}
 

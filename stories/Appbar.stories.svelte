@@ -1,8 +1,53 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import AppBar from "@responsive-ui/app-bar";
+  import Menu from "@responsive-ui/menu";
 
   let marginTop = 0;
+
+  const leadingItems = [
+    {
+      key: "tickets",
+      label: "Tickets",
+      link: "/tickets",
+      subItems: [
+        {
+          key: "movie",
+          label: "Movie",
+          link: "/movie"
+        },
+        {
+          key: "event",
+          label: "Event",
+          link: "/event"
+        },
+        {
+          key: "concert",
+          label: "Concert",
+          link: "/concert"
+        }
+      ]
+    },
+    { key: "profile", label: "Profile", link: "/me/profile" },
+    { key: "events", label: "Events", link: "/events" }
+  ];
+  const trailingItems = [
+    { key: "A", label: "A", link: "/A" },
+    { key: "B", label: "B", link: "/B" },
+    { key: "C", label: "C", link: "/C" },
+    { key: "D", label: "D", link: "/D" }
+  ];
+
+  const options = [
+    { key: "A", label: "A", link: "/A", separator: true },
+    { key: "B", label: "B", link: "/B" },
+    { key: "C", label: "C", link: "/C", separator: true },
+    { key: "D", label: "D", link: "/D" }
+  ];
+
+  const handleOptionSelect = (e) => {
+    console.log(e.detail);
+  };
 </script>
 
 <Meta
@@ -19,53 +64,22 @@
   <AppBar
     bind:clientHeight={marginTop}
     {...args}
-    menuCaption="Lorem Ipsum is simply dummy text."
-    leadingItems={[
-      {
-        key: "tickets",
-        label: "Tickets",
-        link: "/tickets",
-        subItems: [
-          {
-            key: "movie",
-            label: "Movie",
-            link: "/movie"
-          },
-          {
-            key: "event",
-            label: "Event",
-            link: "/event"
-          },
-          {
-            key: "concert",
-            label: "Concert",
-            link: "/concert"
-          }
-        ]
-      },
-      { key: "profile", label: "Profile", link: "/me/profile" },
-      { key: "events", label: "Events", link: "/events" }
-    ]}
-    menuItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
-    ]}
-    trailingItems={[
-      { label: "A", link: "/" },
-      { label: "B", link: "/" },
-      { label: "C", link: "/" },
-      { label: "D", link: "/" }
-    ]}
+    {leadingItems}
+    {trailingItems}
     on:click={(e) => e.preventDefault()}
   >
-    <div slot="logo">WeTix</div>
+    <div slot="logo">
+      <img
+        src="https://sb.wetix.my/_app/assets/wetix-0ab069ec.png"
+        style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
+        alt="WeTix"
+      />
+    </div>
     <span slot="trailing-item" let:item>
       {item.label}
     </span>
     <div>
-      {#each new Array(10) as item}
+      {#each new Array(10) as _}
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           Ipsum has been the industry's standard dummy text ever since the 1500s, when an
@@ -96,8 +110,8 @@
     </svg> -->
     <!-- <div slot="trailing">WeTix</div> -->
   </AppBar>
-  <div style={`margin-top: ${marginTop}px`}>
-    {#each new Array(10) as item}
+  <div class="body" style={`margin-top: ${marginTop}px`}>
+    {#each new Array(10) as _}
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
@@ -113,3 +127,58 @@
 </Template>
 
 <Story name="Default" />
+
+<Template id="CustomLeadingItem" let:args>
+  <AppBar
+    bind:clientHeight={marginTop}
+    {...args}
+    {leadingItems}
+    {trailingItems}
+    on:click={(e) => e.preventDefault()}
+  >
+    <div slot="logo">
+      <img
+        src="https://sb.wetix.my/_app/assets/wetix-0ab069ec.png"
+        style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
+        alt="WeTix"
+      />
+    </div>
+    <div>
+      {#each new Array(10) as _}
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+          unknown printer took a galley of type and scrambled it to make a type specimen
+          book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s
+          with the release of Letraset sheets containing Lorem Ipsum passages, and more
+          recently with desktop publishing software like Aldus PageMaker including
+          versions of Lorem Ipsum.
+        </p>
+      {/each}
+    </div>
+    <svelte:fragment slot="trailing-item" let:item>
+      {#if item.key === "C"}
+        <Menu {options} on:optionselect={handleOptionSelect}>{item.label}</Menu>
+      {:else}
+        <div>{item.label}</div>
+      {/if}
+    </svelte:fragment>
+  </AppBar>
+  <div class="body" style:margin-top="{marginTop}px">
+    {#each new Array(10) as _}
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+        unknown printer took a galley of type and scrambled it to make a type specimen
+        book. It has survived not only five centuries, but also the leap into electronic
+        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions of Lorem
+        Ipsum.
+      </p>
+    {/each}
+  </div>
+</Template>
+
+<Story template="CustomLeadingItem" name="Custom Leading Item" />

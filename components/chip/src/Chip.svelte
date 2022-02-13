@@ -43,6 +43,7 @@
     border: 1px solid #fc4451;
     background: transparent;
     overflow: hidden;
+    user-select: none;
 
     &--disabled {
       cursor: not-allowed;

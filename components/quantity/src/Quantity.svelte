@@ -13,6 +13,15 @@
   export let disabled = false;
   export let style = "";
 
+  const readjustValue = (v: number = value) => {
+    let newValue = v;
+    if (v < min) newValue = min;
+    else if (v > max) newValue = max;
+    value = newValue;
+  };
+
+  readjustValue();
+
   let slim = false;
   let focused = false;
 
@@ -24,16 +33,24 @@
   $: minLimit = value <= min;
   $: maxLimit = value >= max;
 
+  const dispatchChange = (el: HTMLElement) => {
+    setTimeout(() => {
+      el.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+    }, 0);
+  };
+
   const handleDecrement = () => {
     if (minLimit) return;
     value += -step;
     ref.stepDown(step);
+    dispatchChange(ref);
   };
 
   const handleIncrement = () => {
     if (maxLimit) return;
     value += step;
     ref.stepUp(step);
+    dispatchChange(ref);
   };
 
   const handleKeypress = (e: KeyboardEvent) => {
@@ -43,6 +60,17 @@
       e.preventDefault();
       return;
     }
+  };
+
+  // because change always execute before blur, we need to readjust it when onblur
+  const handleChange = (e: Event) => {
+    const v = (e.currentTarget as HTMLInputElement).valueAsNumber;
+    if (isNaN(v)) value = min;
+    else readjustValue(v);
+  };
+
+  const handleBlur = () => {
+    focused = false;
   };
 </script>
 
@@ -73,7 +101,8 @@
     {step}
     {disabled}
     on:keypress={handleKeypress}
-    on:blur={() => (focused = false)}
+    on:blur={handleBlur}
+    on:change={handleChange}
     on:change
     on:input
     bind:value
@@ -115,7 +144,7 @@
     }
 
     /* Firefox */
-    input[type="number"] {
+    & > input[type="number"] {
       cursor: inherit;
       border: none;
       margin: 0;
@@ -126,6 +155,7 @@
       height: var(--input-height, 32px);
       color: var(--theme-color);
       text-align: center;
+      width: 100%;
       min-width: 65px;
       border-radius: inherit;
     }
@@ -135,7 +165,7 @@
       padding: 0 5px;
 
       input[type="number"] {
-        min-width: 35px;
+        min-width: 45px;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {

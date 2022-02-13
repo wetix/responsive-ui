@@ -9,7 +9,6 @@
   export let maskClosable = true;
   export let width = 280;
   export let placement = "left";
-  export let style = "";
 </script>
 
 {#if open}
@@ -23,7 +22,7 @@
 <aside
   class="resp-docker resp-docker--{placement} {className}"
   class:resp-docker--close={!open}
-  style={`width: ${isNaN(width) ? width : `${width}px`}; ${style}`}
+  style:width={isNaN(width) ? `${width}` : `${width}px`}
   on:click
   {...$$restProps}
 >
@@ -74,7 +73,7 @@
       }
 
       h2 {
-        font-weight: 500;
+        font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
         width: 100%;

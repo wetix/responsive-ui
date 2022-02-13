@@ -31,13 +31,13 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      # - uses: actions/cache@v2
+      # - name: Cache dependencies
       #   id: cache-modules
+      #   uses: actions/cache@v2
       #   with:
       #     path: ~/.npm
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      #     key: npm-${{ hashFiles('package-lock.json') }}
+      #     restore-keys: npm-
 
       - name: NPM Install
         # if: steps.cache-modules.outputs.cache-hit != 'true'
@@ -46,7 +46,7 @@ jobs:
 
       - name: Run svelte-check
         run: |
-          npm run validate
+          npm run svelte-check
 
       - name: Run jest
         run: |

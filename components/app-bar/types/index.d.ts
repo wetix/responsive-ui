@@ -6,6 +6,7 @@ export interface NavItem extends Record<string, any> {
   key: string;
   label: string;
   href?: string;
+  search?: string;
   subItems?: SubNavItem[];
 }
 
@@ -14,18 +15,22 @@ export interface AppBarProps {
   class?: string;
   selectedKey?: string;
   selectedSubmenuKey?: string;
-  menuCaption: string;
   clientHeight?: number;
   leadingItems: NavItem[];
   trailingItems: NavItem[];
-  menuItems: NavItem[];
   style?: string;
 }
 
-export interface AppBarEvents {}
+export interface AppBarEvents {
+  /**
+   * The onclick event occurs when the user clicks on app bar.
+   */
+  click?: WindowEventMap["click"];
+  menuchange?: CustomEvent<Pick<AppBarProps, "selectedKey" | "selectedSubmenuKey">>;
+}
 
 export interface AppBarSlots {
-  logo: {};
+  logo: Record<string, unknown>;
   leading: {
     items: NavItem[];
   };

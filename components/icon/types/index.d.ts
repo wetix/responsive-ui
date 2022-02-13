@@ -3,7 +3,6 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface IconProps {
   id?: string;
   class?: string;
-  sizeOf?: "sm" | "md" | "lg";
   fill?: string;
   stroke?: string;
   viewBox?: string;
@@ -16,7 +15,7 @@ export interface IconEvents {
 }
 
 export interface IconSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class IconComponent extends SvelteComponentTyped<

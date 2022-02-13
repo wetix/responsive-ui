@@ -12,8 +12,9 @@
   export let width = 480;
   export let open = true;
   export let closable = true;
+  export let hasHeader = true;
+  export let hasFooter = true;
   export let maskClosable = true;
-  export let style = "";
 
   $: if (open) {
     const { scrollY = 0 } = window;
@@ -50,9 +51,9 @@
       class="resp-modal {className}"
       in:fade
       out:fade
-      style="width: {isNaN(width) ? width : `${width}px`}; {style}"
+      style:width={isNaN(width) ? `${width}` : `${width}px`}
     >
-      {#if caption}
+      {#if hasHeader}
         <header class="resp-modal__header">
           <caption>{caption}</caption>
           {#if closable}
@@ -67,16 +68,18 @@
       <div class="resp-modal__body">
         <slot />
       </div>
-      <footer class="resp-modal__footer">
-        <slot name="footer">
-          <Button
-            variant="primary"
-            on:click={() => dispatch("ok")}
-            style="margin-left: 6px">OK</Button
-          >
-          <Button on:click={() => dispatch("cancel")}>Cancel</Button>
-        </slot>
-      </footer>
+      {#if hasFooter}
+        <footer class="resp-modal__footer">
+          <slot name="footer">
+            <Button
+              variant="primary"
+              on:click={() => dispatch("ok")}
+              style="margin-left: 6px">OK</Button
+            >
+            <Button on:click={() => dispatch("cancel")}>Cancel</Button>
+          </slot>
+        </footer>
+      {/if}
     </div>
   </div>
 {/if}
@@ -126,7 +129,7 @@
       caption {
         text-align: left;
         font-size: var(--font-size-lg, 24px);
-        font-weight: 500;
+        font-weight: 600;
         flex-grow: 1;
         min-width: 0;
         white-space: nowrap;

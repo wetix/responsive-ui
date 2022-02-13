@@ -11,18 +11,16 @@ export interface BottomSheetProps {
   style?: string;
 }
 
-export interface BottomSheetEvents {}
-
 /**
  * Component slots.
  */
 export interface BottomSheetSlots {
-  default: {};
+  default: Record<string, unknown>;
 }
 
 export declare class BottomSheetComponent extends SvelteComponentTyped<
   BottomSheetProps,
-  BottomSheetEvents,
+  Record<string, unknown>,
   BottomSheetSlots
 > {}
 

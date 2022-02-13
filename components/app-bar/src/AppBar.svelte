@@ -1,18 +1,19 @@
 <script lang="ts">
-  // import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
   import type { NavItem, SubNavItem } from "../types";
 
-  // const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
   export let selectedKey = "";
   export let selectedSubmenuKey = "";
-  export let menuCaption = "";
   export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
-  export let menuItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
 
   let openMenu = false;
@@ -21,11 +22,15 @@
   let subMenus: SubNavItem[] = [];
   let subnavStyle = "";
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
+
+  // for selecting submenu
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
-    if (menus.length > 0) selectedSubmenuKey = menus[0].key;
+    if (menus.length > 0 && selectedSubmenuKey === "")
+      selectedSubmenuKey = menus[0].key as string;
     subMenus = menus;
   }
+
   $: if (subnav) {
     const el = subnav.querySelector(`[data-key="${selectedSubmenuKey}"]`);
     if (el) {
@@ -38,7 +43,9 @@
     // if the element is underneath an anchor link, we will close the side menu
     const anchor = (e.target as HTMLElement).closest("a");
     if (!anchor) return;
-    openMenu = false;
+    setTimeout(() => {
+      openMenu = false;
+    }, 150);
   };
 
   const findElement = (e: Event) => {
@@ -51,17 +58,19 @@
     const el = findElement(e);
     if (!el) return;
     selectedKey = el.dataset.key as string;
+    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 
   const handleClickSubmenu = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
     selectedSubmenuKey = el.dataset.key as string;
+    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 </script>
 
 <header
-  class="resp-app-bar"
+  class="resp-app-bar {className}"
   class:resp-app-bar--shadowed={shadowed}
   bind:clientHeight
   on:click
@@ -117,14 +126,18 @@
       <Scroll>
         <ul>
           {#each subMenus as { key, href, label, ...otherProps }}
+            {@const selected = selectedSubmenuKey === key}
             <li
-              class:resp-app-bar__subnav-item--selected={selectedSubmenuKey === key}
+              class="resp-app-bar__subnav-item"
+              class:resp-app-bar__subnav-item--selected={selected}
               data-key={key}
             >
               <a {href} {...otherProps}>{label}</a>
+              {#if selected}
+                <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
+              {/if}
             </li>
           {/each}
-          <li class="resp-app-bar__subnav-indicator" style={subnavStyle} />
         </ul>
       </Scroll>
     </nav>
@@ -139,24 +152,34 @@
     on:click={() => (openMenu = false)}
   />
 {/if}
+<!-- menu items should be the same as leading items -->
 <aside
   class="resp-app-bar__menu"
   class:resp-app-bar__menu--close={!openMenu}
   on:click={handleMenu}
 >
   <header class="resp-app-bar__menu-header">
-    <caption>{menuCaption}</caption>
+    <slot name="logo" />
     <i class="resp-app-bar__menu-icon" on:click={() => (openMenu = false)}>
       {@html `<svg viewBox="64 64 896 896" focusable="false" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z" /></svg>`}
     </i>
   </header>
   <div class="resp-app-bar__menu-body">
     <slot name="menu-body">
-      <ul>
-        {#each menuItems as { href, label, selected, ...otherProps }, index}
-          <li>
-            <slot name="menu-item" item={menuItems[index]} {index} {selected}>
-              <a {href} {...otherProps}>{label}</a>
+      <ul on:click={handleClickLeading}>
+        {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
+          <li
+            class:resp-app-bar__menu-item--selected={selectedKey === key}
+            data-key={key}
+          >
+            <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
+              <a style="display: flex; width: 100%;" {href} {...otherProps}>
+                <span style="display: inline-block; width: 50%;">{label}</span>
+                <!-- circle icon -->
+                <span class="resp-app-bar__menu-item-icon">
+                  {@html `<svg height="8px" width="6px"><circle cx="3" cy="3" r="3" fill="#fc4451" /></svg>`}
+                </span>
+              </a>
             </slot>
           </li>
         {/each}
@@ -167,6 +190,7 @@
 
 <style lang="scss" global>
   $sm: 576px;
+  $md: 768px;
   $height: 55px;
 
   .resp-app-bar {
@@ -223,7 +247,7 @@
       display: flex;
       justify-content: space-between;
 
-      @media (min-width: $sm) {
+      @media (min-width: $md) {
         width: 80%;
       }
     }
@@ -269,6 +293,14 @@
           padding: 0 1rem;
           transition: all 0.5s;
         }
+      }
+
+      &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100%;
       }
 
       &-indicator {
@@ -326,7 +358,7 @@
         caption {
           text-align: left;
           font-size: var(--font-size-lg, 24px);
-          font-weight: 500;
+          font-weight: 600;
           flex-grow: 1;
           min-width: 0;
           white-space: nowrap;
@@ -344,6 +376,22 @@
       &-body {
         height: calc(100% - $height);
         overflow-y: auto;
+      }
+
+      &-item {
+        &--selected {
+          color: #fc4451;
+        }
+
+        &-icon {
+          display: none;
+          width: 50%;
+          text-align: right;
+        }
+
+        &--selected > a > &--ico {
+          display: inline-block;
+        }
       }
 
       ul {

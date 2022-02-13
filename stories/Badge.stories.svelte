@@ -7,7 +7,7 @@
   title="Components/Badge"
   component={Badge}
   argTypes={{
-    onClick: { action: "onClick" },
+    onClick: { action: "onClick" }
   }}
 />
 
@@ -18,6 +18,6 @@
 <Story
   name="Default"
   args={{
-    label: "Button",
+    label: "Button"
   }}
 />

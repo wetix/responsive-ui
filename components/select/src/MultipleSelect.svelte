@@ -12,7 +12,6 @@
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
-  export let sizeOf = "md";
   export let value: string[] = [];
   export let disabled = false;
   export let readonly = false;
@@ -80,7 +79,7 @@
   };
 </script>
 
-<div class="resp-select--multiple resp-select--{sizeOf} {className}" bind:this={ref}>
+<div class="resp-select--multiple {className}" bind:this={ref}>
   <div
     class="resp-select__input"
     class:resp-select__input--focused={focused}

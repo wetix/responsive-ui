@@ -8,19 +8,21 @@ export interface ModalProps {
   width?: number | string;
   outlined?: boolean;
   closable?: boolean;
+  hasHeader?: boolean;
+  hasFooter?: boolean;
   maskClosable?: boolean;
   style?: string;
 }
 
 export interface ModalEvents {
-  cancel?: CustomEvent<{}>;
-  ok?: CustomEvent<{}>;
+  cancel?: CustomEvent<Record<string, unknown>>;
+  ok?: CustomEvent<Record<string, unknown>>;
 }
 
 export interface ModalSlots {
-  header: {};
-  default: {};
-  footer: {};
+  header: Record<string, unknown>;
+  default: Record<string, unknown>;
+  footer: Record<string, unknown>;
 }
 
 export declare class ModalComponent extends SvelteComponentTyped<
