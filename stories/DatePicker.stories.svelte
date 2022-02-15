@@ -12,6 +12,7 @@
     disabled: { control: "boolean" },
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },
+    useNative: { control: "boolean" },
     onChange: { action: "onChange" },
     onDateChange: { action: "onChange" }
   }}

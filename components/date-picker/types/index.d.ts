@@ -10,6 +10,7 @@ export interface DatePickerProps {
   readonly?: boolean;
   disabled?: boolean;
   bordered?: boolean;
+  useNative?: boolean;
   format?: (v: Date) => string;
   disabledDate?: (v: Date) => boolean;
 }

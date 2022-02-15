@@ -20,6 +20,7 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
+  export let useNative = true;
   // export let format = (v: Date) => v;
   export let disabledDate = (v: Date) => today > v;
 
@@ -154,7 +155,10 @@
   {/if}
 
   {#if open}
-    <div class="resp-date-picker__calendar">
+    <div
+      class="resp-date-picker__calendar"
+      class:resp-date-picker__calendar-native={useNative}
+    >
       <Calendar
         bind:day
         bind:month
@@ -266,8 +270,10 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
 
-      @media (max-width: $sm) {
-        display: none;
+      &-native {
+        @media (max-width: $sm) {
+          display: none;
+        }
       }
     }
   }
