@@ -15,7 +15,7 @@
 >
   <slot>
     <svg {...$$restProps}>
-      <use xlink:href={useHref} />
+      <use href={useHref} />
     </svg>
   </slot>
 </i>
