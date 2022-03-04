@@ -14,7 +14,7 @@
   export let closable = true;
   export let hasHeader = true;
   export let hasFooter = true;
-  export let hasOverlay = true;
+  export let hasMask = true;
   export let maskClosable = true;
 
   $: if (open) {
@@ -41,7 +41,7 @@
 
 {#if open}
   <div class="resp-modal__box" class:resp-modal--outlined={outlined}>
-    {#if hasOverlay}
+    {#if hasMask}
       <div
         class="resp-modal__overlay"
         in:fade

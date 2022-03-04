@@ -10,7 +10,7 @@ export interface ModalProps {
   closable?: boolean;
   hasHeader?: boolean;
   hasFooter?: boolean;
-  hasOverlay?: boolean;
+  hasMask?: boolean;
   maskClosable?: boolean;
   style?: string;
 }
