@@ -57,9 +57,9 @@
     outline: none;
     box-sizing: border-box;
     appearance: none;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon' viewBox='0 0 24 24' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 9l6 6 6-6' /%3E%3C/svg%3E")
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon' viewBox='0 0 24 24' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='M6 9l6 6 6-6' fill='%23b9b9b9' /%3E%3C/svg%3E")
       no-repeat;
-    background-size: 16px 16px;
+    background-size: 16px;
     background-position: 98% 50%;
 
     @media (min-width: $sm) {
