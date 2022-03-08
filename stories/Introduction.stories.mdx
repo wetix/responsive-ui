@@ -5,3 +5,43 @@ import { Meta } from '@storybook/addon-docs';
 # responsive-ui
 
 WeTix responsive-ui component set
+
+Test boilerplate:
+```
+import { render, fireEvent } from '@testing-library/svelte';
+import Component from "../src/Component.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
+
+describe("Component test", () => {
+  const props = {
+
+  };
+
+  it("should render properly", () => {
+    const result = render(Component, { props });
+    expect(() => result).not.toThrow();
+  });
+
+  it("should render with slots", () => {
+    const result = render(SlotTest, { props: { component: Component, props } });
+    expect(() => result).not.toThrow();
+  });
+
+  it("should have correct props", () => {
+    const { container } = render(Component, { props });
+  });
+
+  it("fireEvent", () => {
+
+  });
+});
+```
+
+Testing Classes:
+```
+//test class
+let customClass = props.class.split(" ");
+for (let c of customClass) {
+  expect(div.classList).toContain(c);
+}
+```
