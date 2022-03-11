@@ -132,7 +132,9 @@
               class:resp-app-bar__subnav-item--selected={selected}
               data-key={key}
             >
-              <a {href} {...otherProps}>{label}</a>
+              <a {href} {...otherProps}>
+                {label}
+              </a>
               {#if selected}
                 <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
               {/if}
@@ -292,6 +294,12 @@
         li {
           padding: 0 1rem;
           transition: all 0.5s;
+
+          a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
         }
       }
 
@@ -389,7 +397,7 @@
           text-align: right;
         }
 
-        &--selected > a > &--ico {
+        &--selected > a > &-icon {
           display: inline-block;
         }
       }

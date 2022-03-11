@@ -51,9 +51,11 @@
               class:resp-menu--open={option.collapsed === false}
             >
               <slot name="menu-option" {option}>
-                <div class="resp-menu__label">
-                  <a {href}>{label}</a>
-                </div>
+                <a {href}>
+                  <div class="resp-menu__label">
+                    {label}
+                  </div>
+                </a>
               </slot>
             </div>
             {#if option.submenus && option.collapsed === false}
@@ -74,11 +76,9 @@
   .resp-menu {
     position: absolute;
     top: 100%;
-    // left: 0.5rem;
     right: 0;
     display: block;
     background: #fff;
-    padding: 0.25rem;
     border-radius: var(--border-radius, 10px);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 
@@ -95,16 +95,19 @@
       min-width: 250px;
     }
 
+    ul > li {
+      padding: 0;
+    }
+
     &__item {
       position: relative;
       cursor: pointer;
       display: block;
-      margin: 2px 0;
       font-family: var(--font-family, inherit);
       font-size: var(--font-size, 14px);
 
       &--separator {
-        padding-bottom: 0.5rem;
+        padding: 0 0.5rem;
         border-bottom: 1px solid #dcdcdc;
       }
 
@@ -113,7 +116,7 @@
         opacity: 0.65;
       }
 
-      &:hover:not(&--disabled) > .resp-menu__label {
+      &:hover:not(&--disabled) > a > .resp-menu__label {
         // background: rgba(252, 68, 80, 0.6);
         background: #f5f5f5;
         border-radius: 6px;
@@ -124,7 +127,7 @@
       position: relative;
       display: flex;
       color: #3b3b3b;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.25rem;
       flex-direction: row;
       align-items: center;
       text-decoration: none;
