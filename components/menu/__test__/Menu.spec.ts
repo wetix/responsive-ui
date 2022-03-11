@@ -4,10 +4,8 @@ import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Menu test", () => {
   const props = {
-    id: "id",
     class: "menu-custom",
     open: true,
-    ref: new HTMLElement(),
     options: [
       {
         key: "1",
@@ -39,9 +37,12 @@ describe("Menu test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Menu, { props });
-  });
+    const menu = container.querySelector(".resp-menu") as HTMLElement;
 
-  it("fireEvent", () => {
-
+    //test class
+    let customClass = props.class.split(" ");
+    for (let c of customClass) {
+      expect(menu.classList).toContain(c);
+    }
   });
 });
