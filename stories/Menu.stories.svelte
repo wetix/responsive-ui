@@ -40,4 +40,4 @@
   </Menu>
 </Template>
 
-<Story name="Default" />
+<Story name="Default" args={{ align: "right" }} />

@@ -10,8 +10,8 @@
   export let open = false;
   export let ref: HTMLElement;
   export let options: MenuOption[] = [];
+  export let align: "left" | "right" | "center" = "right";
   export const path: number[] = [];
-  export const align: "left" | "right" | "center" = "right";
 
   const handleSelect = (e: Event) => {
     e.stopPropagation();
@@ -31,7 +31,7 @@
   {#if open}
     <div
       {...$$restProps}
-      class="resp-menu resp-menu__{align} {className}"
+      class="resp-menu resp-menu--{align} {className}"
       bind:this={ref}
       transition:slide
     >
@@ -78,15 +78,15 @@
     border-radius: var(--border-radius, 10px);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 
-    &__left {
+    &--left {
       left: 0;
     }
 
-    &__right {
+    &--right {
       right: 0;
     }
 
-    &__center {
+    &--center {
       left: 0;
       right: 0;
     }
