@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
+
+
+### Bug Fixes
+
+* `package-lock.json` ([09847a4](https://github.com/wetix/responsive-ui/commit/09847a4fcca4e4bd54c5d0b1af8e3ce6d24f36c9))
+* bottom sheet style ([47a7d65](https://github.com/wetix/responsive-ui/commit/47a7d6522ef4383e8763022f00d5f2b952b9c175))
+* bottomsheet props ([5b8f2d5](https://github.com/wetix/responsive-ui/commit/5b8f2d558b5f4e94a5ceee22061eceee89afe86a))
+* chip + test cases ([c8a62fd](https://github.com/wetix/responsive-ui/commit/c8a62fd4c3748c320def4e0da83783fc28bae028))
+* column sm & md hiding, feat: column stories ([02c29d0](https://github.com/wetix/responsive-ui/commit/02c29d09322fbb15eac832f4a4725b7af9c11b38))
+* quantity width on firefox ([6d02eff](https://github.com/wetix/responsive-ui/commit/6d02eff2285394216da163a9867d6544b3eed8ac))
+* rename `hasOverlay` to `hasMask` ([f6269be](https://github.com/wetix/responsive-ui/commit/f6269be4ffde1753073281cd88efb14b96661c62))
+* select icon ([715e432](https://github.com/wetix/responsive-ui/commit/715e432c6dfb4a1b9aefe5c2ed2758dbe8f60870))
+
+
+### Features
+
+* modal `hasOverlay` ([400c73a](https://github.com/wetix/responsive-ui/commit/400c73ac7214e3f5680f469f37ce4cf9f170be50))
+
+
+
+
+
 # [1.1.0-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.6...v1.1.0-alpha.7) (2022-01-28)
 
 
