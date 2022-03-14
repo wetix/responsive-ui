@@ -23,7 +23,8 @@ describe("InputNumber test", () => {
     const { container } = render(InputNumber, { props });
     const inputNumber = container.querySelector(".resp-input-number") as HTMLElement;
 
-    expect(inputNumber.id).toEqual(props.id);
+    const input = container.querySelector("input") as HTMLInputElement;
+    expect(input.id).toEqual(props.id);
     //test class
     let customClass = props.class.split(" ");
     for (let c of customClass) {

@@ -27,6 +27,9 @@
     },
     size: {
       control: { type: "select", options: ["small", "default", "large"] }
+    },
+    align: {
+      control: { type: "select", options: ["left", "right", "center"] }
     }
   }}
 />

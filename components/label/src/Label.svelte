@@ -1,5 +1,4 @@
 <script lang="ts">
-  export let id = "";
   let forName = "";
   let className = "";
   export { forName as for };
@@ -7,7 +6,7 @@
   export let label = "";
 </script>
 
-<label {id} class="resp-label {className}" for={forName} {...$$restProps}>
+<label class="resp-label {className}" for={forName} {...$$restProps}>
   {label}
 </label>
 <slot />

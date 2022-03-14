@@ -10,7 +10,6 @@
 </script>
 
 <script lang="ts">
-  export let id = "";
   let className = "";
   export { className as class };
   export let ref: HTMLInputElement;
@@ -42,7 +41,6 @@
 </script>
 
 <div
-  {id}
   class="resp-input-number resp-input-number--text-direction-{textDirection} {className}"
   class:resp-input-number--bordered={bordered}
   class:resp-input-number--focused={focused}

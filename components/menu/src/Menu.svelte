@@ -11,6 +11,7 @@
   export let ref: HTMLElement;
   export let options: MenuOption[] = [];
   export const path: number[] = [];
+  export const align: "left" | "right" | "center" = "right";
 
   const handleSelect = (e: Event) => {
     e.stopPropagation();
@@ -30,15 +31,13 @@
   {#if open}
     <div
       {...$$restProps}
-      class="resp-menu {className}"
+      class="resp-menu resp-menu__{align} {className}"
       bind:this={ref}
-      on:click={handleSelect}
-      on:click
       transition:slide
     >
       <ul>
         {#each options as option, i (option.key)}
-          {@const { href = "", label, separator = false } = option}
+          {@const { label, separator = false } = option}
           <li
             class="resp-menu__item"
             class:resp-menu__item--separator={separator}
@@ -51,10 +50,8 @@
               class:resp-menu--open={option.collapsed === false}
             >
               <slot name="menu-option" {option}>
-                <a {href}>
-                  <div class="resp-menu__label">
-                    {label}
-                  </div>
+                <a href={option.href} class="resp-menu__label">
+                  {label}
                 </a>
               </slot>
             </div>
@@ -76,11 +73,23 @@
   .resp-menu {
     position: absolute;
     top: 100%;
-    right: 0;
     display: block;
     background: #fff;
     border-radius: var(--border-radius, 10px);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+
+    &__left {
+      left: 0;
+    }
+
+    &__right {
+      right: 0;
+    }
+
+    &__center {
+      left: 0;
+      right: 0;
+    }
 
     &__trigger {
       position: relative;
@@ -116,10 +125,10 @@
         opacity: 0.65;
       }
 
-      &:hover:not(&--disabled) > a > .resp-menu__label {
-        // background: rgba(252, 68, 80, 0.6);
+      &:hover:not(&--disabled) > .resp-menu__label {
         background: #f5f5f5;
         border-radius: 6px;
+        text-decoration: none;
       }
     }
 
