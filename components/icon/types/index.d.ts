@@ -8,6 +8,7 @@ export interface IconProps {
   viewBox?: string;
   useHref?: string;
   style?: string;
+  sizeOf?: string;
 }
 
 export interface IconEvents {

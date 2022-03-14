@@ -11,6 +11,7 @@
     width: { control: { type: "range", min: 300, max: 1200, step: 10 } },
     content: { control: "text" },
     open: { control: "boolean" },
+    hasMask: { control: "boolean" },
     outlined: { control: "boolean" },
     closable: { control: "boolean" },
     maskClosable: { control: "boolean" },
