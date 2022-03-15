@@ -175,7 +175,7 @@
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="display: flex; width: 100%;" {href} {...otherProps}>
+              <a style="display: flex; width: 100%; height: 100%" {href} {...otherProps}>
                 <span style="display: inline-block; width: 50%;">{label}</span>
                 <!-- circle icon -->
                 <span class="resp-app-bar__menu-item-icon">
