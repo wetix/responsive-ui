@@ -92,6 +92,11 @@
         </p>
       {/each}
     </div>
+    <div slot="footer">
+      <div>i'm a footer</div>
+      <div>i'm a footer</div>
+      <div>i'm a footer</div>
+    </div>
     <!-- <svg
       slot="trailing-item"
       width="24"
