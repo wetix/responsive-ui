@@ -58,7 +58,7 @@
     >
       {#if hasHeader}
         <header class="resp-modal__header">
-          <caption>{caption}</caption>
+          <caption>{caption || ""}</caption>
           {#if closable}
             <span class="resp-modal__header-close">
               <i class="resp-modal__header-close-icon" on:click={() => (open = false)}>

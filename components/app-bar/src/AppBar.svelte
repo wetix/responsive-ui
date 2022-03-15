@@ -385,10 +385,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-      }
-
-      &-footer > div {
-        padding: 1rem;
+        background: #f5f5f5;
       }
 
       &-icon {
