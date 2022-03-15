@@ -188,6 +188,11 @@
       </ul>
     </slot>
   </div>
+  <div class="resp-app-bar__menu-footer">
+    <div>
+      <slot name="footer" />
+    </div>
+  </div>
 </aside>
 
 <style lang="scss" global>
@@ -376,13 +381,22 @@
         }
       }
 
+      &-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+
+      &-footer > div {
+        padding: 1rem;
+      }
+
       &-icon {
         display: inline-flex;
         cursor: pointer;
       }
 
       &-body {
-        height: calc(100% - $height);
         overflow-y: auto;
       }
 
