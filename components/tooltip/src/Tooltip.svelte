@@ -148,7 +148,7 @@
     color: #fff;
     transition: opacity 0.35s;
     opacity: 1;
-    z-index: 999;
+    z-index: 998;
 
     &:after {
       content: "";
