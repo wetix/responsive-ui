@@ -59,7 +59,7 @@
     min-height: 120px;
     background: #fff;
     transition: all 0.3s;
-    z-index: 999;
+    z-index: 996;
 
     &__overlay {
       position: fixed;

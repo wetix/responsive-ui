@@ -175,7 +175,7 @@
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="display: flex; width: 100%;" {href} {...otherProps}>
+              <a style="display: flex; width: 100%; height: 100%" {href} {...otherProps}>
                 <span style="display: inline-block; width: 50%;">{label}</span>
                 <!-- circle icon -->
                 <span class="resp-app-bar__menu-item-icon">
@@ -187,6 +187,11 @@
         {/each}
       </ul>
     </slot>
+  </div>
+  <div class="resp-app-bar__menu-footer">
+    <div>
+      <slot name="footer" />
+    </div>
   </div>
 </aside>
 
@@ -376,13 +381,19 @@
         }
       }
 
+      &-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: #f5f5f5;
+      }
+
       &-icon {
         display: inline-flex;
         cursor: pointer;
       }
 
       &-body {
-        height: calc(100% - $height);
         overflow-y: auto;
       }
 

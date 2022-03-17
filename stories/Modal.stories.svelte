@@ -12,6 +12,7 @@
     content: { control: "text" },
     open: { control: "boolean" },
     hasMask: { control: "boolean" },
+    hasHeader: { control: "boolean" },
     outlined: { control: "boolean" },
     closable: { control: "boolean" },
     maskClosable: { control: "boolean" },
