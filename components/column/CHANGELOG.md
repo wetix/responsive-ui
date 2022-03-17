@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
+
+
+### Bug Fixes
+
+* column sm & md hiding, feat: column stories ([02c29d0](https://github.com/wetix/responsive-ui/commit/02c29d09322fbb15eac832f4a4725b7af9c11b38))
+
+
+
+
+
 # [1.1.0-alpha.7](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.6...v1.1.0-alpha.7) (2022-01-28)
 
 **Note:** Version bump only for package @responsive-ui/column
