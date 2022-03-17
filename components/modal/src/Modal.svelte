@@ -58,7 +58,7 @@
     >
       {#if hasHeader}
         <header class="resp-modal__header">
-          <caption>{caption}</caption>
+          <caption>{caption || ""}</caption>
           {#if closable}
             <span class="resp-modal__header-close">
               <i class="resp-modal__header-close-icon" on:click={() => (open = false)}>
@@ -123,7 +123,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 999;
+      z-index: 997;
     }
 
     &__header {

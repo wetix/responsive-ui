@@ -27,6 +27,9 @@
     },
     size: {
       control: { type: "select", options: ["small", "default", "large"] }
+    },
+    align: {
+      control: { type: "select", options: ["left", "right", "center"] }
     }
   }}
 />
@@ -37,4 +40,4 @@
   </Menu>
 </Template>
 
-<Story name="Default" />
+<Story name="Default" args={{ align: "right" }} />

@@ -1,4 +1,4 @@
-import { render } from "@testing-library/svelte";
+import { render, fireEvent } from "@testing-library/svelte";
 import Input from "../src/Input.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 
@@ -48,5 +48,13 @@ describe("Input", () => {
     expect(input.size).toEqual(props.size);
     expect(input.maxLength).toEqual(props.maxlength);
     expect(input.getAttribute("style")).toEqual(props.style);
+  });
+
+  it("should take in input", async () => {
+    const { container } = render(Input, { props });
+    const input = container.querySelector("input") as HTMLInputElement;
+
+    await fireEvent.change(input, { target: { value: "Hello" } });
+    expect(input.value).toEqual("Hello");
   });
 });

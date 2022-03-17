@@ -132,7 +132,9 @@
               class:resp-app-bar__subnav-item--selected={selected}
               data-key={key}
             >
-              <a {href} {...otherProps}>{label}</a>
+              <a {href} {...otherProps}>
+                {label}
+              </a>
               {#if selected}
                 <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
               {/if}
@@ -173,7 +175,7 @@
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="display: flex; width: 100%;" {href} {...otherProps}>
+              <a style="display: flex; width: 100%; height: 100%" {href} {...otherProps}>
                 <span style="display: inline-block; width: 50%;">{label}</span>
                 <!-- circle icon -->
                 <span class="resp-app-bar__menu-item-icon">
@@ -185,6 +187,11 @@
         {/each}
       </ul>
     </slot>
+  </div>
+  <div class="resp-app-bar__menu-footer">
+    <div>
+      <slot name="footer" />
+    </div>
   </div>
 </aside>
 
@@ -292,6 +299,12 @@
         li {
           padding: 0 1rem;
           transition: all 0.5s;
+
+          a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
         }
       }
 
@@ -368,13 +381,19 @@
         }
       }
 
+      &-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: #f5f5f5;
+      }
+
       &-icon {
         display: inline-flex;
         cursor: pointer;
       }
 
       &-body {
-        height: calc(100% - $height);
         overflow-y: auto;
       }
 
@@ -389,7 +408,7 @@
           text-align: right;
         }
 
-        &--selected > a > &--ico {
+        &--selected > a > &-icon {
           display: inline-block;
         }
       }

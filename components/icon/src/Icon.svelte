@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let id = "";
   let className = "";
   export { className as class };
   export let clickable = false;
@@ -8,6 +9,7 @@
 </script>
 
 <i
+  {id}
   class="resp-icon resp-icon--{sizeOf} {className}"
   class:resp-icon--clickable={clickable}
   on:click
