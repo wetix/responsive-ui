@@ -44,5 +44,11 @@ describe("Menu test", () => {
     for (let c of customClass) {
       expect(menu.classList).toContain(c);
     }
+
+    //test options
+    const allOptions = menu.querySelectorAll("li.resp-menu__item");
+    allOptions.forEach((item, i) => {
+      expect(JSON.parse((item as HTMLElement).dataset.option as string)).toEqual(props.options[i]);
+    });
   });
 });
