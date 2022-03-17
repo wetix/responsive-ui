@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.9](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.8...v1.1.0-alpha.9) (2022-03-17)
+
+
+### Bug Fixes
+
+* appbar & modal ([e7a2fa8](https://github.com/wetix/responsive-ui/commit/e7a2fa8e8f2719b0750bf6181da240cb92509fe2))
+* appbar leading item link ([7f9e7e0](https://github.com/wetix/responsive-ui/commit/7f9e7e0308409dcd5c846221497903c9177d3f23))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 
