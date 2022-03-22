@@ -136,7 +136,7 @@
                 {label}
               </a>
               {#if selected}
-                <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
+                <span class="resp-app-bar__subnav-indicator" transition:slide />
               {/if}
             </li>
           {/each}
@@ -232,8 +232,8 @@
 
       li {
         cursor: pointer;
-        padding: 0 0.5rem;
         white-space: nowrap;
+        margin: 0 0.5rem;
       }
     }
 
@@ -297,13 +297,14 @@
         height: 42px;
 
         li {
-          padding: 0 1rem;
           transition: all 0.5s;
 
           a {
             display: flex;
             align-items: center;
             height: 100%;
+            width: 100%;
+            margin: 0 var(--padding);
           }
         }
       }
@@ -418,10 +419,6 @@
         padding: 1rem;
         list-style-type: none;
         list-style-position: inside;
-
-        li {
-          padding: 0.5rem 0;
-        }
       }
     }
   }
@@ -434,6 +431,7 @@
       color: inherit;
       text-decoration: none;
       display: block;
+      padding: 0.5rem 0;
     }
   }
 </style>
