@@ -133,7 +133,7 @@
               data-key={key}
             >
               <a {href} {...otherProps}>
-                {label}
+                <span>{label}</span>
               </a>
               {#if selected}
                 <span class="resp-app-bar__subnav-indicator" transition:slide />
@@ -220,6 +220,14 @@
       }
     }
 
+    @media (max-width: $sm) {
+      &__logo {
+        width: 100%;
+        text-align: left;
+        margin: 1rem;
+      }
+    }
+
     ul {
       list-style: none;
       list-style-position: inside;
@@ -298,13 +306,17 @@
 
         li {
           transition: all 0.5s;
+          margin: 0;
 
           a {
             display: flex;
             align-items: center;
             height: 100%;
             width: 100%;
-            margin: 0 var(--padding);
+
+            span {
+              margin: 0 1rem;
+            }
           }
         }
       }
