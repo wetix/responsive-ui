@@ -43,9 +43,9 @@
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
     const el = findElement(e);
-    console.log("el=>", el);
-    if (!el.querySelector("a")) return;
-    if (el.querySelector(".resp-app-bar__menu-sub")) return;
+    if (!el.getElementsByTagName("a").item(0)) return;
+    if (el.getElementsByClassName("resp-app-bar__menu-sub").item(0)) return;
+
     setTimeout(() => {
       openMenu = false;
     }, 150);
