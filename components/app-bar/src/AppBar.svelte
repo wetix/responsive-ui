@@ -20,12 +20,13 @@
   let subnav: HTMLElement;
   let selectedIndex = 0;
   let subMenus: SubNavItem[] = [];
-  let subnavStyle = "";
+  let subnavStyle;
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
 
   // for selecting submenu
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
+    if (menus.length <= 0) selectedSubmenuKey = "";
     if (menus.length > 0 && selectedSubmenuKey === "")
       selectedSubmenuKey = menus[0].key as string;
     subMenus = menus;
@@ -41,10 +42,11 @@
 
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
-    const anchor = (e.target as HTMLElement).closest("a");
-    if (!anchor) return;
+    // TODO: if the element has sub menu items, we will not close the side menu
+    const anchor = e.target as HTMLElement;
+    if (!anchor.closest("a")) return;
     setTimeout(() => {
-      openMenu = false;
+      // openMenu = false;
     }, 150);
   };
 
@@ -57,6 +59,7 @@
   const handleClickLeading = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
+    if (el.closest(".resp-app-bar__menu-sub__item")) return;
     selectedKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
@@ -170,19 +173,55 @@
     <slot name="menu-body">
       <ul on:click={handleClickLeading}>
         {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
+          <!-- leading items -->
           <li
-            class:resp-app-bar__menu-item--selected={selectedKey === key}
+            class:resp-app-bar__menu-item--selected={selectedKey === key &&
+              (otherProps.subItems || []).length <= 0}
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="display: flex; width: 100%; height: 100%" {href} {...otherProps}>
-                <span style="display: inline-block; width: 50%;">{label}</span>
-                <!-- circle icon -->
-                <span class="resp-app-bar__menu-item-icon">
-                  {@html `<svg height="8px" width="6px"><circle cx="3" cy="3" r="3" fill="#fc4451" /></svg>`}
+              <a style="height: 100%; display: flex;" {href} {...otherProps}>
+                <span style="width: 100%;" class="item-label">
+                  {label}
                 </span>
+                {#if (otherProps.subItems || []).length > 0}
+                  <svg
+                    style="width: 24px; height: 24px;"
+                    viewBox="0 0 24 24"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M6 9l6 6 6-6" fill="#fc4451" />
+                  </svg>
+                {/if}
               </a>
             </slot>
+            {#if (otherProps.subItems || []).length > 0}
+              <!-- subnav items -->
+              <div class="resp-app-bar__menu-sub">
+                {#if selectedKey === key}
+                  <ul on:click={handleClickSubmenu} transition:slide>
+                    {#each otherProps.subItems || [] as sub, subIndex}
+                      {@const subSelected = selectedSubmenuKey === sub.key}
+                      <li
+                        class="resp-app-bar__menu-sub__item"
+                        class:resp-app-bar__menu-sub__item__selected={subSelected}
+                        data-key={sub.key}
+                      >
+                        <slot
+                          name="menu-subitem"
+                          item={leadingItems[index].subMenus[subIndex]}
+                          index={subIndex}
+                        >
+                          <a href={sub.href}><span>{sub.label}</span></a>
+                        </slot>
+                      </li>
+                    {/each}
+                  </ul>
+                {/if}
+              </div>
+            {/if}
           </li>
         {/each}
       </ul>
@@ -254,7 +293,6 @@
     }
 
     &__main {
-      width: 100%;
       height: 100%;
       padding: 0 1rem;
       margin: 0 auto;
@@ -295,10 +333,6 @@
       background-color: #fc4451;
       color: #fff;
       z-index: 450;
-
-      // &-item--selected {
-      //   font-weight: 600;
-      // }
 
       ul {
         position: relative;
@@ -410,9 +444,27 @@
         overflow-y: auto;
       }
 
+      &-sub {
+        &__item {
+          span {
+            padding: 0rem 1rem 0rem 2rem;
+          }
+
+          &__selected {
+            background-color: #f5f5f5;
+            border-right: 4px solid #fc4451;
+            color: #fc4451;
+          }
+        }
+      }
+
       &-item {
         &--selected {
-          color: #fc4451;
+          background-color: #f5f5f5;
+          border-right: 4px solid #fc4451;
+          .item-label {
+            color: #fc4451;
+          }
         }
 
         &-icon {
@@ -428,9 +480,15 @@
 
       ul {
         margin: 0;
-        padding: 1rem;
         list-style-type: none;
         list-style-position: inside;
+        padding: unset;
+        li {
+          padding: 0;
+          a {
+            padding: 0.5rem 1rem;
+          }
+        }
       }
     }
   }
