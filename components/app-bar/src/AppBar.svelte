@@ -178,27 +178,31 @@
         {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
           <!-- leading items -->
           <li
+            class="resp-app-bar__menu-item"
             class:resp-app-bar__menu-item--selected={selectedKey === key &&
               (otherProps.subItems || []).length <= 0}
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="height: 100%; display: flex;" {href} {...otherProps}>
-                <span style="width: 100%;" class="item-label">
-                  {label}
-                </span>
-                {#if (otherProps.subItems || []).length > 0}
-                  <svg
-                    style="width: 24px; height: 24px;"
-                    viewBox="0 0 24 24"
-                    stroke-width="1"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M6 9l6 6 6-6" fill="#fc4451" />
-                  </svg>
-                {/if}
-              </a>
+              <input type="checkbox" id="check_{key}" />
+              <label for="check_{key}">
+                <a style="height: 100%; display: flex;" {href} {...otherProps}>
+                  <span style="width: 100%;" class="item-label">
+                    {label}
+                  </span>
+                  {#if (otherProps.subItems || []).length > 0}
+                    <svg
+                      style="width: 24px; height: 24px;"
+                      viewBox="0 0 24 24"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M6 9l6 6 6-6" fill="#fc4451" />
+                    </svg>
+                  {/if}
+                </a>
+              </label>
             </slot>
             {#if (otherProps.subItems || []).length > 0}
               <!-- subnav items -->
@@ -447,6 +451,9 @@
       }
 
       &-sub {
+        height: 0;
+        overflow: hidden;
+
         &__item {
           span {
             padding: 0rem 1rem 0rem 2rem;
@@ -467,6 +474,10 @@
           .item-label {
             color: #fc4451;
           }
+
+          & > a > &-icon {
+            display: inline-block;
+          }
         }
 
         &-icon {
@@ -475,8 +486,12 @@
           text-align: right;
         }
 
-        &--selected > a > &-icon {
-          display: inline-block;
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        input[type="checkbox"]:checked ~ .resp-app-bar__menu-sub {
+          height: auto;
         }
       }
 
