@@ -60,9 +60,9 @@
   const handleClickLeading = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
-    //if checkbox is unchecked don't do anything
-    const checkBox = el.getElementsByTagName("input").item(0) as HTMLInputElement;
-    if (!checkBox.checked) return;
+
+    //if element has sub items don't do anything
+    if (el.querySelector(".resp-app-bar__menu-sub")) return;
 
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
     selectedKey = el.dataset.key as string;
@@ -76,6 +76,10 @@
     selectedKey = el.dataset.leadingKey as string;
     selectedSubmenuKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
+
+    setTimeout(() => {
+      openMenu = false;
+    }, 150);
   };
 </script>
 
@@ -164,7 +168,7 @@
     on:click={() => (openMenu = false)}
   />
 {/if}
-<!-- menu items should be the same as leading items -->
+<!-- SIDE MENU -->
 <aside
   class="resp-app-bar__menu"
   class:resp-app-bar__menu--close={!openMenu}
@@ -180,7 +184,7 @@
     <slot name="menu-body">
       <ul on:click={handleClickLeading}>
         {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
-          <!-- leading items -->
+          <!-- menu leading items -->
           <li
             class="resp-app-bar__menu-item"
             class:resp-app-bar__menu-item--selected={selectedKey === key &&
@@ -213,9 +217,9 @@
               </label>
             </slot>
             {#if (otherProps.subItems || []).length > 0}
-              <!-- subnav items -->
+              <!-- menu subnav items -->
               <div class="resp-app-bar__menu-sub">
-                <ul on:click={handleClickSubmenu}>
+                <ul on:click|stopPropagation={handleClickSubmenu}>
                   {#each otherProps.subItems || [] as sub, subIndex}
                     {@const subSelected = selectedSubmenuKey === sub.key}
                     <li
