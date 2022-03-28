@@ -60,13 +60,16 @@
     const el = findElement(e);
     if (!el) return;
     if (el.closest(".resp-app-bar__menu-sub__item")) return;
+    const menus = (leadingItems[selectedIndex] || {}).subItems || [];
     selectedKey = el.dataset.key as string;
+    selectedSubmenuKey = menus[0].key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 
   const handleClickSubmenu = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
+    selectedKey = el.dataset.leadingKey as string;
     selectedSubmenuKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
@@ -200,26 +203,25 @@
             {#if (otherProps.subItems || []).length > 0}
               <!-- subnav items -->
               <div class="resp-app-bar__menu-sub">
-                {#if selectedKey === key}
-                  <ul on:click={handleClickSubmenu} transition:slide>
-                    {#each otherProps.subItems || [] as sub, subIndex}
-                      {@const subSelected = selectedSubmenuKey === sub.key}
-                      <li
-                        class="resp-app-bar__menu-sub__item"
-                        class:resp-app-bar__menu-sub__item__selected={subSelected}
-                        data-key={sub.key}
+                <ul on:click={handleClickSubmenu}>
+                  {#each otherProps.subItems || [] as sub, subIndex}
+                    {@const subSelected = selectedSubmenuKey === sub.key}
+                    <li
+                      class="resp-app-bar__menu-sub__item"
+                      class:resp-app-bar__menu-sub__item__selected={subSelected}
+                      data-key={sub.key}
+                      data-leading-key={key}
+                    >
+                      <slot
+                        name="menu-subitem"
+                        item={leadingItems[index].subMenus[subIndex]}
+                        index={subIndex}
                       >
-                        <slot
-                          name="menu-subitem"
-                          item={leadingItems[index].subMenus[subIndex]}
-                          index={subIndex}
-                        >
-                          <a href={sub.href}><span>{sub.label}</span></a>
-                        </slot>
-                      </li>
-                    {/each}
-                  </ul>
-                {/if}
+                        <a href={sub.href}><span>{sub.label}</span></a>
+                      </slot>
+                    </li>
+                  {/each}
+                </ul>
               </div>
             {/if}
           </li>
