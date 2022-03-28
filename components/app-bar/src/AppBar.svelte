@@ -42,11 +42,12 @@
 
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
-    // TODO: if the element has sub menu items, we will not close the side menu
-    const anchor = e.target as HTMLElement;
-    if (!anchor.closest("a")) return;
+    const el = findElement(e);
+    console.log("el=>", el);
+    if (!el.querySelector("a")) return;
+    if (el.querySelector(".resp-app-bar__menu-sub")) return;
     setTimeout(() => {
-      // openMenu = false;
+      openMenu = false;
     }, 150);
   };
 
@@ -59,7 +60,10 @@
   const handleClickLeading = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
-    if (el.closest(".resp-app-bar__menu-sub__item")) return;
+    //if checkbox is unchecked don't do anything
+    const checkBox = el.getElementsByTagName("input").item(0) as HTMLInputElement;
+    if (!checkBox.checked) return;
+
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
     selectedKey = el.dataset.key as string;
     selectedSubmenuKey = menus[0].key as string;
@@ -191,14 +195,18 @@
                     {label}
                   </span>
                   {#if (otherProps.subItems || []).length > 0}
-                    <svg
-                      style="width: 24px; height: 24px;"
-                      viewBox="0 0 24 24"
-                      stroke-width="1"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M6 9l6 6 6-6" fill="#fc4451" />
+                    <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
+                      <defs />
+                      <g>
+                        <path
+                          d="M 2 2 L 22 22 L 42 2"
+                          fill="none"
+                          stroke="#fc4451"
+                          stroke-width="5"
+                          stroke-miterlimit="10"
+                          pointer-events="stroke"
+                        />
+                      </g>
                     </svg>
                   {/if}
                 </a>
@@ -420,18 +428,6 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #f5f5f5;
-
-        caption {
-          text-align: left;
-          font-size: var(--font-size-lg, 24px);
-          font-weight: 600;
-          flex-grow: 1;
-          min-width: 0;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          margin-right: 0.25rem;
-          overflow: hidden;
-        }
       }
 
       &-footer {
@@ -474,16 +470,11 @@
           .item-label {
             color: #fc4451;
           }
-
-          & > a > &-icon {
-            display: inline-block;
-          }
         }
 
-        &-icon {
-          display: none;
-          width: 50%;
-          text-align: right;
+        label > a > svg {
+          transform: rotateZ(180deg);
+          transition: transform 0.5s ease;
         }
 
         input[type="checkbox"] {
@@ -492,6 +483,10 @@
 
         input[type="checkbox"]:checked ~ .resp-app-bar__menu-sub {
           height: auto;
+        }
+
+        input[type="checkbox"]:checked ~ label > a > svg {
+          transform: unset;
         }
       }
 
