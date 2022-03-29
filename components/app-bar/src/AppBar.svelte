@@ -17,10 +17,8 @@
   export let trailingItems: NavItem[] = [];
 
   let openMenu = false;
-  let subnav: HTMLElement;
   let selectedIndex = 0;
   let subMenus: SubNavItem[] = [];
-  let subnavStyle;
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
 
   // for selecting submenu
@@ -32,13 +30,11 @@
     subMenus = menus;
   }
 
-  $: if (subnav) {
-    const el = subnav.querySelector(`[data-key="${selectedSubmenuKey}"]`);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      subnavStyle = `left: ${rect.left}px; width: ${rect.width}px; max-width: ${rect.width}px;`;
-    }
-  }
+  const findElement = (e: Event) => {
+    return e
+      .composedPath()
+      .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
+  };
 
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
@@ -51,12 +47,6 @@
     }, 150);
   };
 
-  const findElement = (e: Event) => {
-    return e
-      .composedPath()
-      .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
-  };
-
   const handleClickLeading = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
@@ -64,16 +54,16 @@
     //if element has sub items don't do anything
     if (el.querySelector(".resp-app-bar__menu-sub")) return;
 
-    const menus = (leadingItems[selectedIndex] || {}).subItems || [];
     selectedKey = el.dataset.key as string;
-    selectedSubmenuKey = menus[0].key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
 
   const handleClickSubmenu = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
-    selectedKey = el.dataset.leadingKey as string;
+    if (el.classList.contains("resp-app-bar__menu-sub__item"))
+      selectedKey = el.dataset.leadingKey as string;
+
     selectedSubmenuKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
 
@@ -136,7 +126,7 @@
 
   <!-- subnav -->
   {#if subMenus.length > 0}
-    <nav class="resp-app-bar__subnav" bind:this={subnav} on:click={handleClickSubmenu}>
+    <nav class="resp-app-bar__subnav" on:click={handleClickSubmenu}>
       <Scroll>
         <ul>
           {#each subMenus as { key, href, label, ...otherProps }}
@@ -517,7 +507,6 @@
       color: inherit;
       text-decoration: none;
       display: block;
-      padding: 0.5rem 0;
     }
   }
 </style>
