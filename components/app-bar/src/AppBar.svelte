@@ -184,11 +184,11 @@
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
               <input type="checkbox" id="check_{key}" />
               <label for="check_{key}">
-                <a style="height: 100%; display: flex;" {href} {...otherProps}>
-                  <span style="width: 100%;" class="item-label">
-                    {label}
-                  </span>
-                  {#if (otherProps.subItems || []).length > 0}
+                {#if (otherProps.subItems || []).length > 0}
+                  <div class="resp-app-bar__menu-item__dropdown">
+                    <span style="width: 100%;" class="item-label">
+                      {label}
+                    </span>
                     <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
                       <defs />
                       <g>
@@ -202,8 +202,14 @@
                         />
                       </g>
                     </svg>
-                  {/if}
-                </a>
+                  </div>
+                {:else}
+                  <a style="height: 100%; display: flex;" {href} {...otherProps}>
+                    <span style="width: 100%;" class="item-label">
+                      {label}
+                    </span>
+                  </a>
+                {/if}
               </label>
             </slot>
             {#if (otherProps.subItems || []).length > 0}
@@ -223,7 +229,7 @@
                         item={leadingItems[index].subMenus[subIndex]}
                         index={subIndex}
                       >
-                        <a href={sub.href}><span>{sub.label}</span></a>
+                        <a href={sub.href} {...otherProps}><span>{sub.label}</span></a>
                       </slot>
                     </li>
                   {/each}
@@ -466,7 +472,13 @@
           }
         }
 
-        label > a > svg {
+        &__dropdown {
+          height: 100%;
+          display: flex;
+          padding: 0.5rem 1rem;
+        }
+
+        label > span > svg {
           transform: rotateZ(180deg);
           transition: transform 0.5s ease;
         }
@@ -479,7 +491,7 @@
           height: auto;
         }
 
-        input[type="checkbox"]:checked ~ label > a > svg {
+        input[type="checkbox"]:checked ~ label > span > svg {
           transform: unset;
         }
       }
