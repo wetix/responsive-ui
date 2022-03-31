@@ -3,6 +3,7 @@
   import { slide } from "svelte/transition";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
+  import Icon from "@responsive-ui/icon";
   import type { NavItem, SubNavItem } from "../types";
 
   const dispatch = createEventDispatcher();
@@ -173,7 +174,7 @@
   <div class="resp-app-bar__menu-body">
     <slot name="menu-body">
       <ul on:click={handleClickLeading}>
-        {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
+        {#each leadingItems as { key, href, label, icon, selected, ...otherProps }, index (key)}
           <!-- menu leading items -->
           <li
             class="resp-app-bar__menu-item"
@@ -187,7 +188,8 @@
                 {#if (otherProps.subItems || []).length > 0}
                   <div class="resp-app-bar__menu-item__dropdown">
                     <span style="width: 100%;" class="item-label">
-                      {label}
+                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                      <span>{label}</span>
                     </span>
                     <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
                       <defs />
@@ -206,7 +208,8 @@
                 {:else}
                   <a style="height: 100%; display: flex;" {href} {...otherProps}>
                     <span style="width: 100%;" class="item-label">
-                      {label}
+                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                      <span>{label}</span>
                     </span>
                   </a>
                 {/if}
@@ -472,13 +475,21 @@
           }
         }
 
+        .item-label {
+          align-items: center;
+          span {
+            vertical-align: middle;
+          }
+        }
+
         &__dropdown {
           height: 100%;
           display: flex;
+          align-items: center;
           padding: 0.5rem 1rem;
         }
 
-        label > span > svg {
+        label > div > svg {
           transform: rotateZ(180deg);
           transition: transform 0.5s ease;
         }
@@ -491,7 +502,7 @@
           height: auto;
         }
 
-        input[type="checkbox"]:checked ~ label > span > svg {
+        input[type="checkbox"]:checked ~ label > div > svg {
           transform: unset;
         }
       }
