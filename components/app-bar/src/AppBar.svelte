@@ -447,6 +447,19 @@
 
       &-body {
         overflow-y: auto;
+
+        ul {
+          margin: 0;
+          list-style-type: none;
+          list-style-position: inside;
+          padding: unset;
+          li {
+            padding: 0;
+            a {
+              padding: 0.5rem 1rem;
+            }
+          }
+        }
       }
 
       &-sub {
@@ -504,19 +517,6 @@
 
         input[type="checkbox"]:checked ~ label > div > svg {
           transform: unset;
-        }
-      }
-
-      ul {
-        margin: 0;
-        list-style-type: none;
-        list-style-position: inside;
-        padding: unset;
-        li {
-          padding: 0;
-          a {
-            padding: 0.5rem 1rem;
-          }
         }
       }
     }
