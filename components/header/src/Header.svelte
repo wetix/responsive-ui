@@ -18,7 +18,7 @@
 
     &__label {
       text-transform: capitalize;
-      font-size: var(--font-size-lg);
+      font-size: 20px;
       font-weight: 600;
       color: #1a1b1c;
     }
