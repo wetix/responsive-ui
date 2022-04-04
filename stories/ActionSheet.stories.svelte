@@ -8,6 +8,7 @@
   component={ActionSheet}
   argTypes={{
     open: { control: "boolean" },
+    closable: { control: "boolean" },
     draggable: { control: "boolean" },
     onTabChange: { action: "onTabChange" },
     onValueChange: { action: "onValueChange" },
