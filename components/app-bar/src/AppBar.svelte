@@ -3,6 +3,7 @@
   import { slide } from "svelte/transition";
   import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
+  import Icon from "@responsive-ui/icon";
   import type { NavItem, SubNavItem } from "../types";
 
   const dispatch = createEventDispatcher();
@@ -17,36 +18,18 @@
   export let trailingItems: NavItem[] = [];
 
   let openMenu = false;
-  let subnav: HTMLElement;
   let selectedIndex = 0;
   let subMenus: SubNavItem[] = [];
-  let subnavStyle = "";
   $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
 
   // for selecting submenu
   $: {
     const menus = (leadingItems[selectedIndex] || {}).subItems || [];
+    if (menus.length <= 0) selectedSubmenuKey = "";
     if (menus.length > 0 && selectedSubmenuKey === "")
       selectedSubmenuKey = menus[0].key as string;
     subMenus = menus;
   }
-
-  $: if (subnav) {
-    const el = subnav.querySelector(`[data-key="${selectedSubmenuKey}"]`);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      subnavStyle = `left: ${rect.left}px; width: ${rect.width}px; max-width: ${rect.width}px;`;
-    }
-  }
-
-  const handleMenu = (e: Event) => {
-    // if the element is underneath an anchor link, we will close the side menu
-    const anchor = (e.target as HTMLElement).closest("a");
-    if (!anchor) return;
-    setTimeout(() => {
-      openMenu = false;
-    }, 150);
-  };
 
   const findElement = (e: Event) => {
     return e
@@ -54,9 +37,24 @@
       .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
   };
 
+  const handleMenu = (e: Event) => {
+    // if the element is underneath an anchor link, we will close the side menu
+    const el = findElement(e);
+    if (!el.getElementsByTagName("a").item(0)) return;
+    if (el.getElementsByClassName("resp-app-bar__menu-sub").item(0)) return;
+
+    setTimeout(() => {
+      openMenu = false;
+    }, 150);
+  };
+
   const handleClickLeading = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
+
+    //if element has sub items don't do anything
+    if (el.querySelector(".resp-app-bar__menu-sub")) return;
+
     selectedKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
   };
@@ -64,8 +62,15 @@
   const handleClickSubmenu = (e: Event) => {
     const el = findElement(e);
     if (!el) return;
+    if (el.classList.contains("resp-app-bar__menu-sub__item"))
+      selectedKey = el.dataset.leadingKey as string;
+
     selectedSubmenuKey = el.dataset.key as string;
     dispatch("menuchange", { selectedKey, selectedSubmenuKey });
+
+    setTimeout(() => {
+      openMenu = false;
+    }, 150);
   };
 </script>
 
@@ -122,7 +127,7 @@
 
   <!-- subnav -->
   {#if subMenus.length > 0}
-    <nav class="resp-app-bar__subnav" bind:this={subnav} on:click={handleClickSubmenu}>
+    <nav class="resp-app-bar__subnav" on:click={handleClickSubmenu}>
       <Scroll>
         <ul>
           {#each subMenus as { key, href, label, ...otherProps }}
@@ -133,10 +138,10 @@
               data-key={key}
             >
               <a {href} {...otherProps}>
-                {label}
+                <span>{label}</span>
               </a>
               {#if selected}
-                <span class="resp-app-bar__subnav-indicator" in:slide out:slide />
+                <span class="resp-app-bar__subnav-indicator" transition:slide />
               {/if}
             </li>
           {/each}
@@ -154,7 +159,7 @@
     on:click={() => (openMenu = false)}
   />
 {/if}
-<!-- menu items should be the same as leading items -->
+<!-- SIDE MENU -->
 <aside
   class="resp-app-bar__menu"
   class:resp-app-bar__menu--close={!openMenu}
@@ -169,20 +174,71 @@
   <div class="resp-app-bar__menu-body">
     <slot name="menu-body">
       <ul on:click={handleClickLeading}>
-        {#each leadingItems as { key, href, label, selected, ...otherProps }, index (key)}
+        {#each leadingItems as { key, href, label, icon, selected, ...otherProps }, index (key)}
+          <!-- menu leading items -->
           <li
-            class:resp-app-bar__menu-item--selected={selectedKey === key}
+            class="resp-app-bar__menu-item"
+            class:resp-app-bar__menu-item--selected={selectedKey === key &&
+              (otherProps.subItems || []).length <= 0}
             data-key={key}
           >
             <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
-              <a style="display: flex; width: 100%; height: 100%" {href} {...otherProps}>
-                <span style="display: inline-block; width: 50%;">{label}</span>
-                <!-- circle icon -->
-                <span class="resp-app-bar__menu-item-icon">
-                  {@html `<svg height="8px" width="6px"><circle cx="3" cy="3" r="3" fill="#fc4451" /></svg>`}
-                </span>
-              </a>
+              <input type="checkbox" id="check_{key}" />
+              <label for="check_{key}">
+                {#if (otherProps.subItems || []).length > 0}
+                  <div class="resp-app-bar__menu-item__dropdown">
+                    <span style="width: 100%;" class="item-label">
+                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                      <span>{label}</span>
+                    </span>
+                    <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
+                      <defs />
+                      <g>
+                        <path
+                          d="M 2 2 L 22 22 L 42 2"
+                          fill="none"
+                          stroke="#fc4451"
+                          stroke-width="5"
+                          stroke-miterlimit="10"
+                          pointer-events="stroke"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                {:else}
+                  <a style="height: 100%; display: flex;" {href} {...otherProps}>
+                    <span style="width: 100%;" class="item-label">
+                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                      <span>{label}</span>
+                    </span>
+                  </a>
+                {/if}
+              </label>
             </slot>
+            {#if (otherProps.subItems || []).length > 0}
+              <!-- menu subnav items -->
+              <div class="resp-app-bar__menu-sub">
+                <ul on:click|stopPropagation={handleClickSubmenu}>
+                  {#each otherProps.subItems || [] as sub, subIndex}
+                    {@const subSelected = selectedSubmenuKey === sub.key}
+                    <li
+                      class="resp-app-bar__menu-sub__item"
+                      class:resp-app-bar__menu-sub__item__selected={subSelected}
+                      data-key={sub.key}
+                      data-leading-key={key}
+                    >
+                      <slot
+                        name="menu-subitem"
+                        item={leadingItems[index].subMenus[subIndex]}
+                        index={subIndex}
+                      >
+                        <a href={sub.href} {...otherProps}><span>{sub.label}</span></a>
+                      </slot>
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/if}
           </li>
         {/each}
       </ul>
@@ -220,6 +276,14 @@
       }
     }
 
+    @media (max-width: $sm) {
+      &__logo {
+        width: 100%;
+        text-align: left;
+        margin: 1rem;
+      }
+    }
+
     ul {
       list-style: none;
       list-style-position: inside;
@@ -232,8 +296,8 @@
 
       li {
         cursor: pointer;
-        padding: 0 0.5rem;
         white-space: nowrap;
+        margin: 0 0.5rem;
       }
     }
 
@@ -246,7 +310,6 @@
     }
 
     &__main {
-      width: 100%;
       height: 100%;
       padding: 0 1rem;
       margin: 0 auto;
@@ -288,22 +351,23 @@
       color: #fff;
       z-index: 450;
 
-      // &-item--selected {
-      //   font-weight: 600;
-      // }
-
       ul {
         position: relative;
         height: 42px;
 
         li {
-          padding: 0 1rem;
           transition: all 0.5s;
+          margin: 0;
 
           a {
             display: flex;
             align-items: center;
             height: 100%;
+            width: 100%;
+
+            span {
+              margin: 0 1rem;
+            }
           }
         }
       }
@@ -367,18 +431,6 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #f5f5f5;
-
-        caption {
-          text-align: left;
-          font-size: var(--font-size-lg, 24px);
-          font-weight: 600;
-          flex-grow: 1;
-          min-width: 0;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          margin-right: 0.25rem;
-          overflow: hidden;
-        }
       }
 
       &-footer {
@@ -395,32 +447,76 @@
 
       &-body {
         overflow-y: auto;
+
+        ul {
+          margin: 0;
+          list-style-type: none;
+          list-style-position: inside;
+          padding: unset;
+          li {
+            padding: 0;
+            a {
+              padding: 0.5rem 1rem;
+            }
+          }
+        }
+      }
+
+      &-sub {
+        height: 0;
+        overflow: hidden;
+
+        &__item {
+          span {
+            padding: 0rem 1rem 0rem 2rem;
+          }
+
+          &__selected {
+            background-color: #f5f5f5;
+            border-right: 4px solid #fc4451;
+            color: #fc4451;
+          }
+        }
       }
 
       &-item {
         &--selected {
-          color: #fc4451;
+          background-color: #f5f5f5;
+          border-right: 4px solid #fc4451;
+          .item-label {
+            color: #fc4451;
+          }
         }
 
-        &-icon {
+        .item-label {
+          align-items: center;
+          span {
+            vertical-align: middle;
+          }
+        }
+
+        &__dropdown {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0.5rem 1rem;
+        }
+
+        label > div > svg {
+          transform: rotateZ(180deg);
+          transition: transform 0.5s ease;
+        }
+
+        input[type="checkbox"] {
           display: none;
-          width: 50%;
-          text-align: right;
         }
 
-        &--selected > a > &-icon {
-          display: inline-block;
+        input[type="checkbox"]:checked ~ .resp-app-bar__menu-sub {
+          height: auto;
         }
-      }
 
-      ul {
-        margin: 0;
-        padding: 1rem;
-        list-style-type: none;
-        list-style-position: inside;
-
-        li {
-          padding: 0.5rem 0;
+        input[type="checkbox"]:checked ~ label > div > svg {
+          transform: unset;
         }
       }
     }

@@ -139,6 +139,9 @@
 
     &__icon--visible {
       display: flex;
+      @media (max-width: 576px) {
+        display: none;
+      }
     }
 
     &__prev-icon:before,

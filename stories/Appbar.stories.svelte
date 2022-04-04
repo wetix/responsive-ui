@@ -10,6 +10,7 @@
       key: "tickets",
       label: "Tickets",
       link: "/tickets",
+      icon: "#profile",
       subItems: [
         {
           key: "movie",
@@ -28,9 +29,10 @@
         }
       ]
     },
-    { key: "profile", label: "Profile", link: "/me/profile" },
-    { key: "events", label: "Events", link: "/events" }
+    { key: "profile", icon: "#profile", label: "Profile", link: "/me/profile" },
+    { key: "events", icon: "#profile", label: "Events", link: "/events" }
   ];
+
   const trailingItems = [
     { key: "A", label: "A", link: "/A" },
     { key: "B", label: "B", link: "/B" },
@@ -61,6 +63,17 @@
 />
 
 <Template let:args>
+  {@html `
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="profile" viewBox="0 -6 32 44">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M16 8.105a4.03 4.03 0 0 1 4.026 4.026A4.03 4.03 0 0 1 16 16.157a4.03 4.03 0 0 1-4.025-4.026A4.03 4.03 0 0 1 16 8.105m4.117 8.557a6.11 6.11 0 0 0 2.014-4.53C22.131 8.75 19.381 6 16 6c-3.38 0-6.13 2.75-6.13 6.131 0 1.796.78 3.408 2.014 4.53C8.463 17.865 6 21.12 6 24.947a1.053 1.053 0 0 0 2.105 0 6.693 6.693 0 0 1 6.686-6.685h2.419a6.692 6.692 0 0 1 6.685 6.685 1.053 1.053 0 0 0 2.105 0c0-3.826-2.463-7.082-5.883-8.285"
+          fill="#FC4451"
+        />
+      </g>
+    </symbol>
+  </svg>`}
   <AppBar
     bind:clientHeight={marginTop}
     {...args}
@@ -70,7 +83,7 @@
   >
     <div slot="logo">
       <img
-        src="https://sb.wetix.my/_app/assets/wetix-0ab069ec.png"
+        src="https://sb.wetix.my/wetix.svg"
         style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
         alt="WeTix"
       />

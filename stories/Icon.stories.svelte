@@ -11,7 +11,9 @@
     clickable: { control: "boolean" },
     sizeOf: { control: "text" },
     useHref: { control: "text" },
-    style: { control: "text" }
+    style: { control: "text" },
+    fill: { control: "text" },
+    stroke: { control: "text" }
   }}
 />
 
