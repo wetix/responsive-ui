@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.10](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.9...v1.1.0-alpha.10) (2022-04-05)
+
+
+### Bug Fixes
+
+* `handleMenu` ([bc8e835](https://github.com/wetix/responsive-ui/commit/bc8e8358c65299e13bb7e64d469573571765566c))
+* appbar ([25fd1e6](https://github.com/wetix/responsive-ui/commit/25fd1e61370f7648a925b6c021fc63cc56123568))
+* appbar + icon stories ([867140f](https://github.com/wetix/responsive-ui/commit/867140f0d474abe04abde6f7d272ee83990c8fca))
+* appbar behavior ([95d4c36](https://github.com/wetix/responsive-ui/commit/95d4c3610e60904f3a699185f968e991856b74a5))
+* appbar behavior and styling ([16a1e8a](https://github.com/wetix/responsive-ui/commit/16a1e8ac6419eb8c4b17bf952e0bc78da4229c7c))
+* appbar links ([df07403](https://github.com/wetix/responsive-ui/commit/df0740312985ab85b61b0b7f583020b7cb297cec))
+* appbar selection behavior ([73d1af0](https://github.com/wetix/responsive-ui/commit/73d1af06146dd783bdc05e85f9566189b15b4d10))
+* optimize `handleMenu` ([ff5c9a4](https://github.com/wetix/responsive-ui/commit/ff5c9a4508db1fdb7926ce1a1e7f0410b6cf80fe))
+
+
+### Features
+
+* `appbar` menu subitems ([be7c3ad](https://github.com/wetix/responsive-ui/commit/be7c3ad17c6c5ba6b18b75e7d8d3d6e2aea5bd5f))
+* appbar icons ([c4ad4a2](https://github.com/wetix/responsive-ui/commit/c4ad4a2537bd5f694c9a5926ba85f1950f136528))
+* appbar submenu collapsible ([b095b10](https://github.com/wetix/responsive-ui/commit/b095b10bfa10c67279db7f14362a2087eff91598))
+
+
+
+
+
 # [1.1.0-alpha.9](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.8...v1.1.0-alpha.9) (2022-03-17)
 
 
