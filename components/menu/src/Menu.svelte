@@ -49,7 +49,7 @@
               class:resp-menu--submenu={option.submenus}
               class:resp-menu--open={option.collapsed === false}
             >
-              <slot name="menu-option" item={option}>
+              <slot name="menu-option" {option}>
                 {#if option.href}
                   <a href={option.href} class="resp-menu__label">
                     {label}

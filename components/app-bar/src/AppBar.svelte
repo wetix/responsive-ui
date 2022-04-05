@@ -40,12 +40,14 @@
   const handleMenu = (e: Event) => {
     // if the element is underneath an anchor link, we will close the side menu
     const el = findElement(e);
-    if (!el.getElementsByTagName("a").item(0)) return;
-    if (el.getElementsByClassName("resp-app-bar__menu-sub").item(0)) return;
+    try {
+      if (!el.getElementsByTagName("a").item(0)) return;
+      if (el.getElementsByClassName("resp-app-bar__menu-sub").item(0)) return;
 
-    setTimeout(() => {
-      openMenu = false;
-    }, 150);
+      setTimeout(() => {
+        openMenu = false;
+      }, 150);
+    } catch (e) {}
   };
 
   const handleClickLeading = (e: Event) => {
@@ -229,8 +231,9 @@
                     >
                       <slot
                         name="menu-subitem"
-                        item={leadingItems[index].subMenus[subIndex]}
+                        item={sub}
                         index={subIndex}
+                        selected={subSelected}
                       >
                         <a href={sub.href} {...otherProps}><span>{sub.label}</span></a>
                       </slot>
