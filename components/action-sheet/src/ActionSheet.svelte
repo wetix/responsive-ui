@@ -112,8 +112,8 @@
       class:resp-action-sheet__header--draggable={draggable}
     >
       <caption>{caption}</caption>
-      <span class="resp-action-sheet__reset" on:click={handleReset}>Reset</span>
     </div>
+    <div class="resp-action-sheet__header-reset" on:click={handleReset}>Reset</div>
     <ul class="resp-action-sheet__tab" bind:this={tab} on:change={handleTabChange}>
       {#each items as item, idx (item.key)}
         <li data-index={idx}>
@@ -194,6 +194,12 @@
         display: flex;
         align-items: center;
         padding: 1rem 1rem 0.25rem;
+      }
+
+      &-reset {
+        cursor: pointer;
+        color: var(--primary-color, #fc4451);
+        padding: 0rem 1rem 0.25rem;
       }
 
       &--draggable {
@@ -295,11 +301,6 @@
       &-label {
         padding: 6px 0;
       }
-    }
-
-    &__reset {
-      cursor: pointer;
-      color: var(--primary-color, #fc4451);
     }
 
     &__footer {
