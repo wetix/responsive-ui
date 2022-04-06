@@ -42,19 +42,19 @@
             class="resp-menu__item"
             class:resp-menu__item--separator={separator}
             class:resp-menu__item--disabled={option.disabled}
+            class:resp-menu--submenu={option.submenus}
+            class:resp-menu--open={option.collapsed === false}
             data-option={JSON.stringify(option)}
           >
-            <div
-              class="resp-menu__item"
-              class:resp-menu--submenu={option.submenus}
-              class:resp-menu--open={option.collapsed === false}
-            >
-              <slot name="menu-option" {option}>
+            <slot name="menu-option" {option}>
+              {#if option.href}
                 <a href={option.href} class="resp-menu__label">
                   {label}
                 </a>
-              </slot>
-            </div>
+              {:else}
+                <span class="resp-menu__label">{label}</span>
+              {/if}
+            </slot>
             {#if option.submenus && option.collapsed === false}
               <svelte:self
                 class="resp-menu__submenu"
