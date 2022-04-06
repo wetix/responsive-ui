@@ -15,15 +15,12 @@
 
   let openSideMenu = false;
   let subMenus: SubNavItem[] = [];
-  let sideMenu: HTMLElement;
 
-  onMount(() => {
-    sideMenu.addEventListener("click", (e: Event) => {
-      if ((e.target as HTMLElement).tagName == "A") {
-        openSideMenu = false;
-      }
-    });
-  });
+  const handleClickSideMenu = (e: Event) => {
+    if ((e.target as HTMLElement).tagName == "A") {
+      openSideMenu = false;
+    }
+  };
 
   const isActivePath = (path: string, matchEnd: boolean = false) => {
     if (matchEnd) path += "$";
@@ -122,7 +119,7 @@
 {/if}
 <!-- SIDE MENU -->
 <aside
-  bind:this={sideMenu}
+  on:click={handleClickSideMenu}
   class="resp-app-bar__menu"
   class:resp-app-bar__menu--close={!openSideMenu}
 >
