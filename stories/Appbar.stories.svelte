@@ -9,35 +9,35 @@
     {
       key: "tickets",
       label: "Tickets",
-      link: "/tickets",
+      href: "/tickets",
       icon: "#profile",
       subItems: [
         {
           key: "movie",
           label: "Movie",
-          link: "/movie"
+          href: "/movie"
         },
         {
           key: "event",
           label: "Event",
-          link: "/event"
+          href: "/event"
         },
         {
           key: "concert",
           label: "Concert",
-          link: "/concert"
+          href: "/concert"
         }
       ]
     },
-    { key: "profile", icon: "#profile", label: "Profile", link: "/me/profile" },
-    { key: "events", icon: "#profile", label: "Events", link: "/events" }
+    { key: "profile", icon: "#profile", label: "Profile", href: "/me/profile" },
+    { key: "events", icon: "#profile", label: "Events", href: "/events" }
   ];
 
   const trailingItems = [
-    { key: "A", label: "A", link: "/A" },
-    { key: "B", label: "B", link: "/B" },
-    { key: "C", label: "C", link: "/C" },
-    { key: "D", label: "D", link: "/D" }
+    { key: "A", label: "A", href: "/A" },
+    { key: "B", label: "B", href: "/B" },
+    { key: "C", label: "C", href: "/C" },
+    { key: "D", label: "D", href: "/D" }
   ];
 
   const options = [
@@ -56,7 +56,8 @@
   title="Components/App Bar"
   component={AppBar}
   argTypes={{
-    shadowed: { control: "boolean" }
+    shadowed: { control: "boolean" },
+    currentPath: { control: "text" }
     // centerItems: { control: "object" },
     // dropdownItems: { control: "object" },
   }}

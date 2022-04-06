@@ -1,83 +1,47 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { fade } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
   import Icon from "@responsive-ui/icon";
   import type { NavItem, SubNavItem } from "../types";
 
-  const dispatch = createEventDispatcher();
-
   let className = "";
   export { className as class };
-  export let selectedKey = "";
-  export let selectedSubmenuKey = "";
   export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
   export let trailingItems: NavItem[] = [];
+  export let currentPath: string = "/";
 
-  let openMenu = false;
-  let selectedIndex = 0;
+  let openSideMenu = false;
   let subMenus: SubNavItem[] = [];
-  $: selectedIndex = leadingItems.findIndex((v) => v.key === selectedKey);
 
-  // for selecting submenu
-  $: {
-    const menus = (leadingItems[selectedIndex] || {}).subItems || [];
-    if (menus.length <= 0) selectedSubmenuKey = "";
-    if (menus.length > 0 && selectedSubmenuKey === "")
-      selectedSubmenuKey = menus[0].key as string;
-    subMenus = menus;
+  const handleClickSideMenu = (e: Event) => {
+    if ((e.target as HTMLElement).tagName == "A") {
+      openSideMenu = false;
+    }
+  };
+
+  const isActivePath = (path: string, matchEnd: boolean = false) => {
+    path += `(\\?.*)?`;
+    if (matchEnd) path += "$";
+    const pattern = new RegExp(path, "gi");
+    return pattern.test(currentPath);
+  };
+
+  $: if (currentPath) {
+    subMenus = [];
+    const idx = leadingItems.findIndex((v) => isActivePath(v.href || ""));
+    if (idx >= 0) {
+      subMenus = leadingItems[idx].subItems || [];
+    }
+
+    // trigger re-render
+    currentPath = currentPath;
   }
-
-  const findElement = (e: Event) => {
-    return e
-      .composedPath()
-      .find((v) => v instanceof HTMLElement && v.dataset.key) as HTMLElement;
-  };
-
-  const handleMenu = (e: Event) => {
-    // if the element is underneath an anchor link, we will close the side menu
-    const el = findElement(e);
-    try {
-      if (!el.getElementsByTagName("a").item(0)) return;
-      if (el.getElementsByClassName("resp-app-bar__menu-sub").item(0)) return;
-
-      setTimeout(() => {
-        openMenu = false;
-      }, 150);
-    } catch (e) {}
-  };
-
-  const handleClickLeading = (e: Event) => {
-    const el = findElement(e);
-    if (!el) return;
-
-    //if element has sub items don't do anything
-    if (el.querySelector(".resp-app-bar__menu-sub")) return;
-
-    selectedKey = el.dataset.key as string;
-    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
-  };
-
-  const handleClickSubmenu = (e: Event) => {
-    const el = findElement(e);
-    if (!el) return;
-    if (el.classList.contains("resp-app-bar__menu-sub__item"))
-      selectedKey = el.dataset.leadingKey as string;
-
-    selectedSubmenuKey = el.dataset.key as string;
-    dispatch("menuchange", { selectedKey, selectedSubmenuKey });
-
-    setTimeout(() => {
-      openMenu = false;
-    }, 150);
-  };
 </script>
 
 <header
-  class="resp-app-bar {className}"
+  class={`resp-app-bar ${className}`}
   class:resp-app-bar--shadowed={shadowed}
   bind:clientHeight
   on:click
@@ -85,7 +49,10 @@
 >
   <div class="resp-app-bar__box">
     <div class="resp-app-bar__main">
-      <div class="resp-app-bar__icon-menu" on:click={() => (openMenu = !openMenu)}>
+      <div
+        class="resp-app-bar__icon-menu"
+        on:click={() => (openSideMenu = !openSideMenu)}
+      >
         {@html `<svg width="24" height="24" viewBox="0 0 24 24" role="img"><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" /></svg>`}
       </div>
       <div class="resp-app-bar__logo">
@@ -93,19 +60,10 @@
       </div>
       <div class="resp-app-bar__leading">
         <slot name="leading" items={leadingItems}>
-          <ul on:click={handleClickLeading}>
-            {#each leadingItems as { key, href, label, ...otherProps }, index (key)}
-              <li
-                class:resp-app-bar__leading-item--selected={selectedKey === key}
-                data-key={key}
-              >
-                <slot name="leading-item" item={leadingItems[index]} {index}>
-                  {#if href}
-                    <a {href} {...otherProps}>{label}</a>
-                  {:else}
-                    {label}
-                  {/if}
-                </slot>
+          <ul>
+            {#each leadingItems as { href, label, subItems, ...otherProps }}
+              <li class:resp-app-bar__leading-item--selected={isActivePath(href || "")}>
+                <a {href} {...otherProps}>{label}</a>
               </li>
             {/each}
           </ul>
@@ -114,9 +72,9 @@
       <div class="resp-app-bar__trailing">
         <slot name="trailing" items={trailingItems}>
           <ul>
-            {#each trailingItems as { href, label, selected, ...otherProps }, index}
-              <li class:resp-app-bar__subnav-item--selected={selected}>
-                <slot name="trailing-item" item={trailingItems[index]} {index} {selected}>
+            {#each trailingItems as { href, label, ...otherProps }, index}
+              <li>
+                <slot name="trailing-item" item={trailingItems[index]}>
                   <a {href} {...otherProps}>{label}</a>
                 </slot>
               </li>
@@ -129,20 +87,18 @@
 
   <!-- subnav -->
   {#if subMenus.length > 0}
-    <nav class="resp-app-bar__subnav" on:click={handleClickSubmenu}>
+    <nav class="resp-app-bar__subnav">
       <Scroll>
         <ul>
           {#each subMenus as { key, href, label, ...otherProps }}
-            {@const selected = selectedSubmenuKey === key}
             <li
               class="resp-app-bar__subnav-item"
-              class:resp-app-bar__subnav-item--selected={selected}
-              data-key={key}
+              class:resp-app-bar__subnav-item--selected={isActivePath(href || "", true)}
             >
               <a {href} {...otherProps}>
                 <span>{label}</span>
               </a>
-              {#if selected}
+              {#if isActivePath(href || "", true)}
                 <span class="resp-app-bar__subnav-indicator" transition:slide />
               {/if}
             </li>
@@ -153,38 +109,31 @@
   {/if}
 </header>
 
-{#if openMenu}
-  <div
-    class="resp-app-bar__overlay"
-    in:fade
-    out:fade
-    on:click={() => (openMenu = false)}
-  />
+{#if openSideMenu}
+  <div class="resp-app-bar__overlay" on:click={() => (openSideMenu = false)} />
 {/if}
 <!-- SIDE MENU -->
 <aside
+  on:click={handleClickSideMenu}
   class="resp-app-bar__menu"
-  class:resp-app-bar__menu--close={!openMenu}
-  on:click={handleMenu}
+  class:resp-app-bar__menu--close={!openSideMenu}
 >
   <header class="resp-app-bar__menu-header">
     <slot name="logo" />
-    <i class="resp-app-bar__menu-icon" on:click={() => (openMenu = false)}>
+    <i class="resp-app-bar__menu-icon" on:click={() => (openSideMenu = false)}>
       {@html `<svg viewBox="64 64 896 896" focusable="false" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z" /></svg>`}
     </i>
   </header>
   <div class="resp-app-bar__menu-body">
     <slot name="menu-body">
-      <ul on:click={handleClickLeading}>
-        {#each leadingItems as { key, href, label, icon, selected, ...otherProps }, index (key)}
+      <ul>
+        {#each leadingItems as { key, href, label, icon, ...otherProps }, index (key)}
           <!-- menu leading items -->
           <li
             class="resp-app-bar__menu-item"
-            class:resp-app-bar__menu-item--selected={selectedKey === key &&
-              (otherProps.subItems || []).length <= 0}
-            data-key={key}
+            class:resp-app-bar__menu-item--selected={isActivePath(href || "")}
           >
-            <slot name="menu-item" item={leadingItems[index]} {index} {selected}>
+            <slot name="menu-item" item={leadingItems[index]}>
               <input type="checkbox" id="check_{key}" />
               <label for="check_{key}">
                 {#if (otherProps.subItems || []).length > 0}
@@ -209,10 +158,8 @@
                   </div>
                 {:else}
                   <a style="height: 100%; display: flex;" {href} {...otherProps}>
-                    <span style="width: 100%;" class="item-label">
-                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
-                      <span>{label}</span>
-                    </span>
+                    <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                    {label}
                   </a>
                 {/if}
               </label>
@@ -220,22 +167,20 @@
             {#if (otherProps.subItems || []).length > 0}
               <!-- menu subnav items -->
               <div class="resp-app-bar__menu-sub">
-                <ul on:click|stopPropagation={handleClickSubmenu}>
+                <ul>
                   {#each otherProps.subItems || [] as sub, subIndex}
-                    {@const subSelected = selectedSubmenuKey === sub.key}
                     <li
                       class="resp-app-bar__menu-sub__item"
-                      class:resp-app-bar__menu-sub__item__selected={subSelected}
-                      data-key={sub.key}
-                      data-leading-key={key}
+                      class:resp-app-bar__menu-sub__item__selected={isActivePath(
+                        sub.href || "",
+                        true
+                      )}
                     >
                       <slot
                         name="menu-subitem"
-                        item={sub}
-                        index={subIndex}
-                        selected={subSelected}
+                        item={leadingItems[index].subMenus[subIndex]}
                       >
-                        <a href={sub.href} {...otherProps}><span>{sub.label}</span></a>
+                        <a href={sub.href} {...otherProps}>{sub.label}</a>
                       </slot>
                     </li>
                   {/each}
