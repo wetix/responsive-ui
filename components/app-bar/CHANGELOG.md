@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.12](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.11...v1.1.0-alpha.12) (2022-04-06)
+
+
+### Bug Fixes
+
+* refactor appbar and menu ([11a0f69](https://github.com/wetix/responsive-ui/commit/11a0f690b5a9e2494db1bf616919cb9246142465))
+* refactor appbar classes ([3982c7c](https://github.com/wetix/responsive-ui/commit/3982c7cae0a79f1c04d47bbe2fa34d4ce67f3451))
+
+
+
+
+
 # [1.1.0-alpha.11](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.10...v1.1.0-alpha.11) (2022-04-06)
 
 
