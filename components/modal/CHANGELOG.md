@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.10](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.9...v1.1.0-alpha.10) (2022-04-05)
+
+
+### Bug Fixes
+
+* css naming ([7923b3d](https://github.com/wetix/responsive-ui/commit/7923b3d6de86b0e6201e34ecb4e3420c60087c5f))
+
+
+
+
+
+# [1.1.0-alpha.9](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.8...v1.1.0-alpha.9) (2022-03-17)
+
+
+### Bug Fixes
+
+* appbar & modal ([e7a2fa8](https://github.com/wetix/responsive-ui/commit/e7a2fa8e8f2719b0750bf6181da240cb92509fe2))
+* Modal close icon should not be in header ([6acc567](https://github.com/wetix/responsive-ui/commit/6acc56762a001f9cf9c21a22051611bf4a7a4930))
+* z-index ([8b07c2a](https://github.com/wetix/responsive-ui/commit/8b07c2a0d9b564435715c77c395179d4d8ad471b))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 
