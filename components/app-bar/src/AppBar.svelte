@@ -115,29 +115,29 @@
 <!-- SIDE MENU -->
 <aside
   on:click={handleClickSideMenu}
-  class="resp-app-bar__menu"
-  class:resp-app-bar__menu--close={!openSideMenu}
+  class="resp-app-bar__sidemenu"
+  class:resp-app-bar__sidemenu--close={!openSideMenu}
 >
-  <header class="resp-app-bar__menu-header">
+  <header class="resp-app-bar__sidemenu-header">
     <slot name="logo" />
-    <i class="resp-app-bar__menu-icon" on:click={() => (openSideMenu = false)}>
+    <i class="resp-app-bar__sidemenu-icon" on:click={() => (openSideMenu = false)}>
       {@html `<svg viewBox="64 64 896 896" focusable="false" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z" /></svg>`}
     </i>
   </header>
-  <div class="resp-app-bar__menu-body">
+  <div class="resp-app-bar__sidemenu-body">
     <slot name="menu-body">
       <ul>
         {#each leadingItems as { key, href, label, icon, ...otherProps }, index (key)}
           <!-- menu leading items -->
           <li
-            class="resp-app-bar__menu-item"
-            class:resp-app-bar__menu-item--selected={isActivePath(href || "")}
+            class="resp-app-bar__sidemenu-item"
+            class:resp-app-bar__sidemenu-item--selected={isActivePath(href || "")}
           >
             <slot name="menu-item" item={leadingItems[index]}>
               <input type="checkbox" id="check_{key}" />
               <label for="check_{key}">
                 {#if (otherProps.subItems || []).length > 0}
-                  <div class="resp-app-bar__menu-item__dropdown">
+                  <div class="resp-app-bar__sidemenu-item__dropdown">
                     <span style="width: 100%;" class="item-label">
                       <Icon useHref={icon} style="width: 24px; height: 24px;" />
                       <span>{label}</span>
@@ -166,12 +166,12 @@
             </slot>
             {#if (otherProps.subItems || []).length > 0}
               <!-- menu subnav items -->
-              <div class="resp-app-bar__menu-sub">
+              <div class="resp-app-bar__sidemenu-sub">
                 <ul>
                   {#each otherProps.subItems || [] as sub, subIndex}
                     <li
-                      class="resp-app-bar__menu-sub__item"
-                      class:resp-app-bar__menu-sub__item__selected={isActivePath(
+                      class="resp-app-bar__sidemenu-sub__item"
+                      class:resp-app-bar__sidemenu-sub__item__selected={isActivePath(
                         sub.href || "",
                         true
                       )}
@@ -192,7 +192,7 @@
       </ul>
     </slot>
   </div>
-  <div class="resp-app-bar__menu-footer">
+  <div class="resp-app-bar__sidemenu-footer">
     <div>
       <slot name="footer" />
     </div>
@@ -347,7 +347,7 @@
       }
     }
 
-    &__menu,
+    &__sidemenu,
     &__overlay {
       position: fixed;
       top: 0;
@@ -361,7 +361,7 @@
       background: rgba(0, 0, 0, 0.65);
     }
 
-    &__menu {
+    &__sidemenu {
       background: #fff;
       width: 70%;
       min-width: 250px;
@@ -415,8 +415,8 @@
         overflow: hidden;
 
         &__item {
-          span {
-            padding: 0rem 1rem 0rem 2rem;
+          a {
+            padding: 0.5rem 1rem 0.5rem 3rem !important;
           }
 
           &__selected {
@@ -459,7 +459,7 @@
           display: none;
         }
 
-        input[type="checkbox"]:checked ~ .resp-app-bar__menu-sub {
+        input[type="checkbox"]:checked ~ .resp-app-bar__sidemenu-sub {
           height: auto;
         }
 
@@ -472,7 +472,7 @@
 
   .resp-app-bar,
   .resp-app-bar__subnav,
-  .resp-app-bar__menu {
+  .resp-app-bar__sidemenu {
     a {
       cursor: pointer;
       color: inherit;
