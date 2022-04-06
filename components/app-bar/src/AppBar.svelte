@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { slide } from "svelte/transition";
   import Scroll from "@responsive-ui/hscroll";
   import Icon from "@responsive-ui/icon";
