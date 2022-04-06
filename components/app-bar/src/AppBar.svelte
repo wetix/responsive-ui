@@ -23,13 +23,9 @@
   };
 
   const isActivePath = (path: string, matchEnd: boolean = false) => {
+    path += `(\\?.*)?`;
     if (matchEnd) path += "$";
-
     const pattern = new RegExp(path, "gi");
-    // if (currentPath == "/movies/coming-soon" && matchEnd) {
-    //   console.log("pattern=> ", pattern);
-    //   console.log("result=> ", pattern.test(currentPath));
-    // }
     return pattern.test(currentPath);
   };
 
@@ -103,7 +99,7 @@
               <a {href} {...otherProps}>
                 <span>{label}</span>
               </a>
-              {#if new RegExp(href || "", "gi").test(currentPath)}
+              {#if isActivePath(href || "", true)}
                 <span class="resp-app-bar__subnav-indicator" transition:slide />
               {/if}
             </li>
