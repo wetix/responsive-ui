@@ -56,6 +56,11 @@ export interface AppBarSlots {
     selected: boolean;
     item: NavItem;
   };
+  "menu-subitem": {
+    index: number;
+    selected: boolean;
+    item: NavItem;
+  }
 }
 
 export declare class AppBarComponent extends SvelteComponentTyped<
