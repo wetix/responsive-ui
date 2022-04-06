@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.11](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.10...v1.1.0-alpha.11) (2022-04-06)
+
+
+### Bug Fixes
+
+* isActivePath ([b4192d7](https://github.com/wetix/responsive-ui/commit/b4192d7752765c4955b69fcf100739fc438a5317))
+* side menu ([5b70673](https://github.com/wetix/responsive-ui/commit/5b70673bb54b7c7c47a95833b5afa6c6a7cde198))
+* storybook ([7fb9311](https://github.com/wetix/responsive-ui/commit/7fb9311ed242e868e52fadf6f49d81fcf2d140e2))
+
+
+
+
+
 # [1.1.0-alpha.10](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.9...v1.1.0-alpha.10) (2022-04-05)
 
 
