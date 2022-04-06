@@ -131,7 +131,7 @@
           <!-- menu leading items -->
           <li
             class="resp-app-bar__menu-item"
-            class:resp-app-bar__menu-item--selected={isActivePath(href || "", true)}
+            class:resp-app-bar__menu-item--selected={isActivePath(href || "")}
           >
             <slot name="menu-item" item={leadingItems[index]}>
               <input type="checkbox" id="check_{key}" />
@@ -172,7 +172,8 @@
                     <li
                       class="resp-app-bar__menu-sub__item"
                       class:resp-app-bar__menu-sub__item__selected={isActivePath(
-                        sub.href || ""
+                        sub.href || "",
+                        true
                       )}
                     >
                       <slot
