@@ -134,7 +134,7 @@
             class:resp-app-bar__sidemenu-item--selected={isActivePath(href || "")}
           >
             <slot name="menu-item" item={leadingItems[index]}>
-              <input type="checkbox" id="check_{key}" />
+              <input type="checkbox" id="check_{key}" checked />
               <label for="check_{key}">
                 {#if (otherProps.subItems || []).length > 0}
                   <div class="resp-app-bar__sidemenu-item__dropdown">
