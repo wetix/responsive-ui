@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.13](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.12...v1.1.0-alpha.13) (2022-04-07)
+
+
+### Bug Fixes
+
+* appbar sidemenu no collapse ([9351907](https://github.com/wetix/responsive-ui/commit/935190747c51526dc19e3ddf0a3d923e9f330f8b))
+
+
+
+
+
 # [1.1.0-alpha.12](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.11...v1.1.0-alpha.12) (2022-04-06)
 
 
