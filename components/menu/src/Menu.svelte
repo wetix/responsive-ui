@@ -26,7 +26,7 @@
 
 <svelte:window on:click={() => (open = false)} />
 
-<div class="resp-menu__trigger" on:click|stopPropagation={() => (open = !open)}>
+<div class="resp-menu__trigger">
   <slot />
   {#if open}
     <div
