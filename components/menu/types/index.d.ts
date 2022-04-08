@@ -16,6 +16,7 @@ export interface MenuProps {
   class?: string;
   multiple?: boolean;
   options: MenuOption[];
+  open?: boolean;
   style?: string;
 }
 
