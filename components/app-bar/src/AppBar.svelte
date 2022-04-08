@@ -229,6 +229,9 @@
         width: 100%;
         text-align: left;
         margin: 1rem;
+        div {
+          width: max-content;
+        }
       }
     }
 
