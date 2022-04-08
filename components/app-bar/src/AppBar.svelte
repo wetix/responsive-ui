@@ -157,7 +157,7 @@
                     </svg>
                   </div>
                 {:else}
-                  <a style="height: 100%; display: flex;" {href} {...otherProps}>
+                  <a class="item-label" style="height: 100%; display: flex;" {href} {...otherProps}>
                     <Icon useHref={icon} style="width: 24px; height: 24px;" />
                     {label}
                   </a>
