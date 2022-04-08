@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.14](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.13...v1.1.0-alpha.14) (2022-04-08)
+
+
+### Bug Fixes
+
+* appbar logo div width ([a4309f5](https://github.com/wetix/responsive-ui/commit/a4309f59605e984ed25ab98c2002b9e6b325fd4a))
+* tag padding ([d53f2a3](https://github.com/wetix/responsive-ui/commit/d53f2a34673d80dee79e2fccbc187b19e497c6e0))
+
+
+
+
+
 # [1.1.0-alpha.13](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.12...v1.1.0-alpha.13) (2022-04-07)
 
 
