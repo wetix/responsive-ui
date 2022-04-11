@@ -157,14 +157,11 @@
                     </svg>
                   </div>
                 {:else}
-                  <a
-                    class="item-label"
-                    style="height: 100%; display: flex;"
-                    {href}
-                    {...otherProps}
-                  >
-                    <Icon useHref={icon} style="width: 16px; height: 16px;" />
-                    <span>{label}</span>
+                  <a {href}>
+                    <span class="item-label" style="height: 100%;" {...otherProps}>
+                      <Icon useHref={icon} style="width: 16px; height: 16px;" />
+                      <span>{label}</span>
+                    </span>
                   </a>
                 {/if}
               </label>
@@ -447,7 +444,7 @@
         .item-label {
           align-items: center;
           span {
-            padding-left: 10px;
+            padding-left: 5px;
             vertical-align: middle;
           }
         }
