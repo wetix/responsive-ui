@@ -32,16 +32,12 @@
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
-    font-size: var(--font-size-sm, 12px);
+    font-size: var(--font-size-xs, 10px);
     color: #817e7e;
     padding: 1px 5px;
     border-radius: 3px;
     border: 1px solid #817e7e;
     overflow: hidden;
-
-    @media (max-width: 768px) {
-      font-size: var(--font-size-xs, 10px);
-    }
 
     &__close {
       cursor: pointer;
