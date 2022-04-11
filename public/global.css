@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 :root {
+  --padding-xs: 10px;
   --padding-sm: 0.7rem;
   --padding: 1rem;
+  --margin: 1rem;
   --font-size-lg: 20px;
 }
 
