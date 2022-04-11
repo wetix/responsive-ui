@@ -1,49 +1,46 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Example/Introduction" />
+<Meta title="Docs/Introduction" />
 
 # responsive-ui
 
 WeTix responsive-ui component set
 
-Test boilerplate:
-```
-import { render, fireEvent } from '@testing-library/svelte';
-import Component from "../src/Component.svelte";
-import SlotTest from "../../../test/slot/SlotTest.svelte";
+## Ready Components
 
-describe("Component test", () => {
-  const props = {
-
-  };
-
-  it("should render properly", () => {
-    const result = render(Component, { props });
-    expect(() => result).not.toThrow();
-  });
-
-  it("should render with slots", () => {
-    const result = render(SlotTest, { props: { component: Component, props } });
-    expect(() => result).not.toThrow();
-  });
-
-  it("should have correct props", () => {
-    const { container } = render(Component, { props });
-    const component = container.querySelector("") as HTMLElement;
-  });
-
-  it("fireEvent", async () => {
-    const { container } = render(Component, { props });
-    const component = container.querySelector("") as HTMLElement;
-  });
-});
-```
-
-Testing Classes:
-```
-//test class
-let customClass = props.class.split(" ");
-for (let c of customClass) {
-  expect(div.classList).toContain(c);
-}
-```
+- Accordion
+- Action Sheet
+- App Bar
+- Badge
+- Bottom Bar
+- Bottom Sheet
+- Button
+- Card
+- Carousel
+- Checkbox
+- Chip
+- DatePicker
+- Docker
+- Ellipsis
+- Floating Action Button
+- Header
+- Horizontal Scroll
+- Icon
+- Input
+- Input Number
+- Label
+- Layout (Row, Column)
+- Loader
+- Menu (Dropdown)
+- Modal
+- Quantity
+- Search
+- Select
+- Sidebar
+- Snackbar
+- Switch
+- Table
+- Tag
+- Text Area
+- Tooltip
+- Upload

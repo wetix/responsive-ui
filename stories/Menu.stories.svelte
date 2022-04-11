@@ -16,6 +16,8 @@
       label: "D"
     }
   ];
+
+  let open = false;
 </script>
 
 <Meta
@@ -35,8 +37,8 @@
 />
 
 <Template let:args>
-  <Menu {options} {...args}>
-    <div>Click me</div>
+  <Menu {options} {...args} bind:open>
+    <div on:click|stopPropagation={() => (open = !open)}>Click me</div>
   </Menu>
 </Template>
 

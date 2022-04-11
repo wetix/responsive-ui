@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Docs/Tests" />
+
+# Create new test cases
+
+Test cases are created to make sure the components work properly on release.
+
+`@testing-library/svelte` and `jest` is used for testing the individual components.
+
+### Test boilerplate:
+```
+import { render, fireEvent } from '@testing-library/svelte';
+import Component from "../src/Component.svelte";
+import SlotTest from "../../../test/slot/SlotTest.svelte";
+
+describe("Component test", () => {
+  const props = {
+
+  };
+
+  it("should render properly", () => {
+    const result = render(Component, { props });
+    expect(() => result).not.toThrow();
+  });
+
+  it("should render with slots", () => {
+    const result = render(SlotTest, { props: { component: Component, props } });
+    expect(() => result).not.toThrow();
+  });
+
+  it("should have correct props", () => {
+    const { container } = render(Component, { props });
+    const component = container.querySelector("") as HTMLElement;
+  });
+
+  it("fireEvent", async () => {
+    const { container } = render(Component, { props });
+    const component = container.querySelector("") as HTMLElement;
+  });
+});
+```
+
+### Testing Classes:
+```
+//test class
+let customClass = props.class.split(" ");
+c.forEach((v) => {
+  expect(div.classList).toContain(v);
+});
+```
+
+## Components Tested
+
+- [x] Accordion
+- [ ] Action Sheet
+- [ ] App Bar
+- [x] Badge
+- [x] Bottom Bar
+- [x] Bottom Sheet
+- [x] Button
+- [x] Card
+- [ ] Carousel
+- [x] Checkbox
+- [x] Chip
+- [x] DatePicker
+- [x] Docker
+- [x] Ellipsis
+- [x] Floating Action Button
+- [x] Header
+- [x] Horizontal Scroll
+- [x] Icon
+- [x] Input
+- [x] Input Number
+- [x] Label
+- [x] Layout (Row, Column)
+- [x] Loader
+- [x] Menu (Dropdown)
+- [ ] Modal
+- [x] Quantity
+- [ ] Search
+- [ ] Select
+- [ ] Sidebar
+- [ ] Snackbar
+- [ ] Switch
+- [x] Table
+- [ ] Tag
+- [ ] Text Area
+- [ ] Tooltip
+- [ ] Upload
