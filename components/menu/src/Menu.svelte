@@ -13,20 +13,20 @@
   export let align: "left" | "right" | "center" = "right";
   export const path: number[] = [];
 
-  const handleSelect = (e: Event) => {
-    e.stopPropagation();
-    const el = e
-      .composedPath()
-      .find((v) => v instanceof HTMLElement && v.dataset.option) as HTMLElement;
-    if (!el) return;
-    const option = JSON.parse(el.dataset.option as string) as MenuOption;
-    dispatch("optionselect", { option });
-  };
+  // const handleSelect = (e: Event) => {
+  //   e.stopPropagation();
+  //   const el = e
+  //     .composedPath()
+  //     .find((v) => v instanceof HTMLElement && v.dataset.option) as HTMLElement;
+  //   if (!el) return;
+  //   const option = JSON.parse(el.dataset.option as string) as MenuOption;
+  //   dispatch("optionselect", { option });
+  // };
 </script>
 
 <svelte:window on:click={() => (open = false)} />
 
-<div class="resp-menu__trigger" on:click|stopPropagation={() => (open = !open)}>
+<div class="resp-menu__trigger">
   <slot />
   {#if open}
     <div
@@ -72,7 +72,7 @@
 <style lang="scss" global>
   .resp-menu {
     position: absolute;
-    top: 100%;
+    top: 110%;
     display: block;
     background: #fff;
     border-radius: var(--border-radius, 10px);
