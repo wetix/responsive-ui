@@ -447,7 +447,7 @@
         .item-label {
           align-items: center;
           span {
-            padding-left: var(--padding-xs, 10px);
+            padding-left: 10px;
             vertical-align: middle;
           }
         }
