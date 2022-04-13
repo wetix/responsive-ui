@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.17](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.16...v1.1.0-alpha.17) (2022-04-13)
+
+**Note:** Version bump only for package @responsive-ui/accordion
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 

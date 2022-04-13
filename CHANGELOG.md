@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.17](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.16...v1.1.0-alpha.17) (2022-04-13)
+
+
+### Bug Fixes
+
+* appbar menu padding ([1c062ec](https://github.com/wetix/responsive-ui/commit/1c062ec29ad44b72856171297e5f2bdccaa30333))
+* menu padding and margin ([4294952](https://github.com/wetix/responsive-ui/commit/4294952d1b475b92cb1108a434bf20529e91c882))
+
+
+
+
+
 # [1.1.0-alpha.16](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.15...v1.1.0-alpha.16) (2022-04-11)
 
 
