@@ -17,7 +17,7 @@
     type="checkbox"
     {value}
     on:change
-    style="display: none"
+    style="display: none;"
   />
   <span class="resp-checkbox__action">
     <i class="resp-checkbox__icon">
