@@ -9,42 +9,42 @@
     {
       key: "tickets",
       label: "Tickets",
-      href: "/tickets",
+      href: "#",
       icon: "#profile",
       subItems: [
         {
           key: "movie",
           label: "Movie",
-          href: "/movie"
+          href: "#"
         },
         {
           key: "event",
           label: "Event",
-          href: "/event"
+          href: "#"
         },
         {
           key: "concert",
           label: "Concert",
-          href: "/concert"
+          href: "#"
         }
       ]
     },
-    { key: "profile", icon: "#profile", label: "Profile", href: "/me/profile" },
-    { key: "events", icon: "#profile", label: "Events", href: "/events" }
+    { key: "profile", icon: "#profile", label: "Profile", href: "#" },
+    { key: "events", icon: "#profile", label: "Events", href: "#" }
   ];
 
   const trailingItems = [
-    { key: "A", label: "A", href: "/A" },
-    { key: "B", label: "B", href: "/B" },
-    { key: "C", label: "C", href: "/C" },
-    { key: "D", label: "D", href: "/D" }
+    { key: "A", label: "A", href: "#" },
+    { key: "B", label: "B", href: "#" },
+    { key: "C", label: "C", href: "#" },
+    { key: "D", label: "D", href: "#" }
   ];
 
   const options = [
-    { key: "A", label: "A", link: "/A", separator: true },
-    { key: "B", label: "B", link: "/B" },
-    { key: "C", label: "C", link: "/C", separator: true },
-    { key: "D", label: "D", link: "/D" }
+    { key: "A", label: "A", link: "#", separator: true },
+    { key: "B", label: "B", link: "#" },
+    { key: "C", label: "C", link: "#", separator: true },
+    { key: "D", label: "D", link: "#" }
   ];
 
   const handleOptionSelect = (e) => {

@@ -142,7 +142,11 @@
                       <Icon useHref={icon} style="width: 16px; height: 16px;" />
                       <span>{label}</span>
                     </span>
-                    <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
+                    <svg
+                      class="drop-icon"
+                      style="width: 20px; height: 20px;"
+                      viewBox="-14 -25 70 70"
+                    >
                       <defs />
                       <g>
                         <path
@@ -456,8 +460,8 @@
           padding: 0.5rem 1rem;
         }
 
-        label > div > svg {
-          transform: rotateZ(180deg);
+        label > div > .drop-icon {
+          transform: rotateZ(-90deg);
           transition: transform 0.5s ease;
         }
 
@@ -469,7 +473,7 @@
           height: auto;
         }
 
-        input[type="checkbox"]:checked ~ label > div > svg {
+        input[type="checkbox"]:checked ~ label > div > .drop-icon {
           transform: unset;
         }
       }
