@@ -8,6 +8,8 @@ Test cases are created to make sure the components work properly on release.
 
 `@testing-library/svelte` and `jest` is used for testing the individual components.
 
+For creating tests for components, please refer to below:
+
 ### Test boilerplate:
 ```
 import { render, fireEvent } from '@testing-library/svelte';
@@ -29,6 +31,7 @@ describe("Component test", () => {
     expect(() => result).not.toThrow();
   });
 
+  // getElementById, getElementsByClassName, getElementsByTagName may be used:
   it("should have correct props", () => {
     const { container } = render(Component, { props });
     const component = container.querySelector("") as HTMLElement;

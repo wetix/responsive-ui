@@ -139,10 +139,14 @@
                 {#if (otherProps.subItems || []).length > 0}
                   <div class="resp-app-bar__sidemenu-item__dropdown">
                     <span style="width: 100%;" class="item-label">
-                      <Icon useHref={icon} style="width: 24px; height: 24px;" />
+                      <Icon useHref={icon} style="width: 16px; height: 16px;" />
                       <span>{label}</span>
                     </span>
-                    <svg style="width: 20px; height: 20px;" viewBox="-14 -25 70 70">
+                    <svg
+                      class="drop-icon"
+                      style="width: 20px; height: 20px;"
+                      viewBox="-14 -25 70 70"
+                    >
                       <defs />
                       <g>
                         <path
@@ -157,9 +161,11 @@
                     </svg>
                   </div>
                 {:else}
-                  <a class="item-label" style="height: 100%; display: flex;" {href} {...otherProps}>
-                    <Icon useHref={icon} style="width: 24px; height: 24px;" />
-                    {label}
+                  <a {href}>
+                    <span class="item-label" style="height: 100%;" {...otherProps}>
+                      <Icon useHref={icon} style="width: 16px; height: 16px;" />
+                      <span>{label}</span>
+                    </span>
                   </a>
                 {/if}
               </label>
@@ -248,7 +254,7 @@
       li {
         cursor: pointer;
         white-space: nowrap;
-        margin: 0 0.5rem;
+        margin: 0 var(--margin, 1rem);
       }
     }
 
@@ -442,6 +448,7 @@
         .item-label {
           align-items: center;
           span {
+            padding-left: 5px;
             vertical-align: middle;
           }
         }
@@ -453,8 +460,8 @@
           padding: 0.5rem 1rem;
         }
 
-        label > div > svg {
-          transform: rotateZ(180deg);
+        label > div > .drop-icon {
+          transform: rotateZ(-90deg);
           transition: transform 0.5s ease;
         }
 
@@ -466,7 +473,7 @@
           height: auto;
         }
 
-        input[type="checkbox"]:checked ~ label > div > svg {
+        input[type="checkbox"]:checked ~ label > div > .drop-icon {
           transform: unset;
         }
       }
