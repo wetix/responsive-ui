@@ -8,6 +8,7 @@ export interface NavItem extends Record<string, any> {
   href?: string;
   search?: string;
   icon?: string;
+  target?: string;
   subItems?: SubNavItem[];
 }
 

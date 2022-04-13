@@ -62,8 +62,14 @@
         <slot name="leading" items={leadingItems}>
           <ul>
             {#each leadingItems as { href, label, subItems, ...otherProps }}
-              <li class:resp-app-bar__leading-item--selected={isActivePath(href || "")}>
-                <a {href} {...otherProps}>{label}</a>
+              <li class="resp-app-bar__leading-item">
+                <a
+                  {href}
+                  {...otherProps}
+                  class:resp-app-bar__leading-item--selected={isActivePath(href || "")}
+                >
+                  {label}
+                </a>
               </li>
             {/each}
           </ul>
@@ -129,10 +135,7 @@
       <ul>
         {#each leadingItems as { key, href, label, icon, ...otherProps }, index (key)}
           <!-- menu leading items -->
-          <li
-            class="resp-app-bar__sidemenu-item"
-            class:resp-app-bar__sidemenu-item--selected={isActivePath(href || "")}
-          >
+          <li class="resp-app-bar__sidemenu-item">
             <slot name="menu-item" item={leadingItems[index]}>
               <input type="checkbox" id="check_{key}" checked />
               <label for="check_{key}">
@@ -161,8 +164,12 @@
                     </svg>
                   </div>
                 {:else}
-                  <a {href}>
-                    <span class="item-label" style="height: 100%;" {...otherProps}>
+                  <a
+                    class:resp-app-bar__sidemenu-item--selected={isActivePath(href || "")}
+                    {href}
+                    {...otherProps}
+                  >
+                    <span class="item-label" style="height: 100%;">
                       <Icon useHref={icon} style="width: 16px; height: 16px;" />
                       <span>{label}</span>
                     </span>
@@ -175,18 +182,21 @@
               <div class="resp-app-bar__sidemenu-sub">
                 <ul>
                   {#each otherProps.subItems || [] as sub, subIndex}
-                    <li
-                      class="resp-app-bar__sidemenu-sub__item"
-                      class:resp-app-bar__sidemenu-sub__item__selected={isActivePath(
-                        sub.href || "",
-                        true
-                      )}
-                    >
+                    <li class="resp-app-bar__sidemenu-sub__item">
                       <slot
                         name="menu-subitem"
                         item={leadingItems[index].subMenus[subIndex]}
                       >
-                        <a href={sub.href} {...otherProps}>{sub.label}</a>
+                        <a
+                          class:resp-app-bar__sidemenu-sub__item__selected={isActivePath(
+                            sub.href || "",
+                            true
+                          )}
+                          href={sub.href}
+                          {...otherProps}
+                        >
+                          {sub.label}
+                        </a>
                       </slot>
                     </li>
                   {/each}
@@ -305,7 +315,6 @@
 
     &__subnav {
       background-color: #fc4451;
-      color: #fff;
       z-index: 450;
 
       ul {
@@ -323,6 +332,7 @@
             width: 100%;
 
             span {
+              color: #fff;
               margin: 0 1rem;
             }
           }
@@ -485,7 +495,6 @@
   .resp-app-bar__sidemenu {
     a {
       cursor: pointer;
-      color: inherit;
       text-decoration: none;
       display: block;
     }
