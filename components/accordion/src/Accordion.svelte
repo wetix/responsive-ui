@@ -45,15 +45,14 @@
         display: inline-block;
         padding: 4px;
         transition: all 0.3s;
-        transform-origin: 50% 50%;
-        transform: rotate(225deg);
+        transform-origin: center;
+        transform: rotate(-45deg);
       }
     }
 
     &__content {
       height: 0;
       overflow: hidden;
-      background: #fff;
       transition: all 0.5s;
 
       &-box {
