@@ -15,8 +15,13 @@
   let openSideMenu = false;
   let subMenus: SubNavItem[] = [];
 
+  const findAnchor = (e: Event) => {
+    return e.composedPath().find((v) => (v as HTMLElement).tagName == "A") as HTMLElement;
+  };
+
   const handleClickSideMenu = (e: Event) => {
-    if ((e.target as HTMLElement).tagName == "A") {
+    const el = findAnchor(e);
+    if (el) {
       openSideMenu = false;
     }
   };

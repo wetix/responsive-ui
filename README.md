@@ -16,11 +16,13 @@
 
 ## 🔨 Installation and Usage
 
+npm:
+
 ```console
 npm install responsive-ui
 ```
 
-or
+yarn:
 
 ```console
 yarn add responsive-ui
@@ -61,19 +63,19 @@ yarn add responsive-ui
 - [@responsive-ui/modal](https://github.com/wetix/responsive-ui/tree/main/components/modal)
 - [@responsive-ui/poster](https://github.com/wetix/responsive-ui/tree/main/components/poster)
 - [@responsive-ui/quantity](https://github.com/wetix/responsive-ui/tree/main/components/quantity)
-<!-- - [@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/main/components/responsive) -->
 - [@responsive-ui/row](https://github.com/wetix/responsive-ui/tree/main/components/row)
-<!-- - [@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/main/components/search) -->
 - [@responsive-ui/select](https://github.com/wetix/responsive-ui/tree/main/components/select)
 - [@responsive-ui/show-more](https://github.com/wetix/responsive-ui/tree/main/components/show-more)
 - [@responsive-ui/snackbar](https://github.com/wetix/responsive-ui/tree/main/components/snackbar)
-<!-- - [@responsive-ui/stepper](https://github.com/wetix/responsive-ui/tree/main/components/stepper) -->
 - [@responsive-ui/switch](https://github.com/wetix/responsive-ui/tree/main/components/switch)
-<!-- - [@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/main/components/tab) -->
 - [@responsive-ui/table](https://github.com/wetix/responsive-ui/tree/main/components/table)
-<!-- - [@responsive-ui/tag](https://github.com/wetix/responsive-ui/tree/main/components/tag) -->
 - [@responsive-ui/textarea](https://github.com/wetix/responsive-ui/tree/main/components/textarea)
 - [@responsive-ui/tooltip](https://github.com/wetix/responsive-ui/tree/main/components/tooltip)
+<!-- - [@responsive-ui/responsive](https://github.com/wetix/responsive-ui/tree/main/components/responsive) -->
+<!-- - [@responsive-ui/search](https://github.com/wetix/responsive-ui/tree/main/components/search) -->
+<!-- - [@responsive-ui/stepper](https://github.com/wetix/responsive-ui/tree/main/components/stepper) -->
+<!-- - [@responsive-ui/tab](https://github.com/wetix/responsive-ui/tree/main/components/tab) -->
+<!-- - [@responsive-ui/tag](https://github.com/wetix/responsive-ui/tree/main/components/tag) -->
 <!-- - [@responsive-ui/upload](https://github.com/wetix/responsive-ui/tree/main/components/upload) -->
 
 ## Sponsors

@@ -85,8 +85,8 @@
   >
     <div slot="logo">
       <img
-        src="https://sb.wetix.my/wetix.svg"
-        style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
+        src="/wetix.svg"
+        style="height: 24px; width: auto; object-fit: contain; vertical-align: middle;"
         alt="WeTix"
       />
     </div>
@@ -158,8 +158,8 @@
   >
     <div slot="logo">
       <img
-        src="https://sb.wetix.my/_app/assets/wetix-0ab069ec.png"
-        style="height: 30px; width: auto; object-fit: contain; vertical-align: middle;"
+        src="/wetix.svg"
+        style="height: 24px; width: auto; object-fit: contain; vertical-align: middle;"
         alt="WeTix"
       />
     </div>

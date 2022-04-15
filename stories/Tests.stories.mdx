@@ -31,7 +31,7 @@ describe("Component test", () => {
     expect(() => result).not.toThrow();
   });
 
-  // getElementById, getElementsByClassName, getElementsByTagName may be used:
+  // getElementById, getElementsByClassName, getElementsByTagName may be used instead of querySelector:
   it("should have correct props", () => {
     const { container } = render(Component, { props });
     const component = container.querySelector("") as HTMLElement;
