@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.19](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.18...v1.1.0-alpha.19) (2022-04-15)
+
+
+### Bug Fixes
+
+* appbar closing due to anchor ([aa56d2a](https://github.com/wetix/responsive-ui/commit/aa56d2a88945160d6d41df9c52e143ad369cebc9))
+
+
+
+
+
 # [1.1.0-alpha.18](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.17...v1.1.0-alpha.18) (2022-04-13)
 
 
