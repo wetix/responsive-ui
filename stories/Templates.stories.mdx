@@ -4,15 +4,21 @@ import { Meta } from '@storybook/addon-docs';
 
 # Docs
 
-**folder structure:**
+## Folder structure
+
+Stories for components should be in the stories folder, with a subfolder for the component.
+Inside the subfolder should have a stories file, for testing the component and docs file for documentation.
 ```
-  stories
-    /Component
-      Component.docs.mdx
-      Component.stories.svelte
+/stories
+  /Component
+    Component.docs.mdx
+    Component.stories.svelte
 ```
 
 **docs template (markdown):**
+
+What should be displayed in the Docs page.
+
 ```
 import { Story, Preview } from "@storybook/addon-docs";
 
