@@ -1,8 +1,48 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Docs/Tests" />
+<Meta title="Docs/Templates" />
 
-# Create new test cases
+# Docs
+
+**folder structure:**
+```
+  stories
+    /Component
+      Component.docs.mdx
+      Component.stories.svelte
+```
+
+**docs template (markdown):**
+```
+import { Story, Preview } from "@storybook/addon-docs";
+
+# Component
+
+> Component short description
+
+## Description
+
+## Interfaces
+
+### Interface 1
+
+attribute | type | description | required
+--- | --- | --- | ---
+
+## Attributes
+
+attribute | type | description | default | required
+--- | --- | --- | --- | ---
+
+## Slots
+slot name | description | required
+--- | --- | ---
+
+## Usage
+
+```
+
+# Test cases
 
 Test cases are created to make sure the components work properly on release.
 
@@ -10,7 +50,9 @@ Test cases are created to make sure the components work properly on release.
 
 For creating tests for components, please refer to below:
 
-### Test boilerplate:
+## Boilerplates
+
+### Test boilerplate
 ```
 import { render, fireEvent } from '@testing-library/svelte';
 import Component from "../src/Component.svelte";
@@ -44,7 +86,7 @@ describe("Component test", () => {
 });
 ```
 
-### Testing Classes:
+### Testing Classes
 ```
 //test class
 let customClass = props.class.split(" ");
