@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Menu from "@responsive-ui/menu";
+  import docs from "./Menu.docs.mdx";
 
   const options = [
     {
@@ -23,6 +24,11 @@
 <Meta
   title="Components/Menu"
   component={Menu}
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
   argTypes={{
     fit: {
       control: { type: "select", options: ["none", "viewport"] }

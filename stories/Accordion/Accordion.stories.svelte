@@ -1,12 +1,18 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Accordion from "@responsive-ui/accordion";
-  import Quantity from "@responsive-ui//quantity";
+  import Quantity from "@responsive-ui/quantity";
+  import docs from "./Accordion.docs.mdx";
 </script>
 
 <Meta
   title="Components/Accordion"
   component={Accordion}
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
   argTypes={{
     disabled: { control: "boolean" },
     collapsed: { control: "boolean" }

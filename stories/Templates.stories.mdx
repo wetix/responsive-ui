@@ -15,7 +15,36 @@ Inside the subfolder should have a stories file, for testing the component and d
     Component.stories.svelte
 ```
 
-**docs template (markdown):**
+### Component.stories.svelte
+
+```
+<script>
+  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
+  import Component from "@responsive-ui/Component";
+  import docs from "./Component.docs.mdx";
+</script>
+
+<Meta
+  title="Components/Component"
+  component={Component}
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
+  argTypes={}
+/>
+
+<Template let:args>
+  <!-- Component goes here -->
+</Template>
+
+<Story
+  name="Default"
+  args={}
+/>
+```
+### Component.docs.mdx
 
 What should be displayed in the Docs page.
 
