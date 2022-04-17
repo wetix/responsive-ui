@@ -9,21 +9,44 @@ import { Story, Preview } from "@storybook/addon-docs";
 </Preview>
 
 ## Description
+- used for additional navigation
+- one options object needed
 
 ## Interfaces
 
-### Interface 1
+### MenuOption
 
 attribute | type | description | required
 --- | --- | --- | ---
+key | `string` | Key for the menu option | yes
+label | `string` | Label for the menu option | yes
+href | `string` | Link when clicked on | no
+disabled | `boolean` | Can be clicked or not | no
+collapsed | `boolean` | - | no
+submenus | `MenuOption[]` | submenus under the menu option | no
+separator | `boolean` | Whether the item has a separator beneath it or not | no
 
 ## Attributes
 
 attribute | type | description | default | required
 --- | --- | --- | --- | ---
+options | `MenuOption[]` | Options that the menu will display | `[]` | yes
+open | `boolean` | Whether the menu is open or not. Meant to be bound to a variable `bind:open` | `false` | yes
+align | `"left" / "right" / "center"` | Position of the menu | `"right"` | no
 
 ## Slots
 slot name | description | required
 --- | --- | ---
+`-` | general slot | no
 
 ## Usage
+Make sure to have a variable
+```
+let open = false;
+```
+and bind it to the menu
+```
+<Menu {options} bind:open>
+  <span>Click here</span>
+</Menu>
+```
