@@ -14,12 +14,12 @@ right.
 ### `NavItem`
 attribute | type | description | required
 --- | --- | --- | ---
-key | `string` | Key for determining whether page is selected or not. Must be unique | yes
-label | `string` | Label that will be displayed | yes
-href | `string` | link to another page when clicked | no
-search | `string` | search parameters `?` | no
-icon | `string` | Icon href to be displayed in the mobile side menu | no
-subItems | `SubNavItem[]` | Sub links for a main leading item. must be under the main item's URL | no
+`key` | `string` | Key for determining whether page is selected or not. Must be unique | yes
+`label` | `string` | Label that will be displayed | yes
+`href` | `string` | link to another page when clicked | no
+`search` | `string` | search parameters `?` | no
+`icon` | `string` | Icon href to be displayed in the mobile side menu | no
+`subItems` | `SubNavItem[]` | Sub links for a main leading item. must be under the main item's URL | no
 
 ### `SubNavItem`
 `SubNavItem` has all `NavItem` properties except for `subItems`.
@@ -28,22 +28,22 @@ subItems | `SubNavItem[]` | Sub links for a main leading item. must be under the
 
 attribute | type | description | default | required
 --- | --- | --- | --- | ---
-clientHeight | `number` | Meant to be bound so that the page can offset the content. `bind:clientHeight` | 0 | no
-shadowed | `boolean` | Add a bottom shadow. | `true` | no
-leadingItems | `NavItem[]` | The item object to be displayed at the center of the app bar. | `[]` | yes
-trailingItems | `NavItem[]` | The item object to be displayed at the end of the app bar. | `[]` | yes
-currentPath | `string` | Bound to current pathname. | `"/"` | yes
+`clientHeight` | `number` | Meant to be bound so that the page can offset the content. `bind:clientHeight` | `0` | no
+`shadowed` | `boolean` | Add a bottom shadow. | `true` | no
+`leadingItems` | `NavItem[]` | The item object to be displayed at the center of the app bar. | `[]` | yes
+`trailingItems` | `NavItem[]` | The item object to be displayed at the end of the app bar. | `[]` | yes
+`currentPath` | `string` | Bound to current pathname. | `"/"` | yes
 
 ## Slots
 slot name | description | required
 --- | --- | ---
-logo | Image/Text to be displayed on the left side. | yes
-leading | Replaces the leading items with other elements, use `let:item` | no
-trailing | Replaces the trailing items with other elements, use `let:item` | no
-menu-body | Replaces the body in the side menu with other elements | no
-menu-item | Replaces leading items with other elements, use `let:item`  | no
-menu-subitem | Replaces sub items with other elements, use `let:item` | no
-footer | Mobile side menu footer | no
+`logo` | Image/Text to be displayed on the left side. | yes
+`leading` | Replaces the leading items with other elements, use `let:item` | no
+`trailing` | Replaces the trailing items with other elements, use `let:item` | no
+`menu-body` | Replaces the body in the side menu with other elements | no
+`menu-item` | Replaces leading items with other elements, use `let:item`  | no
+`menu-subitem` | Replaces sub items with other elements, use `let:item` | no
+`footer` | Mobile side menu footer | no
 
 ## Usage
 

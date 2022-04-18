@@ -1,10 +1,20 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
+  import docs from "./Layout.docs.mdx";
+
   import Row from "@responsive-ui/row";
   import Column from "@responsive-ui/column";
 </script>
 
-<Meta title="Components/Layout" argTypes={{}} />
+<Meta
+  title="Components/Layout (Row & Column)"
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
+  argTypes={{}}
+/>
 
 <Template let:args>
   <Row>

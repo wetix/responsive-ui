@@ -4,22 +4,33 @@ import { Story, Preview } from "@storybook/addon-docs";
 
 > A collapsible block
 
+<Preview>
+  <Story id="components-accordion--default" />
+</Preview>
+
 ## Description
-
-## Interfaces
-
-### Interface 1
-
-attribute | type | description | required
---- | --- | --- | ---
+The `Accordion` is a collapsible div that will open/close when the header is clicked.
 
 ## Attributes
 
 attribute | type | description | default | required
 --- | --- | --- | --- | ---
+`caption` | string | Header text | `""` | yes
+`disabled` | boolean | Disabled accordions won't function when clicked | `false` | no
+`collapsed` | boolean | Whether the accordion is collapsed or not | `false` | no
 
 ## Slots
 slot name | description | required
 --- | --- | ---
+`label` | To set the header text. Overrides `caption` | no
+`-` | Content of the accordion | yes
 
 ## Usage
+
+```
+<Accordion caption="Click to toggle">
+  <div>
+    Content
+  </div>
+</Accordion>
+```
