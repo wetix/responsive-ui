@@ -10,12 +10,13 @@ export type Device = {
 export interface ColumnProps {
   id?: string;
   title?: string;
-  flex?: string;
+  flex?: null | number | string;
   xs?: number;
   sm?: number;
   md?: number;
-  xs?: number;
   lg?: number;
+  xl?: number;
+  sl?: number;
   class?: string;
   style?: string;
 }
