@@ -2,6 +2,11 @@ import { Story, Preview } from "@storybook/addon-docs";
 
 # Layout (Row & Column)
 
+```
+import Row from "@responsive-ui/row";
+import Column from "@responsive-ui/column";
+```
+
 > Flexbox for adjusting width of each item, or hiding items
 
 <Preview>
@@ -9,16 +14,53 @@ import { Story, Preview } from "@storybook/addon-docs";
 </Preview>
 
 ## Description
-- Row
-- Column
+- `Row` is a flex box (`display: flex`) with flex direction `row`
+- `Column` is a flex item that can be width adjusted.
+
+Maximum value is **24** shared among all columns.
 
 ## Attributes
 
+### Row
+
 attribute | type | description | default | required
 --- | --- | --- | --- | ---
+`justifyContent` | "flex-start" / "flex-end" / "center" / "space-between" / "space-around" / "space-evenly" / "initial" / "inherit" | `justify-content` css property | `space-between` | no
+`alignItems` | "stretch" / "center" / "flex-start" / "flex-end" / "baseline" / "initial" / "inherit" | `align-items` css property | `flex-start` | no
+`nowrap` | boolean | Set whether flexbox will wrap or not | `false` | no
+
+### Column
+
+attribute | type | description | default | required
+--- | --- | --- | --- | ---
+`flex` | null / number / string | `flex` css property. | `-` | no
+`xs` | number | sets width of the column when **max-width** is `576px` | `24` | no
+`sm` | number | sets width of the column when min-width is `576px` | `-` | no
+`md` | number | sets width of the column when min-width is `768px` | `-` | no
+`lg` | number | sets width of the column when min-width is `992px` | `-` | no
+`xl` | number | sets width of the column when min-width is `1200px` | `-` | no
+`sl` | number | sets width of the column when min-width is `1400px` | `-` | no
 
 ## Slots
+
+### Row
 slot name | description | required
 --- | --- | ---
+`-` | Flex items | yes
+
+### Column
+slot name | description | required
+--- | --- | ---
+`-` | Content of the flex item | yes
 
 ## Usage
+```
+<Row>
+  <Column xs={24} sm={16} md={12}>
+    Content
+  </Column>
+  <Column xs={0} sm={8} md={12}>
+    Content that will be hidden (xs)
+  </Column>
+</Row>
+```
