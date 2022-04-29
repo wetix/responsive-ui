@@ -11,7 +11,10 @@
 <div class="resp-accordion {className}" {...$$restProps}>
   <input {id} type="checkbox" {disabled} checked={!collapsed} on:change />
   <label class="resp-accordion__label" for={id}>
-    <slot name="label">{caption}</slot>
+    <div class="resp-accordion__label-content">
+      <slot name="label">{caption}</slot>
+      <slot name="label-right" />
+    </div>
   </label>
   <div class="resp-accordion__content">
     <div class="resp-accordion__content-box">
@@ -35,8 +38,15 @@
       border-bottom: 1px solid #e1e1e1;
       font-weight: 600;
 
+      &-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
       &:after {
         content: "";
+        flex-shrink: 0;
         position: absolute;
         top: calc(50% - 4px);
         right: 10px;
