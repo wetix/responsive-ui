@@ -57,7 +57,7 @@
     <div
       {...$$restProps}
       class="resp-modal {className}"
-      role="alert"
+      role="dialog"
       aria-modal="true"
       aria-labelledby="modal-header"
       in:fade
