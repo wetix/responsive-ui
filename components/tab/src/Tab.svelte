@@ -79,8 +79,10 @@
     }
 
     nav {
-      padding: 0 15px;
+      display: flex;
+      justify-content: center;
       white-space: nowrap;
+      width: 100%;
       overflow-x: scroll;
       -ms-overflow-style: none; /* Internet Explorer 10+ */
       scrollbar-width: none; /* Firefox */
@@ -100,8 +102,12 @@
       position: relative;
       text-align: center;
       padding: 8px 0;
-      margin-right: 15px;
       transition: color 0.5s;
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
     &__item--selected {
