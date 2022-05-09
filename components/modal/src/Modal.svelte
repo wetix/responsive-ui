@@ -57,12 +57,15 @@
     <div
       {...$$restProps}
       class="resp-modal {className}"
+      role="alert"
+      aria-modal="true"
+      aria-labelledby="modal-header"
       in:fade
       out:fade
       style:width={isNaN(width) ? `${width}` : `${width}px`}
     >
       {#if hasHeader}
-        <header class="resp-modal__header">
+        <header id="modal-header" class="resp-modal__header">
           <caption>{caption || ""}</caption>
         </header>
       {/if}
