@@ -37,7 +37,7 @@ describe("Accordion", () => {
     expect(div.getAttribute("label")).toEqual(props.label); //label test
 
     //caption test
-    const label = container.querySelector("label") as HTMLElement;
+    const label = container.querySelector(".resp-accordion__label") as HTMLElement;
     expect(label.textContent).toEqual(props.caption);
   });
 

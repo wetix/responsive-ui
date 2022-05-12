@@ -8,6 +8,7 @@ export interface MenuOption extends Record<string, unknown> {
   collapsed?: boolean;
   submenus?: MenuOption[];
   separator?: boolean;
+  open: boolean;
 }
 
 export interface MenuProps {

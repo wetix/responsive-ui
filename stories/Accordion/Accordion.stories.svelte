@@ -1,12 +1,18 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Accordion from "@responsive-ui/accordion";
-  import Quantity from "@responsive-ui//quantity";
+  import Quantity from "@responsive-ui/quantity";
+  import docs from "./Accordion.docs.mdx";
 </script>
 
 <Meta
   title="Components/Accordion"
   component={Accordion}
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
   argTypes={{
     disabled: { control: "boolean" },
     collapsed: { control: "boolean" }
@@ -15,6 +21,7 @@
 
 <Template let:args>
   <Accordion {...args} on:click={args.onClick}>
+    <div slot="label-right">right side</div>
     <div><Quantity /></div>
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
     has been the industry's standard dummy text ever since the 1500s, when an unknown printer

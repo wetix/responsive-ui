@@ -2,6 +2,7 @@
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import AppBar from "@responsive-ui/app-bar";
   import Menu from "@responsive-ui/menu";
+  import docs from "./AppBar.docs.mdx";
 
   let marginTop = 0;
 
@@ -55,6 +56,11 @@
 <Meta
   title="Components/App Bar"
   component={AppBar}
+  parameters={{
+    docs: {
+      page: docs
+    }
+  }}
   argTypes={{
     shadowed: { control: "boolean" },
     currentPath: { control: "text" }

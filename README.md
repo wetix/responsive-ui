@@ -33,7 +33,7 @@ yarn add responsive-ui
 - Responsive by default.
 - Support **ES Module** and **Common JS**.
 - Support **Server-side Rendering**.
-- **TypeScript** and **Sass** as First Class Citizen.
+- [**TypeScript**](https://www.typescriptlang.org/) and [**Sass**](https://sass-lang.com/) as First Class Citizen.
 - Compatible with [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/).
 
 ## 💅 Component List

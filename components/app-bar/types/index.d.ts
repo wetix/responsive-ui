@@ -21,6 +21,7 @@ export interface AppBarProps {
   leadingItems: NavItem[];
   trailingItems: NavItem[];
   style?: string;
+  currentPath?: string;
 }
 
 export interface AppBarEvents {

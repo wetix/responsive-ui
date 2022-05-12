@@ -6,6 +6,7 @@ export interface FloatingActionButtonProps {
   label?: string;
   class?: string;
   style?: string;
+  transition?: boolean;
 }
 
 export interface FloatingActionButtonEvents {
