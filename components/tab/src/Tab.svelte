@@ -7,7 +7,7 @@
   export let selected = 0;
   export let style = "";
 
-  const hasSlots = !!$$slots.default;
+  const hasSlot = $$slots.default;
 
   let tab: HTMLElement;
   let childNodes: NodeListOf<ChildNode>;
@@ -41,16 +41,17 @@
         class:resp-tab__item--selected={selected == i}
         on:click={(e) => onChange(e, i)}
       >
-        {item.label}
+        <slot name="item" {item}>
+          {item.label}
+        </slot>
       </span>
     {/each}
+    <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} />
   </nav>
-  <div class="resp-tab__ink-bar" style={`left:${left}px;width:${width}px`} />
 </div>
 
-{#if hasSlots}
+{#if hasSlot}
   <slot {selected} />
-{:else}
   {#each items as item}
     {#if item && item.component}
       <svelte:component this={item.component} />
@@ -79,8 +80,10 @@
     }
 
     nav {
-      padding: 0 15px;
+      position: relative;
+      display: flex;
       white-space: nowrap;
+      width: 100%;
       overflow-x: scroll;
       -ms-overflow-style: none; /* Internet Explorer 10+ */
       scrollbar-width: none; /* Firefox */
@@ -99,8 +102,7 @@
       display: inline-block;
       position: relative;
       text-align: center;
-      padding: 8px 0;
-      margin-right: 15px;
+      padding: 8px;
       transition: color 0.5s;
     }
 
