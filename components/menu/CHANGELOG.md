@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
+
+**Note:** Version bump only for package @responsive-ui/menu
+
+
+
+
+
 # [1.1.0-alpha.17](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.16...v1.1.0-alpha.17) (2022-04-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
+
+
+### Bug Fixes
+
+* fab ([1d58dad](https://github.com/wetix/responsive-ui/commit/1d58dadbd89768d1ac2e5d514a813ad4b0904819))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/fab

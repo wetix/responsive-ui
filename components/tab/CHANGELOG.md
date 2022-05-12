@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
+
+
+### Bug Fixes
+
+* tab ([b4ac26b](https://github.com/wetix/responsive-ui/commit/b4ac26bd1c1015a8fe9206364d86afce29646672))
+* tab ([7ff481f](https://github.com/wetix/responsive-ui/commit/7ff481f094f50998310c4deaec365df235674c38))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/tab

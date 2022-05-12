@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
+
+
+### Bug Fixes
+
+* modal dispatch cancel on close ([8711099](https://github.com/wetix/responsive-ui/commit/8711099639d80db3f9e89a1a709e2413a40af891))
+* role dialog ([06fb4b3](https://github.com/wetix/responsive-ui/commit/06fb4b396ee2d9aa3affa0e7ce739a4ee8c52c86))
+
+
+
+
+
 # [1.1.0-alpha.10](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.9...v1.1.0-alpha.10) (2022-04-05)
 
 
