@@ -4,8 +4,8 @@
   let className = "";
   export { className as class };
   export let scrollable = true;
+  export let el: HTMLDivElement;
 
-  let el: HTMLDivElement;
   let maxWidth = 0;
   let maxOffsetWidth = 0;
   let clientWidth = 0;
