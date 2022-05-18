@@ -6,6 +6,7 @@ export interface HScrollProps {
   class?: string;
   scrollable?: boolean;
   style?: string;
+  el?: HTMLDivElement;
 }
 
 export interface HScrollEvents {
