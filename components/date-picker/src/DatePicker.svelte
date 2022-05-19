@@ -65,6 +65,10 @@
 
   const handleChange = (e: Event) => {
     value = (<HTMLInputElement>e.currentTarget).value;
+    if (!value) {
+      handleClear();
+      return;
+    }
     setDateOnlyIfValid(value);
   };
 
