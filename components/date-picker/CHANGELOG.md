@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.22](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.21...v1.1.0-alpha.22) (2022-05-23)
+
+
+### Bug Fixes
+
+* datepicker clear if no value ([58c6056](https://github.com/wetix/responsive-ui/commit/58c60562d1912c85c0383d68c61b75cf9630a154))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/date-picker
