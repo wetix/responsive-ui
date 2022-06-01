@@ -18,9 +18,13 @@
     on:click={args.onClick}
     name="select"
     placeholder="Select your fruit"
+    disabled={false}
     options={[
       { label: "Unknown", value: "a" },
-      { label: "Apple", value: "b" },
+      {
+        label: "Appleaaaaaaaaaaaaaaaaaaaaaaasdjkhadhjdfhdikshfiusufudshfdsifh",
+        value: "b"
+      },
       { label: "Orange", value: "c", disabled: true },
       { label: "Pineapple", value: "d" },
       { label: "Coconut", value: "e" },

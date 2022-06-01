@@ -5,6 +5,23 @@ module.exports = {
       (r) => r.loader && r.loader.includes("svelte-loader")
     );
     svelteLoader.options.preprocess = require("svelte-preprocess")();
+
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            presets: [
+              require('@babel/preset-typescript').default,
+              require('@babel/preset-env').default,
+            ],
+          },
+        },
+      ],
+    })
+
+
     return config;
   },
   stories: [
