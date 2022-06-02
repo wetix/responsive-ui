@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { SelectOption } from "../types";
   import { getNodeAttribute } from "@wetix/utils";
+  import { createEventDispatcher } from "svelte";
 
   let className = "";
 
@@ -12,6 +13,9 @@
 
   let items: SelectOption[] = options;
   let selectedItem: SelectOption | null = null;
+  let inputRef: HTMLInputElement;
+
+  const dispatch = createEventDispatcher();
 
   const handleSearch = (e: Event) => {
     open = true;
@@ -31,8 +35,16 @@
     if (val) {
       selectedItem = JSON.parse(val as string);
       open = false;
+      dispatch("select", selectedItem?.value);
     }
   };
+
+  $: if (options) {
+    items = options;
+  }
+  $: if (open && inputRef) {
+    open === true ? inputRef.focus() : inputRef.blur();
+  }
 </script>
 
 <div class="resp-select" {...$$restProps}>
@@ -46,6 +58,7 @@
     {placeholder}
     value={selectedItem ? selectedItem.label : null}
     {disabled}
+    bind:this={inputRef}
   />
   {#if open}
     <div class="resp-select__content" on:click={handleSelect}>
@@ -70,14 +83,14 @@
   .resp-select {
     position: relative;
     display: inline-block;
-    min-width: 150px;
 
     @media (max-width: $sm) {
-      width: 100vw;
+      width: 100%;
     }
 
     &__input {
       display: inline-flex;
+      cursor: pointer;
       border: 1px solid var(--input-border-color, #dcdcdc);
       border-radius: 3px;
       font-size: var(--font-size);
@@ -102,6 +115,10 @@
         border-color: #fc4451;
       }
 
+      &:disabled {
+        cursor: not-allowed;
+      }
+
       &:focus {
         border-color: #fc4451;
         box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
@@ -113,6 +130,8 @@
     }
 
     &__content {
+      background-color: white;
+      z-index: 9999;
       box-sizing: border-box;
       position: absolute;
       width: 100%;
