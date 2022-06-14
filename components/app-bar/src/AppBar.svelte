@@ -247,7 +247,6 @@
 
     @media (max-width: $sm) {
       &__logo {
-        width: 100%;
         text-align: left;
         margin: 1rem;
         div {

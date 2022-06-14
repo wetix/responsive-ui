@@ -14,6 +14,7 @@
   {...$$restProps}
   bind:this={ref}
   on:click
+  on:touchstart
 >
   <slot />
 </button>
