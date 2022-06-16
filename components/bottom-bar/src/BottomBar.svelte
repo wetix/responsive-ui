@@ -1,9 +1,10 @@
 <script lang="ts">
   let className = "";
   export { className as class };
+  export let clientHeight;
 </script>
 
-<div class="resp-bottom-bar {className}" {...$$restProps}>
+<div class="resp-bottom-bar {className}" bind:clientHeight {...$$restProps}>
   <div class="resp-bottom-bar__box">
     <slot />
   </div>
