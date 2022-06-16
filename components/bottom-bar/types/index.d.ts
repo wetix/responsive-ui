@@ -5,6 +5,7 @@ export interface BottomBarProps {
   title?: string;
   class?: string;
   style?: string;
+  clientHeight?: number;
 }
 
 export interface BottomBarSlots {
