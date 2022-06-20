@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.23](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.22...v1.1.0-alpha.23) (2022-06-20)
+
+
+### Bug Fixes
+
+* button, appbar ([dd6b1c4](https://github.com/wetix/responsive-ui/commit/dd6b1c4c0ddcc31b72ae391540fe88a04408c4c1))
+* remove touchstart ([7d3c783](https://github.com/wetix/responsive-ui/commit/7d3c7831b82d86d264c9ca048b02a9a9e27cebd9))
+
+
+### Features
+
+* bind clientHeight to bottom bar ([3cc88db](https://github.com/wetix/responsive-ui/commit/3cc88db184f5d4ff9f82ab07c251a33f714d1673))
+
+
+
+
+
 # [1.1.0-alpha.22](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.21...v1.1.0-alpha.22) (2022-05-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.23](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.22...v1.1.0-alpha.23) (2022-06-20)
+
+
+### Bug Fixes
+
+* button, appbar ([dd6b1c4](https://github.com/wetix/responsive-ui/commit/dd6b1c4c0ddcc31b72ae391540fe88a04408c4c1))
+
+
+
+
+
 # [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
 
 **Note:** Version bump only for package @responsive-ui/app-bar
