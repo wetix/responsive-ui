@@ -85,7 +85,7 @@
   {#if slim}
     <i
       class="resp-quantity__control"
-      class:resp-quantity__control--limit={minLimit}
+      class:resp-quantity__control--limit={minLimit || disabled}
       on:click={!disabled ? handleDecrement : noop}
     >
       {@html `<svg width="1em" height="1em" viewBox="0 0 31.427 31.427">
@@ -111,7 +111,7 @@
   {#if slim}
     <i
       class="resp-quantity__control"
-      class:resp-quantity__control--limit={maxLimit}
+      class:resp-quantity__control--limit={maxLimit || disabled}
       on:click={!disabled ? handleIncrement : noop}
     >
       {@html `<svg width="1em" height="1em" viewBox="0 0 31.444 31.444">
@@ -158,6 +158,10 @@
       width: 100%;
       min-width: 65px;
       border-radius: inherit;
+    }
+
+    & > input:disabled {
+      color: #ababab;
     }
 
     &--slim {
