@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.24](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.23...v1.1.0-alpha.24) (2022-06-20)
+
+
+### Bug Fixes
+
+* disabled quantity appearance ([85fbcdf](https://github.com/wetix/responsive-ui/commit/85fbcdf11ffb24473e6146dde48e7a5e21d85731))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 
