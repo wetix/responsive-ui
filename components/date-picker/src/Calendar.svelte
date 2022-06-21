@@ -43,13 +43,14 @@
   };
 
   const handleSelectDate = (date: Date) => () => {
-    dispatch("change", date);
+    dispatch("change", toDateString(date));
   };
 
   $: isValid = year > 0 && month >= 0 && day > 0;
   const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
     const clsList: string[] = [];
+    if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
 
     if (v.getMonth() != selectedMonth) {
       clsList.push(`${dateClass}--not-in-view`);
@@ -61,7 +62,6 @@
     ) {
       clsList.push(`${dateClass}--selected`);
     }
-    if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
     return clsList.join(" ");
   };
   $: data = get2DimensionDate(selectedMonth, selectedYear);
@@ -242,8 +242,8 @@
         color: #fff;
       }
 
-      &--disabled:before {
-        background: #bebebe !important;
+      &--disabled {
+        color: #a0a0a0;
       }
 
       &--not-in-view {

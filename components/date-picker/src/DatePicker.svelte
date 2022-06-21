@@ -4,7 +4,7 @@
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
 
-  const today = new Date();
+  const today = new Date(toDateString(new Date()));
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
@@ -22,13 +22,17 @@
   export let disabled = false;
   export let useNative = true;
   // export let format = (v: Date) => v;
-  export let disabledDate = (v: Date) => today > v;
+  export let disabledDate = (_: Date) => false;
+  // export let disabledDate = (v: Date) => today > new Date(toDateString(v));
 
   let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
   let matches = dateRegex.exec(value);
+  // previous date value in case user selects invalid date
+  let prevVal = value;
+
   if (matches) {
     const date = new Date(matches[0]);
     day = date.getDate();
@@ -41,26 +45,26 @@
     open = false;
   };
 
-  const setDateOnlyIfValid = (value: string) => {
-    if (!dateRegex.test(value)) return false;
-    if (isValidDate(value)) {
-      const date = new Date(value);
+  const setDateOnlyIfValid = (val: string) => {
+    // set back to previous value
+    value = prevVal;
+
+    // test regex, disabled date, is valid
+    if (!dateRegex.test(val)) return false;
+    if (disabledDate(new Date(val))) return false;
+    if (isValidDate(val)) {
+      const date = new Date(val);
       year = date.getFullYear();
       month = date.getMonth();
       day = date.getDate();
-      dispatch(dateChangeEvent, { date, dateString: value });
+      dispatch(dateChangeEvent, { date, dateString: val });
+      value = val;
+
+      // set valid date to previous value
+      prevVal = value;
       return true;
     }
     return false;
-  };
-
-  const handleSelectDate = (e: CustomEvent<Date>) => {
-    const date = e.detail;
-    value = toDateString(date);
-    month = date.getMonth();
-    day = date.getDate();
-    year = date.getFullYear();
-    dispatch(dateChangeEvent, { date, dateString: value });
   };
 
   const handleChange = (e: Event) => {
@@ -168,7 +172,7 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={handleSelectDate}
+        on:change={(v) => setDateOnlyIfValid(v.detail)}
       />
     </div>
   {/if}
