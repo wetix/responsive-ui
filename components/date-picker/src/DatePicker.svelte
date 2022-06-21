@@ -26,7 +26,7 @@
   export let useNative = true;
   // export let format = (v: Date) => v;
   // export let disabledDate = (_: Date) => false;
-  export let disabledDate = (v: Date) => today > new Date(toDateString(v));
+  export let disabledDate = (v: Date) => today > v;
 
   let focused = false;
   let day = today.getDate();

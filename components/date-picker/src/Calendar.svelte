@@ -50,7 +50,7 @@
   const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
     const clsList: string[] = [];
-    if (disabledDate(v)) clsList.push(`${dateClass}--disabled`);
+    if (disabledDate(new Date(toDateString(v)))) clsList.push(`${dateClass}--disabled`);
 
     if (v.getMonth() != selectedMonth) {
       clsList.push(`${dateClass}--not-in-view`);
