@@ -8,7 +8,10 @@
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
-  const dispatch = createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
+  const dispatch = createEventDispatcher<{
+    datechange: DatePickerDateChangeEvent;
+    error: String;
+  }>();
 
   let className = "";
   export { className as class };
@@ -22,8 +25,8 @@
   export let disabled = false;
   export let useNative = true;
   // export let format = (v: Date) => v;
-  export let disabledDate = (_: Date) => false;
-  // export let disabledDate = (v: Date) => today > new Date(toDateString(v));
+  // export let disabledDate = (_: Date) => false;
+  export let disabledDate = (v: Date) => today > new Date(toDateString(v));
 
   let focused = false;
   let day = today.getDate();
@@ -46,9 +49,6 @@
   };
 
   const setDateOnlyIfValid = (val: string) => {
-    // set back to previous value
-    value = prevVal;
-
     // test regex, disabled date, is valid
     if (!dateRegex.test(val)) return false;
     if (disabledDate(new Date(val))) return false;
@@ -73,7 +73,10 @@
       handleClear();
       return;
     }
-    setDateOnlyIfValid(value);
+    if (!setDateOnlyIfValid(value)) {
+      value = prevVal;
+      dispatch("error", "Invalid date selected.");
+    }
   };
 
   const handleFocus = () => {
