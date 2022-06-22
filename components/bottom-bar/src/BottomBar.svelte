@@ -1,7 +1,7 @@
 <script lang="ts">
   let className = "";
   export { className as class };
-  export let clientHeight;
+  export let clientHeight = 0;
 </script>
 
 <div class="resp-bottom-bar {className}" bind:clientHeight {...$$restProps}>
