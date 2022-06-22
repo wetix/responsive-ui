@@ -21,9 +21,13 @@
     void tween.set(1);
   }
 
-  $: height = window.innerHeight * 0.85;
+  let innerHeight = 0;
+
+  $: height = innerHeight * 0.85;
   $: offset = 1 - $tween;
 </script>
+
+<svelte:window bind:innerHeight />
 
 <div
   class="resp-bottom-sheet__overlay"
