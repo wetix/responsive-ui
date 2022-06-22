@@ -5,11 +5,11 @@
   let className = "";
   export { className as class };
   export let open = false;
-  export let height = 0;
   export let maskClosable = true;
   export let closable = true;
   export let draggable = true;
   export let style = "";
+  export let height = "100%";
 
   const tween = tweened(1, {
     duration: 150
@@ -21,13 +21,8 @@
     void tween.set(1);
   }
 
-  let innerHeight = 0;
-
-  $: height = innerHeight * 0.85;
   $: offset = 1 - $tween;
 </script>
-
-<svelte:window bind:innerHeight />
 
 <div
   class="resp-bottom-sheet__overlay"
@@ -37,7 +32,7 @@
 />
 <div
   class="resp-bottom-sheet {className}"
-  style:height="{height}px"
+  style:height
   {...$$restProps}
   style:visibility={offset <= 0 ? "hidden" : "visible"}
   style={`transform: translateY(${$tween * 100}%); ${style}`}

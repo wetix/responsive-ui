@@ -4,7 +4,7 @@ export interface BottomSheetProps {
   id?: string;
   class?: string;
   open?: boolean;
-  height?: number;
+  height?: string;
   draggable?: boolean;
   maskClosable?: boolean;
   closable?: boolean;
