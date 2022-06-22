@@ -100,7 +100,7 @@
 
 <BottomSheet
   bind:open
-  height={modalHeight}
+  bind:height={modalHeight}
   class={className}
   {maskClosable}
   {closable}
