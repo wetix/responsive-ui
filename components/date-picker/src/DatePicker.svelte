@@ -24,16 +24,16 @@
   export let bordered = true;
   export let disabled = false;
   export let useNative = true;
-  // export let format = (v: Date) => v;
+  export let min: string;
+  export let max: string;
   export let disabledDate = (_: Date) => false;
+  // export let format = (v: Date) => v;
 
   let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
   let matches = dateRegex.exec(value);
-  // previous date value in case user selects invalid date
-  let prevVal = value;
 
   if (matches) {
     const date = new Date(matches[0]);
@@ -59,8 +59,6 @@
       dispatch(dateChangeEvent, { date, dateString: val });
       value = val;
 
-      // set valid date to previous value
-      prevVal = value;
       return true;
     }
     return false;
@@ -73,7 +71,6 @@
       return;
     }
     if (!setDateOnlyIfValid(value)) {
-      value = prevVal;
       dispatch("error", "Invalid date selected.");
     }
   };
@@ -121,6 +118,8 @@
     size="20"
     {placeholder}
     {readonly}
+    {min}
+    {max}
     on:focus={handleFocus}
     on:blur={handleBlur}
     on:input={handleChange}

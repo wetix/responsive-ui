@@ -11,6 +11,8 @@ export interface DatePickerProps {
   disabled?: boolean;
   bordered?: boolean;
   useNative?: boolean;
+  min?: string;
+  max?: string;
   format?: (v: Date) => string;
   disabledDate?: (v: Date) => boolean;
 }
