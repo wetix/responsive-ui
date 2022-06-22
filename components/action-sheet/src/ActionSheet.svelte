@@ -8,7 +8,7 @@
 
   let className = "";
   let selectedIndex = 0;
-  let modalHeight = 0;
+  let modalHeight = "100%";
   export { className as class };
   export let selectedKey = "";
   export let caption = "";
@@ -100,7 +100,7 @@
 
 <BottomSheet
   bind:open
-  bind:height={modalHeight}
+  height={modalHeight}
   class={className}
   {maskClosable}
   {closable}
@@ -139,7 +139,7 @@
   </header>
   <ul
     class="resp-action-sheet__body"
-    style="height: {modalHeight - 180}px"
+    style={`height: calc(${modalHeight} - 180px)`}
     on:change={handleSelectOption}
   >
     {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${selectedKey}.${value}`)}
