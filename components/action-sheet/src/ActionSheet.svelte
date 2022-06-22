@@ -139,7 +139,7 @@
   </header>
   <ul
     class="resp-action-sheet__body"
-    style="height: {modalHeight - 180}px"
+    style={`height: ${modalHeight - 180}px`}
     on:change={handleSelectOption}
   >
     {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${selectedKey}.${value}`)}
