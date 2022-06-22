@@ -17,6 +17,10 @@
     duration: 150
   });
 
+  onMount(() => {
+    innerHeight = window.innerHeight;
+  });
+
   $: if (open) {
     void tween.set(0);
   } else {
@@ -25,10 +29,6 @@
 
   $: offset = 1 - $tween;
   $: height = innerHeight * 0.85;
-
-  onMount(() => {
-    innerHeight = window.innerHeight;
-  });
 </script>
 
 <div
