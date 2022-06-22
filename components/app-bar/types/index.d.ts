@@ -15,6 +15,7 @@ export interface NavItem extends Record<string, any> {
 export interface AppBarProps {
   id?: string;
   class?: string;
+  maxWidth?: string;
   selectedKey?: string;
   selectedSubmenuKey?: string;
   clientHeight?: number;

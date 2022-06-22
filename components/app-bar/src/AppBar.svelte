@@ -6,6 +6,7 @@
 
   let className = "";
   export { className as class };
+  export let maxWidth: string = "1280px";
   export let clientHeight = 0;
   export let shadowed = true;
   export let leadingItems: NavItem[] = [];
@@ -53,7 +54,7 @@
   {...$$restProps}
 >
   <div class="resp-app-bar__box">
-    <div class="resp-app-bar__main">
+    <div class="resp-app-bar__main" style={`max-width: ${maxWidth}`}>
       <div
         class="resp-app-bar__icon-menu"
         on:click={() => (openSideMenu = !openSideMenu)}
