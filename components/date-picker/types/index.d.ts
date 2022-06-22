@@ -25,7 +25,7 @@ export interface DatePickerEvents {
   blur?: WindowEventMap["blur"];
   change?: WindowEventMap["change"];
   datechange?: CustomEvent<DateChangeEvent>;
-  error?: CustomEvent<String>;
+  error?: CustomEvent<string>;
 }
 
 export declare class DatePickerComponent extends SvelteComponentTyped<
