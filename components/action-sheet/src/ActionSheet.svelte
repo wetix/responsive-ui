@@ -8,7 +8,7 @@
 
   let className = "";
   let selectedIndex = 0;
-  let modalHeight = "100%";
+  let modalHeight = 0;
   export { className as class };
   export let selectedKey = "";
   export let caption = "";
@@ -139,7 +139,7 @@
   </header>
   <ul
     class="resp-action-sheet__body"
-    style={`height: calc(${modalHeight} - 180px)`}
+    style={`height: ${modalHeight - 180}px`}
     on:change={handleSelectOption}
   >
     {#each options as { label, value, disabled = false, selected = false, ...otherProps } (`${selectedKey}.${value}`)}
