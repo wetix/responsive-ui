@@ -47,7 +47,7 @@
     open = false;
   };
 
-  const setDateOnlyIfValid = (val: string) => {
+  const handleCalendar = (val: string) => {
     // test regex, disabled date, is valid
     if (!dateRegex.test(val)) return false;
     if (disabledDate(new Date(val))) return false;
@@ -64,13 +64,13 @@
     return false;
   };
 
-  const handleChange = (e: Event) => {
+  const handleInput = (e: Event) => {
     value = (<HTMLInputElement>e.currentTarget).value;
     if (!value) {
       handleClear();
       return;
     }
-    if (!setDateOnlyIfValid(value)) {
+    if (!handleCalendar(value)) {
       dispatch("error", "Invalid date selected.");
     }
   };
@@ -83,7 +83,7 @@
   };
 
   const handleBlur = () => {
-    if (!setDateOnlyIfValid(value)) value = "";
+    if (!handleCalendar(value)) value = "";
   };
 
   const handleKeydown = (e: KeyboardEvent) => {
@@ -122,31 +122,14 @@
     {max}
     on:focus={handleFocus}
     on:blur={handleBlur}
-    on:input={handleChange}
+    on:input={handleInput}
     on:keydown={handleKeydown}
-    on:change={handleChange}
+    on:change={handleInput}
     on:focus
     on:blur
     on:change
     {value}
   />
-  <!-- <input
-    type="text"
-    {name}
-    {disabled}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
-    on:input={handleChange}
-    on:keydown={handleKeydown}
-    size="20"
-    {placeholder}
-    {readonly}
-    on:focus
-    on:blur
-    on:change
-    autocomplete="off"
-    {value}
-  /> -->
   <i
     class="resp-date-picker__icon-calendar"
     role="img"
@@ -173,7 +156,7 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={(v) => setDateOnlyIfValid(v.detail)}
+        on:change={(v) => handleCalendar(v.detail)}
       />
     </div>
   {/if}
