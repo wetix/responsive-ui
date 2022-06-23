@@ -47,31 +47,54 @@
     open = false;
   };
 
-  const handleCalendar = (val: string) => {
+  const handleClear = () => {
+    ref && ref.focus();
+    focused = false;
+    value = "";
+    day = 0;
+    dispatch(dateChangeEvent, { date: null, dateString: value });
+    setTimeout(() => {
+      open = false;
+    }, duration);
+  };
+
+  const validateDate = (val: string): boolean => {
+    if (!val) {
+      handleClear();
+      return false;
+    }
     // test regex, disabled date, is valid
     if (!dateRegex.test(val)) return false;
     if (disabledDate(new Date(val))) return false;
-    if (isValidDate(val)) {
-      const date = new Date(val);
-      year = date.getFullYear();
-      month = date.getMonth();
-      day = date.getDate();
-      dispatch(dateChangeEvent, { date, dateString: val });
-      value = val;
+    if (!isValidDate(val)) return false;
 
-      return true;
-    }
-    return false;
+    return true;
   };
 
-  const handleInput = (e: Event) => {
-    value = (<HTMLInputElement>e.currentTarget).value;
-    if (!value) {
-      handleClear();
-      return;
+  const dispatchDate = (val: string) => {
+    const date = new Date(val);
+    year = date.getFullYear();
+    month = date.getMonth();
+    day = date.getDate();
+    value = val;
+    handleClickOutside();
+    dispatch(dateChangeEvent, { date, dateString: val });
+  };
+
+  const handleChange = (e: Event | string) => {
+    let val = null;
+    switch (typeof e) {
+      case "string":
+        val = <string>e;
+        break;
+      case "object":
+        val = (<HTMLInputElement>(<Event>e).currentTarget).value;
+        break;
     }
-    if (!handleCalendar(value)) {
-      dispatch("error", "Invalid date selected.");
+    if (validateDate(val)) {
+      dispatchDate(val);
+    } else {
+      dispatch("error", "invalid date selected");
     }
   };
 
@@ -83,22 +106,11 @@
   };
 
   const handleBlur = () => {
-    if (!handleCalendar(value)) value = "";
+    if (!validateDate(value)) value = "";
   };
 
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
-  };
-
-  const handleClear = () => {
-    ref && ref.focus();
-    focused = false;
-    value = "";
-    day = 0;
-    dispatch(dateChangeEvent, { date: null, dateString: value });
-    setTimeout(() => {
-      open = false;
-    }, duration);
   };
 </script>
 
@@ -122,9 +134,9 @@
     {max}
     on:focus={handleFocus}
     on:blur={handleBlur}
-    on:input={handleInput}
+    on:input={handleChange}
     on:keydown={handleKeydown}
-    on:change={handleInput}
+    on:change={handleChange}
     on:focus
     on:blur
     on:change
@@ -156,7 +168,7 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={(v) => handleCalendar(v.detail)}
+        on:change={(v) => handleChange(v.detail)}
       />
     </div>
   {/if}
