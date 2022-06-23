@@ -71,16 +71,6 @@
     return true;
   };
 
-  const dispatchDate = (val: string) => {
-    const date = new Date(val);
-    year = date.getFullYear();
-    month = date.getMonth();
-    day = date.getDate();
-    value = val;
-    handleClickOutside();
-    dispatch(dateChangeEvent, { date, dateString: val });
-  };
-
   const handleChange = (e: Event | string) => {
     let val = null;
     switch (typeof e) {
@@ -92,7 +82,13 @@
         break;
     }
     if (validateDate(val)) {
-      dispatchDate(val);
+      const date = new Date(val);
+      year = date.getFullYear();
+      month = date.getMonth();
+      day = date.getDate();
+      value = val;
+      handleClickOutside();
+      dispatch(dateChangeEvent, { date, dateString: val });
     } else {
       dispatch("error", "invalid date selected");
     }
@@ -134,7 +130,6 @@
     {max}
     on:focus={handleFocus}
     on:blur={handleBlur}
-    on:input={handleChange}
     on:keydown={handleKeydown}
     on:change={handleChange}
     on:focus
