@@ -11,6 +11,8 @@ export interface DatePickerProps {
   disabled?: boolean;
   bordered?: boolean;
   useNative?: boolean;
+  min?: string;
+  max?: string;
   format?: (v: Date) => string;
   disabledDate?: (v: Date) => boolean;
 }
@@ -25,6 +27,7 @@ export interface DatePickerEvents {
   blur?: WindowEventMap["blur"];
   change?: WindowEventMap["change"];
   datechange?: CustomEvent<DateChangeEvent>;
+  error?: CustomEvent<string>;
 }
 
 export declare class DatePickerComponent extends SvelteComponentTyped<
