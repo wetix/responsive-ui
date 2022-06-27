@@ -9,7 +9,7 @@
 
   const hasSlot = $$slots.default;
 
-  let tab: HTMLElement;
+  export let tab: HTMLElement;
   let childNodes: NodeListOf<ChildNode>;
   let left = 0;
   let width = 0;
@@ -27,9 +27,15 @@
     }, 0);
   });
 
-  const onChange = (_: Event, i: number) => {
+  const onChange = (e: Event, i: number) => {
     selected = i;
     setWidth();
+    const event = new CustomEvent("changetab", {
+      detail: {
+        selected: i
+      }
+    });
+    tab.dispatchEvent(event);
   };
 </script>
 
