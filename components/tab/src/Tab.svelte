@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
 
   import type { TabItem } from "../types";
 
@@ -8,8 +8,9 @@
   export let style = "";
 
   const hasSlot = $$slots.default;
+  const dispatch = createEventDispatcher();
 
-  let tab: HTMLElement;
+  export let tab: HTMLElement;
   let childNodes: NodeListOf<ChildNode>;
   let left = 0;
   let width = 0;
@@ -27,9 +28,12 @@
     }, 0);
   });
 
-  const onChange = (_: Event, i: number) => {
+  const onChange = (e: Event, i: number) => {
     selected = i;
     setWidth();
+    dispatch("changetab", {
+      selected: i
+    });
   };
 </script>
 

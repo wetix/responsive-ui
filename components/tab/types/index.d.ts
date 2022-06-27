@@ -11,9 +11,14 @@ export interface TabProps {
   items: TabItem[];
   selected?: number;
   style?: string;
+  tab?: HTMLElement;
 }
 
-export interface TabEvents {}
+export interface TabEvents {
+  changetab: {
+    selected: number;
+  }
+}
 
 export interface TabSlots {
   default: {
