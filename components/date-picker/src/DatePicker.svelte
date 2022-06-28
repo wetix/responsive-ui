@@ -3,6 +3,7 @@
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
+  import { custom_event } from "svelte/internal";
 
   const today = new Date(toDateString(new Date()));
   const dateChangeEvent = "datechange";
@@ -88,7 +89,13 @@
       day = date.getDate();
       value = val;
       handleClickOutside();
+
+      // FIXME: remove this in future since we dispatch using change event
       dispatch(dateChangeEvent, { date, dateString: val });
+
+      setTimeout(() => {
+        ref.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+      }, 0);
     } else {
       dispatch("error", "invalid date selected");
     }
@@ -120,6 +127,7 @@
   on:click|stopPropagation={handleFocus}
 >
   <input
+    bind:this={ref}
     type="date"
     {name}
     {disabled}
@@ -131,11 +139,12 @@
     on:focus={handleFocus}
     on:blur={handleBlur}
     on:keydown={handleKeydown}
-    on:change={handleChange}
+    on:input={handleChange}
     on:focus
     on:blur
     on:change
     {value}
+    {...$$restProps}
   />
   <i
     class="resp-date-picker__icon-calendar"
