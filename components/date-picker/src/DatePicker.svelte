@@ -4,11 +4,14 @@
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
 
-  const today = new Date();
+  const today = new Date(toDateString(new Date()));
   const dateChangeEvent = "datechange";
   const duration = 150;
   const dateRegex = new RegExp("^(\\d{4})-(\\d{2})-(\\d{2})$");
-  const dispatch = createEventDispatcher<{ datechange: DatePickerDateChangeEvent }>();
+  const dispatch = createEventDispatcher<{
+    datechange: DatePickerDateChangeEvent;
+    error: String;
+  }>();
 
   let className = "";
   export { className as class };
@@ -21,14 +24,17 @@
   export let bordered = true;
   export let disabled = false;
   export let useNative = true;
+  export let min: string;
+  export let max: string;
+  export let disabledDate = (_: Date) => false;
   // export let format = (v: Date) => v;
-  export let disabledDate = (v: Date) => today > v;
 
   let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
   let matches = dateRegex.exec(value);
+
   if (matches) {
     const date = new Date(matches[0]);
     day = date.getDate();
@@ -41,35 +47,57 @@
     open = false;
   };
 
-  const setDateOnlyIfValid = (value: string) => {
-    if (!dateRegex.test(value)) return false;
-    if (isValidDate(value)) {
-      const date = new Date(value);
+  const handleClear = () => {
+    ref && ref.focus();
+    focused = false;
+    value = "";
+    day = 0;
+    dispatch(dateChangeEvent, { date: null, dateString: value });
+    setTimeout(() => {
+      open = false;
+    }, duration);
+  };
+
+  const validateDate = (val: string): boolean => {
+    if (!val) {
+      handleClear();
+      return false;
+    }
+    // test regex, disabled date, is valid
+    if (!dateRegex.test(val)) return false;
+    if (disabledDate(new Date(val))) return false;
+    if (!isValidDate(val)) return false;
+
+    return true;
+  };
+
+  const handleChange = (e: Event | string) => {
+    let val = null;
+    switch (typeof e) {
+      case "string":
+        val = <string>e;
+        break;
+      case "object":
+        val = (<HTMLInputElement>(<Event>e).currentTarget).value;
+        break;
+    }
+    if (validateDate(val)) {
+      const date = new Date(val);
       year = date.getFullYear();
       month = date.getMonth();
       day = date.getDate();
-      dispatch(dateChangeEvent, { date, dateString: value });
-      return true;
-    }
-    return false;
-  };
+      value = val;
+      handleClickOutside();
 
-  const handleSelectDate = (e: CustomEvent<Date>) => {
-    const date = e.detail;
-    value = toDateString(date);
-    month = date.getMonth();
-    day = date.getDate();
-    year = date.getFullYear();
-    dispatch(dateChangeEvent, { date, dateString: value });
-  };
+      // FIXME: remove this in future since we dispatch using change event
+      dispatch(dateChangeEvent, { date, dateString: val });
 
-  const handleChange = (e: Event) => {
-    value = (<HTMLInputElement>e.currentTarget).value;
-    if (!value) {
-      handleClear();
-      return;
+      setTimeout(() => {
+        ref.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+      }, 0);
+    } else {
+      dispatch("error", "invalid date selected");
     }
-    setDateOnlyIfValid(value);
   };
 
   const handleFocus = () => {
@@ -80,22 +108,11 @@
   };
 
   const handleBlur = () => {
-    if (!setDateOnlyIfValid(value)) value = "";
+    if (!validateDate(value)) value = "";
   };
 
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
-  };
-
-  const handleClear = () => {
-    ref && ref.focus();
-    focused = false;
-    value = "";
-    day = 0;
-    dispatch(dateChangeEvent, { date: null, dateString: value });
-    setTimeout(() => {
-      open = false;
-    }, duration);
   };
 </script>
 
@@ -109,39 +126,25 @@
   on:click|stopPropagation={handleFocus}
 >
   <input
+    bind:this={ref}
     type="date"
     {name}
     {disabled}
     size="20"
     {placeholder}
     {readonly}
+    {min}
+    {max}
     on:focus={handleFocus}
     on:blur={handleBlur}
-    on:input={handleChange}
     on:keydown={handleKeydown}
-    on:change={handleChange}
+    on:input={handleChange}
     on:focus
     on:blur
     on:change
     {value}
+    {...$$restProps}
   />
-  <!-- <input
-    type="text"
-    {name}
-    {disabled}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
-    on:input={handleChange}
-    on:keydown={handleKeydown}
-    size="20"
-    {placeholder}
-    {readonly}
-    on:focus
-    on:blur
-    on:change
-    autocomplete="off"
-    {value}
-  /> -->
   <i
     class="resp-date-picker__icon-calendar"
     role="img"
@@ -168,7 +171,7 @@
         bind:month
         bind:year
         {disabledDate}
-        on:change={handleSelectDate}
+        on:change={(v) => handleChange(v.detail)}
       />
     </div>
   {/if}

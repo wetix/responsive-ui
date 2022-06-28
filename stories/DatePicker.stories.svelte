@@ -19,7 +19,12 @@
 />
 
 <Template let:args>
-  <DatePicker {...args} on:change={args.onChange} on:datechange={args.onDateChange} />
+  <DatePicker
+    {...args}
+    on:change={args.onChange}
+    on:error={(e) => console.log(e.detail)}
+    on:datechange={args.onDateChange}
+  />
 </Template>
 
 <Story

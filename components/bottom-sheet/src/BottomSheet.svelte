@@ -1,18 +1,24 @@
 <script lang="ts">
   import { noop } from "svelte/internal";
   import { tweened } from "svelte/motion";
+  import { onMount } from "svelte";
 
   let className = "";
   export { className as class };
   export let open = false;
-  export let height = 0;
   export let maskClosable = true;
   export let closable = true;
   export let draggable = true;
   export let style = "";
+  export let height = 0;
+  let innerHeight = 0;
 
   const tween = tweened(1, {
     duration: 150
+  });
+
+  onMount(() => {
+    innerHeight = window.innerHeight;
   });
 
   $: if (open) {
@@ -21,8 +27,8 @@
     void tween.set(1);
   }
 
-  $: height = window.innerHeight * 0.85;
   $: offset = 1 - $tween;
+  $: height = innerHeight * 0.85;
 </script>
 
 <div
@@ -33,7 +39,7 @@
 />
 <div
   class="resp-bottom-sheet {className}"
-  style:height="{height}px"
+  style:height={`${height}px`}
   {...$$restProps}
   style:visibility={offset <= 0 ? "hidden" : "visible"}
   style={`transform: translateY(${$tween * 100}%); ${style}`}
