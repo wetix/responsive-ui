@@ -3,7 +3,6 @@
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
-  import { custom_event } from "svelte/internal";
 
   const today = new Date(toDateString(new Date()));
   const dateChangeEvent = "datechange";
