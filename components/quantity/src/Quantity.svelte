@@ -40,16 +40,18 @@
   };
 
   const handleDecrement = () => {
-    if (minLimit) return;
-    value += -step;
-    ref.stepDown(step);
+    if (!minLimit) {
+      value += -step;
+      ref.stepDown(step);
+    }
     dispatchChange(ref);
   };
 
   const handleIncrement = () => {
-    if (maxLimit) return;
-    value += step;
-    ref.stepUp(step);
+    if (!maxLimit) {
+      value += step;
+      ref.stepUp(step);
+    }
     dispatchChange(ref);
   };
 
