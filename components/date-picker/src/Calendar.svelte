@@ -250,9 +250,18 @@
         color: #bebebe;
       }
 
-      &:hover {
-        background: #fc4451;
-        color: #fff;
+      @media (hover) and (pointer: fine) {
+        &:hover {
+          background: #fc4451;
+          color: #fff;
+        }
+      }
+
+      @media (hover: none) and (pointer: coarse) {
+        &:active {
+          background: #fc4451;
+          color: #fff;
+        }
       }
     }
 
