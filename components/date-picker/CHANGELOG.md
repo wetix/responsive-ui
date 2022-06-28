@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.25](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.24...v1.1.0-alpha.25) (2022-06-28)
+
+
+### Bug Fixes
+
+* date picker disabled date ([48db0e7](https://github.com/wetix/responsive-ui/commit/48db0e7e1418148e8d5a4c9959892488009050bd))
+* datepicker default disabledDate ([7fd0e25](https://github.com/wetix/responsive-ui/commit/7fd0e254399652b9ae978b809e962668a9596ec8))
+* disabled date ([3622a28](https://github.com/wetix/responsive-ui/commit/3622a284f4b5db185eea2f96e738e42ba349a304))
+* error event ([0a0f6ec](https://github.com/wetix/responsive-ui/commit/0a0f6ec6fe9f8c08676534e2445bafe41b51c8e2))
+* remove unused import ([0e73f8a](https://github.com/wetix/responsive-ui/commit/0e73f8ae7e04a02f9e944a58a9acc398f88e24b4))
+
+
+### Features
+
+* date picker min max ([9927436](https://github.com/wetix/responsive-ui/commit/99274368d5f4e5b33054168172009ef51495eb26))
+* error when selecting invalid date with native ([e19e893](https://github.com/wetix/responsive-ui/commit/e19e893cc78977a72ab2ebe1438a6d5c602008e8))
+
+
+
+
+
 # [1.1.0-alpha.22](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.21...v1.1.0-alpha.22) (2022-05-23)
 
 

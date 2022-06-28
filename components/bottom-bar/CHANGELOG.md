@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.25](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.24...v1.1.0-alpha.25) (2022-06-28)
+
+
+### Bug Fixes
+
+* clientHeight ([19e8b6f](https://github.com/wetix/responsive-ui/commit/19e8b6fac1908d586c8b1598570cbe455e694534))
+
+
+
+
+
 # [1.1.0-alpha.23](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.22...v1.1.0-alpha.23) (2022-06-20)
 
 

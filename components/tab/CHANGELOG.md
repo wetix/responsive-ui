@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.25](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.24...v1.1.0-alpha.25) (2022-06-28)
+
+
+### Features
+
+* tab event dispatching ([72298b6](https://github.com/wetix/responsive-ui/commit/72298b6209c32c90df0fc4e2a5683d71e65ff5c2))
+
+
+
+
+
 # [1.1.0-alpha.20](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.19...v1.1.0-alpha.20) (2022-05-12)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.25](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.24...v1.1.0-alpha.25) (2022-06-28)
+
+
+### Bug Fixes
+
+* **Quantity:** should emit event even when max is 0 ([9fa84f6](https://github.com/wetix/responsive-ui/commit/9fa84f634e5d44a99281be5babb75dc41cc7d8d7))
+
+
+
+
+
 # [1.1.0-alpha.24](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.23...v1.1.0-alpha.24) (2022-06-20)
 
 
