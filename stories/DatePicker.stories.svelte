@@ -7,7 +7,6 @@
   title="Components/Date Picker"
   component={DatePicker}
   argTypes={{
-    placeholder: { control: "text" },
     name: { control: "text" },
     disabled: { control: "boolean" },
     readonly: { control: "boolean" },
@@ -27,12 +26,7 @@
   />
 </Template>
 
-<Story
-  name="Default"
-  args={{
-    size: "middle"
-  }}
-/>
+<Story name="Default" />
 
 <Story
   name="With Default Value"
