@@ -15,7 +15,6 @@
 
   let className = "";
   export { className as class };
-  export let placeholder = "DD/MM/YYYY";
   export let value = "";
   export let name = "";
   export let open = false;
@@ -131,7 +130,6 @@
     {name}
     {disabled}
     size="20"
-    {placeholder}
     {readonly}
     {min}
     {max}
