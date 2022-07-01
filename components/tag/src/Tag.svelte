@@ -26,11 +26,9 @@
   {/if}
 </span>
 
-<style lang="scss" global>
+<style lang="scss">
   .resp-tag {
     position: relative;
-    display: inline-flex;
-    flex-wrap: nowrap;
     align-items: center;
     font-size: var(--font-size-xs, 10px);
     color: #817e7e;
