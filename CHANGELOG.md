@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.26](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.25...v1.1.0-alpha.26) (2022-07-04)
+
+
+### Bug Fixes
+
+* calendar hover style ([7a64580](https://github.com/wetix/responsive-ui/commit/7a6458049a149803b554958201adad9b40c719cd))
+* date picker appearance on ios and tag appearance ([0f3f367](https://github.com/wetix/responsive-ui/commit/0f3f36700eb5c45b90f0bd14a84a56b309442ced))
+* datepicker stories, remove placeholder ([a7eddba](https://github.com/wetix/responsive-ui/commit/a7eddba3f6c3f3842a047f401e220d06c5b97bcb))
+* label stop propagation ([fab975c](https://github.com/wetix/responsive-ui/commit/fab975cca304c8039d312238b83ee5bf61e2e9c1))
+
+
+
+
+
 # [1.1.0-alpha.25](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.24...v1.1.0-alpha.25) (2022-06-28)
 
 
