@@ -15,7 +15,6 @@
 
   let className = "";
   export { className as class };
-  export let placeholder = "DD/MM/YYYY";
   export let value = "";
   export let name = "";
   export let open = false;
@@ -131,7 +130,6 @@
     {name}
     {disabled}
     size="20"
-    {placeholder}
     {readonly}
     {min}
     {max}
@@ -227,15 +225,17 @@
     }
 
     input {
+      display: flex;
+      display: -webkit-flex;
+      flex: 1 0 0;
+      -webkit-flex: 1 0 0;
       cursor: inherit;
       font-family: inherit;
-      display: inline-block;
       background: inherit;
       margin: 0;
       padding: 0;
       outline: none;
       border: none;
-      flex: auto;
       color: var(--text-color, #1a1b1c);
 
       @media (min-width: $sm) {

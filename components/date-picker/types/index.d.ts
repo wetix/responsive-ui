@@ -3,7 +3,6 @@ import type { SvelteComponentTyped } from "svelte/internal";
 export interface DatePickerProps {
   class?: string;
   open?: boolean;
-  placeholder?: string;
   value?: string;
   ref?: HTMLInputElement;
   name?: string;

@@ -26,6 +26,7 @@
   class:resp-chip--disabled={disabled}
   data-value={value}
   for={id}
+  on:click|stopPropagation
   {...$$restProps}
 >
   <slot />
