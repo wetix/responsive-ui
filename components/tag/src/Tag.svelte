@@ -28,6 +28,7 @@
 
 <style lang="scss">
   .resp-tag {
+    display: inline-block;
     position: relative;
     align-items: center;
     font-size: var(--font-size-xs, 10px);
