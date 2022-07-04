@@ -5,6 +5,8 @@
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
   export let year = 0;
   export let month = 0;
   export let day = 0;
@@ -67,7 +69,7 @@
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
-<div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
+<div class={`resp-calendar ${className}`} on:click|stopPropagation in:fade out:fade>
   <div class="resp-calendar__header">
     <span class="resp-calendar__icon" on:click={handlePrevYear}>
       <i class="resp-calendar-most-prev-icon" />
@@ -121,7 +123,7 @@
   </div>
 </div>
 
-<style lang="scss" global>
+<style lang="scss">
   $sm: 576px;
 
   .resp-calendar {
@@ -148,6 +150,11 @@
       height: 36px;
       padding: 0 8px;
       align-items: center;
+
+      @media screen and (max-width: $sm) {
+        height: min(15vw, 36px);
+        font-size: min(5vw, 14px);
+      }
     }
 
     &__header {
@@ -159,6 +166,7 @@
         flex-grow: 1;
         min-width: 0;
         text-align: center;
+        white-space: nowrap;
       }
 
       .resp-calendar-prev-icon,
@@ -214,11 +222,6 @@
         border-collapse: collapse;
         width: 100%;
 
-        th {
-          font-weight: 600;
-        }
-
-        th,
         td {
           text-align: center;
           vertical-align: middle;
@@ -236,6 +239,11 @@
       width: 25px;
       border-radius: 50%;
       transition: all 0.3s;
+
+      @media screen and (max-width: $sm) {
+        height: min(8vw, 25px);
+        width: min(8vw, 25px);
+      }
 
       &--selected {
         background: #fc4451;

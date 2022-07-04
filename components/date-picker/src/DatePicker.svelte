@@ -165,6 +165,7 @@
       class:resp-date-picker__calendar-native={useNative}
     >
       <Calendar
+        class="resp-date-picker__calendar-custom"
         bind:day
         bind:month
         bind:year
@@ -226,9 +227,7 @@
 
     input {
       display: flex;
-      display: -webkit-flex;
       flex: 1 0 0;
-      -webkit-flex: 1 0 0;
       cursor: inherit;
       font-family: inherit;
       background: inherit;
@@ -238,19 +237,10 @@
       border: none;
       color: var(--text-color, #1a1b1c);
 
-      @media (min-width: $sm) {
-        &::-webkit-inner-spin-button,
-        &::-webkit-calendar-picker-indicator {
-          display: none;
-          -webkit-appearance: none;
-        }
-      }
-    }
-
-    &__icon-calendar,
-    &__icon-close {
-      @media (max-width: $sm) {
+      &::-webkit-inner-spin-button,
+      &::-webkit-calendar-picker-indicator {
         display: none;
+        -webkit-appearance: none;
       }
     }
 
@@ -263,7 +253,6 @@
       background: transparent;
       transform: translateY(-50%);
       cursor: pointer;
-      // opacity: 0;
       transition: opacity 0.3s, color 0.3s;
       z-index: 1;
     }
@@ -277,11 +266,19 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
 
-      &-native {
-        @media (max-width: $sm) {
-          display: none;
-        }
+      @media (max-width: $sm) {
+        right: 0;
+        width: 100%;
       }
+    }
+  }
+
+  :global(.resp-date-picker__calendar-custom) {
+    @media (max-width: $sm) {
+      .resp-calendar__body {
+        font-size: min(5vw, 14px);
+      }
+      width: 100% !important;
     }
   }
 </style>
