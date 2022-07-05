@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.27](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.26...v1.1.0-alpha.27) (2022-07-05)
+
+
+### Bug Fixes
+
+* calendar on mobile ([7ae2144](https://github.com/wetix/responsive-ui/commit/7ae2144d04b98aaa82b615f1efd7eebf7098c0c5))
+* datepicker native ([c71e6ed](https://github.com/wetix/responsive-ui/commit/c71e6ed9ada8604295c480f8d83119cbee40d03b))
+* native styling ([41137ad](https://github.com/wetix/responsive-ui/commit/41137adc558448386ffe851c4abbacd2513980a8))
+* native styling ([7297582](https://github.com/wetix/responsive-ui/commit/72975820c99b8322d6e1c4ad10120371f8afe457))
+* revert useNative default value ([f156dc8](https://github.com/wetix/responsive-ui/commit/f156dc8a00a68173c0a396123e40b5c883768db3))
+* styling ([2ff50ac](https://github.com/wetix/responsive-ui/commit/2ff50ac2e2098abd9ac3d69ed3171038560fe82d))
+* styling && no-js fallback ([1ec8d06](https://github.com/wetix/responsive-ui/commit/1ec8d06d3a396401eb0de9fde031eb8244263098))
+* types & datepicker spanWidth attribute ([1140a70](https://github.com/wetix/responsive-ui/commit/1140a70139ffced06db14f1fa7174ac949065bb8))
+
+
+
+
+
 # [1.1.0-alpha.26](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.25...v1.1.0-alpha.26) (2022-07-04)
 
 
