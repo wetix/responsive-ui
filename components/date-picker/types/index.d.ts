@@ -10,6 +10,8 @@ export interface DatePickerProps {
   disabled?: boolean;
   bordered?: boolean;
   useNative?: boolean;
+  spanWidth?: boolean;
+  form?: HTMLFormElement;
   min?: string;
   max?: string;
   format?: (v: Date) => string;

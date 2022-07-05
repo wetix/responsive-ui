@@ -5,9 +5,12 @@
 
   const dispatch = createEventDispatcher();
 
+  let className = "";
+  export { className as class };
   export let year = 0;
   export let month = 0;
   export let day = 0;
+  export let spanWidth = false;
   export let disabledDate = (_: Date) => false;
 
   let selectedMonth = month;
@@ -67,7 +70,13 @@
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
-<div class="resp-calendar" on:click|stopPropagation in:fade out:fade>
+<div
+  class={`resp-calendar ${className}`}
+  class:resp-calendar--span={spanWidth}
+  on:click|stopPropagation
+  in:fade
+  out:fade
+>
   <div class="resp-calendar__header">
     <span class="resp-calendar__icon" on:click={handlePrevYear}>
       <i class="resp-calendar-most-prev-icon" />
@@ -121,13 +130,42 @@
   </div>
 </div>
 
-<style lang="scss" global>
+<style lang="scss">
   $sm: 576px;
+
+  @mixin cal-span-width() {
+    width: 100% !important;
+
+    &__body {
+      font-size: min(5vw, 14px);
+    }
+
+    &__header,
+    &__footer {
+      height: min(15vw, 36px);
+      font-size: min(5vw, 14px);
+    }
+
+    &__date {
+      height: min(8vw, 25px);
+      width: min(8vw, 25px);
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    div.resp-calendar {
+      @include cal-span-width();
+    }
+  }
 
   .resp-calendar {
     display: flex;
     flex-direction: column;
     width: 260px;
+
+    &--span {
+      @include cal-span-width();
+    }
 
     &__button,
     &__icon {
@@ -154,6 +192,8 @@
       text-align: center;
       justify-content: space-between;
       border-bottom: 1px solid #f5f5f5;
+      height: max-content;
+      padding: 5px 0;
 
       &-caption {
         flex-grow: 1;
@@ -214,11 +254,6 @@
         border-collapse: collapse;
         width: 100%;
 
-        th {
-          font-weight: 600;
-        }
-
-        th,
         td {
           text-align: center;
           vertical-align: middle;

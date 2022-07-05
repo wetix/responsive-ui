@@ -13,7 +13,8 @@
     bordered: { control: "boolean" },
     useNative: { control: "boolean" },
     onChange: { action: "onChange" },
-    onDateChange: { action: "onChange" }
+    onDateChange: { action: "onChange" },
+    spanWidth: { control: "boolean" }
   }}
 />
 

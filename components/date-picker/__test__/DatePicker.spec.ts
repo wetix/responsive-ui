@@ -11,6 +11,7 @@ describe("DatePicker", () => {
     readonly: true,
     disabled: false,
     bordered: true,
+    useNative: false,
     ref: document.createElement("input")
   };
 
@@ -47,14 +48,9 @@ describe("DatePicker", () => {
 
     //rerender opened
     rerender({
-      class: "datepicker-custom",
+      ...props,
       open: true,
-      placeholder: "Select date",
-      name: "datejs",
       readonly: false,
-      disabled: false,
-      bordered: true,
-      ref: document.createElement("input")
     });
 
     //test open

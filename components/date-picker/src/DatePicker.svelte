@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
@@ -23,6 +23,7 @@
   export let bordered = true;
   export let disabled = false;
   export let useNative = true;
+  export let spanWidth = false;
   export let min: string;
   export let max: string;
   export let disabledDate = (_: Date) => false;
@@ -113,12 +114,21 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
+
+  let divContainer: HTMLElement;
+  onMount(() => {
+    if (!useNative) {
+      readonly = true;
+      divContainer.classList.remove("resp-date-picker--native");
+    }
+  });
 </script>
 
 <svelte:window on:click={handleClickOutside} />
 
 <div
-  class="resp-date-picker {className}"
+  bind:this={divContainer}
+  class="resp-date-picker resp-date-picker--native {className}"
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -142,6 +152,7 @@
     on:change
     {value}
     {...$$restProps}
+    pattern="\d{4}-\d{2}-\d{2}"
   />
   <i
     class="resp-date-picker__icon-calendar"
@@ -159,7 +170,7 @@
     </i>
   {/if}
 
-  {#if open}
+  {#if open && !useNative}
     <div
       class="resp-date-picker__calendar"
       class:resp-date-picker__calendar-native={useNative}
@@ -169,13 +180,14 @@
         bind:month
         bind:year
         {disabledDate}
+        {spanWidth}
         on:change={(v) => handleChange(v.detail)}
       />
     </div>
   {/if}
 </div>
 
-<style lang="scss" global>
+<style lang="scss">
   $sm: 576px;
 
   .resp-date-picker {
@@ -206,10 +218,6 @@
       border-color: #fc4451;
     }
 
-    svg {
-      display: block;
-    }
-
     &--focused {
       box-shadow: 0 0 0 3px rgba(252, 68, 81, 0.3);
 
@@ -224,11 +232,9 @@
       pointer-events: none;
     }
 
-    input {
+    input[type="date"] {
       display: flex;
-      display: -webkit-flex;
       flex: 1 0 0;
-      -webkit-flex: 1 0 0;
       cursor: inherit;
       font-family: inherit;
       background: inherit;
@@ -237,20 +243,33 @@
       outline: none;
       border: none;
       color: var(--text-color, #1a1b1c);
+      -webkit-appearance: none;
 
-      @media (min-width: $sm) {
-        &::-webkit-inner-spin-button,
-        &::-webkit-calendar-picker-indicator {
-          display: none;
-          -webkit-appearance: none;
-        }
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button,
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
       }
     }
 
-    &__icon-calendar,
-    &__icon-close {
-      @media (max-width: $sm) {
-        display: none;
+    &--native {
+      input[type="date"] {
+        -webkit-appearance: initial;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button,
+        &::-webkit-calendar-picker-indicator {
+          display: block;
+          -webkit-appearance: initial;
+        }
+      }
+
+      .resp-date-picker {
+        &__icon-calendar,
+        &__icon-close {
+          display: none;
+        }
       }
     }
 
@@ -263,7 +282,6 @@
       background: transparent;
       transform: translateY(-50%);
       cursor: pointer;
-      // opacity: 0;
       transition: opacity 0.3s, color 0.3s;
       z-index: 1;
     }
@@ -277,11 +295,14 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
 
-      &-native {
-        @media (max-width: $sm) {
-          display: none;
-        }
+      @media (max-width: $sm) {
+        right: 0;
+        width: 100%;
       }
     }
+  }
+
+  :global(svg) {
+    display: block;
   }
 </style>
