@@ -192,12 +192,13 @@
       text-align: center;
       justify-content: space-between;
       border-bottom: 1px solid #f5f5f5;
+      height: max-content;
+      padding: 5px 0;
 
       &-caption {
         flex-grow: 1;
         min-width: 0;
         text-align: center;
-        white-space: nowrap;
       }
 
       .resp-calendar-prev-icon,

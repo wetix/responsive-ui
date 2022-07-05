@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
@@ -114,16 +114,21 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
+
+  let divContainer: HTMLElement;
+  onMount(() => {
+    if (!useNative) divContainer.classList.remove("resp-date-picker--native");
+  });
 </script>
 
 <svelte:window on:click={handleClickOutside} />
 
 <div
-  class="resp-date-picker {className}"
+  bind:this={divContainer}
+  class="resp-date-picker resp-date-picker--native {className}"
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
-  class:resp-date-picker--native={useNative}
   on:click|stopPropagation={handleFocus}
 >
   <input
