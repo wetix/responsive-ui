@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
@@ -34,11 +34,6 @@
   let month = today.getMonth();
   let year = today.getFullYear();
   let matches = dateRegex.exec(value);
-  let native = true;
-
-  if (!useNative) {
-    native = false;
-  }
 
   if (matches) {
     const date = new Date(matches[0]);
@@ -119,13 +114,18 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
+
+  let divContainer: HTMLElement;
+  onMount(() => {
+    if (!useNative) divContainer.classList.remove("resp-date-picker--native");
+  });
 </script>
 
 <svelte:window on:click={handleClickOutside} />
 
 <div
-  class={`resp-date-picker ${className}`}
-  class:resp-date-picker--native={native}
+  bind:this={divContainer}
+  class={`resp-date-picker resp-date-picker--native ${className}`}
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -242,6 +242,7 @@
       outline: none;
       border: none;
       color: var(--text-color, #1a1b1c);
+      -webkit-appearance: none;
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button,
@@ -251,6 +252,8 @@
       }
 
       @media screen and (max-width: $md) {
+        -webkit-appearance: initial;
+
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
@@ -269,6 +272,8 @@
 
     &--native {
       input[type="date"] {
+        -webkit-appearance: initial;
+
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
