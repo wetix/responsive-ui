@@ -249,7 +249,7 @@
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
-          display: initial;
+          display: block;
           -webkit-appearance: initial;
         }
       }
