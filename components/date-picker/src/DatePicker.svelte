@@ -23,6 +23,7 @@
   export let bordered = true;
   export let disabled = false;
   export let useNative = true;
+  export let spanWidth = false;
   export let min: string;
   export let max: string;
   export let disabledDate = (_: Date) => false;
@@ -165,18 +166,18 @@
       class:resp-date-picker__calendar-native={useNative}
     >
       <Calendar
-        class="resp-date-picker__calendar-custom"
         bind:day
         bind:month
         bind:year
         {disabledDate}
+        {spanWidth}
         on:change={(v) => handleChange(v.detail)}
       />
     </div>
   {/if}
 </div>
 
-<style lang="scss" global>
+<style lang="scss">
   $sm: 576px;
 
   .resp-date-picker {
@@ -205,10 +206,6 @@
     &--focused,
     &:hover {
       border-color: #fc4451;
-    }
-
-    svg {
-      display: block;
     }
 
     &--focused {
@@ -273,12 +270,7 @@
     }
   }
 
-  :global(.resp-date-picker__calendar-custom) {
-    @media (max-width: $sm) {
-      .resp-calendar__body {
-        font-size: min(5vw, 14px);
-      }
-      width: 100% !important;
-    }
+  :global(svg) {
+    display: block;
   }
 </style>

@@ -10,6 +10,7 @@
   export let year = 0;
   export let month = 0;
   export let day = 0;
+  export let spanWidth = false;
   export let disabledDate = (_: Date) => false;
 
   let selectedMonth = month;
@@ -69,7 +70,13 @@
   $: data = get2DimensionDate(selectedMonth, selectedYear);
 </script>
 
-<div class={`resp-calendar ${className}`} on:click|stopPropagation in:fade out:fade>
+<div
+  class={`resp-calendar ${className}`}
+  class:resp-calendar--span={spanWidth}
+  on:click|stopPropagation
+  in:fade
+  out:fade
+>
   <div class="resp-calendar__header">
     <span class="resp-calendar__icon" on:click={handlePrevYear}>
       <i class="resp-calendar-most-prev-icon" />
@@ -126,10 +133,39 @@
 <style lang="scss">
   $sm: 576px;
 
+  @mixin cal-span-width() {
+    width: 100% !important;
+
+    &__body {
+      font-size: min(5vw, 14px);
+    }
+
+    &__header,
+    &__footer {
+      height: min(15vw, 36px);
+      font-size: min(5vw, 14px);
+    }
+
+    &__date {
+      height: min(8vw, 25px);
+      width: min(8vw, 25px);
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    div.resp-calendar {
+      @include cal-span-width();
+    }
+  }
+
   .resp-calendar {
     display: flex;
     flex-direction: column;
     width: 260px;
+
+    &--span {
+      @include cal-span-width();
+    }
 
     &__button,
     &__icon {
@@ -150,11 +186,6 @@
       height: 36px;
       padding: 0 8px;
       align-items: center;
-
-      @media screen and (max-width: $sm) {
-        height: min(15vw, 36px);
-        font-size: min(5vw, 14px);
-      }
     }
 
     &__header {
@@ -239,11 +270,6 @@
       width: 25px;
       border-radius: 50%;
       transition: all 0.3s;
-
-      @media screen and (max-width: $sm) {
-        height: min(8vw, 25px);
-        width: min(8vw, 25px);
-      }
 
       &--selected {
         background: #fc4451;
