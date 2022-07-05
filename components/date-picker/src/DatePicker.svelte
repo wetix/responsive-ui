@@ -254,7 +254,9 @@
     }
 
     &--native {
-      input {
+      input[type="date"] {
+        -webkit-appearance: initial;
+
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
