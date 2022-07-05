@@ -22,7 +22,7 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
-  export let useNative = false;
+  export let useNative = true;
   export let spanWidth = false;
   export let min: string;
   export let max: string;
