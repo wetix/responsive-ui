@@ -22,13 +22,15 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
-  export let useNative = true;
+  export let useNative = false;
   export let spanWidth = false;
   export let min: string;
   export let max: string;
+  export let placeholder: string = "Select Date";
   export let disabledDate = (_: Date) => false;
   // export let format = (v: Date) => v;
 
+  let type: "text" | "date" = "date";
   let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
@@ -119,6 +121,7 @@
   onMount(() => {
     if (!useNative) {
       readonly = true;
+      type = "text";
       divContainer.classList.remove("resp-date-picker--native");
     }
   });
@@ -136,13 +139,14 @@
 >
   <input
     bind:this={ref}
-    type="date"
+    {type}
     {name}
     {disabled}
     size="20"
     {readonly}
     {min}
     {max}
+    {placeholder}
     on:focus={handleFocus}
     on:blur={handleBlur}
     on:keydown={handleKeydown}
@@ -232,7 +236,7 @@
       pointer-events: none;
     }
 
-    input[type="date"] {
+    input {
       display: flex;
       flex: 1 0 0;
       cursor: inherit;
@@ -254,8 +258,11 @@
     }
 
     &--native {
-      input[type="date"] {
-        -webkit-appearance: initial;
+      input {
+        display: block;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        min-height: 1.2em;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
