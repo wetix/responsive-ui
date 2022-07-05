@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.29](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.28...v1.1.0-alpha.29) (2022-07-05)
+
+
+### Bug Fixes
+
+* datepicker using text, using calendar on mobile ([d85d269](https://github.com/wetix/responsive-ui/commit/d85d2693b95a23a033599c2f72c79d0dfd9b4f26))
+* native no-js fallback ([8959b9c](https://github.com/wetix/responsive-ui/commit/8959b9ca842d8d170ea4ca474bd6ba1b9dac8b58))
+* on click event ([2a4184b](https://github.com/wetix/responsive-ui/commit/2a4184bf69c9ee6fde228ed086aa0710a52cd535))
+* use back native ([c28603f](https://github.com/wetix/responsive-ui/commit/c28603fb9b86e15a4b1a9f4f680d99997b378584))
+
+
+
+
+
 # [1.1.0-alpha.28](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.27...v1.1.0-alpha.28) (2022-07-05)
 
 
