@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher } from "svelte";
   import type { DatePickerDateChangeEvent } from "../types";
   import Calendar from "./Calendar.svelte";
   import { isValidDate, toDateString } from "./datetime";
@@ -34,6 +34,11 @@
   let month = today.getMonth();
   let year = today.getFullYear();
   let matches = dateRegex.exec(value);
+  let native = true;
+
+  if (!useNative) {
+    native = false;
+  }
 
   if (matches) {
     const date = new Date(matches[0]);
@@ -114,20 +119,13 @@
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
-
-  let divContainer: HTMLElement;
-  onMount(() => {
-    if (!useNative) {
-      divContainer.classList.remove("resp-date-picker--native");
-    }
-  });
 </script>
 
 <svelte:window on:click={handleClickOutside} />
 
 <div
-  bind:this={divContainer}
-  class="resp-date-picker resp-date-picker--native {className}"
+  class={`resp-date-picker ${className}`}
+  class:resp-date-picker--native={native}
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -153,12 +151,8 @@
     {...$$restProps}
     pattern="\d{4}-\d{2}-\d{2}"
   />
-  <i
-    class="resp-date-picker__icon-calendar"
-    role="img"
-    aria-label="calendar"
-    on:click={() => (open = true)}
-    >{@html `<svg viewBox="64 64 896 896" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" /></svg>`}
+  <i class="resp-date-picker__icon-calendar" role="img" aria-label="calendar">
+    {@html `<svg viewBox="64 64 896 896" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" /></svg>`}
   </i>
   {#if open}
     <i
@@ -188,6 +182,7 @@
 
 <style lang="scss">
   $sm: 576px;
+  $md: 768px;
 
   .resp-date-picker {
     display: inline-flex;
@@ -242,7 +237,6 @@
       outline: none;
       border: none;
       color: var(--text-color, #1a1b1c);
-      -webkit-appearance: none;
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button,
@@ -251,9 +245,7 @@
         -webkit-appearance: none;
       }
 
-      @media screen and (max-width: $sm) {
-        -webkit-appearance: initial;
-
+      @media screen and (max-width: $md) {
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
@@ -263,7 +255,7 @@
       }
     }
 
-    @media screen and (max-width: $sm) {
+    @media screen and (max-width: $md) {
       &__icon-calendar,
       &__icon-close {
         display: none;
@@ -272,8 +264,6 @@
 
     &--native {
       input[type="date"] {
-        -webkit-appearance: initial;
-
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
         &::-webkit-calendar-picker-indicator {
@@ -312,7 +302,7 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
 
-      @media (max-width: $sm) {
+      @media (max-width: $md) {
         display: none;
       }
     }
