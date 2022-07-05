@@ -22,7 +22,7 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
-  export let useNative = true;
+  export let useNative = false;
   export let spanWidth = false;
   export let min: string;
   export let max: string;
@@ -123,6 +123,7 @@
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
+  class:resp-date-picker--native={useNative}
   on:click|stopPropagation={handleFocus}
 >
   <input
@@ -143,6 +144,7 @@
     on:change
     {value}
     {...$$restProps}
+    pattern="\d{4}-\d{2}-\d{2}"
   />
   <i
     class="resp-date-picker__icon-calendar"
@@ -160,7 +162,7 @@
     </i>
   {/if}
 
-  {#if open}
+  {#if open && !useNative}
     <div
       class="resp-date-picker__calendar"
       class:resp-date-picker__calendar-native={useNative}
@@ -235,9 +237,28 @@
       color: var(--text-color, #1a1b1c);
 
       &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button,
       &::-webkit-calendar-picker-indicator {
         display: none;
         -webkit-appearance: none;
+      }
+    }
+
+    &--native {
+      input {
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button,
+        &::-webkit-calendar-picker-indicator {
+          display: initial;
+          -webkit-appearance: initial;
+        }
+      }
+
+      .resp-date-picker {
+        &__icon-calendar,
+        &__icon-close {
+          display: none;
+        }
       }
     }
 
