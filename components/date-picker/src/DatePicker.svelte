@@ -118,7 +118,6 @@
   let divContainer: HTMLElement;
   onMount(() => {
     if (!useNative) {
-      readonly = true;
       divContainer.classList.remove("resp-date-picker--native");
     }
   });
@@ -251,6 +250,24 @@
         display: none;
         -webkit-appearance: none;
       }
+
+      @media screen and (max-width: $sm) {
+        -webkit-appearance: initial;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button,
+        &::-webkit-calendar-picker-indicator {
+          display: block;
+          -webkit-appearance: initial;
+        }
+      }
+    }
+
+    @media screen and (max-width: $sm) {
+      &__icon-calendar,
+      &__icon-close {
+        display: none;
+      }
     }
 
     &--native {
@@ -296,8 +313,7 @@
       z-index: 5;
 
       @media (max-width: $sm) {
-        right: 0;
-        width: 100%;
+        display: none;
       }
     }
   }
