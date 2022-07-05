@@ -117,7 +117,10 @@
 
   let divContainer: HTMLElement;
   onMount(() => {
-    if (!useNative) divContainer.classList.remove("resp-date-picker--native");
+    if (!useNative) {
+      readonly = true;
+      divContainer.classList.remove("resp-date-picker--native");
+    }
   });
 </script>
 
@@ -229,7 +232,7 @@
       pointer-events: none;
     }
 
-    input {
+    input[type="date"] {
       display: flex;
       flex: 1 0 0;
       cursor: inherit;
@@ -240,6 +243,7 @@
       outline: none;
       border: none;
       color: var(--text-color, #1a1b1c);
+      -webkit-appearance: none;
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button,
