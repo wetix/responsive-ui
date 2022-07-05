@@ -8,6 +8,7 @@
   component={DatePicker}
   argTypes={{
     name: { control: "text" },
+    placeholder: { control: "text" },
     disabled: { control: "boolean" },
     readonly: { control: "boolean" },
     bordered: { control: "boolean" },

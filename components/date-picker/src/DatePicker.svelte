@@ -22,13 +22,15 @@
   export let readonly = false;
   export let bordered = true;
   export let disabled = false;
-  export let useNative = true;
+  export let useNative = false;
   export let spanWidth = false;
   export let min: string;
   export let max: string;
+  export let placeholder: string = "Select Date";
   export let disabledDate = (_: Date) => false;
   // export let format = (v: Date) => v;
 
+  let type: "text" | "date" = "date";
   let focused = false;
   let day = today.getDate();
   let month = today.getMonth();
@@ -118,6 +120,8 @@
   let divContainer: HTMLElement;
   onMount(() => {
     if (!useNative) {
+      readonly = true;
+      type = "text";
       divContainer.classList.remove("resp-date-picker--native");
     }
   });
@@ -135,13 +139,14 @@
 >
   <input
     bind:this={ref}
-    type="date"
+    {type}
     {name}
     {disabled}
     size="20"
     {readonly}
     {min}
     {max}
+    {placeholder}
     on:focus={handleFocus}
     on:blur={handleBlur}
     on:keydown={handleKeydown}
@@ -187,7 +192,7 @@
 </div>
 
 <style lang="scss">
-  $sm: 576px;
+  $md: 768px;
 
   .resp-date-picker {
     display: inline-flex;
@@ -204,7 +209,7 @@
     border-radius: 3px;
     transition: all 0.5s;
 
-    @media (min-width: $sm) {
+    @media (min-width: $md) {
       width: auto;
     }
 
@@ -231,7 +236,7 @@
       pointer-events: none;
     }
 
-    input[type="date"] {
+    input {
       display: flex;
       flex: 1 0 0;
       cursor: inherit;
@@ -250,29 +255,14 @@
         display: none;
         -webkit-appearance: none;
       }
-
-      @media screen and (max-width: $sm) {
-        -webkit-appearance: initial;
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button,
-        &::-webkit-calendar-picker-indicator {
-          display: block;
-          -webkit-appearance: initial;
-        }
-      }
-    }
-
-    @media screen and (max-width: $sm) {
-      &__icon-calendar,
-      &__icon-close {
-        display: none;
-      }
     }
 
     &--native {
-      input[type="date"] {
-        -webkit-appearance: initial;
+      input {
+        display: block;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        min-height: 1.2em;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button,
@@ -312,8 +302,9 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       z-index: 5;
 
-      @media (max-width: $sm) {
-        display: none;
+      @media (max-width: $md) {
+        right: 0;
+        width: 100%;
       }
     }
   }

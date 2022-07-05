@@ -131,7 +131,7 @@
 </div>
 
 <style lang="scss">
-  $sm: 576px;
+  $md: 768px;
 
   @mixin cal-span-width() {
     width: 100% !important;
@@ -152,7 +152,7 @@
     }
   }
 
-  @media screen and (max-width: $sm) {
+  @media screen and (max-width: $md) {
     div.resp-calendar {
       @include cal-span-width();
     }
