@@ -117,7 +117,10 @@
 
   let divContainer: HTMLElement;
   onMount(() => {
-    if (!useNative) divContainer.classList.remove("resp-date-picker--native");
+    if (!useNative) {
+      readonly = true;
+      divContainer.classList.remove("resp-date-picker--native");
+    }
   });
 </script>
 
@@ -125,7 +128,7 @@
 
 <div
   bind:this={divContainer}
-  class={`resp-date-picker resp-date-picker--native ${className}`}
+  class="resp-date-picker resp-date-picker--native {className}"
   class:resp-date-picker--focused={focused}
   class:resp-date-picker--bordered={bordered}
   class:resp-date-picker--disabled={disabled}
@@ -156,8 +159,7 @@
     role="img"
     aria-label="calendar"
     on:click={() => (open = true)}
-  >
-    {@html `<svg viewBox="64 64 896 896" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" /></svg>`}
+    >{@html `<svg viewBox="64 64 896 896" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" /></svg>`}
   </i>
   {#if open}
     <i
@@ -186,7 +188,6 @@
 </div>
 
 <style lang="scss">
-  $sm: 576px;
   $md: 768px;
 
   .resp-date-picker {
@@ -204,7 +205,7 @@
     border-radius: 3px;
     transition: all 0.5s;
 
-    @media (min-width: $sm) {
+    @media (min-width: $md) {
       width: auto;
     }
 
@@ -249,24 +250,6 @@
       &::-webkit-calendar-picker-indicator {
         display: none;
         -webkit-appearance: none;
-      }
-
-      @media screen and (max-width: $md) {
-        -webkit-appearance: initial;
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button,
-        &::-webkit-calendar-picker-indicator {
-          display: block;
-          -webkit-appearance: initial;
-        }
-      }
-    }
-
-    @media screen and (max-width: $md) {
-      &__icon-calendar,
-      &__icon-close {
-        display: none;
       }
     }
 
@@ -313,7 +296,8 @@
       z-index: 5;
 
       @media (max-width: $md) {
-        display: none;
+        right: 0;
+        width: 100%;
       }
     }
   }
