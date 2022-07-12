@@ -20,6 +20,7 @@
   bind:checked
   on:change
   on:click
+  data-testid="chip"
 />
 <label
   class="resp-chip {className}"

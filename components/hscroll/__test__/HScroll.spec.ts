@@ -24,7 +24,7 @@ describe("HScroll", () => {
 
   it("should have correct props", () => {
     const { container } = render(HScroll, { props });
-    const hScroll = container.querySelector(".resp-scroll") as HTMLElement;
+    const hScroll = container.getElementsByClassName("resp-scroll")[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");
@@ -37,21 +37,16 @@ describe("HScroll", () => {
     expect(hScroll.getAttribute("style")).toEqual(props.style); //style test
 
     //scrollable test
-    const scrollBox = container.querySelector(".resp-scroll__box") as HTMLElement;
+    const scrollBox = container.getElementsByClassName("resp-scroll__box")[0] as HTMLElement;
     expect(scrollBox.classList).toContain("resp-scroll__box--scrollable");
   });
 
   it("click test", async () => {
-    const { container } = render(HScroll, { props });
-    const hScroll = container.querySelector(".resp-scroll") as HTMLElement;
+    const { getByTestId } = render(HScroll, { props });
 
     //buttons
-    const prev = hScroll.querySelector(
-      ".resp-scroll__prev-icon > .resp-scroll__icon"
-    ) as HTMLElement;
-    const next = hScroll.querySelector(
-      ".resp-scroll__next-icon > .resp-scroll__icon"
-    ) as HTMLElement;
+    const prev = getByTestId("prev") as HTMLElement;
+    const next = getByTestId("next") as HTMLElement;
 
     //mock fns
     const mockPrev = jest.fn(() => {

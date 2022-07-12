@@ -21,9 +21,9 @@ describe("InputNumber test", () => {
 
   it("should have correct props", () => {
     const { container } = render(InputNumber, { props });
-    const inputNumber = container.querySelector(".resp-input-number") as HTMLElement;
+    const inputNumber = container.getElementsByClassName("resp-input-number")[0] as HTMLElement;
 
-    const input = container.querySelector("input") as HTMLInputElement;
+    const input = container.getElementsByTagName("input")[0] as HTMLInputElement;
     expect(input.id).toEqual(props.id);
     //test class
     let customClass = props.class.split(" ");
@@ -34,7 +34,7 @@ describe("InputNumber test", () => {
 
   it("should take in input", async () => {
     const { container } = render(InputNumber, { props });
-    const inputNumber = container.querySelector("input") as HTMLInputElement;
+    const inputNumber = container.getElementsByTagName("input")[0] as HTMLInputElement;
     await fireEvent.change(inputNumber, { target: { value: 10 } });
 
     expect(inputNumber.value).toEqual("10");

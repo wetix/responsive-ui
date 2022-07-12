@@ -28,13 +28,11 @@ describe("Checkbox", () => {
 
   //props test
   it("should have correct props", () => {
-    const { container } = render(Checkbox, { props });
-    const checkBox = container.querySelector(
-      "input[type='checkbox']"
-    ) as HTMLInputElement;
+    const { getByTestId, container } = render(Checkbox, { props });
+    const checkBox = getByTestId("checkbox") as HTMLInputElement;
 
     //test classes
-    const label = container.querySelector("label") as HTMLElement;
+    const label = container.getElementsByTagName("label")[0] as HTMLElement;
     const classes = props.class.split(" ");
     for (let c of classes) {
       expect(label.classList).toContain(c);
@@ -48,10 +46,8 @@ describe("Checkbox", () => {
 
   //onclick event
   it("should react to clicks corectly", async () => {
-    const { container } = render(Checkbox, { props });
-    const checkBox = container.querySelector(
-      "input[type='checkbox']"
-    ) as HTMLInputElement;
+    const result = render(Checkbox, { props });
+    const checkBox = result.getByTestId("checkbox") as HTMLInputElement;
 
     //should be false
     expect(checkBox.checked).toBeFalsy();

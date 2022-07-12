@@ -22,7 +22,7 @@ describe("Poster test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Poster, { props });
-    const poster = container.querySelector(".resp-poster") as HTMLElement;
+    const poster = container.getElementsByClassName("resp-poster")[0] as HTMLElement;
 
     expect(poster.id).toEqual(props.id);
     //test class

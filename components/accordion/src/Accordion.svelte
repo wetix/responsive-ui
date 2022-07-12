@@ -9,7 +9,7 @@
 </script>
 
 <div class="resp-accordion {className}" {...$$restProps}>
-  <input {id} type="checkbox" {disabled} checked={!collapsed} on:change />
+  <input {id} type="checkbox" {disabled} checked={!collapsed} on:change data-testid="accordion" />
   <label class="resp-accordion__label-content" for={id}>
     <div class="resp-accordion__label-content__wrapper">
       <div class="resp-accordion__label">

@@ -26,7 +26,7 @@ describe("Header", () => {
 
   it("should render with correct props", () => {
     const { container } = render(Header, { props });
-    const header = container.querySelector("." + props.class) as HTMLElement;
+    const header = container.getElementsByClassName(props.class)[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");
@@ -38,7 +38,7 @@ describe("Header", () => {
     expect(header.title).toEqual(props.title); //title test
 
     //test label
-    const label = container.querySelector(".resp-header__label") as HTMLElement;
+    const label = container.getElementsByClassName("resp-header__label")[0] as HTMLElement;
     expect(label.innerHTML).toEqual(props.label);
 
     //test style

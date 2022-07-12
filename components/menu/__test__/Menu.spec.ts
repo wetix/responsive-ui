@@ -37,7 +37,7 @@ describe("Menu test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Menu, { props });
-    const menu = container.querySelector(".resp-menu") as HTMLElement;
+    const menu = container.getElementsByClassName("resp-menu")[0] as HTMLElement;
 
     //test class
     let customClass = props.class.split(" ");

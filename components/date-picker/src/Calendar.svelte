@@ -73,6 +73,7 @@
 <div
   class={`resp-calendar ${className}`}
   class:resp-calendar--span={spanWidth}
+  data-testid="calendar"
   on:click|stopPropagation
   in:fade
   out:fade

@@ -30,7 +30,7 @@ describe("Column", () => {
 
   it("prop test", () => {
     const { container } = render(Column, { props });
-    const column = container.querySelector(".resp-col") as HTMLElement;
+    const column = container.getElementsByClassName("resp-col")[0] as HTMLElement;
 
     //test classes
     let classes = props.class.split(" ");

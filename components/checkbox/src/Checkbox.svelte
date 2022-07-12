@@ -18,6 +18,7 @@
     {value}
     on:change
     style="display: none;"
+    data-testid="checkbox"
   />
   <span class="resp-checkbox__action">
     <i class="resp-checkbox__icon">
