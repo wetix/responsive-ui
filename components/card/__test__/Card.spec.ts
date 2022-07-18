@@ -26,7 +26,7 @@ describe("Card", () => {
 
   it("should have correct props", () => {
     const { container } = render(Card, { props });
-    const card = container.querySelector(".resp-card") as HTMLElement;
+    const card = container.getElementsByClassName("resp-card")[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");

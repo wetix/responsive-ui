@@ -30,7 +30,7 @@ describe("Input", () => {
 
   it("should have correct props", () => {
     const { container } = render(Input, { props });
-    const div = container.querySelector(".resp-input") as HTMLElement;
+    const div = container.getElementsByClassName("resp-input")[0] as HTMLElement;
 
     //test class
     let customClass = props.class.split(" ");
@@ -38,7 +38,7 @@ describe("Input", () => {
       expect(div.classList).toContain(c);
     }
 
-    const input = container.querySelector("input") as HTMLInputElement;
+    const input = container.getElementsByTagName("input")[0] as HTMLInputElement;
     expect(input.id).toEqual(props.id);
     expect(input.name).toEqual(props.name);
     expect(input.getAttribute("label")).toEqual(props.label);
@@ -52,7 +52,7 @@ describe("Input", () => {
 
   it("should take in input", async () => {
     const { container } = render(Input, { props });
-    const input = container.querySelector("input") as HTMLInputElement;
+    const input = container.getElementsByTagName("input")[0] as HTMLInputElement;
 
     await fireEvent.change(input, { target: { value: "Hello" } });
     expect(input.value).toEqual("Hello");

@@ -25,7 +25,7 @@ describe("Icon test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Icon, { props });
-    const icon = container.querySelector(".resp-icon") as HTMLElement;
+    const icon = container.getElementsByClassName("resp-icon")[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");
@@ -38,7 +38,7 @@ describe("Icon test", () => {
     expect(icon.id).toEqual(props.id);
     expect(icon.getAttribute("style")).toEqual(props.style);
 
-    const use = container.querySelector("use") as Element;
+    const use = container.getElementsByTagName("use")[0] as Element;
     expect(use.getAttribute("href")).toEqual(props.useHref);
   });
 });

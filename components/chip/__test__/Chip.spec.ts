@@ -26,11 +26,11 @@ describe("Chip", () => {
   });
 
   it("should render with correct props", () => {
-    const { container } = render(Chip, { props });
-    const chip = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const { container, getByTestId } = render(Chip, { props });
+    const chip = getByTestId("chip") as HTMLInputElement;
 
     //class test
-    const label = container.querySelector("label") as HTMLElement;
+    const label = container.getElementsByTagName("label")[0] as HTMLElement;
     const classes = props.class.split(" ");
     for (let c of classes) {
       expect(label.classList).toContain(c);
@@ -42,8 +42,8 @@ describe("Chip", () => {
   });
 
   it("should be checked when onclick", async () => {
-    const { container } = render(Chip, { props });
-    const chip = container.querySelector("input[type='checkbox']") as HTMLInputElement;
+    const { getByTestId } = render(Chip, { props });
+    const chip = getByTestId("chip") as HTMLInputElement;
 
     // chip should be false
     expect(chip.checked).toBeFalsy();
