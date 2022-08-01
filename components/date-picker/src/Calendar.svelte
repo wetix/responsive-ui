@@ -49,7 +49,8 @@
     dispatch("change", toDateString(date));
   };
 
-  $: isValid = year > 0 && month >= 0 && day > 0;
+  $: isValid =
+    year > 0 && month >= 0 && day > 0 && !disabledDate(new Date(year, month, day));
   const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
     const clsList: string[] = [];
