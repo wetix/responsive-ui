@@ -301,7 +301,7 @@
       border-radius: 5px;
       background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      z-index: 5;
+      z-index: 51;
 
       @media (max-width: $md) {
         right: 0;
