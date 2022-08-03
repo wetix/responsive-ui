@@ -29,7 +29,7 @@ describe("Docker", () => {
 
   it("should display correct props", () => {
     const { container } = render(Docker, { props });
-    const docker = container.querySelector("aside") as HTMLElement;
+    const docker = container.getElementsByTagName("aside")[0] as HTMLElement;
 
     //test id
     expect(docker.getAttribute("id")).toBe(props.id);
@@ -50,11 +50,11 @@ describe("Docker", () => {
 
   it("should close", async () => {
     const { container } = render(Docker, { props });
-    let docker = container.querySelector("aside") as HTMLElement;
+    let docker = container.getElementsByTagName("aside")[0] as HTMLElement;
     //test if open
     expect(docker.classList).not.toContain("resp-docker--close");
     //click
-    await fireEvent.click(container.querySelector(".resp-docker__overlay") as Element);
+    await fireEvent.click(container.getElementsByClassName("resp-docker__overlay")[0] as Element);
     //test if closed
     expect(docker.classList).toContain("resp-docker--close");
   });

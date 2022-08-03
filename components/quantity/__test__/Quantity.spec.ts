@@ -24,9 +24,9 @@ describe("Quantity test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Quantity, { props });
-    const quantity = container.querySelector(".resp-quantity") as HTMLElement;
+    const quantity = container.getElementsByClassName("resp-quantity")[0] as HTMLElement;
 
-    const input = container.querySelector("input") as HTMLInputElement;
+    const input = container.getElementsByTagName("input")[0] as HTMLInputElement;
     expect(input.id).toEqual(props.id);
 
     //test class
@@ -41,9 +41,9 @@ describe("Quantity test", () => {
 
   it("fireEvent", async () => {
     const { container } = render(Quantity, { props });
-    const input = container.querySelector("input") as HTMLInputElement;
+    const input = container.getElementsByTagName("input")[0] as HTMLInputElement;
 
-    const adjust = container.querySelectorAll(".resp-quantity__control");
+    const adjust = container.getElementsByClassName("resp-quantity__control");
 
     //test min
     await fireEvent.click(adjust[0]);

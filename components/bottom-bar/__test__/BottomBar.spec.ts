@@ -23,7 +23,7 @@ describe("BottomBar", () => {
 
   it("props test", () => {
     const { container } = render(BottomBar, { props });
-    const bottombar = container.querySelector(".resp-bottom-bar") as HTMLElement;
+    const bottombar = container.getElementsByClassName("resp-bottom-bar")[0] as HTMLElement;
 
     //test classes
     const classes = props.class.split(" ");

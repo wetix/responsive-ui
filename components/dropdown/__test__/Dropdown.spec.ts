@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/svelte";
+import { render } from "@testing-library/svelte";
 import Dropdown from "../src/Dropdown.svelte";
 import SlotTest from "../../../test/slot/SlotTest.svelte";
 

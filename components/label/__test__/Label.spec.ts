@@ -21,7 +21,7 @@ describe("Label test", () => {
 
   it("should have correct props", () => {
     const { container } = render(Label, { props });
-    const label = container.querySelector("label") as HTMLElement;
+    const label = container.getElementsByTagName("label")[0] as HTMLElement;
 
     expect(label.id).toEqual(props.id);
 

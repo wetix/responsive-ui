@@ -17,7 +17,7 @@ describe("FAB", () => {
 
   it("props test", () => {
     const { container } = render(FloatingActionButton, { props });
-    const fab = container.querySelector(".resp-fab") as HTMLElement;
+    const fab = container.getElementsByClassName("resp-fab")[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");
@@ -33,7 +33,7 @@ describe("FAB", () => {
 
   it("test click event", async () => {
     const { container, component } = render(FloatingActionButton, { props });
-    const fab = container.querySelector("." + props.class) as HTMLElement;
+    const fab = container.getElementsByClassName(props.class)[0] as HTMLElement;
 
     const mock = jest.fn(); //test function
     component.$on("click", mock); //set function onclick

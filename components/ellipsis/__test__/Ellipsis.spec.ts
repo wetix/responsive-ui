@@ -22,7 +22,7 @@ describe("Ellipsis", () => {
 
   it("should render with correct props", () => {
     const { container } = render(Ellipsis, { props });
-    const ellipsis = container.querySelector(".resp-ellipsis") as HTMLElement;
+    const ellipsis = container.getElementsByClassName("resp-ellipsis")[0] as HTMLElement;
 
     //test class
     const classes = props.class.split(" ");
@@ -40,7 +40,7 @@ describe("Ellipsis", () => {
 
     const fn = jest.fn();
     component.$on("click", fn);
-    await fireEvent.click(container.querySelector("#id") as HTMLElement);
+    await fireEvent.click(container.getElementsByClassName("resp-ellipsis")[0] as HTMLElement);
 
     expect(fn).toHaveBeenCalled();
   });

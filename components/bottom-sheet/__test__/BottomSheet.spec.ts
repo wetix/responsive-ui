@@ -28,18 +28,18 @@ describe("BottomSheet", () => {
 
   it("should render with correct props", async () => {
     const { container } = render(BottomSheet, { props });
-    const bottomsheet = container.querySelector(".resp-bottom-sheet") as HTMLElement;
+    const bottomsheet = container.getElementsByClassName("resp-bottom-sheet")[0] as HTMLElement;
 
     expect(bottomsheet.id).toEqual(props.id);
-    //test classes
+    // test classes
     const classes = props.class.split(" ");
     for (let c of classes) {
       expect(bottomsheet.classList).toContain(c);
     }
 
-    //test if open
+    // test if open
     //TODO: error - transform is always translateY(100%) if open and closed
-    //expect(bottomsheet.style.transform).toEqual("translateY(0%)");
+    // expect(bottomsheet.style.transform).toEqual("translateY(0%)");
   });
 
   // it("should close on click", () => {

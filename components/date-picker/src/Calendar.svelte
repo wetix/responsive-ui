@@ -49,7 +49,8 @@
     dispatch("change", toDateString(date));
   };
 
-  $: isValid = year > 0 && month >= 0 && day > 0;
+  $: isValid =
+    year > 0 && month >= 0 && day > 0 && !disabledDate(new Date(year, month, day));
   const dateClass = "resp-calendar__date";
   $: getClassList = (v: Date) => {
     const clsList: string[] = [];
@@ -73,6 +74,7 @@
 <div
   class={`resp-calendar ${className}`}
   class:resp-calendar--span={spanWidth}
+  data-testid="calendar"
   on:click|stopPropagation
   in:fade
   out:fade

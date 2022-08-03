@@ -4,6 +4,7 @@ import SlotTest from "../../../test/slot/SlotTest.svelte";
 
 describe("Accordion", () => {
   const props = {
+    id: "accordion-input",
     class: "custom-accordion",
     caption: "test caption",
     disabled: false,
@@ -27,7 +28,7 @@ describe("Accordion", () => {
   //test props
   it("props test", () => {
     const { container } = render(Accordion, { props });
-    const div = container.querySelector(".resp-accordion") as HTMLElement;
+    const div = container.getElementsByClassName("resp-accordion")[0] as HTMLElement;
 
     //test classes
     const classes = props.class.split(" ");
@@ -37,15 +38,15 @@ describe("Accordion", () => {
     expect(div.getAttribute("label")).toEqual(props.label); //label test
 
     //caption test
-    const label = container.querySelector(".resp-accordion__label") as HTMLElement;
+    const label = container.getElementsByClassName("resp-accordion__label")[0] as HTMLElement;
     expect(label.textContent).toEqual(props.caption);
   });
 
   //test click event
   it("test click event", async () => {
-    const { container } = render(Accordion, { props });
-    const accordion = container.querySelector(
-      "input[type='checkbox']"
+    const { getByTestId } = render(Accordion, { props });
+    const accordion = getByTestId(
+      "accordion"
     ) as HTMLInputElement;
 
     //expect to not be collapsed (true)

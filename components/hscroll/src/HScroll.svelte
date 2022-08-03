@@ -59,7 +59,7 @@
     class:resp-scroll__icon--visible={scrollDistance > 0}
     on:click={handlePrev}
   >
-    <div class="resp-scroll__icon">
+    <div class="resp-scroll__icon" data-testid="prev">
       {@html `<svg viewBox="0 0 16 16" width="24px" height="24px"><path d="M10.15,13.35L4.79,8l5.35-5.35l0.71,0.71L6.21,8l4.65,4.65L10.15,13.35z" /></svg>`}
     </div>
   </span>
@@ -76,7 +76,7 @@
     class:resp-scroll__icon--visible={scrollDistance < maxOffsetWidth}
     on:click={handleNext}
   >
-    <div class="resp-scroll__icon">
+    <div class="resp-scroll__icon" data-testid="next">
       {@html `<svg viewBox="0 0 16 16" width="24px" height="24px"><path d="M4.97,12.65L9.62,8L4.97,3.35l0.71-0.71L11.03,8l-5.35,5.35L4.97,12.65z" /></svg>`}
     </div>
   </div>

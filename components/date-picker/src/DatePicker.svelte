@@ -61,13 +61,14 @@
   };
 
   const validateDate = (val: string): boolean => {
+    const date = new Date(val);
     if (!val) {
       handleClear();
       return false;
     }
-    // test regex, disabled date, is valid
+    // test regex, disabled date, is valid, same date
     if (!dateRegex.test(val)) return false;
-    if (disabledDate(new Date(val))) return false;
+    if (disabledDate(date)) return false;
     if (!isValidDate(val)) return false;
 
     return true;
@@ -89,13 +90,13 @@
       month = date.getMonth();
       day = date.getDate();
       value = val;
-      handleClickOutside();
 
       // FIXME: remove this in future since we dispatch using change event
       dispatch(dateChangeEvent, { date, dateString: val });
 
       setTimeout(() => {
         ref.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+        handleClickOutside();
       }, 0);
     } else {
       dispatch("error", "invalid date selected");
@@ -300,7 +301,7 @@
       border-radius: 5px;
       background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      z-index: 5;
+      z-index: 51;
 
       @media (max-width: $md) {
         right: 0;
