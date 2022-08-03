@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.30](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.29...v1.1.0-alpha.30) (2022-08-03)
+
+
+### Bug Fixes
+
+* calendar z-index ([a850004](https://github.com/wetix/responsive-ui/commit/a850004d3eea33ca186d1381c2150c9d47e0c83f))
+* date-picker `form` can use `string` or `HTMLFormElement` ([f8f7bb8](https://github.com/wetix/responsive-ui/commit/f8f7bb8dfa4de53a78460e3ec2b5871e0cf89856))
+* datepicker `form` is string ([793edca](https://github.com/wetix/responsive-ui/commit/793edca48db160ab09e0e25698606948c08d408f))
+* if today is disabled date, don't automatically select ([0d82f65](https://github.com/wetix/responsive-ui/commit/0d82f655c0ea9e28b4830ed35ffab0535e7949e4))
+
+
+
+
+
 # [1.1.0-alpha.29](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.28...v1.1.0-alpha.29) (2022-07-05)
 
 
