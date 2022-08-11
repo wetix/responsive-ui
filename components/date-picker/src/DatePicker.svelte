@@ -50,7 +50,6 @@
   };
 
   const handleClear = () => {
-    ref && ref.focus();
     focused = false;
     value = "";
     day = 0;
@@ -110,10 +109,6 @@
     }, duration);
   };
 
-  const handleBlur = () => {
-    if (!validateDate(value)) value = "";
-  };
-
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
@@ -148,8 +143,6 @@
     {min}
     {max}
     {placeholder}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
     on:keydown={handleKeydown}
     on:input={handleChange}
     on:focus
@@ -179,6 +172,9 @@
     <div
       class="resp-date-picker__calendar"
       class:resp-date-picker__calendar-native={useNative}
+      on:click={() => {
+        ref && ref.focus();
+      }}
     >
       <Calendar
         bind:day
@@ -240,6 +236,7 @@
     input {
       display: flex;
       flex: 1 0 0;
+      width: 100%;
       cursor: inherit;
       font-family: inherit;
       background: inherit;
