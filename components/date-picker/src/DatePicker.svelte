@@ -236,6 +236,7 @@
     input {
       display: flex;
       flex: 1 0 0;
+      width: 100%;
       cursor: inherit;
       font-family: inherit;
       background: inherit;
