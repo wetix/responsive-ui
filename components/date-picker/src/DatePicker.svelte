@@ -50,7 +50,6 @@
   };
 
   const handleClear = () => {
-    ref && ref.focus();
     focused = false;
     value = "";
     day = 0;
@@ -110,10 +109,6 @@
     }, duration);
   };
 
-  const handleBlur = () => {
-    if (!validateDate(value)) value = "";
-  };
-
   const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === "Enter") open = !open;
   };
@@ -148,8 +143,6 @@
     {min}
     {max}
     {placeholder}
-    on:focus={handleFocus}
-    on:blur={handleBlur}
     on:keydown={handleKeydown}
     on:input={handleChange}
     on:focus
@@ -160,7 +153,7 @@
     pattern="\d{4}-\d{2}-\d{2}"
   />
   <i
-    class="resp-date-picker__icon-calendar"
+    class="resp-date-picker__icon resp-date-picker__icon-calendar"
     role="img"
     aria-label="calendar"
     on:click={() => (open = true)}
@@ -168,7 +161,7 @@
   </i>
   {#if open}
     <i
-      class="resp-date-picker__icon-close"
+      class="resp-date-picker__icon resp-date-picker__icon-close"
       role="button"
       on:click|stopPropagation={handleClear}
       >{@html `<svg viewBox="64 64 896 896" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" /></svg>`}
@@ -179,6 +172,9 @@
     <div
       class="resp-date-picker__calendar"
       class:resp-date-picker__calendar-native={useNative}
+      on:click={() => {
+        ref && ref.focus();
+      }}
     >
       <Calendar
         bind:day
@@ -240,6 +236,7 @@
     input {
       display: flex;
       flex: 1 0 0;
+      width: 100%;
       cursor: inherit;
       font-family: inherit;
       background: inherit;
@@ -310,7 +307,7 @@
     }
   }
 
-  :global(svg) {
+  :global(.resp-date-picker__icon > svg) {
     display: block;
   }
 </style>
