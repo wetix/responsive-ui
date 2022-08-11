@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.31](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.30...v1.1.0-alpha.31) (2022-08-11)
+
+
+### Bug Fixes
+
+* date class list ([1837a7e](https://github.com/wetix/responsive-ui/commit/1837a7e352256f84a493f0a5495ec559f43278d2))
+* date picker width ([b9eb977](https://github.com/wetix/responsive-ui/commit/b9eb977465f5b28ac387c16dda9cdcac14aba8ef))
+* **date-picker:** global selector not to interfere with other styles ([3bb4038](https://github.com/wetix/responsive-ui/commit/3bb40386bd369663b6656138380868525d571dcd))
+* prevent calendar from disappearing when click on left/right arrows ([79fa867](https://github.com/wetix/responsive-ui/commit/79fa867f8c885a668dea51b17c30cd8a8bb3eab0))
+
+
+
+
+
 # [1.1.0-alpha.30](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.29...v1.1.0-alpha.30) (2022-08-03)
 
 
