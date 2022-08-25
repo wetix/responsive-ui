@@ -28,7 +28,7 @@
   }
 
   $: offset = 1 - $tween;
-  $: height = innerHeight * 0.85;
+  $: height = height == 0 ? innerHeight * 0.85 : height;
 </script>
 
 <div
