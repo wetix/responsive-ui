@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.32](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.31...v1.1.0-alpha.32) (2022-08-26)
+
+
+### Bug Fixes
+
+* bottom sheet height ([8f3ea34](https://github.com/wetix/responsive-ui/commit/8f3ea34a249be3ac29dfa2e4ba021bc55abaeb31))
+
+
+
+
+
 # [1.1.0-alpha.31](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.30...v1.1.0-alpha.31) (2022-08-11)
 
 
