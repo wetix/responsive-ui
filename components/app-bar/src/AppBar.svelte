@@ -246,13 +246,12 @@
       }
     }
 
-    @media (max-width: $sm) {
-      &__logo {
-        text-align: left;
-        margin: 1rem;
-        div {
-          width: max-content;
-        }
+    &__logo {
+      text-align: left;
+      width: 100%;
+
+      @media (min-width: $sm) {
+        width: max-content;
       }
     }
 
