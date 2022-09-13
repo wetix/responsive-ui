@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.34](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.33...v1.1.0-alpha.34) (2022-09-13)
+
+
+### Bug Fixes
+
+* typing ([81c932e](https://github.com/wetix/responsive-ui/commit/81c932e5c5bfddea436fca1ed6595376718a7c12))
+
+
+
+
+
 # [1.1.0-alpha.27](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.26...v1.1.0-alpha.27) (2022-07-05)
 
 
