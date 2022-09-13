@@ -16,7 +16,8 @@ export interface TagProps {
     | "yellow"
     | "purple"
     | "pink"
-    | "grey";
+    | "grey"
+    | string;
   style?: string;
 }
 

@@ -22,6 +22,7 @@ export interface InputEvents {
   focus?: WindowEventMap["focus"];
   blur?: WindowEventMap["blur"];
   input?: WindowEventMap["input"];
+  change?: WindowEventMap["change"];
 }
 
 export interface InputSlots {
