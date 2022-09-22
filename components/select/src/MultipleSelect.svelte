@@ -1,7 +1,5 @@
 <script lang="ts">
-  // import { zoom } from "@wetix/animation";
   import { onMount, createEventDispatcher } from "svelte";
-
   import type { SelectOption } from "../types";
 
   const dispatch = createEventDispatcher();
@@ -54,6 +52,8 @@
   };
 
   const handleSelect = (e: Event) => {
+    if (disabled) return;
+
     const option = findNodeByAttr(e, "data-option");
     if (!option) return;
     const [_, item] = <[number, Item]>JSON.parse(option);
@@ -65,10 +65,13 @@
       newValue.push(item.value);
     }
     value = [...newValue];
-    console.log(newValue);
+
+    dispatch("change", value);
+
     input.focus();
   };
 
+  // gets a certain attribute from parent nodes
   const getNodeAttribute = (e: Event, attr: string): string | null => {
     const { currentTarget = document.body } = e;
     let { target }: any = e;
@@ -103,7 +106,7 @@
         {#if dict.get(item)}
           <span class="resp-select__tag" data-value={item}>
             <span>{dict.get(item).label}</span>
-            <i class="resp-select__close" />
+            <i class="resp-select__close" class:resp-select__close-disabled={disabled} />
           </span>
         {/if}
       {/each}
@@ -120,7 +123,9 @@
   <div
     class="resp-select__dropdown"
     on:click={handleSelect}
-    style={`height: ${focused ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
+    style={`height: ${
+      focused && !disabled ? clientHeight : 0
+    }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as option, i}
@@ -206,6 +211,15 @@
       display: inline-block;
       width: 12px;
       height: 12px;
+
+      &-disabled {
+        cursor: unset !important;
+
+        &:before,
+        &:after {
+          border-left: 1px solid #808080 !important;
+        }
+      }
 
       &:after {
         content: "";
