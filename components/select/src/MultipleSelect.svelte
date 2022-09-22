@@ -18,7 +18,7 @@
 
   const maxHeight = 15 + size * 24;
 
-  type Item = { label: string; value: string };
+  type Item = { label: string; value: string; disabled?: boolean };
 
   const dict = new Map();
   $: {
@@ -59,6 +59,12 @@
     const option = findNodeByAttr(e, "data-option");
     if (!option) return;
     const [_, item] = <[number, Item]>JSON.parse(option);
+    insertValue(item);
+  };
+
+  // insert value
+  const insertValue = (item: Item) => {
+    if (item.disabled || false) return;
     const newValue = value.slice(0);
     const pos = newValue.findIndex((v) => v === item.value);
     if (pos > -1) {
@@ -71,7 +77,7 @@
     dispatch("change", value);
 
     input.value = "";
-    filterOptions(e);
+    filterOptions();
     input.focus();
   };
 
@@ -97,12 +103,31 @@
     }
   };
 
-  const filterOptions = (e: Event) => {
+  let activeOption = filteredOptions.findIndex((v) => !v.disabled);
+
+  const filterOptions = (e?: Event) => {
     const searchTerm = input.value.toLowerCase();
     filteredOptions = options.filter((v) => {
       return v.label.toLowerCase().includes(searchTerm);
     });
   };
+
+  // arrow keys function
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Backspace" && input.value === "") value = value.slice(0, -1);
+    if (e.key === "ArrowUp" && activeOption > 0) {
+      activeOption = activeOption - 1;
+    }
+    if (e.key === "ArrowDown" && activeOption < filteredOptions.length - 1) {
+      activeOption = activeOption + 1;
+    }
+    if (e.key === "Enter") {
+      insertValue(filteredOptions[activeOption]);
+    }
+  };
+
+  $: activeOption = activeOption;
+  $: if (activeOption < 0 || activeOption > filteredOptions.length - 1) activeOption = 0;
 </script>
 
 <div class="resp-select--multiple {className}" bind:this={ref}>
@@ -126,10 +151,8 @@
         type="text"
         autocomplete="off"
         on:blur
-        on:keyup={filterOptions}
-        on:keydown={(e) => {
-          if (e.key == "Backspace" && input.value === "") value = value.slice(0, -1);
-        }}
+        on:input={filterOptions}
+        on:keydown={onKeyDown}
         {disabled}
         {readonly}
       />
@@ -143,17 +166,23 @@
     }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
-      {#each filteredOptions as option, i}
-        <div
-          tabindex="0"
-          class="resp-select__option"
-          class:resp-select__option--disabled={option.disabled}
-          class:resp-select__option--selected={value.includes(option.value)}
-          data-option={JSON.stringify([i, option])}
-        >
-          {option.label || ""}
-        </div>
-      {/each}
+      {#if filteredOptions.length > 0}
+        {#each filteredOptions as option, i}
+          <div
+            class="resp-select__option"
+            class:resp-select__option--disabled={option.disabled}
+            class:resp-select__option--selected={value.includes(option.value)}
+            class:resp-select__option--active={activeOption == i}
+            data-option={JSON.stringify([i, option])}
+            on:mouseover={() => (activeOption = i)}
+            on:focus={() => {}}
+          >
+            {option.label || ""}
+          </div>
+        {/each}
+      {:else}
+        <div style="text-align: center;">NO RESULT</div>
+      {/if}
     </div>
   </div>
 </div>
@@ -284,10 +313,8 @@
       padding: 3px 10px;
       margin-bottom: 1px;
 
-      @media screen and (hover) {
-        &:hover {
-          background: #f5f5f5;
-        }
+      &--active {
+        background: #f5f5f5;
       }
 
       &--disabled {
