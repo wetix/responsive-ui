@@ -32,7 +32,7 @@
 
   onMount(() => {
     const onHide = (e: Event) => {
-      if (!ref!.contains(e.target as Node)) focused = false;
+      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
     };
     window.addEventListener("click", onHide);
 
