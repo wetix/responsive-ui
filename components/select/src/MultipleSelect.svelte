@@ -8,7 +8,7 @@
 
   let className = "";
   export { className as class };
-  export let ref: HTMLDivElement;
+  export let ref: HTMLElement;
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
@@ -69,13 +69,25 @@
     input.focus();
   };
 
+  const getNodeAttribute = (e: Event, attr: string): string | null => {
+    const { currentTarget = document.body } = e;
+    let { target }: any = e;
+    while (target != currentTarget) {
+      if (target && target.hasAttribute(attr)) return target.getAttribute(attr);
+      target = target.parentNode;
+    }
+    if (target && target.hasAttribute(attr)) return target.getAttribute(attr);
+    return null;
+  };
+
   const handleRemove = (e: Event) => {
-    // const val = getNodeAttribute(e, "data-value");
-    // if (val) {
-    //   e.stopPropagation();
-    //   value = value.filter((v) => v !== val);
-    //   dispatch("change", value);
-    // }
+    if (disabled) return;
+    const val = getNodeAttribute(e, "data-value");
+    if (val) {
+      e.stopPropagation();
+      value = value.filter((v) => v !== val);
+      dispatch("change", value);
+    }
   };
 </script>
 
@@ -88,10 +100,12 @@
     <input {name} type="hidden" value={value.join(",")} />
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
-        <span class="resp-select__tag" data-value={item}>
-          <span>{dict.get(item).label}</span>
-          <i class="resp-select__close" />
-        </span>
+        {#if dict.get(item)}
+          <span class="resp-select__tag" data-value={item}>
+            <span>{dict.get(item).label}</span>
+            <i class="resp-select__close" />
+          </span>
+        {/if}
       {/each}
       <input
         bind:this={input}
@@ -148,7 +162,7 @@
       border-radius: 3px;
       min-height: var(--height, 34px);
       color: #1a1b1c;
-      // background: #f1f1f1;
+      background: #f1f1f1;
       outline: none;
       box-sizing: border-box;
 
@@ -159,9 +173,11 @@
     }
 
     &__tags {
+      padding: 5px;
+      row-gap: 5px;
+      column-gap: 5px;
       display: inline-flex;
       width: 100%;
-      padding: 4px 0 4px 10px;
       flex-direction: row;
       justify-content: flex-start;
       flex-wrap: wrap;
@@ -171,10 +187,8 @@
     &__tag {
       cursor: default;
       font-size: var(--font-size-sm, 12px);
-      padding: 3px 8px;
       border-radius: var(--border-radius-sm, 3px);
-      margin-right: 4px;
-      margin-bottom: 4px;
+      padding: 3px 8px;
       background: #fff;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 
