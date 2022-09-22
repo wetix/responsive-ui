@@ -14,6 +14,8 @@
   export let disabled = false;
   export let readonly = false;
 
+  let filteredOptions: SelectOption[] = options;
+
   const maxHeight = 15 + size * 24;
 
   type Item = { label: string; value: string };
@@ -68,6 +70,8 @@
 
     dispatch("change", value);
 
+    input.value = "";
+    filterOptions(e);
     input.focus();
   };
 
@@ -92,6 +96,13 @@
       dispatch("change", value);
     }
   };
+
+  const filterOptions = (e: Event) => {
+    const searchTerm = input.value.toLowerCase();
+    filteredOptions = options.filter((v) => {
+      return v.label.toLowerCase().includes(searchTerm);
+    });
+  };
 </script>
 
 <div class="resp-select--multiple {className}" bind:this={ref}>
@@ -115,6 +126,10 @@
         type="text"
         autocomplete="off"
         on:blur
+        on:keyup={filterOptions}
+        on:keydown={(e) => {
+          if (e.key == "Backspace" && input.value === "") value = value.slice(0, -1);
+        }}
         {disabled}
         {readonly}
       />
@@ -128,8 +143,9 @@
     }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
-      {#each options as option, i}
+      {#each filteredOptions as option, i}
         <div
+          tabindex="0"
           class="resp-select__option"
           class:resp-select__option--disabled={option.disabled}
           class:resp-select__option--selected={value.includes(option.value)}
@@ -268,8 +284,10 @@
       padding: 3px 10px;
       margin-bottom: 1px;
 
-      &:hover {
-        background: #f5f5f5;
+      @media screen and (hover) {
+        &:hover {
+          background: #f5f5f5;
+        }
       }
 
       &--disabled {
