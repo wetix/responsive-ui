@@ -134,7 +134,10 @@
   <div
     class="resp-select__input"
     class:resp-select__input--focused={focused}
-    on:click={() => (focused = true)}
+    on:click={() => {
+      focused = true;
+      activeOption = 0;
+    }}
   >
     <input {name} type="hidden" value={value.join(",")} />
     <span class="resp-select__tags" on:click={handleRemove}>
@@ -314,7 +317,9 @@
       margin-bottom: 1px;
 
       &--active {
-        background: #f5f5f5;
+        @media (hover) and (pointer: fine) {
+          background: #f5f5f5;
+        }
       }
 
       &--disabled {
