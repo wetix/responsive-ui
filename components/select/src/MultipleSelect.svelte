@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { zoom, getNodeAttribute } from "./MultipleSelect";
   import { onMount, createEventDispatcher } from "svelte";
   import type { SelectOption } from "../types";
 
@@ -71,18 +72,6 @@
     input.focus();
   };
 
-  // gets a certain attribute from parent nodes
-  const getNodeAttribute = (e: Event, attr: string): string | null => {
-    const { currentTarget = document.body } = e;
-    let { target }: any = e;
-    while (target != currentTarget) {
-      if (target && target.hasAttribute(attr)) return target.getAttribute(attr);
-      target = target.parentNode;
-    }
-    if (target && target.hasAttribute(attr)) return target.getAttribute(attr);
-    return null;
-  };
-
   const handleRemove = (e: Event) => {
     if (disabled) return;
     const val = getNodeAttribute(e, "data-value");
@@ -104,7 +93,7 @@
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
         {#if dict.get(item)}
-          <span class="resp-select__tag" data-value={item}>
+          <span class="resp-select__tag" data-value={item} in:zoom={{}}>
             <span>{dict.get(item).label}</span>
             <i class="resp-select__close" class:resp-select__close-disabled={disabled} />
           </span>
