@@ -9,7 +9,7 @@ export type SelectOption = {
 
 export interface SelectProps {
   id?: string;
-  ref?: null | HTMLSelectElement;
+  ref?: HTMLElement;
   name?: string;
   size?: number;
   multiple?: boolean;
