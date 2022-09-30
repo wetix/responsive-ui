@@ -1,14 +1,13 @@
 <script lang="ts">
-  // import { zoom } from "@wetix/animation";
+  import { zoom, getNodeAttribute } from "./MultipleSelect";
   import { onMount, createEventDispatcher } from "svelte";
-
   import type { SelectOption } from "../types";
 
   const dispatch = createEventDispatcher();
 
   let className = "";
   export { className as class };
-  export let ref: HTMLDivElement;
+  export let ref: HTMLElement;
   export let name = "";
   export let options: SelectOption[] = [];
   export let size = 10;
@@ -32,7 +31,7 @@
 
   onMount(() => {
     const onHide = (e: Event) => {
-      if (!ref!.contains(e.target as Node)) focused = false;
+      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
     };
     window.addEventListener("click", onHide);
 
@@ -54,6 +53,8 @@
   };
 
   const handleSelect = (e: Event) => {
+    if (disabled) return;
+
     const option = findNodeByAttr(e, "data-option");
     if (!option) return;
     const [_, item] = <[number, Item]>JSON.parse(option);
@@ -65,17 +66,20 @@
       newValue.push(item.value);
     }
     value = [...newValue];
-    console.log(newValue);
+
+    dispatch("change", value);
+
     input.focus();
   };
 
   const handleRemove = (e: Event) => {
-    // const val = getNodeAttribute(e, "data-value");
-    // if (val) {
-    //   e.stopPropagation();
-    //   value = value.filter((v) => v !== val);
-    //   dispatch("change", value);
-    // }
+    if (disabled) return;
+    const val = getNodeAttribute(e, "data-value");
+    if (val) {
+      e.stopPropagation();
+      value = value.filter((v) => v !== val);
+      dispatch("change", value);
+    }
   };
 </script>
 
@@ -88,10 +92,12 @@
     <input {name} type="hidden" value={value.join(",")} />
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
-        <span class="resp-select__tag" data-value={item}>
-          <span>{dict.get(item).label}</span>
-          <i class="resp-select__close" />
-        </span>
+        {#if dict.get(item)}
+          <span class="resp-select__tag" data-value={item} in:zoom={{}}>
+            <span>{dict.get(item).label}</span>
+            <i class="resp-select__close" class:resp-select__close-disabled={disabled} />
+          </span>
+        {/if}
       {/each}
       <input
         bind:this={input}
@@ -106,7 +112,9 @@
   <div
     class="resp-select__dropdown"
     on:click={handleSelect}
-    style={`height: ${focused ? clientHeight : 0}px; max-height: ${maxHeight}px;`}
+    style={`height: ${
+      focused && !disabled ? clientHeight : 0
+    }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
       {#each options as option, i}
@@ -148,7 +156,7 @@
       border-radius: 3px;
       min-height: var(--height, 34px);
       color: #1a1b1c;
-      // background: #f1f1f1;
+      background: #f1f1f1;
       outline: none;
       box-sizing: border-box;
 
@@ -159,9 +167,11 @@
     }
 
     &__tags {
+      padding: 5px;
+      row-gap: 5px;
+      column-gap: 5px;
       display: inline-flex;
       width: 100%;
-      padding: 4px 0 4px 10px;
       flex-direction: row;
       justify-content: flex-start;
       flex-wrap: wrap;
@@ -171,10 +181,8 @@
     &__tag {
       cursor: default;
       font-size: var(--font-size-sm, 12px);
-      padding: 3px 8px;
       border-radius: var(--border-radius-sm, 3px);
-      margin-right: 4px;
-      margin-bottom: 4px;
+      padding: 3px 8px;
       background: #fff;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 
@@ -192,6 +200,15 @@
       display: inline-block;
       width: 12px;
       height: 12px;
+
+      &-disabled {
+        cursor: unset !important;
+
+        &:before,
+        &:after {
+          border-left: 1px solid #808080 !important;
+        }
+      }
 
       &:after {
         content: "";
