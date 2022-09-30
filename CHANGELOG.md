@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.35](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.34...v1.1.0-alpha.35) (2022-09-30)
+
+
+### Bug Fixes
+
+* add MultipleSelect.ts and fix zoom animation ([62eb0c2](https://github.com/wetix/responsive-ui/commit/62eb0c2b356e9d800e3148ee9cdd532a01142ba7))
+* add types to `ref` ([81f37aa](https://github.com/wetix/responsive-ui/commit/81f37aa44ba4bab52c6e87e2ad201b2a52b162f9))
+* added styles, disabled ([5b0a07c](https://github.com/wetix/responsive-ui/commit/5b0a07c0e532d66dee7d4223cf3724d3aa1beeec))
+* multiple select ([d4bffc1](https://github.com/wetix/responsive-ui/commit/d4bffc1fd6e4e13f5a991848e87bafb976f5f7ae))
+
+
+
+
+
 # [1.1.0-alpha.34](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.33...v1.1.0-alpha.34) (2022-09-13)
 
 
