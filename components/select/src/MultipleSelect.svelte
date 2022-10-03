@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { zoom, getNodeAttribute } from "./MultipleSelect";
+  import { zoom, getNodeAttribute } from "./Select";
   import { onMount, createEventDispatcher } from "svelte";
   import type { SelectOption } from "../types";
 
