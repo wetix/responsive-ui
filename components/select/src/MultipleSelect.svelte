@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { zoom, getNodeAttribute } from "./MultipleSelect";
+  import { zoom, getNodeAttribute } from "./Select";
   import { onMount, createEventDispatcher } from "svelte";
   import type { SelectOption } from "../types";
 
@@ -15,9 +15,11 @@
   export let disabled = false;
   export let readonly = false;
 
+  let filteredOptions: SelectOption[] = options;
+
   const maxHeight = 15 + size * 24;
 
-  type Item = { label: string; value: string };
+  type Item = { label: string; value: string; disabled?: boolean };
 
   const dict = new Map();
   $: {
@@ -28,17 +30,7 @@
   let input: HTMLInputElement;
   let focused = false;
   let clientHeight = 0;
-
-  onMount(() => {
-    const onHide = (e: Event) => {
-      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
-    };
-    window.addEventListener("click", onHide);
-
-    return () => {
-      window.removeEventListener("click", onHide);
-    };
-  });
+  let activeOptionIdx = filteredOptions.findIndex((v) => !v.disabled);
 
   const findNodeByAttr = (e: Event, attr: string) => {
     const target = e
@@ -52,26 +44,39 @@
     return option;
   };
 
+  // handle select when user clicks
   const handleSelect = (e: Event) => {
     if (disabled) return;
 
     const option = findNodeByAttr(e, "data-option");
     if (!option) return;
     const [_, item] = <[number, Item]>JSON.parse(option);
-    const newValue = value.slice(0);
-    const pos = newValue.findIndex((v) => v === item.value);
+    insertValue(item);
+  };
+
+  // insert value
+  const insertValue = (item: Item) => {
+    if (item.disabled || false) return;
+    const pos = value.findIndex((v) => v === item.value);
+
+    // remove if already exists
     if (pos > -1) {
-      newValue.splice(pos, 1);
+      value.splice(pos, 1);
     } else {
-      newValue.push(item.value);
+      value.push(item.value);
     }
-    value = [...newValue];
+
+    // trigger re-render
+    value = value;
 
     dispatch("change", value);
 
+    input.value = "";
+    filteredOptions = options;
     input.focus();
   };
 
+  // handle remove when clicked
   const handleRemove = (e: Event) => {
     if (disabled) return;
     const val = getNodeAttribute(e, "data-value");
@@ -81,13 +86,57 @@
       dispatch("change", value);
     }
   };
+
+  // filter options when typing in input box
+  const filterOptions = (e?: Event) => {
+    activeOptionIdx = 0;
+    filteredOptions = options.filter((v) => {
+      return v.label.toLowerCase().includes(input.value.toLowerCase());
+    });
+  };
+
+  // arrow keys function (on:keydown)
+  const onKeyDown = (e: KeyboardEvent) => {
+    switch (e.key) {
+      case "Backspace":
+        if (input.value) return;
+        value = value.slice(0, -1);
+        break;
+      case "ArrowUp":
+        if (activeOptionIdx - 1 < 0) return;
+        activeOptionIdx--;
+        break;
+      case "ArrowDown":
+        if (activeOptionIdx + 1 > filteredOptions.length - 1) return;
+        activeOptionIdx++;
+        break;
+      case "Enter":
+        insertValue(filteredOptions[activeOptionIdx]);
+        break;
+    }
+  };
+
+  onMount(() => {
+    // detect whether element is focused or not
+    const onHide = (e: Event) => {
+      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
+    };
+    window.addEventListener("click", onHide);
+
+    return () => {
+      window.removeEventListener("click", onHide);
+    };
+  });
 </script>
 
 <div class="resp-select--multiple {className}" bind:this={ref}>
   <div
     class="resp-select__input"
     class:resp-select__input--focused={focused}
-    on:click={() => (focused = true)}
+    on:click={() => {
+      focused = true;
+      activeOptionIdx = 0;
+    }}
   >
     <input {name} type="hidden" value={value.join(",")} />
     <span class="resp-select__tags" on:click={handleRemove}>
@@ -104,6 +153,8 @@
         type="text"
         autocomplete="off"
         on:blur
+        on:input={filterOptions}
+        on:keydown={onKeyDown}
         {disabled}
         {readonly}
       />
@@ -117,16 +168,23 @@
     }px; max-height: ${maxHeight}px;`}
   >
     <div bind:clientHeight style="padding:10px 0">
-      {#each options as option, i}
-        <div
-          class="resp-select__option"
-          class:resp-select__option--disabled={option.disabled}
-          class:resp-select__option--selected={value.includes(option.value)}
-          data-option={JSON.stringify([i, option])}
-        >
-          {option.label || ""}
-        </div>
-      {/each}
+      {#if filteredOptions.length > 0}
+        {#each filteredOptions as option, i}
+          <div
+            class="resp-select__option"
+            class:resp-select__option--disabled={option.disabled}
+            class:resp-select__option--selected={value.includes(option.value)}
+            class:resp-select__option--active={activeOptionIdx == i}
+            data-option={JSON.stringify([i, option])}
+            on:mouseover={() => (activeOptionIdx = i)}
+            on:focus={() => {}}
+          >
+            {option.label || ""}
+          </div>
+        {/each}
+      {:else}
+        <div style="text-align: center;">NO RESULT</div>
+      {/if}
     </div>
   </div>
 </div>
@@ -257,8 +315,10 @@
       padding: 3px 10px;
       margin-bottom: 1px;
 
-      &:hover {
-        background: #f5f5f5;
+      &--active {
+        @media (hover) and (pointer: fine) {
+          background: #f5f5f5;
+        }
       }
 
       &--disabled {
