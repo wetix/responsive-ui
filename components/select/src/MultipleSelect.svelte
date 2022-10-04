@@ -168,7 +168,7 @@
             class:resp-select__option--active={activeOption == i}
             data-option={JSON.stringify([i, option])}
             on:mouseover={() => (activeOption = i)}
-            on:focus={() => {}}
+            on:focus
           >
             {option.label || ""}
           </div>
