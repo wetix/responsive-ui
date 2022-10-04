@@ -119,9 +119,10 @@
   $: if (activeOption < 0 || activeOption > filteredOptions.length - 1) activeOption = 0;
 </script>
 
-<div class="resp-select--multiple {className}" bind:this={ref}>
+<div class="resp-select--multiple {className}" {...$$restProps} bind:this={ref}>
   <div
     class="resp-select__input"
+    style="padding: 0;"
     class:resp-select__input--focused={focused}
     on:click={() => {
       focused = true;
