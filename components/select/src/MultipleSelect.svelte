@@ -89,6 +89,7 @@
 
   // filter options when typing in input box
   const filterOptions = (e?: Event) => {
+    activeOptionIdx = 0;
     filteredOptions = options.filter((v) => {
       return v.label.toLowerCase().includes(input.value.toLowerCase());
     });
