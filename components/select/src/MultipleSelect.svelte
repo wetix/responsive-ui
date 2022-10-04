@@ -31,17 +31,6 @@
   let focused = false;
   let clientHeight = 0;
 
-  onMount(() => {
-    const onHide = (e: Event) => {
-      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
-    };
-    window.addEventListener("click", onHide);
-
-    return () => {
-      window.removeEventListener("click", onHide);
-    };
-  });
-
   const findNodeByAttr = (e: Event, attr: string) => {
     const target = e
       .composedPath()
@@ -54,6 +43,7 @@
     return option;
   };
 
+  // handle select when user clicks
   const handleSelect = (e: Event) => {
     if (disabled) return;
 
@@ -82,6 +72,7 @@
     input.focus();
   };
 
+  // handle remove when clicked
   const handleRemove = (e: Event) => {
     if (disabled) return;
     const val = getNodeAttribute(e, "data-value");
@@ -92,8 +83,9 @@
     }
   };
 
-  let activeOption = filteredOptions.findIndex((v) => !v.disabled);
+  let activeOptionIdx = filteredOptions.findIndex((v) => !v.disabled);
 
+  // filter options when typing in input box
   const filterOptions = (e?: Event) => {
     const searchTerm = input.value.toLowerCase();
     filteredOptions = options.filter((v) => {
@@ -101,22 +93,35 @@
     });
   };
 
-  // arrow keys function
+  // arrow keys function (on:keydown)
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Backspace" && input.value === "") value = value.slice(0, -1);
-    if (e.key === "ArrowUp" && activeOption > 0) {
-      activeOption = activeOption - 1;
+    if (e.key === "ArrowUp" && activeOptionIdx > 0) {
+      activeOptionIdx = activeOptionIdx - 1;
     }
-    if (e.key === "ArrowDown" && activeOption < filteredOptions.length - 1) {
-      activeOption = activeOption + 1;
+    if (e.key === "ArrowDown" && activeOptionIdx < filteredOptions.length - 1) {
+      activeOptionIdx = activeOptionIdx + 1;
     }
     if (e.key === "Enter") {
-      insertValue(filteredOptions[activeOption]);
+      insertValue(filteredOptions[activeOptionIdx]);
     }
   };
 
-  $: activeOption = activeOption;
-  $: if (activeOption < 0 || activeOption > filteredOptions.length - 1) activeOption = 0;
+  onMount(() => {
+    // detect whether element is focused or not
+    const onHide = (e: Event) => {
+      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
+    };
+    window.addEventListener("click", onHide);
+
+    return () => {
+      window.removeEventListener("click", onHide);
+    };
+  });
+
+  // ensure that active option is not out of bounds
+  $: if (activeOptionIdx < 0 || activeOptionIdx > filteredOptions.length - 1)
+    activeOptionIdx = 0;
 </script>
 
 <div class="resp-select--multiple {className}" bind:this={ref}>
@@ -125,7 +130,7 @@
     class:resp-select__input--focused={focused}
     on:click={() => {
       focused = true;
-      activeOption = 0;
+      activeOptionIdx = 0;
     }}
   >
     <input {name} type="hidden" value={value.join(",")} />
@@ -164,9 +169,9 @@
             class="resp-select__option"
             class:resp-select__option--disabled={option.disabled}
             class:resp-select__option--selected={value.includes(option.value)}
-            class:resp-select__option--active={activeOption == i}
+            class:resp-select__option--active={activeOptionIdx == i}
             data-option={JSON.stringify([i, option])}
-            on:mouseover={() => (activeOption = i)}
+            on:mouseover={() => (activeOptionIdx = i)}
             on:focus={() => {}}
           >
             {option.label || ""}
