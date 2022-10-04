@@ -30,6 +30,7 @@
   let input: HTMLInputElement;
   let focused = false;
   let clientHeight = 0;
+  let activeOptionIdx = filteredOptions.findIndex((v) => !v.disabled);
 
   const findNodeByAttr = (e: Event, attr: string) => {
     const target = e
@@ -56,19 +57,22 @@
   // insert value
   const insertValue = (item: Item) => {
     if (item.disabled || false) return;
-    const newValue = value.slice(0);
-    const pos = newValue.findIndex((v) => v === item.value);
+    const pos = value.findIndex((v) => v === item.value);
+
+    // remove if already exists
     if (pos > -1) {
-      newValue.splice(pos, 1);
+      value.splice(pos, 1);
     } else {
-      newValue.push(item.value);
+      value.push(item.value);
     }
-    value = [...newValue];
+
+    // trigger re-render
+    value = value;
 
     dispatch("change", value);
 
     input.value = "";
-    filterOptions();
+    filteredOptions = options;
     input.focus();
   };
 
@@ -83,27 +87,31 @@
     }
   };
 
-  let activeOptionIdx = filteredOptions.findIndex((v) => !v.disabled);
-
   // filter options when typing in input box
   const filterOptions = (e?: Event) => {
-    const searchTerm = input.value.toLowerCase();
     filteredOptions = options.filter((v) => {
-      return v.label.toLowerCase().includes(searchTerm);
+      return v.label.toLowerCase().includes(input.value.toLowerCase());
     });
   };
 
   // arrow keys function (on:keydown)
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Backspace" && input.value === "") value = value.slice(0, -1);
-    if (e.key === "ArrowUp" && activeOptionIdx > 0) {
-      activeOptionIdx = activeOptionIdx - 1;
-    }
-    if (e.key === "ArrowDown" && activeOptionIdx < filteredOptions.length - 1) {
-      activeOptionIdx = activeOptionIdx + 1;
-    }
-    if (e.key === "Enter") {
-      insertValue(filteredOptions[activeOptionIdx]);
+    switch (e.key) {
+      case "Backspace":
+        if (input.value) return;
+        value = value.slice(0, -1);
+        break;
+      case "ArrowUp":
+        if (activeOptionIdx - 1 < 0) return;
+        activeOptionIdx--;
+        break;
+      case "ArrowDown":
+        if (activeOptionIdx + 1 > filteredOptions.length - 1) return;
+        activeOptionIdx++;
+        break;
+      case "Enter":
+        insertValue(filteredOptions[activeOptionIdx]);
+        break;
     }
   };
 
@@ -118,10 +126,6 @@
       window.removeEventListener("click", onHide);
     };
   });
-
-  // ensure that active option is not out of bounds
-  $: if (activeOptionIdx < 0 || activeOptionIdx > filteredOptions.length - 1)
-    activeOptionIdx = 0;
 </script>
 
 <div class="resp-select--multiple {className}" bind:this={ref}>
