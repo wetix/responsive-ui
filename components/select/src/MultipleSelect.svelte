@@ -129,9 +129,10 @@
   });
 </script>
 
-<div class="resp-select--multiple {className}" bind:this={ref}>
+<div class="resp-select--multiple {className}" {...$$restProps} bind:this={ref}>
   <div
     class="resp-select__input"
+    style="padding: 0;"
     class:resp-select__input--focused={focused}
     on:click={() => {
       focused = true;
@@ -177,7 +178,7 @@
             class:resp-select__option--active={activeOptionIdx == i}
             data-option={JSON.stringify([i, option])}
             on:mouseover={() => (activeOptionIdx = i)}
-            on:focus={() => {}}
+            on:focus
           >
             {option.label || ""}
           </div>
