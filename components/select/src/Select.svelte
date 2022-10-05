@@ -18,7 +18,7 @@
   let inputRef: HTMLInputElement;
   let items: SelectOption[] = options;
   let selectedItem: SelectOption | null = options.find((v) => v.value === value) || null;
-  let activeOption = 0;
+  let activeOptionIdx = 0;
 
   const dispatch = createEventDispatcher();
 
@@ -26,6 +26,7 @@
   if (!multiple) size = 1;
 
   const handleSearch = (e: Event) => {
+    activeOptionIdx = 0;
     open = true;
     const val = (e.target as HTMLInputElement).value;
     if (!val) {
@@ -54,14 +55,14 @@
   };
 
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "ArrowUp" && activeOption > 0) {
-      activeOption = activeOption - 1;
+    if (e.key === "ArrowUp" && activeOptionIdx > 0) {
+      activeOptionIdx = activeOptionIdx - 1;
     }
-    if (e.key === "ArrowDown" && activeOption < items.length - 1) {
-      activeOption = activeOption + 1;
+    if (e.key === "ArrowDown" && activeOptionIdx < items.length - 1) {
+      activeOptionIdx = activeOptionIdx + 1;
     }
     if (e.key === "Enter") {
-      selectItem(items[activeOption]);
+      selectItem(items[activeOptionIdx]);
     }
   };
 
@@ -79,9 +80,6 @@
   $: if (options) {
     items = options;
   }
-
-  $: activeOption = activeOption;
-  $: if (activeOption < 0 || activeOption > items.length - 1) activeOption = 0;
 </script>
 
 {#if multiple}
@@ -109,8 +107,8 @@
           {#each items as item, i}
             <div
               class="resp-select__content-item"
-              class:resp-select__content-item__selected={i === activeOption}
-              on:mouseover={() => (activeOption = i)}
+              class:resp-select__content-item__selected={i === activeOptionIdx}
+              on:mouseover={() => (activeOptionIdx = i)}
               on:focus
               data-value={JSON.stringify(item)}
             >
