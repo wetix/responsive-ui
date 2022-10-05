@@ -30,17 +30,7 @@
   let input: HTMLInputElement;
   let focused = false;
   let clientHeight = 0;
-
-  onMount(() => {
-    const onHide = (e: Event) => {
-      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
-    };
-    window.addEventListener("click", onHide);
-
-    return () => {
-      window.removeEventListener("click", onHide);
-    };
-  });
+  let activeOptionIdx = filteredOptions.findIndex((v) => !v.disabled);
 
   const findNodeByAttr = (e: Event, attr: string) => {
     const target = e
@@ -54,6 +44,7 @@
     return option;
   };
 
+  // handle select when user clicks
   const handleSelect = (e: Event) => {
     if (disabled) return;
 
@@ -66,22 +57,26 @@
   // insert value
   const insertValue = (item: Item) => {
     if (item.disabled || false) return;
-    const newValue = value.slice(0);
-    const pos = newValue.findIndex((v) => v === item.value);
+    const pos = value.findIndex((v) => v === item.value);
+
+    // remove if already exists
     if (pos > -1) {
-      newValue.splice(pos, 1);
+      value.splice(pos, 1);
     } else {
-      newValue.push(item.value);
+      value.push(item.value);
     }
-    value = [...newValue];
+
+    // trigger re-render
+    value = value;
 
     dispatch("change", value);
 
     input.value = "";
-    filterOptions();
+    filteredOptions = options;
     input.focus();
   };
 
+  // handle remove when clicked
   const handleRemove = (e: Event) => {
     if (disabled) return;
     const val = getNodeAttribute(e, "data-value");
@@ -92,31 +87,46 @@
     }
   };
 
-  let activeOption = filteredOptions.findIndex((v) => !v.disabled);
-
+  // filter options when typing in input box
   const filterOptions = (e?: Event) => {
-    const searchTerm = input.value.toLowerCase();
+    activeOptionIdx = 0;
     filteredOptions = options.filter((v) => {
-      return v.label.toLowerCase().includes(searchTerm);
+      return v.label.toLowerCase().includes(input.value.toLowerCase());
     });
   };
 
-  // arrow keys function
+  // arrow keys function (on:keydown)
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Backspace" && input.value === "") value = value.slice(0, -1);
-    if (e.key === "ArrowUp" && activeOption > 0) {
-      activeOption = activeOption - 1;
-    }
-    if (e.key === "ArrowDown" && activeOption < filteredOptions.length - 1) {
-      activeOption = activeOption + 1;
-    }
-    if (e.key === "Enter") {
-      insertValue(filteredOptions[activeOption]);
+    switch (e.key) {
+      case "Backspace":
+        if (input.value) return;
+        value = value.slice(0, -1);
+        break;
+      case "ArrowUp":
+        if (activeOptionIdx - 1 < 0) return;
+        activeOptionIdx--;
+        break;
+      case "ArrowDown":
+        if (activeOptionIdx + 1 > filteredOptions.length - 1) return;
+        activeOptionIdx++;
+        break;
+      case "Enter":
+        insertValue(filteredOptions[activeOptionIdx]);
+        break;
     }
   };
 
-  $: activeOption = activeOption;
-  $: if (activeOption < 0 || activeOption > filteredOptions.length - 1) activeOption = 0;
+  onMount(() => {
+    // detect whether element is focused or not
+    const onHide = (e: Event) => {
+      if (!(ref as HTMLDivElement)!.contains(e.target as Node)) focused = false;
+    };
+    window.addEventListener("click", onHide);
+
+    return () => {
+      window.removeEventListener("click", onHide);
+    };
+  });
 </script>
 
 <div class="resp-select--multiple {className}" {...$$restProps} bind:this={ref}>
@@ -126,7 +136,7 @@
     class:resp-select__input--focused={focused}
     on:click={() => {
       focused = true;
-      activeOption = 0;
+      activeOptionIdx = 0;
     }}
   >
     <input {name} type="hidden" value={value.join(",")} />
@@ -165,9 +175,9 @@
             class="resp-select__option"
             class:resp-select__option--disabled={option.disabled}
             class:resp-select__option--selected={value.includes(option.value)}
-            class:resp-select__option--active={activeOption == i}
+            class:resp-select__option--active={activeOptionIdx == i}
             data-option={JSON.stringify([i, option])}
-            on:mouseover={() => (activeOption = i)}
+            on:mouseover={() => (activeOptionIdx = i)}
             on:focus
           >
             {option.label || ""}
