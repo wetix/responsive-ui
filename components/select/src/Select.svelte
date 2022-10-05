@@ -55,14 +55,18 @@
   };
 
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "ArrowUp" && activeOptionIdx > 0) {
-      activeOptionIdx = activeOptionIdx - 1;
-    }
-    if (e.key === "ArrowDown" && activeOptionIdx < items.length - 1) {
-      activeOptionIdx = activeOptionIdx + 1;
-    }
-    if (e.key === "Enter") {
-      selectItem(items[activeOptionIdx]);
+    switch (e.key) {
+      case "ArrowUp":
+        if (activeOptionIdx - 1 < 0) return;
+        activeOptionIdx--;
+        break;
+      case "ArrowDown":
+        if (activeOptionIdx + 1 > items.length - 1) return;
+        activeOptionIdx++;
+        break;
+      case "Enter":
+        selectItem(items[activeOptionIdx]);
+        break;
     }
   };
 
