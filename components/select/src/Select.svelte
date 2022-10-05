@@ -25,6 +25,7 @@
   // if not multiple, enforce it to size 1
   if (!multiple) size = 1;
 
+  // filter options when typing in input box
   const handleSearch = (e: Event) => {
     activeOptionIdx = 0;
     open = true;
@@ -38,6 +39,7 @@
     });
   };
 
+  // select when clicked
   const handleSelect = (e: Event) => {
     e.stopPropagation();
     const val = getNodeAttribute(e, "data-value");
@@ -46,6 +48,7 @@
     }
   };
 
+  // set item to selected item
   const selectItem = (item: SelectOption) => {
     selectedItem = item;
     value = selectedItem ? selectedItem.value : "";
@@ -54,6 +57,7 @@
     inputRef.blur();
   };
 
+  // arrow keys function (on:keydown)
   const onKeyDown = (e: KeyboardEvent) => {
     switch (e.key) {
       case "ArrowUp":
@@ -71,6 +75,7 @@
   };
 
   onMount(() => {
+    // detect whether element is focused or not
     const onHide = (e: Event) => {
       if (!(inputRef as HTMLDivElement)!.contains(e.target as Node)) open = false;
     };
