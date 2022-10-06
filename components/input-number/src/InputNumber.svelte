@@ -3,7 +3,7 @@
     const v = `${x}`.split(".");
     if (n <= 0) return v[0];
     let f = v[1] || "";
-    if (f.length > n) return `${v[0]}.${f.substr(0, n)}`;
+    if (f.length > n) return `${v[0]}.${f.substring(0, n)}`;
     while (f.length < n) f += "0";
     return `${v[0]}.${f}`;
   };
@@ -35,8 +35,7 @@
     if (isNaN(num)) return;
     // if (num <= min) return;
     // if (num >= max) return;
-    value = num;
-    ref.value = format(num);
+    value = Number(format(num));
   };
 </script>
 
@@ -51,6 +50,7 @@
   {/if}
   <input
     bind:this={ref}
+    bind:value
     type="text"
     pattern="\d*"
     on:blur={handleBlur}

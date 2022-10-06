@@ -139,7 +139,7 @@
       activeOptionIdx = 0;
     }}
   >
-    <input {name} type="hidden" value={value.join(",")} />
+    <input {name} type="hidden" value={Array.isArray(value) ? value.join(",") : ""} />
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
         {#if dict.get(item)}
