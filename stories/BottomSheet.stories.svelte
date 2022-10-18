@@ -50,8 +50,12 @@
       </p>
     {/each}
     <BottomSheet {...args} on:ok={args.onConfirm} on:cancel={args.onCancel}>
-      <div style="padding: 1rem">{args.content}</div></BottomSheet
-    >
+      <div style="padding: 1rem; overflow: scroll;">
+        {#each new Array(10) as _}
+          <p>{args.content}</p>
+        {/each}
+      </div>
+    </BottomSheet>
   </div>
 </Template>
 
