@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.36](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.35...v1.1.0-alpha.36) (2022-10-18)
+
+
+### Bug Fixes
+
+* prevent TypeErrors ([e539bf6](https://github.com/wetix/responsive-ui/commit/e539bf69b4dc80efe805b707f6b1f7a9033c206c))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/input-number

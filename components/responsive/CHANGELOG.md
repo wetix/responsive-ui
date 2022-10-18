@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.36](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.35...v1.1.0-alpha.36) (2022-10-18)
+
+
+### Features
+
+* responsive fallback for iOS ([97e260c](https://github.com/wetix/responsive-ui/commit/97e260c4920f9fcabe2ddf59e2008ecaa60c71e9))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/responsive

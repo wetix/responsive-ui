@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.36](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.35...v1.1.0-alpha.36) (2022-10-18)
+
+
+### Bug Fixes
+
+* activeOptionIdx ([70be5a6](https://github.com/wetix/responsive-ui/commit/70be5a6dbb224ee7748f35a89da6ccd566a2042c))
+* add comments ([030e420](https://github.com/wetix/responsive-ui/commit/030e4200fcd2fc9aff16daf2a1c093ca4ec7cd6e))
+* prevent TypeErrors ([e539bf6](https://github.com/wetix/responsive-ui/commit/e539bf69b4dc80efe805b707f6b1f7a9033c206c))
+* reset active option on click ([d6888c2](https://github.com/wetix/responsive-ui/commit/d6888c2b21d7c25c10390f1fe6efa229a56d801f))
+* select ([1ae56bc](https://github.com/wetix/responsive-ui/commit/1ae56bc7ab26510125d06c095e5a7163a6a94dec))
+* select uses input for value ([bd00b08](https://github.com/wetix/responsive-ui/commit/bd00b08e4f1da72254b98343b277376516bf14cf))
+* styling ([9ee74a0](https://github.com/wetix/responsive-ui/commit/9ee74a0437667be918eb2dd3a570631d97131213))
+
+
+### Features
+
+* add controls functionality ([611bec0](https://github.com/wetix/responsive-ui/commit/611bec037742073291b4696ed5633934a670f59a))
+* add filtering by typing, backspace removes entries ([9c63127](https://github.com/wetix/responsive-ui/commit/9c631276b07add7b01c127717d19e1452db79bbf))
+* arrow key selection for multiple select ([1e8ea73](https://github.com/wetix/responsive-ui/commit/1e8ea73c3caa9e7f0003cb89ff7f580c6fa7186b))
+* responsive fallback for iOS ([97e260c](https://github.com/wetix/responsive-ui/commit/97e260c4920f9fcabe2ddf59e2008ecaa60c71e9))
+* searchable select ([b9c07f8](https://github.com/wetix/responsive-ui/commit/b9c07f81e11e78343dc35bfa925a50f781701bdc))
+
+
+
+
+
 # [1.1.0-alpha.35](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.34...v1.1.0-alpha.35) (2022-09-30)
 
 
