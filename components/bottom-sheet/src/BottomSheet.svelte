@@ -1,7 +1,6 @@
 <script lang="ts">
   import { noop } from "svelte/internal";
   import { tweened } from "svelte/motion";
-  import { onMount } from "svelte";
 
   let className = "";
   export { className as class };
@@ -17,19 +16,34 @@
     duration: 150
   });
 
-  onMount(() => {
-    innerHeight = window.innerHeight;
-  });
-
   $: if (open) {
+    const { scrollY = 0 } = window;
+    const bodyStyle = document.body.getAttribute("style") || "";
+    document.body.dataset.style = bodyStyle;
+    document.body.dataset.scrollY = scrollY.toString();
+    setTimeout(() => {
+      document.body.setAttribute(
+        "style",
+        `position: fixed; top: -${scrollY}px; ${bodyStyle}`
+      );
+    }, 0);
     void tween.set(0);
   } else {
+    const { scrollY = "0", style = "" } = document.body.dataset;
+    // restore to original style
+    document.body.setAttribute("style", style);
+    setTimeout(() => {
+      // restore to position scroll-y
+      window.scrollTo(0, parseInt(scrollY, 10));
+    }, 0);
     void tween.set(1);
   }
 
-  $: offset = 1 - $tween;
+  $: offset = 1 - 0;
   $: height = height == 0 ? innerHeight * 0.85 : height;
 </script>
+
+<svelte:window bind:innerHeight />
 
 <div
   class="resp-bottom-sheet__overlay"
@@ -65,6 +79,8 @@
     border-top-right-radius: 10px;
     box-shadow: 0 -4px 26px rgba(0, 0, 0, 0.4);
     position: fixed;
+    display: flex;
+    flex-direction: column;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -76,6 +92,7 @@
     z-index: 996;
 
     &__overlay {
+      display: flex;
       position: fixed;
       top: 0;
       left: 0;
