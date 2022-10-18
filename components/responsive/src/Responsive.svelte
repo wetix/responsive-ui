@@ -3,6 +3,12 @@
   import type { Writable } from "svelte/store";
   import type { ResponsiveState } from "../types";
 
+  const orientations = new Map([
+    [0, "portrait-primary"],
+    [180, "portrait-secondary"],
+    [90, "landscape-primary"],
+    [-90, "landscape-secondary"]
+  ]);
   const queue: { id: string; store: Writable<ResponsiveState> }[] = [];
 
   if (window.screen.orientation) {
@@ -41,13 +47,6 @@
     }
 
     // fallback to window.orientation (on iOS)
-    const orientations = new Map([
-      [0, "portrait-primary"],
-      [180, "portrait-secondary"],
-      [90, "landscape-primary"],
-      [-90, "landscape-secondary"]
-    ]);
-
     return orientations.get(window.orientation) as OrientationType;
   };
 
