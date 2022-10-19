@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.38](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.37...v1.1.0-alpha.38) (2022-10-19)
+
+**Note:** Version bump only for package @responsive-ui/modal
+
+
+
+
+
 # [1.1.0-alpha.37](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.36...v1.1.0-alpha.37) (2022-10-19)
 
 
