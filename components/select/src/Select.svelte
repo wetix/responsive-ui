@@ -25,7 +25,7 @@
   // if not multiple, enforce it to size 1
   if (!multiple) size = 1;
 
-  // filter options when typing in input box
+  // filter options when typing in input  box
   const handleSearch = (e: Event) => {
     activeOptionIdx = 0;
     open = true;

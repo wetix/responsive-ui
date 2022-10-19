@@ -18,8 +18,8 @@
   export let precision = 2;
   // export let min = 0;
   // export let max = 100;
-  export let parser = (v: string): number => Number(v);
   export let format = (v: number): string => toFixedTrunc(v, precision);
+  export let parser = (v: string): number => Number(v);
   export let value = 0;
 
   let focused = false;
