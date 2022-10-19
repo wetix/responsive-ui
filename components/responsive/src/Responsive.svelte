@@ -9,6 +9,7 @@
     [90, "landscape-primary"],
     [-90, "landscape-secondary"]
   ]);
+
   const queue: { id: string; store: Writable<ResponsiveState> }[] = [];
 
   if (window.screen.orientation) {
