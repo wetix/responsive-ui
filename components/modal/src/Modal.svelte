@@ -17,8 +17,9 @@
   export let hasMask = true;
   export let maskClosable = true;
 
+  let scrollY = 0;
+
   $: if (open) {
-    const { scrollY = 0 } = window;
     const bodyStyle = document.body.getAttribute("style") || "";
     document.body.dataset.style = bodyStyle;
     document.body.dataset.scrollY = scrollY.toString();
@@ -29,15 +30,17 @@
       );
     }, 0);
   } else {
-    const { scrollY = "0", style = "" } = document.body.dataset;
+    const { style = "" } = document.body.dataset;
     // restore to original style
     document.body.setAttribute("style", style);
     setTimeout(() => {
       // restore to position scroll-y
-      window.scrollTo(0, parseInt(scrollY, 10));
+      window.scrollTo(0, scrollY);
     }, 0);
   }
 </script>
+
+<svelte:window bind:scrollY />
 
 {#if open}
   <div class="resp-modal__box" class:resp-modal--outlined={outlined}>
