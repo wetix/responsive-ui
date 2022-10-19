@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.37](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.36...v1.1.0-alpha.37) (2022-10-19)
+
+
+### Bug Fixes
+
+* bottom sheet ([23610b1](https://github.com/wetix/responsive-ui/commit/23610b1c0118b5e066be18bfba73fbca5d74ee63))
+* bottom sheet stories & overlay ([0421c32](https://github.com/wetix/responsive-ui/commit/0421c3287e585d8fcd6f30d6e1361ea2c57beafd))
+
+
+
+
+
 # [1.1.0-alpha.32](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.31...v1.1.0-alpha.32) (2022-08-26)
 
 
