@@ -10,14 +10,14 @@
   export let draggable = true;
   export let style = "";
   export let height = 0;
-  let innerHeight = 0;
+  let innerHeight = 0,
+    scrollY = 0;
 
   const tween = tweened(1, {
     duration: 150
   });
 
   $: if (open) {
-    const { scrollY = 0 } = window;
     const bodyStyle = document.body.getAttribute("style") || "";
     document.body.dataset.style = bodyStyle;
     document.body.dataset.scrollY = scrollY.toString();
@@ -29,12 +29,12 @@
     }, 0);
     void tween.set(0);
   } else {
-    const { scrollY = "0", style = "" } = document.body.dataset;
+    const { style = "" } = document.body.dataset;
     // restore to original style
     document.body.setAttribute("style", style);
     setTimeout(() => {
       // restore to position scroll-y
-      window.scrollTo(0, parseInt(scrollY, 10));
+      window.scrollTo(0, scrollY);
     }, 0);
     void tween.set(1);
   }
@@ -43,14 +43,16 @@
   $: height = height == 0 ? innerHeight * 0.85 : height;
 </script>
 
-<svelte:window bind:innerHeight />
+<svelte:window bind:innerHeight bind:scrollY />
 
-<div
-  class="resp-bottom-sheet__overlay"
-  on:click={maskClosable ? () => (open = false) : noop}
-  style:opacity={offset}
-  style:visibility={offset <= 0 ? "hidden" : "visible"}
-/>
+{#if open}
+  <div
+    class="resp-bottom-sheet__overlay"
+    on:click={maskClosable ? () => (open = false) : noop}
+    style:opacity={offset}
+    style:visibility={offset <= 0 ? "hidden" : "visible"}
+  />
+{/if}
 <div
   class="resp-bottom-sheet {className}"
   style:height={`${height}px`}
