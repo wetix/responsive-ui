@@ -95,7 +95,7 @@
   <Select bind:ref {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <div class="resp-select" {...$$restProps}>
-    <input bind:this={ref} type="hidden" bind:value />
+    <input bind:this={ref} type="hidden" on:input on:change bind:value />
     <input
       bind:this={inputRef}
       on:click={() => {

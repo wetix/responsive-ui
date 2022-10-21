@@ -34,6 +34,7 @@
     font-size: var(--font-size, 14px);
     border: 1px solid var(--input-border-color, #dcdcdc);
     background: #fff;
+    color: #000;
     padding: 0 1rem;
     margin: 0;
     height: 42px;
