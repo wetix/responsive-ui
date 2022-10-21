@@ -2,6 +2,7 @@
   import Quantity from "@responsive-ui/quantity";
   import Modal from "@responsive-ui/modal";
   import RangeSlider from "../components/range/src/Range.svelte";
+  import Select from "../components/select/src/Select.svelte";
 
   let lowSlideValue: string;
   let upSlideValue: string;
@@ -14,6 +15,39 @@
 </script>
 
 <!-- <AppBar {centerItems} {tabItems} {dropdownItems} /> -->
+
+<Select
+  name="select"
+  on:change={(e) => {
+    console.log("e=>", e.target.value);
+  }}
+  placeholder="Select your fruit"
+  options={[
+    { label: "Unknown", value: "a" },
+    { label: "Apple", value: "b" },
+    { label: "Orange", value: "c", disabled: true },
+    { label: "Pineapple", value: "d" },
+    { label: "Coconut", value: "e" },
+    { label: "Durian", value: "f" }
+  ]}
+/>
+
+<Select
+  multiple
+  name="select"
+  placeholder="Select your fruit"
+  on:change={(e) => {
+    console.log("e=>", e.detail);
+  }}
+  options={[
+    { label: "Unknown", value: "a" },
+    { label: "Apple", value: "b" },
+    { label: "Orange", value: "c", disabled: true },
+    { label: "Pineapple", value: "d" },
+    { label: "Coconut", value: "e" },
+    { label: "Durian", value: "f" }
+  ]}
+/>
 
 <Quantity min={2} max={100} on:change={onChange} />
 <Modal bind:open={openModal} on:cancel={() => (openModal = false)}>Testing</Modal>

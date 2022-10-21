@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Select from "./MultipleSelect.svelte";
+  import MultipleSelect from "./MultipleSelect.svelte";
   import { onMount, createEventDispatcher } from "svelte";
   import { getNodeAttribute } from "./Select";
   import type { SelectOption } from "../types";
@@ -8,7 +8,7 @@
   export { className as class };
   export let placeholder = "";
   export let ref: HTMLElement;
-  export let value: string | string[] = "";
+  export let value: string = "";
   export let size = 10;
   export let multiple = false;
   export let options: SelectOption[] = [];
@@ -50,11 +50,15 @@
 
   // set item to selected item
   const selectItem = (item: SelectOption) => {
+    if (!inputRef) return;
     selectedItem = item;
     value = selectedItem ? selectedItem.value : "";
     dispatch("select", selectedItem?.value);
     open = false;
     inputRef.blur();
+
+    (ref as HTMLInputElement).value = value;
+    ref.dispatchEvent(new Event("change"));
   };
 
   // arrow keys function (on:keydown)
@@ -77,7 +81,8 @@
   onMount(() => {
     // detect whether element is focused or not
     const onHide = (e: Event) => {
-      if (!(inputRef as HTMLDivElement)!.contains(e.target as Node)) open = false;
+      if (inputRef && !(inputRef as HTMLDivElement)!.contains(e.target as Node))
+        open = false;
     };
     window.addEventListener("click", onHide);
 
@@ -92,10 +97,10 @@
 </script>
 
 {#if multiple}
-  <Select bind:ref {...$$props} {size} class={className} on:change on:blur />
+  <MultipleSelect bind:ref {...$$props} {size} class={className} on:change on:blur />
 {:else}
   <div class="resp-select" {...$$restProps}>
-    <input bind:this={ref} type="hidden" on:input on:change bind:value />
+    <input bind:this={ref} type="hidden" on:change bind:value />
     <input
       bind:this={inputRef}
       on:click={() => {
