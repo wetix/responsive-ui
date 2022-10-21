@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.41](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.40...v1.1.0-alpha.41) (2022-10-21)
+
+
+### Bug Fixes
+
+* change events ([20ce5d1](https://github.com/wetix/responsive-ui/commit/20ce5d1bd5383decaa521a919a62d3cd7257b378))
+* loader width & height ([3efa125](https://github.com/wetix/responsive-ui/commit/3efa1257e0a5a97cae9f6e8097d00ceb4a3a44c0))
+
+
+
+
+
 # [1.1.0-alpha.40](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.39...v1.1.0-alpha.40) (2022-10-21)
 
 

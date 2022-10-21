@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.41](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.40...v1.1.0-alpha.41) (2022-10-21)
+
+
+### Bug Fixes
+
+* loader width & height ([3efa125](https://github.com/wetix/responsive-ui/commit/3efa1257e0a5a97cae9f6e8097d00ceb4a3a44c0))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/loader
