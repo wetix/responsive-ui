@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.40](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.39...v1.1.0-alpha.40) (2022-10-21)
+
+
+### Bug Fixes
+
+* button on ios ([e1f3cfd](https://github.com/wetix/responsive-ui/commit/e1f3cfd6c5b2dad9333b8a4df523b25c09ad47f8))
+
+
+
+
+
 # [1.1.0-alpha.8](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.7...v1.1.0-alpha.8) (2022-03-14)
 
 **Note:** Version bump only for package @responsive-ui/button

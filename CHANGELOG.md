@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.40](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.39...v1.1.0-alpha.40) (2022-10-21)
+
+
+### Bug Fixes
+
+* button on ios ([e1f3cfd](https://github.com/wetix/responsive-ui/commit/e1f3cfd6c5b2dad9333b8a4df523b25c09ad47f8))
+* select events ([986c966](https://github.com/wetix/responsive-ui/commit/986c96686882847786917d5f7b36d79f888fbb26))
+
+
+
+
+
 # [1.1.0-alpha.39](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.38...v1.1.0-alpha.39) (2022-10-19)
 
 **Note:** Version bump only for package responsive-ui-monorepo
