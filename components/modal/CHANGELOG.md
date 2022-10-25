@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.42](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.41...v1.1.0-alpha.42) (2022-10-25)
+
+
+### Bug Fixes
+
+* modal scroll position ([b7face1](https://github.com/wetix/responsive-ui/commit/b7face1246d376f09d2d486755f630235e359c72))
+
+
+
+
+
 # [1.1.0-alpha.38](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.37...v1.1.0-alpha.38) (2022-10-19)
 
 **Note:** Version bump only for package @responsive-ui/modal
