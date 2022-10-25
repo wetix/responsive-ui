@@ -1,6 +1,8 @@
 <script lang="ts">
   import { noop } from "svelte/internal";
   import { tweened } from "svelte/motion";
+  import { fade } from "svelte/transition";
+  import { sineInOut } from "svelte/easing";
 
   let className = "";
   export { className as class };
@@ -17,7 +19,9 @@
     duration: 150
   });
 
-  $: if (open) {
+  const onOpen = () => {
+    scrollY = window.scrollY;
+
     const bodyStyle = document.body.getAttribute("style") || "";
     document.body.dataset.style = bodyStyle;
     document.body.dataset.scrollY = scrollY.toString();
@@ -28,7 +32,9 @@
       );
     }, 0);
     void tween.set(0);
-  } else {
+  };
+
+  const onClose = () => {
     const { style = "" } = document.body.dataset;
     // restore to original style
     document.body.setAttribute("style", style);
@@ -37,20 +43,20 @@
       window.scrollTo(0, scrollY);
     }, 0);
     void tween.set(1);
-  }
+  };
 
+  $: open ? onOpen() : onClose();
   $: offset = 1 - 0;
   $: height = height == 0 ? innerHeight * 0.85 : height;
 </script>
 
-<svelte:window bind:innerHeight bind:scrollY />
+<svelte:window bind:innerHeight />
 
 {#if open}
   <div
     class="resp-bottom-sheet__overlay"
     on:click={maskClosable ? () => (open = false) : noop}
-    style:opacity={offset}
-    style:visibility={offset <= 0 ? "hidden" : "visible"}
+    transition:fade={{ duration: 300, easing: sineInOut }}
   />
 {/if}
 <div
@@ -101,7 +107,6 @@
       right: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.5);
-      transition: opacity 0.3s;
       z-index: 900;
     }
 
