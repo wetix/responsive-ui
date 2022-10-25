@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.44](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.43...v1.1.0-alpha.44) (2022-10-25)
+
+
+### Bug Fixes
+
+* modal ([9a606c2](https://github.com/wetix/responsive-ui/commit/9a606c2b2827ec3fdc6db429bda7c388851246ae))
+
+
+
+
+
 # [1.1.0-alpha.43](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.42...v1.1.0-alpha.43) (2022-10-25)
 
 
