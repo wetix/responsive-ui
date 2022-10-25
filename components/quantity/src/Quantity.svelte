@@ -169,6 +169,7 @@
     &--slim {
       border-color: transparent !important;
       padding: 0 5px;
+      width: min-content;
 
       input[type="number"] {
         min-width: 45px;
