@@ -127,6 +127,8 @@
       window.removeEventListener("click", onHide);
     };
   });
+
+  $: if (!value) value = [];
 </script>
 
 <div class="resp-select--multiple {className}" {...$$restProps} bind:this={ref}>
@@ -139,7 +141,13 @@
       activeOptionIdx = 0;
     }}
   >
-    <input {name} on:input on:change type="hidden" value={Array.isArray(value) ? value.join(",") : ""} />
+    <input
+      {name}
+      on:input
+      on:change
+      type="hidden"
+      value={Array.isArray(value) ? value.join(",") : value}
+    />
     <span class="resp-select__tags" on:click={handleRemove}>
       {#each value as item}
         {#if dict.get(item)}
