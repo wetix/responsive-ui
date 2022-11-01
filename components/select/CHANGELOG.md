@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.46](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.45...v1.1.0-alpha.46) (2022-11-01)
+
+
+### Bug Fixes
+
+* when value is null, multiple select not responsive ([9e0061d](https://github.com/wetix/responsive-ui/commit/9e0061d1b1acd4c86f9a71a4cb92ed82e6d3c904))
+
+
+
+
+
 # [1.1.0-alpha.41](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.40...v1.1.0-alpha.41) (2022-10-21)
 
 
