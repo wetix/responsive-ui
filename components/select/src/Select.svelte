@@ -94,6 +94,8 @@
   $: if (options) {
     items = options;
   }
+
+  $: selectedItem = options.find((v) => v.value === value) || null;
 </script>
 
 {#if multiple}
