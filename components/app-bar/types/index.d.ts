@@ -23,6 +23,7 @@ export interface AppBarProps {
   trailingItems: NavItem[];
   style?: string;
   currentPath?: string;
+  hideSideMenu?: boolean;
 }
 
 export interface AppBarEvents {
