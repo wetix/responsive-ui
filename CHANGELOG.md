@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.47](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.46...v1.1.0-alpha.47) (2023-02-15)
+
+
+### Features
+
+* expose a prop to allow hiding SideMenu ([5a989f6](https://github.com/wetix/responsive-ui/commit/5a989f6251425fc537fef132228c963ec14101da))
+
+
+
+
+
 # [1.1.0-alpha.46](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.45...v1.1.0-alpha.46) (2022-11-01)
 
 
