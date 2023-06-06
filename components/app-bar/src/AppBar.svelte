@@ -283,7 +283,6 @@
       position: relative;
       height: $height;
       width: 100%;
-      background: #fff;
       z-index: 500;
     }
 
