@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+# [1.1.0-alpha.48](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.47...v1.1.0-alpha.48)
+
+### Bug Fixes
+
+* app bar background color to be defined in user frontend ([37ba808](https://github.com/wetix/responsive-ui/commit/37ba808bfc58a5d4e2f1dfb216306f458c600472))
+
+
+
 # [1.1.0-alpha.47](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.46...v1.1.0-alpha.47) (2023-02-15)
 
 
