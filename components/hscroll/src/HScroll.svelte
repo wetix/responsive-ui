@@ -93,7 +93,7 @@
     overflow: hidden;
 
     &__box {
-      flex-grow: 1;
+      display: flex;
       scroll-behavior: smooth;
       transition: all 0.5s;
       overflow-x: hidden;
@@ -106,6 +106,11 @@
       &::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
         width: 0px;
+      }
+
+      @media (min-width: 576px) {
+        justify-content: center;
+        align-items: center;
       }
     }
 
