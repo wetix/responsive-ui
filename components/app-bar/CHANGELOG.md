@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.48](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.5...v1.1.0-alpha.48) (2024-01-24)
+
+**Note:** Version bump only for package @responsive-ui/app-bar
+
+
+
+
+
 # [1.1.0-alpha.47](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.46...v1.1.0-alpha.47) (2023-02-15)
 
 
