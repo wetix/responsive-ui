@@ -91,7 +91,7 @@ jobs:
         # if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
           lerna init
-          lerna version ${{ env.CURRENT_VERSION }} --force-publish --create-release --conventional-commits github --yes
+          lerna version ${{ env.CURRENT_VERSION }} --force-publish --create-release --conventional-commits
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
