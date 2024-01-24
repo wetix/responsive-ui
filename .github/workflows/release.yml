@@ -40,7 +40,7 @@ jobs:
       #           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       #           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
       #         env:
-      #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Set Current Version
         run: |
@@ -60,14 +60,14 @@ jobs:
       #       echo "::set-output name=exists_tag::false"
       #     fi
       #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       #       # - name: Create Git Tag
       #       #   if: steps.tag_check.outputs.exists_tag == 'false'
       #       #   uses: pkgdeps/git-tag-action@v2
       #       #   with:
       #       #     version: ${{ env.CURRENT_VERSION }}
-      #       #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #       #     github_token: ${{ secrets.GH_TOKEN }}
       #       #     github_repo: ${{ github.repository }}
       #       #     git_commit_sha: ${{ github.sha }}
       #       #     git_tag_prefix: "v"
@@ -77,7 +77,7 @@ jobs:
       #       #   if: steps.tag_check.outputs.exists_tag == 'false' && github.event.pull_request.merged == true
       #       #   uses: actions/create-release@v1
       #       #   env:
-      #       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       #       #   with:
       #       #     tag_name: v${{ env.CURRENT_VERSION }}
       #       #     # Copy Pull Request's tile and body to Release Note
@@ -93,5 +93,5 @@ jobs:
           lerna init
           lerna version ${{ env.CURRENT_VERSION }} --force-publish --create-release github --yes
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
