@@ -9,7 +9,6 @@
   export let placeholder = "";
   export let ref: HTMLElement;
   export let value: string = "";
-  export let style: string = "";
   export let size = 10;
   export let multiple = false;
   export let options: SelectOption[] = [];
@@ -100,10 +99,9 @@
 {#if multiple}
   <MultipleSelect bind:ref {...$$props} {size} class={className} on:change on:blur />
 {:else}
-  <div class="resp-select" {style}>
+  <div class="resp-select" {...$$restProps}>
     <input bind:this={ref} type="hidden" on:change bind:value />
     <input
-      {...$$restProps}
       bind:this={inputRef}
       on:click={() => {
         open = !open;
