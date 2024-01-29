@@ -8,7 +8,7 @@ jobs:
     name: Publish to NPM
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code into the Go module directory
+      - name: Check out code from repository
         uses: actions/checkout@v2
         with:
           ref: main
@@ -93,7 +93,7 @@ jobs:
       - name: Build and Publish
         # if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          lerna init
+          npm i
           lerna version ${{ env.CURRENT_VERSION }} --force-publish --conventional-commits --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
