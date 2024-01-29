@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 15,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.autoSave": "onWindowChange",

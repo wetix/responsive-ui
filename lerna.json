@@ -1,17 +1,8 @@
 {
-  "packages": [
-    "components/*",
-    "packages/*"
-  ],
-  "ignoreChanges": [
-    "**/__fixtures__/**",
-    "**/__tests__/**",
-    "**/__test__/**",
-    "**/*.md"
-  ],
-  "version": "1.1.0-alpha.48",
+  "packages": ["components/*", "packages/*"],
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/__test__/**", "**/*.md"],
+  "version": "1.1.0-alpha.49",
   "npmClient": "yarn",
-  "useWorkspaces": true,
   "command": {
     "publish": {
       "conventionalCommits": true

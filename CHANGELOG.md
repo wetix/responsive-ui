@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.49](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.5...v1.1.0-alpha.49) (2024-01-29)
+
+
+### Bug Fixes
+
+* gh token for publish workflow ([ac9dbb8](https://github.com/wetix/responsive-ui/commit/ac9dbb863a2a92fb92c9a829989cde87e008b5fc))
+* publish workflow ([38f5f11](https://github.com/wetix/responsive-ui/commit/38f5f115c7d901bfc31a0f5b684d803a709d79d6))
+* publish workflow ([b97b595](https://github.com/wetix/responsive-ui/commit/b97b595e045d4355a85d26d0194cf2e60474f901))
+
+
+
+
+
 # [1.1.0-alpha.48](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.5...v1.1.0-alpha.48) (2024-01-24)
 
 
