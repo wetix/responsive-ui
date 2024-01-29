@@ -5,9 +5,10 @@ on:
 
 jobs:
   build:
+    name: Publish to NPM
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out code into the Go module directory
         uses: actions/checkout@v2
       #         with:
       #           # pulls all commits (needed for lerna / semantic release to correctly version)
