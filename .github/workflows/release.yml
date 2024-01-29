@@ -93,7 +93,8 @@ jobs:
       - name: Build and Publish
         # if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-          npm whoami
+          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           npm i --no-save
           lerna publish ${{ env.CURRENT_VERSION }} --force-publish --no-git-tag-version --yes
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
