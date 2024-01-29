@@ -94,6 +94,6 @@ jobs:
         # if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
           npm i
-          lerna version ${{ env.CURRENT_VERSION }} --from-git --force-publish --conventional-commits --yes
+          lerna publish --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
