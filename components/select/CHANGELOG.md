@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.52](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.50...v1.1.0-alpha.52) (2024-01-29)
+
+
+### Bug Fixes
+
+* lerna publish workflow ([75aca62](https://github.com/wetix/responsive-ui/commit/75aca62223f204d0b3889ea106583a93ad0e313b))
+
+
+
+
+
 # [1.1.0-alpha.50](https://github.com/wetix/responsive-ui/compare/v1.1.1-alpha.8...v1.1.0-alpha.50) (2024-01-29)
 
 ### Bug Fixes
