@@ -8,7 +8,7 @@
   export let ref: HTMLInputElement;
   export let type = "text";
   export let bordered = true;
-  export let value = "";
+  export let value: any;
 
   let focused = false;
   const handleKeyup = (e: KeyboardEvent) => {
