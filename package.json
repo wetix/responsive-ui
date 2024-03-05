@@ -1,6 +1,6 @@
 {
-  "name": "responsive-ui-monorepo",
-  "version": "1.0.9-alpha.0",
+  "name": "@responsive-ui/responsive-ui",
+  "version": "1.1.0-alpha.55",
   "type": "module",
   "private": true,
   "workspaces": [

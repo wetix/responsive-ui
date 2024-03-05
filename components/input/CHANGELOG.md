@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-alpha.55](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.50...v1.1.0-alpha.55) (2024-03-05)
+
+
+### Bug Fixes
+
+* data type for input value ([015110e](https://github.com/wetix/responsive-ui/commit/015110e54af62374560c6043ae308a36ed236f1e))
+* data type for input value ([23dc079](https://github.com/wetix/responsive-ui/commit/23dc079acd1b4ab93ea441ad9ea7821aca593592))
+
+
+
+
+
+# [1.1.0-alpha.54](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.50...v1.1.0-alpha.54) (2024-03-05)
+
+
+### Bug Fixes
+
+* data type for input value ([015110e](https://github.com/wetix/responsive-ui/commit/015110e54af62374560c6043ae308a36ed236f1e))
+* data type for input value ([23dc079](https://github.com/wetix/responsive-ui/commit/23dc079acd1b4ab93ea441ad9ea7821aca593592))
+
+
+
+
+
+# [1.1.0-alpha.53](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.50...v1.1.0-alpha.53) (2024-03-05)
+
+
+### Bug Fixes
+
+* data type for input value ([015110e](https://github.com/wetix/responsive-ui/commit/015110e54af62374560c6043ae308a36ed236f1e))
+* data type for input value ([23dc079](https://github.com/wetix/responsive-ui/commit/23dc079acd1b4ab93ea441ad9ea7821aca593592))
+
+
+
+
+
 # [1.1.0-alpha.52](https://github.com/wetix/responsive-ui/compare/v1.1.0-alpha.50...v1.1.0-alpha.52) (2024-01-29)
 
 **Note:** Version bump only for package @responsive-ui/input
