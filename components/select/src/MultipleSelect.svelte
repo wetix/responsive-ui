@@ -21,12 +21,14 @@
 
   type Item = { label: string; value: string; disabled?: boolean };
 
-  const dict = new Map();
+  let dict = new Map();
   $: {
     options.forEach((opt) => {
       dict.set(opt.value, opt);
     });
+    filteredOptions = options;
   }
+
   let input: HTMLInputElement;
   let focused = false;
   let clientHeight = 0;
