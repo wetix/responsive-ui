@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code from repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
 
       - name: Set Current Version
         run: |
@@ -23,6 +27,6 @@ jobs:
         run: |
           echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           npm i --no-save
-          lerna publish ${{ env.CURRENT_VERSION }} --force-publish --no-git-tag-version --yes
+          npx lerna publish ${{ env.CURRENT_VERSION }} --force-publish --no-git-tag-version --yes
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

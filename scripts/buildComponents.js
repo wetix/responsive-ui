@@ -8,7 +8,7 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import { babel } from "@rollup/plugin-babel";
 import sveltePreprocess from "svelte-preprocess";
 
@@ -134,6 +134,9 @@ const rollupPlugins = [
   }),
   commonjs(),
   typescript({
+    // explicit include: picomatch >= 2.3.2 no longer matches the plugin's
+    // default "*.ts+(|x)" glob, which would silently skip every .ts file
+    include: ["*.ts", "**/*.ts", "*.tsx", "**/*.tsx"],
     sourceMap: false,
   }),
 ];
