@@ -1,7 +1,14 @@
 {
-  "packages": ["components/*"],
-  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/__test__/**", "**/*.md"],
-  "version": "1.1.0-alpha.58",
+  "packages": [
+    "components/*"
+  ],
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/__test__/**",
+    "**/*.md"
+  ],
+  "version": "1.1.0-alpha.59",
   "npmClient": "yarn",
   "command": {
     "publish": {
@@ -10,5 +17,6 @@
     "version": {
       "message": "🔖 chore(release): release version %s"
     }
-  }
+  },
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
